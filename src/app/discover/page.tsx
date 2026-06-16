@@ -37,18 +37,18 @@ const pillars = [
 ];
 
 const cards = [
-  { name: "Spike",     cat: "BOOST",    color: "#22c55e", bg: "/cards/spike-bg.png",     icon: "/cards/spike.png",     desc: "+30% AP on next session (30 min cap)" },
-  { name: "Overdrive", cat: "BOOST",    color: "#22c55e", bg: "/cards/overdrive-bg.png",  icon: "/cards/overdrive.png",  desc: "Your best 20-min window counts ×2" },
-  { name: "Recover",   cat: "BOOST",    color: "#22c55e", bg: "/cards/recover-bg.png",    icon: "/cards/recover.png",    desc: "+15% AP on your next session today" },
-  { name: "Shield",    cat: "DEFENSE",  color: "#3b82f6", bg: "/cards/shield-bg.png",     icon: "/cards/shield.png",     desc: "Opponent loses 15% AP on their next session" },
-  { name: "Freeze",    cat: "SABOTAGE", color: "#ef4444", bg: "/cards/freeze-bg.png",     icon: "/cards/freeze.png",     desc: "Opponent's best day loses 8% AP" },
-  { name: "Pressure",  cat: "SABOTAGE", color: "#ef4444", bg: "/cards/pressure-bg.png",   icon: "/cards/pressure.png",   desc: "If they train 30+ min: +15% AP on your score" },
-  { name: "Parasite",  cat: "SABOTAGE", color: "#ef4444", bg: "/cards/parasite-bg.png",   icon: "/cards/parasite.png",   desc: "If they train 30+ min: steal 7% of their points" },
-  { name: "Scan",      cat: "INTEL",    color: "#a855f7", bg: "/cards/scan-bg.png",       icon: "/cards/scan.png",       desc: "Reveal your opponent's full HR curve for one round" },
-  { name: "Ghost",     cat: "MASQUE",   color: "#8b5cf6", bg: "/cards/ghost-bg.png",      icon: "/cards/ghost.png",      desc: "Your activity looks flat to the opponent until evening" },
-  { name: "Mirage",    cat: "MASQUE",   color: "#8b5cf6", bg: "/cards/mirage-bg.png",     icon: "/cards/mirage.png",     desc: "Opponent sees your score faked by ±15%" },
-  { name: "Blackout",  cat: "MASQUE",   color: "#8b5cf6", bg: "/cards/blackout-bg.png",   icon: "/cards/blackout.png",   desc: "No score info for either player until 7 PM" },
-  { name: "Counter",   cat: "MOMENTUM", color: "#f59e0b", bg: "/cards/boost-bg.png",      icon: "/cards/counter.png",    desc: "If losing at 6 PM: +25% AP on sessions after 6 PM" },
+  { n: "01", name: "SPIKE",     cat: "BOOST",    icon: "/cards/spike.png",     effect: "+30% AP", sub: "30 MIN WINDOW",     desc: "Targeted intensity spike.",          grad: ["#0c1a3a","#1e3a8a","#2563eb"], tc: "#93c5fd" },
+  { n: "02", name: "OVERDRIVE", cat: "BOOST",    icon: "/cards/overdrive.png", effect: "×2 AP",   sub: "BEST 20 MIN",       desc: "All or nothing. This is the moment.", grad: ["#2d1500","#92400e","#d97706"], tc: "#fcd34d" },
+  { n: "03", name: "RECOVER",   cat: "BOOST",    icon: "/cards/recover.png",   effect: "+15% AP", sub: "NEXT SESSION",      desc: "Recover better. Come back stronger.", grad: ["#3b0a2a","#9d174d","#ec4899"], tc: "#f9a8d4" },
+  { n: "04", name: "SHIELD",    cat: "DEFENSE",  icon: "/cards/shield.png",    effect: "−15%",    sub: "OPP. SESSION",      desc: "Block their momentum.",              grad: ["#1a0a00","#7f1d1d","#dc2626"], tc: "#fca5a5" },
+  { n: "05", name: "FREEZE",    cat: "SABOTAGE", icon: "/cards/freeze.png",    effect: "−8%",     sub: "OPP. BEST DAY",     desc: "Erase their peak performance.",      grad: ["#031c2d","#164e63","#0891b2"], tc: "#67e8f9" },
+  { n: "06", name: "PRESSURE",  cat: "SABOTAGE", icon: "/cards/pressure.png",  effect: "+15%",    sub: "IF THEY TRAIN",     desc: "Turn their effort against them.",    grad: ["#0f0f0f","#1c1c1c","#374151"], tc: "#d1d5db" },
+  { n: "07", name: "PARASITE",  cat: "SABOTAGE", icon: "/cards/parasite.png",  effect: "STEAL 7%",sub: "OF THEIR PTS",      desc: "What they build, you take.",         grad: ["#1c1000","#78350f","#b45309"], tc: "#fde68a" },
+  { n: "08", name: "SCAN",      cat: "INTEL",    icon: "/cards/scan.png",      effect: "REVEAL",  sub: "HR CURVE",          desc: "See their full session data.",       grad: ["#051e10","#14532d","#16a34a"], tc: "#86efac" },
+  { n: "09", name: "GHOST",     cat: "MASQUE",   icon: "/cards/ghost.png",     effect: "HIDE",    sub: "YOUR SCORE",        desc: "Your activity looks flat to them.",  grad: ["#1a0a3a","#4c1d95","#7c3aed"], tc: "#c4b5fd" },
+  { n: "10", name: "MIRAGE",    cat: "MASQUE",   icon: "/cards/mirage.png",    effect: "FAKE ±15%",sub: "YOUR DISPLAY",     desc: "Let them react to a lie.",           grad: ["#1f1000","#7c2d12","#ea580c"], tc: "#fdba74" },
+  { n: "11", name: "BLACKOUT",  cat: "MASQUE",   icon: "/cards/blackout.png",  effect: "NO INFO", sub: "UNTIL 19:00",       desc: "Blind both sides. Who dares?",       grad: ["#000000","#0a0a0a","#111827"], tc: "#9ca3af" },
+  { n: "12", name: "COUNTER",   cat: "MOMENTUM", icon: "/cards/counter.png",   effect: "+25%",    sub: "AFTER 18:00",       desc: "If losing at 18:00, strike back.",   grad: ["#001f1a","#134e4a","#0d9488"], tc: "#5eead4" },
 ];
 
 
@@ -232,45 +232,41 @@ export default function DiscoverPage() {
               Every morning you pick one card from three offered. Your card choice is final at 1 PM. Choose wisely — the right card at the right moment changes everything.
             </p>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gap: "10px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "10px" }}>
             {cards.map((c) => (
-              <div key={c.name} className="power-card" style={{
-                position: "relative",
-                borderRadius: "16px",
-                overflow: "hidden",
-                aspectRatio: "2/3",
-                backgroundColor: "#1a1a1a",
+              <div key={c.name} className="app-card" style={{
+                position: "relative", borderRadius: "14px", overflow: "hidden",
+                height: "160px",
+                background: `linear-gradient(135deg, ${c.grad[0]} 0%, ${c.grad[1]} 50%, ${c.grad[2]} 100%)`,
                 border: "1px solid rgba(255,255,255,0.06)",
+                display: "flex",
               }}>
-                <Image src={c.bg} alt={c.name} fill style={{ objectFit: "cover" }} />
                 <div style={{
                   position: "absolute", inset: 0,
-                  background: "linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0) 100%)",
-                }} />
-                <div style={{
-                  position: "absolute", inset: 0,
-                  backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.06) 3px, rgba(0,0,0,0.06) 4px)",
+                  backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.04) 2px, rgba(255,255,255,0.04) 3px)",
                   pointerEvents: "none",
                 }} />
-                <div style={{
-                  position: "absolute", top: "10px", left: "10px",
-                  fontSize: "0.5625rem", fontWeight: 800, letterSpacing: "0.1em",
-                  textTransform: "uppercase", color: c.color,
-                  backgroundColor: "rgba(0,0,0,0.6)",
-                  border: `1px solid ${c.color}33`,
-                  padding: "3px 7px", borderRadius: "4px",
-                }}>{c.cat}</div>
-                <div style={{
-                  position: "absolute",
-                  top: "50%", left: "50%",
-                  transform: "translate(-50%, -60%)",
-                  width: "44px", height: "44px",
-                }}>
-                  <Image src={c.icon} alt={c.name} fill style={{ objectFit: "contain" }} />
+                <div style={{ position: "relative", zIndex: 2, flex: 1, padding: "1.25rem 1.5rem", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+                  <div>
+                    <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "0.5rem" }}>
+                      <span style={{ fontSize: "0.625rem", fontWeight: 800, color: "rgba(255,255,255,0.45)", letterSpacing: "0.06em" }}>Attax</span>
+                      <span style={{ fontSize: "0.5625rem", fontWeight: 700, color: c.tc, letterSpacing: "0.12em", textTransform: "uppercase" }}>{c.cat}</span>
+                    </div>
+                    <div style={{ fontSize: "clamp(1.25rem, 2vw, 1.75rem)", fontWeight: 900, color: "#ffffff", letterSpacing: "-0.02em", lineHeight: 1, marginBottom: "0.375rem" }}>{c.name}</div>
+                    <div style={{ display: "flex", alignItems: "baseline", gap: "6px" }}>
+                      <span style={{ fontSize: "0.875rem", fontWeight: 800, color: c.tc }}>{c.effect}</span>
+                      <span style={{ fontSize: "0.5625rem", fontWeight: 700, color: "rgba(255,255,255,0.3)", letterSpacing: "0.1em", textTransform: "uppercase" }}>{c.sub}</span>
+                    </div>
+                  </div>
+                  <div>
+                    <div style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.4)", lineHeight: 1.4, marginBottom: "0.25rem" }}>{c.desc}</div>
+                    <div style={{ fontSize: "1.5rem", fontWeight: 900, color: "rgba(255,255,255,0.1)", letterSpacing: "-0.02em" }}>{c.n}</div>
+                  </div>
                 </div>
-                <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "12px" }}>
-                  <div style={{ fontSize: "0.8125rem", fontWeight: 800, color: "#ffffff", marginBottom: "2px" }}>{c.name}</div>
-                  <div style={{ fontSize: "0.625rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.4 }}>{c.desc}</div>
+                <div style={{ position: "relative", zIndex: 2, width: "130px", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", padding: "0.75rem 1rem 0.75rem 0" }}>
+                  <div style={{ width: "100px", height: "100px", position: "relative" }}>
+                    <Image src={c.icon} alt={c.name} fill style={{ objectFit: "contain", filter: "drop-shadow(0 4px 16px rgba(0,0,0,0.4))" }} />
+                  </div>
                 </div>
               </div>
             ))}

@@ -4,23 +4,87 @@ import Image from "next/image";
 import InView from "@/components/InView";
 
 const cards = [
-  { name: "Spike",     cat: "BOOST",    color: "#22c55e", bg: "/cards/spike-bg.png",    icon: "/cards/spike.png",    desc: "+30% AP on next session" },
-  { name: "Overdrive", cat: "BOOST",    color: "#22c55e", bg: "/cards/overdrive-bg.png", icon: "/cards/overdrive.png", desc: "Best 20-min window ×2" },
-  { name: "Recover",   cat: "BOOST",    color: "#22c55e", bg: "/cards/recover-bg.png",   icon: "/cards/recover.png",   desc: "+15% AP next session" },
-  { name: "Shield",    cat: "DEFENSE",  color: "#3b82f6", bg: "/cards/shield-bg.png",    icon: "/cards/shield.png",    desc: "Opponent −15% next session" },
-  { name: "Freeze",    cat: "SABOTAGE", color: "#ef4444", bg: "/cards/freeze-bg.png",    icon: "/cards/freeze.png",    desc: "Opponent's best day −8%" },
-  { name: "Pressure",  cat: "SABOTAGE", color: "#ef4444", bg: "/cards/pressure-bg.png",  icon: "/cards/pressure.png",  desc: "+15% if they train 30+ min" },
-  { name: "Parasite",  cat: "SABOTAGE", color: "#ef4444", bg: "/cards/parasite-bg.png",  icon: "/cards/parasite.png",  desc: "Steal 7% of their points" },
-  { name: "Scan",      cat: "INTEL",    color: "#a855f7", bg: "/cards/scan-bg.png",      icon: "/cards/scan.png",      desc: "Reveal opponent's HR curve" },
-  { name: "Ghost",     cat: "MASQUE",   color: "#8b5cf6", bg: "/cards/ghost-bg.png",     icon: "/cards/ghost.png",     desc: "Your score looks flat" },
-  { name: "Mirage",    cat: "MASQUE",   color: "#8b5cf6", bg: "/cards/mirage-bg.png",    icon: "/cards/mirage.png",    desc: "Your score faked ±15%" },
-  { name: "Blackout",  cat: "MASQUE",   color: "#8b5cf6", bg: "/cards/blackout-bg.png",  icon: "/cards/blackout.png",  desc: "No score info until 7 PM" },
-  { name: "Counter",   cat: "MOMENTUM", color: "#f59e0b", bg: "/cards/boost-bg.png",     icon: "/cards/counter.png",   desc: "+25% after 6 PM if losing" },
+  {
+    n: "01", name: "SPIKE",     cat: "BOOST",    icon: "/cards/spike.png",
+    effect: "+30% AP",   sub: "30 MIN WINDOW",  desc: "Targeted intensity spike.",
+    grad: ["#0c1a3a", "#1e3a8a", "#2563eb"],
+    textColor: "#93c5fd",
+  },
+  {
+    n: "02", name: "OVERDRIVE", cat: "BOOST",    icon: "/cards/overdrive.png",
+    effect: "×2 AP",     sub: "BEST 20 MIN",    desc: "All or nothing. This is the moment.",
+    grad: ["#2d1500", "#92400e", "#d97706"],
+    textColor: "#fcd34d",
+  },
+  {
+    n: "03", name: "RECOVER",   cat: "BOOST",    icon: "/cards/recover.png",
+    effect: "+15% AP",   sub: "NEXT SESSION",   desc: "Recover better. Come back stronger.",
+    grad: ["#3b0a2a", "#9d174d", "#ec4899"],
+    textColor: "#f9a8d4",
+  },
+  {
+    n: "04", name: "SHIELD",    cat: "DEFENSE",  icon: "/cards/shield.png",
+    effect: "−15%",      sub: "OPP. NEXT SESSION", desc: "Block their momentum.",
+    grad: ["#1a0a00", "#7f1d1d", "#dc2626"],
+    textColor: "#fca5a5",
+  },
+  {
+    n: "05", name: "FREEZE",    cat: "SABOTAGE", icon: "/cards/freeze.png",
+    effect: "−8%",       sub: "OPP. BEST DAY",  desc: "Erase their peak performance.",
+    grad: ["#031c2d", "#164e63", "#0891b2"],
+    textColor: "#67e8f9",
+  },
+  {
+    n: "06", name: "PRESSURE",  cat: "SABOTAGE", icon: "/cards/pressure.png",
+    effect: "+15%",      sub: "IF THEY TRAIN",   desc: "Turn their effort against them.",
+    grad: ["#0f0f0f", "#1c1c1c", "#374151"],
+    textColor: "#d1d5db",
+  },
+  {
+    n: "07", name: "PARASITE",  cat: "SABOTAGE", icon: "/cards/parasite.png",
+    effect: "STEAL 7%",  sub: "OF THEIR POINTS", desc: "What they build, you take.",
+    grad: ["#1c1000", "#78350f", "#b45309"],
+    textColor: "#fde68a",
+  },
+  {
+    n: "08", name: "SCAN",      cat: "INTEL",    icon: "/cards/scan.png",
+    effect: "REVEAL",    sub: "HR CURVE",        desc: "See their full session data.",
+    grad: ["#051e10", "#14532d", "#16a34a"],
+    textColor: "#86efac",
+  },
+  {
+    n: "09", name: "GHOST",     cat: "MASQUE",   icon: "/cards/ghost.png",
+    effect: "HIDE",      sub: "YOUR SCORE",      desc: "Your activity looks flat to them.",
+    grad: ["#1a0a3a", "#4c1d95", "#7c3aed"],
+    textColor: "#c4b5fd",
+  },
+  {
+    n: "10", name: "MIRAGE",    cat: "MASQUE",   icon: "/cards/mirage.png",
+    effect: "FAKE ±15%", sub: "YOUR DISPLAY",    desc: "Let them react to a lie.",
+    grad: ["#1f1000", "#7c2d12", "#ea580c"],
+    textColor: "#fdba74",
+  },
+  {
+    n: "11", name: "BLACKOUT",  cat: "MASQUE",   icon: "/cards/blackout.png",
+    effect: "NO INFO",   sub: "UNTIL 19:00",     desc: "Blind both sides. Who dares?",
+    grad: ["#000000", "#0a0a0a", "#111827"],
+    textColor: "#9ca3af",
+  },
+  {
+    n: "12", name: "COUNTER",   cat: "MOMENTUM", icon: "/cards/counter.png",
+    effect: "+25%",      sub: "AFTER 18:00",     desc: "If losing at 18:00, strike back.",
+    grad: ["#001f1a", "#134e4a", "#0d9488"],
+    textColor: "#5eead4",
+  },
 ];
 
 export default function CardsShowcase() {
   return (
-    <section style={{ backgroundColor: "#0d0d0d", padding: "7rem 2rem", overflow: "hidden" }}>
+    <section style={{
+      backgroundColor: "#0a0a0a",
+      backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,0.018) 3px, rgba(255,255,255,0.018) 4px)",
+      padding: "7rem 2rem",
+    }}>
       <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
 
         <InView>
@@ -35,65 +99,62 @@ export default function CardsShowcase() {
               </h2>
             </div>
             <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.35)", lineHeight: 1.75, maxWidth: "300px", margin: 0, flex: "0 0 300px" }}>
-              Every morning you receive 3 cards. Choose before 1 PM. Boost yourself, sabotage your rival, or manipulate information. No second chances.
+              Every morning, 3 cards are offered. Choose before 1 PM. No second chances.
             </p>
           </div>
         </InView>
 
-        {/* Cards grid */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gap: "10px" }}>
+        {/* Cards — horizontal format, real app style */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "10px" }}>
           {cards.map((card, i) => (
-            <InView key={card.name} delay={i * 40}>
-              <div className="power-card" style={{
+            <InView key={card.name} delay={i * 30}>
+              <div className="app-card" style={{
                 position: "relative",
-                borderRadius: "16px",
+                borderRadius: "14px",
                 overflow: "hidden",
-                aspectRatio: "2/3",
-                backgroundColor: "#1a1a1a",
+                height: "160px",
+                background: `linear-gradient(135deg, ${card.grad[0]} 0%, ${card.grad[1]} 50%, ${card.grad[2]} 100%)`,
                 border: "1px solid rgba(255,255,255,0.06)",
+                display: "flex",
               }}>
-                {/* Background image */}
-                <Image
-                  src={card.bg}
-                  alt={card.name}
-                  fill
-                  style={{ objectFit: "cover", objectPosition: "center" }}
-                />
-                {/* Dark overlay */}
+                {/* Horizontal scanlines — exactly like the app */}
                 <div style={{
                   position: "absolute", inset: 0,
-                  background: "linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.0) 100%)",
-                }} />
-                {/* Scanlines */}
-                <div style={{
-                  position: "absolute", inset: 0,
-                  backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.06) 3px, rgba(0,0,0,0.06) 4px)",
+                  backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.04) 2px, rgba(255,255,255,0.04) 3px)",
                   pointerEvents: "none",
                 }} />
-                {/* Category badge */}
-                <div style={{
-                  position: "absolute", top: "10px", left: "10px",
-                  fontSize: "0.5625rem", fontWeight: 800, letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  color: card.color,
-                  backgroundColor: "rgba(0,0,0,0.6)",
-                  border: `1px solid ${card.color}33`,
-                  padding: "3px 7px", borderRadius: "4px",
-                }}>{card.cat}</div>
-                {/* Icon */}
-                <div style={{
-                  position: "absolute",
-                  top: "50%", left: "50%",
-                  transform: "translate(-50%, -60%)",
-                  width: "44px", height: "44px",
-                  opacity: 0.9,
-                }}>
-                  <Image src={card.icon} alt={card.name} fill style={{ objectFit: "contain" }} />
+
+                {/* Left — text content */}
+                <div style={{ position: "relative", zIndex: 2, flex: 1, padding: "1.25rem 1.5rem", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+                  {/* Top row */}
+                  <div>
+                    <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "0.625rem" }}>
+                      <span style={{ fontSize: "0.625rem", fontWeight: 800, color: "rgba(255,255,255,0.5)", letterSpacing: "0.06em" }}>Attax</span>
+                      <span style={{ fontSize: "0.5625rem", fontWeight: 700, color: card.textColor, letterSpacing: "0.12em", textTransform: "uppercase", opacity: 0.9 }}>{card.cat}</span>
+                    </div>
+                    <div style={{ fontSize: "clamp(1.375rem, 2.5vw, 1.875rem)", fontWeight: 900, color: "#ffffff", letterSpacing: "-0.02em", lineHeight: 1, marginBottom: "0.375rem" }}>{card.name}</div>
+                    <div style={{ display: "flex", alignItems: "baseline", gap: "6px" }}>
+                      <span style={{ fontSize: "0.875rem", fontWeight: 800, color: card.textColor }}>{card.effect}</span>
+                      <span style={{ fontSize: "0.5625rem", fontWeight: 700, color: "rgba(255,255,255,0.35)", letterSpacing: "0.1em", textTransform: "uppercase" }}>{card.sub}</span>
+                    </div>
+                  </div>
+                  {/* Bottom */}
+                  <div>
+                    <div style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.4, marginBottom: "0.25rem" }}>{card.desc}</div>
+                    <div style={{ fontSize: "1.5rem", fontWeight: 900, color: "rgba(255,255,255,0.12)", letterSpacing: "-0.02em", lineHeight: 1 }}>{card.n}</div>
+                  </div>
                 </div>
-                {/* Bottom text */}
-                <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "12px" }}>
-                  <div style={{ fontSize: "0.8125rem", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.01em", marginBottom: "2px" }}>{card.name}</div>
-                  <div style={{ fontSize: "0.625rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.4 }}>{card.desc}</div>
+
+                {/* Right — 3D icon */}
+                <div style={{ position: "relative", zIndex: 2, width: "140px", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", padding: "0.75rem 1rem 0.75rem 0" }}>
+                  <div style={{ width: "110px", height: "110px", position: "relative" }}>
+                    <Image
+                      src={card.icon}
+                      alt={card.name}
+                      fill
+                      style={{ objectFit: "contain", filter: "drop-shadow(0 4px 20px rgba(0,0,0,0.4))" }}
+                    />
+                  </div>
                 </div>
               </div>
             </InView>
@@ -103,19 +164,15 @@ export default function CardsShowcase() {
         {/* Bottom note */}
         <InView>
           <div style={{
-            marginTop: "3rem",
-            padding: "1.5rem 2rem",
+            marginTop: "2.5rem",
+            padding: "1.25rem 1.75rem",
             backgroundColor: "rgba(255,255,255,0.03)",
             border: "1px solid rgba(255,255,255,0.06)",
-            borderRadius: "12px",
+            borderRadius: "10px",
             display: "flex", alignItems: "center", gap: "1.5rem",
           }}>
-            <div style={{ fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.12em", color: "rgba(255,255,255,0.25)", textTransform: "uppercase", flexShrink: 0 }}>
-              How it works
-            </div>
-            <div style={{ width: "1px", height: "24px", backgroundColor: "rgba(255,255,255,0.08)", flexShrink: 0 }} />
-            <p style={{ fontSize: "0.875rem", color: "rgba(255,255,255,0.4)", lineHeight: 1.6, margin: 0 }}>
-              Each day, 3 cards are offered to everyone in your league — the same 3 for all players, determined by the day and the room. Pick your card before 1 PM. Effects apply instantly to your session data.
+            <p style={{ fontSize: "0.875rem", color: "rgba(255,255,255,0.35)", lineHeight: 1.6, margin: 0 }}>
+              <strong style={{ color: "rgba(255,255,255,0.6)", fontWeight: 700 }}>Every day, the same 3 cards for everyone in your league</strong> — determined by the day and the room. Card effects apply instantly to session data.
             </p>
           </div>
         </InView>
