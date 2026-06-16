@@ -5,7 +5,7 @@ const PHONES = [
     src: "/screens/screenactivity.png",
     label: "Train",
     caption: "Every workout syncs automatically. Your score updates in real time.",
-    scale: 0.72,
+    scale: 0.82,
   },
   {
     src: "/screens/screenmatch.png",
@@ -17,7 +17,7 @@ const PHONES = [
     src: "/screens/screencards.png",
     label: "Strategize",
     caption: "12 combat cards. Play them at the right moment to swing the duel.",
-    scale: 0.72,
+    scale: 0.82,
   },
 ];
 
@@ -68,11 +68,11 @@ export default function VisualGrid() {
         display: "flex",
         justifyContent: "center",
         alignItems: "flex-end",
-        gap: "clamp(0.75rem, 2vw, 2rem)",
+        gap: "0",
         marginBottom: "2.5rem",
       }}>
         {PHONES.map(p => {
-          const W = 400 * p.scale;
+          const W = 500 * p.scale;
           const H = W * (873 / 760); // approximate aspect ratio of the mockup images
           return (
             <div key={p.src} style={{
@@ -97,13 +97,13 @@ export default function VisualGrid() {
       <div style={{
         display: "flex",
         justifyContent: "center",
-        gap: "clamp(0.5rem, 1.5vw, 1.5rem)",
+        gap: "0",
         margin: "0 auto",
       }}>
         {PHONES.map(p => {
           const W = 240 * p.scale;
           return (
-            <div key={p.src} style={{ width: 400 * p.scale, flexShrink: 0, textAlign: "center" }}>
+            <div key={p.src} style={{ width: 500 * p.scale, flexShrink: 0, textAlign: "center" }}>
               <span style={{
                 display: "inline-block",
                 fontSize: "0.6875rem",
