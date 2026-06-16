@@ -5,22 +5,22 @@ const PHONES = [
     src: "/screens/screenactivity.png",
     label: "Train",
     caption: "Every workout syncs automatically. Your score updates in real time.",
-    offset: 80,
-    scale: 0.85,
-  },
-  {
-    src: "/screens/screencards.png",
-    label: "Strategize",
-    caption: "12 combat cards. Play them at the right moment to swing the duel.",
-    offset: 0,
-    scale: 1,
+    offset: 70,
+    scale: 0.78,
   },
   {
     src: "/screens/screenmatch.png",
     label: "Battle",
     caption: "Daily 1v1 duels. Results drop at 21:30 every night.",
-    offset: 80,
-    scale: 0.85,
+    offset: 0,
+    scale: 1,
+  },
+  {
+    src: "/screens/screencards.png",
+    label: "Strategize",
+    caption: "12 combat cards. Play them at the right moment to swing the duel.",
+    offset: 70,
+    scale: 0.78,
   },
 ];
 
@@ -71,11 +71,11 @@ export default function VisualGrid() {
         display: "flex",
         justifyContent: "center",
         alignItems: "flex-start",
-        gap: "clamp(1rem, 2.5vw, 2.5rem)",
+        gap: "clamp(0.5rem, 1.5vw, 1.5rem)",
         marginBottom: "3.5rem",
       }}>
         {PHONES.map(p => {
-          const W = 360 * p.scale;
+          const W = 400 * p.scale;
           const H = W * (873 / 760); // approximate aspect ratio of the mockup images
           return (
             <div key={p.src} style={{
@@ -101,13 +101,13 @@ export default function VisualGrid() {
       <div style={{
         display: "flex",
         justifyContent: "center",
-        gap: "clamp(1rem, 2.5vw, 2.5rem)",
+        gap: "clamp(0.5rem, 1.5vw, 1.5rem)",
         margin: "0 auto",
       }}>
         {PHONES.map(p => {
           const W = 240 * p.scale;
           return (
-            <div key={p.src} style={{ width: 360 * p.scale, flexShrink: 0, textAlign: "center" }}>
+            <div key={p.src} style={{ width: 400 * p.scale, flexShrink: 0, textAlign: "center" }}>
               <span style={{
                 display: "inline-block",
                 fontSize: "0.6875rem",

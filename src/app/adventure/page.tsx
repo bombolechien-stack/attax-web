@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Image from "next/image";
 import PageNavbar from "@/components/PageNavbar";
 
@@ -127,7 +126,7 @@ export default function AdventurePage() {
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem", alignItems: "start" }}>
             {/* Left: image */}
             <div style={{ borderRadius: "24px", overflow: "hidden", height: "600px", position: "relative" }}>
-              <Image src="/images/sport-weights.png" alt="Strength training" fill style={{ objectFit: "cover" }} />
+              <Image src="/images/runsunrise.jpg" alt="Running at sunrise" fill style={{ objectFit: "cover" }} />
               <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 60%)" }} />
             </div>
             {/* Right: values list */}
@@ -151,27 +150,6 @@ export default function AdventurePage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section style={{ backgroundColor: "#f7f7f7", padding: "0 2rem 7rem" }}>
-        <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
-          <div style={{ backgroundColor: "#0d0d0d", borderRadius: "28px", overflow: "hidden", padding: "5rem", position: "relative", textAlign: "center" }}>
-            <div style={{ position: "absolute", inset: 0, zIndex: 1, opacity: 0.25, pointerEvents: "none", backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E\")" }} />
-            <div style={{ position: "relative", zIndex: 2 }}>
-              <p className="section-label-light" style={{ margin: "0 0 1.5rem" }}>Join the adventure</p>
-              <h2 style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.04em", margin: "0 0 1.25rem", lineHeight: 1.05 }}>
-                We&apos;re just<br />getting started.
-              </h2>
-              <p style={{ fontSize: "1.0625rem", color: "rgba(255,255,255,0.45)", maxWidth: "380px", margin: "0 auto 3rem", lineHeight: 1.7 }}>
-                V2 brings global rankings, competitive leagues, and public athlete profiles.
-              </p>
-              <div style={{ display: "flex", gap: "10px", justifyContent: "center", flexWrap: "wrap" }}>
-                <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" className="btn-white" style={{ display: "inline-flex", alignItems: "center", gap: "8px", backgroundColor: "#ffffff", color: "#0d0d0d", fontWeight: 700, fontSize: "0.9375rem", padding: "14px 28px", borderRadius: "999px", textDecoration: "none" }}>Download Attax</a>
-                <Link href="/contact" className="btn-ghost" style={{ display: "inline-flex", alignItems: "center", backgroundColor: "rgba(255,255,255,0.07)", color: "rgba(255,255,255,0.7)", fontWeight: 600, fontSize: "0.9375rem", padding: "14px 28px", borderRadius: "999px", textDecoration: "none", border: "1px solid rgba(255,255,255,0.1)" }}>Get in touch</Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
     </>
   );
 }
