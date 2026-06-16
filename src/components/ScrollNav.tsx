@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const NAV_LINKS = [
   { href: "/discover", label: "Discover" },
@@ -117,16 +118,19 @@ export default function ScrollNav() {
             position: "absolute",
             left: "50%",
             transform: "translateX(-50%)",
-            fontSize: "1.125rem",
-            fontWeight: 800,
-            color: "#fff",
-            letterSpacing: "-0.04em",
             textDecoration: "none",
             opacity: 0,
-            whiteSpace: "nowrap",
+            display: "flex",
+            alignItems: "center",
           }}
         >
-          attax
+          <Image
+            src="/images/logo-attax-wh.svg"
+            alt="Attax"
+            width={80}
+            height={75}
+            style={{ display: "block" }}
+          />
         </Link>
 
         {/* Right */}

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import PageNavbar from "@/components/PageNavbar";
 
 export const metadata: Metadata = {
   title: "The Adventure — Attax Story",
@@ -53,23 +54,7 @@ export default function AdventurePage() {
           <div style={{ position: "absolute", inset: 0, zIndex: 2, opacity: 0.2, pointerEvents: "none", backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E\")" }} />
 
           {/* Navbar */}
-          <div style={{ position: "relative", zIndex: 10, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 2.5rem", height: "68px", flexShrink: 0 }}>
-            <nav style={{ display: "flex", gap: "1.75rem", alignItems: "center", flex: 1 }}>
-              {NAV_LINKS.map(l => (
-                <Link key={l.href} href={l.href} className="nav-link" style={{ fontSize: "0.875rem", fontWeight: 500, color: "rgba(255,255,255,0.7)", textDecoration: "none" }}>{l.label}</Link>
-              ))}
-            </nav>
-            <Link href="/" style={{ position: "absolute", left: "50%", transform: "translateX(-50%)", textDecoration: "none" }}>
-              <span style={{ fontSize: "1.375rem", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.03em" }}>attax</span>
-            </Link>
-            <div style={{ display: "flex", alignItems: "center", gap: "1rem", flex: 1, justifyContent: "flex-end" }}>
-              <a href="#" style={{ fontSize: "0.875rem", fontWeight: 500, color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Log in</a>
-              <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" className="btn-white" style={{ display: "inline-flex", alignItems: "center", backgroundColor: "#ffffff", color: "#0d0d0d", fontWeight: 700, fontSize: "0.8125rem", padding: "8px 18px", borderRadius: "999px", textDecoration: "none" }}>Download App</a>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(3,5px)", gap: "3px" }}>
-                {Array.from({ length: 9 }).map((_, i) => (<div key={i} style={{ width: "5px", height: "5px", borderRadius: "50%", backgroundColor: "rgba(255,255,255,0.7)" }} />))}
-              </div>
-            </div>
-          </div>
+          <PageNavbar />
 
           {/* Content */}
           <div style={{ position: "relative", zIndex: 3, flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "4rem 4rem 3rem", maxWidth: "620px" }}>
