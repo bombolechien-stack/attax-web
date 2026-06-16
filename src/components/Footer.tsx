@@ -26,7 +26,7 @@ export default function Footer() {
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(7,7,7,0.65) 0%, rgba(7,7,7,0.38) 60%, rgba(7,7,7,0) 100%)" }} />
         </div>
 
-        <div style={{ position: "relative", zIndex: 2, padding: "9rem 2rem 7rem", textAlign: "center" }}>
+        <div className="footer-cta-section" style={{ position: "relative", zIndex: 2, padding: "9rem 2rem 7rem", textAlign: "center" }}>
           <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", margin: "0 0 1.25rem" }}>{f.cta_label}</p>
           <h2 style={{ fontSize: "clamp(2.75rem, 5.5vw, 5rem)", fontWeight: 800, color: "#fff", letterSpacing: "-0.05em", lineHeight: 0.95, margin: "0 0 1.5rem" }}>
             {f.cta_h2[0]}<br />{f.cta_h2[1]}
@@ -45,11 +45,11 @@ export default function Footer() {
         </div>
 
         <div style={{ position: "relative", zIndex: 2, backgroundColor: "#ffffff", borderRadius: "20px 20px 0 0", overflow: "hidden" }}>
-          <div style={{ position: "absolute", bottom: "36px", left: "50%", transform: "translateX(-50%)", fontSize: "clamp(5rem, 13vw, 14rem)", fontWeight: 900, color: "#f0f0f0", letterSpacing: "-0.06em", lineHeight: 1, whiteSpace: "nowrap", userSelect: "none", pointerEvents: "none", fontFamily: "var(--font-jakarta), sans-serif", zIndex: 0 }}>
+          <div className="footer-attax" style={{ position: "absolute", bottom: "36px", left: "50%", transform: "translateX(-50%)", fontSize: "clamp(5rem, 13vw, 14rem)", fontWeight: 900, color: "#f0f0f0", letterSpacing: "-0.06em", lineHeight: 1, whiteSpace: "nowrap", userSelect: "none", pointerEvents: "none", fontFamily: "var(--font-jakarta), sans-serif", zIndex: 0 }}>
             ATTAX
           </div>
           <div style={{ position: "relative", zIndex: 1 }}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "2.75rem 4rem", borderBottom: "1px solid #f0f0f0", flexWrap: "wrap", gap: "1.5rem" }}>
+            <div className="footer-top-bar" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "2.75rem 4rem", borderBottom: "1px solid #f0f0f0", flexWrap: "wrap", gap: "1.5rem" }}>
               <Image src="/images/logo-attax-wh.svg" alt="Attax" width={130} height={49} style={{ display: "block", filter: "brightness(0)" }} />
               <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
                 {SOCIALS.map(s => (
@@ -70,7 +70,7 @@ export default function Footer() {
                 </a>
               </div>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "2rem", padding: "2.5rem 4rem 3.5rem" }}>
+            <div className="footer-link-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "2rem", padding: "2.5rem 4rem 3.5rem" }}>
               <div>
                 <span style={LABEL_STYLE}>{f.col_product}</span>
                 <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
@@ -90,7 +90,7 @@ export default function Footer() {
                 </div>
               </div>
             </div>
-            <div style={{ borderTop: "1px solid #f0f0f0", padding: "1.25rem 4rem", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "0.75rem" }}>
+            <div className="footer-btm-bar" style={{ borderTop: "1px solid #f0f0f0", padding: "1.25rem 4rem", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "0.75rem" }}>
               <span style={{ fontSize: "0.8rem", color: "#bbb" }}>{f.copyright}</span>
               <span style={{ fontSize: "0.875rem", fontWeight: 700, color: "#d0d0d0", letterSpacing: "0.05em" }}>#gowithattax</span>
             </div>

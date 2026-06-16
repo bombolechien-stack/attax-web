@@ -7,12 +7,12 @@ export default function DailyMatch() {
   const m = t.dailyMatch;
 
   return (
-    <section style={{ backgroundColor: "#ffffff", padding: "8rem 2rem", overflow: "hidden" }}>
+    <section id="daily-match" className="dm-section" style={{ backgroundColor: "#ffffff", padding: "8rem 2rem", overflow: "hidden" }}>
       <div style={{ maxWidth: "80rem", margin: "0 auto" }}>
 
         <div style={{ marginBottom: "6rem" }}>
           <span className="section-label" style={{ display: "block", marginBottom: "1.5rem" }}>{m.label}</span>
-          <div style={{ display: "flex", alignItems: "flex-end", gap: "4rem", flexWrap: "wrap" }}>
+          <div className="dm-header" style={{ display: "flex", alignItems: "flex-end", gap: "4rem", flexWrap: "wrap" }}>
             <h2 style={{ fontSize: "clamp(3rem, 5vw, 5.5rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.055em", lineHeight: 0.9, margin: 0 }}>
               {m.h2[0]}<br />{m.h2[1]}
             </h2>
@@ -51,11 +51,11 @@ export default function DailyMatch() {
             <div style={{ padding: "0 2.5rem 2rem" }}>
               <div style={{ fontSize: "0.6875rem", fontWeight: 700, color: "rgba(255,255,255,0.2)", letterSpacing: "0.1em", marginBottom: "1rem" }}>{m.todayActivity}</div>
               {[
-                { time: "14:23", text: "Run 32 min · Zone 3 · 5.4 km", pts: "+214 pts", color: "#60a5fa" },
-                { time: "09:47", text: "Strength training 45 min · Zone 2", pts: "+188 pts", color: "#60a5fa" },
-                { time: "08:12", text: "Alex — Cycling 60 min · Zone 3", pts: "+246 pts", color: "#f87171" },
+                { time: "2:23 PM", text: "Run 32 min · Zone 3 · 5.4 km", pts: "+214 pts", color: "#60a5fa" },
+                { time: "9:47 AM", text: "Strength training 45 min · Zone 2", pts: "+188 pts", color: "#60a5fa" },
+                { time: "8:12 AM", text: "Alex — Cycling 60 min · Zone 3", pts: "+246 pts", color: "#f87171" },
                 { time: "Yesterday", text: "Alex — Run 28 min · 4.1 km", pts: "+198 pts", color: "#f87171" },
-                { time: "Yesterday", text: "Walk 8 200 steps · 6.1 km", pts: "+72 pts", color: "#60a5fa" },
+                { time: "Yesterday", text: "Walk 8,200 steps · 6.1 km", pts: "+72 pts", color: "#60a5fa" },
               ].map((item, i, arr) => (
                 <div key={i} style={{ display: "flex", alignItems: "center", gap: "1rem", padding: "0.875rem 0", borderBottom: i < arr.length - 1 ? "1px solid rgba(255,255,255,0.04)" : "none" }}>
                   <div style={{ width: "7px", height: "7px", borderRadius: "50%", backgroundColor: item.color, flexShrink: 0 }} />
@@ -70,9 +70,9 @@ export default function DailyMatch() {
           </div>
         </div>
 
-        <div style={{ display: "flex", justifyContent: "center", gap: "0", marginTop: "5rem", borderTop: "1px solid #f0f0f0" }}>
+        <div className="dm-stats" style={{ display: "flex", justifyContent: "center", gap: "0", marginTop: "5rem", borderTop: "1px solid #f0f0f0" }}>
           {m.stats.map((s, i) => (
-            <div key={s.n} style={{ flex: 1, padding: "2.5rem 2rem 0", textAlign: "center", borderLeft: i > 0 ? "1px solid #f0f0f0" : "none" }}>
+            <div key={s.n} className="dm-stat" style={{ flex: 1, padding: "2.5rem 2rem 0", textAlign: "center", borderLeft: i > 0 ? "1px solid #f0f0f0" : "none" }}>
               <div style={{ fontSize: "1.125rem", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.03em" }}>{s.n}</div>
               <div style={{ fontSize: "0.8125rem", color: "#aaa", marginTop: "4px" }}>{s.label}</div>
             </div>

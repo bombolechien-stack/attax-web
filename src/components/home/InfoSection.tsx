@@ -15,9 +15,9 @@ export default function InfoSection() {
             {inf.h2}
           </h2>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "0" }}>
+        <div className="info-steps-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "0" }}>
           {inf.steps.map((step, i) => (
-            <div key={i} style={{
+            <div key={i} className={i > 0 ? "info-step-border" : ""} style={{
               borderTop: "1px solid #e8e8e8",
               borderLeft: i > 0 ? "1px solid #e8e8e8" : "none",
               padding: "2.5rem 2.5rem 2.5rem 0",

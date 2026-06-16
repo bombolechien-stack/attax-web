@@ -15,9 +15,8 @@ export default function AdventurePage() {
           <Image src="/images/cycling-race.jpg" alt="Cycling is Attax" fill style={{ objectFit: "cover", objectPosition: "center 40%" }} priority />
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(10,10,10,0.96) 0%, rgba(10,10,10,0.72) 55%, rgba(10,10,10,0.2) 100%)" }} />
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(10,10,10,0.9) 0%, transparent 50%)" }} />
-          <div style={{ position: "absolute", inset: 0, zIndex: 2, opacity: 0.2, pointerEvents: "none", backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E\")" }} />
           <PageNavbar />
-          <div style={{ position: "relative", zIndex: 3, flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "4rem 4rem 3rem", maxWidth: "620px" }}>
+          <div className="hero-text-box" style={{ position: "relative", zIndex: 3, flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "4rem 4rem 3rem", maxWidth: "620px" }}>
             <div style={{ marginBottom: "1.75rem" }}>
               <span style={{ fontSize: "0.75rem", fontWeight: 600, color: "rgba(255,255,255,0.4)", letterSpacing: "0.14em", textTransform: "uppercase" }}>{a.hero_label}</span>
             </div>
@@ -33,7 +32,7 @@ export default function AdventurePage() {
               <a href="/contact" style={{ display: "inline-flex", alignItems: "center", backgroundColor: "rgba(255,255,255,0.07)", color: "rgba(255,255,255,0.7)", fontWeight: 600, fontSize: "0.9375rem", padding: "13px 26px", borderRadius: "999px", textDecoration: "none", border: "1px solid rgba(255,255,255,0.1)" }}>{a.cta_contact}</a>
             </div>
           </div>
-          <div style={{ position: "relative", zIndex: 3, display: "flex", padding: "0 4rem 3.5rem" }}>
+          <div className="hero-stats" style={{ position: "relative", zIndex: 3, display: "flex", padding: "0 4rem 3.5rem" }}>
             {a.stats.map((s, i) => (
               <div key={i} style={{ paddingLeft: i > 0 ? "2.5rem" : 0, marginLeft: i > 0 ? "2.5rem" : 0, borderLeft: i > 0 ? "1px solid rgba(255,255,255,0.08)" : "none" }}>
                 <div style={{ fontSize: "0.9375rem", fontWeight: 700, color: "#ffffff", marginBottom: "3px" }}>{s.title}</div>
@@ -44,23 +43,23 @@ export default function AdventurePage() {
         </div>
       </div>
 
-      <section style={{ backgroundColor: "#ffffff", padding: "7rem 2rem" }}>
+      <section className="adv-section" style={{ backgroundColor: "#ffffff", padding: "7rem 2rem" }}>
         <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
-          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "4rem", marginBottom: "4rem" }}>
+          <div className="adv-story-header" style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "4rem", marginBottom: "4rem" }}>
             <div>
               <p className="section-label" style={{ margin: "0 0 1.25rem" }}>{a.story_label}</p>
               <h2 style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.045em", lineHeight: 1.02, margin: 0 }}>
                 {a.story_h2[0]}<br />{a.story_h2[1]}
               </h2>
             </div>
-            <p style={{ fontSize: "1rem", color: "#888", lineHeight: 1.75, maxWidth: "300px", margin: 0, flex: "0 0 300px" }}>{a.story_sub}</p>
+            <p className="adv-story-sub" style={{ fontSize: "1rem", color: "#888", lineHeight: 1.75, maxWidth: "300px", margin: 0, flex: "0 0 300px" }}>{a.story_sub}</p>
           </div>
           <hr className="rule" />
           {a.timeline.map((item) => (
-            <div key={item.n} style={{ display: "grid", gridTemplateColumns: "80px 180px 1fr", gap: "2rem", alignItems: "start", padding: "2.5rem 0", borderBottom: "1px solid #f0f0f0" }}>
+            <div key={item.n} className="adv-timeline-row" style={{ display: "grid", gridTemplateColumns: "80px 180px 1fr", gap: "2rem", alignItems: "start", padding: "2.5rem 0", borderBottom: "1px solid #f0f0f0" }}>
               <div style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.14em", color: "#ccc", paddingTop: "4px" }}>{item.n}</div>
               <div>
-                <div style={{ fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.12em", color: "#ffffff", textTransform: "uppercase", marginBottom: "0.5rem" }}>{item.year}</div>
+                <div className="adv-timeline-year" style={{ fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.12em", color: "#999", textTransform: "uppercase", marginBottom: "0.5rem" }}>{item.year}</div>
                 <h3 style={{ fontSize: "1.0625rem", fontWeight: 700, color: "#0d0d0d", margin: 0, letterSpacing: "-0.02em", lineHeight: 1.3 }}>{item.title}</h3>
               </div>
               <p style={{ fontSize: "0.9375rem", color: "#666", lineHeight: 1.8, margin: 0 }}>{item.description}</p>
@@ -69,10 +68,10 @@ export default function AdventurePage() {
         </div>
       </section>
 
-      <section style={{ backgroundColor: "#f7f7f7", padding: "7rem 2rem 9rem" }}>
+      <section className="adv-values-section" style={{ backgroundColor: "#f7f7f7", padding: "7rem 2rem 9rem" }}>
         <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem", alignItems: "start" }}>
-            <div style={{ borderRadius: "24px", overflow: "hidden", height: "600px", position: "relative" }}>
+          <div className="adv-values-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem", alignItems: "start" }}>
+            <div className="adv-values-img" style={{ borderRadius: "24px", overflow: "hidden", height: "600px", position: "relative" }}>
               <Image src="/images/runsunrise.jpg" alt="Running at sunrise" fill style={{ objectFit: "cover" }} />
               <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 60%)" }} />
             </div>

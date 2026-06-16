@@ -9,10 +9,10 @@ export default function FAQ() {
   const f = t.faq;
 
   return (
-    <section id="faq" style={{ backgroundColor: "#ffffff", padding: "9rem 2rem" }}>
+    <section id="faq" className="faq-section" style={{ backgroundColor: "#ffffff", padding: "9rem 2rem" }}>
       <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr", gap: "6rem", alignItems: "start" }}>
-          <div style={{ position: "sticky", top: "6rem" }}>
+        <div className="faq-layout" style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr", gap: "6rem", alignItems: "start" }}>
+          <div className="faq-sticky" style={{ position: "sticky", top: "6rem" }}>
             <p className="section-label" style={{ margin: "0 0 1.5rem" }}>{f.label}</p>
             <h2 style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.04em", lineHeight: 1.05, margin: "0 0 1.25rem" }}>
               {f.h2}

@@ -16,7 +16,7 @@ export default function ContactPage() {
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(13,13,13,0.95) 0%, rgba(13,13,13,0.75) 55%, rgba(13,13,13,0.3) 100%)" }} />
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(13,13,13,0.8) 0%, transparent 50%)" }} />
           <PageNavbar />
-          <div style={{ position: "relative", zIndex: 3, flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "3rem 4rem 4rem", textAlign: "center" }}>
+          <div className="contact-hero-content" style={{ position: "relative", zIndex: 3, flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "3rem 4rem 4rem", textAlign: "center" }}>
             <p style={{ fontSize: "0.75rem", fontWeight: 600, letterSpacing: "0.14em", color: "rgba(255,255,255,0.4)", textTransform: "uppercase", margin: "0 0 1.25rem" }}>{c.hero_label}</p>
             <h1 style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800, color: "#ffffff", lineHeight: 1.02, letterSpacing: "-0.035em", margin: "0 0 1.25rem" }}>{c.h1}</h1>
             <p style={{ fontSize: "1.0625rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.7, maxWidth: "440px", margin: "0 auto" }}>{c.subtitle}</p>
@@ -24,9 +24,9 @@ export default function ContactPage() {
         </div>
       </div>
 
-      <section style={{ backgroundColor: "#ffffff", padding: "5rem 2rem 6rem" }}>
+      <section className="contact-section" style={{ backgroundColor: "#ffffff", padding: "5rem 2rem 6rem" }}>
         <div style={{ maxWidth: "52rem", margin: "0 auto" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "10px", marginBottom: "3rem" }}>
+          <div className="contact-cats" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "10px", marginBottom: "3rem" }}>
             {c.categories.map((cat) => (
               <div key={cat.title} className="premium-card" style={{ padding: "1.75rem", borderRadius: "20px", backgroundColor: "#f7f7f7", textAlign: "center" }}>
                 <div style={{ fontSize: "0.9375rem", fontWeight: 700, color: "#0d0d0d", marginBottom: "0.4rem" }}>{cat.title}</div>
@@ -36,9 +36,9 @@ export default function ContactPage() {
             ))}
           </div>
 
-          <div style={{ backgroundColor: "#f7f7f7", borderRadius: "24px", padding: "3rem" }}>
+          <div className="contact-form-box" style={{ backgroundColor: "#f7f7f7", borderRadius: "24px", padding: "3rem" }}>
             <form style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.25rem" }}>
+              <div className="contact-form-row" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.25rem" }}>
                 {[
                   { label: c.form_name, type: "text", placeholder: c.form_name },
                   { label: c.form_email, type: "email", placeholder: "you@example.com" },

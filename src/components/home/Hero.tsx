@@ -30,7 +30,7 @@ export default function Hero() {
         <div style={{ position: "relative", zIndex: 10, flexShrink: 0 }}>
           <PageNavbar />
         </div>
-        <div style={{
+        <div className="hero-text-box" style={{
           position: "relative", zIndex: 5,
           flex: 1, display: "flex", flexDirection: "column", justifyContent: "center",
           padding: "0 clamp(2rem, 5vw, 5rem)", maxWidth: "56%",
@@ -69,7 +69,7 @@ export default function Hero() {
             </a>
           </div>
         </div>
-        <div className="animate-fade-up delay-300" style={{
+        <div className="animate-fade-up delay-300 hero-stats" style={{
           position: "relative", zIndex: 5,
           display: "flex", padding: "0 clamp(2rem, 5vw, 5rem) 3rem",
           borderTop: "1px solid rgba(255,255,255,0.06)",

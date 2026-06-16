@@ -320,3 +320,109 @@ body { margin: 0; padding: 0; background: #ffffff; color: #1a1a1a; }
 
 /* Nav link hover */
 .nav-link:hover { color: rgba(255,255,255,0.95) !important; }
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE — Mobile first overrides
+   !important needed to beat inline styles
+═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+
+  /* ── Page navbar ── */
+  .nav-page-links  { display: none !important; }
+  .nav-page-ctas   { display: none !important; }
+  .nav-page-root   { padding: 0 1.25rem !important; height: 60px !important; }
+  /* Show LangSwitcher only — it lives outside nav-page-ctas so it's always visible */
+
+  /* ── Banner ── */
+  .banner-root { font-size: 0.75rem !important; padding: 7px 10px !important; gap: 6px !important; }
+
+  /* ── Hero ── */
+  .hero-text-box { max-width: 100% !important; padding: 0 1.5rem !important; }
+  .hero-stats    { display: none !important; }
+
+  /* ── Info section ── */
+  .info-steps-grid { grid-template-columns: 1fr !important; }
+  .info-step-border { border-left: none !important; padding-left: 0 !important; }
+
+  /* ── HowItWorks ── */
+  .hiw-section  { padding: 5rem 1.25rem !important; }
+  .hiw-header   { flex-direction: column !important; align-items: flex-start !important; gap: 2rem !important; padding-bottom: 3rem !important; margin-bottom: 3rem !important; }
+  .hiw-sub      { max-width: 100% !important; flex: none !important; }
+  .hiw-step     { padding: 2.5rem 0 !important; }
+  .hiw-step-num { font-size: 2.5rem !important; }
+  .hiw-step-body { padding-left: 1rem !important; }
+  .hiw-step-title { font-size: clamp(1.75rem, 7vw, 3rem) !important; }
+
+  /* ── DailyMatch ── */
+  .dm-section { padding: 5rem 1.25rem !important; }
+  .dm-header  { flex-direction: column !important; align-items: flex-start !important; gap: 1.5rem !important; }
+  .dm-stats   { flex-wrap: wrap !important; }
+  .dm-stat    { flex: 1 1 42% !important; border-left: none !important; border-top: 1px solid #f0f0f0 !important; padding-top: 1.5rem !important; padding-left: 0 !important; padding-right: 0 !important; text-align: left !important; }
+
+  /* ── VisualGrid ── */
+  .vg-phone-side  { display: none !important; }
+  .vg-label-side  { display: none !important; }
+  .vg-phone-center { width: 88vw !important; height: calc(88vw * 1.149) !important; }
+  .vg-section     { padding: 5rem 1.25rem 6rem !important; }
+
+  /* ── FeaturesGrid ── */
+  .features-section { padding: 5rem 1.25rem !important; }
+  .features-h2      { font-size: clamp(2.5rem, 9vw, 4rem) !important; }
+  .features-grid    { grid-template-columns: 1fr 1fr !important; }
+  .feature-item     { border-left: none !important; padding: 2rem 1rem !important; }
+
+  /* ── ArenaSection ── */
+  .arena-section { padding: 5rem 1.25rem !important; }
+
+  /* ── FAQ ── */
+  .faq-section  { padding: 5rem 1.25rem !important; }
+  .faq-layout   { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
+  .faq-sticky   { position: static !important; }
+
+  /* ── Footer ── */
+  .footer-cta-section { padding: 5rem 1.25rem 4rem !important; }
+  .footer-top-bar  { flex-direction: column !important; align-items: flex-start !important; padding: 2rem 1.5rem !important; gap: 1.25rem !important; }
+  .footer-socials  { flex-wrap: wrap !important; }
+  .footer-link-grid { grid-template-columns: 1fr 1fr !important; padding: 2rem 1.5rem 3rem !important; gap: 1.5rem !important; }
+  .footer-btm-bar  { padding: 1rem 1.5rem !important; flex-direction: column !important; gap: 0.5rem !important; }
+  .footer-attax    { font-size: clamp(3rem, 20vw, 7rem) !important; bottom: 20px !important; }
+
+  /* ── Discover page ── */
+  .d-pillars-header  { flex-direction: column !important; align-items: flex-start !important; gap: 1.5rem !important; }
+  .d-pillars-sub     { max-width: 100% !important; flex: none !important; }
+  .d-pillars-row     { grid-template-columns: 50px 1fr !important; gap: 0.75rem 1rem !important; }
+  .d-pillars-desc    { grid-column: 1 / -1 !important; margin-top: 0 !important; }
+  .d-fencing-section { padding: 0 1.25rem 1.25rem !important; }
+  .d-fencing-img     { height: 320px !important; border-radius: 20px !important; }
+  .d-fencing-text    { padding: 2rem 1.5rem !important; }
+  .d-schedule-header { flex-direction: column !important; align-items: flex-start !important; gap: 1.5rem !important; }
+  .d-schedule-sub    { max-width: 100% !important; flex: none !important; }
+  .d-schedule-row    { grid-template-columns: 70px 1fr !important; gap: 0.75rem 1rem !important; }
+  .d-schedule-desc   { grid-column: 1 / -1 !important; margin-top: 0 !important; }
+  .d-section         { padding: 5rem 1.25rem !important; }
+
+  /* ── Adventure page ── */
+  .adv-story-header { flex-direction: column !important; align-items: flex-start !important; gap: 1.5rem !important; }
+  .adv-story-sub    { max-width: 100% !important; flex: none !important; }
+  .adv-timeline-row { grid-template-columns: 40px 1fr !important; gap: 0.75rem 1rem !important; }
+  .adv-timeline-year { display: none !important; }
+  /* description spans both columns on mobile */
+  .adv-timeline-row > p { grid-column: 1 / -1 !important; margin-top: 0 !important; }
+  .adv-values-grid  { grid-template-columns: 1fr !important; }
+  .adv-values-img   { height: 280px !important; }
+  .adv-section      { padding: 5rem 1.25rem !important; }
+  .adv-values-section { padding: 5rem 1.25rem 6rem !important; }
+
+  /* ── Contact page ── */
+  .contact-hero-content { padding: 2rem 1.5rem 3rem !important; }
+  .contact-section  { padding: 3rem 1.25rem 4rem !important; }
+  .contact-cats     { grid-template-columns: 1fr !important; }
+  .contact-form-row { grid-template-columns: 1fr !important; }
+  .contact-form-box { padding: 2rem 1.5rem !important; }
+}
+
+@media (max-width: 480px) {
+  .footer-link-grid { grid-template-columns: 1fr !important; }
+  .features-grid    { grid-template-columns: 1fr !important; }
+}

@@ -15,9 +15,8 @@ export default function DiscoverPage() {
           <Image src="/images/discover-hero.png" alt="Discover Attax" fill style={{ objectFit: "cover", objectPosition: "center 30%" }} priority />
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(10,10,10,0.96) 0%, rgba(10,10,10,0.75) 55%, rgba(10,10,10,0.25) 100%)" }} />
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(10,10,10,0.92) 0%, transparent 50%)" }} />
-          <div style={{ position: "absolute", inset: 0, zIndex: 2, opacity: 0.2, pointerEvents: "none", backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E\")" }} />
           <PageNavbar />
-          <div style={{ position: "relative", zIndex: 3, flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "2rem 4rem 2rem", maxWidth: "600px" }}>
+          <div className="hero-text-box" style={{ position: "relative", zIndex: 3, flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "2rem 4rem 2rem", maxWidth: "600px" }}>
             <div style={{ marginBottom: "1.25rem" }}>
               <span style={{ fontSize: "0.75rem", fontWeight: 600, color: "rgba(255,255,255,0.4)", letterSpacing: "0.14em", textTransform: "uppercase" }}>{d.hero_label}</span>
             </div>
@@ -33,7 +32,7 @@ export default function DiscoverPage() {
               <a href="/adventure" style={{ display: "inline-flex", alignItems: "center", backgroundColor: "rgba(255,255,255,0.07)", color: "rgba(255,255,255,0.7)", fontWeight: 600, fontSize: "0.9375rem", padding: "13px 26px", borderRadius: "999px", textDecoration: "none", border: "1px solid rgba(255,255,255,0.1)" }}>{d.cta_story}</a>
             </div>
           </div>
-          <div style={{ position: "relative", zIndex: 3, display: "flex", padding: "0 4rem 3rem", gap: 0 }}>
+          <div className="hero-stats" style={{ position: "relative", zIndex: 3, display: "flex", padding: "0 4rem 3rem", gap: 0 }}>
             {d.stats.map((s, i) => (
               <div key={i} style={{ paddingLeft: i > 0 ? "2.5rem" : 0, marginLeft: i > 0 ? "2.5rem" : 0, borderLeft: i > 0 ? "1px solid rgba(255,255,255,0.08)" : "none" }}>
                 <div style={{ fontSize: "0.9375rem", fontWeight: 700, color: "#ffffff", marginBottom: "3px" }}>{s.title}</div>
@@ -44,36 +43,36 @@ export default function DiscoverPage() {
         </div>
       </div>
 
-      <section style={{ backgroundColor: "#ffffff", padding: "7rem 2rem" }}>
+      <section className="d-section" style={{ backgroundColor: "#ffffff", padding: "7rem 2rem" }}>
         <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
-          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "4rem", marginBottom: "4rem" }}>
+          <div className="d-pillars-header" style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "4rem", marginBottom: "4rem" }}>
             <div>
               <p className="section-label" style={{ margin: "0 0 1.25rem" }}>{d.pillars_label}</p>
               <h2 style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.045em", lineHeight: 1.02, margin: 0 }}>
                 {d.pillars_h2[0]}<br />{d.pillars_h2[1]}
               </h2>
             </div>
-            <p style={{ fontSize: "1rem", color: "#888", lineHeight: 1.75, maxWidth: "300px", margin: 0, flex: "0 0 300px" }}>{d.pillars_sub}</p>
+            <p className="d-pillars-sub" style={{ fontSize: "1rem", color: "#888", lineHeight: 1.75, maxWidth: "300px", margin: 0, flex: "0 0 300px" }}>{d.pillars_sub}</p>
           </div>
           <hr className="rule" style={{ marginBottom: "0" }} />
           <div>
             {d.pillars.map((p) => (
-              <div key={p.n} style={{ display: "grid", gridTemplateColumns: "80px 1fr 2fr", gap: "2rem", alignItems: "start", padding: "2.5rem 0", borderBottom: "1px solid #f0f0f0" }}>
+              <div key={p.n} className="d-pillars-row" style={{ display: "grid", gridTemplateColumns: "80px 1fr 2fr", gap: "2rem", alignItems: "start", padding: "2.5rem 0", borderBottom: "1px solid #f0f0f0" }}>
                 <div style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.14em", color: "#ccc", paddingTop: "4px" }}>{p.n}</div>
                 <h3 style={{ fontSize: "1.125rem", fontWeight: 700, color: "#0d0d0d", margin: 0, letterSpacing: "-0.025em", lineHeight: 1.3 }}>{p.title}</h3>
-                <p style={{ fontSize: "0.9375rem", color: "#666", lineHeight: 1.8, margin: 0 }}>{p.description}</p>
+                <p className="d-pillars-desc" style={{ fontSize: "0.9375rem", color: "#666", lineHeight: 1.8, margin: 0 }}>{p.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section style={{ backgroundColor: "#f7f7f7", padding: "0 2rem 2rem" }}>
+      <section className="d-fencing-section" style={{ backgroundColor: "#f7f7f7", padding: "0 2rem 2rem" }}>
         <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
-          <div style={{ position: "relative", borderRadius: "28px", overflow: "hidden", height: "520px" }}>
+          <div className="d-fencing-img" style={{ position: "relative", borderRadius: "28px", overflow: "hidden", height: "520px" }}>
             <Image src="/images/fencing.jpg" alt="Fencer in action" fill style={{ objectFit: "cover", objectPosition: "center 30%" }} />
             <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0) 100%)" }} />
-            <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "3.5rem 4rem" }}>
+            <div className="d-fencing-text" style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "3.5rem 4rem" }}>
               <p style={{ fontSize: "0.75rem", fontWeight: 600, color: "rgba(255,255,255,0.4)", letterSpacing: "0.14em", textTransform: "uppercase", margin: "0 0 0.75rem" }}>{d.duel_label}</p>
               <h2 style={{ fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.04em", lineHeight: 1.05, margin: 0 }}>
                 {d.duel_h2[0]}<br />{d.duel_h2[1]}
@@ -83,24 +82,24 @@ export default function DiscoverPage() {
         </div>
       </section>
 
-      <section style={{ backgroundColor: "#f7f7f7", padding: "7rem 2rem 9rem" }}>
+      <section className="d-section" style={{ backgroundColor: "#f7f7f7", padding: "7rem 2rem 9rem" }}>
         <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
-          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "4rem", marginBottom: "4rem" }}>
+          <div className="d-schedule-header" style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "4rem", marginBottom: "4rem" }}>
             <div>
               <p className="section-label" style={{ margin: "0 0 1.25rem" }}>{d.schedule_label}</p>
               <h2 style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.045em", lineHeight: 1.02, margin: 0 }}>
                 {d.schedule_h2[0]}<br />{d.schedule_h2[1]}
               </h2>
             </div>
-            <p style={{ fontSize: "1rem", color: "#888", lineHeight: 1.75, maxWidth: "300px", margin: 0, flex: "0 0 300px" }}>{d.schedule_sub}</p>
+            <p className="d-schedule-sub" style={{ fontSize: "1rem", color: "#888", lineHeight: 1.75, maxWidth: "300px", margin: 0, flex: "0 0 300px" }}>{d.schedule_sub}</p>
           </div>
           <hr className="rule" style={{ marginBottom: "0" }} />
           <div>
             {d.schedule_items.map((f) => (
-              <div key={f.n} style={{ display: "grid", gridTemplateColumns: "80px 1fr 2fr", gap: "2rem", alignItems: "start", padding: "2.5rem 0", borderBottom: "1px solid #eaeaea" }}>
+              <div key={f.n} className="d-schedule-row" style={{ display: "grid", gridTemplateColumns: "80px 1fr 2fr", gap: "2rem", alignItems: "start", padding: "2.5rem 0", borderBottom: "1px solid #eaeaea" }}>
                 <div style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.14em", color: "#ccc", paddingTop: "4px" }}>{f.n}</div>
                 <h3 style={{ fontSize: "1.0625rem", fontWeight: 700, color: "#0d0d0d", margin: 0, letterSpacing: "-0.02em", lineHeight: 1.3 }}>{f.title}</h3>
-                <p style={{ fontSize: "0.9375rem", color: "#666", lineHeight: 1.8, margin: 0 }}>{f.description}</p>
+                <p className="d-schedule-desc" style={{ fontSize: "0.9375rem", color: "#666", lineHeight: 1.8, margin: 0 }}>{f.description}</p>
               </div>
             ))}
           </div>
