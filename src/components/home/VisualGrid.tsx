@@ -24,7 +24,7 @@ const PHONES = [
 export default function VisualGrid() {
   return (
     <section style={{
-      backgroundColor: "#f4f4f4",
+      backgroundColor: "#e8ecf0",
       padding: "9rem 2rem 10rem",
       position: "relative",
       overflow: "hidden",
