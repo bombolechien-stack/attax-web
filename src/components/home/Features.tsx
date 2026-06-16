@@ -1,46 +1,97 @@
 "use client";
 
 import InView from "@/components/InView";
+import Image from "next/image";
 
 const features = [
-  { icon: "⚡", title: "Automatic Sync", desc: "Connects to Apple Health & Google Health Connect. Your workouts are recorded the moment you finish — no manual logging.", badge: "iOS & Android" },
-  { icon: "🎯", title: "Smart Consistency", desc: "Focus on the habit, not perfection. Attax celebrates consistency over intensity — because showing up is what matters.", badge: "Daily motivation" },
-  { icon: "📊", title: "Deep Analytics", desc: "Weekly insights, trend analysis, and recovery patterns. Understand your body and optimize your training over time.", badge: "Performance" },
-  { icon: "🏅", title: "Competitive Leagues", desc: "Join leagues with athletes at your level. Compete weekly, earn points, and climb the global leaderboard.", badge: "Coming in V2", soon: true },
-  { icon: "🌍", title: "Global Ranking", desc: "See where you stand against athletes worldwide. Rankings by sport, city, country, and overall performance.", badge: "Coming in V2", soon: true },
-  { icon: "🤝", title: "Community", desc: "A community that lifts you up. Shared energy among thousands of athletes moving toward their goals.", badge: "Social" },
+  {
+    icon: "🤸",
+    title: "Every session counts",
+    desc: "The app automatically records your activities, analyzes your performance, and helps you build a lasting routine. Running, walking, cycling, gym training — it all counts.",
+    badge: "Auto-sync",
+  },
+  {
+    icon: "⏱️",
+    title: "Focus on consistency",
+    desc: "Forget the pressure of perfection — focus on progress. Attax celebrates every improvement and tracks each milestone on your journey.",
+    badge: "Daily motivation",
+  },
+  {
+    icon: "⚙️",
+    title: "Technology that supports you",
+    desc: "Built with powerful technology and a human-first approach. Track your stats, set goals, and measure your weekly progress with precision.",
+    badge: "Smart analytics",
+  },
+  {
+    icon: "🏅",
+    title: "Competitive Leagues",
+    desc: "Join leagues with athletes at your level. Compete weekly, earn points, and climb the global leaderboard.",
+    badge: "Coming in V2",
+    soon: true,
+  },
+  {
+    icon: "🌍",
+    title: "Global Ranking",
+    desc: "See where you stand against athletes worldwide. Rankings by sport, city, country, and overall performance.",
+    badge: "Coming in V2",
+    soon: true,
+  },
+  {
+    icon: "🤝",
+    title: "A community that moves with you",
+    desc: "At attax, motivation is collective. The app builds real connections between users, turning individual effort into shared energy.",
+    badge: "Social",
+  },
 ];
 
 export default function Features() {
   return (
     <section style={{ backgroundColor: "#f7f7f7", padding: "6rem 2rem" }}>
       <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
-        <InView style={{ textAlign: "center", marginBottom: "4rem" }}>
-          <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.14em", color: "#FC5F2B", textTransform: "uppercase", margin: "0 0 1rem" }}>
-            Features
-          </p>
-          <h2 style={{
-            fontSize: "clamp(2rem, 4vw, 3rem)",
-            fontWeight: 800, color: "#0d0d0d",
-            letterSpacing: "-0.035em", margin: "0 0 1rem", lineHeight: 1.1,
-          }}>
-            Not just an app.<br />A source of motivation.
-          </h2>
-          <p style={{ fontSize: "1.0625rem", color: "#777", maxWidth: "400px", margin: "0 auto", lineHeight: 1.65 }}>
-            Built for athletes who want more than a step counter.
-          </p>
-        </InView>
 
+        {/* Header with app image */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4rem", alignItems: "center", marginBottom: "5rem" }}>
+          <InView>
+            <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.14em", color: "#FC5F2B", textTransform: "uppercase", margin: "0 0 1rem" }}>
+              Features
+            </p>
+            <h2 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.035em", margin: "0 0 1.25rem", lineHeight: 1.1 }}>
+              Your motivation,<br />powered by movement.
+            </h2>
+            <p style={{ fontSize: "1.0625rem", color: "#777", lineHeight: 1.65, margin: "0 0 2rem", maxWidth: "420px" }}>
+              No more emotionless fitness apps. attax turns your workouts into a motivating and positive experience.
+            </p>
+            <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" style={{
+              display: "inline-flex", alignItems: "center", gap: "8px",
+              backgroundColor: "#0d0d0d", color: "#ffffff",
+              fontWeight: 700, fontSize: "0.9375rem",
+              padding: "13px 26px", borderRadius: "999px",
+              textDecoration: "none",
+            }}>
+              Discover your new challenge →
+            </a>
+          </InView>
+          <InView delay={100}>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <Image
+                src="https://attax.app/wp-content/uploads/2025/10/budyscreen-e1760880076657-1-515x1024.png"
+                alt="Attax app"
+                width={240}
+                height={480}
+                style={{ objectFit: "contain", filter: "drop-shadow(0 30px 60px rgba(0,0,0,0.15))" }}
+              />
+            </div>
+          </InView>
+        </div>
+
+        {/* Feature cards */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px,1fr))", gap: "10px" }}>
           {features.map((f, i) => (
             <InView key={f.title} delay={i * 60} className={f.soon ? "" : "premium-card"}>
               <div style={{
-                backgroundColor: "#ffffff",
-                borderRadius: "20px",
-                padding: "2rem 2rem 2.25rem",
-                border: "1px solid #ebebeb",
-                opacity: f.soon ? 0.55 : 1,
-                height: "100%",
+                backgroundColor: "#ffffff", borderRadius: "20px",
+                padding: "2rem 2rem 2.25rem", border: "1px solid #ebebeb",
+                opacity: f.soon ? 0.55 : 1, height: "100%",
                 cursor: f.soon ? "default" : "pointer",
               }}>
                 <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: "1.25rem" }}>

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 const NAV_LINKS = [
   { href: "/discover", label: "Discover" },
@@ -10,7 +11,6 @@ const NAV_LINKS = [
 
 export default function Hero() {
   return (
-    /* White page bg visible on all sides → "screen frame" */
     <div style={{ backgroundColor: "#ffffff", padding: "12px" }}>
       <div style={{
         position: "relative",
@@ -24,24 +24,41 @@ export default function Hero() {
 
         {/* ── Glow ── */}
         <div className="glow-pulse" style={{
-          position: "absolute", right: "-5%", top: "5%",
-          width: "700px", height: "700px", borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(210,100,10,0.65) 0%, rgba(180,60,0,0.3) 40%, transparent 70%)",
+          position: "absolute", right: "20%", top: "-10%",
+          width: "800px", height: "800px", borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(252,95,43,0.45) 0%, rgba(180,60,0,0.2) 45%, transparent 70%)",
           pointerEvents: "none", zIndex: 0,
         }} />
         <div style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(to right, rgba(13,13,13,1) 0%, rgba(13,13,13,0.85) 30%, rgba(13,13,13,0.2) 55%, transparent 75%)",
+          background: "linear-gradient(to right, rgba(13,13,13,1) 0%, rgba(13,13,13,0.9) 35%, rgba(13,13,13,0.3) 60%, rgba(13,13,13,0) 80%)",
           pointerEvents: "none", zIndex: 1,
         }} />
+        {/* Grain */}
         <div style={{
-          position: "absolute", inset: 0, zIndex: 1, opacity: 0.35, pointerEvents: "none",
+          position: "absolute", inset: 0, zIndex: 1, opacity: 0.3, pointerEvents: "none",
           backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E\")",
         }} />
 
+        {/* ── App screenshot — right side ── */}
+        <div style={{
+          position: "absolute", right: "6%", bottom: 0,
+          width: "360px", height: "90%",
+          zIndex: 1,
+          display: "flex", alignItems: "flex-end", justifyContent: "center",
+        }}>
+          <Image
+            src="https://attax.app/wp-content/uploads/2025/10/budyscreen-e1760880076657-1-515x1024.png"
+            alt="Attax app screenshot"
+            width={310}
+            height={620}
+            style={{ objectFit: "contain", objectPosition: "bottom", filter: "drop-shadow(0 40px 80px rgba(0,0,0,0.6))" }}
+            priority
+          />
+        </div>
+
         {/* ── Navbar inside the dark block ── */}
         <div style={{ position: "relative", zIndex: 10, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 2.5rem", height: "68px" }}>
-          {/* Left nav */}
           <nav style={{ display: "flex", gap: "1.75rem", alignItems: "center", flex: 1 }}>
             {NAV_LINKS.map(l => (
               <Link key={l.href} href={l.href} className="nav-link" style={{
@@ -50,13 +67,9 @@ export default function Hero() {
               }}>{l.label}</Link>
             ))}
           </nav>
-
-          {/* Logo centered */}
           <Link href="/" style={{ position: "absolute", left: "50%", transform: "translateX(-50%)", textDecoration: "none" }}>
             <span style={{ fontSize: "1.375rem", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.03em" }}>attax</span>
           </Link>
-
-          {/* Right */}
           <div style={{ display: "flex", alignItems: "center", gap: "1rem", flex: 1, justifyContent: "flex-end" }}>
             <a href="#" style={{ fontSize: "0.875rem", fontWeight: 500, color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Log in</a>
             <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" style={{
@@ -79,7 +92,7 @@ export default function Hero() {
           position: "relative", zIndex: 2,
           flex: 1, display: "flex", flexDirection: "column", justifyContent: "center",
           padding: "4rem 4rem 3rem",
-          maxWidth: "660px",
+          maxWidth: "620px",
         }}>
           {/* Badge */}
           <div className="animate-fade-up" style={{
@@ -101,16 +114,15 @@ export default function Hero() {
             fontWeight: 800, color: "#ffffff",
             lineHeight: 1.02, letterSpacing: "-0.035em", margin: "0 0 1.5rem",
           }}>
-            Move, progress,<br />
-            <em style={{ fontStyle: "normal", color: "#FC5F2B" }}>stay motivated.</em>
+            Keep moving<br />
+            <em style={{ fontStyle: "normal", color: "#FC5F2B" }}>with attax.</em>
           </h1>
 
           <p className="animate-fade-up delay-200" style={{
             fontSize: "1.0625rem", color: "rgba(255,255,255,0.55)",
-            lineHeight: 1.7, margin: "0 0 2.5rem", maxWidth: "400px", fontWeight: 400,
+            lineHeight: 1.7, margin: "0 0 2.5rem", maxWidth: "420px", fontWeight: 400,
           }}>
-            Every step counts. Every effort brings you closer to your goals.
-            Attax transforms your daily workouts into a competitive sport.
+            Move, progress, and stay motivated every day. Every step counts. Every effort brings you closer to your goals.
           </p>
 
           <div className="animate-fade-up delay-300" style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
@@ -124,17 +136,17 @@ export default function Hero() {
               <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
               </svg>
-              Download on iOS
+              App Store
             </a>
-            <Link href="/discover" style={{
-              display: "inline-flex", alignItems: "center",
+            <a href="https://play.google.com" target="_blank" rel="noopener noreferrer" style={{
+              display: "inline-flex", alignItems: "center", gap: "8px",
               backgroundColor: "rgba(255,255,255,0.08)", color: "#ffffff",
               fontWeight: 600, fontSize: "0.9375rem",
               padding: "13px 26px", borderRadius: "999px",
               textDecoration: "none", border: "1px solid rgba(255,255,255,0.12)",
             }}>
-              See what we offer
-            </Link>
+              Google Play
+            </a>
           </div>
         </div>
 
@@ -144,9 +156,9 @@ export default function Hero() {
           display: "flex", padding: "0 4rem 3.5rem",
         }}>
           {[
-            { title: "Whole body tracking", sub: "Via Apple Health & Google Fit" },
-            { title: "Accessible", sub: "Free to download, always" },
-            { title: "Trusted", sub: "10,000+ athletes worldwide", accent: true },
+            { title: "1 community", sub: "United around sport" },
+            { title: "Thousands of athletes", sub: "Moving every day" },
+            { title: "1 shared energy", sub: "#gowithattax", accent: true },
           ].map((s, i) => (
             <div key={s.title} style={{
               paddingLeft: i > 0 ? "2.5rem" : 0,
