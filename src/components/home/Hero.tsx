@@ -5,63 +5,46 @@ import PageNavbar from "@/components/PageNavbar";
 
 export default function Hero() {
   return (
-    <div style={{ backgroundColor: "#ffffff", padding: "12px" }}>
+    <div style={{ backgroundColor: "#050505" }}>
       <div style={{
         position: "relative",
-        borderRadius: "24px",
-        height: "calc(100vh - 24px)",
+        height: "100vh",
         display: "flex",
         flexDirection: "column",
         overflow: "hidden",
         backgroundColor: "#050505",
       }}>
 
-        {/* Background photo — deux coureurs de dos */}
-        <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
-          <Image
-            src="/images/photo-hero.jpg"
-            alt="Athletes"
-            fill
-            priority
-            style={{
-              objectFit: "cover",
-              objectPosition: "center 40%",
-              filter: "grayscale(100%) contrast(1.15) brightness(0.22)",
-            }}
-          />
-        </div>
+        {/* Boxing video — full bleed */}
+        <video autoPlay muted loop playsInline preload="metadata" style={{
+          position: "absolute", inset: 0, width: "100%", height: "100%",
+          objectFit: "cover", objectPosition: "center 30%", zIndex: 0,
+        }}>
+          <source src="/videos/boxingonring.mp4" type="video/mp4" />
+        </video>
 
-        {/* Vignette + gradient */}
-        <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "radial-gradient(ellipse at center, transparent 30%, rgba(5,5,5,0.55) 100%)" }} />
-        <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(to bottom, rgba(5,5,5,0.35) 0%, rgba(5,5,5,0) 25%, rgba(5,5,5,0) 55%, rgba(5,5,5,0.8) 85%, rgba(5,5,5,1) 100%)" }} />
+        {/* Heavy dark overlays */}
+        <div style={{ position: "absolute", inset: 0, zIndex: 1, backgroundColor: "rgba(5,5,5,0.62)" }} />
+        <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(to bottom, rgba(5,5,5,0.4) 0%, rgba(5,5,5,0.05) 30%, rgba(5,5,5,0.3) 65%, rgba(5,5,5,0.98) 100%)" }} />
 
         {/* Navbar */}
         <div style={{ position: "relative", zIndex: 10, flexShrink: 0 }}>
           <PageNavbar />
         </div>
 
-        {/* Fighters ghost — derrière le titre, rappel gameplay */}
+        {/* Fighters ghost — très subtils, rappellent le gameplay */}
         <div style={{
-          position: "absolute",
-          bottom: "10%", left: "50%", transform: "translateX(-50%)",
-          width: "min(700px, 70vw)", height: "55%",
-          zIndex: 2,
-          display: "flex", alignItems: "flex-end", justifyContent: "center",
-          pointerEvents: "none",
+          position: "absolute", zIndex: 2, pointerEvents: "none",
+          bottom: "8%", left: "50%", transform: "translateX(-50%)",
+          width: "min(760px, 75vw)", height: "50%",
+          display: "flex", alignItems: "flex-end",
         }}>
-          <div style={{ position: "absolute", bottom: 0, left: "5%", width: "45%", height: "100%", opacity: 0.07 }}>
+          <div style={{ position: "absolute", bottom: 0, left: "0", width: "44%", height: "100%", opacity: 0.06 }}>
             <Image src="/fighters/A2.png" alt="" fill style={{ objectFit: "contain", objectPosition: "bottom center" }} />
           </div>
-          <div style={{ position: "absolute", bottom: 0, right: "5%", width: "45%", height: "100%", opacity: 0.07, transform: "scaleX(-1)" }}>
+          <div style={{ position: "absolute", bottom: 0, right: "0", width: "44%", height: "100%", opacity: 0.06, transform: "scaleX(-1)" }}>
             <Image src="/fighters/B2.png" alt="" fill style={{ objectFit: "contain", objectPosition: "bottom center" }} />
           </div>
-          {/* Center glow */}
-          <div style={{
-            position: "absolute", top: "30%", left: "50%", transform: "translateX(-50%)",
-            width: "400px", height: "300px",
-            background: "radial-gradient(ellipse, rgba(255,255,255,0.025) 0%, transparent 70%)",
-            borderRadius: "50%",
-          }} />
         </div>
 
         {/* Center content */}
@@ -76,10 +59,10 @@ export default function Hero() {
           textAlign: "center",
         }}>
           <h1 className="animate-fade-up" style={{
-            fontSize: "clamp(5rem, 11vw, 13rem)",
+            fontSize: "clamp(5rem, 12vw, 14rem)",
             fontWeight: 800,
             color: "#ffffff",
-            lineHeight: 0.88,
+            lineHeight: 0.86,
             letterSpacing: "-0.06em",
             margin: "0 0 clamp(1.5rem, 3vh, 2.5rem)",
           }}>
@@ -90,8 +73,8 @@ export default function Hero() {
             fontSize: "clamp(0.9375rem, 1.1vw, 1.0625rem)",
             color: "rgba(255,255,255,0.38)",
             lineHeight: 1.65,
-            margin: "0 0 2rem",
-            maxWidth: "360px",
+            margin: "0 0 2.25rem",
+            maxWidth: "340px",
           }}>
             Turn your real-world activity into power.<br />Battle real players every day.
           </p>
@@ -118,10 +101,11 @@ export default function Hero() {
         </div>
 
         {/* Bottom stats */}
-        <div className="animate-fade-up delay-300" style={{
+        <div style={{
           position: "relative", zIndex: 5,
-          display: "flex", justifyContent: "center", gap: "0",
+          display: "flex", justifyContent: "center",
           padding: "0 2rem 3rem",
+          borderTop: "1px solid rgba(255,255,255,0.06)",
         }}>
           {[
             { n: "8", label: "players per league" },
@@ -129,7 +113,7 @@ export default function Hero() {
             { n: "21:30", label: "battle every night" },
           ].map((s, i) => (
             <div key={s.n} style={{
-              padding: "2rem 3rem 0",
+              padding: "2rem 3.5rem 0",
               textAlign: "center",
               borderLeft: i > 0 ? "1px solid rgba(255,255,255,0.07)" : "none",
             }}>

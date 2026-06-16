@@ -1,4 +1,5 @@
 import Hero from "@/components/home/Hero";
+import CombatShowcase from "@/components/home/CombatShowcase";
 import PhotoBreak from "@/components/home/PhotoBreak";
 import HowItWorks from "@/components/home/HowItWorks";
 import DailyMatch from "@/components/home/DailyMatch";
@@ -11,6 +12,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <CombatShowcase />
       <PhotoBreak
         src="/images/photo-runners.jpg"
         alt="Athletes racing"
