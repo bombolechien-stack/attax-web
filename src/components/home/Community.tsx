@@ -1,74 +1,107 @@
-const quotes = [
+const reviews = [
   {
     text: "I've tried every fitness app out there. Attax is the first one that made me actually look forward to Monday.",
-    author: "Lucas M.",
+    name: "Lucas M.",
     location: "Paris, France",
     sport: "Running",
+    rating: 5,
   },
   {
-    text: "The league system is addictive. I started running more just to stay competitive. That's the point, right?",
-    author: "Sarah K.",
+    text: "The league system is addictive. I started running more just to stay competitive. That's exactly the point.",
+    name: "Sarah K.",
     location: "London, UK",
     sport: "CrossFit",
+    rating: 5,
   },
   {
     text: "My mindset shifted from 'I have to work out' to 'I want to earn my points today'. Big difference.",
-    author: "Thomas R.",
+    name: "Thomas R.",
     location: "Bordeaux, France",
     sport: "Cycling",
+    rating: 5,
   },
-];
-
-const values = [
-  { icon: "💪", title: "Your Effort", desc: "Every step and every minute builds toward your goals." },
-  { icon: "🧠", title: "The Mindset", desc: "Your pace, your method, your rhythm — no pressure." },
-  { icon: "📅", title: "Day by Day", desc: "Progress builds through consistent, daily movement." },
-  { icon: "🚀", title: "Growth", desc: "Weekly improvements in energy, consistency, and motivation." },
 ];
 
 export default function Community() {
   return (
-    <section className="py-28 px-6 bg-white">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <p className="text-xs font-semibold tracking-[0.2em] text-orange-600 uppercase mb-4">
-            Community
-          </p>
-          <h2 className="text-4xl md:text-5xl font-black text-gray-900 tracking-tight">
-            A community that lifts you up
+    <section style={{ backgroundColor: "#ffffff", padding: "6rem 2rem" }}>
+      <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
+        <div style={{ textAlign: "center", marginBottom: "4rem" }}>
+          <h2
+            style={{
+              fontSize: "clamp(2rem, 4vw, 3rem)",
+              fontWeight: 800,
+              color: "#1a1a1a",
+              letterSpacing: "-0.03em",
+              margin: "0 0 1rem",
+              lineHeight: 1.1,
+            }}
+          >
+            What athletes are saying
           </h2>
-          <p className="mt-5 text-gray-500 max-w-md mx-auto leading-relaxed">
-            Thousands of athletes sharing the same mindset: progress, persistence, and positivity.
+          <p style={{ fontSize: "1.125rem", color: "#666666", maxWidth: "380px", margin: "0 auto", lineHeight: 1.6 }}>
+            A community that lifts you up.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
-          {quotes.map((q) => (
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            gap: "12px",
+          }}
+        >
+          {reviews.map((r) => (
             <div
-              key={q.author}
-              className="p-8 rounded-2xl bg-gray-50 border border-gray-100 hover:border-orange-100 transition-all"
+              key={r.name}
+              style={{
+                backgroundColor: "#fafafa",
+                borderRadius: "20px",
+                padding: "2rem",
+                border: "1px solid #f0f0f0",
+              }}
             >
-              <div className="text-orange-400 text-3xl font-serif mb-4">"</div>
-              <p className="text-sm text-gray-600 leading-relaxed mb-6 italic">{q.text}</p>
-              <div className="flex items-center justify-between">
+              {/* Stars */}
+              <div style={{ display: "flex", gap: "3px", marginBottom: "1rem" }}>
+                {Array.from({ length: r.rating }).map((_, i) => (
+                  <svg key={i} width="14" height="14" viewBox="0 0 14 14" fill="#FC5F2B">
+                    <path d="M7 1l1.545 3.13L12 4.635l-2.5 2.435.59 3.43L7 8.885l-3.09 1.615.59-3.43L2 4.635l3.455-.505z" />
+                  </svg>
+                ))}
+              </div>
+
+              <p
+                style={{
+                  fontSize: "0.9375rem",
+                  color: "#1a1a1a",
+                  lineHeight: 1.7,
+                  margin: "0 0 1.5rem",
+                  fontStyle: "italic",
+                }}
+              >
+                &ldquo;{r.text}&rdquo;
+              </p>
+
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                 <div>
-                  <div className="text-sm font-semibold text-gray-900">{q.author}</div>
-                  <div className="text-xs text-gray-400">{q.location}</div>
+                  <div style={{ fontSize: "0.875rem", fontWeight: 600, color: "#1a1a1a" }}>{r.name}</div>
+                  <div style={{ fontSize: "0.8125rem", color: "#999999" }}>{r.location}</div>
                 </div>
-                <span className="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-orange-50 text-orange-600">
-                  {q.sport}
+                <span
+                  style={{
+                    fontSize: "0.6875rem",
+                    fontWeight: 600,
+                    letterSpacing: "0.05em",
+                    padding: "4px 10px",
+                    borderRadius: "999px",
+                    backgroundColor: "#fff5eb",
+                    color: "#FC5F2B",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  {r.sport}
                 </span>
               </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {values.map((v) => (
-            <div key={v.title} className="text-center p-6">
-              <div className="text-3xl mb-3">{v.icon}</div>
-              <h4 className="text-sm font-bold text-gray-900 mb-2">{v.title}</h4>
-              <p className="text-xs text-gray-400 leading-relaxed">{v.desc}</p>
             </div>
           ))}
         </div>

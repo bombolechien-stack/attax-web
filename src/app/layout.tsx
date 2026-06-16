@@ -1,23 +1,22 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-jakarta",
 });
 
 export const metadata: Metadata = {
   title: "Attax — Keep moving with Attax",
   description:
-    "Attax is the competitive fitness app where every workout fuels your rank. Move, progress, and compete against athletes worldwide.",
-  keywords: ["fitness", "competition", "ranking", "sport", "workout", "attax"],
+    "Attax is the competitive fitness app where every workout fuels your rank. Move, progress, and stay motivated every day.",
   openGraph: {
     title: "Attax — Keep moving with Attax",
-    description: "The competitive fitness app where every workout fuels your rank.",
+    description: "The fitness app where every workout fuels your rank.",
     url: "https://attax.app",
     siteName: "Attax",
     type: "website",
@@ -26,10 +25,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${geistSans.variable} h-full`}>
-      <body className="min-h-full flex flex-col bg-white text-gray-900 antialiased">
+    <html lang="en" className={jakarta.variable}>
+      <body
+        style={{
+          fontFamily: "var(--font-jakarta), -apple-system, BlinkMacSystemFont, sans-serif",
+          margin: 0,
+          padding: 0,
+          backgroundColor: "#ffffff",
+          color: "#1a1a1a",
+        }}
+      >
         <Navbar />
-        <main className="flex-1">{children}</main>
+        <main>{children}</main>
         <Footer />
       </body>
     </html>

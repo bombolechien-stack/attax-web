@@ -1,79 +1,118 @@
-import Link from "next/link";
+"use client";
 
-const socials = [
-  { label: "Instagram", href: "https://instagram.com/attax.app" },
-  { label: "TikTok", href: "https://tiktok.com/@attax.app" },
-  { label: "X / Twitter", href: "https://x.com/attax_app" },
-  { label: "YouTube", href: "https://youtube.com/@attax" },
-];
+import Link from "next/link";
 
 const cols = [
   {
-    title: "App",
+    title: "Attax",
     links: [
       { label: "Home", href: "/" },
       { label: "Discover", href: "/discover" },
       { label: "The Adventure", href: "/adventure" },
-    ],
-  },
-  {
-    title: "Community",
-    links: [
       { label: "Rankings", href: "/ranking" },
-      { label: "Leagues", href: "/ranking" },
-      { label: "Contact", href: "/contact" },
     ],
   },
   {
-    title: "Legal",
+    title: "Company",
     links: [
+      { label: "Contact", href: "/contact" },
       { label: "Privacy Policy", href: "/privacy" },
       { label: "Terms of Service", href: "/terms" },
       { label: "Legal Notices", href: "/legal" },
+    ],
+  },
+  {
+    title: "Follow us",
+    links: [
+      { label: "Instagram", href: "https://instagram.com/attax.app" },
+      { label: "TikTok", href: "https://tiktok.com/@attax.app" },
+      { label: "X / Twitter", href: "https://x.com/attax_app" },
+      { label: "YouTube", href: "https://youtube.com/@attax" },
     ],
   },
 ];
 
 export default function Footer() {
   return (
-    <footer className="border-t border-gray-100 bg-gray-50">
-      <div className="max-w-6xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-12">
-          <div className="md:col-span-2">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="text-xl font-black tracking-tight text-gray-900">ATTAX</span>
-              <span className="text-[10px] font-semibold tracking-[0.15em] text-orange-500 bg-orange-50 px-2 py-0.5 rounded-full uppercase">beta</span>
+    <footer style={{ backgroundColor: "#111111", color: "#ffffff" }}>
+      <div
+        style={{
+          maxWidth: "72rem",
+          margin: "0 auto",
+          padding: "4rem 2rem 2rem",
+        }}
+      >
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "2fr 1fr 1fr 1fr",
+            gap: "3rem",
+            marginBottom: "3rem",
+          }}
+        >
+          {/* Brand */}
+          <div>
+            <div
+              style={{
+                fontSize: "1.5rem",
+                fontWeight: 800,
+                letterSpacing: "-0.02em",
+                color: "#ffffff",
+                marginBottom: "1rem",
+              }}
+            >
+              ATTAX
             </div>
-            <p className="text-gray-500 text-sm leading-relaxed max-w-xs">
+            <p
+              style={{
+                fontSize: "0.9rem",
+                color: "rgba(255,255,255,0.4)",
+                lineHeight: 1.7,
+                maxWidth: "260px",
+                margin: "0 0 1.5rem",
+              }}
+            >
               The competitive fitness app where every workout fuels your rank. Move, progress, compete.
             </p>
-            <p className="mt-4 text-sm font-semibold text-orange-600">#gowithattax</p>
-            <div className="flex flex-wrap gap-4 mt-6">
-              {socials.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs text-gray-400 hover:text-gray-900 transition-colors"
-                >
-                  {s.label}
-                </a>
-              ))}
-            </div>
+            <p
+              style={{
+                fontSize: "0.875rem",
+                color: "#FC5F2B",
+                fontWeight: 600,
+              }}
+            >
+              #gowithattax
+            </p>
           </div>
 
+          {/* Link columns */}
           {cols.map((col) => (
             <div key={col.title}>
-              <h4 className="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-4">
+              <h4
+                style={{
+                  fontSize: "0.6875rem",
+                  fontWeight: 600,
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                  color: "rgba(255,255,255,0.35)",
+                  margin: "0 0 1.25rem",
+                }}
+              >
                 {col.title}
               </h4>
-              <ul className="space-y-3">
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.75rem" }}>
                 {col.links.map((l) => (
                   <li key={l.label}>
                     <Link
                       href={l.href}
-                      className="text-sm text-gray-500 hover:text-gray-900 transition-colors"
+                      style={{
+                        fontSize: "0.9rem",
+                        color: "rgba(255,255,255,0.55)",
+                        textDecoration: "none",
+                        transition: "color 0.15s",
+                      }}
+                      onMouseEnter={(e) => (e.currentTarget.style.color = "#ffffff")}
+                      onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.55)")}
                     >
                       {l.label}
                     </Link>
@@ -84,11 +123,22 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="mt-12 pt-8 border-t border-gray-200 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-gray-400">
+        {/* Bottom bar */}
+        <div
+          style={{
+            borderTop: "1px solid rgba(255,255,255,0.08)",
+            paddingTop: "1.5rem",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            flexWrap: "wrap",
+            gap: "1rem",
+          }}
+        >
+          <p style={{ fontSize: "0.8125rem", color: "rgba(255,255,255,0.25)", margin: 0 }}>
             © {new Date().getFullYear()} Attax. All rights reserved.
           </p>
-          <p className="text-xs text-gray-400">
+          <p style={{ fontSize: "0.8125rem", color: "rgba(255,255,255,0.25)", margin: 0 }}>
             Made with 🧡 for athletes everywhere
           </p>
         </div>
