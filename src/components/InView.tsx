@@ -7,11 +7,13 @@ export default function InView({
   className = "",
   style = {},
   delay = 0,
+  blur = true,
 }: {
   children: ReactNode;
   className?: string;
   style?: React.CSSProperties;
   delay?: number;
+  blur?: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
@@ -21,7 +23,7 @@ export default function InView({
     if (!el) return;
     const obs = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
-      { threshold: 0.12 }
+      { threshold: 0.08 }
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -33,8 +35,14 @@ export default function InView({
       className={className}
       style={{
         opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(28px)",
-        transition: `opacity 0.7s cubic-bezier(0.16,1,0.3,1) ${delay}ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${delay}ms`,
+        transform: visible ? "translateY(0)" : "translateY(36px)",
+        filter: visible ? "blur(0px)" : blur ? "blur(4px)" : "none",
+        transition: [
+          `opacity 0.8s cubic-bezier(0.16,1,0.3,1) ${delay}ms`,
+          `transform 0.8s cubic-bezier(0.16,1,0.3,1) ${delay}ms`,
+          blur ? `filter 0.8s cubic-bezier(0.16,1,0.3,1) ${delay}ms` : "",
+        ].filter(Boolean).join(", "),
+        willChange: "opacity, transform",
         ...style,
       }}
     >

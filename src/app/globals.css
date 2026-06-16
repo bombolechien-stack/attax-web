@@ -12,85 +12,159 @@ html {
   scrollbar-color: #333 transparent;
 }
 
-::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 3px; }
 
 body { margin: 0; padding: 0; background: #ffffff; color: #1a1a1a; }
 
 ::selection { background: #FC5F2B; color: #fff; }
 
+/* ── Animations ── */
+@keyframes fadeUpBlur {
+  from { opacity: 0; transform: translateY(40px); filter: blur(6px); }
+  to   { opacity: 1; transform: translateY(0);    filter: blur(0);   }
+}
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-
 @keyframes fadeIn {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
-
 @keyframes scaleIn {
-  from { opacity: 0; transform: scale(0.96); }
+  from { opacity: 0; transform: scale(0.94); }
   to   { opacity: 1; transform: scale(1); }
 }
-
 @keyframes pulseGlow {
-  0%, 100% { opacity: 0.6; transform: scale(1); }
-  50%       { opacity: 0.9; transform: scale(1.04); }
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50%       { opacity: 0.85; transform: scale(1.06); }
+}
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes lineGrow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
 }
 
-.animate-fade-up   { animation: fadeUp   0.7s cubic-bezier(0.16,1,0.3,1) both; }
-.animate-fade-in   { animation: fadeIn   0.6s cubic-bezier(0.16,1,0.3,1) both; }
-.animate-scale-in  { animation: scaleIn  0.6s cubic-bezier(0.16,1,0.3,1) both; }
+.animate-fade-up-blur { animation: fadeUpBlur 0.9s cubic-bezier(0.16,1,0.3,1) both; }
+.animate-fade-up      { animation: fadeUp     0.7s cubic-bezier(0.16,1,0.3,1) both; }
+.animate-fade-in      { animation: fadeIn     0.6s cubic-bezier(0.16,1,0.3,1) both; }
+.animate-scale-in     { animation: scaleIn    0.6s cubic-bezier(0.16,1,0.3,1) both; }
 
+.delay-50  { animation-delay: 0.05s; }
 .delay-100 { animation-delay: 0.1s; }
+.delay-150 { animation-delay: 0.15s; }
 .delay-200 { animation-delay: 0.2s; }
 .delay-300 { animation-delay: 0.3s; }
 .delay-400 { animation-delay: 0.4s; }
 .delay-500 { animation-delay: 0.5s; }
 .delay-600 { animation-delay: 0.6s; }
 
-.glow-pulse { animation: pulseGlow 4s ease-in-out infinite; }
+.glow-pulse { animation: pulseGlow 5s ease-in-out infinite; }
 
-/* Premium card hover */
+/* ── Premium card ── */
 .premium-card {
-  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s cubic-bezier(0.16,1,0.3,1);
+  transition: transform 0.45s cubic-bezier(0.16,1,0.3,1),
+              box-shadow 0.45s cubic-bezier(0.16,1,0.3,1);
 }
 .premium-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.10);
+}
+
+/* ── Image zoom on hover ── */
+.img-zoom { overflow: hidden; }
+.img-zoom img,
+.img-zoom > div { transition: transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+.img-zoom:hover img,
+.img-zoom:hover > div { transform: scale(1.04); }
+
+/* ── Dark card hover ── */
+.dark-card {
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1),
+              box-shadow 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.dark-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+  box-shadow: 0 32px 80px rgba(0,0,0,0.35);
 }
 
-/* Button hover */
-.btn-primary {
-  transition: transform 0.2s cubic-bezier(0.16,1,0.3,1), box-shadow 0.2s;
+/* ── Orange CTA button ── */
+.btn-orange {
+  transition: transform 0.25s cubic-bezier(0.16,1,0.3,1),
+              box-shadow 0.25s cubic-bezier(0.16,1,0.3,1),
+              background  0.2s;
 }
-.btn-primary:hover {
-  transform: scale(1.03);
-  box-shadow: 0 8px 30px rgba(252,95,43,0.4);
+.btn-orange:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(252,95,43,0.45);
+  background: #e8541f !important;
 }
-.btn-primary:active { transform: scale(0.98); }
+.btn-orange:active { transform: scale(0.97); }
 
+/* ── Ghost button ── */
 .btn-ghost {
   transition: background 0.2s, transform 0.2s cubic-bezier(0.16,1,0.3,1);
 }
-.btn-ghost:hover  { background: rgba(255,255,255,0.18) !important; transform: scale(1.02); }
+.btn-ghost:hover  { background: rgba(255,255,255,0.14) !important; transform: translateY(-1px); }
 .btn-ghost:active { transform: scale(0.98); }
 
-/* Nav link hover */
+/* ── Pill button (dark) ── */
+.btn-dark {
+  transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), box-shadow 0.25s;
+}
+.btn-dark:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}
+
+/* ── Nav link ── */
 .nav-link {
-  transition: opacity 0.15s;
   position: relative;
+  transition: color 0.2s;
 }
 .nav-link::after {
   content: '';
   position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 1px;
+  bottom: -2px; left: 0;
+  width: 0; height: 1px;
   background: currentColor;
-  transition: width 0.2s cubic-bezier(0.16,1,0.3,1);
+  transition: width 0.25s cubic-bezier(0.16,1,0.3,1);
 }
+.nav-link:hover { color: #ffffff !important; }
 .nav-link:hover::after { width: 100%; }
+
+/* ── Horizontal rule ── */
+.rule {
+  height: 1px;
+  background: #f0f0f0;
+  border: none;
+  margin: 0;
+}
+.rule-dark {
+  height: 1px;
+  background: rgba(255,255,255,0.06);
+  border: none;
+  margin: 0;
+}
+
+/* ── Section label ── */
+.section-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #FC5F2B;
+}
+
+/* ── Stat number ── */
+.stat-num {
+  font-size: clamp(3.5rem, 7vw, 6rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
