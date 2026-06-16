@@ -7,40 +7,40 @@ export default function Download() {
       <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
         <InView>
           <div style={{
-            position: "relative", borderRadius: "28px", overflow: "hidden",
-            display: "grid", gridTemplateColumns: "1fr 1fr", minHeight: "480px",
+            backgroundColor: "#0d0d0d", borderRadius: "28px",
+            overflow: "hidden", position: "relative",
+            display: "grid", gridTemplateColumns: "1fr auto",
+            alignItems: "center", minHeight: "400px",
           }}>
-            {/* Background photo */}
-            <Image
-              src="/images/cycling-race.jpg"
-              alt=""
-              fill
-              style={{ objectFit: "cover", objectPosition: "center" }}
-            />
-            {/* Dark overlay */}
-            <div style={{ position: "absolute", inset: 0, backgroundColor: "rgba(0,0,0,0.72)" }} />
-            {/* Orange glow */}
+            {/* Glow */}
+            <div className="glow-pulse" style={{
+              position: "absolute", left: "25%", top: "-30%",
+              width: "600px", height: "500px", borderRadius: "50%",
+              background: "radial-gradient(circle, rgba(252,95,43,0.18) 0%, transparent 65%)",
+              pointerEvents: "none",
+            }} />
+            {/* Grid pattern */}
             <div style={{
-              position: "absolute", inset: 0,
-              background: "radial-gradient(ellipse 80% 60% at 30% 50%, rgba(252,95,43,0.2) 0%, transparent 70%)",
+              position: "absolute", inset: 0, pointerEvents: "none", opacity: 0.04,
+              backgroundImage: "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
+              backgroundSize: "40px 40px",
             }} />
 
-            {/* Left — text */}
-            <div style={{ position: "relative", zIndex: 1, padding: "4rem", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+            {/* Text */}
+            <div style={{ position: "relative", zIndex: 1, padding: "4rem" }}>
               <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.14em", color: "#FC5F2B", textTransform: "uppercase", margin: "0 0 1.25rem" }}>
                 Join the adventure
               </p>
               <h2 style={{ fontSize: "clamp(2rem, 4vw, 3.25rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.04em", margin: "0 0 1rem", lineHeight: 1.05 }}>
                 Ready to push<br />your limits?
               </h2>
-              <p style={{ fontSize: "1.0625rem", color: "rgba(255,255,255,0.55)", lineHeight: 1.65, margin: "0 0 2.5rem", maxWidth: "340px" }}>
+              <p style={{ fontSize: "1.0625rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.65, margin: "0 0 2.5rem", maxWidth: "360px" }}>
                 Discover attax and join a community that moves. Free to download — start your journey today.
               </p>
               <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
                 <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" style={{
                   display: "inline-flex", alignItems: "center", gap: "8px",
-                  backgroundColor: "#FC5F2B", color: "#ffffff",
-                  fontWeight: 700, fontSize: "0.9375rem",
+                  backgroundColor: "#FC5F2B", color: "#ffffff", fontWeight: 700, fontSize: "0.9375rem",
                   padding: "14px 28px", borderRadius: "999px", textDecoration: "none",
                 }}>
                   <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
@@ -50,29 +50,25 @@ export default function Download() {
                 </a>
                 <a href="https://play.google.com" target="_blank" rel="noopener noreferrer" style={{
                   display: "inline-flex", alignItems: "center", gap: "8px",
-                  backgroundColor: "rgba(255,255,255,0.1)", color: "#ffffff",
-                  fontWeight: 600, fontSize: "0.9375rem",
+                  backgroundColor: "rgba(255,255,255,0.07)", color: "#ffffff", fontWeight: 600, fontSize: "0.9375rem",
                   padding: "14px 28px", borderRadius: "999px",
-                  textDecoration: "none", border: "1px solid rgba(255,255,255,0.15)",
+                  textDecoration: "none", border: "1px solid rgba(255,255,255,0.12)",
                 }}>Google Play</a>
               </div>
-              <p style={{ marginTop: "1.5rem", fontSize: "0.8125rem", color: "rgba(255,255,255,0.25)" }}>
+              <p style={{ marginTop: "1.5rem", fontSize: "0.8125rem", color: "rgba(255,255,255,0.2)" }}>
                 Free · iOS 15+ · Android 8.0+
               </p>
             </div>
 
-            {/* Right — athlete photo */}
-            <div style={{ position: "relative", zIndex: 1, overflow: "hidden" }}>
+            {/* Phone in hand — the Download Budy image */}
+            <div style={{ position: "relative", zIndex: 1, padding: "2rem 3rem 0 0", alignSelf: "flex-end" }}>
               <Image
-                src="/images/strength-portrait.jpg"
-                alt="Athlete"
-                fill
-                style={{ objectFit: "cover", objectPosition: "center top" }}
+                src="/images/download-phone.png"
+                alt="Download Attax"
+                width={320}
+                height={380}
+                style={{ objectFit: "contain", display: "block" }}
               />
-              <div style={{
-                position: "absolute", inset: 0,
-                background: "linear-gradient(to right, rgba(0,0,0,0.5) 0%, transparent 40%)",
-              }} />
             </div>
           </div>
         </InView>

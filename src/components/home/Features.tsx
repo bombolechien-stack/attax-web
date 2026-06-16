@@ -17,9 +17,8 @@ export default function Features() {
     <section style={{ backgroundColor: "#f7f7f7", padding: "6rem 2rem" }}>
       <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
 
-        {/* Header row with photo */}
+        {/* Header: text left + sport silhouette right */}
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px", marginBottom: "10px", alignItems: "stretch" }}>
-          {/* Text */}
           <InView style={{
             backgroundColor: "#ffffff", borderRadius: "20px", padding: "3rem",
             display: "flex", flexDirection: "column", justifyContent: "center",
@@ -28,22 +27,22 @@ export default function Features() {
             <h2 style={{ fontSize: "clamp(2rem, 3.5vw, 2.75rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.035em", margin: "0 0 1.25rem", lineHeight: 1.1 }}>
               Your motivation,<br />powered by movement.
             </h2>
-            <p style={{ fontSize: "1.0625rem", color: "#777", lineHeight: 1.65, margin: "0 0 2rem" }}>
+            <p style={{ fontSize: "1.0625rem", color: "#777", lineHeight: 1.65, margin: "0 0 2rem", maxWidth: "380px" }}>
               No more emotionless fitness apps. attax turns your workouts into a motivating and positive experience.
             </p>
             <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" style={{
               display: "inline-flex", alignItems: "center", gap: "8px", width: "fit-content",
-              backgroundColor: "#0d0d0d", color: "#ffffff",
-              fontWeight: 700, fontSize: "0.9375rem",
+              backgroundColor: "#0d0d0d", color: "#ffffff", fontWeight: 700, fontSize: "0.9375rem",
               padding: "13px 26px", borderRadius: "999px", textDecoration: "none",
-            }}>
-              Discover your new challenge →
-            </a>
+            }}>Discover your new challenge →</a>
           </InView>
 
-          {/* Photo */}
-          <div style={{ borderRadius: "20px", overflow: "hidden", minHeight: "360px", position: "relative" }}>
-            <Image src="/images/hero-boxing-3.jpg" alt="Combat sport" fill style={{ objectFit: "cover", objectPosition: "center top" }} />
+          <div style={{ borderRadius: "20px", overflow: "hidden", minHeight: "360px", position: "relative", backgroundColor: "#111" }}>
+            <Image src="/images/sport-silhouette.png" alt="Athlete" fill style={{ objectFit: "cover", objectPosition: "center" }} />
+            <div style={{
+              position: "absolute", inset: 0,
+              background: "linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 60%)",
+            }} />
           </div>
         </div>
 

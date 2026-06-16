@@ -2,27 +2,10 @@ import InView from "@/components/InView";
 import Image from "next/image";
 
 const steps = [
-  {
-    n: "01", title: "Do your sport",
-    desc: "Walk, run, cycle, lift — any activity counts. Attax connects to Apple Health & Google Health Connect automatically.",
-    img: "/images/cycling-portrait.jpg",
-  },
-  {
-    n: "02", title: "Move regularly",
-    desc: "Track your activity day after day. Every session recorded, every effort counted — build the habit that changes everything.",
-    img: "/images/warmup.jpg",
-  },
-  {
-    n: "03", title: "Stay consistent",
-    desc: "Forget the pressure of perfection — focus on progress. Attax celebrates showing up, week after week.",
-    img: "/images/strength-portrait.jpg",
-  },
-  {
-    n: "04", title: "Become the best version of yourself",
-    desc: "Weekly progress, milestones unlocked, community energy. Every step brings you closer to who you want to be.",
-    img: "/images/hero-boxing-3.jpg",
-    dark: true,
-  },
+  { n: "01", title: "Do your sport", desc: "Walk, run, cycle, lift — any activity counts. Attax connects to Apple Health & Google Health Connect automatically.", img: "/images/sport-shoe.png" },
+  { n: "02", title: "Move regularly", desc: "Track your activity day after day. Every session recorded, every effort counted — build the habit that changes everything.", img: "/images/sport-running-group.png" },
+  { n: "03", title: "Stay consistent", desc: "Forget the pressure of perfection — focus on progress. Attax celebrates showing up, week after week.", img: "/images/sport-weights.png" },
+  { n: "04", title: "Become the best version of yourself", desc: "Weekly progress, milestones unlocked, community energy. Every step brings you closer to who you want to be.", img: "/images/sport-basketball.png" },
 ];
 
 export default function HowItWorks() {
@@ -50,37 +33,21 @@ export default function HowItWorks() {
                 position: "relative",
                 display: "flex", flexDirection: "column", justifyContent: "flex-end",
               }}>
-                {/* Background photo */}
-                <Image
-                  src={s.img}
-                  alt={s.title}
-                  fill
-                  style={{ objectFit: "cover", objectPosition: "center top" }}
-                />
-                {/* Dark overlay */}
+                <Image src={s.img} alt={s.title} fill style={{ objectFit: "cover", objectPosition: "center" }} />
                 <div style={{
                   position: "absolute", inset: 0,
-                  background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%)",
+                  background: "linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.05) 100%)",
                 }} />
-                {/* Step number watermark */}
                 <div style={{
-                  position: "absolute", top: "1rem", right: "1.25rem",
-                  fontSize: "5rem", fontWeight: 900, lineHeight: 1,
-                  color: "rgba(255,255,255,0.08)", letterSpacing: "-0.04em",
-                  userSelect: "none", pointerEvents: "none",
+                  position: "absolute", top: "1.25rem", right: "1.25rem",
+                  fontSize: "4.5rem", fontWeight: 900, lineHeight: 1,
+                  color: "rgba(255,255,255,0.07)", letterSpacing: "-0.04em",
+                  userSelect: "none",
                 }}>{s.n}</div>
-
-                {/* Content */}
                 <div style={{ position: "relative", zIndex: 1, padding: "1.75rem 1.75rem 2rem" }}>
-                  <div style={{
-                    fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.1em",
-                    textTransform: "uppercase", color: "#FC5F2B", marginBottom: "0.5rem",
-                  }}>Step {s.n}</div>
-                  <h3 style={{
-                    fontSize: "1.125rem", fontWeight: 700, letterSpacing: "-0.02em",
-                    color: "#ffffff", margin: "0 0 0.6rem",
-                  }}>{s.title}</h3>
-                  <p style={{ fontSize: "0.875rem", lineHeight: 1.6, margin: 0, color: "rgba(255,255,255,0.6)" }}>{s.desc}</p>
+                  <div style={{ fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#FC5F2B", marginBottom: "0.5rem" }}>Step {s.n}</div>
+                  <h3 style={{ fontSize: "1.0625rem", fontWeight: 700, letterSpacing: "-0.02em", color: "#ffffff", margin: "0 0 0.5rem" }}>{s.title}</h3>
+                  <p style={{ fontSize: "0.875rem", lineHeight: 1.6, margin: 0, color: "rgba(255,255,255,0.55)" }}>{s.desc}</p>
                 </div>
               </div>
             </InView>

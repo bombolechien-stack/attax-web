@@ -27,30 +27,56 @@ export default function Stats() {
           </div>
         </InView>
 
-        {/* 2-column grid */}
+        {/* App screenshots — the real UI */}
         <InView>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
+          <div style={{
+            backgroundColor: "#f7f7f7", borderRadius: "20px",
+            padding: "3rem 2rem",
+            display: "flex", flexDirection: "column", alignItems: "center", gap: "1.5rem",
+            marginBottom: "10px",
+          }}>
+            <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.14em", color: "#FC5F2B", textTransform: "uppercase", margin: 0 }}>
+              The app
+            </p>
+            <h2 style={{ fontSize: "clamp(1.75rem, 3vw, 2.25rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.035em", margin: 0, lineHeight: 1.1, textAlign: "center" }}>
+              Your workouts, tracked automatically.
+            </h2>
+            <p style={{ fontSize: "1rem", color: "#777", maxWidth: "440px", lineHeight: 1.65, margin: 0, textAlign: "center" }}>
+              Connect Apple Health or Google Health Connect and attax does the rest — no manual logging, ever.
+            </p>
+            <Image
+              src="/images/app-screenshots.png"
+              alt="Attax app screenshots"
+              width={800}
+              height={520}
+              style={{ objectFit: "contain", maxWidth: "100%", maxHeight: "480px" }}
+            />
+          </div>
+        </InView>
 
+        {/* Community + sport photo grid */}
+        <InView delay={100}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
             {/* Dark community card */}
             <div style={{
               backgroundColor: "#0d0d0d", borderRadius: "20px",
               padding: "3rem", display: "flex", flexDirection: "column",
-              justifyContent: "space-between", minHeight: "440px",
+              justifyContent: "space-between", minHeight: "360px",
               position: "relative", overflow: "hidden",
             }}>
               <div style={{
                 position: "absolute", right: "-20%", top: "-20%",
                 width: "400px", height: "400px", borderRadius: "50%",
-                background: "radial-gradient(circle, rgba(252,95,43,0.2) 0%, transparent 65%)",
+                background: "radial-gradient(circle, rgba(252,95,43,0.18) 0%, transparent 65%)",
                 pointerEvents: "none",
               }} />
               <div style={{ position: "relative" }}>
                 <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.14em", color: "#FC5F2B", textTransform: "uppercase", margin: "0 0 1.25rem" }}>Community</p>
-                <h2 style={{ fontSize: "clamp(1.75rem, 2.8vw, 2.25rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.035em", lineHeight: 1.15, margin: "0 0 1rem" }}>
+                <h2 style={{ fontSize: "clamp(1.5rem, 2.5vw, 2rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.035em", lineHeight: 1.15, margin: "0 0 1rem" }}>
                   Alone, you work out.<br />
                   <em style={{ fontStyle: "normal", color: "#FC5F2B" }}>Together, you stay motivated.</em>
                 </h2>
-                <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.7, margin: 0 }}>
+                <p style={{ fontSize: "0.9375rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.7, margin: 0 }}>
                   attax brings together motivated, curious, and passionate athletes.
                 </p>
               </div>
@@ -64,39 +90,15 @@ export default function Stats() {
               </div>
             </div>
 
-            {/* Photo card */}
-            <div style={{ borderRadius: "20px", overflow: "hidden", minHeight: "440px", position: "relative" }}>
-              <Image
-                src="/images/warmup.jpg"
-                alt="Athlete warming up"
-                fill
-                style={{ objectFit: "cover", objectPosition: "center" }}
-              />
-            </div>
-          </div>
-        </InView>
-
-        {/* 3-photo strip below */}
-        <InView delay={100}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "10px", marginTop: "10px" }}>
-            {[
-              { src: "/images/cycling-race.jpg", label: "Cycling" },
-              { src: "/images/strength.jpg", label: "Strength" },
-              { src: "/images/hero-boxing-2.jpg", label: "Combat" },
-            ].map((p, i) => (
-              <div key={p.src} style={{ borderRadius: "20px", overflow: "hidden", height: "220px", position: "relative" }}>
-                <Image src={p.src} alt={p.label} fill style={{ objectFit: "cover", objectPosition: "center top" }} />
-                <div style={{
-                  position: "absolute", inset: 0,
-                  background: "linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 60%)",
-                }} />
-                <span style={{
-                  position: "absolute", bottom: "1rem", left: "1rem",
-                  fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.1em",
-                  color: "rgba(255,255,255,0.6)", textTransform: "uppercase",
-                }}>{p.label}</span>
+            {/* Sport photos grid */}
+            <div style={{ display: "grid", gridTemplateRows: "1fr 1fr", gap: "10px" }}>
+              <div style={{ borderRadius: "16px", overflow: "hidden", position: "relative" }}>
+                <Image src="/images/sport-running-group.png" alt="Running" fill style={{ objectFit: "cover" }} />
               </div>
-            ))}
+              <div style={{ borderRadius: "16px", overflow: "hidden", position: "relative" }}>
+                <Image src="/images/sport-cycling.png" alt="Cycling" fill style={{ objectFit: "cover" }} />
+              </div>
+            </div>
           </div>
         </InView>
       </div>

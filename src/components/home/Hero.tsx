@@ -22,37 +22,61 @@ export default function Hero() {
         overflow: "hidden",
       }}>
 
-        {/* ── Athlete photo — right side ── */}
+        {/* Orange glow behind runner */}
+        <div className="glow-pulse" style={{
+          position: "absolute", right: "5%", top: "0%",
+          width: "700px", height: "700px", borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(252,95,43,0.35) 0%, rgba(180,60,0,0.15) 45%, transparent 70%)",
+          pointerEvents: "none", zIndex: 0,
+        }} />
+
+        {/* Runner cutout — right side */}
         <div style={{
-          position: "absolute", right: 0, top: 0, bottom: 0,
-          width: "55%", zIndex: 0,
+          position: "absolute",
+          right: "0%",
+          bottom: 0,
+          width: "52%",
+          height: "95%",
+          zIndex: 1,
+          display: "flex",
+          alignItems: "flex-end",
+          justifyContent: "flex-end",
         }}>
           <Image
-            src="/images/hero-boxing-1.jpg"
-            alt="Athlete"
-            fill
-            style={{ objectFit: "cover", objectPosition: "center top" }}
+            src="/images/hero-runner.png"
+            alt="Runner"
+            width={900}
+            height={600}
+            style={{
+              objectFit: "contain",
+              objectPosition: "right bottom",
+              width: "100%",
+              height: "100%",
+            }}
             priority
           />
-          {/* left-to-dark gradient over photo */}
-          <div style={{
-            position: "absolute", inset: 0,
-            background: "linear-gradient(to right, #0d0d0d 0%, rgba(13,13,13,0.7) 35%, rgba(13,13,13,0.1) 70%, rgba(13,13,13,0) 100%)",
-          }} />
-          {/* bottom fade */}
-          <div style={{
-            position: "absolute", inset: 0,
-            background: "linear-gradient(to top, #0d0d0d 0%, rgba(13,13,13,0.3) 25%, transparent 50%)",
-          }} />
         </div>
 
-        {/* ── Grain texture ── */}
+        {/* Left gradient to hide runner bleed */}
         <div style={{
-          position: "absolute", inset: 0, zIndex: 1, opacity: 0.25, pointerEvents: "none",
+          position: "absolute", inset: 0,
+          background: "linear-gradient(to right, #0d0d0d 0%, #0d0d0d 30%, rgba(13,13,13,0.7) 50%, rgba(13,13,13,0) 75%)",
+          pointerEvents: "none", zIndex: 2,
+        }} />
+        {/* Bottom gradient */}
+        <div style={{
+          position: "absolute", bottom: 0, left: 0, right: 0, height: "35%",
+          background: "linear-gradient(to top, #0d0d0d 0%, transparent 100%)",
+          pointerEvents: "none", zIndex: 2,
+        }} />
+
+        {/* Grain */}
+        <div style={{
+          position: "absolute", inset: 0, zIndex: 2, opacity: 0.2, pointerEvents: "none",
           backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E\")",
         }} />
 
-        {/* ── Navbar inside dark block ── */}
+        {/* ── Navbar ── */}
         <div style={{ position: "relative", zIndex: 10, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 2.5rem", height: "68px" }}>
           <nav style={{ display: "flex", gap: "1.75rem", alignItems: "center", flex: 1 }}>
             {NAV_LINKS.map(l => (
@@ -81,9 +105,9 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* ── Hero content ── */}
+        {/* ── Content ── */}
         <div style={{
-          position: "relative", zIndex: 2,
+          position: "relative", zIndex: 3,
           flex: 1, display: "flex", flexDirection: "column", justifyContent: "center",
           padding: "4rem 4rem 3rem",
           maxWidth: "600px",
@@ -112,7 +136,7 @@ export default function Hero() {
 
           <p className="animate-fade-up delay-200" style={{
             fontSize: "1.0625rem", color: "rgba(255,255,255,0.55)",
-            lineHeight: 1.7, margin: "0 0 2.5rem", maxWidth: "420px", fontWeight: 400,
+            lineHeight: 1.7, margin: "0 0 2.5rem", maxWidth: "400px", fontWeight: 400,
           }}>
             Move, progress, and stay motivated every day. Every step counts. Every effort brings you closer to your goals.
           </p>
@@ -139,9 +163,9 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* ── Stats bar ── */}
+        {/* ── Stats ── */}
         <div className="animate-fade-up delay-500" style={{
-          position: "relative", zIndex: 2,
+          position: "relative", zIndex: 3,
           display: "flex", padding: "0 4rem 3.5rem",
         }}>
           {[

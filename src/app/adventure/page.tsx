@@ -9,26 +9,10 @@ export const metadata: Metadata = {
 };
 
 const timeline = [
-  {
-    year: "The Problem",
-    title: "Emotionless fitness apps",
-    description: "We looked around at fitness apps and found they all felt the same: cold trackers, step counters, and calorie logs. Nothing that made you feel anything. Nothing that made Monday exciting.",
-  },
-  {
-    year: "The Insight",
-    title: "Consistency is the superpower",
-    description: "The best athletes aren't the most talented — they're the most consistent. We wanted to build an app that celebrates showing up, day after day, rather than obsessing over peak performance.",
-  },
-  {
-    year: "The Vision",
-    title: "Sport as social competition",
-    description: "What if your 5K run could earn you points in a global league? What if your consistency score made you famous among your peers? We wanted to create the Transfermarkt of amateur sport.",
-  },
-  {
-    year: "Today",
-    title: "Attax is born",
-    description: "Attax is now live in beta, tracking workouts for athletes across 50+ countries. The ranking system, global leaderboards, and competitive leagues are coming in V2.",
-  },
+  { year: "The Problem", title: "Emotionless fitness apps", description: "We looked around at fitness apps and found they all felt the same: cold trackers, step counters, and calorie logs. Nothing that made you feel anything. Nothing that made Monday exciting." },
+  { year: "The Insight", title: "Consistency is the superpower", description: "The best athletes aren't the most talented — they're the most consistent. We wanted to build an app that celebrates showing up, day after day, rather than obsessing over peak performance." },
+  { year: "The Vision", title: "Sport as social competition", description: "What if your 5K run could earn you points in a global league? What if your consistency score made you famous among your peers? We wanted to create the Transfermarkt of amateur sport." },
+  { year: "Today", title: "Attax is born", description: "Attax is now live in beta, tracking workouts for athletes across 50+ countries. The ranking system, global leaderboards, and competitive leagues are coming in V2." },
 ];
 
 const values = [
@@ -43,34 +27,28 @@ export default function AdventurePage() {
     <>
       <Navbar />
 
-      {/* Hero with Cycling is Budy image */}
+      {/* Hero — Cycling is Budy.jpg */}
       <div style={{ backgroundColor: "#ffffff", padding: "0 12px 12px" }}>
         <div style={{
           position: "relative", borderRadius: "24px", overflow: "hidden",
-          minHeight: "80vh", display: "flex", flexDirection: "column", justifyContent: "flex-end",
+          minHeight: "82vh", display: "flex", flexDirection: "column", justifyContent: "flex-end",
           backgroundColor: "#0d0d0d",
         }}>
           <Image
             src="/images/cycling-race.jpg"
             alt="Cycling is Attax"
             fill
-            style={{ objectFit: "cover", objectPosition: "center" }}
+            style={{ objectFit: "cover", objectPosition: "center 40%" }}
             priority
           />
           <div style={{
             position: "absolute", inset: 0,
-            background: "linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.1) 100%)",
+            background: "linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.45) 45%, rgba(0,0,0,0.1) 100%)",
           }} />
           <div style={{ position: "relative", zIndex: 1, padding: "4rem" }}>
-            <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.14em", color: "#FC5F2B", textTransform: "uppercase", margin: "0 0 1rem" }}>
-              The Adventure
-            </p>
-            <h1 style={{
-              fontSize: "clamp(3rem, 6vw, 5rem)", fontWeight: 800, color: "#ffffff",
-              letterSpacing: "-0.035em", lineHeight: 1.02, margin: "0 0 1.25rem",
-            }}>
-              Why we built<br />
-              <em style={{ fontStyle: "normal", color: "#FC5F2B" }}>Attax.</em>
+            <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.14em", color: "#FC5F2B", textTransform: "uppercase", margin: "0 0 1rem" }}>The Adventure</p>
+            <h1 style={{ fontSize: "clamp(3rem, 6vw, 5rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.035em", lineHeight: 1.02, margin: "0 0 1.25rem" }}>
+              Why we built<br /><em style={{ fontStyle: "normal", color: "#FC5F2B" }}>Attax.</em>
             </h1>
             <p style={{ fontSize: "1.125rem", color: "rgba(255,255,255,0.6)", maxWidth: "520px", lineHeight: 1.65 }}>
               We were tired of fitness apps that tracked everything but inspired nothing. So we built something different.
@@ -83,8 +61,7 @@ export default function AdventurePage() {
       <section style={{ backgroundColor: "#ffffff", padding: "6rem 2rem" }}>
         <div style={{ maxWidth: "52rem", margin: "0 auto" }}>
           {timeline.map((item, i) => (
-            <div key={item.year} style={{ display: "flex", gap: "2.5rem", paddingBottom: i < timeline.length - 1 ? "3rem" : 0, position: "relative" }}>
-              {/* Timeline line */}
+            <div key={item.year} style={{ display: "flex", gap: "2.5rem", position: "relative" }}>
               <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flexShrink: 0 }}>
                 <div style={{
                   width: "40px", height: "40px", borderRadius: "50%",
@@ -94,13 +71,11 @@ export default function AdventurePage() {
                   <div style={{ width: "8px", height: "8px", borderRadius: "50%", backgroundColor: "#FC5F2B" }} />
                 </div>
                 {i < timeline.length - 1 && (
-                  <div style={{ width: "2px", flex: 1, backgroundColor: "#f0f0f0", marginTop: "8px" }} />
+                  <div style={{ width: "2px", flex: 1, backgroundColor: "#f0f0f0", marginTop: "8px", minHeight: "60px" }} />
                 )}
               </div>
-              <div style={{ paddingTop: "8px", paddingBottom: i < timeline.length - 1 ? "2rem" : 0 }}>
-                <span style={{ fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.12em", color: "#FC5F2B", textTransform: "uppercase" }}>
-                  {item.year}
-                </span>
+              <div style={{ paddingTop: "8px", paddingBottom: i < timeline.length - 1 ? "3rem" : 0 }}>
+                <span style={{ fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.12em", color: "#FC5F2B", textTransform: "uppercase" }}>{item.year}</span>
                 <h3 style={{ fontSize: "1.25rem", fontWeight: 700, color: "#0d0d0d", margin: "0.4rem 0 0.75rem", letterSpacing: "-0.02em" }}>{item.title}</h3>
                 <p style={{ fontSize: "1rem", color: "#666", lineHeight: 1.7, margin: 0 }}>{item.description}</p>
               </div>
@@ -109,21 +84,17 @@ export default function AdventurePage() {
         </div>
       </section>
 
-      {/* Values with photo */}
+      {/* Values + strength photo */}
       <section style={{ backgroundColor: "#f7f7f7", padding: "6rem 2rem" }}>
         <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px", alignItems: "stretch" }}>
-            {/* Photo */}
             <div style={{ borderRadius: "20px", overflow: "hidden", minHeight: "500px", position: "relative" }}>
-              <Image src="/images/strength.jpg" alt="Strength training" fill style={{ objectFit: "cover" }} />
+              <Image src="/images/sport-weights.png" alt="Strength training" fill style={{ objectFit: "cover" }} />
             </div>
-            {/* Values */}
             <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
               <div style={{ padding: "2rem", backgroundColor: "#ffffff", borderRadius: "20px" }}>
                 <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.14em", color: "#FC5F2B", textTransform: "uppercase", margin: "0 0 1rem" }}>What we believe</p>
-                <h2 style={{ fontSize: "clamp(1.75rem, 3vw, 2.25rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.035em", margin: 0, lineHeight: 1.1 }}>
-                  Built on real values.
-                </h2>
+                <h2 style={{ fontSize: "clamp(1.75rem, 3vw, 2.25rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.035em", margin: 0, lineHeight: 1.1 }}>Built on real values.</h2>
               </div>
               {values.map((v) => (
                 <div key={v.title} style={{ padding: "1.5rem 2rem", backgroundColor: "#ffffff", borderRadius: "20px", display: "flex", gap: "1rem", alignItems: "flex-start" }}>
@@ -153,23 +124,13 @@ export default function AdventurePage() {
             <Image src="/images/cycling-portrait.jpg" alt="" fill style={{ objectFit: "cover", opacity: 0.2 }} />
             <div style={{ position: "absolute", inset: 0, background: "radial-gradient(circle at 50% 50%, rgba(252,95,43,0.15) 0%, transparent 65%)" }} />
             <div style={{ position: "relative" }}>
-              <h2 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.04em", margin: "0 0 1rem", lineHeight: 1.05 }}>
-                Join the adventure
-              </h2>
+              <h2 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.04em", margin: "0 0 1rem", lineHeight: 1.05 }}>Join the adventure</h2>
               <p style={{ fontSize: "1.0625rem", color: "rgba(255,255,255,0.5)", maxWidth: "420px", margin: "0 auto 2.5rem", lineHeight: 1.65 }}>
                 We&apos;re just getting started. V2 brings global rankings, competitive leagues, and public athlete profiles.
               </p>
               <div style={{ display: "flex", gap: "10px", justifyContent: "center" }}>
-                <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" style={{
-                  backgroundColor: "#FC5F2B", color: "#ffffff", fontWeight: 700,
-                  fontSize: "0.9375rem", padding: "14px 28px", borderRadius: "999px",
-                  textDecoration: "none",
-                }}>Download Attax</a>
-                <Link href="/contact" style={{
-                  backgroundColor: "rgba(255,255,255,0.07)", color: "#ffffff", fontWeight: 600,
-                  fontSize: "0.9375rem", padding: "14px 28px", borderRadius: "999px",
-                  textDecoration: "none", border: "1px solid rgba(255,255,255,0.12)",
-                }}>Get in touch</Link>
+                <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" style={{ backgroundColor: "#FC5F2B", color: "#ffffff", fontWeight: 700, fontSize: "0.9375rem", padding: "14px 28px", borderRadius: "999px", textDecoration: "none" }}>Download Attax</a>
+                <Link href="/contact" style={{ backgroundColor: "rgba(255,255,255,0.07)", color: "#ffffff", fontWeight: 600, fontSize: "0.9375rem", padding: "14px 28px", borderRadius: "999px", textDecoration: "none", border: "1px solid rgba(255,255,255,0.12)" }}>Get in touch</Link>
               </div>
             </div>
           </div>
