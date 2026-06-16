@@ -1,109 +1,64 @@
+import InView from "@/components/InView";
+
+const stats = [
+  { value: "10K+", label: "Active Athletes", desc: "And growing every day" },
+  { value: "50+",  label: "Countries",       desc: "Global competition" },
+  { value: "1M+",  label: "Workouts Logged", desc: "Every rep counted" },
+  { value: "Free", label: "To Get Started",  desc: "No hidden fees, ever" },
+];
+
 export default function Stats() {
   return (
-    <section
-      style={{
-        backgroundColor: "#ffffff",
-        padding: "5rem 2rem",
-      }}
-    >
+    <section style={{ backgroundColor: "#ffffff", padding: "5rem 2rem" }}>
       <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
-        {/* Intro credibility line */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "1rem",
-            marginBottom: "3rem",
-            flexWrap: "wrap",
-          }}
-        >
-          {/* Avatar stack */}
-          <div style={{ display: "flex", alignItems: "center" }}>
-            {["🏃", "🚴", "🏋️", "⛹️"].map((emoji, i) => (
-              <div
-                key={i}
-                style={{
-                  width: "36px",
-                  height: "36px",
-                  borderRadius: "50%",
-                  backgroundColor: "#f4f4f5",
-                  border: "2px solid #fff",
-                  marginLeft: i > 0 ? "-10px" : "0",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: "16px",
-                  zIndex: 4 - i,
-                }}
-              >
-                {emoji}
-              </div>
+        {/* Credibility line */}
+        <InView style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "0.75rem", marginBottom: "4rem", flexWrap: "wrap" }}>
+          <div style={{ display: "flex" }}>
+            {["🏃","🚴","🏋️","⛹️"].map((e, i) => (
+              <div key={i} style={{
+                width: "34px", height: "34px", borderRadius: "50%",
+                background: "#f0f0f0",
+                border: "2.5px solid #fff",
+                marginLeft: i > 0 ? "-10px" : 0,
+                display: "flex", alignItems: "center", justifyContent: "center",
+                fontSize: "15px", zIndex: 4 - i, position: "relative",
+              }}>{e}</div>
             ))}
           </div>
-          <p
-            style={{
-              fontSize: "0.9375rem",
-              color: "#666666",
-              fontWeight: 500,
-              margin: 0,
-            }}
-          >
+          <p style={{ fontSize: "0.9375rem", color: "#555", fontWeight: 500, margin: 0 }}>
             Trusted by athletes in 50+ countries worldwide
           </p>
-        </div>
+        </InView>
 
-        {/* Stats grid */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-            gap: "2px",
-            backgroundColor: "#f4f4f5",
-            borderRadius: "16px",
-            overflow: "hidden",
-          }}
-        >
-          {[
-            { value: "10,000+", label: "Active Athletes", desc: "And growing every day" },
-            { value: "50+", label: "Countries", desc: "Global competition" },
-            { value: "1M+", label: "Workouts Logged", desc: "Every rep counted" },
-            { value: "100%", label: "Free to start", desc: "No hidden fees" },
-          ].map((s) => (
-            <div
-              key={s.label}
-              style={{
-                backgroundColor: "#ffffff",
+        {/* Stats */}
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(4, 1fr)",
+          gap: "1px",
+          background: "#f0f0f0",
+          borderRadius: "20px",
+          overflow: "hidden",
+        }}>
+          {stats.map((s, i) => (
+            <InView key={s.label} delay={i * 80}>
+              <div style={{
+                backgroundColor: "#fff",
                 padding: "2.5rem 2rem",
                 textAlign: "center",
-              }}
-            >
-              <div
-                style={{
-                  fontSize: "2.5rem",
+                height: "100%",
+              }}>
+                <div style={{
+                  fontSize: "clamp(2rem, 3vw, 2.75rem)",
                   fontWeight: 800,
-                  color: "#1a1a1a",
-                  letterSpacing: "-0.03em",
+                  color: "#0d0d0d",
+                  letterSpacing: "-0.04em",
                   lineHeight: 1,
                   marginBottom: "0.5rem",
-                }}
-              >
-                {s.value}
+                }}>{s.value}</div>
+                <div style={{ fontSize: "0.9375rem", fontWeight: 600, color: "#1a1a1a", marginBottom: "4px" }}>{s.label}</div>
+                <div style={{ fontSize: "0.8125rem", color: "#aaa" }}>{s.desc}</div>
               </div>
-              <div
-                style={{
-                  fontSize: "0.9375rem",
-                  fontWeight: 600,
-                  color: "#1a1a1a",
-                  marginBottom: "4px",
-                }}
-              >
-                {s.label}
-              </div>
-              <div style={{ fontSize: "0.8125rem", color: "#999999" }}>
-                {s.desc}
-              </div>
-            </div>
+            </InView>
           ))}
         </div>
       </div>

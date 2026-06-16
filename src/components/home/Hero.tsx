@@ -2,242 +2,157 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section
-      style={{
-        position: "relative",
-        width: "100%",
-        minHeight: "calc(100vh - 100px)",
-        backgroundColor: "#0d0d0d",
-        overflow: "hidden",
+    <section style={{
+      position: "relative",
+      width: "100%",
+      minHeight: "100vh",
+      backgroundColor: "#0d0d0d",
+      overflow: "hidden",
+      display: "flex",
+      flexDirection: "column",
+    }}>
+      {/* ── Glow effects ── */}
+      <div className="glow-pulse" style={{
+        position: "absolute",
+        right: "-5%",
+        top: "5%",
+        width: "700px",
+        height: "700px",
+        borderRadius: "50%",
+        background: "radial-gradient(circle, rgba(210,100,10,0.65) 0%, rgba(180,60,0,0.3) 40%, transparent 70%)",
+        pointerEvents: "none",
+        zIndex: 0,
+      }} />
+      <div style={{
+        position: "absolute",
+        left: 0, right: 0, top: 0, bottom: 0,
+        background: "linear-gradient(to right, rgba(13,13,13,1) 0%, rgba(13,13,13,0.85) 30%, rgba(13,13,13,0.2) 55%, transparent 75%)",
+        pointerEvents: "none",
+        zIndex: 1,
+      }} />
+      {/* grain */}
+      <div style={{
+        position: "absolute", inset: 0, zIndex: 1, opacity: 0.35, pointerEvents: "none",
+        backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E\")",
+      }} />
+
+      {/* ── Content ── */}
+      <div style={{
+        position: "relative", zIndex: 2,
+        flex: 1,
         display: "flex",
         flexDirection: "column",
-      }}
-    >
-      {/* Full-width background: orange glow on right side */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          background:
-            "radial-gradient(ellipse 65% 80% at 72% 48%, rgba(210,100,20,0.75) 0%, rgba(180,70,0,0.45) 30%, rgba(100,30,0,0.15) 60%, transparent 80%)",
-          pointerEvents: "none",
-        }}
-      />
-
-      {/* Subtle dark vignette on left to make text readable */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          background:
-            "linear-gradient(to right, rgba(13,13,13,0.95) 0%, rgba(13,13,13,0.7) 35%, rgba(13,13,13,0.1) 60%, transparent 80%)",
-          pointerEvents: "none",
-          zIndex: 1,
-        }}
-      />
-
-      {/* Athlete silhouette placeholder — right side */}
-      <div
-        style={{
-          position: "absolute",
-          right: 0,
-          top: 0,
-          bottom: 0,
-          width: "60%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          zIndex: 0,
-        }}
-      >
-        {/* Circular spotlight glow */}
-        <div
-          style={{
-            position: "absolute",
-            width: "600px",
-            height: "600px",
-            borderRadius: "50%",
-            background:
-              "radial-gradient(circle, rgba(255,140,40,0.6) 0%, rgba(200,80,0,0.3) 40%, transparent 70%)",
-            top: "50%",
-            right: "5%",
-            transform: "translateY(-50%)",
-          }}
-        />
-        {/* Placeholder image */}
-        <div
-          style={{
-            position: "relative",
-            zIndex: 1,
-            fontSize: "12rem",
-            opacity: 0.15,
-            userSelect: "none",
-            marginRight: "4rem",
-          }}
-        >
-          🏃
-        </div>
-      </div>
-
-      {/* Text content — left aligned, padded */}
-      <div
-        style={{
-          position: "relative",
-          zIndex: 2,
-          padding: "5rem 2rem 3rem 4rem",
-          maxWidth: "580px",
-          display: "flex",
-          flexDirection: "column",
-          gap: "1.25rem",
-          flex: 1,
-          justifyContent: "center",
-          minHeight: "calc(100vh - 200px)",
-        }}
-      >
+        justifyContent: "center",
+        padding: "7rem 4rem 4rem",
+        maxWidth: "640px",
+      }}>
         {/* Badge */}
-        <div
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "6px",
-            color: "rgba(255,255,255,0.85)",
-            fontSize: "0.875rem",
-            fontWeight: 500,
-          }}
-        >
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <circle cx="7" cy="7" r="6" stroke="rgba(255,255,255,0.6)" strokeWidth="1.5" />
-            <path
-              d="M4.5 7L6.5 9L9.5 5"
-              stroke="rgba(255,255,255,0.6)"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          Free to download · iOS &amp; Android
+        <div className="animate-fade-up" style={{
+          display: "inline-flex", alignItems: "center", gap: "7px",
+          backgroundColor: "rgba(255,255,255,0.07)",
+          border: "1px solid rgba(255,255,255,0.1)",
+          borderRadius: "999px",
+          padding: "5px 14px 5px 8px",
+          marginBottom: "2rem",
+          width: "fit-content",
+        }}>
+          <div style={{ width: "20px", height: "20px", borderRadius: "50%", backgroundColor: "rgba(252,95,43,0.2)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+              <path d="M2.5 5L4.5 7L7.5 3" stroke="#FC5F2B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+          <span style={{ fontSize: "0.8125rem", fontWeight: 500, color: "rgba(255,255,255,0.75)", letterSpacing: "0.01em" }}>
+            Free to download · iOS &amp; Android
+          </span>
         </div>
 
         {/* H1 */}
-        <h1
-          style={{
-            fontSize: "clamp(2.75rem, 5.5vw, 4.5rem)",
-            fontWeight: 800,
-            color: "#ffffff",
-            lineHeight: 1.05,
-            letterSpacing: "-0.03em",
-            margin: 0,
-          }}
-        >
-          Move, progress,
-          <br />
-          <span style={{ color: "#FC5F2B" }}>stay motivated.</span>
+        <h1 className="animate-fade-up delay-100" style={{
+          fontSize: "clamp(3rem, 5.5vw, 4.75rem)",
+          fontWeight: 800,
+          color: "#ffffff",
+          lineHeight: 1.02,
+          letterSpacing: "-0.035em",
+          margin: "0 0 1.5rem",
+        }}>
+          Move, progress,<br />
+          <em style={{ fontStyle: "normal", color: "#FC5F2B" }}>stay motivated.</em>
         </h1>
 
-        {/* Subtext */}
-        <p
-          style={{
-            fontSize: "1rem",
-            color: "rgba(255,255,255,0.6)",
-            lineHeight: 1.65,
-            margin: 0,
-            maxWidth: "420px",
-          }}
-        >
+        {/* Sub */}
+        <p className="animate-fade-up delay-200" style={{
+          fontSize: "1.0625rem",
+          color: "rgba(255,255,255,0.55)",
+          lineHeight: 1.7,
+          margin: "0 0 2.5rem",
+          maxWidth: "400px",
+          fontWeight: 400,
+        }}>
           Every step counts. Every effort brings you closer to your goals.
           Attax transforms your daily workouts into a competitive sport.
         </p>
 
-        {/* Buttons */}
-        <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
-          <a
-            href="https://apps.apple.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "8px",
-              backgroundColor: "#ffffff",
-              color: "#0d0d0d",
-              fontWeight: 700,
-              fontSize: "0.9375rem",
-              padding: "13px 24px",
-              borderRadius: "999px",
-              textDecoration: "none",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            Download App
+        {/* CTAs */}
+        <div className="animate-fade-up delay-300" style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+          <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" className="btn-primary" style={{
+            display: "inline-flex", alignItems: "center", gap: "8px",
+            backgroundColor: "#ffffff", color: "#0d0d0d",
+            fontWeight: 700, fontSize: "0.9375rem",
+            padding: "13px 26px", borderRadius: "999px",
+            textDecoration: "none", letterSpacing: "-0.01em",
+          }}>
+            <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+            </svg>
+            Download on iOS
           </a>
-          <Link
-            href="/discover"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "8px",
-              backgroundColor: "rgba(255,255,255,0.1)",
-              color: "#ffffff",
-              fontWeight: 600,
-              fontSize: "0.9375rem",
-              padding: "13px 24px",
-              borderRadius: "999px",
-              textDecoration: "none",
-              letterSpacing: "-0.01em",
-              border: "1px solid rgba(255,255,255,0.15)",
-            }}
-          >
+          <Link href="/discover" className="btn-ghost" style={{
+            display: "inline-flex", alignItems: "center",
+            backgroundColor: "rgba(255,255,255,0.08)",
+            color: "#ffffff", fontWeight: 600, fontSize: "0.9375rem",
+            padding: "13px 26px", borderRadius: "999px",
+            textDecoration: "none", letterSpacing: "-0.01em",
+            border: "1px solid rgba(255,255,255,0.12)",
+          }}>
             See what we offer
           </Link>
         </div>
       </div>
 
-      {/* Bottom stats bar — exact superpower.com layout */}
-      <div
-        style={{
-          position: "relative",
-          zIndex: 2,
-          display: "flex",
-          alignItems: "stretch",
-          padding: "0 4rem 3rem",
-          gap: "0",
-        }}
-      >
+      {/* ── Bottom stats bar ── */}
+      <div className="animate-fade-up delay-500" style={{
+        position: "relative", zIndex: 2,
+        display: "flex",
+        padding: "0 4rem 3.5rem",
+        gap: "0",
+      }}>
         {[
-          { title: "Whole body tracking", sub: "Detect 1,000+ activity patterns" },
-          { title: "Accessible", sub: "Free to download" },
-          { title: "Trusted", sub: "10K+ athletes worldwide" },
+          { title: "Whole body tracking", sub: "Via Apple Health & Google Fit" },
+          { title: "Accessible", sub: "Free to download, always" },
+          { title: "Trusted", sub: "10,000+ athletes worldwide", accent: true },
         ].map((s, i) => (
-          <div
-            key={s.title}
-            style={{
-              paddingLeft: i > 0 ? "2rem" : "0",
-              marginLeft: i > 0 ? "2rem" : "0",
-              borderLeft: i > 0 ? "1px solid rgba(255,255,255,0.12)" : "none",
-            }}
-          >
-            <div
-              style={{
-                fontSize: "0.9375rem",
-                fontWeight: 700,
-                color: i === 2 ? "#FC5F2B" : "#ffffff",
-                marginBottom: "2px",
-                letterSpacing: "-0.01em",
-              }}
-            >
-              {s.title}
-            </div>
-            <div
-              style={{
-                fontSize: "0.8125rem",
-                color: "rgba(255,255,255,0.45)",
-              }}
-            >
-              {s.sub}
-            </div>
+          <div key={s.title} style={{
+            paddingLeft: i > 0 ? "2.5rem" : 0,
+            marginLeft: i > 0 ? "2.5rem" : 0,
+            borderLeft: i > 0 ? "1px solid rgba(255,255,255,0.1)" : "none",
+          }}>
+            <div style={{
+              fontSize: "0.9375rem", fontWeight: 700,
+              color: s.accent ? "#FC5F2B" : "#ffffff",
+              marginBottom: "3px", letterSpacing: "-0.01em",
+            }}>{s.title}</div>
+            <div style={{ fontSize: "0.8125rem", color: "rgba(255,255,255,0.4)" }}>{s.sub}</div>
           </div>
         ))}
       </div>
+
+      {/* Bottom fade to white */}
+      <div style={{
+        position: "absolute", bottom: 0, left: 0, right: 0,
+        height: "80px",
+        background: "linear-gradient(to bottom, transparent, #ffffff)",
+        pointerEvents: "none", zIndex: 3,
+      }} />
     </section>
   );
 }

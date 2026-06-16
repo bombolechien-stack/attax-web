@@ -1,108 +1,74 @@
+import InView from "@/components/InView";
+
 const reviews = [
-  {
-    text: "I've tried every fitness app out there. Attax is the first one that made me actually look forward to Monday.",
-    name: "Lucas M.",
-    location: "Paris, France",
-    sport: "Running",
-    rating: 5,
-  },
-  {
-    text: "The league system is addictive. I started running more just to stay competitive. That's exactly the point.",
-    name: "Sarah K.",
-    location: "London, UK",
-    sport: "CrossFit",
-    rating: 5,
-  },
-  {
-    text: "My mindset shifted from 'I have to work out' to 'I want to earn my points today'. Big difference.",
-    name: "Thomas R.",
-    location: "Bordeaux, France",
-    sport: "Cycling",
-    rating: 5,
-  },
+  { text: "I've tried every fitness app out there. Attax is the first one that made me actually look forward to Monday.", name: "Lucas M.", loc: "Paris, France", sport: "Running" },
+  { text: "The league system is addictive. I started running more just to stay competitive. That's exactly the point.", name: "Sarah K.", loc: "London, UK", sport: "CrossFit" },
+  { text: "My mindset shifted from 'I have to work out' to 'I want to earn my points today'. Big difference.", name: "Thomas R.", loc: "Bordeaux, France", sport: "Cycling" },
 ];
 
 export default function Community() {
   return (
     <section style={{ backgroundColor: "#ffffff", padding: "6rem 2rem" }}>
       <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
-        <div style={{ textAlign: "center", marginBottom: "4rem" }}>
-          <h2
-            style={{
-              fontSize: "clamp(2rem, 4vw, 3rem)",
-              fontWeight: 800,
-              color: "#1a1a1a",
-              letterSpacing: "-0.03em",
-              margin: "0 0 1rem",
-              lineHeight: 1.1,
-            }}
-          >
+        <InView style={{ textAlign: "center", marginBottom: "4rem" }}>
+          <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.14em", color: "#FC5F2B", textTransform: "uppercase", margin: "0 0 1rem" }}>
+            Reviews
+          </p>
+          <h2 style={{
+            fontSize: "clamp(2rem, 4vw, 3rem)",
+            fontWeight: 800, color: "#0d0d0d",
+            letterSpacing: "-0.035em", margin: "0 0 1rem", lineHeight: 1.1,
+          }}>
             What athletes are saying
           </h2>
-          <p style={{ fontSize: "1.125rem", color: "#666666", maxWidth: "380px", margin: "0 auto", lineHeight: 1.6 }}>
+          <p style={{ fontSize: "1.0625rem", color: "#777", maxWidth: "340px", margin: "0 auto", lineHeight: 1.65 }}>
             A community that lifts you up.
           </p>
-        </div>
+        </InView>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: "12px",
-          }}
-        >
-          {reviews.map((r) => (
-            <div
-              key={r.name}
-              style={{
-                backgroundColor: "#fafafa",
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px,1fr))", gap: "10px" }}>
+          {reviews.map((r, i) => (
+            <InView key={r.name} delay={i * 80} className="premium-card">
+              <div style={{
+                backgroundColor: "#f7f7f7",
                 borderRadius: "20px",
-                padding: "2rem",
-                border: "1px solid #f0f0f0",
-              }}
-            >
-              {/* Stars */}
-              <div style={{ display: "flex", gap: "3px", marginBottom: "1rem" }}>
-                {Array.from({ length: r.rating }).map((_, i) => (
-                  <svg key={i} width="14" height="14" viewBox="0 0 14 14" fill="#FC5F2B">
-                    <path d="M7 1l1.545 3.13L12 4.635l-2.5 2.435.59 3.43L7 8.885l-3.09 1.615.59-3.43L2 4.635l3.455-.505z" />
-                  </svg>
-                ))}
-              </div>
-
-              <p
-                style={{
-                  fontSize: "0.9375rem",
-                  color: "#1a1a1a",
-                  lineHeight: 1.7,
-                  margin: "0 0 1.5rem",
-                  fontStyle: "italic",
-                }}
-              >
-                &ldquo;{r.text}&rdquo;
-              </p>
-
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                <div>
-                  <div style={{ fontSize: "0.875rem", fontWeight: 600, color: "#1a1a1a" }}>{r.name}</div>
-                  <div style={{ fontSize: "0.8125rem", color: "#999999" }}>{r.location}</div>
+                padding: "2rem 2rem 2.25rem",
+                border: "1px solid transparent",
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+              }}>
+                {/* Stars */}
+                <div style={{ display: "flex", gap: "3px", marginBottom: "1.25rem" }}>
+                  {[1,2,3,4,5].map(j => (
+                    <svg key={j} width="14" height="14" viewBox="0 0 14 14" fill="#FC5F2B">
+                      <path d="M7 1.5l1.4 2.8 3.1.45-2.25 2.2.53 3.1L7 8.45l-2.78 1.6.53-3.1L2.5 4.75l3.1-.45z"/>
+                    </svg>
+                  ))}
                 </div>
-                <span
-                  style={{
-                    fontSize: "0.6875rem",
-                    fontWeight: 600,
-                    letterSpacing: "0.05em",
-                    padding: "4px 10px",
-                    borderRadius: "999px",
-                    backgroundColor: "#fff5eb",
-                    color: "#FC5F2B",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  {r.sport}
-                </span>
+
+                <p style={{
+                  fontSize: "1rem", color: "#1a1a1a",
+                  lineHeight: 1.7, margin: "0 0 1.5rem",
+                  fontStyle: "italic", flex: 1,
+                }}>
+                  &ldquo;{r.text}&rdquo;
+                </p>
+
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                  <div>
+                    <div style={{ fontSize: "0.875rem", fontWeight: 700, color: "#0d0d0d" }}>{r.name}</div>
+                    <div style={{ fontSize: "0.8125rem", color: "#aaa", marginTop: "2px" }}>{r.loc}</div>
+                  </div>
+                  <span style={{
+                    fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.08em",
+                    padding: "4px 10px", borderRadius: "999px",
+                    backgroundColor: "#fff5eb", color: "#FC5F2B", textTransform: "uppercase",
+                  }}>{r.sport}</span>
+                </div>
               </div>
-            </div>
+            </InView>
           ))}
         </div>
       </div>

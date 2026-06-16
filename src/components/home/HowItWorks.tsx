@@ -1,138 +1,81 @@
+import InView from "@/components/InView";
+
 const steps = [
-  {
-    n: "1",
-    title: "Do your sport",
-    desc: "Walk, run, cycle, lift — any physical activity counts. Attax connects to Apple Health and Google Health Connect automatically.",
-    bg: "#f4f4f5",
-  },
-  {
-    n: "2",
-    title: "Your data, explained",
-    desc: "Get a complete picture of your activity in one place. Weekly trends, recovery patterns, and performance insights.",
-    bg: "#fff5eb",
-  },
-  {
-    n: "3",
-    title: "Build your consistency",
-    desc: "Focus on the habit, not perfection. Attax celebrates showing up — daily streaks, weekly goals, small wins.",
-    bg: "#f4f4f5",
-  },
-  {
-    n: "4",
-    title: "Climb the ranks",
-    desc: "Compete in leagues with athletes at your level. Earn points, climb the leaderboard, and become the best version of yourself.",
-    bg: "#111111",
-    dark: true,
-  },
+  { n: "01", emoji: "🏃", title: "Do your sport", desc: "Walk, run, cycle, lift — any activity counts. Attax connects to Apple Health & Google Health Connect automatically.", bg: "#f7f7f7" },
+  { n: "02", emoji: "📊", title: "Your data, explained", desc: "A complete picture of your activity. Weekly trends, recovery patterns, and performance insights in one place.", bg: "#fff5eb" },
+  { n: "03", emoji: "🔥", title: "Build consistency", desc: "Focus on the habit, not perfection. Daily streaks, weekly goals, small wins compounding into big results.", bg: "#f7f7f7" },
+  { n: "04", emoji: "🏆", title: "Climb the ranks", desc: "Compete in leagues with athletes at your level. Earn points, climb the leaderboard, and become the best version of yourself.", bg: "#0d0d0d", dark: true },
 ];
 
 export default function HowItWorks() {
   return (
     <section style={{ backgroundColor: "#ffffff", padding: "6rem 2rem" }}>
       <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
-        {/* Header */}
-        <div style={{ textAlign: "center", marginBottom: "4rem" }}>
-          <h2
-            style={{
-              fontSize: "clamp(2rem, 4vw, 3rem)",
-              fontWeight: 800,
-              color: "#1a1a1a",
-              letterSpacing: "-0.03em",
-              margin: "0 0 1rem",
-              lineHeight: 1.1,
-            }}
-          >
+        <InView style={{ textAlign: "center", marginBottom: "4rem" }}>
+          <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.14em", color: "#FC5F2B", textTransform: "uppercase", margin: "0 0 1rem" }}>
             How it works
-          </h2>
-          <p
-            style={{
-              fontSize: "1.125rem",
-              color: "#666666",
-              maxWidth: "480px",
-              margin: "0 auto",
-              lineHeight: 1.6,
-            }}
-          >
-            It starts with your first workout, then so much more.
           </p>
-        </div>
+          <h2 style={{
+            fontSize: "clamp(2rem, 4vw, 3rem)",
+            fontWeight: 800, color: "#0d0d0d",
+            letterSpacing: "-0.035em", margin: "0 0 1rem", lineHeight: 1.1,
+          }}>
+            It starts with your first workout,<br />then so much more.
+          </h2>
+          <p style={{ fontSize: "1.0625rem", color: "#777", maxWidth: "440px", margin: "0 auto", lineHeight: 1.65 }}>
+            Four simple steps that turn daily effort into lasting progress.
+          </p>
+        </InView>
 
-        {/* Steps grid */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-            gap: "12px",
-          }}
-        >
-          {steps.map((s) => (
-            <div
-              key={s.n}
-              style={{
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(230px,1fr))", gap: "10px" }}>
+          {steps.map((s, i) => (
+            <InView key={s.n} delay={i * 80} className="premium-card">
+              <div style={{
                 backgroundColor: s.bg,
                 borderRadius: "20px",
-                padding: "2.5rem 2rem",
+                padding: "2.25rem 2rem 2.5rem",
                 position: "relative",
                 overflow: "hidden",
-              }}
-            >
-              {/* Step number */}
-              <div
-                style={{
-                  fontSize: "4rem",
-                  fontWeight: 800,
-                  color: s.dark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.06)",
-                  lineHeight: 1,
-                  position: "absolute",
-                  top: "1.25rem",
-                  right: "1.5rem",
-                  letterSpacing: "-0.04em",
-                  userSelect: "none",
-                }}
-              >
-                {s.n}
-              </div>
+                height: "100%",
+                minHeight: "280px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+              }}>
+                {/* Number watermark */}
+                <div style={{
+                  position: "absolute", top: "1rem", right: "1.25rem",
+                  fontSize: "5rem", fontWeight: 900, lineHeight: 1,
+                  color: s.dark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)",
+                  letterSpacing: "-0.04em", userSelect: "none", pointerEvents: "none",
+                }}>{s.n}</div>
 
-              {/* Icon */}
-              <div
-                style={{
-                  width: "44px",
-                  height: "44px",
-                  borderRadius: "12px",
-                  backgroundColor: s.dark ? "rgba(252,95,43,0.2)" : "#FC5F2B",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginBottom: "1.5rem",
-                }}
-              >
-                <span style={{ fontSize: "20px" }}>
-                  {s.n === "1" ? "🏃" : s.n === "2" ? "📊" : s.n === "3" ? "🔥" : "🏆"}
-                </span>
-              </div>
+                {/* Icon */}
+                <div style={{
+                  width: "48px", height: "48px", borderRadius: "14px",
+                  backgroundColor: s.dark ? "rgba(252,95,43,0.15)" : "#FC5F2B",
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  fontSize: "22px", marginBottom: "auto",
+                }}>{s.emoji}</div>
 
-              <h3
-                style={{
-                  fontSize: "1.125rem",
-                  fontWeight: 700,
-                  color: s.dark ? "#ffffff" : "#1a1a1a",
-                  margin: "0 0 0.75rem",
-                  letterSpacing: "-0.01em",
-                }}
-              >
-                {s.title}
-              </h3>
-              <p
-                style={{
-                  fontSize: "0.9375rem",
-                  color: s.dark ? "rgba(255,255,255,0.55)" : "#666666",
-                  lineHeight: 1.65,
-                  margin: 0,
-                }}
-              >
-                {s.desc}
-              </p>
-            </div>
+                <div style={{ marginTop: "3rem" }}>
+                  <div style={{
+                    fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.1em",
+                    textTransform: "uppercase", color: s.dark ? "rgba(252,95,43,0.8)" : "#FC5F2B",
+                    marginBottom: "0.5rem",
+                  }}>Step {s.n}</div>
+                  <h3 style={{
+                    fontSize: "1.125rem", fontWeight: 700, letterSpacing: "-0.02em",
+                    color: s.dark ? "#ffffff" : "#0d0d0d",
+                    margin: "0 0 0.75rem",
+                  }}>{s.title}</h3>
+                  <p style={{
+                    fontSize: "0.9rem", lineHeight: 1.65, margin: 0,
+                    color: s.dark ? "rgba(255,255,255,0.5)" : "#666",
+                  }}>{s.desc}</p>
+                </div>
+              </div>
+            </InView>
           ))}
         </div>
       </div>
