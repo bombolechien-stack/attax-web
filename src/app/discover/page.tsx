@@ -82,9 +82,9 @@ export default function DiscoverPage() {
               <span style={{ fontSize: "0.75rem", fontWeight: 600, color: "rgba(255,255,255,0.4)", letterSpacing: "0.14em", textTransform: "uppercase" }}>Discover Attax</span>
             </div>
             <h1 style={{
-              fontSize: "clamp(2.25rem, 4vw, 3.75rem)",
+              fontSize: "clamp(3rem, 5.5vw, 4.75rem)",
               fontWeight: 800, color: "#ffffff",
-              lineHeight: 1.05, letterSpacing: "-0.035em", margin: "0 0 1.25rem",
+              lineHeight: 1.02, letterSpacing: "-0.035em", margin: "0 0 1.25rem",
             }}>
               Your workouts.<br />
               <em style={{ fontStyle: "normal", color: "#ffffff" }}>A real fight.</em>
@@ -93,7 +93,7 @@ export default function DiscoverPage() {
               fontSize: "1rem", color: "rgba(255,255,255,0.5)",
               lineHeight: 1.75, margin: "0 0 2rem", maxWidth: "400px",
             }}>
-              attax turns your activity data into Activity Points. Every day you face a real opponent in a 1v1 duel. Play a card. Win the evening. Climb the rank.
+              Turn your training into Activity Points. Face a real opponent every day. Play a card. Win the night.
             </p>
             <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
               <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" style={{
