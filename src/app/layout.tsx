@@ -33,10 +33,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           padding: 0,
           backgroundColor: "#ffffff",
           color: "#1a1a1a",
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
         }}
       >
         <Navbar />
-        <main>{children}</main>
+        <main style={{ flex: 1, margin: 0, padding: 0 }}>{children}</main>
         <Footer />
       </body>
     </html>
