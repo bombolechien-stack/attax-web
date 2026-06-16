@@ -54,7 +54,7 @@ export default function ContactPage() {
             padding: "3rem 4rem 4rem",
             textAlign: "center",
           }}>
-            <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.14em", color: "#0d0d0d", textTransform: "uppercase", margin: "0 0 1.25rem" }}>Contact</p>
+            <p style={{ fontSize: "0.75rem", fontWeight: 600, letterSpacing: "0.14em", color: "rgba(255,255,255,0.4)", textTransform: "uppercase", margin: "0 0 1.25rem" }}>Contact</p>
             <h1 style={{
               fontSize: "clamp(2.5rem, 5vw, 4rem)",
               fontWeight: 800, color: "#ffffff",
