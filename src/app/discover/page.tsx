@@ -181,10 +181,10 @@ export default function DiscoverPage() {
             height: "520px",
           }}>
             <Image
-              src="/images/sport-running-group.png"
-              alt="Athletes in motion"
+              src="/images/fencing.jpg"
+              alt="Fencer in action"
               fill
-              style={{ objectFit: "cover", objectPosition: "center 35%" }}
+              style={{ objectFit: "cover", objectPosition: "center 30%" }}
             />
             <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0) 100%)" }} />
             <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "3.5rem 4rem" }}>
