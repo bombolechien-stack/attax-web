@@ -5,22 +5,19 @@ const PHONES = [
     src: "/screens/screenactivity.png",
     label: "Train",
     caption: "Every workout syncs automatically. Your score updates in real time.",
-    offset: 70,
-    scale: 0.78,
+    scale: 0.72,
   },
   {
     src: "/screens/screenmatch.png",
     label: "Battle",
     caption: "Daily 1v1 duels. Results drop at 21:30 every night.",
-    offset: 0,
     scale: 1,
   },
   {
     src: "/screens/screencards.png",
     label: "Strategize",
     caption: "12 combat cards. Play them at the right moment to swing the duel.",
-    offset: 70,
-    scale: 0.78,
+    scale: 0.72,
   },
 ];
 
@@ -70,9 +67,9 @@ export default function VisualGrid() {
       <div style={{
         display: "flex",
         justifyContent: "center",
-        alignItems: "flex-start",
-        gap: "clamp(0.5rem, 1.5vw, 1.5rem)",
-        marginBottom: "3.5rem",
+        alignItems: "flex-end",
+        gap: "clamp(0.75rem, 2vw, 2rem)",
+        marginBottom: "2.5rem",
       }}>
         {PHONES.map(p => {
           const W = 400 * p.scale;
@@ -82,9 +79,8 @@ export default function VisualGrid() {
               width: W,
               height: H,
               position: "relative",
-              transform: `translateY(${p.offset}px)`,
               flexShrink: 0,
-              filter: "drop-shadow(0 32px 64px rgba(0,0,0,0.55))",
+              filter: "drop-shadow(0 24px 48px rgba(0,0,0,0.6))",
             }}>
               <Image
                 src={p.src}
