@@ -37,37 +37,20 @@ const pillars = [
 ];
 
 const cards = [
-  { name: "Spike", cat: "BOOST", desc: "+30% AP on your next session (30 min cap)" },
-  { name: "Overdrive", cat: "BOOST", desc: "Your best 20-min window counts ×2" },
-  { name: "Recover", cat: "BOOST", desc: "+15% AP on your next session today" },
-  { name: "Shield", cat: "DEFENSE", desc: "Opponent loses 15% AP on their next session" },
-  { name: "Freeze", cat: "SABOTAGE", desc: "Opponent's best day loses 8% AP" },
-  { name: "Pressure", cat: "SABOTAGE", desc: "If they train 30+ min: +15% AP on your score" },
-  { name: "Parasite", cat: "SABOTAGE", desc: "If they train 30+ min: steal 7% of their points" },
-  { name: "Scan", cat: "INTEL", desc: "Reveal your opponent's full HR curve for one round" },
-  { name: "Ghost", cat: "MASQUE", desc: "Your activity looks flat to the opponent until evening" },
-  { name: "Mirage", cat: "MASQUE", desc: "Opponent sees your score faked by ±15%" },
-  { name: "Blackout", cat: "MASQUE", desc: "No score info for either player until 7 PM" },
-  { name: "Counter", cat: "MOMENTUM", desc: "If losing at 6 PM: +25% AP on sessions after 6 PM" },
+  { name: "Spike",     cat: "BOOST",    color: "#22c55e", bg: "/cards/spike-bg.png",     icon: "/cards/spike.png",     desc: "+30% AP on next session (30 min cap)" },
+  { name: "Overdrive", cat: "BOOST",    color: "#22c55e", bg: "/cards/overdrive-bg.png",  icon: "/cards/overdrive.png",  desc: "Your best 20-min window counts ×2" },
+  { name: "Recover",   cat: "BOOST",    color: "#22c55e", bg: "/cards/recover-bg.png",    icon: "/cards/recover.png",    desc: "+15% AP on your next session today" },
+  { name: "Shield",    cat: "DEFENSE",  color: "#3b82f6", bg: "/cards/shield-bg.png",     icon: "/cards/shield.png",     desc: "Opponent loses 15% AP on their next session" },
+  { name: "Freeze",    cat: "SABOTAGE", color: "#ef4444", bg: "/cards/freeze-bg.png",     icon: "/cards/freeze.png",     desc: "Opponent's best day loses 8% AP" },
+  { name: "Pressure",  cat: "SABOTAGE", color: "#ef4444", bg: "/cards/pressure-bg.png",   icon: "/cards/pressure.png",   desc: "If they train 30+ min: +15% AP on your score" },
+  { name: "Parasite",  cat: "SABOTAGE", color: "#ef4444", bg: "/cards/parasite-bg.png",   icon: "/cards/parasite.png",   desc: "If they train 30+ min: steal 7% of their points" },
+  { name: "Scan",      cat: "INTEL",    color: "#a855f7", bg: "/cards/scan-bg.png",       icon: "/cards/scan.png",       desc: "Reveal your opponent's full HR curve for one round" },
+  { name: "Ghost",     cat: "MASQUE",   color: "#8b5cf6", bg: "/cards/ghost-bg.png",      icon: "/cards/ghost.png",      desc: "Your activity looks flat to the opponent until evening" },
+  { name: "Mirage",    cat: "MASQUE",   color: "#8b5cf6", bg: "/cards/mirage-bg.png",     icon: "/cards/mirage.png",     desc: "Opponent sees your score faked by ±15%" },
+  { name: "Blackout",  cat: "MASQUE",   color: "#8b5cf6", bg: "/cards/blackout-bg.png",   icon: "/cards/blackout.png",   desc: "No score info for either player until 7 PM" },
+  { name: "Counter",   cat: "MOMENTUM", color: "#f59e0b", bg: "/cards/boost-bg.png",      icon: "/cards/counter.png",    desc: "If losing at 6 PM: +25% AP on sessions after 6 PM" },
 ];
 
-const catColor: Record<string, string> = {
-  BOOST: "#e8f5e9",
-  DEFENSE: "#e3f2fd",
-  SABOTAGE: "#fce4ec",
-  INTEL: "#f3e5f5",
-  MASQUE: "#ede7f6",
-  MOMENTUM: "#fff3e0",
-};
-
-const catText: Record<string, string> = {
-  BOOST: "#2e7d32",
-  DEFENSE: "#1565c0",
-  SABOTAGE: "#c62828",
-  INTEL: "#6a1b9a",
-  MASQUE: "#4527a0",
-  MOMENTUM: "#e65100",
-};
 
 export default function DiscoverPage() {
   return (
