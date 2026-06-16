@@ -17,28 +17,17 @@ export const metadata: Metadata = {
   keywords: ["fitness", "competition", "ranking", "sport", "workout", "attax"],
   openGraph: {
     title: "Attax — Keep moving with Attax",
-    description:
-      "The competitive fitness app where every workout fuels your rank.",
+    description: "The competitive fitness app where every workout fuels your rank.",
     url: "https://attax.app",
     siteName: "Attax",
     type: "website",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Attax — Keep moving with Attax",
-    description:
-      "The competitive fitness app where every workout fuels your rank.",
-  },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${geistSans.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-[#09090b] text-[#fafafa]">
+    <html lang="en" className={`${geistSans.variable} h-full`}>
+      <body className="min-h-full flex flex-col bg-white text-gray-900 antialiased">
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

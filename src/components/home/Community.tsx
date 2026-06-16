@@ -28,18 +28,16 @@ const values = [
 
 export default function Community() {
   return (
-    <section className="py-28 px-6">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-28 px-6 bg-white">
+      <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <p className="text-xs font-semibold tracking-[0.2em] text-[#f97316] uppercase mb-4">
+          <p className="text-xs font-semibold tracking-[0.2em] text-orange-600 uppercase mb-4">
             Community
           </p>
-          <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight">
-            A community that
-            <br />
-            <span className="text-[#f97316]">lifts you up</span>
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 tracking-tight">
+            A community that lifts you up
           </h2>
-          <p className="mt-4 text-[#71717a] max-w-md mx-auto">
+          <p className="mt-5 text-gray-500 max-w-md mx-auto leading-relaxed">
             Thousands of athletes sharing the same mindset: progress, persistence, and positivity.
           </p>
         </div>
@@ -48,16 +46,16 @@ export default function Community() {
           {quotes.map((q) => (
             <div
               key={q.author}
-              className="p-6 rounded-2xl bg-[#18181b] border border-[#27272a] hover:border-[#f97316]/30 transition-all"
+              className="p-8 rounded-2xl bg-gray-50 border border-gray-100 hover:border-orange-100 transition-all"
             >
-              <div className="text-[#f97316] text-2xl mb-4">"</div>
-              <p className="text-sm text-[#d4d4d8] leading-relaxed mb-6 italic">{q.text}</p>
+              <div className="text-orange-400 text-3xl font-serif mb-4">"</div>
+              <p className="text-sm text-gray-600 leading-relaxed mb-6 italic">{q.text}</p>
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="text-sm font-semibold text-white">{q.author}</div>
-                  <div className="text-xs text-[#71717a]">{q.location}</div>
+                  <div className="text-sm font-semibold text-gray-900">{q.author}</div>
+                  <div className="text-xs text-gray-400">{q.location}</div>
                 </div>
-                <span className="text-[10px] font-semibold tracking-wide px-2 py-1 rounded-full bg-[#f97316]/10 text-[#f97316]">
+                <span className="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-orange-50 text-orange-600">
                   {q.sport}
                 </span>
               </div>
@@ -69,8 +67,8 @@ export default function Community() {
           {values.map((v) => (
             <div key={v.title} className="text-center p-6">
               <div className="text-3xl mb-3">{v.icon}</div>
-              <h4 className="text-sm font-bold text-white mb-2">{v.title}</h4>
-              <p className="text-xs text-[#71717a] leading-relaxed">{v.desc}</p>
+              <h4 className="text-sm font-bold text-gray-900 mb-2">{v.title}</h4>
+              <p className="text-xs text-gray-400 leading-relaxed">{v.desc}</p>
             </div>
           ))}
         </div>

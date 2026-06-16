@@ -5,7 +5,6 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 
 const links = [
-  { href: "/", label: "Home" },
   { href: "/discover", label: "Discover" },
   { href: "/adventure", label: "The Adventure" },
   { href: "/contact", label: "Contact" },
@@ -25,16 +24,16 @@ export default function Navbar() {
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#09090b]/90 backdrop-blur-md border-b border-[#27272a]"
-          : "bg-transparent"
+          ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100"
+          : "bg-white/80 backdrop-blur-sm"
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group">
-          <span className="text-xl font-black tracking-tight text-white group-hover:text-[#f97316] transition-colors">
+          <span className="text-xl font-black tracking-tight text-gray-900 group-hover:text-orange-600 transition-colors">
             ATTAX
           </span>
-          <span className="text-[10px] font-semibold tracking-[0.2em] text-[#f97316] uppercase mt-0.5">
+          <span className="text-[10px] font-semibold tracking-[0.15em] text-orange-500 bg-orange-50 px-2 py-0.5 rounded-full uppercase">
             beta
           </span>
         </Link>
@@ -44,7 +43,7 @@ export default function Navbar() {
             <Link
               key={l.href}
               href={l.href}
-              className="text-sm font-medium text-[#a1a1aa] hover:text-white transition-colors"
+              className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
             >
               {l.label}
             </Link>
@@ -56,14 +55,14 @@ export default function Navbar() {
             href="https://apps.apple.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 text-sm font-semibold bg-[#f97316] text-white rounded-full hover:bg-[#ea6f00] transition-colors"
+            className="px-5 py-2.5 text-sm font-semibold bg-orange-600 text-white rounded-full hover:bg-orange-700 transition-colors shadow-sm"
           >
             Download App
           </a>
         </div>
 
         <button
-          className="md:hidden text-[#a1a1aa] hover:text-white transition-colors"
+          className="md:hidden text-gray-600 hover:text-gray-900 transition-colors"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
@@ -72,14 +71,14 @@ export default function Navbar() {
       </nav>
 
       {open && (
-        <div className="md:hidden bg-[#09090b]/95 backdrop-blur-md border-b border-[#27272a]">
-          <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-4">
+        <div className="md:hidden bg-white border-b border-gray-100 shadow-md">
+          <div className="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-4">
             {links.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="text-sm font-medium text-[#a1a1aa] hover:text-white transition-colors py-2"
+                className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors py-1"
               >
                 {l.label}
               </Link>
@@ -88,7 +87,7 @@ export default function Navbar() {
               href="https://apps.apple.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 text-sm font-semibold bg-[#f97316] text-white rounded-full text-center hover:bg-[#ea6f00] transition-colors"
+              className="px-5 py-2.5 text-sm font-semibold bg-orange-600 text-white rounded-full text-center hover:bg-orange-700 transition-colors"
             >
               Download App
             </a>
