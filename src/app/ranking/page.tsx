@@ -8,22 +8,18 @@ export const metadata: Metadata = {
 
 export default function RankingPage() {
   return (
-    <section className="min-h-screen flex items-center justify-center px-6 pt-16">
-      <div className="text-center max-w-lg">
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#f97316]/30 bg-[#f97316]/10 text-[#f97316] text-xs font-semibold tracking-wide mb-8">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#f97316] animate-pulse" />
+    <section style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "6rem 2rem", backgroundColor: "#0a0a0a" }}>
+      <div style={{ textAlign: "center", maxWidth: "480px" }}>
+        <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "6px 16px", borderRadius: "999px", border: "1px solid rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.4)", fontSize: "0.75rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "2.5rem" }}>
           Coming in V2
         </div>
-        <h1 className="text-5xl md:text-6xl font-black text-white tracking-tight mb-6">
-          Global<br /><span className="text-[#f97316]">Rankings</span>
+        <h1 style={{ fontSize: "clamp(3rem, 7vw, 5rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.045em", lineHeight: 1, marginBottom: "1.5rem" }}>
+          Global<br />Rankings
         </h1>
-        <p className="text-[#a1a1aa] leading-relaxed mb-8">
-          The global Attax leaderboard is in development. Soon you&apos;ll be able to see how you rank against athletes worldwide, filtered by sport, city, and country.
+        <p style={{ color: "rgba(255,255,255,0.4)", lineHeight: 1.75, marginBottom: "2.5rem", fontSize: "1rem" }}>
+          The global Attax leaderboard is in development. Soon you&apos;ll be able to see how you rank against athletes worldwide.
         </p>
-        <Link
-          href="/"
-          className="inline-flex px-6 py-3 bg-[#f97316] text-white font-semibold rounded-full hover:bg-[#ea6f00] transition-all"
-        >
+        <Link href="/" style={{ display: "inline-flex", padding: "12px 28px", backgroundColor: "#ffffff", color: "#0d0d0d", fontWeight: 700, fontSize: "0.9375rem", borderRadius: "999px", textDecoration: "none" }}>
           ← Back home
         </Link>
       </div>

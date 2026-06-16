@@ -12,29 +12,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function PlayerProfilePage({ params }: Props) {
   const { username } = await params;
-
   return (
-    <section className="min-h-screen flex items-center justify-center px-6 pt-16">
-      <div className="text-center max-w-lg">
-        <div className="w-20 h-20 rounded-full bg-[#18181b] border-2 border-[#27272a] flex items-center justify-center text-3xl mx-auto mb-6">
-          🏃
+    <section style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "6rem 2rem", backgroundColor: "#0a0a0a" }}>
+      <div style={{ textAlign: "center", maxWidth: "480px" }}>
+        <div style={{ width: "72px", height: "72px", borderRadius: "50%", backgroundColor: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.08)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 2rem", fontSize: "2rem" }}>
+          {username.charAt(0).toUpperCase()}
         </div>
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#f97316]/30 bg-[#f97316]/10 text-[#f97316] text-xs font-semibold tracking-wide mb-4">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#f97316] animate-pulse" />
+        <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "6px 16px", borderRadius: "999px", border: "1px solid rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.4)", fontSize: "0.75rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1.5rem" }}>
           Coming in V2
         </div>
-        <h1 className="text-4xl font-black text-white mb-2">
+        <h1 style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.04em", lineHeight: 1.05, marginBottom: "1.25rem" }}>
           @{username}
         </h1>
-        <p className="text-[#a1a1aa] leading-relaxed mb-8">
-          Public athlete profiles are coming in Attax V2. You&apos;ll be able to see rankings, stats, badges, and full activity history for any Attax athlete.
+        <p style={{ color: "rgba(255,255,255,0.4)", lineHeight: 1.75, marginBottom: "2.5rem", fontSize: "1rem" }}>
+          Public athlete profiles are coming in Attax V2. Rankings, stats, badges, and full activity history for every athlete.
         </p>
-        <a
-          href="https://apps.apple.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex px-6 py-3 bg-[#f97316] text-white font-semibold rounded-full hover:bg-[#ea6f00] transition-all"
-        >
+        <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", padding: "12px 28px", backgroundColor: "#ffffff", color: "#0d0d0d", fontWeight: 700, fontSize: "0.9375rem", borderRadius: "999px", textDecoration: "none" }}>
           Download Attax
         </a>
       </div>
