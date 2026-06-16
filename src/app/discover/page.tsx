@@ -38,14 +38,14 @@ export default function DiscoverPage() {
           position: "relative",
           backgroundColor: "#0d0d0d",
           borderRadius: "24px",
-          minHeight: "calc(100vh - 24px)",
+          height: "calc(100vh - 24px)",
           display: "flex",
           flexDirection: "column",
           overflow: "hidden",
         }}>
           {/* Background image */}
           <Image
-            src="/images/warmup.jpg"
+            src="/images/discover-hero.png"
             alt="Discover Attax"
             fill
             style={{ objectFit: "cover", objectPosition: "center 30%" }}

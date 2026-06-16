@@ -22,7 +22,7 @@ export default function ContactPage() {
           position: "relative",
           backgroundColor: "#0d0d0d",
           borderRadius: "24px",
-          minHeight: "52vh",
+          height: "calc(100vh - 24px)",
           display: "flex",
           flexDirection: "column",
           overflow: "hidden",
