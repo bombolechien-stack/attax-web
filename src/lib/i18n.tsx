@@ -1,8 +1,9 @@
-"use client";
+﻿"use client";
 
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import { T, type Lang, type Translations } from "./translations";
 
-export type Lang = "en" | "fr";
+export type { Lang };
 
 const LangContext = createContext<{ lang: Lang; setLang: (l: Lang) => void }>({
   lang: "en",
@@ -27,4 +28,9 @@ export function LangProvider({ children }: { children: ReactNode }) {
 
 export function useLang() {
   return useContext(LangContext);
+}
+
+export function useT(): Translations {
+  const { lang } = useContext(LangContext);
+  return T[lang] as Translations;
 }
