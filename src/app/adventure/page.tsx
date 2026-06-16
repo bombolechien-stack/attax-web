@@ -1,18 +1,23 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
   title: "The Adventure — Attax Story",
   description: "The story behind Attax: why we built a competitive fitness app, what drives us, and where we're going.",
 };
 
+const NAV_LINKS = [
+  { href: "/discover", label: "Discover" },
+  { href: "/adventure", label: "The Adventure" },
+  { href: "/contact", label: "Contact" },
+];
+
 const timeline = [
   { year: "The Problem", title: "Emotionless fitness apps", description: "We looked around at fitness apps and found they all felt the same: cold trackers, step counters, and calorie logs. Nothing that made you feel anything. Nothing that made Monday exciting." },
   { year: "The Insight", title: "Consistency is the superpower", description: "The best athletes aren't the most talented — they're the most consistent. We wanted to build an app that celebrates showing up, day after day, rather than obsessing over peak performance." },
-  { year: "The Vision", title: "Sport as social competition", description: "What if your 5K run could earn you points in a global league? What if your consistency score made you famous among your peers? We wanted to create the Transfermarkt of amateur sport." },
-  { year: "Today", title: "Attax is born", description: "Attax is now live in beta, tracking workouts for athletes across 50+ countries. The ranking system, global leaderboards, and competitive leagues are coming in V2." },
+  { year: "The Vision", title: "Sport as social competition", description: "What if your 5K run could earn you points in a global league? What if your consistency score made you known among your peers? We wanted to create the social layer amateur sport was missing." },
+  { year: "Today", title: "Attax is born", description: "Attax is now live in beta, tracking workouts for athletes across dozens of countries. The ranking system, global leaderboards, and competitive leagues are coming in V2." },
 ];
 
 const values = [
@@ -25,14 +30,16 @@ const values = [
 export default function AdventurePage() {
   return (
     <>
-      <Navbar />
-
-      {/* Hero — Cycling is Budy.jpg */}
-      <div style={{ backgroundColor: "#ffffff", padding: "0 12px 12px" }}>
+      {/* Hero — Cycling is Budy.jpg, with navbar embedded */}
+      <div style={{ backgroundColor: "#ffffff", padding: "12px" }}>
         <div style={{
-          position: "relative", borderRadius: "24px", overflow: "hidden",
-          minHeight: "82vh", display: "flex", flexDirection: "column", justifyContent: "flex-end",
+          position: "relative",
           backgroundColor: "#0d0d0d",
+          borderRadius: "24px",
+          minHeight: "calc(100vh - 24px)",
+          display: "flex",
+          flexDirection: "column",
+          overflow: "hidden",
         }}>
           <Image
             src="/images/cycling-race.jpg"
@@ -43,16 +50,101 @@ export default function AdventurePage() {
           />
           <div style={{
             position: "absolute", inset: 0,
-            background: "linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.45) 45%, rgba(0,0,0,0.1) 100%)",
+            background: "linear-gradient(to right, rgba(13,13,13,0.95) 0%, rgba(13,13,13,0.7) 50%, rgba(13,13,13,0.15) 100%)",
           }} />
-          <div style={{ position: "relative", zIndex: 1, padding: "4rem" }}>
-            <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.14em", color: "#FC5F2B", textTransform: "uppercase", margin: "0 0 1rem" }}>The Adventure</p>
-            <h1 style={{ fontSize: "clamp(3rem, 6vw, 5rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.035em", lineHeight: 1.02, margin: "0 0 1.25rem" }}>
-              Why we built<br /><em style={{ fontStyle: "normal", color: "#FC5F2B" }}>Attax.</em>
+          <div style={{
+            position: "absolute", inset: 0,
+            background: "linear-gradient(to top, rgba(13,13,13,0.85) 0%, transparent 50%)",
+          }} />
+          <div style={{
+            position: "absolute", inset: 0, zIndex: 2, opacity: 0.15, pointerEvents: "none",
+            backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E\")",
+          }} />
+
+          {/* ── Navbar ── */}
+          <div style={{ position: "relative", zIndex: 10, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 2.5rem", height: "68px" }}>
+            <nav style={{ display: "flex", gap: "1.75rem", alignItems: "center", flex: 1 }}>
+              {NAV_LINKS.map(l => (
+                <Link key={l.href} href={l.href} className="nav-link" style={{
+                  fontSize: "0.875rem", fontWeight: 500,
+                  color: "rgba(255,255,255,0.7)", textDecoration: "none",
+                }}>{l.label}</Link>
+              ))}
+            </nav>
+            <Link href="/" style={{ position: "absolute", left: "50%", transform: "translateX(-50%)", textDecoration: "none" }}>
+              <span style={{ fontSize: "1.375rem", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.03em" }}>attax</span>
+            </Link>
+            <div style={{ display: "flex", alignItems: "center", gap: "1rem", flex: 1, justifyContent: "flex-end" }}>
+              <a href="#" style={{ fontSize: "0.875rem", fontWeight: 500, color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Log in</a>
+              <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" style={{
+                display: "inline-flex", alignItems: "center",
+                backgroundColor: "#ffffff", color: "#0d0d0d",
+                fontWeight: 700, fontSize: "0.8125rem",
+                padding: "8px 18px", borderRadius: "999px", textDecoration: "none",
+              }}>Download App</a>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(3,5px)", gap: "3px" }}>
+                {Array.from({ length: 9 }).map((_, i) => (
+                  <div key={i} style={{ width: "5px", height: "5px", borderRadius: "50%", backgroundColor: "rgba(255,255,255,0.7)" }} />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* ── Hero Content ── */}
+          <div style={{
+            position: "relative", zIndex: 3,
+            flex: 1, display: "flex", flexDirection: "column", justifyContent: "center",
+            padding: "4rem 4rem 3rem",
+            maxWidth: "620px",
+          }}>
+            <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.14em", color: "#FC5F2B", textTransform: "uppercase", margin: "0 0 1.25rem" }}>The Adventure</p>
+            <h1 style={{
+              fontSize: "clamp(3rem, 5.5vw, 4.75rem)",
+              fontWeight: 800, color: "#ffffff",
+              lineHeight: 1.02, letterSpacing: "-0.035em", margin: "0 0 1.5rem",
+            }}>
+              Why we built<br />
+              <em style={{ fontStyle: "normal", color: "#FC5F2B" }}>Attax.</em>
             </h1>
-            <p style={{ fontSize: "1.125rem", color: "rgba(255,255,255,0.6)", maxWidth: "520px", lineHeight: 1.65 }}>
-              We were tired of fitness apps that tracked everything but inspired nothing. So we built something different.
+            <p style={{
+              fontSize: "1.0625rem", color: "rgba(255,255,255,0.55)",
+              lineHeight: 1.7, margin: "0 0 2.5rem", maxWidth: "420px",
+            }}>
+              We were tired of emotionless fitness apps that tracked everything but inspired nothing. So we built something different.
             </p>
+            <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+              <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" style={{
+                display: "inline-flex", alignItems: "center", gap: "8px",
+                backgroundColor: "#FC5F2B", color: "#ffffff",
+                fontWeight: 700, fontSize: "0.9375rem",
+                padding: "13px 26px", borderRadius: "999px", textDecoration: "none",
+              }}>Download Attax</a>
+              <Link href="/contact" style={{
+                display: "inline-flex", alignItems: "center",
+                backgroundColor: "rgba(255,255,255,0.08)", color: "#ffffff",
+                fontWeight: 600, fontSize: "0.9375rem",
+                padding: "13px 26px", borderRadius: "999px",
+                textDecoration: "none", border: "1px solid rgba(255,255,255,0.12)",
+              }}>Get in touch</Link>
+            </div>
+          </div>
+
+          {/* ── Stats bar ── */}
+          <div style={{ position: "relative", zIndex: 3, display: "flex", padding: "0 4rem 3.5rem" }}>
+            {[
+              { title: "Born in 2024", sub: "Built from the ground up" },
+              { title: "50+ countries", sub: "Athletes worldwide" },
+              { title: "V2 incoming", sub: "Leagues & global ranking", accent: true },
+            ].map((s, i) => (
+              <div key={s.title} style={{
+                paddingLeft: i > 0 ? "2.5rem" : 0,
+                marginLeft: i > 0 ? "2.5rem" : 0,
+                borderLeft: i > 0 ? "1px solid rgba(255,255,255,0.1)" : "none",
+              }}>
+                <div style={{ fontSize: "0.9375rem", fontWeight: 700, color: s.accent ? "#FC5F2B" : "#ffffff", marginBottom: "3px" }}>{s.title}</div>
+                <div style={{ fontSize: "0.8125rem", color: "rgba(255,255,255,0.4)" }}>{s.sub}</div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -60,6 +152,10 @@ export default function AdventurePage() {
       {/* Timeline */}
       <section style={{ backgroundColor: "#ffffff", padding: "6rem 2rem" }}>
         <div style={{ maxWidth: "52rem", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "4rem" }}>
+            <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.14em", color: "#FC5F2B", textTransform: "uppercase", margin: "0 0 1rem" }}>Our story</p>
+            <h2 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.035em", margin: 0, lineHeight: 1.1 }}>How it all started.</h2>
+          </div>
           {timeline.map((item, i) => (
             <div key={item.year} style={{ display: "flex", gap: "2.5rem", position: "relative" }}>
               <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flexShrink: 0 }}>

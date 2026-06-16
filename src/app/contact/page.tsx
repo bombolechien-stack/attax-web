@@ -1,108 +1,167 @@
 import type { Metadata } from "next";
-import Navbar from "@/components/Navbar";
+import Link from "next/link";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Contact — Attax",
   description: "Get in touch with the Attax team. Questions, feedback, partnerships — we'd love to hear from you.",
 };
 
+const NAV_LINKS = [
+  { href: "/discover", label: "Discover" },
+  { href: "/adventure", label: "The Adventure" },
+  { href: "/contact", label: "Contact" },
+];
+
 export default function ContactPage() {
   return (
     <>
-      <Navbar />
-      <section className="pt-32 pb-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-xs font-semibold tracking-[0.2em] text-[#f97316] uppercase mb-4">
-            Contact
-          </p>
-          <h1 className="text-5xl md:text-6xl font-black text-white tracking-tight leading-tight mb-6">
-            Let&apos;s talk
-          </h1>
-          <p className="text-lg text-[#a1a1aa] leading-relaxed max-w-lg mx-auto">
-            Have a question, feedback, or a partnership idea? We&apos;d love to hear from you.
-          </p>
-        </div>
-      </section>
+      {/* Hero — with navbar embedded inside dark block */}
+      <div style={{ backgroundColor: "#ffffff", padding: "12px" }}>
+        <div style={{
+          position: "relative",
+          backgroundColor: "#0d0d0d",
+          borderRadius: "24px",
+          minHeight: "52vh",
+          display: "flex",
+          flexDirection: "column",
+          overflow: "hidden",
+        }}>
+          {/* Orange glow */}
+          <div style={{
+            position: "absolute", left: "30%", top: "-20%",
+            width: "700px", height: "500px", borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(252,95,43,0.18) 0%, transparent 65%)",
+            pointerEvents: "none",
+          }} />
+          {/* Grid pattern */}
+          <div style={{
+            position: "absolute", inset: 0, pointerEvents: "none", opacity: 0.03,
+            backgroundImage: "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
+            backgroundSize: "40px 40px",
+          }} />
 
-      <section className="py-10 pb-28 px-6">
-        <div className="max-w-2xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+          {/* ── Navbar ── */}
+          <div style={{ position: "relative", zIndex: 10, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 2.5rem", height: "68px" }}>
+            <nav style={{ display: "flex", gap: "1.75rem", alignItems: "center", flex: 1 }}>
+              {NAV_LINKS.map(l => (
+                <Link key={l.href} href={l.href} className="nav-link" style={{
+                  fontSize: "0.875rem", fontWeight: 500,
+                  color: "rgba(255,255,255,0.7)", textDecoration: "none",
+                }}>{l.label}</Link>
+              ))}
+            </nav>
+            <Link href="/" style={{ position: "absolute", left: "50%", transform: "translateX(-50%)", textDecoration: "none" }}>
+              <span style={{ fontSize: "1.375rem", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.03em" }}>attax</span>
+            </Link>
+            <div style={{ display: "flex", alignItems: "center", gap: "1rem", flex: 1, justifyContent: "flex-end" }}>
+              <a href="#" style={{ fontSize: "0.875rem", fontWeight: 500, color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Log in</a>
+              <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" style={{
+                display: "inline-flex", alignItems: "center",
+                backgroundColor: "#ffffff", color: "#0d0d0d",
+                fontWeight: 700, fontSize: "0.8125rem",
+                padding: "8px 18px", borderRadius: "999px", textDecoration: "none",
+              }}>Download App</a>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(3,5px)", gap: "3px" }}>
+                {Array.from({ length: 9 }).map((_, i) => (
+                  <div key={i} style={{ width: "5px", height: "5px", borderRadius: "50%", backgroundColor: "rgba(255,255,255,0.7)" }} />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* ── Hero Content ── */}
+          <div style={{
+            position: "relative", zIndex: 3,
+            flex: 1, display: "flex", flexDirection: "column", justifyContent: "center",
+            padding: "3rem 4rem 4rem",
+            textAlign: "center",
+          }}>
+            <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.14em", color: "#FC5F2B", textTransform: "uppercase", margin: "0 0 1.25rem" }}>Contact</p>
+            <h1 style={{
+              fontSize: "clamp(2.5rem, 5vw, 4rem)",
+              fontWeight: 800, color: "#ffffff",
+              lineHeight: 1.02, letterSpacing: "-0.035em", margin: "0 0 1.25rem",
+            }}>
+              Let&apos;s talk.
+            </h1>
+            <p style={{
+              fontSize: "1.0625rem", color: "rgba(255,255,255,0.5)",
+              lineHeight: 1.7, maxWidth: "440px", margin: "0 auto",
+            }}>
+              Have a question, feedback, or a partnership idea? We&apos;d love to hear from you.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Contact cards + form */}
+      <section style={{ backgroundColor: "#ffffff", padding: "5rem 2rem 6rem" }}>
+        <div style={{ maxWidth: "52rem", margin: "0 auto" }}>
+
+          {/* Contact categories */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "10px", marginBottom: "3rem" }}>
             {[
               { icon: "💬", title: "General", desc: "Questions about the app or how Attax works", email: "hello@attax.app" },
               { icon: "🤝", title: "Partnership", desc: "Brand deals, events, sport organizations", email: "partners@attax.app" },
               { icon: "🐛", title: "Support", desc: "Bug reports or account issues", email: "support@attax.app" },
             ].map((c) => (
-              <div key={c.title} className="p-5 rounded-2xl bg-[#18181b] border border-[#27272a] text-center">
-                <div className="text-2xl mb-2">{c.icon}</div>
-                <div className="text-sm font-bold text-white mb-1">{c.title}</div>
-                <div className="text-xs text-[#71717a] mb-3">{c.desc}</div>
-                <a
-                  href={`mailto:${c.email}`}
-                  className="text-xs text-[#f97316] hover:underline"
-                >
-                  {c.email}
-                </a>
+              <div key={c.title} className="premium-card" style={{ padding: "1.75rem", borderRadius: "20px", backgroundColor: "#f7f7f7", textAlign: "center" }}>
+                <div style={{ fontSize: "1.5rem", marginBottom: "0.75rem" }}>{c.icon}</div>
+                <div style={{ fontSize: "0.9375rem", fontWeight: 700, color: "#0d0d0d", marginBottom: "0.4rem" }}>{c.title}</div>
+                <div style={{ fontSize: "0.8125rem", color: "#888", lineHeight: 1.5, marginBottom: "0.75rem" }}>{c.desc}</div>
+                <a href={`mailto:${c.email}`} style={{ fontSize: "0.8125rem", color: "#FC5F2B", fontWeight: 600, textDecoration: "none" }}>{c.email}</a>
               </div>
             ))}
           </div>
 
-          <form className="space-y-5">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <div>
-                <label className="block text-xs font-semibold text-[#a1a1aa] mb-2 uppercase tracking-wide">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  placeholder="Your name"
-                  className="w-full px-4 py-3 rounded-xl bg-[#18181b] border border-[#27272a] text-white placeholder:text-[#52525b] text-sm focus:outline-none focus:border-[#f97316]/60 transition-colors"
-                />
+          {/* Form */}
+          <div style={{ backgroundColor: "#f7f7f7", borderRadius: "24px", padding: "3rem" }}>
+            <h2 style={{ fontSize: "1.5rem", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.03em", margin: "0 0 2rem" }}>Send us a message</h2>
+            <form style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.25rem" }}>
+                {[
+                  { label: "Name", type: "text", placeholder: "Your name" },
+                  { label: "Email", type: "email", placeholder: "you@example.com" },
+                ].map((f) => (
+                  <div key={f.label}>
+                    <label style={{ display: "block", fontSize: "0.75rem", fontWeight: 700, color: "#888", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.5rem" }}>{f.label}</label>
+                    <input type={f.type} placeholder={f.placeholder} style={{
+                      width: "100%", padding: "12px 16px", borderRadius: "12px",
+                      border: "1px solid #e8e8e8", backgroundColor: "#ffffff",
+                      fontSize: "0.9375rem", color: "#0d0d0d", outline: "none",
+                      fontFamily: "inherit", boxSizing: "border-box",
+                    }} />
+                  </div>
+                ))}
               </div>
               <div>
-                <label className="block text-xs font-semibold text-[#a1a1aa] mb-2 uppercase tracking-wide">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  placeholder="you@example.com"
-                  className="w-full px-4 py-3 rounded-xl bg-[#18181b] border border-[#27272a] text-white placeholder:text-[#52525b] text-sm focus:outline-none focus:border-[#f97316]/60 transition-colors"
-                />
+                <label style={{ display: "block", fontSize: "0.75rem", fontWeight: 700, color: "#888", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.5rem" }}>Subject</label>
+                <input type="text" placeholder="What's this about?" style={{
+                  width: "100%", padding: "12px 16px", borderRadius: "12px",
+                  border: "1px solid #e8e8e8", backgroundColor: "#ffffff",
+                  fontSize: "0.9375rem", color: "#0d0d0d", outline: "none",
+                  fontFamily: "inherit", boxSizing: "border-box",
+                }} />
               </div>
-            </div>
-
-            <div>
-              <label className="block text-xs font-semibold text-[#a1a1aa] mb-2 uppercase tracking-wide">
-                Subject
-              </label>
-              <input
-                type="text"
-                placeholder="What's this about?"
-                className="w-full px-4 py-3 rounded-xl bg-[#18181b] border border-[#27272a] text-white placeholder:text-[#52525b] text-sm focus:outline-none focus:border-[#f97316]/60 transition-colors"
-              />
-            </div>
-
-            <div>
-              <label className="block text-xs font-semibold text-[#a1a1aa] mb-2 uppercase tracking-wide">
-                Message
-              </label>
-              <textarea
-                rows={6}
-                placeholder="Tell us more..."
-                className="w-full px-4 py-3 rounded-xl bg-[#18181b] border border-[#27272a] text-white placeholder:text-[#52525b] text-sm focus:outline-none focus:border-[#f97316]/60 transition-colors resize-none"
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="w-full py-4 bg-[#f97316] text-white font-bold rounded-full hover:bg-[#ea6f00] transition-all hover:scale-[1.02] active:scale-[0.98]"
-            >
-              Send message
-            </button>
-
-            <p className="text-xs text-[#52525b] text-center">
-              We typically respond within 48 hours.
-            </p>
-          </form>
+              <div>
+                <label style={{ display: "block", fontSize: "0.75rem", fontWeight: 700, color: "#888", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.5rem" }}>Message</label>
+                <textarea rows={6} placeholder="Tell us more..." style={{
+                  width: "100%", padding: "12px 16px", borderRadius: "12px",
+                  border: "1px solid #e8e8e8", backgroundColor: "#ffffff",
+                  fontSize: "0.9375rem", color: "#0d0d0d", outline: "none",
+                  fontFamily: "inherit", resize: "none", boxSizing: "border-box",
+                }} />
+              </div>
+              <button type="submit" style={{
+                backgroundColor: "#FC5F2B", color: "#ffffff",
+                fontWeight: 700, fontSize: "1rem",
+                padding: "15px 32px", borderRadius: "999px",
+                border: "none", cursor: "pointer", fontFamily: "inherit",
+              }}>Send message</button>
+              <p style={{ fontSize: "0.8125rem", color: "#aaa", textAlign: "center", margin: 0 }}>We typically respond within 48 hours.</p>
+            </form>
+          </div>
         </div>
       </section>
     </>

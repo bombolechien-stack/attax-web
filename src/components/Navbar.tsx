@@ -21,26 +21,6 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Banner */}
-      <div style={{
-        backgroundColor: "#fff",
-        borderBottom: "1px solid #f0f0f0",
-        textAlign: "center",
-        padding: "9px 16px",
-        fontSize: "0.8125rem",
-        fontWeight: 500,
-        color: "#333",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: "10px",
-        zIndex: 10001,
-        position: "relative",
-      }}>
-        🎉 Attax beta is live — free to download on iOS &amp; Android
-        <span style={{ color: "#FC5F2B", fontWeight: 600, cursor: "pointer" }}>Learn more →</span>
-      </div>
-
       {/* Navbar wrapper */}
       <header style={{
         position: "sticky",
