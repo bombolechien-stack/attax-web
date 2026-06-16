@@ -5,6 +5,7 @@ export default function Stats() {
   return (
     <section style={{ backgroundColor: "#ffffff", padding: "5rem 2rem" }}>
       <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
+
         {/* Trust line */}
         <InView style={{ display: "flex", justifyContent: "center", marginBottom: "4rem" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
@@ -26,14 +27,15 @@ export default function Stats() {
           </div>
         </InView>
 
-        {/* Community + App screenshot */}
+        {/* 2-column grid */}
         <InView>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
+
             {/* Dark community card */}
             <div style={{
               backgroundColor: "#0d0d0d", borderRadius: "20px",
               padding: "3rem", display: "flex", flexDirection: "column",
-              justifyContent: "space-between", minHeight: "420px",
+              justifyContent: "space-between", minHeight: "440px",
               position: "relative", overflow: "hidden",
             }}>
               <div style={{
@@ -53,11 +55,7 @@ export default function Stats() {
                 </p>
               </div>
               <div style={{ display: "flex", gap: "2.5rem" }}>
-                {[
-                  { n: "1", label: "community" },
-                  { n: "50+", label: "countries" },
-                  { n: "∞", label: "shared energy" },
-                ].map(s => (
+                {[{ n: "1", label: "community" }, { n: "50+", label: "countries" }, { n: "∞", label: "shared energy" }].map(s => (
                   <div key={s.label}>
                     <div style={{ fontSize: "1.5rem", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.03em" }}>{s.n}</div>
                     <div style={{ fontSize: "0.8125rem", color: "rgba(255,255,255,0.4)" }}>{s.label}</div>
@@ -66,20 +64,39 @@ export default function Stats() {
               </div>
             </div>
 
-            {/* App screenshot card */}
-            <div style={{
-              backgroundColor: "#f7f7f7", borderRadius: "20px",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              padding: "2rem", minHeight: "420px", overflow: "hidden",
-            }}>
+            {/* Photo card */}
+            <div style={{ borderRadius: "20px", overflow: "hidden", minHeight: "440px", position: "relative" }}>
               <Image
-                src="https://attax.app/wp-content/uploads/2025/10/budyhalf-e1762375408962-1.webp"
-                alt="Attax app interface"
-                width={500}
-                height={400}
-                style={{ objectFit: "contain", maxHeight: "380px", filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.1))" }}
+                src="/images/warmup.jpg"
+                alt="Athlete warming up"
+                fill
+                style={{ objectFit: "cover", objectPosition: "center" }}
               />
             </div>
+          </div>
+        </InView>
+
+        {/* 3-photo strip below */}
+        <InView delay={100}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "10px", marginTop: "10px" }}>
+            {[
+              { src: "/images/cycling-race.jpg", label: "Cycling" },
+              { src: "/images/strength.jpg", label: "Strength" },
+              { src: "/images/hero-boxing-2.jpg", label: "Combat" },
+            ].map((p, i) => (
+              <div key={p.src} style={{ borderRadius: "20px", overflow: "hidden", height: "220px", position: "relative" }}>
+                <Image src={p.src} alt={p.label} fill style={{ objectFit: "cover", objectPosition: "center top" }} />
+                <div style={{
+                  position: "absolute", inset: 0,
+                  background: "linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 60%)",
+                }} />
+                <span style={{
+                  position: "absolute", bottom: "1rem", left: "1rem",
+                  fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.1em",
+                  color: "rgba(255,255,255,0.6)", textTransform: "uppercase",
+                }}>{p.label}</span>
+              </div>
+            ))}
           </div>
         </InView>
       </div>

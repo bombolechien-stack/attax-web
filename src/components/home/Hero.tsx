@@ -22,42 +22,37 @@ export default function Hero() {
         overflow: "hidden",
       }}>
 
-        {/* ── Glow ── */}
-        <div className="glow-pulse" style={{
-          position: "absolute", right: "20%", top: "-10%",
-          width: "800px", height: "800px", borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(252,95,43,0.45) 0%, rgba(180,60,0,0.2) 45%, transparent 70%)",
-          pointerEvents: "none", zIndex: 0,
-        }} />
+        {/* ── Athlete photo — right side ── */}
         <div style={{
-          position: "absolute", inset: 0,
-          background: "linear-gradient(to right, rgba(13,13,13,1) 0%, rgba(13,13,13,0.9) 35%, rgba(13,13,13,0.3) 60%, rgba(13,13,13,0) 80%)",
-          pointerEvents: "none", zIndex: 1,
-        }} />
-        {/* Grain */}
+          position: "absolute", right: 0, top: 0, bottom: 0,
+          width: "55%", zIndex: 0,
+        }}>
+          <Image
+            src="/images/hero-boxing-1.jpg"
+            alt="Athlete"
+            fill
+            style={{ objectFit: "cover", objectPosition: "center top" }}
+            priority
+          />
+          {/* left-to-dark gradient over photo */}
+          <div style={{
+            position: "absolute", inset: 0,
+            background: "linear-gradient(to right, #0d0d0d 0%, rgba(13,13,13,0.7) 35%, rgba(13,13,13,0.1) 70%, rgba(13,13,13,0) 100%)",
+          }} />
+          {/* bottom fade */}
+          <div style={{
+            position: "absolute", inset: 0,
+            background: "linear-gradient(to top, #0d0d0d 0%, rgba(13,13,13,0.3) 25%, transparent 50%)",
+          }} />
+        </div>
+
+        {/* ── Grain texture ── */}
         <div style={{
-          position: "absolute", inset: 0, zIndex: 1, opacity: 0.3, pointerEvents: "none",
+          position: "absolute", inset: 0, zIndex: 1, opacity: 0.25, pointerEvents: "none",
           backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E\")",
         }} />
 
-        {/* ── App screenshot — right side ── */}
-        <div style={{
-          position: "absolute", right: "6%", bottom: 0,
-          width: "360px", height: "90%",
-          zIndex: 1,
-          display: "flex", alignItems: "flex-end", justifyContent: "center",
-        }}>
-          <Image
-            src="https://attax.app/wp-content/uploads/2025/10/budyscreen-e1760880076657-1-515x1024.png"
-            alt="Attax app screenshot"
-            width={310}
-            height={620}
-            style={{ objectFit: "contain", objectPosition: "bottom", filter: "drop-shadow(0 40px 80px rgba(0,0,0,0.6))" }}
-            priority
-          />
-        </div>
-
-        {/* ── Navbar inside the dark block ── */}
+        {/* ── Navbar inside dark block ── */}
         <div style={{ position: "relative", zIndex: 10, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 2.5rem", height: "68px" }}>
           <nav style={{ display: "flex", gap: "1.75rem", alignItems: "center", flex: 1 }}>
             {NAV_LINKS.map(l => (
@@ -76,8 +71,7 @@ export default function Hero() {
               display: "inline-flex", alignItems: "center",
               backgroundColor: "#ffffff", color: "#0d0d0d",
               fontWeight: 700, fontSize: "0.8125rem",
-              padding: "8px 18px", borderRadius: "999px",
-              textDecoration: "none",
+              padding: "8px 18px", borderRadius: "999px", textDecoration: "none",
             }}>Download App</a>
             <button style={{ background: "none", border: "none", cursor: "pointer", padding: "4px", display: "grid", gridTemplateColumns: "repeat(3,5px)", gap: "3px" }} aria-label="Menu">
               {Array.from({ length: 9 }).map((_, i) => (
@@ -92,9 +86,8 @@ export default function Hero() {
           position: "relative", zIndex: 2,
           flex: 1, display: "flex", flexDirection: "column", justifyContent: "center",
           padding: "4rem 4rem 3rem",
-          maxWidth: "620px",
+          maxWidth: "600px",
         }}>
-          {/* Badge */}
           <div className="animate-fade-up" style={{
             display: "inline-flex", alignItems: "center", gap: "7px",
             backgroundColor: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.1)",
@@ -108,7 +101,6 @@ export default function Hero() {
             <span style={{ fontSize: "0.8125rem", fontWeight: 500, color: "rgba(255,255,255,0.75)" }}>Free to download · iOS &amp; Android</span>
           </div>
 
-          {/* H1 */}
           <h1 className="animate-fade-up delay-100" style={{
             fontSize: "clamp(3rem, 5.5vw, 4.75rem)",
             fontWeight: 800, color: "#ffffff",
@@ -130,8 +122,7 @@ export default function Hero() {
               display: "inline-flex", alignItems: "center", gap: "8px",
               backgroundColor: "#ffffff", color: "#0d0d0d",
               fontWeight: 700, fontSize: "0.9375rem",
-              padding: "13px 26px", borderRadius: "999px",
-              textDecoration: "none",
+              padding: "13px 26px", borderRadius: "999px", textDecoration: "none",
             }}>
               <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
@@ -144,9 +135,7 @@ export default function Hero() {
               fontWeight: 600, fontSize: "0.9375rem",
               padding: "13px 26px", borderRadius: "999px",
               textDecoration: "none", border: "1px solid rgba(255,255,255,0.12)",
-            }}>
-              Google Play
-            </a>
+            }}>Google Play</a>
           </div>
         </div>
 
@@ -165,7 +154,7 @@ export default function Hero() {
               marginLeft: i > 0 ? "2.5rem" : 0,
               borderLeft: i > 0 ? "1px solid rgba(255,255,255,0.1)" : "none",
             }}>
-              <div style={{ fontSize: "0.9375rem", fontWeight: 700, color: s.accent ? "#FC5F2B" : "#ffffff", marginBottom: "3px", letterSpacing: "-0.01em" }}>{s.title}</div>
+              <div style={{ fontSize: "0.9375rem", fontWeight: 700, color: s.accent ? "#FC5F2B" : "#ffffff", marginBottom: "3px" }}>{s.title}</div>
               <div style={{ fontSize: "0.8125rem", color: "rgba(255,255,255,0.4)" }}>{s.sub}</div>
             </div>
           ))}
