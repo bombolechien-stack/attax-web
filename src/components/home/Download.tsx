@@ -3,10 +3,10 @@ import Image from "next/image";
 
 export default function Download() {
   return (
-    <section style={{ backgroundColor: "#f7f7f7", padding: "2rem 2rem 7rem" }}>
+    <section style={{ backgroundColor: "#ffffff", padding: "2rem 2rem 7rem" }}>
       <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
         <InView>
-          <div className="dark-card" style={{
+          <div style={{
             backgroundColor: "#0d0d0d",
             borderRadius: "28px",
             overflow: "hidden",
@@ -14,11 +14,11 @@ export default function Download() {
             display: "grid",
             gridTemplateColumns: "1fr auto",
             alignItems: "stretch",
-            minHeight: "440px",
+            minHeight: "420px",
           }}>
             {/* Grain */}
             <div style={{
-              position: "absolute", inset: 0, zIndex: 1, opacity: 0.3, pointerEvents: "none",
+              position: "absolute", inset: 0, zIndex: 1, opacity: 0.25, pointerEvents: "none",
               backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E\")",
             }} />
 
@@ -49,13 +49,13 @@ export default function Download() {
                 </a>
                 <a href="https://play.google.com" target="_blank" rel="noopener noreferrer" className="btn-ghost" style={{
                   display: "inline-flex", alignItems: "center", gap: "8px",
-                  backgroundColor: "rgba(255,255,255,0.06)", color: "#fff",
+                  backgroundColor: "rgba(255,255,255,0.07)", color: "rgba(255,255,255,0.7)",
                   fontWeight: 600, fontSize: "0.9375rem",
                   padding: "14px 28px", borderRadius: "999px",
                   textDecoration: "none", border: "1px solid rgba(255,255,255,0.1)",
                 }}>Google Play</a>
               </div>
-              <p style={{ marginTop: "1.75rem", fontSize: "0.8125rem", color: "rgba(255,255,255,0.18)", letterSpacing: "0.02em" }}>
+              <p style={{ marginTop: "1.75rem", fontSize: "0.8125rem", color: "rgba(255,255,255,0.2)", letterSpacing: "0.02em" }}>
                 Free · iOS 15+ · Android 8.0+
               </p>
             </div>
