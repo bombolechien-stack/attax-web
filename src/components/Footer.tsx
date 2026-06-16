@@ -145,8 +145,8 @@ export default function Footer() {
               <Image
                 src="/images/logo-attax-wh.svg"
                 alt="Attax"
-                width={88}
-                height={33}
+                width={130}
+                height={49}
                 style={{ display: "block", filter: "brightness(0)" }}
               />
 
@@ -200,7 +200,7 @@ export default function Footer() {
               display: "grid",
               gridTemplateColumns: "repeat(3, 1fr)",
               gap: "2rem",
-              padding: "2.5rem 4rem 6rem",
+              padding: "2.5rem 4rem 3.5rem",
             }}>
               <div>
                 <span style={LABEL_STYLE}>Product</span>
