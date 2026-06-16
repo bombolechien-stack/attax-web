@@ -30,8 +30,8 @@ export default function PageNavbar() {
         <Image
           src="/images/logo-attax-wh.svg"
           alt="Attax"
-          width={120}
-          height={112}
+          width={140}
+          height={52}
           style={{ display: "block" }}
           priority
         />

@@ -127,8 +127,8 @@ export default function ScrollNav() {
           <Image
             src="/images/logo-attax-wh.svg"
             alt="Attax"
-            width={80}
-            height={75}
+            width={100}
+            height={37}
             style={{ display: "block" }}
           />
         </Link>
