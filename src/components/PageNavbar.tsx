@@ -5,9 +5,9 @@ import Image from "next/image";
 import LangSwitcher from "@/components/LangSwitcher";
 
 const NAV_LINKS = [
-  { href: "/#how-it-works", label: "How It Works" },
-  { href: "/#features", label: "Features" },
-  { href: "/#faq", label: "FAQ" },
+  { href: "/discover", label: "Discover" },
+  { href: "/adventure", label: "The Adventure" },
+  { href: "/contact", label: "Contact" },
 ];
 
 const AppleIcon = () => (
