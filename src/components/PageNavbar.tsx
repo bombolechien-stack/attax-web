@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import LangSwitcher from "@/components/LangSwitcher";
 
 const NAV_LINKS = [
   { href: "/discover", label: "Discover" },
@@ -37,8 +40,8 @@ export default function PageNavbar() {
         />
       </Link>
 
-      <div style={{ display: "flex", alignItems: "center", gap: "1rem", flex: 1, justifyContent: "flex-end" }}>
-        <a href="#" style={{ fontSize: "0.875rem", fontWeight: 500, color: "rgba(255,255,255,0.5)", textDecoration: "none" }}>Log in</a>
+      <div style={{ display: "flex", alignItems: "center", gap: "1.25rem", flex: 1, justifyContent: "flex-end" }}>
+        <LangSwitcher />
         <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" className="btn-white" style={{
           display: "inline-flex", alignItems: "center",
           backgroundColor: "#ffffff", color: "#0d0d0d",

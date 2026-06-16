@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import LangSwitcher from "@/components/LangSwitcher";
 
 const NAV_LINKS = [
   { href: "/discover", label: "Discover" },
@@ -134,22 +135,10 @@ export default function ScrollNav() {
         </Link>
 
         {/* Right */}
-        <div style={{ display: "flex", alignItems: "center", gap: "8px", flex: 1, justifyContent: "flex-end" }}>
-          <a
-            href="#"
-            data-fade="1"
-            style={{
-              fontSize: "0.8125rem",
-              fontWeight: 500,
-              color: "rgba(255,255,255,0.55)",
-              textDecoration: "none",
-              padding: "0 10px",
-              opacity: 0,
-              whiteSpace: "nowrap",
-            }}
-          >
-            Log in
-          </a>
+        <div style={{ display: "flex", alignItems: "center", gap: "12px", flex: 1, justifyContent: "flex-end" }}>
+          <div data-fade="1" style={{ opacity: 0 }}>
+            <LangSwitcher />
+          </div>
           <a
             href="https://apps.apple.com"
             target="_blank"

@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import ScrollNav from "@/components/ScrollNav";
 import Footer from "@/components/Footer";
+import { LangProvider } from "@/lib/i18n";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -59,10 +60,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </div>
 
         {/* Floating pill nav — appears on scroll (hidden on first viewport) */}
-        <ScrollNav />
-
-        <main style={{ flex: 1, margin: 0, padding: 0 }}>{children}</main>
-        <Footer />
+        <LangProvider>
+          <ScrollNav />
+          <main style={{ flex: 1, margin: 0, padding: 0 }}>{children}</main>
+          <Footer />
+        </LangProvider>
       </body>
     </html>
   );
