@@ -18,7 +18,7 @@ html {
 
 body { margin: 0; padding: 0; background: #ffffff; color: #1a1a1a; }
 
-::selection { background: #FC5F2B; color: #fff; }
+::selection { background: #1a1a1a; color: #fff; }
 
 /* ── Animations ── */
 @keyframes fadeUpBlur {
@@ -93,7 +93,31 @@ body { margin: 0; padding: 0; background: #ffffff; color: #1a1a1a; }
   box-shadow: 0 32px 80px rgba(0,0,0,0.35);
 }
 
-/* ── Orange CTA button ── */
+/* ── White CTA button (primary on dark bg) ── */
+.btn-white {
+  transition: transform 0.25s cubic-bezier(0.16,1,0.3,1),
+              box-shadow 0.25s cubic-bezier(0.16,1,0.3,1),
+              opacity 0.2s;
+}
+.btn-white:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(255,255,255,0.2);
+  opacity: 0.92;
+}
+.btn-white:active { transform: scale(0.97); }
+
+/* ── Dark CTA button (primary on light bg) ── */
+.btn-dark-primary {
+  transition: transform 0.25s cubic-bezier(0.16,1,0.3,1),
+              box-shadow 0.25s cubic-bezier(0.16,1,0.3,1);
+}
+.btn-dark-primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+}
+.btn-dark-primary:active { transform: scale(0.97); }
+
+/* ── Orange CTA button (kept for legacy) ── */
 .btn-orange {
   transition: transform 0.25s cubic-bezier(0.16,1,0.3,1),
               box-shadow 0.25s cubic-bezier(0.16,1,0.3,1),
@@ -158,7 +182,14 @@ body { margin: 0; padding: 0; background: #ffffff; color: #1a1a1a; }
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #FC5F2B;
+  color: #888;
+}
+.section-label-light {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
 }
 
 /* ── Stat number ── */

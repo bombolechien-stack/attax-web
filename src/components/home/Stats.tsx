@@ -20,7 +20,7 @@ export default function Stats() {
                   <div key={i} style={{ width: "1px", height: "80px", backgroundColor: "#e8e8e8", margin: "0 auto" }} />
                 ) : (
                   <div key={i} style={{ padding: "2rem 3rem", textAlign: "center" }}>
-                    <div className="stat-num" style={{ color: s.accent ? "#FC5F2B" : "#0d0d0d", marginBottom: "0.5rem" }}>{s.num}</div>
+                    <div className="stat-num" style={{ color: "#0d0d0d", marginBottom: "0.5rem" }}>{s.num}</div>
                     <div style={{ fontSize: "0.875rem", fontWeight: 700, color: "#0d0d0d", marginBottom: "0.25rem", letterSpacing: "-0.01em" }}>{s.label}</div>
                     <div style={{ fontSize: "0.8125rem", color: "#aaa" }}>{s.sub}</div>
                   </div>
@@ -47,20 +47,13 @@ export default function Stats() {
             }}>
               {/* Grain */}
               <div style={{
-                position: "absolute", inset: 0, zIndex: 1, opacity: 0.25, pointerEvents: "none",
+                position: "absolute", inset: 0, zIndex: 1, opacity: 0.3, pointerEvents: "none",
                 backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E\")",
-              }} />
-              {/* Glow */}
-              <div className="glow-pulse" style={{
-                position: "absolute", left: "10%", top: "-20%",
-                width: "500px", height: "500px", borderRadius: "50%",
-                background: "radial-gradient(circle, rgba(252,95,43,0.16) 0%, transparent 65%)",
-                pointerEvents: "none", zIndex: 0,
               }} />
 
               {/* Left text */}
               <div style={{ position: "relative", zIndex: 2, padding: "4.5rem", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-                <p className="section-label" style={{ margin: "0 0 1.5rem" }}>A new challenge</p>
+                <p className="section-label-light" style={{ margin: "0 0 1.5rem" }}>A new challenge</p>
                 <h2 style={{
                   fontSize: "clamp(2rem, 3.5vw, 3rem)", fontWeight: 800,
                   color: "#ffffff", letterSpacing: "-0.04em", lineHeight: 1.08,
@@ -72,9 +65,9 @@ export default function Stats() {
                 <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.75, margin: "0 0 3rem", maxWidth: "340px" }}>
                   attax brings together motivated, curious, and passionate athletes. Find your community, share your achievements, and grow together.
                 </p>
-                <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" className="btn-orange" style={{
+                <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" className="btn-white" style={{
                   display: "inline-flex", alignItems: "center", gap: "8px", width: "fit-content",
-                  backgroundColor: "#FC5F2B", color: "#fff",
+                  backgroundColor: "#ffffff", color: "#0d0d0d",
                   fontWeight: 700, fontSize: "0.9375rem",
                   padding: "13px 28px", borderRadius: "999px", textDecoration: "none",
                 }}>Download free</a>

@@ -18,20 +18,13 @@ export default function Download() {
           }}>
             {/* Grain */}
             <div style={{
-              position: "absolute", inset: 0, zIndex: 1, opacity: 0.2, pointerEvents: "none",
+              position: "absolute", inset: 0, zIndex: 1, opacity: 0.3, pointerEvents: "none",
               backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E\")",
-            }} />
-            {/* Glow */}
-            <div className="glow-pulse" style={{
-              position: "absolute", left: "20%", top: "-30%",
-              width: "700px", height: "600px", borderRadius: "50%",
-              background: "radial-gradient(circle, rgba(252,95,43,0.15) 0%, transparent 65%)",
-              pointerEvents: "none", zIndex: 0,
             }} />
 
             {/* Text left */}
             <div style={{ position: "relative", zIndex: 2, padding: "5rem 4.5rem", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-              <p className="section-label" style={{ margin: "0 0 1.5rem", color: "#FC5F2B" }}>Join the adventure</p>
+              <p className="section-label-light" style={{ margin: "0 0 1.5rem" }}>Join the adventure</p>
               <h2 style={{
                 fontSize: "clamp(2.5rem, 4.5vw, 3.75rem)", fontWeight: 800,
                 color: "#ffffff", letterSpacing: "-0.045em", lineHeight: 1.02,
@@ -43,9 +36,9 @@ export default function Download() {
                 Download the attax app to get into sport and stay motivated every day with us. Free to download.
               </p>
               <div style={{ display: "flex", gap: "10px", flexWrap: "wrap", alignItems: "center" }}>
-                <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" className="btn-orange" style={{
+                <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" className="btn-white" style={{
                   display: "inline-flex", alignItems: "center", gap: "8px",
-                  backgroundColor: "#FC5F2B", color: "#fff",
+                  backgroundColor: "#ffffff", color: "#0d0d0d",
                   fontWeight: 700, fontSize: "0.9375rem",
                   padding: "14px 28px", borderRadius: "999px", textDecoration: "none",
                 }}>

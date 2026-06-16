@@ -45,6 +45,7 @@ export default function Features() {
         <InView style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6rem", alignItems: "center", marginBottom: "6rem" }}>
           <div>
             <p className="section-label" style={{ margin: "0 0 1.5rem" }}>Features</p>
+
             <h2 style={{
               fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800,
               color: "#0d0d0d", letterSpacing: "-0.045em", lineHeight: 1.02,
@@ -52,15 +53,10 @@ export default function Features() {
             }}>
               Your motivation,<br />powered by<br />movement.
             </h2>
-            {/* Badge */}
-            <div style={{
-              display: "inline-flex", alignItems: "center", gap: "10px",
-              backgroundColor: "#fff5eb", borderRadius: "12px",
-              padding: "10px 18px", marginBottom: "1.5rem",
-              border: "1px solid rgba(252,95,43,0.12)",
-            }}>
-              <span style={{ fontSize: "0.75rem", fontWeight: 700, color: "#FC5F2B", letterSpacing: "0.04em", textTransform: "uppercase" }}>
-                💪 Your new challenge starts with attax
+            <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "1.5rem" }}>
+              <div style={{ width: "5px", height: "5px", borderRadius: "50%", backgroundColor: "#FC5F2B", flexShrink: 0 }} />
+              <span style={{ fontSize: "0.75rem", fontWeight: 600, color: "#aaa", letterSpacing: "0.1em", textTransform: "uppercase" }}>
+                Your new challenge starts with attax
               </span>
             </div>
             <p style={{ fontSize: "1rem", color: "#666", lineHeight: 1.8, margin: "0 0 1rem" }}>

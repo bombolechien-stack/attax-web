@@ -22,11 +22,11 @@ export default function Hero() {
         overflow: "hidden",
       }}>
 
-        {/* Orange glow behind runner */}
-        <div className="glow-pulse" style={{
+        {/* Subtle ambient glow */}
+        <div style={{
           position: "absolute", right: "5%", top: "0%",
           width: "700px", height: "700px", borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(252,95,43,0.35) 0%, rgba(180,60,0,0.15) 45%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 65%)",
           pointerEvents: "none", zIndex: 0,
         }} />
 
@@ -113,16 +113,11 @@ export default function Hero() {
           maxWidth: "600px",
         }}>
           <div className="animate-fade-up" style={{
-            display: "inline-flex", alignItems: "center", gap: "7px",
-            backgroundColor: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.1)",
-            borderRadius: "999px", padding: "5px 14px 5px 8px", marginBottom: "2rem", width: "fit-content",
+            display: "inline-flex", alignItems: "center", gap: "8px",
+            marginBottom: "2rem", width: "fit-content",
           }}>
-            <div style={{ width: "20px", height: "20px", borderRadius: "50%", backgroundColor: "rgba(252,95,43,0.2)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                <path d="M2.5 5L4.5 7L7.5 3" stroke="#FC5F2B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </div>
-            <span style={{ fontSize: "0.8125rem", fontWeight: 500, color: "rgba(255,255,255,0.75)" }}>Free to download · iOS &amp; Android</span>
+            <div style={{ width: "5px", height: "5px", borderRadius: "50%", backgroundColor: "#FC5F2B" }} />
+            <span style={{ fontSize: "0.8125rem", fontWeight: 500, color: "rgba(255,255,255,0.5)", letterSpacing: "0.06em" }}>FREE TO DOWNLOAD · iOS &amp; ANDROID</span>
           </div>
 
           <h1 className="animate-fade-up delay-100" style={{
