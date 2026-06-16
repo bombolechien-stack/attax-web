@@ -2,23 +2,23 @@ import Image from "next/image";
 
 const PHONES = [
   {
-    src: "/screens/onboard2.png",
-    label: "Train",
-    caption: "Connect your wearable. Every workout syncs automatically.",
+    src: "/screens/screenmatch.png",
+    label: "Battle",
+    caption: "Daily 1v1 duels. Results drop at 21:30 every night.",
     offset: 60,
     scale: 0.9,
   },
   {
-    src: "/screens/league-screen.jpg",
-    label: "Battle",
-    caption: "Daily 1v1 duels. Results drop at 21:30 every night.",
+    src: "/screens/screenactivity.png",
+    label: "Train",
+    caption: "Every workout syncs automatically via Apple Health or Health Connect.",
     offset: 0,
     scale: 1,
   },
   {
-    src: "/screens/onboard3.png",
-    label: "Rise",
-    caption: "Climb the ranks. 5 divisions. One champion per league.",
+    src: "/screens/screencards.png",
+    label: "Strategize",
+    caption: "12 combat cards. Play them at the right moment.",
     offset: 60,
     scale: 0.9,
   },

@@ -113,10 +113,10 @@ export default function Footer() {
           {/* ATTAX watermark */}
           <div style={{
             position: "absolute",
-            bottom: "48px",
+            bottom: "36px",
             left: "50%",
             transform: "translateX(-50%)",
-            fontSize: "clamp(6rem, 16vw, 18rem)",
+            fontSize: "clamp(5rem, 13vw, 14rem)",
             fontWeight: 900,
             color: "#f0f0f0",
             letterSpacing: "-0.06em",
@@ -200,7 +200,7 @@ export default function Footer() {
               display: "grid",
               gridTemplateColumns: "repeat(3, 1fr)",
               gap: "2rem",
-              padding: "2.5rem 4rem 9rem",
+              padding: "2.5rem 4rem 6rem",
             }}>
               <div>
                 <span style={LABEL_STYLE}>Product</span>
