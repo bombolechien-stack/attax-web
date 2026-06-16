@@ -54,7 +54,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           position: "relative",
           zIndex: 10001,
         }}>
-          🎉 Attax beta is live — free to download on iOS &amp; Android
+          Attax beta is live — free to download on iOS &amp; Android
           <span style={{ color: "#FC5F2B", fontWeight: 600, cursor: "pointer" }}>Learn more →</span>
         </div>
 
