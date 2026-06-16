@@ -103,22 +103,20 @@ export default function VisualGrid() {
         {PHONES.map(p => {
           const W = 240 * p.scale;
           return (
-            <div key={p.src} style={{ width: 500 * p.scale, flexShrink: 0, textAlign: "center" }}>
-              <span style={{
-                display: "inline-block",
-                fontSize: "0.6875rem",
+            <div key={p.src} style={{ width: 500 * p.scale, flexShrink: 0, textAlign: "center", padding: "0 1.5rem" }}>
+              <h3 style={{
+                fontSize: "1.125rem",
                 fontWeight: 700,
-                letterSpacing: "0.12em",
-                textTransform: "uppercase",
-                color: "rgba(0,0,0,0.4)",
-                marginBottom: "0.5rem",
+                letterSpacing: "-0.025em",
+                color: "#0d0d0d",
+                margin: "0 0 0.5rem",
               }}>
                 {p.label}
-              </span>
+              </h3>
               <p style={{
-                fontSize: "0.85rem",
-                color: "rgba(0,0,0,0.45)",
-                lineHeight: 1.65,
+                fontSize: "0.9375rem",
+                color: "#666",
+                lineHeight: 1.7,
                 margin: 0,
               }}>
                 {p.caption}
