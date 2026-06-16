@@ -60,7 +60,7 @@ export default function Stats() {
                   margin: "0 0 1.5rem",
                 }}>
                   Alone, you work out.<br />
-                  <span style={{ color: "#FC5F2B" }}>Together, you stay motivated.</span>
+                  <span style={{ color: "#ffffff" }}>Together, you stay motivated.</span>
                 </h2>
                 <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.75, margin: "0 0 3rem", maxWidth: "340px" }}>
                   attax brings together motivated, curious, and passionate athletes. Find your community, share your achievements, and grow together.

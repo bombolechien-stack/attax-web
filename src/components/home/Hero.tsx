@@ -116,8 +116,7 @@ export default function Hero() {
             display: "inline-flex", alignItems: "center", gap: "8px",
             marginBottom: "2rem", width: "fit-content",
           }}>
-            <div style={{ width: "5px", height: "5px", borderRadius: "50%", backgroundColor: "#FC5F2B" }} />
-            <span style={{ fontSize: "0.8125rem", fontWeight: 500, color: "rgba(255,255,255,0.5)", letterSpacing: "0.06em" }}>FREE TO DOWNLOAD · iOS &amp; ANDROID</span>
+            <span style={{ fontSize: "0.8125rem", fontWeight: 500, color: "rgba(255,255,255,0.4)", letterSpacing: "0.1em" }}>FREE TO DOWNLOAD · iOS &amp; ANDROID</span>
           </div>
 
           <h1 className="animate-fade-up delay-100" style={{
@@ -126,7 +125,7 @@ export default function Hero() {
             lineHeight: 1.02, letterSpacing: "-0.035em", margin: "0 0 1.5rem",
           }}>
             Keep moving<br />
-            <em style={{ fontStyle: "normal", color: "#FC5F2B" }}>with attax.</em>
+            <em style={{ fontStyle: "normal", color: "rgba(255,255,255,0.85)" }}>with attax.</em>
           </h1>
 
           <p className="animate-fade-up delay-200" style={{
@@ -173,7 +172,7 @@ export default function Hero() {
               marginLeft: i > 0 ? "2.5rem" : 0,
               borderLeft: i > 0 ? "1px solid rgba(255,255,255,0.1)" : "none",
             }}>
-              <div style={{ fontSize: "0.9375rem", fontWeight: 700, color: s.accent ? "#FC5F2B" : "#ffffff", marginBottom: "3px" }}>{s.title}</div>
+              <div style={{ fontSize: "0.9375rem", fontWeight: 700, color: "#ffffff", marginBottom: "3px" }}>{s.title}</div>
               <div style={{ fontSize: "0.8125rem", color: "rgba(255,255,255,0.4)" }}>{s.sub}</div>
             </div>
           ))}

@@ -73,13 +73,12 @@ export default function AdventurePage() {
 
           {/* Content */}
           <div style={{ position: "relative", zIndex: 3, flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "4rem 4rem 3rem", maxWidth: "620px" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "1.75rem" }}>
-              <div style={{ width: "5px", height: "5px", borderRadius: "50%", backgroundColor: "#FC5F2B" }} />
-              <span style={{ fontSize: "0.75rem", fontWeight: 600, color: "rgba(255,255,255,0.45)", letterSpacing: "0.14em", textTransform: "uppercase" }}>The Adventure</span>
+            <div style={{ marginBottom: "1.75rem" }}>
+              <span style={{ fontSize: "0.75rem", fontWeight: 600, color: "rgba(255,255,255,0.4)", letterSpacing: "0.14em", textTransform: "uppercase" }}>The Adventure</span>
             </div>
             <h1 style={{ fontSize: "clamp(3rem, 5.5vw, 4.75rem)", fontWeight: 800, color: "#ffffff", lineHeight: 1.02, letterSpacing: "-0.035em", margin: "0 0 1.5rem" }}>
               Why we built<br />
-              <em style={{ fontStyle: "normal", color: "#FC5F2B" }}>Attax.</em>
+              <em style={{ fontStyle: "normal", color: "#ffffff" }}>Attax.</em>
             </h1>
             <p style={{ fontSize: "1.0625rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.75, margin: "0 0 2.5rem", maxWidth: "420px" }}>
               We were tired of emotionless fitness apps that tracked everything but inspired nothing. So we built something different.
@@ -128,7 +127,7 @@ export default function AdventurePage() {
             <div key={t.n} style={{ display: "grid", gridTemplateColumns: "80px 180px 1fr", gap: "2rem", alignItems: "start", padding: "2.5rem 0", borderBottom: "1px solid #f0f0f0" }}>
               <div style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.14em", color: "#ccc", paddingTop: "4px" }}>{t.n}</div>
               <div>
-                <div style={{ fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.12em", color: "#FC5F2B", textTransform: "uppercase", marginBottom: "0.5rem" }}>{t.year}</div>
+                <div style={{ fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.12em", color: "#ffffff", textTransform: "uppercase", marginBottom: "0.5rem" }}>{t.year}</div>
                 <h3 style={{ fontSize: "1.0625rem", fontWeight: 700, color: "#0d0d0d", margin: 0, letterSpacing: "-0.02em", lineHeight: 1.3 }}>{t.title}</h3>
               </div>
               <p style={{ fontSize: "0.9375rem", color: "#666", lineHeight: 1.8, margin: 0 }}>{t.description}</p>

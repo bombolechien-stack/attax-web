@@ -118,9 +118,8 @@ export default function DiscoverPage() {
             padding: "4rem 4rem 3rem",
             maxWidth: "620px",
           }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "1.75rem" }}>
-              <div style={{ width: "5px", height: "5px", borderRadius: "50%", backgroundColor: "#FC5F2B" }} />
-              <span style={{ fontSize: "0.75rem", fontWeight: 600, color: "rgba(255,255,255,0.45)", letterSpacing: "0.14em", textTransform: "uppercase" }}>Discover Attax</span>
+            <div style={{ marginBottom: "1.75rem" }}>
+              <span style={{ fontSize: "0.75rem", fontWeight: 600, color: "rgba(255,255,255,0.4)", letterSpacing: "0.14em", textTransform: "uppercase" }}>Discover Attax</span>
             </div>
             <h1 style={{
               fontSize: "clamp(3rem, 5.5vw, 4.75rem)",
@@ -128,7 +127,7 @@ export default function DiscoverPage() {
               lineHeight: 1.02, letterSpacing: "-0.035em", margin: "0 0 1.5rem",
             }}>
               A simple concept,<br />
-              <em style={{ fontStyle: "normal", color: "#FC5F2B" }}>a unique experience.</em>
+              <em style={{ fontStyle: "normal", color: "#ffffff" }}>a unique experience.</em>
             </h1>
             <p style={{
               fontSize: "1.0625rem", color: "rgba(255,255,255,0.5)",
@@ -254,7 +253,7 @@ export default function DiscoverPage() {
               <p className="section-label" style={{ margin: "0 0 1.25rem" }}>Technology</p>
               <h2 style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.045em", lineHeight: 1.02, margin: 0 }}>
                 Not just an app,<br />
-                <em style={{ fontStyle: "normal", color: "#FC5F2B" }}>a source of motivation.</em>
+                <em style={{ fontStyle: "normal", color: "#ffffff" }}>a source of motivation.</em>
               </h2>
             </div>
             <p style={{ fontSize: "1rem", color: "#888", lineHeight: 1.75, maxWidth: "300px", margin: 0, flex: "0 0 300px" }}>

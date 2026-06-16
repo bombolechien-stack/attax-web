@@ -54,7 +54,7 @@ export default function Features() {
               Your motivation,<br />powered by<br />movement.
             </h2>
             <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "1.5rem" }}>
-              <div style={{ width: "5px", height: "5px", borderRadius: "50%", backgroundColor: "#FC5F2B", flexShrink: 0 }} />
+              <div style={{ width: "5px", height: "5px", borderRadius: "50%", backgroundColor: "#0d0d0d", flexShrink: 0 }} />
               <span style={{ fontSize: "0.75rem", fontWeight: 600, color: "#aaa", letterSpacing: "0.1em", textTransform: "uppercase" }}>
                 Your new challenge starts with attax
               </span>

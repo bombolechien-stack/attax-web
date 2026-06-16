@@ -79,7 +79,7 @@ export default function ContactPage() {
             padding: "3rem 4rem 4rem",
             textAlign: "center",
           }}>
-            <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.14em", color: "#FC5F2B", textTransform: "uppercase", margin: "0 0 1.25rem" }}>Contact</p>
+            <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.14em", color: "#0d0d0d", textTransform: "uppercase", margin: "0 0 1.25rem" }}>Contact</p>
             <h1 style={{
               fontSize: "clamp(2.5rem, 5vw, 4rem)",
               fontWeight: 800, color: "#ffffff",
@@ -104,15 +104,15 @@ export default function ContactPage() {
           {/* Contact categories */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "10px", marginBottom: "3rem" }}>
             {[
-              { icon: "💬", title: "General", desc: "Questions about the app or how Attax works", email: "hello@attax.app" },
-              { icon: "🤝", title: "Partnership", desc: "Brand deals, events, sport organizations", email: "partners@attax.app" },
-              { icon: "🐛", title: "Support", desc: "Bug reports or account issues", email: "support@attax.app" },
+              { icon: "01", title: "General", desc: "Questions about the app or how Attax works", email: "hello@attax.app" },
+              { icon: "02", title: "Partnership", desc: "Brand deals, events, sport organizations", email: "partners@attax.app" },
+              { icon: "03", title: "Support", desc: "Bug reports or account issues", email: "support@attax.app" },
             ].map((c) => (
               <div key={c.title} className="premium-card" style={{ padding: "1.75rem", borderRadius: "20px", backgroundColor: "#f7f7f7", textAlign: "center" }}>
-                <div style={{ fontSize: "1.5rem", marginBottom: "0.75rem" }}>{c.icon}</div>
+                <div style={{ fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.14em", color: "#ccc", marginBottom: "1rem" }}>{c.icon}</div>
                 <div style={{ fontSize: "0.9375rem", fontWeight: 700, color: "#0d0d0d", marginBottom: "0.4rem" }}>{c.title}</div>
                 <div style={{ fontSize: "0.8125rem", color: "#888", lineHeight: 1.5, marginBottom: "0.75rem" }}>{c.desc}</div>
-                <a href={`mailto:${c.email}`} style={{ fontSize: "0.8125rem", color: "#FC5F2B", fontWeight: 600, textDecoration: "none" }}>{c.email}</a>
+                <a href={`mailto:${c.email}`} style={{ fontSize: "0.8125rem", color: "#0d0d0d", fontWeight: 600, textDecoration: "none" }}>{c.email}</a>
               </div>
             ))}
           </div>
@@ -156,7 +156,7 @@ export default function ContactPage() {
                 }} />
               </div>
               <button type="submit" style={{
-                backgroundColor: "#FC5F2B", color: "#ffffff",
+                backgroundColor: "#0d0d0d", color: "#ffffff",
                 fontWeight: 700, fontSize: "1rem",
                 padding: "15px 32px", borderRadius: "999px",
                 border: "none", cursor: "pointer", fontFamily: "inherit",

@@ -55,7 +55,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           zIndex: 10001,
         }}>
           Attax beta is live — free to download on iOS &amp; Android
-          <span style={{ color: "#FC5F2B", fontWeight: 600, cursor: "pointer" }}>Learn more →</span>
+          <span style={{ color: "#333333", fontWeight: 600, cursor: "pointer" }}>Learn more →</span>
         </div>
 
         {/* Floating pill nav — appears on scroll (hidden on first viewport) */}
