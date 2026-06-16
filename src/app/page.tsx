@@ -1,21 +1,17 @@
 import Hero from "@/components/home/Hero";
-import Stats from "@/components/home/Stats";
 import HowItWorks from "@/components/home/HowItWorks";
-import CombatSection from "@/components/home/CombatSection";
+import DailyMatch from "@/components/home/DailyMatch";
 import Features from "@/components/home/Features";
-import Community from "@/components/home/Community";
-import Download from "@/components/home/Download";
+import Waitlist from "@/components/home/Waitlist";
 
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <Stats />
       <HowItWorks />
-      <CombatSection />
+      <DailyMatch />
       <Features />
-      <Community />
-      <Download />
+      <Waitlist />
     </>
   );
 }
