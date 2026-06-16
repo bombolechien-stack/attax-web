@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 const FAQS = [
-  { q: "Do I need a smartwatch?", a: "No. Attax works with your phone's built-in health data via Apple Health (iPhone) or Health Connect (Android). A smartwatch improves accuracy but is not required." },
+  { q: "Do I need a smartwatch?", a: "Yes. Attax requires a connected wearable to track your activity accurately. iPhone users need an Apple Watch; Android users need a Wear OS, Garmin, or Fitbit device. Data syncs automatically via Apple Health or Health Connect." },
   { q: "Does walking count?", a: "Yes. Any activity tracked by Apple Health or Health Connect contributes to your power — walking, running, cycling, swimming, gym sessions, and more." },
   { q: "Can I use Attax without running?", a: "Absolutely. Attax values all forms of movement. Whether you lift weights, cycle, swim or walk, your effort translates into combat power." },
   { q: "How are battles calculated?", a: "Your battle score is based on a 7-day rolling activity score. Each session earns Activity Points based on effort, heart rate zones, and duration. The player with the highest score at 21:30 wins the day." },

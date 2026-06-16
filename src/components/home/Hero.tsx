@@ -23,10 +23,10 @@ export default function Hero() {
           <source src="/videos/boxingonring.mp4" type="video/mp4" />
         </video>
 
-        {/* Overlays */}
-        <div style={{ position: "absolute", inset: 0, zIndex: 1, backgroundColor: "rgba(7,7,7,0.6)" }} />
-        <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(to bottom, rgba(7,7,7,0.4) 0%, rgba(7,7,7,0.1) 35%, rgba(7,7,7,0.6) 75%, rgba(7,7,7,1) 100%)" }} />
-        <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(to right, rgba(7,7,7,0.88) 0%, rgba(7,7,7,0.4) 50%, rgba(7,7,7,0) 80%)" }} />
+        {/* Overlays — light base so the right side stays visible */}
+        <div style={{ position: "absolute", inset: 0, zIndex: 1, backgroundColor: "rgba(7,7,7,0.18)" }} />
+        <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(to bottom, rgba(7,7,7,0.35) 0%, rgba(7,7,7,0.05) 40%, rgba(7,7,7,0.55) 78%, rgba(7,7,7,1) 100%)" }} />
+        <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(to right, rgba(7,7,7,0.92) 0%, rgba(7,7,7,0.6) 38%, rgba(7,7,7,0.1) 65%, rgba(7,7,7,0) 100%)" }} />
 
         {/* Navbar */}
         <div style={{ position: "relative", zIndex: 10, flexShrink: 0 }}>
@@ -41,7 +41,7 @@ export default function Hero() {
           flexDirection: "column",
           justifyContent: "center",
           padding: "0 clamp(2rem, 5vw, 5rem)",
-          maxWidth: "60%",
+          maxWidth: "56%",
         }}>
           <h1 className="animate-fade-up" style={{
             fontSize: "clamp(3.5rem, 6.5vw, 7rem)",
@@ -51,17 +51,18 @@ export default function Hero() {
             letterSpacing: "-0.05em",
             margin: "0 0 clamp(1.25rem, 2.5vw, 2rem)",
           }}>
-            Train.<br />Fight.<br />Dominate.
+            Move.<br />Power up.<br />Battle.
           </h1>
 
           <p className="animate-fade-up delay-100" style={{
             fontSize: "clamp(0.9375rem, 1.2vw, 1.0625rem)",
-            color: "rgba(255,255,255,0.4)",
+            color: "rgba(255,255,255,0.45)",
             lineHeight: 1.75,
             margin: "0 0 clamp(1.75rem, 3vw, 2.75rem)",
-            maxWidth: "380px",
+            maxWidth: "360px",
           }}>
-            Turn your real-world activity into power.<br />Battle real players every day.
+            The competitive game powered by your real fitness.
+            Daily duels. Real opponents. Your effort decides everything.
           </p>
 
           <div className="animate-fade-up delay-200" style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
@@ -87,7 +88,7 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Bottom stats — left aligned */}
+        {/* Bottom stats */}
         <div className="animate-fade-up delay-300" style={{
           position: "relative", zIndex: 5,
           display: "flex",
@@ -96,7 +97,7 @@ export default function Hero() {
         }}>
           {[
             { n: "8 players", sub: "Per league · 7 days" },
-            { n: "12 cards", sub: "Strategic powers" },
+            { n: "12 cards", sub: "Strategic abilities" },
             { n: "21:30", sub: "Duel every night" },
           ].map((s, i) => (
             <div key={s.n} style={{

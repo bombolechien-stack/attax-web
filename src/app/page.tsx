@@ -1,5 +1,5 @@
 import Hero from "@/components/home/Hero";
-import PhotoBreak from "@/components/home/PhotoBreak";
+import InfoSection from "@/components/home/InfoSection";
 import HowItWorks from "@/components/home/HowItWorks";
 import DailyMatch from "@/components/home/DailyMatch";
 import FeaturesGrid from "@/components/home/FeaturesGrid";
@@ -11,19 +11,9 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <PhotoBreak
-        src="/images/photo-runners.jpg"
-        alt="Athletes racing"
-        quote="Every workout changes tomorrow's battle."
-        position="center 40%"
-      />
+      <InfoSection />
       <HowItWorks />
       <DailyMatch />
-      <PhotoBreak
-        src="/images/photo-gym.jpg"
-        alt="Athlete lifting"
-        position="center 30%"
-      />
       <FeaturesGrid />
       <ArenaSection />
       <FAQ />
