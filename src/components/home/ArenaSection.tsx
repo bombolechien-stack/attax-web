@@ -5,7 +5,7 @@ export default function ArenaSection() {
     <section style={{
       position: "relative",
       backgroundColor: "#050505",
-      minHeight: "90vh",
+      minHeight: "110vh",
       display: "flex",
       alignItems: "center",
       overflow: "hidden",
@@ -16,38 +16,41 @@ export default function ArenaSection() {
           src="/images/photo-race.jpg"
           alt="Athletes"
           fill
-          style={{ objectFit: "cover", objectPosition: "center 40%", filter: "grayscale(60%) contrast(1.05) brightness(0.3)" }}
+          style={{
+            objectFit: "cover",
+            objectPosition: "center 40%",
+            filter: "grayscale(70%) contrast(1.1) brightness(0.28)",
+          }}
         />
       </div>
 
-      {/* Gradient */}
-      <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(to right, rgba(5,5,5,0.92) 0%, rgba(5,5,5,0.6) 60%, rgba(5,5,5,0.3) 100%)" }} />
-      <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(to bottom, rgba(5,5,5,0.2) 0%, rgba(5,5,5,0) 40%, rgba(5,5,5,0.8) 100%)" }} />
+      {/* Gradients */}
+      <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(to right, rgba(5,5,5,0.95) 0%, rgba(5,5,5,0.65) 55%, rgba(5,5,5,0.3) 100%)" }} />
+      <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(to bottom, rgba(5,5,5,0.15) 0%, rgba(5,5,5,0) 30%, rgba(5,5,5,0) 70%, rgba(5,5,5,0.9) 100%)" }} />
 
       {/* Grain */}
       <div style={{
         position: "absolute", inset: 0, zIndex: 2, pointerEvents: "none",
-        backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E\")",
+        backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E\")",
         backgroundRepeat: "repeat", backgroundSize: "300px 300px",
       }} />
 
       {/* Content */}
-      <div style={{ position: "relative", zIndex: 3, padding: "8rem clamp(2rem, 10vw, 10rem)", width: "100%" }}>
+      <div style={{ position: "relative", zIndex: 3, padding: "8rem clamp(2rem, 10vw, 10rem)", width: "100%", maxWidth: "900px" }}>
         <p style={{
-          fontSize: "clamp(3rem, 8vw, 8.5rem)",
+          fontSize: "clamp(3.5rem, 9vw, 10rem)",
           fontWeight: 800,
           color: "#ffffff",
-          letterSpacing: "-0.055em",
-          lineHeight: 0.9,
-          margin: "0 0 3rem",
-          maxWidth: "900px",
+          letterSpacing: "-0.06em",
+          lineHeight: 0.87,
+          margin: "0 0 4rem",
         }}>
           The arena<br />never stops.
         </p>
-        <p style={{ fontSize: "clamp(1rem, 1.3vw, 1.125rem)", color: "rgba(255,255,255,0.35)", lineHeight: 1.75, margin: "0 0 3.5rem", maxWidth: "380px" }}>
-          Every rep. Every step. Every sprint. All of it counts. All of it battles.
+        <p style={{ fontSize: "clamp(1rem, 1.3vw, 1.125rem)", color: "rgba(255,255,255,0.32)", lineHeight: 1.75, margin: "0 0 3.5rem", maxWidth: "360px" }}>
+          Every rep. Every step. Every sprint.<br />All of it counts. All of it battles.
         </p>
-        <div style={{ display: "flex", gap: "10px" }}>
+        <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
           <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" style={{
             display: "inline-flex", alignItems: "center", gap: "8px",
             backgroundColor: "#ffffff", color: "#0d0d0d", fontWeight: 700, fontSize: "0.9375rem",
@@ -58,7 +61,7 @@ export default function ArenaSection() {
           </a>
           <a href="https://play.google.com" target="_blank" rel="noopener noreferrer" style={{
             display: "inline-flex", alignItems: "center", gap: "8px",
-            backgroundColor: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.75)", fontWeight: 600, fontSize: "0.9375rem",
+            backgroundColor: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.72)", fontWeight: 600, fontSize: "0.9375rem",
             padding: "14px 28px", borderRadius: "999px", textDecoration: "none",
             border: "1px solid rgba(255,255,255,0.1)",
           }}>
