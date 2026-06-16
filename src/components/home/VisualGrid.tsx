@@ -5,8 +5,8 @@ const PHONES = [
     src: "/screens/screenactivity.png",
     label: "Train",
     caption: "Every workout syncs automatically. Your score updates in real time.",
-    offset: 60,
-    scale: 0.9,
+    offset: 80,
+    scale: 0.85,
   },
   {
     src: "/screens/screencards.png",
@@ -19,8 +19,8 @@ const PHONES = [
     src: "/screens/screenmatch.png",
     label: "Battle",
     caption: "Daily 1v1 duels. Results drop at 21:30 every night.",
-    offset: 60,
-    scale: 0.9,
+    offset: 80,
+    scale: 0.85,
   },
 ];
 
@@ -75,7 +75,7 @@ export default function VisualGrid() {
         marginBottom: "3.5rem",
       }}>
         {PHONES.map(p => {
-          const W = 240 * p.scale;
+          const W = 360 * p.scale;
           const H = W * (873 / 760); // approximate aspect ratio of the mockup images
           return (
             <div key={p.src} style={{
@@ -107,7 +107,7 @@ export default function VisualGrid() {
         {PHONES.map(p => {
           const W = 240 * p.scale;
           return (
-            <div key={p.src} style={{ width: W, flexShrink: 0, textAlign: "center" }}>
+            <div key={p.src} style={{ width: 360 * p.scale, flexShrink: 0, textAlign: "center" }}>
               <span style={{
                 display: "inline-block",
                 fontSize: "0.6875rem",
