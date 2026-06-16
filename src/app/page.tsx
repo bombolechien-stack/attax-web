@@ -1,7 +1,8 @@
-﻿import Hero from "@/components/home/Hero";
+import Hero from "@/components/home/Hero";
 import WorkoutsNowMatter from "@/components/home/WorkoutsNowMatter";
+import VisualBreak from "@/components/home/VisualBreak";
 import HowItWorks from "@/components/home/HowItWorks";
-import DailyMatch from "@/components/home/DailyMatch";
+import LifestyleSection from "@/components/home/LifestyleSection";
 import FeaturesGrid from "@/components/home/FeaturesGrid";
 import ArenaSection from "@/components/home/ArenaSection";
 import FAQ from "@/components/home/FAQ";
@@ -12,8 +13,9 @@ export default function HomePage() {
     <>
       <Hero />
       <WorkoutsNowMatter />
+      <VisualBreak />
       <HowItWorks />
-      <DailyMatch />
+      <LifestyleSection />
       <FeaturesGrid />
       <ArenaSection />
       <FAQ />
