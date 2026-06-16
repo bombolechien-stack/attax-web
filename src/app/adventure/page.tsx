@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
   title: "The Adventure — Attax Story",
@@ -60,6 +61,7 @@ const values = [
 export default function AdventurePage() {
   return (
     <>
+      <Navbar />
       <section className="pt-32 pb-20 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-xs font-semibold tracking-[0.2em] text-[#f97316] uppercase mb-4">

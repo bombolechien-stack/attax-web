@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
   title: "Discover Attax — Features & How It Works",
@@ -70,6 +71,7 @@ const techFeatures = [
 export default function DiscoverPage() {
   return (
     <>
+      <Navbar />
       <section className="pt-32 pb-20 px-6">
         <div className="max-w-7xl mx-auto text-center">
           <p className="text-xs font-semibold tracking-[0.2em] text-[#f97316] uppercase mb-4">
