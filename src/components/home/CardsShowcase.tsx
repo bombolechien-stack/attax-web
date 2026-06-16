@@ -26,31 +26,21 @@ function AppCard({ card, index }: { card: typeof CARDS[0]; index: number }) {
     const el = ref.current;
     if (!el) return;
 
-    // Initial hidden state
     el.style.opacity = "0";
-    el.style.transform = "translateY(48px)";
-    el.style.transition = "none";
+    el.style.transform = "translateY(20px)";
 
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // Enter: slide up in
-            setTimeout(() => {
-              el.style.transition = "opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1)";
-              el.style.opacity = "1";
-              el.style.transform = "translateY(0)";
-            }, index * 60);
-          } else {
-            // Exit: determine direction
-            const above = entry.boundingClientRect.top < 0;
-            el.style.transition = "opacity 0.4s ease, transform 0.4s ease";
-            el.style.opacity = "0";
-            el.style.transform = above ? "translateY(-24px)" : "translateY(48px)";
-          }
-        });
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            el.style.transition = "opacity 0.7s ease, transform 0.7s cubic-bezier(0.16,1,0.3,1)";
+            el.style.opacity = "1";
+            el.style.transform = "translateY(0)";
+          }, index * 50);
+          observer.disconnect();
+        }
       },
-      { threshold: 0.15 }
+      { threshold: 0.1 }
     );
 
     observer.observe(el);
@@ -142,18 +132,14 @@ export default function CardsShowcase() {
     const el = headerRef.current;
     if (!el) return;
     el.style.opacity = "0";
-    el.style.transform = "translateY(32px)";
+    el.style.transform = "translateY(16px)";
 
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
-        el.style.transition = "opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1)";
+        el.style.transition = "opacity 0.8s ease, transform 0.8s cubic-bezier(0.16,1,0.3,1)";
         el.style.opacity = "1";
         el.style.transform = "translateY(0)";
-      } else {
-        const above = entry.boundingClientRect.top < 0;
-        el.style.transition = "opacity 0.4s ease, transform 0.4s ease";
-        el.style.opacity = "0";
-        el.style.transform = above ? "translateY(-20px)" : "translateY(32px)";
+        observer.disconnect();
       }
     }, { threshold: 0.2 });
 
