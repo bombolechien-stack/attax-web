@@ -32,7 +32,7 @@ const pillars = [
   {
     n: "04",
     title: "Leagues & Rank",
-    description: "Eight players. Seven days. One winner per league. At the end, standings determine who climbs the competitive ladder. Divisions run from Bronze to Platinum with a hidden MMR for fair matchmaking. A cinematic rank reveal awaits every first promotion.",
+    description: "Eight players. Seven days. One winner per league. At the end, standings determine who climbs the competitive ladder. Five divisions — Rookie, Challenger, Pro, Elite, Legend — with a hidden MMR for fair matchmaking. A cinematic rank reveal awaits every first promotion.",
   },
 ];
 

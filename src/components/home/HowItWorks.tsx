@@ -5,7 +5,7 @@ const steps = [
   { n: "2", title: "Earn Activity Points", desc: "Heart rate zones score your effort in real time. Steps, sessions, intensity — all converted into your daily Activity Score.", img: "/images/sport-running-group.png" },
   { n: "3", title: "Pick your card", desc: "Every morning, choose one of 12 strategic cards before 1 PM. Boost yourself, sabotage your rival, or hide your score.", img: "/images/sport-weights.png" },
   { n: "4", title: "Win the daily duel", desc: "At 9:30 PM, the duel resolves. Your 7-day rolling score vs. your opponent's. The most active player wins the day.", img: "/images/sport-cycling.png" },
-  { n: "5", title: "Climb the ranking", desc: "Win your league of 8 over 7 days. Earn League Points. Rise through Bronze, Silver, Gold, Platinum — one division at a time.", img: "/images/sport-basketball.png" },
+  { n: "5", title: "Climb the ranking", desc: "Win your league of 8 over 7 days. Earn League Points. Rise through Rookie, Challenger, Pro, Elite, Legend — one division at a time.", img: "/images/sport-basketball.png" },
 ];
 
 export default function HowItWorks() {

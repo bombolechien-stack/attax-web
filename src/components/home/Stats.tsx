@@ -14,7 +14,7 @@ export default function Stats() {
                 null,
                 { num: "12", label: "strategic cards", sub: "Boost, sabotage, deceive." },
                 null,
-                { num: "4", label: "divisions", sub: "Bronze to Platinum." },
+                { num: "4", label: "divisions", sub: "Rookie to Legend." },
               ].map((s, i) =>
                 s === null ? (
                   <div key={i} style={{ width: "1px", height: "80px", backgroundColor: "#e8e8e8", margin: "0 auto" }} />
@@ -106,7 +106,7 @@ export default function Stats() {
             {[
               { n: "01", title: "Real stakes, every day", desc: "A 1v1 duel resolves every evening at 9:30 PM. Your workouts decided the outcome — not your app usage. Show up or lose ground." },
               { n: "02", title: "Strategy on top of effort", desc: "12 cards add a layer of tactics to raw fitness. Boost your score, sabotage a rival, hide your activity, or reveal theirs. Skill meets sweat." },
-              { n: "03", title: "A rank that means something", desc: "Divisions from Bronze to Platinum, with a hidden MMR ensuring every match is competitive. Earn your spot or get knocked down." },
+              { n: "03", title: "A rank that means something", desc: "Five divisions — Rookie, Challenger, Pro, Elite, Legend — with a hidden MMR ensuring every match is competitive. Earn your spot or get knocked down." },
             ].map((p, i) => (
               <InView key={p.n} delay={i * 80}>
                 <div style={{

@@ -4,259 +4,159 @@ import Image from "next/image";
 import InView from "@/components/InView";
 
 const feed = [
-  { time: "07:42", text: "Alex trained 45 min — now leading by 84 pts", side: "opp" },
-  { time: "09:15", text: "You crushed a 6km run — 127 pts earned", side: "you" },
-  { time: "12:03", text: "Alex played FREEZE — your best day −8%", side: "opp" },
-  { time: "14:30", text: "You activated COUNTER — +25% after 6 PM", side: "you" },
-  { time: "17:55", text: "You're now 43 pts ahead. Hold the lead.", side: "you" },
+  { time: "07:42", text: "Alex logged a 45-min run — now 84 pts ahead", you: false },
+  { time: "09:15", text: "You completed a 6 km run — 127 pts earned", you: true },
+  { time: "12:03", text: "Alex played FREEZE — your best day −8%", you: false },
+  { time: "14:30", text: "You activated COUNTER — +25% after 6 PM", you: true },
+  { time: "17:55", text: "You're now leading by 43 pts", you: true },
 ];
 
 export default function CombatSection() {
   return (
-    <section style={{ backgroundColor: "#080808", padding: "0 2rem" }}>
+    <section style={{
+      backgroundColor: "#080808",
+      padding: "0 2rem",
+      backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,0.018) 3px, rgba(255,255,255,0.018) 4px)",
+    }}>
       <div style={{ maxWidth: "72rem", margin: "0 auto", padding: "7rem 0" }}>
 
-        {/* Header */}
         <InView>
-          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: "4rem", gap: "2rem" }}>
+          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: "5rem", gap: "2rem" }}>
             <div>
               <p className="section-label-light" style={{ margin: "0 0 1.25rem" }}>The daily duel</p>
               <h2 style={{
                 fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800,
                 color: "#ffffff", letterSpacing: "-0.045em", lineHeight: 1.02, margin: 0,
               }}>
-                Every day, a real fight.
+                Every night,<br />a winner is decided.
               </h2>
             </div>
-            <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.38)", lineHeight: 1.75, maxWidth: "300px", margin: 0, flex: "0 0 300px" }}>
-              Your health data becomes your weapon. More intensity, more points. More points, more wins.
+            <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.35)", lineHeight: 1.75, maxWidth: "300px", margin: 0, flex: "0 0 300px" }}>
+              Your 7-day rolling Activity Score is your weapon. More intensity, more points. More points, more wins. Resolved at 21:30 every night.
             </p>
           </div>
         </InView>
 
-        {/* Combat arena */}
+        {/* Combat UI */}
         <InView>
-          <div className="scanlines" style={{
-            backgroundColor: "#0d0d0d",
-            borderRadius: "28px",
+          <div style={{
+            backgroundColor: "#0e0e0e",
+            borderRadius: "20px",
+            border: "1px solid rgba(255,255,255,0.07)",
             overflow: "hidden",
-            border: "1px solid rgba(255,255,255,0.06)",
-            position: "relative",
           }}>
-            {/* Grain */}
-            <div style={{
-              position: "absolute", inset: 0, zIndex: 1, opacity: 0.18, pointerEvents: "none",
-              backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E\")",
-            }} />
 
-            {/* HUD top bar */}
+            {/* Top bar */}
             <div style={{
-              position: "relative", zIndex: 3,
               display: "flex", alignItems: "center", justifyContent: "space-between",
-              padding: "1.25rem 2rem",
+              padding: "1rem 1.75rem",
               borderBottom: "1px solid rgba(255,255,255,0.05)",
+              backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,0.015) 3px, rgba(255,255,255,0.015) 4px)",
             }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                <div style={{ width: "6px", height: "6px", borderRadius: "50%", backgroundColor: "#4ade80" }} />
-                <span style={{ fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.12em", color: "rgba(255,255,255,0.4)", textTransform: "uppercase" }}>Live</span>
+              <div style={{ display: "flex", alignItems: "center", gap: "7px" }}>
+                <div style={{ width: "5px", height: "5px", borderRadius: "50%", backgroundColor: "#4ade80" }} />
+                <span style={{ fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.14em", color: "rgba(255,255,255,0.3)", textTransform: "uppercase" }}>Live</span>
               </div>
               <div style={{ textAlign: "center" }}>
-                <div style={{ fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.14em", color: "rgba(255,255,255,0.25)", textTransform: "uppercase" }}>Resolves tonight</div>
-                <div style={{ fontSize: "0.9375rem", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.02em" }}>21:30</div>
+                <div style={{ fontSize: "0.625rem", fontWeight: 700, letterSpacing: "0.16em", color: "rgba(255,255,255,0.2)", textTransform: "uppercase" }}>Resolves tonight</div>
+                <div style={{ fontSize: "1rem", fontWeight: 800, color: "rgba(255,255,255,0.7)", letterSpacing: "-0.01em", fontVariantNumeric: "tabular-nums" }}>21:30</div>
               </div>
-              <div style={{ fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.12em", color: "rgba(255,255,255,0.35)", textTransform: "uppercase" }}>Day 4 / 7</div>
+              <div style={{ fontSize: "0.625rem", fontWeight: 700, letterSpacing: "0.14em", color: "rgba(255,255,255,0.2)", textTransform: "uppercase" }}>Day 4 / 7</div>
             </div>
 
-            {/* Main arena */}
+            {/* Fighters + scores */}
             <div style={{
-              position: "relative", zIndex: 3,
-              display: "grid", gridTemplateColumns: "1fr auto 1fr",
-              alignItems: "center",
-              padding: "3rem 3rem 2rem",
-              gap: "2rem",
+              display: "grid", gridTemplateColumns: "1fr 280px 1fr",
+              padding: "3rem 2.5rem 2rem",
+              gap: "2rem", alignItems: "center",
             }}>
-              {/* Player A */}
-              <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "1.25rem" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                  <div style={{
-                    width: "32px", height: "32px", borderRadius: "50%",
-                    background: "linear-gradient(135deg, #3b82f6, #1d4ed8)",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    fontSize: "0.75rem", fontWeight: 800, color: "#fff",
-                  }}>Y</div>
-                  <div>
-                    <div style={{ fontSize: "0.875rem", fontWeight: 700, color: "#ffffff" }}>You</div>
-                    <div style={{ fontSize: "0.6875rem", color: "rgba(255,255,255,0.35)", letterSpacing: "0.06em" }}>Silver II</div>
-                  </div>
+              {/* Player */}
+              <div>
+                <div style={{ fontSize: "0.625rem", fontWeight: 700, letterSpacing: "0.14em", color: "rgba(255,255,255,0.3)", textTransform: "uppercase", marginBottom: "0.75rem" }}>You</div>
+                <div style={{ display: "flex", alignItems: "baseline", gap: "6px", marginBottom: "0.375rem" }}>
+                  <span className="score-num" style={{ fontSize: "clamp(2.5rem, 4vw, 3.75rem)", color: "#ffffff", lineHeight: 1 }}>2 847</span>
+                  <span style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.25)", fontWeight: 500 }}>pts</span>
                 </div>
-                {/* Score */}
-                <div>
-                  <div className="score-num" style={{ fontSize: "clamp(3rem, 5vw, 4.5rem)", color: "#ffffff", lineHeight: 1 }}>2 847</div>
-                  <div style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.3)", marginTop: "4px" }}>Activity Points · 7 days</div>
+                <div style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.22)", marginBottom: "1.5rem" }}>7-day score</div>
+                <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                  <div style={{ width: "8px", height: "8px", borderRadius: "50%", backgroundColor: "#3b82f6", flexShrink: 0 }} />
+                  <span style={{ fontSize: "0.75rem", color: "#60a5fa", fontWeight: 600 }}>+412 pts today</span>
                 </div>
-                {/* Today */}
-                <div style={{
-                  backgroundColor: "rgba(59,130,246,0.12)",
-                  border: "1px solid rgba(59,130,246,0.2)",
-                  borderRadius: "8px", padding: "8px 12px",
-                }}>
-                  <div style={{ fontSize: "0.6875rem", color: "rgba(255,255,255,0.35)", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "2px" }}>Today</div>
-                  <div style={{ fontSize: "1.125rem", fontWeight: 800, color: "#60a5fa" }}>+412 pts</div>
-                </div>
+                <div style={{ fontSize: "0.625rem", color: "rgba(255,255,255,0.2)", marginTop: "4px", letterSpacing: "0.06em" }}>Challenger II</div>
               </div>
 
-              {/* Center — fighters + VS */}
-              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "1.5rem" }}>
-                <div style={{ display: "flex", alignItems: "flex-end", gap: "0" }}>
-                  {/* Fighter A */}
-                  <div style={{
-                    width: "120px", height: "160px", position: "relative",
-                    "--glow-col": "rgba(59,130,246,0.6)",
-                  } as React.CSSProperties}>
-                    <div className="fighter-glow" style={{
-                      position: "absolute", inset: 0,
-                      "--glow-col": "rgba(59,130,246,0.5)",
-                    } as React.CSSProperties}>
-                      <Image
-                        src="/fighters/A1.png"
-                        alt="Fighter A"
-                        fill
-                        style={{ objectFit: "contain", objectPosition: "bottom center", filter: "brightness(1.1) drop-shadow(0 0 20px rgba(59,130,246,0.4))" }}
-                      />
-                    </div>
+              {/* Center — fighters */}
+              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "1.25rem" }}>
+                <div style={{ display: "flex", alignItems: "flex-end", width: "100%", height: "200px", position: "relative" }}>
+                  <div style={{ flex: 1, height: "100%", position: "relative" }}>
+                    <Image src="/fighters/A2.png" alt="You" fill style={{ objectFit: "contain", objectPosition: "bottom center", filter: "drop-shadow(0 0 16px rgba(59,130,246,0.35))" }} />
                   </div>
-                  {/* VS */}
-                  <div className="vs-flicker" style={{
-                    fontSize: "1.25rem", fontWeight: 900, color: "rgba(255,255,255,0.2)",
-                    letterSpacing: "-0.02em", padding: "0 4px", alignSelf: "center",
-                  }}>VS</div>
-                  {/* Fighter B — mirrored */}
-                  <div style={{
-                    width: "120px", height: "160px", position: "relative",
-                    transform: "scaleX(-1)",
-                  }}>
-                    <div className="fighter-glow" style={{
-                      position: "absolute", inset: 0,
-                      "--glow-col": "rgba(239,68,68,0.5)",
-                    } as React.CSSProperties}>
-                      <Image
-                        src="/fighters/B1.png"
-                        alt="Fighter B"
-                        fill
-                        style={{ objectFit: "contain", objectPosition: "bottom center", filter: "brightness(1.1) drop-shadow(0 0 20px rgba(239,68,68,0.4))" }}
-                      />
-                    </div>
+                  <div style={{ flex: 1, height: "100%", position: "relative", transform: "scaleX(-1)" }}>
+                    <Image src="/fighters/B2.png" alt="Opponent" fill style={{ objectFit: "contain", objectPosition: "bottom center", filter: "drop-shadow(0 0 16px rgba(239,68,68,0.3))" }} />
                   </div>
                 </div>
-
                 {/* Score bar */}
-                <div style={{ width: "260px" }}>
-                  <div style={{
-                    height: "6px", borderRadius: "3px",
-                    backgroundColor: "rgba(255,255,255,0.08)",
-                    overflow: "hidden", position: "relative",
-                  }}>
-                    {/* Player A side */}
-                    <div className="bar-fill" style={{
-                      position: "absolute", left: 0, top: 0, bottom: 0,
-                      width: "56%",
-                      background: "linear-gradient(90deg, #3b82f6, #60a5fa)",
-                      borderRadius: "3px",
-                      "--bar-pct": "56%",
-                    } as React.CSSProperties} />
-                    {/* Player B fills from right */}
-                    <div className="bar-fill" style={{
-                      position: "absolute", right: 0, top: 0, bottom: 0,
-                      width: "44%",
-                      background: "linear-gradient(270deg, #ef4444, #f87171)",
-                      borderRadius: "3px",
-                      "--bar-pct": "44%",
-                    } as React.CSSProperties} />
+                <div style={{ width: "100%" }}>
+                  <div style={{ height: "3px", borderRadius: "2px", backgroundColor: "rgba(255,255,255,0.06)", overflow: "hidden", display: "flex" }}>
+                    <div style={{ width: "56%", background: "linear-gradient(90deg, #1d4ed8, #3b82f6)" }} />
+                    <div style={{ width: "44%", background: "linear-gradient(90deg, #ef4444, #b91c1c)" }} />
                   </div>
-                  <div style={{ display: "flex", justifyContent: "space-between", marginTop: "6px" }}>
-                    <span style={{ fontSize: "0.6875rem", color: "#60a5fa", fontWeight: 700 }}>56%</span>
-                    <span style={{ fontSize: "0.6875rem", color: "#f87171", fontWeight: 700 }}>44%</span>
+                  <div style={{ display: "flex", justifyContent: "space-between", marginTop: "5px" }}>
+                    <span style={{ fontSize: "0.625rem", color: "#60a5fa", fontWeight: 600 }}>56%</span>
+                    <span style={{ fontSize: "0.625rem", color: "#f87171", fontWeight: 600 }}>44%</span>
                   </div>
                 </div>
               </div>
 
-              {/* Player B */}
-              <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "1.25rem" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "10px", flexDirection: "row-reverse" }}>
-                  <div style={{
-                    width: "32px", height: "32px", borderRadius: "50%",
-                    background: "linear-gradient(135deg, #ef4444, #b91c1c)",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    fontSize: "0.75rem", fontWeight: 800, color: "#fff",
-                  }}>A</div>
-                  <div style={{ textAlign: "right" }}>
-                    <div style={{ fontSize: "0.875rem", fontWeight: 700, color: "#ffffff" }}>Alex</div>
-                    <div style={{ fontSize: "0.6875rem", color: "rgba(255,255,255,0.35)", letterSpacing: "0.06em" }}>Gold I</div>
-                  </div>
+              {/* Opponent */}
+              <div style={{ textAlign: "right" }}>
+                <div style={{ fontSize: "0.625rem", fontWeight: 700, letterSpacing: "0.14em", color: "rgba(255,255,255,0.3)", textTransform: "uppercase", marginBottom: "0.75rem" }}>Alex</div>
+                <div style={{ display: "flex", alignItems: "baseline", gap: "6px", justifyContent: "flex-end", marginBottom: "0.375rem" }}>
+                  <span style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.25)", fontWeight: 500 }}>pts</span>
+                  <span className="score-num" style={{ fontSize: "clamp(2.5rem, 4vw, 3.75rem)", color: "rgba(255,255,255,0.5)", lineHeight: 1 }}>2 231</span>
                 </div>
-                {/* Score */}
-                <div style={{ textAlign: "right" }}>
-                  <div className="score-num" style={{ fontSize: "clamp(3rem, 5vw, 4.5rem)", color: "#ffffff", lineHeight: 1 }}>2 231</div>
-                  <div style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.3)", marginTop: "4px" }}>Activity Points · 7 days</div>
+                <div style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.22)", marginBottom: "1.5rem" }}>7-day score</div>
+                <div style={{ display: "flex", alignItems: "center", gap: "8px", justifyContent: "flex-end" }}>
+                  <span style={{ fontSize: "0.75rem", color: "#f87171", fontWeight: 600 }}>+384 pts today</span>
+                  <div style={{ width: "8px", height: "8px", borderRadius: "50%", backgroundColor: "#ef4444", flexShrink: 0 }} />
                 </div>
-                {/* Today */}
-                <div style={{
-                  backgroundColor: "rgba(239,68,68,0.10)",
-                  border: "1px solid rgba(239,68,68,0.18)",
-                  borderRadius: "8px", padding: "8px 12px",
-                  textAlign: "right",
-                }}>
-                  <div style={{ fontSize: "0.6875rem", color: "rgba(255,255,255,0.35)", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "2px" }}>Today</div>
-                  <div style={{ fontSize: "1.125rem", fontWeight: 800, color: "#f87171" }}>+384 pts</div>
-                </div>
+                <div style={{ fontSize: "0.625rem", color: "rgba(255,255,255,0.2)", marginTop: "4px", letterSpacing: "0.06em" }}>Pro III</div>
               </div>
             </div>
 
             {/* Active card */}
             <div style={{
-              position: "relative", zIndex: 3,
-              padding: "0 3rem 1.5rem",
-              display: "flex", justifyContent: "center",
+              margin: "0 2.5rem",
+              padding: "0.875rem 1.25rem",
+              backgroundColor: "rgba(255,255,255,0.03)",
+              border: "1px solid rgba(255,255,255,0.06)",
+              borderRadius: "10px",
+              display: "flex", alignItems: "center", gap: "12px",
             }}>
-              <div style={{
-                display: "inline-flex", alignItems: "center", gap: "10px",
-                backgroundColor: "rgba(255,255,255,0.04)",
-                border: "1px solid rgba(255,255,255,0.08)",
-                borderRadius: "10px", padding: "10px 16px",
-              }}>
-                <div style={{ width: "28px", height: "28px", borderRadius: "6px", overflow: "hidden", position: "relative", flexShrink: 0 }}>
-                  <Image src="/cards/counter.png" alt="Counter card" fill style={{ objectFit: "cover" }} />
-                </div>
-                <div>
-                  <div style={{ fontSize: "0.6875rem", color: "rgba(255,255,255,0.3)", letterSpacing: "0.1em", textTransform: "uppercase" }}>Your card today</div>
-                  <div style={{ fontSize: "0.875rem", fontWeight: 700, color: "#ffffff" }}>Counter — +25% after 6 PM if losing</div>
-                </div>
+              <div style={{ width: "24px", height: "24px", borderRadius: "5px", overflow: "hidden", position: "relative", flexShrink: 0, opacity: 0.85 }}>
+                <Image src="/cards/counter.png" alt="Counter" fill style={{ objectFit: "cover" }} />
+              </div>
+              <div style={{ flex: 1 }}>
+                <span style={{ fontSize: "0.6875rem", fontWeight: 700, color: "rgba(255,255,255,0.25)", letterSpacing: "0.1em", textTransform: "uppercase" }}>Active card — </span>
+                <span style={{ fontSize: "0.6875rem", fontWeight: 600, color: "rgba(255,255,255,0.55)" }}>Counter · +25% after 6 PM if losing</span>
+              </div>
+              <div style={{ fontSize: "0.625rem", color: "rgba(255,255,255,0.18)", letterSpacing: "0.08em", textTransform: "uppercase" }}>Deadline passed</div>
+            </div>
+
+            {/* Feed */}
+            <div style={{ padding: "1.5rem 2.5rem 2rem", marginTop: "0.5rem" }}>
+              <div style={{ fontSize: "0.5625rem", fontWeight: 700, letterSpacing: "0.16em", color: "rgba(255,255,255,0.15)", textTransform: "uppercase", marginBottom: "1rem" }}>Activity feed</div>
+              <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                {feed.map((item, i) => (
+                  <div key={i} style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+                    <span style={{ fontSize: "0.625rem", color: "rgba(255,255,255,0.18)", fontVariantNumeric: "tabular-nums", width: "32px", flexShrink: 0 }}>{item.time}</span>
+                    <div style={{ width: "3px", height: "3px", borderRadius: "50%", backgroundColor: item.you ? "rgba(96,165,250,0.7)" : "rgba(248,113,113,0.5)", flexShrink: 0 }} />
+                    <span style={{ fontSize: "0.8125rem", color: item.you ? "rgba(255,255,255,0.6)" : "rgba(255,255,255,0.28)", lineHeight: 1.5 }}>{item.text}</span>
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* Activity feed */}
-            <div style={{
-              position: "relative", zIndex: 3,
-              borderTop: "1px solid rgba(255,255,255,0.05)",
-              padding: "1.5rem 2rem",
-              display: "flex", flexDirection: "column", gap: "10px",
-            }}>
-              <div style={{ fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.12em", color: "rgba(255,255,255,0.22)", textTransform: "uppercase", marginBottom: "4px" }}>Combat feed</div>
-              {feed.map((item, i) => (
-                <div key={i} style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                  <span style={{ fontSize: "0.6875rem", color: "rgba(255,255,255,0.22)", fontVariantNumeric: "tabular-nums", flexShrink: 0, width: "36px" }}>{item.time}</span>
-                  <div style={{
-                    width: "4px", height: "4px", borderRadius: "50%", flexShrink: 0,
-                    backgroundColor: item.side === "you" ? "#60a5fa" : "#f87171",
-                  }} />
-                  <span style={{
-                    fontSize: "0.8125rem",
-                    color: item.side === "you" ? "rgba(255,255,255,0.7)" : "rgba(255,255,255,0.4)",
-                    lineHeight: 1.4,
-                  }}>{item.text}</span>
-                </div>
-              ))}
-            </div>
           </div>
         </InView>
       </div>

@@ -200,24 +200,17 @@ body { margin: 0; padding: 0; background: #ffffff; color: #1a1a1a; }
   line-height: 1;
 }
 
-/* ── Scanlines overlay (app UI replication) ── */
-.scanlines {
-  position: relative;
-}
-.scanlines::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
+/* ── Scanlines — texture de fond (comme dans l'app) ── */
+/* Usage: ajouter en backgroundImage inline sur les blocs dark */
+/* backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,0.018) 3px, rgba(255,255,255,0.018) 4px)" */
+.scanlines-bg {
+  background-image: repeating-linear-gradient(
     0deg,
     transparent,
     transparent 3px,
-    rgba(0, 0, 0, 0.07) 3px,
-    rgba(0, 0, 0, 0.07) 4px
+    rgba(255, 255, 255, 0.018) 3px,
+    rgba(255, 255, 255, 0.018) 4px
   );
-  pointer-events: none;
-  z-index: 2;
-  border-radius: inherit;
 }
 
 /* ── App-style mono score number ── */

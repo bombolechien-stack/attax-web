@@ -32,7 +32,7 @@ const features = [
   {
     n: "06",
     title: "Climb your competitive division",
-    desc: `Win streaks earn League Points and push you up through divisions — from Bronze to Silver, Gold, Platinum, and beyond. Lose and you drop. Your hidden MMR ensures you always face opponents at your level. A cinematic rank reveal awaits every first promotion.`,
+    desc: `Win streaks earn League Points and push you up through divisions — Rookie, Challenger, Pro, Elite, Legend. Lose and you drop. Your hidden MMR ensures you always face opponents at your level. A cinematic rank reveal awaits every first promotion.`,
   },
 ];
 

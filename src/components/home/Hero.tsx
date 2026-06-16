@@ -15,18 +15,13 @@ export default function Hero() {
       <div style={{
         position: "relative",
         backgroundColor: "#080808",
+        backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,0.018) 3px, rgba(255,255,255,0.018) 4px)",
         borderRadius: "24px",
         minHeight: "calc(100vh - 24px)",
         display: "flex",
         flexDirection: "column",
         overflow: "hidden",
       }}>
-
-        {/* Scanlines */}
-        <div style={{
-          position: "absolute", inset: 0, zIndex: 1, pointerEvents: "none",
-          backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.08) 3px, rgba(0,0,0,0.08) 4px)",
-        }} />
 
         {/* Grain */}
         <div style={{
