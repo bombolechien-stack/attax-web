@@ -1,19 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import CardsShowcase from "@/components/home/CardsShowcase";
 import PageNavbar from "@/components/PageNavbar";
 
 export const metadata: Metadata = {
   title: "Discover Attax — Features & How It Works",
   description: "Every workout becomes a 1v1 duel. Discover how attax turns your health data into Activity Points, daily fights, and a competitive ranking — 8 players, 7 days, 12 cards.",
 };
-
-const NAV_LINKS = [
-  { href: "/discover", label: "Discover" },
-  { href: "/adventure", label: "The Adventure" },
-  { href: "/contact", label: "Contact" },
-];
 
 const pillars = [
   {
@@ -37,8 +30,6 @@ const pillars = [
     description: "Eight players. Seven days. One winner per league. At the end, standings determine who climbs the competitive ladder. Five divisions — Rookie, Challenger, Pro, Elite, Legend — with a hidden MMR for fair matchmaking. A cinematic rank reveal awaits every first promotion.",
   },
 ];
-
-
 
 export default function DiscoverPage() {
   return (
@@ -84,28 +75,28 @@ export default function DiscoverPage() {
           <div style={{
             position: "relative", zIndex: 3,
             flex: 1, display: "flex", flexDirection: "column", justifyContent: "center",
-            padding: "4rem 4rem 3rem",
-            maxWidth: "620px",
+            padding: "2rem 4rem 2rem",
+            maxWidth: "600px",
           }}>
-            <div style={{ marginBottom: "1.75rem" }}>
+            <div style={{ marginBottom: "1.25rem" }}>
               <span style={{ fontSize: "0.75rem", fontWeight: 600, color: "rgba(255,255,255,0.4)", letterSpacing: "0.14em", textTransform: "uppercase" }}>Discover Attax</span>
             </div>
             <h1 style={{
-              fontSize: "clamp(3rem, 5.5vw, 4.75rem)",
+              fontSize: "clamp(2.25rem, 4vw, 3.75rem)",
               fontWeight: 800, color: "#ffffff",
-              lineHeight: 1.02, letterSpacing: "-0.035em", margin: "0 0 1.5rem",
+              lineHeight: 1.05, letterSpacing: "-0.035em", margin: "0 0 1.25rem",
             }}>
               Your workouts.<br />
               <em style={{ fontStyle: "normal", color: "#ffffff" }}>A real fight.</em>
             </h1>
             <p style={{
-              fontSize: "1.0625rem", color: "rgba(255,255,255,0.5)",
-              lineHeight: 1.75, margin: "0 0 2.5rem", maxWidth: "420px",
+              fontSize: "1rem", color: "rgba(255,255,255,0.5)",
+              lineHeight: 1.75, margin: "0 0 2rem", maxWidth: "400px",
             }}>
               attax turns your activity data into Activity Points. Every day you face a real opponent in a 1v1 duel. Play a card. Win the evening. Climb the rank.
             </p>
             <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
-              <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" className="btn-white" style={{
+              <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" style={{
                 display: "inline-flex", alignItems: "center", gap: "8px",
                 backgroundColor: "#ffffff", color: "#0d0d0d",
                 fontWeight: 700, fontSize: "0.9375rem",
@@ -116,7 +107,7 @@ export default function DiscoverPage() {
                 </svg>
                 App Store
               </a>
-              <Link href="/adventure" className="btn-ghost" style={{
+              <Link href="/adventure" style={{
                 display: "inline-flex", alignItems: "center",
                 backgroundColor: "rgba(255,255,255,0.07)", color: "rgba(255,255,255,0.7)",
                 fontWeight: 600, fontSize: "0.9375rem",
@@ -127,7 +118,7 @@ export default function DiscoverPage() {
           </div>
 
           {/* ── Bottom stats ── */}
-          <div style={{ position: "relative", zIndex: 3, display: "flex", padding: "0 4rem 3.5rem", gap: 0 }}>
+          <div style={{ position: "relative", zIndex: 3, display: "flex", padding: "0 4rem 3rem", gap: 0 }}>
             {[
               { title: "8 players", sub: "Per league" },
               { title: "12 cards", sub: "Strategic powers" },
@@ -180,9 +171,6 @@ export default function DiscoverPage() {
         </div>
       </section>
 
-      {/* ── Cards grid ── */}
-      <CardsShowcase />
-
       {/* ── Full-bleed dark image block ── */}
       <section style={{ backgroundColor: "#f7f7f7", padding: "0 2rem 2rem" }}>
         <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
@@ -199,26 +187,18 @@ export default function DiscoverPage() {
               style={{ objectFit: "cover", objectPosition: "center 35%" }}
             />
             <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0) 100%)" }} />
-            <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "3.5rem 4rem", display: "flex", alignItems: "flex-end", justifyContent: "space-between" }}>
-              <div>
-                <p style={{ fontSize: "0.75rem", fontWeight: 600, color: "rgba(255,255,255,0.4)", letterSpacing: "0.14em", textTransform: "uppercase", margin: "0 0 0.75rem" }}>The Duel</p>
-                <h2 style={{ fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.04em", lineHeight: 1.05, margin: 0 }}>
-                  Every evening,<br />a winner is decided.
-                </h2>
-              </div>
-              <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" className="btn-white" style={{
-                display: "inline-flex", alignItems: "center", gap: "8px", flexShrink: 0,
-                backgroundColor: "#ffffff", color: "#0d0d0d",
-                fontWeight: 700, fontSize: "0.9375rem",
-                padding: "13px 26px", borderRadius: "999px", textDecoration: "none",
-              }}>Download free</a>
+            <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "3.5rem 4rem" }}>
+              <p style={{ fontSize: "0.75rem", fontWeight: 600, color: "rgba(255,255,255,0.4)", letterSpacing: "0.14em", textTransform: "uppercase", margin: "0 0 0.75rem" }}>The Duel</p>
+              <h2 style={{ fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.04em", lineHeight: 1.05, margin: 0 }}>
+                Every evening,<br />a winner is decided.
+              </h2>
             </div>
           </div>
         </div>
       </section>
 
       {/* ── Daily schedule — editorial list ── */}
-      <section style={{ backgroundColor: "#f7f7f7", padding: "7rem 2rem" }}>
+      <section style={{ backgroundColor: "#f7f7f7", padding: "7rem 2rem 9rem" }}>
         <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
           <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "4rem", marginBottom: "4rem" }}>
             <div>
@@ -252,53 +232,6 @@ export default function DiscoverPage() {
                 <p style={{ fontSize: "0.9375rem", color: "#666", lineHeight: 1.8, margin: 0 }}>{f.description}</p>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── CTA finale ── */}
-      <section style={{ backgroundColor: "#f7f7f7", padding: "0 2rem 7rem" }}>
-        <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
-          <div style={{
-            backgroundColor: "#0d0d0d",
-            borderRadius: "28px",
-            overflow: "hidden",
-            padding: "5rem 5rem",
-            position: "relative",
-            textAlign: "center",
-          }}>
-            {/* Grain */}
-            <div style={{
-              position: "absolute", inset: 0, zIndex: 1, opacity: 0.25, pointerEvents: "none",
-              backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E\")",
-            }} />
-            <div style={{ position: "relative", zIndex: 2 }}>
-              <p className="section-label-light" style={{ margin: "0 0 1.5rem" }}>Start now</p>
-              <h2 style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.04em", margin: "0 0 1.25rem", lineHeight: 1.05 }}>
-                Ready to fight<br />for your fitness?
-              </h2>
-              <p style={{ fontSize: "1.0625rem", color: "rgba(255,255,255,0.45)", maxWidth: "380px", margin: "0 auto 3rem", lineHeight: 1.7 }}>
-                Join attax, sync your activity, and face your first opponent tonight.
-              </p>
-              <div style={{ display: "flex", gap: "10px", justifyContent: "center", flexWrap: "wrap" }}>
-                <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" className="btn-white" style={{
-                  display: "inline-flex", alignItems: "center", gap: "8px",
-                  backgroundColor: "#ffffff", color: "#0d0d0d", fontWeight: 700, fontSize: "0.9375rem",
-                  padding: "14px 28px", borderRadius: "999px", textDecoration: "none",
-                }}>
-                  <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-                  </svg>
-                  Download on iOS
-                </a>
-                <Link href="/adventure" className="btn-ghost" style={{
-                  display: "inline-flex", alignItems: "center",
-                  backgroundColor: "rgba(255,255,255,0.07)", color: "rgba(255,255,255,0.7)", fontWeight: 600, fontSize: "0.9375rem",
-                  padding: "14px 28px", borderRadius: "999px", textDecoration: "none",
-                  border: "1px solid rgba(255,255,255,0.1)",
-                }}>Our Story →</Link>
-              </div>
-            </div>
           </div>
         </div>
       </section>
