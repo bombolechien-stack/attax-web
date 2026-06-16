@@ -24,7 +24,7 @@ const PHONES = [
 export default function VisualGrid() {
   return (
     <section style={{
-      backgroundColor: "#070707",
+      backgroundColor: "#f4f4f4",
       padding: "9rem 2rem 10rem",
       position: "relative",
       overflow: "hidden",
@@ -35,7 +35,7 @@ export default function VisualGrid() {
         top: "30%", left: "50%",
         transform: "translate(-50%, -50%)",
         width: "700px", height: "400px",
-        background: "radial-gradient(ellipse at center, rgba(255,255,255,0.04) 0%, transparent 70%)",
+        background: "radial-gradient(ellipse at center, rgba(0,0,0,0.03) 0%, transparent 70%)",
         pointerEvents: "none",
       }} />
 
@@ -45,7 +45,7 @@ export default function VisualGrid() {
         fontWeight: 700,
         letterSpacing: "0.14em",
         textTransform: "uppercase",
-        color: "rgba(255,255,255,0.28)",
+        color: "rgba(0,0,0,0.3)",
         margin: "0 0 1.25rem",
       }}>
         The App
@@ -55,7 +55,7 @@ export default function VisualGrid() {
         textAlign: "center",
         fontSize: "clamp(2rem, 4vw, 3.5rem)",
         fontWeight: 800,
-        color: "#ffffff",
+        color: "#0d0d0d",
         letterSpacing: "-0.05em",
         lineHeight: 1.0,
         margin: "0 0 5rem",
@@ -80,7 +80,7 @@ export default function VisualGrid() {
               height: H,
               position: "relative",
               flexShrink: 0,
-              filter: "drop-shadow(0 24px 48px rgba(0,0,0,0.6))",
+              filter: "drop-shadow(0 24px 48px rgba(0,0,0,0.18))",
             }}>
               <Image
                 src={p.src}
@@ -110,14 +110,14 @@ export default function VisualGrid() {
                 fontWeight: 700,
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
-                color: "rgba(255,255,255,0.5)",
+                color: "rgba(0,0,0,0.4)",
                 marginBottom: "0.5rem",
               }}>
                 {p.label}
               </span>
               <p style={{
                 fontSize: "0.85rem",
-                color: "rgba(255,255,255,0.3)",
+                color: "rgba(0,0,0,0.45)",
                 lineHeight: 1.65,
                 margin: 0,
               }}>
