@@ -1,68 +1,44 @@
 export default function HowItWorks() {
   const steps = [
-    {
-      num: "01",
-      title: "Move",
-      sub: "Your activity is automatically synced via Apple Health or Health Connect.",
-    },
-    {
-      num: "02",
-      title: "Earn power",
-      sub: "Every workout generates combat points based on effort and heart rate zones.",
-    },
-    {
-      num: "03",
-      title: "Battle",
-      sub: "Use your accumulated power to defeat real opponents in daily 1v1 duels.",
-    },
+    { n: "01", title: "Connect", sub: "Link Apple Health or Health Connect. Your activity syncs automatically." },
+    { n: "02", title: "Train", sub: "Run, lift, walk, ride — any real-world activity counts toward your power." },
+    { n: "03", title: "Power Up", sub: "Heart rate zones and effort translate into combat points every day." },
+    { n: "04", title: "Battle", sub: "Face a real opponent daily. Duels resolve every night at 21:30." },
   ];
 
   return (
-    <section id="how-it-works" style={{ backgroundColor: "#ffffff", padding: "9rem 2rem" }}>
-      <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-
-        {/* Title block */}
+    <section id="how-it-works" style={{
+      backgroundColor: "#0d0d0d",
+      backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,0.016) 3px, rgba(255,255,255,0.016) 4px)",
+      padding: "9rem 2rem",
+    }}>
+      <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
         <div style={{ marginBottom: "5rem" }}>
-          <div className="section-label" style={{ marginBottom: "1.25rem" }}>How it works</div>
+          <p className="section-label-light" style={{ margin: "0 0 1.5rem" }}>How it works</p>
           <h2 style={{
-            fontSize: "clamp(2.5rem, 4vw, 4rem)",
-            fontWeight: 800,
-            color: "#0d0d0d",
-            letterSpacing: "-0.045em",
-            lineHeight: 1.0,
-            margin: 0,
+            fontSize: "clamp(2.5rem, 4.5vw, 4rem)", fontWeight: 800,
+            color: "#ffffff", letterSpacing: "-0.045em", lineHeight: 1.0, margin: 0,
+            maxWidth: "500px",
           }}>
-            Train in real life.<br />Fight in Attax.
+            Four steps to the arena.
           </h2>
         </div>
-
-        {/* 3 columns */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "0" }}>
           {steps.map((s, i) => (
-            <div key={s.num} style={{
+            <div key={s.n} style={{
+              padding: "2.5rem 2rem",
+              borderLeft: i > 0 ? "1px solid rgba(255,255,255,0.07)" : "none",
               position: "relative",
-              padding: "2.5rem",
-              borderRight: i < 2 ? "1px solid rgba(0,0,0,0.07)" : "none",
             }}>
-              {/* Ghost number top-right */}
+              <div style={{ fontSize: "0.6875rem", fontWeight: 700, color: "rgba(255,255,255,0.2)", letterSpacing: "0.14em", marginBottom: "2rem" }}>{s.n}</div>
+              <div style={{ fontSize: "1.5rem", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.03em", marginBottom: "0.75rem", lineHeight: 1 }}>{s.title}</div>
+              <p style={{ fontSize: "0.9375rem", color: "rgba(255,255,255,0.4)", lineHeight: 1.7, margin: 0 }}>{s.sub}</p>
+              {/* Large ghost number */}
               <div style={{
-                position: "absolute",
-                top: "1.5rem",
-                right: "1.5rem",
-                fontSize: "4rem",
-                fontWeight: 800,
-                color: "rgba(0,0,0,0.06)",
-                lineHeight: 1,
-                letterSpacing: "-0.04em",
-                userSelect: "none",
-              }}>{s.num}</div>
-
-              <div style={{ fontWeight: 700, fontSize: "1.25rem", color: "#0d0d0d", marginBottom: "0.75rem" }}>
-                {s.title}
-              </div>
-              <div style={{ fontSize: "0.9375rem", color: "rgba(0,0,0,0.5)", lineHeight: 1.65 }}>
-                {s.sub}
-              </div>
+                position: "absolute", bottom: "1.5rem", right: "1.5rem",
+                fontSize: "4rem", fontWeight: 900, color: "rgba(255,255,255,0.04)",
+                letterSpacing: "-0.05em", lineHeight: 1, userSelect: "none",
+              }}>{s.n}</div>
             </div>
           ))}
         </div>
