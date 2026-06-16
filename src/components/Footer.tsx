@@ -2,20 +2,20 @@ import Link from "next/link";
 import Image from "next/image";
 
 const AppleIcon = () => (
-  <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24">
+  <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
     <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
   </svg>
 );
 
 const GooglePlayIcon = () => (
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
     <path d="M3.18 23.76c.3.17.64.24.99.2l13.2-11.96-2.76-2.77L3.18 23.76zm17.16-10.54L17.5 11.5l-2.96 2.68 2.96 2.68 2.87-1.65c.82-.47.82-1.32-.03-1.79zM3.03.24C2.7.44 2.5.83 2.5 1.37v21.26c0 .54.2.93.54 1.13l.14.08L14.4 12 3.17.16.03.24zm11.44 10.4L3.18.24l11.43 10.4z" />
   </svg>
 );
 
 const LINK_STYLE = {
   fontSize: "0.875rem",
-  color: "rgba(255,255,255,0.45)",
+  color: "#666666",
   textDecoration: "none",
   lineHeight: 1,
 };
@@ -25,7 +25,7 @@ const LABEL_STYLE = {
   fontWeight: 700,
   letterSpacing: "0.1em",
   textTransform: "uppercase" as const,
-  color: "rgba(255,255,255,0.2)",
+  color: "#b0b0b0",
   marginBottom: "1.25rem",
   display: "block",
 };
@@ -33,25 +33,24 @@ const LABEL_STYLE = {
 export default function Footer() {
   return (
     <footer>
-      {/* Photo background zone — tight horizontal padding so image just peeks on sides */}
+      {/* Photo CTA zone */}
       <div style={{
         position: "relative",
         overflow: "hidden",
         padding: "0 12px",
       }}>
-
-        {/* Full-bleed photo */}
+        {/* Photo */}
         <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
           <Image
             src="/images/sport-running-group.png"
             alt="Athletes running"
             fill
-            style={{ objectFit: "cover", objectPosition: "center 40%", filter: "grayscale(25%) contrast(1.1) brightness(0.65)" }}
+            style={{ objectFit: "cover", objectPosition: "center 40%", filter: "grayscale(25%) contrast(1.1) brightness(0.6)" }}
           />
-          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(7,7,7,0.6) 0%, rgba(7,7,7,0.35) 55%, rgba(7,7,7,0) 100%)" }} />
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(7,7,7,0.65) 0%, rgba(7,7,7,0.4) 55%, rgba(7,7,7,0) 100%)" }} />
         </div>
 
-        {/* CTA — floats over the photo */}
+        {/* CTA text over photo */}
         <div style={{
           position: "relative", zIndex: 2,
           padding: "9rem 2rem 7rem",
@@ -101,10 +100,10 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Footer card — image just barely visible on left+right */}
+        {/* Footer card — WHITE, image barely visible on sides */}
         <div style={{
           position: "relative", zIndex: 2,
-          backgroundColor: "#0d0d0d",
+          backgroundColor: "#ffffff",
           borderRadius: "20px 20px 0 0",
         }}>
           <div style={{
@@ -115,27 +114,36 @@ export default function Footer() {
           }}>
             {/* Brand */}
             <div>
-              <Image src="/images/logo-attax-wh.svg" alt="Attax" width={76} height={28} style={{ display: "block", marginBottom: "1.125rem" }} />
+              {/* Dark logo: invert the white SVG */}
+              <Image
+                src="/images/logo-attax-wh.svg"
+                alt="Attax"
+                width={76}
+                height={28}
+                style={{ display: "block", marginBottom: "1.125rem", filter: "brightness(0)" }}
+              />
               <p style={{
-                fontSize: "0.875rem", color: "rgba(255,255,255,0.3)", lineHeight: 1.7, margin: "0 0 2rem", maxWidth: "240px",
+                fontSize: "0.875rem", color: "#888", lineHeight: 1.7, margin: "0 0 2rem", maxWidth: "240px",
               }}>
                 The competitive game powered by your real fitness. Move more, fight harder.
               </p>
               <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
                 <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" style={{
                   display: "inline-flex", alignItems: "center", gap: "6px",
-                  backgroundColor: "#ffffff", color: "#0d0d0d", fontWeight: 700, fontSize: "0.8125rem",
+                  backgroundColor: "#0d0d0d", color: "#ffffff", fontWeight: 700, fontSize: "0.8125rem",
                   padding: "8px 16px", borderRadius: "999px", textDecoration: "none",
                 }}>
-                  <AppleIcon /> iOS
+                  <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                  iOS
                 </a>
                 <a href="https://play.google.com" target="_blank" rel="noopener noreferrer" style={{
                   display: "inline-flex", alignItems: "center", gap: "6px",
-                  backgroundColor: "rgba(255,255,255,0.07)", color: "rgba(255,255,255,0.55)", fontWeight: 600, fontSize: "0.8125rem",
+                  backgroundColor: "#f4f4f4", color: "#333", fontWeight: 600, fontSize: "0.8125rem",
                   padding: "8px 16px", borderRadius: "999px", textDecoration: "none",
-                  border: "1px solid rgba(255,255,255,0.1)",
+                  border: "1px solid #e0e0e0",
                 }}>
-                  <GooglePlayIcon /> Android
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.64.24.99.2l13.2-11.96-2.76-2.77L3.18 23.76zm17.16-10.54L17.5 11.5l-2.96 2.68 2.96 2.68 2.87-1.65c.82-.47.82-1.32-.03-1.79zM3.03.24C2.7.44 2.5.83 2.5 1.37v21.26c0 .54.2.93.54 1.13l.14.08L14.4 12 3.17.16.03.24zm11.44 10.4L3.18.24l11.43 10.4z"/></svg>
+                  Android
                 </a>
               </div>
             </div>
@@ -178,7 +186,7 @@ export default function Footer() {
           </div>
 
           <div style={{
-            borderTop: "1px solid rgba(255,255,255,0.05)",
+            borderTop: "1px solid #f0f0f0",
             padding: "1.5rem 4rem",
             display: "flex",
             justifyContent: "space-between",
@@ -186,8 +194,8 @@ export default function Footer() {
             flexWrap: "wrap",
             gap: "0.5rem",
           }}>
-            <span style={{ fontSize: "0.8rem", color: "rgba(255,255,255,0.15)" }}>© 2025 Attax. All rights reserved.</span>
-            <span style={{ fontSize: "0.8rem", color: "rgba(255,255,255,0.1)" }}>Built for athletes. Designed for competitors.</span>
+            <span style={{ fontSize: "0.8rem", color: "#bbb" }}>© 2025 Attax. All rights reserved.</span>
+            <span style={{ fontSize: "0.8rem", color: "#ddd" }}>Built for athletes. Designed for competitors.</span>
           </div>
         </div>
       </div>

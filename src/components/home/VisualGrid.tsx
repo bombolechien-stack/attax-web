@@ -1,78 +1,148 @@
 import Image from "next/image";
 
-interface Card {
-  src: string;
-  title: string;
-  position?: string;
-}
-
-const topCards: Card[] = [
-  { src: "/images/hero-boxing-2.jpg", title: "The fight starts\nat 21:30", position: "center 40%" },
-  { src: "/images/strength-portrait.jpg", title: "Your fitness\nis your weapon", position: "center 25%" },
+const PHONES = [
+  {
+    src: "/screens/onboard2.png",
+    label: "Train",
+    caption: "Connect your wearable. Every workout syncs automatically.",
+    offset: 60,
+    scale: 0.9,
+  },
+  {
+    src: "/screens/league-screen.jpg",
+    label: "Battle",
+    caption: "Daily 1v1 duels. Results drop at 21:30 every night.",
+    offset: 0,
+    scale: 1,
+  },
+  {
+    src: "/screens/onboard3.png",
+    label: "Rise",
+    caption: "Climb the ranks. 5 divisions. One champion per league.",
+    offset: 60,
+    scale: 0.9,
+  },
 ];
 
-const bottomCards: Card[] = [
-  { src: "/images/cycling-portrait.jpg", title: "Every sport. Every effort.", position: "center center" },
-  { src: "/images/warmup.jpg", title: "7 days. 1 champion.", position: "center 30%" },
-  { src: "/images/cycling-race.jpg", title: "Compete daily.", position: "center center" },
-];
+function IPhone({ src, offset, scale }: { src: string; offset: number; scale: number }) {
+  const W = 240 * scale;
+  const H = 510 * scale;
+  const R = 42 * scale;
+  const B = 9 * scale;
 
-function PhotoCard({ src, title, position = "center center", style }: Card & { style?: React.CSSProperties }) {
   return (
     <div style={{
-      position: "relative",
-      borderRadius: "16px",
+      width: W,
+      height: H,
+      borderRadius: R,
+      border: `${B}px solid #1e1e1e`,
+      backgroundColor: "#000",
+      boxShadow: `0 ${40 * scale}px ${100 * scale}px rgba(0,0,0,0.6), inset 0 0 0 1px rgba(255,255,255,0.07)`,
       overflow: "hidden",
-      ...style,
+      position: "relative",
+      transform: `translateY(${offset}px)`,
+      flexShrink: 0,
     }}>
-      <Image
-        src={src}
-        alt={title}
-        fill
-        style={{
-          objectFit: "cover",
-          objectPosition: position,
-          filter: "grayscale(15%) contrast(1.05) brightness(0.75)",
-        }}
-      />
-      {/* Overlay */}
+      {/* Dynamic island */}
       <div style={{
-        position: "absolute", inset: 0,
-        background: "linear-gradient(to bottom, rgba(0,0,0,0) 30%, rgba(0,0,0,0.72) 100%)",
+        position: "absolute", top: 12 * scale, left: "50%",
+        transform: "translateX(-50%)",
+        width: 90 * scale, height: 26 * scale,
+        backgroundColor: "#000",
+        borderRadius: 20 * scale,
+        zIndex: 10,
       }} />
-      {/* Text */}
-      <div style={{
-        position: "absolute", bottom: 0, left: 0, right: 0,
-        padding: "1.75rem 1.75rem 1.625rem",
-      }}>
-        <p style={{
-          fontSize: "clamp(1.125rem, 1.6vw, 1.5rem)",
-          fontWeight: 700,
-          color: "#ffffff",
-          letterSpacing: "-0.03em",
-          lineHeight: 1.2,
-          margin: 0,
-          whiteSpace: "pre-line",
-        }}>
-          {title}
-        </p>
-      </div>
+      <Image src={src} alt="" fill style={{ objectFit: "cover", objectPosition: "top center" }} />
     </div>
   );
 }
 
 export default function VisualGrid() {
   return (
-    <section style={{ backgroundColor: "#070707", padding: "0 12px 12px" }}>
-      <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-        {/* Top row */}
-        <div style={{ display: "grid", gridTemplateColumns: "2fr 3fr", gap: "8px", height: "380px" }}>
-          {topCards.map(c => <PhotoCard key={c.src} {...c} style={{ height: "100%" }} />)}
-        </div>
-        {/* Bottom row */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "8px", height: "280px" }}>
-          {bottomCards.map(c => <PhotoCard key={c.src} {...c} style={{ height: "100%" }} />)}
-        </div>
+    <section style={{
+      backgroundColor: "#070707",
+      padding: "9rem 2rem 10rem",
+      position: "relative",
+      overflow: "hidden",
+    }}>
+      {/* Ambient glow */}
+      <div style={{
+        position: "absolute",
+        top: "30%", left: "50%",
+        transform: "translate(-50%, -50%)",
+        width: "700px", height: "400px",
+        background: "radial-gradient(ellipse at center, rgba(255,255,255,0.04) 0%, transparent 70%)",
+        pointerEvents: "none",
+      }} />
+
+      {/* Label */}
+      <p style={{
+        textAlign: "center",
+        fontSize: "0.75rem",
+        fontWeight: 700,
+        letterSpacing: "0.14em",
+        textTransform: "uppercase",
+        color: "rgba(255,255,255,0.28)",
+        margin: "0 0 1.25rem",
+      }}>
+        The App
+      </p>
+
+      {/* Headline */}
+      <h2 style={{
+        textAlign: "center",
+        fontSize: "clamp(2rem, 4vw, 3.5rem)",
+        fontWeight: 800,
+        color: "#ffffff",
+        letterSpacing: "-0.05em",
+        lineHeight: 1.0,
+        margin: "0 0 5rem",
+      }}>
+        Everything in one place.
+      </h2>
+
+      {/* 3 iPhones */}
+      <div style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "flex-start",
+        gap: "clamp(1.5rem, 3vw, 3rem)",
+        marginBottom: "4rem",
+      }}>
+        {PHONES.map(p => <IPhone key={p.src} src={p.src} offset={p.offset} scale={p.scale} />)}
+      </div>
+
+      {/* Captions */}
+      <div style={{
+        display: "flex",
+        justifyContent: "center",
+        gap: "clamp(1.5rem, 3vw, 3rem)",
+        maxWidth: "860px",
+        margin: "0 auto",
+      }}>
+        {PHONES.map(p => (
+          <div key={p.src} style={{ width: 240 * p.scale, flexShrink: 0, textAlign: "center" }}>
+            <span style={{
+              display: "inline-block",
+              fontSize: "0.6875rem",
+              fontWeight: 700,
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              color: "rgba(255,255,255,0.5)",
+              marginBottom: "0.5rem",
+            }}>
+              {p.label}
+            </span>
+            <p style={{
+              fontSize: "0.85rem",
+              color: "rgba(255,255,255,0.3)",
+              lineHeight: 1.65,
+              margin: 0,
+            }}>
+              {p.caption}
+            </p>
+          </div>
+        ))}
       </div>
     </section>
   );
