@@ -236,37 +236,59 @@ export default function DiscoverPage() {
       </section>
 
       {/* ── Cards grid ── */}
-      <section style={{ backgroundColor: "#f7f7f7", padding: "7rem 2rem" }}>
+      <section style={{ backgroundColor: "#0d0d0d", padding: "7rem 2rem" }}>
         <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
           <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "4rem", marginBottom: "4rem" }}>
             <div>
-              <p className="section-label" style={{ margin: "0 0 1.25rem" }}>The card deck</p>
-              <h2 style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.045em", lineHeight: 1.02, margin: 0 }}>
+              <p className="section-label-light" style={{ margin: "0 0 1.25rem" }}>The card deck</p>
+              <h2 style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.045em", lineHeight: 1.02, margin: 0 }}>
                 12 cards.<br />Infinite tactics.
               </h2>
             </div>
-            <p style={{ fontSize: "1rem", color: "#888", lineHeight: 1.75, maxWidth: "300px", margin: 0, flex: "0 0 300px" }}>
+            <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.35)", lineHeight: 1.75, maxWidth: "300px", margin: 0, flex: "0 0 300px" }}>
               Every morning you pick one card from three offered. Your card choice is final at 1 PM. Choose wisely — the right card at the right moment changes everything.
             </p>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "12px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gap: "10px" }}>
             {cards.map((c) => (
-              <div key={c.name} style={{
-                backgroundColor: "#ffffff",
+              <div key={c.name} className="power-card" style={{
+                position: "relative",
                 borderRadius: "16px",
-                padding: "1.5rem",
-                border: "1px solid #ebebeb",
+                overflow: "hidden",
+                aspectRatio: "2/3",
+                backgroundColor: "#1a1a1a",
+                border: "1px solid rgba(255,255,255,0.06)",
               }}>
+                <Image src={c.bg} alt={c.name} fill style={{ objectFit: "cover" }} />
                 <div style={{
-                  display: "inline-block",
-                  fontSize: "0.625rem", fontWeight: 700, letterSpacing: "0.12em",
-                  textTransform: "uppercase", color: catText[c.cat],
-                  backgroundColor: catColor[c.cat],
-                  padding: "3px 8px", borderRadius: "4px",
-                  marginBottom: "0.875rem",
+                  position: "absolute", inset: 0,
+                  background: "linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0) 100%)",
+                }} />
+                <div style={{
+                  position: "absolute", inset: 0,
+                  backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.06) 3px, rgba(0,0,0,0.06) 4px)",
+                  pointerEvents: "none",
+                }} />
+                <div style={{
+                  position: "absolute", top: "10px", left: "10px",
+                  fontSize: "0.5625rem", fontWeight: 800, letterSpacing: "0.1em",
+                  textTransform: "uppercase", color: c.color,
+                  backgroundColor: "rgba(0,0,0,0.6)",
+                  border: `1px solid ${c.color}33`,
+                  padding: "3px 7px", borderRadius: "4px",
                 }}>{c.cat}</div>
-                <h4 style={{ fontSize: "1rem", fontWeight: 700, color: "#0d0d0d", margin: "0 0 0.5rem", letterSpacing: "-0.02em" }}>{c.name}</h4>
-                <p style={{ fontSize: "0.8125rem", color: "#777", lineHeight: 1.6, margin: 0 }}>{c.desc}</p>
+                <div style={{
+                  position: "absolute",
+                  top: "50%", left: "50%",
+                  transform: "translate(-50%, -60%)",
+                  width: "44px", height: "44px",
+                }}>
+                  <Image src={c.icon} alt={c.name} fill style={{ objectFit: "contain" }} />
+                </div>
+                <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "12px" }}>
+                  <div style={{ fontSize: "0.8125rem", fontWeight: 800, color: "#ffffff", marginBottom: "2px" }}>{c.name}</div>
+                  <div style={{ fontSize: "0.625rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.4 }}>{c.desc}</div>
+                </div>
               </div>
             ))}
           </div>

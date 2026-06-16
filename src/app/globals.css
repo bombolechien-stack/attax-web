@@ -199,3 +199,80 @@ body { margin: 0; padding: 0; background: #ffffff; color: #1a1a1a; }
   letter-spacing: -0.04em;
   line-height: 1;
 }
+
+/* ── Scanlines overlay (app UI replication) ── */
+.scanlines {
+  position: relative;
+}
+.scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0, 0, 0, 0.07) 3px,
+    rgba(0, 0, 0, 0.07) 4px
+  );
+  pointer-events: none;
+  z-index: 2;
+  border-radius: inherit;
+}
+
+/* ── App-style mono score number ── */
+.score-num {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+}
+
+/* ── App screen card hover ── */
+.app-card {
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.app-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 32px 80px rgba(0,0,0,0.5);
+}
+
+/* ── Power card ── */
+.power-card {
+  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s cubic-bezier(0.16,1,0.3,1);
+  cursor: default;
+}
+.power-card:hover {
+  transform: translateY(-10px) rotate(0deg) scale(1.05);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+  z-index: 10;
+}
+
+/* ── Score bar fill animation ── */
+@keyframes fillBar {
+  from { width: 0; }
+  to   { width: var(--bar-pct); }
+}
+.bar-fill {
+  animation: fillBar 1.4s cubic-bezier(0.16,1,0.3,1) both;
+  animation-delay: 0.3s;
+}
+
+/* ── Fighter glow pulse ── */
+@keyframes fighterGlow {
+  0%, 100% { filter: drop-shadow(0 0 18px var(--glow-col)); }
+  50%       { filter: drop-shadow(0 0 32px var(--glow-col)); }
+}
+.fighter-glow {
+  animation: fighterGlow 3s ease-in-out infinite;
+}
+
+/* ── VS text flicker ── */
+@keyframes vsFlicker {
+  0%, 95%, 100% { opacity: 1; }
+  96%            { opacity: 0.5; }
+  97%            { opacity: 0.9; }
+  98%            { opacity: 0.4; }
+}
+.vs-flicker {
+  animation: vsFlicker 6s ease-in-out infinite;
+}
