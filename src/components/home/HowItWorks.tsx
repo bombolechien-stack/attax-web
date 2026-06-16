@@ -1,9 +1,9 @@
-ï»¿export default function HowItWorks() {
+export default function HowItWorks() {
   const steps = [
-    { n: "01", title: "Connect", body: "Apple Health. Health Connect. Your activity syncs automatically â€” no manual input, ever." },
+    { n: "01", title: "Connect", body: "Apple Health. Health Connect. Your activity syncs automatically — no manual input, ever." },
     { n: "02", title: "Train", body: "Run, lift, walk, ride. Any real-world effort earns combat points every day." },
     { n: "03", title: "Power Up", body: "Heart rate zones and session intensity translate directly into attack and defense stats." },
-    { n: "04", title: "Battle", body: "Fight a real opponent every single night. Duels resolve at 21:30. The grind always pays off." },
+    { n: "04", title: "Battle", body: "Fight a real opponent every single night. Duels resolve at 9:30 PM. The grind always pays off." },
   ];
 
   return (
@@ -26,7 +26,7 @@
           </p>
         </div>
 
-        {/* Steps â€” each takes full width */}
+        {/* Steps — each takes full width */}
         <div>
           {steps.map((s, i) => (
             <div key={s.n} style={{

@@ -217,7 +217,7 @@ export default function DiscoverPage() {
               { n: "10:00", title: "Match opens", description: "The duel kicks off. Past rounds are progressively revealed over the course of the day." },
               { n: "13:00", title: "Card deadline", description: "Your card selection is locked. Choose your power before 1 PM or lose the strategic edge for the day." },
               { n: "19:00", title: "Live round opens", description: "Today's activity becomes visible. Watch the score update in real time as both players train." },
-              { n: "21:30", title: "Duel resolved", description: "The winner is determined. Rankings update. A cinematic reveal shows your result — Victory, Defeat, or Draw." },
+              { n: "9:30 PM", title: "Duel resolved", description: "The winner is determined. Rankings update. A cinematic reveal shows your result — Victory, Defeat, or Draw." },
             ].map((f) => (
               <div key={f.n} style={{
                 display: "grid",

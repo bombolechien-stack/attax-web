@@ -14,7 +14,7 @@ export default function DailyMatch() {
               Every day<br />is a match.
             </h2>
             <p style={{ fontSize: "1.0625rem", color: "#999", lineHeight: 1.75, maxWidth: "360px", margin: 0 }}>
-              Most fitness apps stop at tracking. Attax turns every session into a competitive duel that resolves every night at 21:30.
+              Most fitness apps stop at tracking. Attax turns every session into a competitive duel that resolves every night at 9:30 PM.
             </p>
           </div>
         </div>
@@ -37,7 +37,7 @@ export default function DailyMatch() {
                 <div style={{ width: "8px", height: "8px", borderRadius: "50%", backgroundColor: "#4ade80" }} />
                 <span style={{ fontSize: "0.8125rem", fontWeight: 700, color: "rgba(255,255,255,0.45)", letterSpacing: "0.1em" }}>LIVE · DAY 4 / 7</span>
               </div>
-              <span style={{ fontSize: "0.8125rem", fontWeight: 700, color: "rgba(255,255,255,0.2)", letterSpacing: "0.08em" }}>RESOLVES 21:30</span>
+              <span style={{ fontSize: "0.8125rem", fontWeight: 700, color: "rgba(255,255,255,0.2)", letterSpacing: "0.08em" }}>RESOLVES 9:30 PM</span>
             </div>
 
             {/* Scores */}
@@ -91,7 +91,7 @@ export default function DailyMatch() {
         <div style={{ display: "flex", justifyContent: "center", gap: "0", marginTop: "5rem", borderTop: "1px solid #f0f0f0" }}>
           {[
             { n: "7 days", label: "Rolling performance window" },
-            { n: "21:30", label: "Nightly battle resolution" },
+            { n: "9:30 PM", label: "Nightly battle resolution" },
             { n: "8 players", label: "Per league, real opponents" },
             { n: "Free", label: "Download and play" },
           ].map((s, i) => (

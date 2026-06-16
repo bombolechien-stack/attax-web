@@ -98,7 +98,7 @@ export default function Hero() {
           {[
             { n: "8 players", sub: "Per league · 7 days" },
             { n: "12 cards", sub: "Strategic abilities" },
-            { n: "21:30", sub: "Duel every night" },
+            { n: "9:30 PM", sub: "Duel every night" },
           ].map((s, i) => (
             <div key={s.n} style={{
               paddingTop: "2rem",

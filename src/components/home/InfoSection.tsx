@@ -12,7 +12,7 @@ export default function InfoSection() {
     },
     {
       index: "03",
-      title: "Battle every night at 21:30",
+      title: "Battle every night at 9:30 PM",
       body: "Face one real opponent in a 1v1 duel. Results drop at the same time for everyone. Over 7 days, the most consistent athlete wins the league.",
     },
   ];

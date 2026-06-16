@@ -6,7 +6,7 @@ const FAQS = [
   { q: "Do I need a smartwatch?", a: "Yes. Attax requires a connected wearable to track your activity accurately. iPhone users need an Apple Watch; Android users need a Wear OS, Garmin, or Fitbit device. Data syncs automatically via Apple Health or Health Connect." },
   { q: "Does walking count?", a: "Yes. Any activity tracked by Apple Health or Health Connect contributes to your power — walking, running, cycling, swimming, gym sessions, and more." },
   { q: "Can I use Attax without running?", a: "Absolutely. Attax values all forms of movement. Whether you lift weights, cycle, swim or walk, your effort translates into combat power." },
-  { q: "How are battles calculated?", a: "Your battle score is based on a 7-day rolling activity score. Each session earns Activity Points based on effort, heart rate zones, and duration. The player with the highest score at 21:30 wins the day." },
+  { q: "How are battles calculated?", a: "Your battle score is based on a 7-day rolling activity score. Each session earns Activity Points based on effort, heart rate zones, and duration. The player with the highest score at 9:30 PM wins the day." },
   { q: "Can I play with friends?", a: "Yes. You can create or join a private league with friends and compete over 7 days. Public matchmaking is also available for competitive play." },
   { q: "Is Attax free?", a: "Yes, Attax is free to download and play. Core features are available for free, with optional in-app content available later." },
   { q: "Does Attax work on iPhone and Android?", a: "Yes. Attax is available on both the App Store (iOS) and Google Play (Android). Activity syncs via Apple Health on iPhone and Health Connect on Android." },

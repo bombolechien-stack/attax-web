@@ -32,7 +32,7 @@ export default function CombatSection() {
               </h2>
             </div>
             <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.35)", lineHeight: 1.75, maxWidth: "300px", margin: 0, flex: "0 0 300px" }}>
-              Your 7-day rolling Activity Score is your weapon. More intensity, more points. More points, more wins. Resolved at 21:30 every night.
+              Your 7-day rolling Activity Score is your weapon. More intensity, more points. More points, more wins. Resolved at 9:30 PM every night.
             </p>
           </div>
         </InView>
@@ -59,7 +59,7 @@ export default function CombatSection() {
               </div>
               <div style={{ textAlign: "center" }}>
                 <div style={{ fontSize: "0.625rem", fontWeight: 700, letterSpacing: "0.16em", color: "rgba(255,255,255,0.2)", textTransform: "uppercase" }}>Resolves tonight</div>
-                <div style={{ fontSize: "1rem", fontWeight: 800, color: "rgba(255,255,255,0.7)", letterSpacing: "-0.01em", fontVariantNumeric: "tabular-nums" }}>21:30</div>
+                <div style={{ fontSize: "1rem", fontWeight: 800, color: "rgba(255,255,255,0.7)", letterSpacing: "-0.01em", fontVariantNumeric: "tabular-nums" }}>9:30 PM</div>
               </div>
               <div style={{ fontSize: "0.625rem", fontWeight: 700, letterSpacing: "0.14em", color: "rgba(255,255,255,0.2)", textTransform: "uppercase" }}>Day 4 / 7</div>
             </div>

@@ -69,7 +69,7 @@ export default function CombatScreen() {
             {/* Timer */}
             <div>
               <div style={{ fontSize: "0.5rem", color: "rgba(255,255,255,0.22)", letterSpacing: "0.1em", marginBottom: "4px" }}>RESOLVES TONIGHT</div>
-              <div style={{ fontSize: "clamp(1.25rem, 2.5vw, 2.5rem)", fontWeight: 900, color: "#ffffff", letterSpacing: "-0.04em" }}>21:30</div>
+              <div style={{ fontSize: "clamp(1.25rem, 2.5vw, 2.5rem)", fontWeight: 900, color: "#ffffff", letterSpacing: "-0.04em" }}>9:30 PM</div>
             </div>
           </div>
         </div>

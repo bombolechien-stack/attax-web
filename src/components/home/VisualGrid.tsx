@@ -10,7 +10,7 @@ const PHONES = [
   {
     src: "/screens/screenmatch.png",
     label: "Battle",
-    caption: "Daily 1v1 duels. Results drop at 21:30 every night.",
+    caption: "Daily 1v1 duels. Results drop at 9:30 PM every night.",
     scale: 1,
   },
   {

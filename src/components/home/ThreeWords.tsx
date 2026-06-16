@@ -2,7 +2,7 @@ export default function ThreeWords() {
   const words = [
     { word: "Train.", sub: "Any sport. Any effort. It all counts." },
     { word: "Power up.", sub: "Your activity becomes combat strength." },
-    { word: "Battle.", sub: "A real duel, every night at 21:30." },
+    { word: "Battle.", sub: "A real duel, every night at 9:30 PM." },
   ];
 
   return (
