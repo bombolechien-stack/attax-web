@@ -6,33 +6,33 @@ import Image from "next/image";
 const features = [
   {
     n: "01",
-    title: "Every session counts",
-    desc: `With attax, every effort matters. The app automatically records your activities, analyzes your performance, and helps you build a lasting routine that fits your lifestyle. Whether you're running, walking, cycling, or training at the gym, attax transforms your effort into clear, meaningful data that shows your real evolution over time.`,
+    title: "Connect your health data",
+    desc: `attax reads your Apple Health or Google Health Connect data automatically — no manual logging, no friction. Every workout, every step, every heart rate sample flows in the moment you open the app. You focus on training; attax handles the data.`,
   },
   {
     n: "02",
-    title: "Focus on consistency",
-    desc: `Forget the pressure of perfection — focus on progress. attax encourages you to stay active and celebrate each improvement. The app shows how far you've come, highlights your milestones, and keeps you moving forward one session at a time. Every movement counts, and attax ensures you never lose sight of your motivation.`,
+    title: "Convert effort into Activity Points",
+    desc: `Your sessions are scored by heart rate zone: moderate effort earns points, sustained effort earns more, and maximum intensity earns the most. Steps count too. The result is your daily Activity Score — an honest number that reflects how hard you actually worked, not just how long you moved.`,
   },
   {
     n: "03",
-    title: "Technology that supports you",
-    desc: `Built with powerful technology and a human-first approach, attax gives you a clear view of your journey. You can track your stats, set realistic goals, and measure your progress week after week. It's not about doing more — it's about doing better — with determination, clarity, and consistency.`,
+    title: "Fight one opponent, every day",
+    desc: `Each day you're matched against a single opponent in a 1v1 duel. Your 7-day rolling Activity Score is your weapon — the sum of today's effort and the past six days. The duel resolves every evening at 9:30 PM. Win the day. Repeat.`,
   },
   {
     n: "04",
-    title: "Reconnect with movement",
-    desc: `The attax experience goes beyond tracking. It's a way to rediscover the pleasure of movement, regain energy, and strengthen your motivation day after day. Each workout becomes a moment for yourself — a way to recharge and reconnect. And you're not alone — an active community shares the same vision.`,
+    title: "Play a strategic card",
+    desc: `Every morning, you choose one card from a rotating deck of 12. Spike your next session by +30%. Freeze your opponent's best day. Deploy Ghost to hide your activity. Scan to reveal their heart rate curve. Cards are chosen before 1 PM — strategy matters as much as sweat.`,
   },
   {
     n: "05",
-    title: "A community that moves with you",
-    desc: `At attax, motivation is collective. Join a community of people who share the same mindset: to move, to grow, and to keep each other inspired. The app builds real connections between users, turning individual effort into a shared source of energy. Because together, we go further — and we keep going longer.`,
+    title: "Compete in leagues of 8",
+    desc: `Each league runs for 7 days. Eight players. One duel per day per player. At the end of the week, the standings decide who rises, who falls, and who earns a rematch. Join a random league or challenge friends with a private invite code.`,
   },
   {
     n: "06",
-    title: "Move at your own pace",
-    desc: `Whether you're just starting out or pushing your limits, attax adapts to your level and your rhythm. The more you move, the more you progress. Every step, every workout, every moment brings you closer to the best version of yourself.`,
+    title: "Climb your competitive division",
+    desc: `Win streaks earn League Points and push you up through divisions — from Bronze to Silver, Gold, Platinum, and beyond. Lose and you drop. Your hidden MMR ensures you always face opponents at your level. A cinematic rank reveal awaits every first promotion.`,
   },
 ];
 
@@ -44,26 +44,26 @@ export default function Features() {
         {/* Top — editorial header + image */}
         <InView style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6rem", alignItems: "center", marginBottom: "6rem" }}>
           <div>
-            <p className="section-label" style={{ margin: "0 0 1.5rem" }}>Features</p>
+            <p className="section-label" style={{ margin: "0 0 1.5rem" }}>How it works</p>
 
             <h2 style={{
               fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800,
               color: "#0d0d0d", letterSpacing: "-0.045em", lineHeight: 1.02,
               margin: "0 0 2rem",
             }}>
-              Your motivation,<br />powered by<br />movement.
+              Your workouts<br />become a fight.
             </h2>
             <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "1.5rem" }}>
               <div style={{ width: "5px", height: "5px", borderRadius: "50%", backgroundColor: "#0d0d0d", flexShrink: 0 }} />
               <span style={{ fontSize: "0.75rem", fontWeight: 600, color: "#aaa", letterSpacing: "0.1em", textTransform: "uppercase" }}>
-                Your new challenge starts with attax
+                Sync. Score. Duel. Climb.
               </span>
             </div>
             <p style={{ fontSize: "1rem", color: "#666", lineHeight: 1.8, margin: "0 0 1rem" }}>
-              attax is the next-generation fitness companion that helps you stay consistent, track your progress, and reach your goals with confidence.
+              attax turns your real-world activity into a competitive game. Your heart rate, steps, and session intensity become points — and every evening, those points decide a winner.
             </p>
             <p style={{ fontSize: "1rem", color: "#888", lineHeight: 1.8, margin: 0 }}>
-              Designed for people who want to move more and improve week after week, attax brings structure, motivation, and intelligent analysis to every workout.
+              Six mechanics. One loop. The most motivated athlete wins.
             </p>
           </div>
           <div className="img-zoom" style={{ borderRadius: "24px", overflow: "hidden", height: "480px", position: "relative" }}>

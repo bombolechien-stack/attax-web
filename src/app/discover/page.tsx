@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Discover Attax — Features & How It Works",
-  description: "Explore every feature of Attax: automatic activity sync, performance analytics, competitive leagues, and a global ranking system.",
+  description: "Every workout becomes a 1v1 duel. Discover how attax turns your health data into Activity Points, daily fights, and a competitive ranking — 8 players, 7 days, 12 cards.",
 };
 
 const NAV_LINKS = [
@@ -16,34 +16,58 @@ const NAV_LINKS = [
 const pillars = [
   {
     n: "01",
-    title: "Your Effort",
-    description: "Every step, every session, every drop of sweat counts. Attax captures your activity automatically through your phone's health data — no manual logging needed.",
+    title: "Activity Points",
+    description: "Your workouts are scored by heart rate zone. Moderate effort, sustained effort, intense effort, maximum effort — each zone earns more points per minute. Steps add to the total. The result: a daily score that reflects how hard you actually trained, not just how long you moved.",
   },
   {
     n: "02",
-    title: "The Mindset",
-    description: "No more emotionless fitness apps. Choose your approach, method, and rhythm without pressure. Attax is built around long-term sustainability, not short-term bursts.",
+    title: "The Daily Duel",
+    description: "Every day you face one opponent. Your weapon: your 7-day rolling Activity Score — the sum of today's effort and the past six days. Duels open at 10 AM, resolve at 9:30 PM. Cards must be played before 1 PM. The duel result is revealed as a cinematic victory or defeat.",
   },
   {
     n: "03",
-    title: "Day by Day",
-    description: "Consistent movement builds extraordinary results. Each day is an opportunity. We celebrate showing up three times a week just as much as daily training.",
+    title: "Strategic Cards",
+    description: "Each morning you choose one card from a rotating deck of 12. Spike your next session by +30%. Freeze your opponent's best day. Ghost hides your score. Scan reveals their heart rate curve. Blackout blinds both players. Cards transform pure effort into a game of information and timing.",
   },
   {
     n: "04",
-    title: "Growth",
-    description: "Progress week after week. Watch your numbers climb. Feel the compound effect of showing up, day after day — your efforts become your strength.",
+    title: "Leagues & Rank",
+    description: "Eight players. Seven days. One winner per league. At the end, standings determine who climbs the competitive ladder. Divisions run from Bronze to Platinum with a hidden MMR for fair matchmaking. A cinematic rank reveal awaits every first promotion.",
   },
 ];
 
-const techFeatures = [
-  { n: "01", title: "Your activity, intelligently analyzed", description: "Attax tracks your sessions, analyzes your data, and identifies your energy patterns and recovery times. No manual logging — it reads your Apple Health or Google Health Connect data automatically." },
-  { n: "02", title: "Technology serving your wellbeing", description: "Advanced tracking, intuitive design, and accessible data visualization. Built for athletes who want powerful insights without the complexity." },
-  { n: "03", title: "Motivation reimagined", description: "Motivation isn't linear. Attax is designed around maintaining consistent movement rather than obsessing over peak performance. Every effort matters." },
-  { n: "04", title: "A community advancing together", description: "At Attax, motivation is collective. The app builds real connections between users, turning individual effort into shared energy. #gowithattax" },
-  { n: "05", title: "Privacy first", description: "Your health data stays on your device. Attax never sells your data or shares it with third parties." },
-  { n: "06", title: "Always improving", description: "Regular updates based on community feedback. Competitive leagues, global rankings, and athlete profiles are in development for V2." },
+const cards = [
+  { name: "Spike", cat: "BOOST", desc: "+30% AP on your next session (30 min cap)" },
+  { name: "Overdrive", cat: "BOOST", desc: "Your best 20-min window counts ×2" },
+  { name: "Recover", cat: "BOOST", desc: "+15% AP on your next session today" },
+  { name: "Shield", cat: "DEFENSE", desc: "Opponent loses 15% AP on their next session" },
+  { name: "Freeze", cat: "SABOTAGE", desc: "Opponent's best day loses 8% AP" },
+  { name: "Pressure", cat: "SABOTAGE", desc: "If they train 30+ min: +15% AP on your score" },
+  { name: "Parasite", cat: "SABOTAGE", desc: "If they train 30+ min: steal 7% of their points" },
+  { name: "Scan", cat: "INTEL", desc: "Reveal your opponent's full HR curve for one round" },
+  { name: "Ghost", cat: "MASQUE", desc: "Your activity looks flat to the opponent until evening" },
+  { name: "Mirage", cat: "MASQUE", desc: "Opponent sees your score faked by ±15%" },
+  { name: "Blackout", cat: "MASQUE", desc: "No score info for either player until 7 PM" },
+  { name: "Counter", cat: "MOMENTUM", desc: "If losing at 6 PM: +25% AP on sessions after 6 PM" },
 ];
+
+const catColor: Record<string, string> = {
+  BOOST: "#e8f5e9",
+  DEFENSE: "#e3f2fd",
+  SABOTAGE: "#fce4ec",
+  INTEL: "#f3e5f5",
+  MASQUE: "#ede7f6",
+  MOMENTUM: "#fff3e0",
+};
+
+const catText: Record<string, string> = {
+  BOOST: "#2e7d32",
+  DEFENSE: "#1565c0",
+  SABOTAGE: "#c62828",
+  INTEL: "#6a1b9a",
+  MASQUE: "#4527a0",
+  MOMENTUM: "#e65100",
+};
 
 export default function DiscoverPage() {
   return (
@@ -126,14 +150,14 @@ export default function DiscoverPage() {
               fontWeight: 800, color: "#ffffff",
               lineHeight: 1.02, letterSpacing: "-0.035em", margin: "0 0 1.5rem",
             }}>
-              A simple concept,<br />
-              <em style={{ fontStyle: "normal", color: "#ffffff" }}>a unique experience.</em>
+              Your workouts.<br />
+              <em style={{ fontStyle: "normal", color: "#ffffff" }}>A real fight.</em>
             </h1>
             <p style={{
               fontSize: "1.0625rem", color: "rgba(255,255,255,0.5)",
               lineHeight: 1.75, margin: "0 0 2.5rem", maxWidth: "420px",
             }}>
-              attax is more than a simple activity tracking app. Move, progress, and stay motivated every day. Every step counts.
+              attax turns your activity data into Activity Points. Every day you face a real opponent in a 1v1 duel. Play a card. Win the evening. Climb the rank.
             </p>
             <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
               <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" className="btn-white" style={{
@@ -160,9 +184,9 @@ export default function DiscoverPage() {
           {/* ── Bottom stats ── */}
           <div style={{ position: "relative", zIndex: 3, display: "flex", padding: "0 4rem 3.5rem", gap: 0 }}>
             {[
-              { title: "1 community", sub: "United around sport" },
-              { title: "Thousands of athletes", sub: "Moving every day" },
-              { title: "#gowithattax", sub: "1 shared energy" },
+              { title: "8 players", sub: "Per league" },
+              { title: "12 cards", sub: "Strategic powers" },
+              { title: "9:30 PM", sub: "Daily duel resolution" },
             ].map((s, i) => (
               <div key={s.title} style={{
                 paddingLeft: i > 0 ? "2.5rem" : 0,
@@ -182,18 +206,18 @@ export default function DiscoverPage() {
         <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
           <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "4rem", marginBottom: "4rem" }}>
             <div>
-              <p className="section-label" style={{ margin: "0 0 1.25rem" }}>Our approach</p>
+              <p className="section-label" style={{ margin: "0 0 1.25rem" }}>The mechanics</p>
               <h2 style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.045em", lineHeight: 1.02, margin: 0 }}>
-                Move, progress,<br />continue.
+                Four systems.<br />One game.
               </h2>
             </div>
             <p style={{ fontSize: "1rem", color: "#888", lineHeight: 1.75, maxWidth: "300px", margin: 0, flex: "0 0 300px" }}>
-              A new way to approach sport — built on four simple pillars that transform daily effort into lasting results.
+              Activity Points, daily duels, strategic cards, and competitive divisions — each layer adds depth to your daily training.
             </p>
           </div>
           <hr className="rule" style={{ marginBottom: "0" }} />
           <div>
-            {pillars.map((p, i) => (
+            {pillars.map((p) => (
               <div key={p.n} style={{
                 display: "grid",
                 gridTemplateColumns: "80px 1fr 2fr",
@@ -205,6 +229,44 @@ export default function DiscoverPage() {
                 <div style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.14em", color: "#ccc", paddingTop: "4px" }}>{p.n}</div>
                 <h3 style={{ fontSize: "1.125rem", fontWeight: 700, color: "#0d0d0d", margin: 0, letterSpacing: "-0.025em", lineHeight: 1.3 }}>{p.title}</h3>
                 <p style={{ fontSize: "0.9375rem", color: "#666", lineHeight: 1.8, margin: 0 }}>{p.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Cards grid ── */}
+      <section style={{ backgroundColor: "#f7f7f7", padding: "7rem 2rem" }}>
+        <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
+          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "4rem", marginBottom: "4rem" }}>
+            <div>
+              <p className="section-label" style={{ margin: "0 0 1.25rem" }}>The card deck</p>
+              <h2 style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.045em", lineHeight: 1.02, margin: 0 }}>
+                12 cards.<br />Infinite tactics.
+              </h2>
+            </div>
+            <p style={{ fontSize: "1rem", color: "#888", lineHeight: 1.75, maxWidth: "300px", margin: 0, flex: "0 0 300px" }}>
+              Every morning you pick one card from three offered. Your card choice is final at 1 PM. Choose wisely — the right card at the right moment changes everything.
+            </p>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "12px" }}>
+            {cards.map((c) => (
+              <div key={c.name} style={{
+                backgroundColor: "#ffffff",
+                borderRadius: "16px",
+                padding: "1.5rem",
+                border: "1px solid #ebebeb",
+              }}>
+                <div style={{
+                  display: "inline-block",
+                  fontSize: "0.625rem", fontWeight: 700, letterSpacing: "0.12em",
+                  textTransform: "uppercase", color: catText[c.cat],
+                  backgroundColor: catColor[c.cat],
+                  padding: "3px 8px", borderRadius: "4px",
+                  marginBottom: "0.875rem",
+                }}>{c.cat}</div>
+                <h4 style={{ fontSize: "1rem", fontWeight: 700, color: "#0d0d0d", margin: "0 0 0.5rem", letterSpacing: "-0.02em" }}>{c.name}</h4>
+                <p style={{ fontSize: "0.8125rem", color: "#777", lineHeight: 1.6, margin: 0 }}>{c.desc}</p>
               </div>
             ))}
           </div>
@@ -229,9 +291,9 @@ export default function DiscoverPage() {
             <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0) 100%)" }} />
             <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "3.5rem 4rem", display: "flex", alignItems: "flex-end", justifyContent: "space-between" }}>
               <div>
-                <p style={{ fontSize: "0.75rem", fontWeight: 600, color: "rgba(255,255,255,0.4)", letterSpacing: "0.14em", textTransform: "uppercase", margin: "0 0 0.75rem" }}>The App</p>
+                <p style={{ fontSize: "0.75rem", fontWeight: 600, color: "rgba(255,255,255,0.4)", letterSpacing: "0.14em", textTransform: "uppercase", margin: "0 0 0.75rem" }}>The Duel</p>
                 <h2 style={{ fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.04em", lineHeight: 1.05, margin: 0 }}>
-                  Everything you need<br />in one place.
+                  Every evening,<br />a winner is decided.
                 </h2>
               </div>
               <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" className="btn-white" style={{
@@ -245,24 +307,28 @@ export default function DiscoverPage() {
         </div>
       </section>
 
-      {/* ── Tech features — editorial list ── */}
+      {/* ── Daily schedule — editorial list ── */}
       <section style={{ backgroundColor: "#f7f7f7", padding: "7rem 2rem" }}>
         <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
           <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "4rem", marginBottom: "4rem" }}>
             <div>
-              <p className="section-label" style={{ margin: "0 0 1.25rem" }}>Technology</p>
+              <p className="section-label" style={{ margin: "0 0 1.25rem" }}>The daily schedule</p>
               <h2 style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.045em", lineHeight: 1.02, margin: 0 }}>
-                Not just an app,<br />
-                <em style={{ fontStyle: "normal", color: "#ffffff" }}>a source of motivation.</em>
+                Structure drives<br />consistency.
               </h2>
             </div>
             <p style={{ fontSize: "1rem", color: "#888", lineHeight: 1.75, maxWidth: "300px", margin: 0, flex: "0 0 300px" }}>
-              Intelligent tracking, human-first design, and a community that lifts you up.
+              Every duel day follows the same rhythm. Predictability creates habits. Habits build results.
             </p>
           </div>
           <hr className="rule" style={{ marginBottom: "0" }} />
           <div>
-            {techFeatures.map((f) => (
+            {[
+              { n: "10:00", title: "Match opens", description: "The duel kicks off. Past rounds are progressively revealed over the course of the day." },
+              { n: "13:00", title: "Card deadline", description: "Your card selection is locked. Choose your power before 1 PM or lose the strategic edge for the day." },
+              { n: "19:00", title: "Live round opens", description: "Today's activity becomes visible. Watch the score update in real time as both players train." },
+              { n: "21:30", title: "Duel resolved", description: "The winner is determined. Rankings update. A cinematic reveal shows your result — Victory, Defeat, or Draw." },
+            ].map((f) => (
               <div key={f.n} style={{
                 display: "grid",
                 gridTemplateColumns: "80px 1fr 2fr",
@@ -299,10 +365,10 @@ export default function DiscoverPage() {
             <div style={{ position: "relative", zIndex: 2 }}>
               <p className="section-label-light" style={{ margin: "0 0 1.5rem" }}>Start now</p>
               <h2 style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.04em", margin: "0 0 1.25rem", lineHeight: 1.05 }}>
-                Your new challenge<br />starts here.
+                Ready to fight<br />for your fitness?
               </h2>
               <p style={{ fontSize: "1.0625rem", color: "rgba(255,255,255,0.45)", maxWidth: "380px", margin: "0 auto 3rem", lineHeight: 1.7 }}>
-                Ready to exceed yourself? Download Attax and start your journey today.
+                Join attax, sync your activity, and face your first opponent tonight.
               </p>
               <div style={{ display: "flex", gap: "10px", justifyContent: "center", flexWrap: "wrap" }}>
                 <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" className="btn-white" style={{
