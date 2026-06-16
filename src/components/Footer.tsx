@@ -18,7 +18,6 @@ const LINK_STYLE = {
   color: "rgba(255,255,255,0.45)",
   textDecoration: "none",
   lineHeight: 1,
-  transition: "color 0.2s",
 };
 
 const LABEL_STYLE = {
@@ -34,36 +33,33 @@ const LABEL_STYLE = {
 export default function Footer() {
   return (
     <footer>
-      {/* Photo background zone — CTA + card */}
+      {/* Photo background zone — tight horizontal padding so image just peeks on sides */}
       <div style={{
         position: "relative",
         overflow: "hidden",
-        padding: "0 clamp(1rem, 2.5vw, 2.5rem)", /* image shows through on sides below the card */
+        padding: "0 12px",
       }}>
 
         {/* Full-bleed photo */}
         <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
           <Image
-            src="/images/photo-runners.jpg"
+            src="/images/sport-running-group.png"
             alt="Athletes running"
             fill
-            style={{ objectFit: "cover", objectPosition: "center 35%", filter: "grayscale(30%) contrast(1.1) brightness(0.7)" }}
+            style={{ objectFit: "cover", objectPosition: "center 40%", filter: "grayscale(25%) contrast(1.1) brightness(0.65)" }}
           />
-          {/* Dark gradient for CTA text legibility */}
-          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(7,7,7,0.55) 0%, rgba(7,7,7,0.4) 50%, rgba(7,7,7,0) 100%)" }} />
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(7,7,7,0.6) 0%, rgba(7,7,7,0.35) 55%, rgba(7,7,7,0) 100%)" }} />
         </div>
 
         {/* CTA — floats over the photo */}
         <div style={{
           position: "relative", zIndex: 2,
-          maxWidth: "80rem",
-          margin: "0 auto",
           padding: "9rem 2rem 7rem",
           textAlign: "center",
         }}>
           <p style={{
             fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.14em",
-            textTransform: "uppercase", color: "rgba(255,255,255,0.5)", margin: "0 0 1.5rem",
+            textTransform: "uppercase", color: "rgba(255,255,255,0.45)", margin: "0 0 1.5rem",
           }}>
             Download
           </p>
@@ -105,15 +101,12 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Footer card — centered, narrower than wrapper → image visible on sides */}
+        {/* Footer card — image just barely visible on left+right */}
         <div style={{
           position: "relative", zIndex: 2,
-          maxWidth: "80rem",
-          margin: "0 auto",
           backgroundColor: "#0d0d0d",
           borderRadius: "20px 20px 0 0",
         }}>
-          {/* Columns */}
           <div style={{
             display: "grid",
             gridTemplateColumns: "1.4fr 1fr 1fr 1fr",
@@ -122,19 +115,9 @@ export default function Footer() {
           }}>
             {/* Brand */}
             <div>
-              <Image
-                src="/images/logo-attax-wh.svg"
-                alt="Attax"
-                width={76}
-                height={28}
-                style={{ display: "block", marginBottom: "1.125rem" }}
-              />
+              <Image src="/images/logo-attax-wh.svg" alt="Attax" width={76} height={28} style={{ display: "block", marginBottom: "1.125rem" }} />
               <p style={{
-                fontSize: "0.875rem",
-                color: "rgba(255,255,255,0.3)",
-                lineHeight: 1.7,
-                margin: "0 0 2rem",
-                maxWidth: "240px",
+                fontSize: "0.875rem", color: "rgba(255,255,255,0.3)", lineHeight: 1.7, margin: "0 0 2rem", maxWidth: "240px",
               }}>
                 The competitive game powered by your real fitness. Move more, fight harder.
               </p>
@@ -157,7 +140,6 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Product */}
             <div>
               <span style={LABEL_STYLE}>Product</span>
               <div style={{ display: "flex", flexDirection: "column", gap: "0.875rem" }}>
@@ -171,7 +153,6 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Community */}
             <div>
               <span style={LABEL_STYLE}>Community</span>
               <div style={{ display: "flex", flexDirection: "column", gap: "0.875rem" }}>
@@ -185,7 +166,6 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Legal */}
             <div>
               <span style={LABEL_STYLE}>Legal</span>
               <div style={{ display: "flex", flexDirection: "column", gap: "0.875rem" }}>
@@ -197,7 +177,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Bottom bar */}
           <div style={{
             borderTop: "1px solid rgba(255,255,255,0.05)",
             padding: "1.5rem 4rem",
