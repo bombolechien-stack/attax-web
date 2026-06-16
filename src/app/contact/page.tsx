@@ -27,18 +27,20 @@ export default function ContactPage() {
           flexDirection: "column",
           overflow: "hidden",
         }}>
-          {/* Orange glow */}
+          <Image
+            src="/images/strength.jpg"
+            alt="Contact Attax"
+            fill
+            style={{ objectFit: "cover", objectPosition: "center 30%" }}
+            priority
+          />
           <div style={{
-            position: "absolute", left: "30%", top: "-20%",
-            width: "700px", height: "500px", borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(252,95,43,0.18) 0%, transparent 65%)",
-            pointerEvents: "none",
+            position: "absolute", inset: 0,
+            background: "linear-gradient(to right, rgba(13,13,13,0.95) 0%, rgba(13,13,13,0.75) 55%, rgba(13,13,13,0.3) 100%)",
           }} />
-          {/* Grid pattern */}
           <div style={{
-            position: "absolute", inset: 0, pointerEvents: "none", opacity: 0.03,
-            backgroundImage: "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
-            backgroundSize: "40px 40px",
+            position: "absolute", inset: 0,
+            background: "linear-gradient(to top, rgba(13,13,13,0.8) 0%, transparent 50%)",
           }} />
 
           {/* ── Navbar ── */}

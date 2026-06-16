@@ -45,7 +45,7 @@ export default function DiscoverPage() {
         }}>
           {/* Background image */}
           <Image
-            src="/images/strength.jpg"
+            src="/images/warmup.jpg"
             alt="Discover Attax"
             fill
             style={{ objectFit: "cover", objectPosition: "center 30%" }}
