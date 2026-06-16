@@ -11,44 +11,51 @@ const NAV_LINKS = [
 
 export default function ScrollNav() {
   const outerRef = useRef<HTMLDivElement>(null);
-  const innerRef = useRef<HTMLDivElement>(null);
+  const pillRef  = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const outer = outerRef.current;
-    const inner = innerRef.current;
-    if (!outer || !inner) return;
+    const pill  = pillRef.current;
+    if (!outer || !pill) return;
 
-    const items = inner.querySelectorAll<HTMLElement>("[data-nav]");
+    const SCROLL_END = 240;
 
     const update = () => {
-      const raw = Math.min(window.scrollY / 220, 1);
+      const raw = Math.min(window.scrollY / SCROLL_END, 1);
       // ease-in-out
       const t = raw < 0.5 ? 2 * raw * raw : 1 - Math.pow(-2 * raw + 2, 2) / 2;
+      const vw = window.innerWidth;
+      const PILL_W = Math.min(880, vw - 32);
 
-      outer.style.paddingTop    = `${t * 14}px`;
-      outer.style.paddingLeft   = `${t * 20}px`;
-      outer.style.paddingRight  = `${t * 20}px`;
-      outer.style.pointerEvents = raw > 0.05 ? "auto" : "none";
+      // width: full vw → PILL_W
+      pill.style.width        = `${vw - (vw - PILL_W) * t}px`;
+      pill.style.marginTop    = `${t * 14}px`;
+      pill.style.height       = `${68 - t * 16}px`;
+      pill.style.borderRadius = `${t * 999}px`;
+      pill.style.paddingLeft  = `${36 - t * 12}px`;
+      pill.style.paddingRight = `${36 - t * 12}px`;
 
-      inner.style.height          = `${68 - t * 18}px`;
-      inner.style.borderRadius    = `${t * 999}px`;
-      inner.style.paddingLeft     = `${36 - t * 16}px`;
-      inner.style.paddingRight    = `${36 - t * 16}px`;
-      inner.style.backgroundColor = `rgba(8,8,8,${t * 0.87})`;
-      inner.style.borderColor     = `rgba(255,255,255,${t * 0.09})`;
-      inner.style.boxShadow       = `0 ${t * 6}px ${t * 40}px rgba(0,0,0,${t * 0.45})`;
+      const bg = `rgba(8,8,8,${t * 0.88})`;
+      pill.style.backgroundColor = bg;
 
       const bf = `blur(${t * 28}px) saturate(${100 + t * 80}%)`;
-      inner.style.backdropFilter = bf;
-      (inner.style as any).webkitBackdropFilter = bf;
+      pill.style.backdropFilter = bf;
+      (pill.style as any).webkitBackdropFilter = bf;
 
-      items.forEach((el) => {
-        el.style.opacity = String(t);
+      pill.style.borderColor = `rgba(255,255,255,${t * 0.09})`;
+      pill.style.boxShadow   = `0 ${t * 6}px ${t * 40}px rgba(0,0,0,${t * 0.4})`;
+
+      // fade contents in
+      const alpha = t;
+      outer.querySelectorAll<HTMLElement>("[data-fade]").forEach((el) => {
+        el.style.opacity = String(alpha);
       });
+
+      outer.style.pointerEvents = raw > 0.05 ? "auto" : "none";
     };
 
     window.addEventListener("scroll", update, { passive: true });
-    update();
+    update(); // initial state
     return () => window.removeEventListener("scroll", update);
   }, []);
 
@@ -57,32 +64,37 @@ export default function ScrollNav() {
       ref={outerRef}
       style={{
         position: "fixed",
-        top: 0, left: 0, right: 0,
+        top: 0,
+        left: 0,
+        right: 0,
         zIndex: 9999,
+        display: "flex",
+        justifyContent: "center",
         pointerEvents: "none",
       }}
     >
       <div
-        ref={innerRef}
+        ref={pillRef}
         style={{
           display: "flex",
           alignItems: "center",
+          width: "100%",
           height: "68px",
           paddingLeft: "36px",
           paddingRight: "36px",
           backgroundColor: "rgba(8,8,8,0)",
           border: "1px solid rgba(255,255,255,0)",
-          borderRadius: "0px",
+          borderRadius: "0",
           position: "relative",
         }}
       >
         {/* Left links */}
-        <div style={{ display: "flex", gap: "24px", flex: 1 }}>
+        <div style={{ display: "flex", gap: "24px", flex: 1, alignItems: "center" }}>
           {NAV_LINKS.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              data-nav
+              data-fade="1"
               style={{
                 fontSize: "0.8125rem",
                 fontWeight: 500,
@@ -97,10 +109,10 @@ export default function ScrollNav() {
           ))}
         </div>
 
-        {/* Logo */}
+        {/* Centered logo */}
         <Link
           href="/"
-          data-nav
+          data-fade="1"
           style={{
             position: "absolute",
             left: "50%",
@@ -121,7 +133,7 @@ export default function ScrollNav() {
         <div style={{ display: "flex", alignItems: "center", gap: "8px", flex: 1, justifyContent: "flex-end" }}>
           <a
             href="#"
-            data-nav
+            data-fade="1"
             style={{
               fontSize: "0.8125rem",
               fontWeight: 500,
@@ -138,7 +150,7 @@ export default function ScrollNav() {
             href="https://apps.apple.com"
             target="_blank"
             rel="noopener noreferrer"
-            data-nav
+            data-fade="1"
             style={{
               display: "inline-flex",
               alignItems: "center",
