@@ -10,41 +10,43 @@ const CARD_IMGS: Record<string, string> = {
   Freeze: "/cards/freeze.png",
 };
 
-const CARD_IMG_SCALE: Record<string, number> = {
-  Overdrive: 1,
-  Ghost: 1,
-  Freeze: 0.65,
+const CARD_NUMBERS: Record<string, string> = {
+  Overdrive: "02",
+  Ghost: "10",
+  Freeze: "05",
 };
 
-/* Inline Attax logo flag (monochrome, recolored via CSS filter) */
-function AttaxFlag({ color }: { color: string }) {
-  return (
-    <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
-      <Image
-        src="/images/attaxlogos.svg"
-        alt="Attax"
-        width={14}
-        height={14}
-        style={{ filter: `brightness(0) invert(1)`, opacity: 0.25 }}
-      />
-      <Image
-        src="/images/attaxtxt.svg"
-        alt="Attax"
-        width={36}
-        height={11}
-        style={{ filter: `brightness(0) invert(1)`, opacity: 0.22 }}
-      />
-    </div>
-  );
-}
+const CARD_BG: Record<string, { from: string; to: string }> = {
+  Overdrive: { from: "#c2510a", to: "#7a2d04" },
+  Ghost:     { from: "#4c2d8a", to: "#1e0f4a" },
+  Freeze:    { from: "#0a5fa8", to: "#04305e" },
+};
 
 function Scanlines() {
   return (
     <div style={{
-      position: "absolute", inset: 0, zIndex: 2, pointerEvents: "none",
-      backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.06) 3px, rgba(0,0,0,0.06) 4px)",
-      borderRadius: "20px",
+      position: "absolute", inset: 0, zIndex: 2, pointerEvents: "none", borderRadius: "inherit",
+      backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.10) 2px, rgba(0,0,0,0.10) 3px)",
     }} />
+  );
+}
+
+function AttaxBrand({ color }: { color: string }) {
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+      <Image src="/images/attaxlogos.svg" alt="" width={12} height={12}
+        style={{ filter: "brightness(0) invert(1)", opacity: 0.5 }} />
+      <Image src="/images/attaxtxt.svg" alt="Attax" width={32} height={10}
+        style={{ filter: "brightness(0) invert(1)", opacity: 0.45 }} />
+    </div>
+  );
+}
+
+function FlagIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(255,255,255,0.4)" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 4h11l-2 4 2 4H4V4z" /><line x1="4" y1="4" x2="4" y2="20" stroke="rgba(255,255,255,0.4)" strokeWidth="2" strokeLinecap="round"/>
+    </svg>
   );
 }
 
@@ -53,92 +55,113 @@ function GameCard({ card, index, visible }: {
   index: number;
   visible: boolean;
 }) {
-  const rotations = [-7, 0, 7];
-  const delays = [200, 80, 320];
-  const translateYs = ["14px", "0px", "10px"];
+  const rotations = [-5, 0, 5];
+  const translateYs = ["12px", "0px", "12px"];
+  const delays = [180, 60, 300];
   const imgSrc = CARD_IMGS[card.name];
+  const num = CARD_NUMBERS[card.name] ?? "01";
+  const bg = CARD_BG[card.name] ?? { from: card.color, to: "#000" };
 
   return (
     <div
       style={{
-        ...scaleIn(visible, delays[index], 0.85),
-        transform: `${scaleIn(visible, delays[index], 0.85).transform} rotate(${rotations[index]}deg) translateY(${translateYs[index]})`,
-        width: 230,
-        height: 340,
-        borderRadius: "20px",
-        backgroundColor: "#0e0e0e",
-        border: `1px solid rgba(255,255,255,0.09)`,
-        padding: "1.25rem",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        cursor: "default",
-        transition: "transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s cubic-bezier(0.16,1,0.3,1)",
-        boxShadow: `0 24px 60px rgba(0,0,0,0.55)`,
+        ...scaleIn(visible, delays[index], 0.88),
+        transform: `${scaleIn(visible, delays[index], 0.88).transform} rotate(${rotations[index]}deg) translateY(${translateYs[index]})`,
+        width: 280,
+        height: 160,
+        borderRadius: "18px",
+        background: `linear-gradient(135deg, ${bg.from} 0%, ${bg.to} 100%)`,
+        boxShadow: `0 24px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08)`,
         position: "relative",
         overflow: "hidden",
         flexShrink: 0,
+        cursor: "default",
+        transition: "transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s cubic-bezier(0.16,1,0.3,1)",
       }}
       onMouseEnter={e => {
-        (e.currentTarget as HTMLElement).style.transform = `rotate(0deg) translateY(-16px) scale(1.04)`;
-        (e.currentTarget as HTMLElement).style.boxShadow = `0 40px 80px rgba(0,0,0,0.65), 0 0 28px ${card.glow}`;
+        (e.currentTarget as HTMLElement).style.transform = `rotate(0deg) translateY(-14px) scale(1.05)`;
+        (e.currentTarget as HTMLElement).style.boxShadow = `0 40px 80px rgba(0,0,0,0.7), 0 0 32px ${card.glow}, 0 0 0 1px rgba(255,255,255,0.14)`;
         (e.currentTarget as HTMLElement).style.zIndex = "10";
       }}
       onMouseLeave={e => {
         (e.currentTarget as HTMLElement).style.transform = `rotate(${rotations[index]}deg) translateY(${translateYs[index]})`;
-        (e.currentTarget as HTMLElement).style.boxShadow = `0 24px 60px rgba(0,0,0,0.55)`;
+        (e.currentTarget as HTMLElement).style.boxShadow = `0 24px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08)`;
         (e.currentTarget as HTMLElement).style.zIndex = "1";
       }}
     >
-      {/* Glow blob */}
-      <div style={{
-        position: "absolute", top: "-30%", left: "-10%",
-        width: "120%", height: "100%",
-        background: `radial-gradient(ellipse at 50% 10%, ${card.glow} 0%, transparent 60%)`,
-        pointerEvents: "none", zIndex: 0,
-      }} />
-
-      {/* Scanlines */}
       <Scanlines />
 
-      {/* Top: Attax brand + type badge */}
-      <div style={{ position: "relative", zIndex: 3, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <AttaxFlag color={card.color} />
-        <span style={{
-          fontSize: "0.5rem", fontWeight: 800, letterSpacing: "0.16em",
-          color: card.color, border: `1px solid ${card.color}`,
-          borderRadius: "999px", padding: "2px 8px", textTransform: "uppercase", opacity: 0.9,
-        }}>{card.type}</span>
-      </div>
+      {/* Artwork — right side */}
+      {imgSrc && (
+        <div style={{
+          position: "absolute", right: "-10px", top: "50%",
+          transform: "translateY(-50%)",
+          width: "140px", height: "140px",
+          zIndex: 1,
+          filter: `drop-shadow(0 0 20px ${card.glow})`,
+        }}>
+          <Image src={imgSrc} alt={card.name} fill style={{ objectFit: "contain" }} />
+        </div>
+      )}
 
-      {/* Center: real card image */}
-      <div style={{ position: "relative", zIndex: 3, flex: 1, display: "flex", alignItems: "center", justifyContent: "center", margin: "0.75rem 0" }}>
-        {imgSrc && (
-          <div style={{ position: "relative", width: `${(CARD_IMG_SCALE[card.name] ?? 1) * 100}%`, height: "120px" }}>
-            <Image
-              src={imgSrc}
-              alt={card.name}
-              fill
-              style={{ objectFit: "contain", filter: `drop-shadow(0 0 18px ${card.glow})` }}
-            />
-          </div>
-        )}
-      </div>
+      {/* Left content */}
+      <div style={{
+        position: "relative", zIndex: 3,
+        height: "100%", width: "62%",
+        display: "flex", flexDirection: "column",
+        justifyContent: "space-between",
+        padding: "14px 14px 12px 16px",
+      }}>
+        {/* Top row: brand + flag */}
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <AttaxBrand color={card.color} />
+          <FlagIcon />
+        </div>
 
-      {/* Bottom: name + effect + desc */}
-      <div style={{ position: "relative", zIndex: 3 }}>
-        <div style={{ marginBottom: "0.5rem" }}>
-          <div style={{ fontSize: "1.125rem", fontWeight: 900, color: card.color, letterSpacing: "-0.03em", lineHeight: 1, marginBottom: "3px", filter: `drop-shadow(0 0 10px ${card.glow})` }}>
-            {card.name}
-          </div>
-          <div style={{ fontSize: "0.5625rem", fontWeight: 700, color: "rgba(255,255,255,0.3)", letterSpacing: "0.1em", textTransform: "uppercase" }}>
+        {/* Category badge */}
+        <div style={{
+          fontSize: "0.5rem", fontWeight: 800, letterSpacing: "0.18em",
+          color: card.color, textTransform: "uppercase",
+          marginTop: "4px",
+        }}>
+          {card.type}
+        </div>
+
+        {/* Card name — big italic */}
+        <div style={{
+          fontSize: "1.75rem", fontWeight: 900, fontStyle: "italic",
+          color: "#ffffff", letterSpacing: "-0.04em", lineHeight: 0.95,
+          textShadow: `0 2px 16px rgba(0,0,0,0.4)`,
+          marginTop: "2px",
+        }}>
+          {card.name.toUpperCase()}
+        </div>
+
+        {/* Effect + sub */}
+        <div style={{ marginTop: "4px" }}>
+          <div style={{ fontSize: "0.5625rem", fontWeight: 700, color: "rgba(255,255,255,0.7)", letterSpacing: "0.04em" }}>
             {card.effect}
           </div>
         </div>
-        <div style={{ height: "1px", backgroundColor: `${card.color}28`, marginBottom: "0.625rem" }} />
-        <p style={{ fontSize: "0.625rem", color: "rgba(255,255,255,0.35)", lineHeight: 1.6, margin: 0 }}>
+
+        {/* Description */}
+        <div style={{
+          fontSize: "0.5rem", color: "rgba(255,255,255,0.45)",
+          lineHeight: 1.5, marginTop: "6px",
+          display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden",
+        } as React.CSSProperties}>
           {card.desc}
-        </p>
+        </div>
+      </div>
+
+      {/* Number — bottom right */}
+      <div style={{
+        position: "absolute", bottom: "10px", right: "14px",
+        fontSize: "2rem", fontWeight: 900, fontStyle: "italic",
+        color: "rgba(255,255,255,0.15)", letterSpacing: "-0.06em",
+        zIndex: 3, lineHeight: 1,
+      }}>
+        {num}
       </div>
     </div>
   );
@@ -156,7 +179,7 @@ export default function CardsShowcase() {
         <div className="cards-showcase-inner" style={{ display: "flex", alignItems: "center", gap: "5rem", justifyContent: "space-between" }}>
 
           {/* Left: text */}
-          <div ref={headerRef} className="cards-showcase-text" style={{ flex: "0 0 400px", maxWidth: "400px" }}>
+          <div ref={headerRef} className="cards-showcase-text" style={{ flex: "0 0 380px", maxWidth: "380px" }}>
             <p style={{ ...fadeUp(headerVisible, 0), fontSize: "0.6875rem", fontWeight: 700, color: "rgba(255,255,255,0.28)", letterSpacing: "0.18em", textTransform: "uppercase", margin: "0 0 1.5rem" }}>{cs.label}</p>
             <h2 style={{ fontSize: "clamp(2.5rem, 4vw, 3.5rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.045em", lineHeight: 1.0, margin: "0 0 1.5rem" }}>
               <div style={{ overflow: "hidden" }}><span style={clipReveal(headerVisible, 80)}>{cs.h2[0]}</span></div>
@@ -169,8 +192,12 @@ export default function CardsShowcase() {
             </div>
           </div>
 
-          {/* Right: fan of cards */}
-          <div ref={cardsRef} className="cards-showcase-fan" style={{ flex: 1, display: "flex", justifyContent: "center", alignItems: "center", gap: "0.75rem", paddingTop: "2rem" }}>
+          {/* Right: stacked cards */}
+          <div ref={cardsRef} className="cards-showcase-fan" style={{
+            flex: 1, display: "flex", flexDirection: "column",
+            justifyContent: "center", alignItems: "flex-start",
+            gap: "1rem", paddingLeft: "1rem",
+          }}>
             {cs.cards.map((card: { name: string; type: string; effect: string; desc: string; color: string; glow: string }, i: number) => (
               <GameCard key={card.name} card={card} index={i} visible={cardsVisible} />
             ))}
