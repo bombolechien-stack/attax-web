@@ -74,9 +74,10 @@ export default function DiscoverPage() {
             <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0) 100%)" }} />
             <div className="d-fencing-text" style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "3.5rem 4rem" }}>
               <p style={{ fontSize: "0.75rem", fontWeight: 600, color: "rgba(255,255,255,0.4)", letterSpacing: "0.14em", textTransform: "uppercase", margin: "0 0 0.75rem" }}>{d.duel_label}</p>
-              <h2 style={{ fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.04em", lineHeight: 1.05, margin: 0 }}>
+              <h2 style={{ fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.04em", lineHeight: 1.05, margin: "0 0 1.25rem" }}>
                 {d.duel_h2[0]}<br />{d.duel_h2[1]}
               </h2>
+              <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.75, margin: 0 }}>{d.duel_body.join(" ")}</p>
             </div>
           </div>
         </div>
