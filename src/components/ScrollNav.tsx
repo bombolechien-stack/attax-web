@@ -49,7 +49,7 @@ export default function ScrollNav() {
   }, []);
 
   return (
-    <div ref={outerRef} style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 9999, display: "flex", justifyContent: "center", pointerEvents: "none" }}>
+    <div ref={outerRef} id="scroll-nav" style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 9999, display: "flex", justifyContent: "center", pointerEvents: "none" }}>
       <div ref={pillRef} style={{ display: "flex", alignItems: "center", width: "100%", height: "68px", paddingLeft: "36px", paddingRight: "36px", backgroundColor: "rgba(8,8,8,0)", border: "1px solid rgba(255,255,255,0)", borderRadius: "0", position: "relative" }}>
         <div style={{ display: "flex", gap: "24px", flex: 1, alignItems: "center" }}>
           {NAV_LINKS.map((l) => (
