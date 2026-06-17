@@ -42,15 +42,14 @@ export default function ComingSoon() {
   return (
     <div style={{ backgroundColor: "#070707", minHeight: "100vh", fontFamily: "var(--font-jakarta), -apple-system, sans-serif" }}>
 
-      {/* ── Hero ── */}
+      {/* Hero */}
       <div style={{ position: "relative", height: "100vh", overflow: "hidden", display: "flex", flexDirection: "column" }}>
         <video autoPlay muted loop playsInline preload="metadata" style={{ position: "absolute", inset: 0, width: "100%", height: "110%", objectFit: "cover", objectPosition: "center 30%", zIndex: 0, top: "-5%" }}>
           <source src="/videos/boxingonring.mp4" type="video/mp4" />
         </video>
         <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(to bottom, rgba(7,7,7,0.45) 0%, rgba(7,7,7,0.1) 25%, rgba(7,7,7,0.65) 70%, rgba(7,7,7,1) 100%)" }} />
-        <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(to right, rgba(7,7,7,0.55) 0%, transparent 65%)" }} />
+        <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(to right, rgba(7,7,7,0.65) 0%, transparent 70%)" }} />
 
-        {/* Nav */}
         <nav style={{ position: "relative", zIndex: 10, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 3rem", height: "72px", flexShrink: 0 }}>
           <div style={{ width: "120px" }} />
           <a href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
@@ -63,19 +62,15 @@ export default function ComingSoon() {
           </div>
         </nav>
 
-        {/* Content */}
         <div style={{ position: "relative", zIndex: 5, flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "0 3rem 3rem" }}>
-          <div style={{ maxWidth: "660px" }}>
-            <p style={{ ...rev(heroVisible, 0), fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.28)", margin: "0 0 2.25rem" }}>
-              Coming soon
-            </p>
-            <h1 style={{ ...rev(heroVisible, 0.18), fontSize: "clamp(2.75rem, 5.5vw, 5.5rem)", fontWeight: 800, color: "#ffffff", lineHeight: 1.0, letterSpacing: "-0.04em", margin: "0 0 2rem" }}>
-              Every workout<br />will soon have<br />consequences.
+          <div style={{ maxWidth: "600px" }}>
+            <h1 style={{ ...rev(heroVisible, 0.1), fontSize: "clamp(2.75rem, 5.5vw, 5.5rem)", fontWeight: 800, color: "#ffffff", lineHeight: 1.0, letterSpacing: "-0.04em", margin: "0 0 1.5rem" }}>
+              Turn your workouts<br />into victories.
             </h1>
-            <p style={{ ...rev(heroVisible, 0.34), fontSize: "1rem", color: "rgba(255,255,255,0.38)", lineHeight: 1.8, margin: "0 0 2.75rem", maxWidth: "360px" }}>
-              A new competitive experience is coming.<br />Train in real life. Compete somewhere else.
+            <p style={{ ...rev(heroVisible, 0.28), fontSize: "1rem", color: "rgba(255,255,255,0.42)", lineHeight: 1.8, margin: "0 0 2.75rem", maxWidth: "400px" }}>
+              Attax is the competitive fitness game where your real-world activity determines the outcome of daily battles.
             </p>
-            <div style={{ ...rev(heroVisible, 0.48) }}>
+            <div style={{ ...rev(heroVisible, 0.42) }}>
               {!submitted ? (
                 <form onSubmit={(e) => submit(e, 1)} style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
                   <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="your@email.com" style={{ flex: 1, minWidth: "180px", padding: "13px 20px", borderRadius: "999px", border: "1px solid rgba(255,255,255,0.12)", backgroundColor: "rgba(255,255,255,0.05)", color: "#fff", fontSize: "0.9375rem", fontFamily: "inherit", outline: "none" }} />
@@ -87,66 +82,71 @@ export default function ComingSoon() {
                 <p style={{ fontSize: "0.9375rem", color: "rgba(255,255,255,0.5)", fontStyle: "italic", margin: 0 }}>You&apos;re in. We&apos;ll be in touch.</p>
               )}
               <p style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.2)", margin: "0.875rem 0 0" }}>
-                Be among the first players invited.
+                Join the first players entering the arena.
               </p>
             </div>
           </div>
         </div>
       </div>
 
-      {/* ── Section 2: breathing ── */}
-      <section style={{ padding: "11rem 2rem", textAlign: "center" }}>
-        <div ref={s2.ref} style={{ maxWidth: "520px", margin: "0 auto" }}>
-          <p style={{ ...rev(s2.visible, 0), fontSize: "1.25rem", fontWeight: 500, color: "rgba(255,255,255,0.28)", lineHeight: 1.8, margin: 0 }}>
-            Most fitness apps track activity.
-          </p>
-          <p style={{ ...rev(s2.visible, 0.22), fontSize: "1.25rem", fontWeight: 600, color: "rgba(255,255,255,0.55)", lineHeight: 1.8, margin: "0.2rem 0 0" }}>
-            We&apos;re building something different.
-          </p>
-        </div>
-      </section>
-
-      {/* ── Section 3: statement ── */}
-      <section ref={s3.ref} style={{ padding: "10rem 3rem", borderTop: "1px solid rgba(255,255,255,0.04)", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>
-        <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
-          <h2 style={{ ...rev(s3.visible, 0), fontSize: "clamp(2.75rem, 6vw, 6.5rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.05em", lineHeight: 0.9, margin: "0 0 5rem" }}>
-            Not another<br />fitness app.
-          </h2>
-          <div>
+      {/* Section 2: How it works */}
+      <section style={{ padding: "9rem 3rem", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
+        <div ref={s2.ref} style={{ maxWidth: "72rem", margin: "0 auto" }}>
+          <p style={{ ...rev(s2.visible, 0), fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", margin: "0 0 2rem" }}>How it works</p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "3rem" }}>
             {[
-              ["No streaks.", 0.1],
-              ["No badges.", 0.22],
-              ["No pointless statistics.", 0.36],
-            ].map(([text, d]) => (
-              <div key={String(text)} style={{ ...rev(s3.visible, Number(d)), padding: "1.75rem 0", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>
-                <span style={{ fontSize: "clamp(1.5rem, 3vw, 2.5rem)", fontWeight: 700, color: "rgba(255,255,255,0.16)", letterSpacing: "-0.03em" }}>{text}</span>
+              { label: "Train", body: "Walk, run, cycle, lift.\nYour activity becomes power.", delay: 0.1 },
+              { label: "Compete", body: "Face a real opponent every day.", delay: 0.22 },
+              { label: "Win", body: "Climb leagues and prove your consistency.", delay: 0.34 },
+            ].map((item) => (
+              <div key={item.label} style={{ ...rev(s2.visible, item.delay), borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "2rem" }}>
+                <h3 style={{ fontSize: "1.0625rem", fontWeight: 700, color: "#ffffff", margin: "0 0 0.75rem", letterSpacing: "-0.02em" }}>{item.label}</h3>
+                <p style={{ fontSize: "0.9375rem", color: "rgba(255,255,255,0.35)", lineHeight: 1.75, margin: 0, whiteSpace: "pre-line" }}>{item.body}</p>
               </div>
             ))}
-            <p style={{ ...rev(s3.visible, 0.52), margin: "3rem 0 0", fontSize: "0.9375rem", color: "rgba(255,255,255,0.25)", fontStyle: "italic" }}>
-              Something else is coming.
-            </p>
           </div>
         </div>
       </section>
 
-      {/* ── Section 4: second CTA ── */}
-      <section id="early-access" ref={s4.ref} style={{ padding: "12rem 3rem", textAlign: "center" }}>
+      {/* Section 3: purpose */}
+      <section ref={s3.ref} style={{ padding: "10rem 3rem", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
+        <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
+          <h2 style={{ ...rev(s3.visible, 0), fontSize: "clamp(2rem, 4vw, 4rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.045em", lineHeight: 1.05, margin: "0 0 4rem", maxWidth: "640px" }}>
+            Most fitness apps track activity.<br />
+            <span style={{ color: "rgba(255,255,255,0.38)" }}>Attax gives it a purpose.</span>
+          </h2>
+          <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
+            {[
+              { text: "Stay motivated.", delay: 0.12 },
+              { text: "Compete with others.", delay: 0.24 },
+              { text: "Make every workout count.", delay: 0.38 },
+            ].map((item) => (
+              <div key={item.text} style={{ ...rev(s3.visible, item.delay), padding: "2rem 0", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                <span style={{ fontSize: "clamp(1.25rem, 2.5vw, 2rem)", fontWeight: 700, color: "rgba(255,255,255,0.55)", letterSpacing: "-0.03em" }}>{item.text}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 4: second CTA */}
+      <section id="early-access" ref={s4.ref} style={{ padding: "12rem 3rem", textAlign: "center", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
         <div style={{ maxWidth: "520px", margin: "0 auto" }}>
           <p style={{ ...rev(s4.visible, 0), fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.22)", margin: "0 0 2rem" }}>
             Launching soon
           </p>
           <h2 style={{ ...rev(s4.visible, 0.14), fontSize: "clamp(2rem, 4.5vw, 3.75rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.045em", lineHeight: 1.0, margin: "0 0 1.5rem" }}>
-            Join the first wave.
+            The first leagues<br />open soon.
           </h2>
           <p style={{ ...rev(s4.visible, 0.25), fontSize: "0.9375rem", color: "rgba(255,255,255,0.32)", lineHeight: 1.8, margin: "0 0 2.75rem" }}>
-            The first wave of invitations will be sent<br />to early subscribers only.
+            The first leagues will open to a limited number of players.<br />Get notified when invitations start.
           </p>
           <div style={{ ...rev(s4.visible, 0.36) }}>
             {!submitted2 ? (
               <form onSubmit={(e) => submit(e, 2)} style={{ display: "flex", gap: "10px", flexWrap: "wrap", justifyContent: "center" }}>
                 <input type="email" required value={email2} onChange={(e) => setEmail2(e.target.value)} placeholder="your@email.com" style={{ flex: 1, minWidth: "180px", maxWidth: "260px", padding: "14px 20px", borderRadius: "999px", border: "1px solid rgba(255,255,255,0.12)", backgroundColor: "rgba(255,255,255,0.05)", color: "#fff", fontSize: "0.9375rem", fontFamily: "inherit", outline: "none" }} />
                 <button type="submit" style={{ padding: "14px 28px", borderRadius: "999px", border: "none", backgroundColor: "#fff", color: "#0d0d0d", fontWeight: 700, fontSize: "0.9375rem", fontFamily: "inherit", cursor: "pointer", whiteSpace: "nowrap" }}>
-                  Join the first wave
+                  Get Early Access
                 </button>
               </form>
             ) : (
@@ -156,7 +156,7 @@ export default function ComingSoon() {
         </div>
       </section>
 
-      {/* ── Footer minimal ── */}
+      {/* Footer */}
       <footer style={{ borderTop: "1px solid rgba(255,255,255,0.06)", padding: "2.5rem 3rem", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "1.5rem" }}>
         <Image src="/images/logo-attax-wh.svg" alt="Attax" width={72} height={27} style={{ display: "block", opacity: 0.45 }} />
         <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>

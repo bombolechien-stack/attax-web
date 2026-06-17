@@ -29,7 +29,7 @@ export default function Footer() {
         <div className="footer-cta-section" style={{ position: "relative", zIndex: 2, padding: "9rem 2rem 7rem", textAlign: "center" }}>
           <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", margin: "0 0 1.25rem" }}>{f.cta_label}</p>
           <h2 style={{ fontSize: "clamp(2.75rem, 5.5vw, 5rem)", fontWeight: 800, color: "#fff", letterSpacing: "-0.05em", lineHeight: 0.95, margin: "0 0 1.5rem" }}>
-            {f.cta_h2[0]}<br />{f.cta_h2[1]}<br />{f.cta_h2[2]}
+            {f.cta_h2[0]}<br />{f.cta_h2[1]}
           </h2>
           <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.42)", lineHeight: 1.7, margin: "0 auto 2.75rem", maxWidth: "340px" }}>{f.cta_sub}</p>
           <div style={{ display: "flex", gap: "10px", justifyContent: "center", flexWrap: "wrap" }}>

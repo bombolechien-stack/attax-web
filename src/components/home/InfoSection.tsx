@@ -9,11 +9,14 @@ export default function InfoSection() {
   return (
     <section style={{ backgroundColor: "#ffffff", padding: "7rem 2rem" }}>
       <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
-        <div style={{ marginBottom: "5rem", maxWidth: "640px" }}>
-          <p className="section-label" style={{ margin: "0 0 1.25rem" }}>{inf.label}</p>
-          <h2 style={{ fontSize: "clamp(2rem, 3.5vw, 2.875rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.04em", lineHeight: 1.06, margin: 0 }}>
-            {inf.h2}
-          </h2>
+        <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "4rem", marginBottom: "5rem" }}>
+          <div>
+            <p className="section-label" style={{ margin: "0 0 1.25rem" }}>{inf.label}</p>
+            <h2 style={{ fontSize: "clamp(2rem, 3.5vw, 2.875rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.04em", lineHeight: 1.06, margin: 0 }}>
+              {inf.h2}
+            </h2>
+          </div>
+          <p style={{ fontSize: "1rem", color: "#888", lineHeight: 1.75, maxWidth: "300px", margin: 0, flex: "0 0 300px", whiteSpace: "pre-line" }}>{inf.sub}</p>
         </div>
         <div className="info-steps-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "0" }}>
           {inf.steps.map((step, i) => (
