@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import Image from "next/image";
 import { useInView, fadeUp } from "@/hooks/useInView";
 
 export default function DownloadCTA() {
@@ -30,6 +31,15 @@ export default function DownloadCTA() {
           willChange: "opacity, transform",
         }}
       />
+      <div style={{ position: "absolute", right: "clamp(2rem, 8vw, 10rem)", bottom: 0, zIndex: 0, width: "clamp(160px, 22vw, 320px)", pointerEvents: "none" }}>
+        <Image
+          src="/images/app-half.webp"
+          alt="Attax app"
+          width={320}
+          height={560}
+          style={{ width: "100%", height: "auto", display: "block", opacity: visible ? 0.55 : 0, transform: visible ? "translateY(0)" : "translateY(40px)", transition: "opacity 1.4s cubic-bezier(0.16,1,0.3,1) 300ms, transform 1.4s cubic-bezier(0.16,1,0.3,1) 300ms" }}
+        />
+      </div>
       <div style={{ position: "relative", zIndex: 1, maxWidth: "600px", margin: "0 auto" }}>
         <p className="section-label-light" style={{ ...fadeUp(visible, 0), margin: "0 0 2rem" }}>Download</p>
         <h2 style={{ fontSize: "clamp(2.5rem, 5vw, 4.5rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.045em", lineHeight: 1.0, margin: "0 0 1.5rem" }}>

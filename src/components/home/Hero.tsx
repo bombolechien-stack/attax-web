@@ -18,7 +18,7 @@ export default function Hero() {
         overflow: "hidden",
         backgroundColor: "#070707",
       }}>
-        <video autoPlay muted loop playsInline preload="metadata" style={{
+        <video autoPlay muted loop playsInline preload="metadata" poster="/images/photo-hero.jpg" style={{
           position: "absolute", inset: 0, width: "100%", height: "100%",
           objectFit: "cover", objectPosition: "center 30%", zIndex: 0,
         }}>
