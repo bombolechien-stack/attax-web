@@ -155,7 +155,7 @@ export default function ComingSoonGate({ children }: { children: React.ReactNode
           margin: 0,
           fontFamily: "'Plus Jakarta Sans', -apple-system, sans-serif",
         }}>
-          Sport is now a game.
+          Sport is now a game
         </p>
 
         {/* Main big */}
@@ -168,7 +168,7 @@ export default function ComingSoonGate({ children }: { children: React.ReactNode
           margin: 0,
           fontFamily: "'Plus Jakarta Sans', -apple-system, sans-serif",
         }}>
-          Coming<br />Soon.
+          Coming<br />Soon
         </h1>
 
         {/* Waitlist form */}
