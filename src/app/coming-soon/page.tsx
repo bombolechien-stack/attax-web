@@ -64,13 +64,18 @@ export default function ComingSoon() {
 
         <div style={{ position: "relative", zIndex: 5, flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "0 3rem 3rem" }}>
           <div style={{ maxWidth: "600px" }}>
-            <h1 style={{ ...rev(heroVisible, 0.1), fontSize: "clamp(2.75rem, 5.5vw, 5.5rem)", fontWeight: 800, color: "#ffffff", lineHeight: 1.0, letterSpacing: "-0.04em", margin: "0 0 1.5rem" }}>
-              Turn your workouts<br />into victories.
+            <h1 style={{ ...rev(heroVisible, 0.1), fontSize: "clamp(2.75rem, 5.5vw, 5.5rem)", fontWeight: 800, color: "#ffffff", lineHeight: 1.0, letterSpacing: "-0.04em", margin: "0 0 1.75rem" }}>
+              Your workouts<br />finally matter.
             </h1>
-            <p style={{ ...rev(heroVisible, 0.28), fontSize: "1rem", color: "rgba(255,255,255,0.42)", lineHeight: 1.8, margin: "0 0 2.75rem", maxWidth: "400px" }}>
-              Attax is the competitive fitness game where your real-world activity determines the outcome of daily battles.
+            <p style={{ ...rev(heroVisible, 0.26), fontSize: "1rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.75, margin: "0 0 0.5rem", maxWidth: "380px" }}>
+              Turn your daily activity into competition.
             </p>
-            <div style={{ ...rev(heroVisible, 0.42) }}>
+            <div style={{ ...rev(heroVisible, 0.34), marginBottom: "2.25rem" }}>
+              {["Face real opponents.", "Climb the rankings.", "Make every workout count."].map((line) => (
+                <p key={line} style={{ fontSize: "0.9375rem", color: "rgba(255,255,255,0.28)", lineHeight: 1.8, margin: 0 }}>{line}</p>
+              ))}
+            </div>
+            <div style={{ ...rev(heroVisible, 0.46) }}>
               {!submitted ? (
                 <form onSubmit={(e) => submit(e, 1)} style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
                   <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="your@email.com" style={{ flex: 1, minWidth: "180px", padding: "13px 20px", borderRadius: "999px", border: "1px solid rgba(255,255,255,0.12)", backgroundColor: "rgba(255,255,255,0.05)", color: "#fff", fontSize: "0.9375rem", fontFamily: "inherit", outline: "none" }} />
@@ -81,9 +86,6 @@ export default function ComingSoon() {
               ) : (
                 <p style={{ fontSize: "0.9375rem", color: "rgba(255,255,255,0.5)", fontStyle: "italic", margin: 0 }}>You&apos;re in. We&apos;ll be in touch.</p>
               )}
-              <p style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.2)", margin: "0.875rem 0 0" }}>
-                Join the first players entering the arena.
-              </p>
             </div>
           </div>
         </div>
