@@ -107,7 +107,7 @@ export const T = {
       steps: [
         { n: "01", time: "Any time of day", title: "Train.", body: "Go for a run, hit the gym, hop on a bike. Every form of activity counts — the only thing that matters is that you move.", icon: "run" },
         { n: "02", time: "Automatic", title: "Sync.", body: "Attax reads your data from Apple Health or Health Connect the moment your workout ends. No manual input, ever.", icon: "sync" },
-        { n: "03", time: "Before midnight", title: "Play your card.", body: "Each morning you pick one card from a rotating deck of twelve. Spike your score. Freeze your opponent. Change the entire outcome.", icon: "card" },
+        { n: "03", time: "Each morning", title: "Play your card.", body: "Pick one card from a rotating deck of twelve before your day starts. Spike your score. Freeze your opponent. Change the entire outcome.", icon: "card" },
         { n: "04", time: "Every evening", title: "See your result.", body: "At the end of each day, Attax resolves the duel. Your activity plus your card versus theirs. Win, lose, or draw — the rankings update instantly.", icon: "battle" },
       ],
     },
@@ -116,7 +116,7 @@ export const T = {
       h2: ["They're already", "competing."],
       items: [
         { quote: "I was 4th going into the last day of the season. I did a 10K at 11pm just to take the win. That level of intensity never happened with any other fitness app.", name: "Marine L.", role: "Marathon runner · Paris", initials: "ML" },
-        { quote: "I went from Rookie to Diamond in two months. Every morning you wake up knowing you have a fight to win. That daily reset changes everything.", name: "Thomas B.", role: "Cyclist · Lyon", initials: "TB" },
+        { quote: "I went from Rookie to Legend in two months. Every morning you wake up knowing you have a fight to win. That daily reset changes everything.", name: "Thomas B.", role: "Cyclist · Lyon", initials: "TB" },
         { quote: "My clients talk about their ranking more than their workouts. Competition changes behavior in a way that goal-setting never managed to.", name: "Sarah K.", role: "CrossFit coach · Bordeaux", initials: "SK" },
       ],
     },
@@ -205,7 +205,7 @@ export const T = {
         { label: "Health Connect Fitness Game", href: "/health-connect-fitness-game" },
       ],
       col_resources: "Resources",
-      copyright: "© 2025 Attax — Sport is now a game.",
+      copyright: "© 2026 Attax — Sport is now a game.",
     },
     discover: {
       hero_label: "DISCOVER ATTAX",
@@ -475,7 +475,7 @@ export const T = {
       h2: ["Ils s'affrontent", "déjà."],
       items: [
         { quote: "J'étais 4ème à 24h de la fin de la saison. J'ai fait 10 km à 23h pour arracher la victoire. Ce niveau d'intensité, aucune app fitness ne m'y avait jamais poussé.", name: "Marine L.", role: "Marathonienne · Paris", initials: "ML" },
-        { quote: "En deux mois je suis passé de Rookie à Diamond. Chaque matin tu te lèves en sachant que tu as un combat à gagner. Cette remise à zéro quotidienne change tout.", name: "Thomas B.", role: "Cycliste · Lyon", initials: "TB" },
+        { quote: "En deux mois je suis passé de Rookie à Legend. Chaque matin tu te lèves en sachant que tu as un combat à gagner. Cette remise à zéro quotidienne change tout.", name: "Thomas B.", role: "Cycliste · Lyon", initials: "TB" },
         { quote: "Mes clients parlent de leur classement plus que de leurs séances. La compétition change les comportements d'une façon que les objectifs n'ont jamais réussi à faire.", name: "Sarah K.", role: "Coach CrossFit · Bordeaux", initials: "SK" },
       ],
     },
@@ -564,7 +564,7 @@ export const T = {
         { label: "Jeu Health Connect", href: "/health-connect-fitness-game" },
       ],
       col_resources: "Ressources",
-      copyright: "© 2025 Attax — Le sport est maintenant un jeu.",
+      copyright: "© 2026 Attax — Sport is now a game.",
     },
     discover: {
       hero_label: "DÉCOUVRIR ATTAX",
