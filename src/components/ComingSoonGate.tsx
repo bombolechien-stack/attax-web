@@ -5,6 +5,76 @@ import { useEffect, useState, useRef } from "react";
 const SECRET_KEY = "attax_preview_unlocked";
 const CLICKS_NEEDED = 5;
 
+function WaitlistForm() {
+  const [email, setEmail] = useState("");
+  const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+    } catch { /* fail silently */ }
+    setSent(true);
+    setLoading(false);
+  }
+
+  if (sent) return (
+    <p style={{ fontSize: "0.9375rem", color: "rgba(255,255,255,0.5)", fontStyle: "italic", margin: 0, fontFamily: "'Plus Jakarta Sans', -apple-system, sans-serif" }}>
+      You're on the list. We'll be in touch.
+    </p>
+  );
+
+  return (
+    <form onSubmit={handleSubmit} style={{ display: "flex", gap: "8px", flexWrap: "wrap", justifyContent: "center" }}>
+      <input
+        type="email"
+        required
+        value={email}
+        onChange={e => setEmail(e.target.value)}
+        placeholder="your@email.com"
+        style={{
+          flex: 1,
+          minWidth: "180px",
+          maxWidth: "260px",
+          padding: "13px 20px",
+          borderRadius: "999px",
+          border: "1px solid rgba(255,255,255,0.15)",
+          backgroundColor: "rgba(255,255,255,0.07)",
+          color: "#ffffff",
+          fontSize: "0.9375rem",
+          fontFamily: "'Plus Jakarta Sans', -apple-system, sans-serif",
+          outline: "none",
+        }}
+      />
+      <button
+        type="submit"
+        disabled={loading}
+        style={{
+          padding: "13px 26px",
+          borderRadius: "999px",
+          border: "none",
+          backgroundColor: "#ffffff",
+          color: "#0d0d0d",
+          fontWeight: 700,
+          fontSize: "0.9375rem",
+          fontFamily: "'Plus Jakarta Sans', -apple-system, sans-serif",
+          cursor: loading ? "not-allowed" : "pointer",
+          opacity: loading ? 0.6 : 1,
+          whiteSpace: "nowrap",
+        }}
+      >
+        {loading ? "…" : "Get Early Access"}
+      </button>
+    </form>
+  );
+}
+
 export default function ComingSoonGate({ children }: { children: React.ReactNode }) {
   const [unlocked, setUnlocked] = useState<boolean | null>(null);
   const clickCount = useRef(0);
@@ -100,6 +170,9 @@ export default function ComingSoonGate({ children }: { children: React.ReactNode
         }}>
           Coming<br />Soon.
         </h1>
+
+        {/* Waitlist form */}
+        <WaitlistForm />
       </div>
     </div>
   );
