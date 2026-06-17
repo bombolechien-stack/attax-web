@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import Image from "next/image";
 import PageNavbar from "@/components/PageNavbar";
 import { useT } from "@/lib/i18n";
 
@@ -18,7 +19,8 @@ export default function Hero() {
         overflow: "hidden",
         backgroundColor: "#070707",
       }}>
-        <video autoPlay muted loop playsInline preload="metadata" poster="/images/photo-hero.jpg" style={{
+        <Image src="/images/hero-boxing-2.jpg" alt="" fill priority style={{ objectFit: "cover", objectPosition: "center 25%", zIndex: 0 }} />
+        <video autoPlay muted loop playsInline preload="metadata" poster="/images/hero-boxing-2.jpg" style={{
           position: "absolute", inset: 0, width: "100%", height: "100%",
           objectFit: "cover", objectPosition: "center 30%", zIndex: 0,
         }}>

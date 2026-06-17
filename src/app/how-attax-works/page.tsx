@@ -412,6 +412,11 @@ export default function HowAttaxWorks() {
 
           <hr style={RULE} />
 
+          <div style={{ position: "relative", height: "clamp(300px, 45vh, 560px)", overflow: "hidden", borderRadius: "20px", margin: "2rem 0 0" }}>
+            <Image src="/images/traction.jpg" alt="" fill style={{ objectFit: "cover", objectPosition: "center 30%" }} />
+            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(0,0,0,0.45) 100%)" }} />
+          </div>
+
           <Section label={p.activityLabel}>
             <H2>{p.activityH2}</H2>
             <p style={BODY}>{p.activityP1}</p>
