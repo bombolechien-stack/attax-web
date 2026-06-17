@@ -536,3 +536,7 @@ body { margin: 0; padding: 0; background: #ffffff; color: #1a1a1a; }
 
 /* ── overflow clip helper ── */
 .clip-wrap { overflow: hidden; }
+
+/* Coming soon gate — hide chrome */
+.is-coming-soon .banner-root,
+.is-coming-soon footer { display: none !important; }

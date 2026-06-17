@@ -11,7 +11,10 @@ export default function ComingSoonGate({ children }: { children: React.ReactNode
   const clickTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    setUnlocked(localStorage.getItem(SECRET_KEY) === "1");
+    const isUnlocked = localStorage.getItem(SECRET_KEY) === "1";
+    setUnlocked(isUnlocked);
+    if (!isUnlocked) document.body.classList.add("is-coming-soon");
+    return () => document.body.classList.remove("is-coming-soon");
   }, []);
 
   function handleLogoClick() {
@@ -72,7 +75,7 @@ export default function ComingSoonGate({ children }: { children: React.ReactNode
           </svg>
         </button>
 
-        {/* Tagline */}
+        {/* Tagline small */}
         <p style={{
           fontSize: "clamp(0.6875rem, 1.5vw, 0.8125rem)",
           fontWeight: 700,
@@ -82,10 +85,10 @@ export default function ComingSoonGate({ children }: { children: React.ReactNode
           margin: 0,
           fontFamily: "'Plus Jakarta Sans', -apple-system, sans-serif",
         }}>
-          Coming Soon
+          Sport is now a game.
         </p>
 
-        {/* Main */}
+        {/* Main big */}
         <h1 style={{
           fontSize: "clamp(3rem, 7vw, 6rem)",
           fontWeight: 800,
@@ -95,7 +98,7 @@ export default function ComingSoonGate({ children }: { children: React.ReactNode
           margin: 0,
           fontFamily: "'Plus Jakarta Sans', -apple-system, sans-serif",
         }}>
-          Sport is now<br />a game.
+          Coming<br />Soon.
         </h1>
       </div>
     </div>
