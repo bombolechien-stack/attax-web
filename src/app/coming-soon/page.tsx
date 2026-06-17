@@ -38,8 +38,16 @@ export default function ComingSoon() {
 
   useEffect(() => { const t = setTimeout(() => setHeroVisible(true), 80); return () => clearTimeout(t); }, []);
 
-  const submit = (e: React.FormEvent, which: 1 | 2) => {
+  const submit = async (e: React.FormEvent, which: 1 | 2) => {
     e.preventDefault();
+    const emailVal = which === 1 ? email : email2;
+    try {
+      await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: emailVal }),
+      });
+    } catch { /* fail silently — still show confirmation */ }
     which === 1 ? setSubmitted(true) : setSubmitted2(true);
   };
 

@@ -1,27 +1,58 @@
 ﻿"use client";
 
+import { useState } from "react";
 import { useT } from "@/lib/i18n";
+import { useInView, fadeUp, scaleIn } from "@/hooks/useInView";
 
 export default function DailyMatch() {
   const t = useT();
   const m = t.dailyMatch;
+  const { ref: headerRef, visible: headerVisible } = useInView<HTMLDivElement>(0.1);
+  const { ref: cardRef, visible: cardVisible } = useInView<HTMLDivElement>(0.12);
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const cx = (e.clientX - rect.left) / rect.width - 0.5;
+    const cy = (e.clientY - rect.top) / rect.height - 0.5;
+    setTilt({ x: cy * 4, y: cx * -4 });
+  };
 
   return (
     <section id="daily-match" className="dm-section" style={{ backgroundColor: "#ffffff", padding: "8rem 2rem", overflow: "hidden" }}>
       <div style={{ maxWidth: "80rem", margin: "0 auto" }}>
 
-        <div style={{ marginBottom: "6rem" }}>
-          <span className="section-label" style={{ display: "block", marginBottom: "1.5rem" }}>{m.label}</span>
+        <div ref={headerRef} style={{ marginBottom: "6rem" }}>
+          <span style={{ ...fadeUp(headerVisible, 0), display: "block", marginBottom: "1.5rem" }} className="section-label">{m.label}</span>
           <div className="dm-header" style={{ display: "flex", alignItems: "flex-end", gap: "4rem", flexWrap: "wrap" }}>
             <h2 style={{ fontSize: "clamp(3rem, 5vw, 5.5rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.055em", lineHeight: 0.9, margin: 0 }}>
-              {m.h2[0]}<br />{m.h2[1]}
+              <span style={fadeUp(headerVisible, 80)}>{m.h2[0]}</span>
+              <span style={fadeUp(headerVisible, 230)}>{m.h2[1]}</span>
             </h2>
-            <p style={{ fontSize: "1.0625rem", color: "#999", lineHeight: 1.75, maxWidth: "360px", margin: 0 }}>{m.subtitle}</p>
+            <p style={{ ...fadeUp(headerVisible, 380), fontSize: "1.0625rem", color: "#999", lineHeight: 1.75, maxWidth: "360px", margin: 0 }}>{m.subtitle}</p>
           </div>
         </div>
 
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <div style={{ transform: "perspective(1200px) rotateX(4deg) rotateY(-2deg) rotateZ(-1deg)", transformOrigin: "center center", boxShadow: "0 60px 160px rgba(0,0,0,0.18), 0 20px 40px rgba(0,0,0,0.08)", borderRadius: "24px", overflow: "hidden", width: "min(800px, 90vw)", backgroundColor: "#0a0a0a", border: "1px solid rgba(255,255,255,0.08)" }}>
+        <div ref={cardRef} style={{ display: "flex", justifyContent: "center" }}>
+          <div
+            onMouseMove={handleMouseMove}
+            onMouseLeave={() => setTilt({ x: 0, y: 0 })}
+            style={{
+              ...scaleIn(cardVisible, 0, 0.94),
+              transform: cardVisible
+                ? `perspective(1200px) rotateX(${4 + tilt.x}deg) rotateY(${-2 + tilt.y}deg) rotateZ(-1deg) scale(1)`
+                : "perspective(1200px) rotateX(4deg) rotateY(-2deg) rotateZ(-1deg) scale(0.94)",
+              transition: cardVisible
+                ? `opacity 1.2s cubic-bezier(0.16,1,0.3,1), transform ${tilt.x === 0 && tilt.y === 0 ? "1.2s" : "0.15s"} cubic-bezier(0.16,1,0.3,1)`
+                : "opacity 1.2s cubic-bezier(0.16,1,0.3,1), transform 1.2s cubic-bezier(0.16,1,0.3,1)",
+              transformOrigin: "center center",
+              boxShadow: "0 60px 160px rgba(0,0,0,0.18), 0 20px 40px rgba(0,0,0,0.08)",
+              borderRadius: "24px",
+              overflow: "hidden",
+              width: "min(800px, 90vw)",
+              backgroundColor: "#0a0a0a",
+              border: "1px solid rgba(255,255,255,0.08)",
+            }}>
             <div style={{ padding: "2rem 2.5rem 1.5rem", display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                 <div style={{ width: "8px", height: "8px", borderRadius: "50%", backgroundColor: "#4ade80" }} />

@@ -95,7 +95,7 @@
       contact_text: "Can't find your answer?",
       contact_link: "Get in touch",
       items: [
-        { q: "Do I need a smartwatch?", a: "No. Attax works with Apple Health and Health Connect. Any compatible device that feeds into those platforms is supported." },
+        { q: "Do I need a smartwatch?", a: "Yes. Attax requires a smartwatch or fitness tracker (Apple Watch, Fitbit, Garmin, or similar) to automatically synchronize your activity through Apple Health or Health Connect." },
         { q: "Does walking count?", a: "Yes. Every form of activity contributes — walking, running, cycling, swimming, gym sessions, and more." },
         { q: "How are battles calculated?", a: "Your activity and strategy determine the outcome. Train consistently, play your cards well, and you'll win." },
         { q: "Can I play with friends?", a: "Friend challenges are planned for future updates. For now, you compete in matchmade leagues." },
@@ -129,8 +129,19 @@
       links_legal: [
         { label: "Privacy Policy", href: "/privacy" },
         { label: "Terms of Service", href: "/terms" },
+        { label: "Cookie Policy", href: "/cookie-policy" },
+        { label: "Download", href: "/download" },
       ],
-      copyright: "© 2025 attax, your new challenge",
+      links_resources: [
+        { label: "What Is Attax", href: "/what-is-attax" },
+        { label: "How Attax Works", href: "/how-attax-works" },
+        { label: "Fitness Gamification", href: "/fitness-gamification" },
+        { label: "Fitness Competition App", href: "/fitness-competition-app" },
+        { label: "Apple Health Fitness Game", href: "/apple-health-fitness-game" },
+        { label: "Health Connect Fitness Game", href: "/health-connect-fitness-game" },
+      ],
+      col_resources: "Resources",
+      copyright: "© 2025 Attax — Sport is now a game.",
     },
     discover: {
       hero_label: "DISCOVER ATTAX",
@@ -210,7 +221,11 @@
       form_message: "Message",
       form_message_placeholder: "Tell us more...",
       form_submit: "Send message",
+      form_sending: "Sending…",
       form_note: "We typically reply within 24 hours.",
+      form_error: "Something went wrong. Please try again.",
+      form_success_title: "Message sent!",
+      form_success_body: "We'll get back to you as soon as possible.",
     },
     comingSoon: {
       h1: ["Your workouts", "finally matter."],
@@ -330,7 +345,7 @@
       contact_text: "Tu ne trouves pas ta réponse ?",
       contact_link: "Contacte-nous",
       items: [
-        { q: "Ai-je besoin d'une montre connectée ?", a: "Non. Attax fonctionne avec Apple Santé et Health Connect. Tout appareil compatible qui alimente ces plateformes est supporté." },
+        { q: "Ai-je besoin d'une montre connectée ?", a: "Oui. Attax nécessite une montre connectée ou un tracker de fitness (Apple Watch, Fitbit, Garmin ou similaire) pour synchroniser automatiquement ton activité via Apple Santé ou Health Connect." },
         { q: "La marche compte-t-elle ?", a: "Oui. Toute forme d'activité contribue — marche, course, vélo, natation, séances de sport, et plus encore." },
         { q: "Comment les duels sont-ils calculés ?", a: "Ton activité et ta stratégie déterminent le résultat. Entraîne-toi régulièrement, joue bien tes cartes, et tu gagneras." },
         { q: "Puis-je jouer avec des amis ?", a: "Les défis entre amis sont prévus dans de futures mises à jour. Pour l'instant, tu t'affrontes dans des ligues avec matchmaking." },
@@ -364,8 +379,19 @@
       links_legal: [
         { label: "Politique de confidentialité", href: "/privacy" },
         { label: "Conditions d'utilisation", href: "/terms" },
+        { label: "Politique cookies", href: "/cookie-policy" },
+        { label: "Télécharger", href: "/download" },
       ],
-      copyright: "© 2025 attax, ton nouveau défi",
+      links_resources: [
+        { label: "Qu'est-ce qu'Attax", href: "/what-is-attax" },
+        { label: "Comment fonctionne Attax", href: "/how-attax-works" },
+        { label: "Gamification du fitness", href: "/fitness-gamification" },
+        { label: "App de compétition fitness", href: "/fitness-competition-app" },
+        { label: "Jeu Apple Health", href: "/apple-health-fitness-game" },
+        { label: "Jeu Health Connect", href: "/health-connect-fitness-game" },
+      ],
+      col_resources: "Ressources",
+      copyright: "© 2025 Attax — Le sport est maintenant un jeu.",
     },
     discover: {
       hero_label: "DÉCOUVRIR ATTAX",
@@ -445,7 +471,11 @@
       form_message: "Message",
       form_message_placeholder: "Dis-nous en plus...",
       form_submit: "Envoyer le message",
+      form_sending: "Envoi en cours…",
       form_note: "On répond généralement sous 24 heures.",
+      form_error: "Une erreur s'est produite. Merci de réessayer.",
+      form_success_title: "Message envoyé !",
+      form_success_body: "Nous te répondrons dès que possible.",
     },
     comingSoon: {
       h1: ["Tes entraînements", "comptent enfin."],

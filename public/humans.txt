@@ -1,0 +1,14 @@
+/* TEAM */
+Attax
+Designed in France.
+Built for competitors.
+https://attax.app
+contact@attax.app
+
+/* THANKS */
+Next.js, Vercel, Supabase
+
+/* SITE */
+Last update: 2025
+Standards: HTML5, CSS3
+Software: Next.js 15
