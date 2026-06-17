@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import ComingSoonGate from "@/components/ComingSoonGate";
 import Hero from "@/components/home/Hero";
 import InfoSection from "@/components/home/InfoSection";
 import HowItWorks from "@/components/home/HowItWorks";
@@ -82,7 +83,7 @@ const faqSchema = {
 
 export default function HomePage() {
   return (
-    <>
+    <ComingSoonGate>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareAppSchema) }}
@@ -103,6 +104,6 @@ export default function HomePage() {
       <ArenaSection />
       <PrivacyStrip />
       <FAQ />
-    </>
+    </ComingSoonGate>
   );
 }
