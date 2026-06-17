@@ -1,6 +1,5 @@
-﻿"use client";
+"use client";
 
-import Image from "next/image";
 import PageNavbar from "@/components/PageNavbar";
 import { useT } from "@/lib/i18n";
 
@@ -9,18 +8,17 @@ export default function Hero() {
   const h = t.hero;
 
   return (
-    <div style={{ backgroundColor: "#ffffff", padding: "12px" }}>
+    <div style={{ backgroundColor: "#ffffff", padding: "0 12px 12px" }}>
       <div style={{
         position: "relative",
         borderRadius: "24px",
-        height: "calc(100vh - 24px)",
+        minHeight: "calc(100vh - 24px)",
         display: "flex",
         flexDirection: "column",
         overflow: "hidden",
         backgroundColor: "#070707",
       }}>
-        <Image src="/images/hero-boxing-2.jpg" alt="" fill priority style={{ objectFit: "cover", objectPosition: "center 25%", zIndex: 0 }} />
-        <video autoPlay muted loop playsInline preload="metadata" poster="/images/hero-boxing-2.jpg" style={{
+        <video autoPlay muted loop playsInline preload="auto" style={{
           position: "absolute", inset: 0, width: "100%", height: "100%",
           objectFit: "cover", objectPosition: "center 30%", zIndex: 0,
         }}>
@@ -28,10 +26,12 @@ export default function Hero() {
         </video>
         <div style={{ position: "absolute", inset: 0, zIndex: 1, backgroundColor: "rgba(7,7,7,0.18)" }} />
         <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(to bottom, rgba(7,7,7,0.35) 0%, rgba(7,7,7,0.05) 40%, rgba(7,7,7,0.55) 78%, rgba(7,7,7,1) 100%)" }} />
-        <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(to right, rgba(7,7,7,0.92) 0%, rgba(7,7,7,0.6) 38%, rgba(7,7,7,0.1) 65%, rgba(7,7,7,0) 100%)" }} />
+        <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(to right, rgba(7,7,7,0.95) 0%, rgba(7,7,7,0.7) 40%, rgba(7,7,7,0.15) 70%, rgba(7,7,7,0) 100%)" }} />
+
         <div style={{ position: "relative", zIndex: 10, flexShrink: 0 }}>
           <PageNavbar />
         </div>
+
         <div className="hero-text-box" style={{
           position: "relative", zIndex: 5,
           flex: 1, display: "flex", flexDirection: "column", justifyContent: "center",
@@ -49,7 +49,7 @@ export default function Hero() {
           }}>
             {h.subtitle}
           </p>
-          <div className="animate-fade-up delay-200" style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+          <div className="animate-fade-up delay-200" style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginBottom: "clamp(2rem, 4vw, 3rem)" }}>
             <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
               backgroundColor: "#ffffff", color: "#0d0d0d", fontWeight: 700,
@@ -69,24 +69,21 @@ export default function Hero() {
               {h.cta_secondary}
             </a>
           </div>
+          {/* 3 stat blocks below buttons */}
+          <div className="animate-fade-up delay-300" style={{ display: "flex", gap: 0, paddingTop: "2rem", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+            {h.stats.map((s, i) => (
+              <div key={s.n} style={{
+                paddingLeft: i > 0 ? "2rem" : 0,
+                marginLeft: i > 0 ? "2rem" : 0,
+                borderLeft: i > 0 ? "1px solid rgba(255,255,255,0.08)" : "none",
+              }}>
+                <div style={{ fontSize: "0.9375rem", fontWeight: 700, color: "#ffffff", marginBottom: "3px" }}>{s.n}</div>
+                <div style={{ fontSize: "0.8125rem", color: "rgba(255,255,255,0.32)" }}>{s.sub}</div>
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="animate-fade-up delay-300 hero-stats" style={{
-          position: "relative", zIndex: 5,
-          display: "flex", padding: "0 clamp(2rem, 5vw, 5rem) 3rem",
-          borderTop: "1px solid rgba(255,255,255,0.06)",
-        }}>
-          {h.stats.map((s, i) => (
-            <div key={s.n} style={{
-              paddingTop: "2rem",
-              paddingLeft: i > 0 ? "2.5rem" : 0,
-              marginLeft: i > 0 ? "2.5rem" : 0,
-              borderLeft: i > 0 ? "1px solid rgba(255,255,255,0.08)" : "none",
-            }}>
-              <div style={{ fontSize: "0.9375rem", fontWeight: 700, color: "#ffffff", marginBottom: "3px" }}>{s.n}</div>
-              <div style={{ fontSize: "0.8125rem", color: "rgba(255,255,255,0.32)" }}>{s.sub}</div>
-            </div>
-          ))}
-        </div>
+
       </div>
     </div>
   );

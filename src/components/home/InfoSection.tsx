@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import { useT } from "@/lib/i18n";
-import { useInView, fadeUp } from "@/hooks/useInView";
+import { useInView, fadeUp, fadeIn, slideLeft, slideRight, clipReveal } from "@/hooks/useInView";
 
 function InfoStep({ step, index }: { step: { title: string; body: string }; index: number }) {
   const { ref, visible } = useInView<HTMLDivElement>(0.15);
@@ -12,13 +12,13 @@ function InfoStep({ step, index }: { step: { title: string; body: string }; inde
       padding: "2.5rem 2.5rem 2.5rem 0",
       paddingLeft: index > 0 ? "2.5rem" : 0,
     }}>
-      <span style={{ ...fadeUp(visible, 0), display: "block", fontSize: "0.75rem", fontWeight: 700, color: "#c0c0c0", letterSpacing: "0.1em", marginBottom: "1.5rem" }}>
+      <span style={{ ...fadeIn(visible, 0), display: "block", fontSize: "0.75rem", fontWeight: 700, color: "#c0c0c0", letterSpacing: "0.1em", marginBottom: "1.5rem" }}>
         {String(index + 1).padStart(2, "0")}
       </span>
-      <h3 style={{ ...fadeUp(visible, 100), fontSize: "1.0625rem", fontWeight: 700, color: "#0d0d0d", letterSpacing: "-0.025em", lineHeight: 1.3, margin: "0 0 0.875rem" }}>
+      <h3 style={{ ...index % 2 === 0 ? slideLeft(visible, 80) : slideRight(visible, 80), fontSize: "1.0625rem", fontWeight: 700, color: "#0d0d0d", letterSpacing: "-0.025em", lineHeight: 1.3, margin: "0 0 0.875rem" }}>
         {step.title}
       </h3>
-      <p style={{ ...fadeUp(visible, 220), fontSize: "0.9rem", color: "#888", lineHeight: 1.75, margin: 0 }}>{step.body}</p>
+      <p style={{ ...fadeUp(visible, 200), fontSize: "0.9rem", color: "#888", lineHeight: 1.75, margin: 0 }}>{step.body}</p>
     </div>
   );
 }
@@ -34,11 +34,11 @@ export default function InfoSection() {
         <div ref={headerRef} style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "4rem", marginBottom: "5rem" }}>
           <div>
             <p style={{ ...fadeUp(headerVisible, 0) }} className="section-label">{inf.label}</p>
-            <h2 style={{ ...fadeUp(headerVisible, 120), fontSize: "clamp(2rem, 3.5vw, 2.875rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.04em", lineHeight: 1.06, margin: 0 }}>
-              {inf.h2}
+            <h2 style={{ fontSize: "clamp(2rem, 3.5vw, 2.875rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.04em", lineHeight: 1.06, margin: 0 }}>
+              <div style={{ overflow: "hidden" }}><span style={clipReveal(headerVisible, 100)}>{inf.h2}</span></div>
             </h2>
           </div>
-          <p style={{ ...fadeUp(headerVisible, 260), fontSize: "1rem", color: "#888", lineHeight: 1.75, maxWidth: "300px", margin: 0, flex: "0 0 300px", whiteSpace: "pre-line" }}>{inf.sub}</p>
+          <p style={{ ...slideRight(headerVisible, 240), fontSize: "1rem", color: "#888", lineHeight: 1.75, maxWidth: "300px", margin: 0, flex: "0 0 300px", whiteSpace: "pre-line" }}>{inf.sub}</p>
         </div>
         <div className="info-steps-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "0" }}>
           {inf.steps.map((step, i) => (

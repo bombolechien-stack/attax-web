@@ -4,6 +4,7 @@ import "./globals.css";
 import ScrollNav from "@/components/ScrollNav";
 import Footer from "@/components/Footer";
 import Banner from "@/components/Banner";
+import ScrollProgress from "@/components/ScrollProgress";
 import { LangProvider } from "@/lib/i18n";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -17,7 +18,7 @@ const BASE_URL = "https://attax.app";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Attax — Turn Real Activity Into Competition",
+    default: "Attax — Sport is now a game.",
     template: "%s | Attax",
   },
   description:
@@ -44,7 +45,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Attax",
-    title: "Attax — Turn Real Activity Into Competition",
+    title: "Attax — Sport is now a game.",
     description:
       "Attax is the competitive fitness game where your real-world activity powers daily battles, rankings and progression.",
     url: BASE_URL,
@@ -61,19 +62,22 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@gowithattax",
     creator: "@gowithattax",
-    title: "Attax — Turn Real Activity Into Competition",
+    title: "Attax — Sport is now a game.",
     description:
       "Attax is the competitive fitness game where your real-world activity powers daily battles, rankings and progression.",
     images: ["/images/og-image.jpg"],
   },
   icons: {
     icon: [
-      { url: "/favicon.ico" },
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/images/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/images/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/images/favicon.ico", type: "image/x-icon" },
     ],
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
-    other: [{ rel: "manifest", url: "/site.webmanifest" }],
+    apple: "/images/apple-touch-icon.png",
+    other: [
+      { rel: "icon", url: "/images/android-chrome-192x192.png", sizes: "192x192" },
+      { rel: "icon", url: "/images/android-chrome-512x512.png", sizes: "512x512" },
+    ],
   },
   alternates: { canonical: BASE_URL },
 };
@@ -94,6 +98,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         }}
       >
         <LangProvider>
+          <ScrollProgress />
           <div aria-hidden="true" style={{ position: "fixed", inset: 0, zIndex: 9, pointerEvents: "none", backgroundImage: "repeating-linear-gradient(90deg, transparent, transparent calc(16.666% - 0.5px), rgba(255,255,255,0.032) calc(16.666% - 0.5px), rgba(255,255,255,0.032) 16.666%)" }} />
           <Banner />
           <ScrollNav />

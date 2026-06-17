@@ -2,13 +2,14 @@
 
 import { useState } from "react";
 import { useT } from "@/lib/i18n";
-import { useInView, fadeUp, scaleIn } from "@/hooks/useInView";
+import { useInView, fadeUp, scaleIn, clipReveal, slideRight } from "@/hooks/useInView";
 
 export default function DailyMatch() {
   const t = useT();
   const m = t.dailyMatch;
   const { ref: headerRef, visible: headerVisible } = useInView<HTMLDivElement>(0.1);
-  const { ref: cardRef, visible: cardVisible } = useInView<HTMLDivElement>(0.12);
+  const { ref: cardRef, visible: cardVisible } = useInView<HTMLDivElement>(0.12, { oneShot: true });
+  const { ref: statsRef, visible: statsVisible } = useInView<HTMLDivElement>(0.1);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -26,10 +27,10 @@ export default function DailyMatch() {
           <span style={{ ...fadeUp(headerVisible, 0), display: "block", marginBottom: "1.5rem" }} className="section-label">{m.label}</span>
           <div className="dm-header" style={{ display: "flex", alignItems: "flex-end", gap: "4rem", flexWrap: "wrap" }}>
             <h2 style={{ fontSize: "clamp(3rem, 5vw, 5.5rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.055em", lineHeight: 0.9, margin: 0 }}>
-              <span style={fadeUp(headerVisible, 80)}>{m.h2[0]}</span>
-              <span style={fadeUp(headerVisible, 230)}>{m.h2[1]}</span>
+              <div style={{ overflow: "hidden" }}><span style={clipReveal(headerVisible, 80)}>{m.h2[0]}</span></div>
+              <div style={{ overflow: "hidden" }}><span style={clipReveal(headerVisible, 220)}>{m.h2[1]}</span></div>
             </h2>
-            <p style={{ ...fadeUp(headerVisible, 380), fontSize: "1.0625rem", color: "#999", lineHeight: 1.75, maxWidth: "360px", margin: 0 }}>{m.subtitle}</p>
+            <p style={{ ...slideRight(headerVisible, 350), fontSize: "1.0625rem", color: "#999", lineHeight: 1.75, maxWidth: "360px", margin: 0 }}>{m.subtitle}</p>
           </div>
         </div>
 
@@ -101,9 +102,9 @@ export default function DailyMatch() {
           </div>
         </div>
 
-        <div className="dm-stats" style={{ display: "flex", justifyContent: "center", gap: "0", marginTop: "5rem", borderTop: "1px solid #f0f0f0" }}>
+        <div ref={statsRef} className="dm-stats" style={{ display: "flex", justifyContent: "center", gap: "0", marginTop: "5rem", borderTop: "1px solid #f0f0f0" }}>
           {m.stats.map((s, i) => (
-            <div key={s.n} className="dm-stat" style={{ flex: 1, padding: "2.5rem 2rem 0", textAlign: "center", borderLeft: i > 0 ? "1px solid #f0f0f0" : "none" }}>
+            <div key={s.n} className="dm-stat" style={{ ...fadeUp(statsVisible, i * 80), flex: 1, padding: "2.5rem 2rem 0", textAlign: "center", borderLeft: i > 0 ? "1px solid #f0f0f0" : "none" }}>
               <div style={{ fontSize: "1.125rem", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.03em" }}>{s.n}</div>
               <div style={{ fontSize: "0.8125rem", color: "#aaa", marginTop: "4px" }}>{s.label}</div>
             </div>

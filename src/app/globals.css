@@ -326,6 +326,41 @@ body { margin: 0; padding: 0; background: #ffffff; color: #1a1a1a; }
    !important needed to beat inline styles
 ═══════════════════════════════════════════════════════════ */
 
+/* ═══════════════════════════════════════════════════════════
+   TABLET — 1024px and below
+═══════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .hero-duel-widget { display: none !important; }
+
+  /* ── VisualGrid: hide side phones, center only ── */
+  .vg-phone-side  { display: none !important; }
+  .vg-label-side  { display: none !important; }
+  .vg-phone-center { width: min(500px, 80vw) !important; height: calc(min(500px, 80vw) * 1.149) !important; }
+
+  /* ── Hero: text box full width on tablet ── */
+  .hero-text-box { max-width: 80% !important; }
+
+  /* ── Adventure manifesto: stack columns ── */
+  .adv-manifesto { flex-direction: column !important; gap: 3rem !important; }
+  .adv-manifesto-left { flex: none !important; }
+
+  /* ── Discover/Schedule pillars: collapse desc column ── */
+  .d-pillars-row  { grid-template-columns: 60px 1fr !important; }
+  .d-pillars-desc { grid-column: 1 / -1 !important; }
+  .d-schedule-row { grid-template-columns: 60px 1fr !important; }
+  .d-schedule-desc { grid-column: 1 / -1 !important; }
+
+  /* ── Timeline rows: 2 col ── */
+  .adv-timeline-row { grid-template-columns: 60px 1fr !important; }
+  .adv-timeline-row > p { grid-column: 1 / -1 !important; }
+
+  /* ── Contact categories: 1-col on tablet ── */
+  .contact-cats { grid-template-columns: 1fr 1fr !important; }
+
+  /* ── Community links: 2-col on tablet ── */
+  .community-links-grid { grid-template-columns: 1fr 1fr !important; }
+}
+
 @media (max-width: 768px) {
 
   /* ── Page navbar ── */
@@ -375,6 +410,9 @@ body { margin: 0; padding: 0; background: #ffffff; color: #1a1a1a; }
   /* ── ArenaSection ── */
   .arena-section { padding: 5rem 1.25rem !important; }
 
+  /* ── Testimonials ── */
+  .testimonials-grid { grid-template-columns: 1fr !important; }
+
   /* ── FAQ ── */
   .faq-section  { padding: 5rem 1.25rem !important; }
   .faq-layout   { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
@@ -420,9 +458,81 @@ body { margin: 0; padding: 0; background: #ffffff; color: #1a1a1a; }
   .contact-cats     { grid-template-columns: 1fr !important; }
   .contact-form-row { grid-template-columns: 1fr !important; }
   .contact-form-box { padding: 2rem 1.5rem !important; }
+  .community-links-grid { grid-template-columns: 1fr !important; }
+
+  /* ── Adventure manifesto ── */
+  .adv-manifesto { flex-direction: column !important; gap: 2.5rem !important; }
+  .adv-manifesto-left { flex: none !important; }
+
+  /* ── CardsShowcase ── */
+  .cards-showcase-inner { flex-direction: column !important; gap: 3rem !important; }
+  .cards-showcase-text  { flex: none !important; max-width: 100% !important; }
+  .cards-showcase-fan   { gap: 0.5rem !important; overflow-x: auto !important; padding-bottom: 1rem !important; justify-content: flex-start !important; }
+
+  /* ── PrivacyStrip ── */
+  .privacy-inner { flex-direction: column !important; gap: 2rem !important; }
+  .privacy-left  { max-width: 100% !important; }
+
+  /* ── Download page ── */
+  .dl-hero-inner  { flex-direction: column !important; padding: 2rem 1.5rem 0 !important; gap: 2rem !important; align-items: flex-start !important; }
+  .dl-hero-text   { max-width: 100% !important; }
+  .dl-phones      { height: 300px !important; width: 100% !important; margin-bottom: -1rem !important; }
+  .dl-platform-grid { grid-template-columns: 1fr !important; max-width: 100% !important; }
+  .dl-screens-grid { grid-template-columns: 1fr !important; gap: 3rem !important; }
+
+  /* ── DailyLoop ── */
+  .dl-loop-inner  { grid-template-columns: 1fr !important; gap: 3rem !important; }
+  .dl-loop-header { position: static !important; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SHORT VIEWPORTS — reduce hero font/spacing
+═══════════════════════════════════════════════════════════ */
+@media (max-height: 750px) and (min-width: 769px) {
+  .hero-text-box h1 { font-size: clamp(2.25rem, 4.5vw, 4.5rem) !important; margin-bottom: 1rem !important; }
+  .hero-text-box p  { margin-bottom: 1.25rem !important; }
+  .hero-stats       { display: none !important; }
 }
 
 @media (max-width: 480px) {
   .footer-link-grid { grid-template-columns: 1fr !important; }
   .features-grid    { grid-template-columns: 1fr !important; }
 }
+
+/* ── Scroll progress ── */
+/* handled in ScrollProgress.tsx */
+
+/* ── Button hover lift ── */
+.btn-lift {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              background-color 0.2s ease;
+}
+.btn-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+}
+.btn-lift:active {
+  transform: translateY(-1px);
+  transition-duration: 0.1s;
+}
+
+/* ── Feature item hover ── */
+.feature-item {
+  transition: background-color 0.3s ease;
+  cursor: default;
+}
+.feature-item:hover {
+  background-color: rgba(0,0,0,0.018);
+}
+
+/* ── Info step hover ── */
+.info-step-border {
+  transition: background-color 0.25s ease;
+}
+.info-step-border:hover {
+  background-color: rgba(0,0,0,0.015);
+}
+
+/* ── overflow clip helper ── */
+.clip-wrap { overflow: hidden; }

@@ -2,14 +2,18 @@ import type { Metadata } from "next";
 import Hero from "@/components/home/Hero";
 import InfoSection from "@/components/home/InfoSection";
 import HowItWorks from "@/components/home/HowItWorks";
+import DailyLoop from "@/components/home/DailyLoop";
 import DailyMatch from "@/components/home/DailyMatch";
+import CardsShowcase from "@/components/home/CardsShowcase";
+import Testimonials from "@/components/home/Testimonials";
 import VisualGrid from "@/components/home/VisualGrid";
 import FeaturesGrid from "@/components/home/FeaturesGrid";
 import ArenaSection from "@/components/home/ArenaSection";
+import PrivacyStrip from "@/components/home/PrivacyStrip";
 import FAQ from "@/components/home/FAQ";
 
 export const metadata: Metadata = {
-  title: "Attax — Turn Real Activity Into Competition",
+  title: "Attax — Sport is now a game.",
   description:
     "Attax is the competitive fitness game where your real-world activity powers daily battles, rankings and progression.",
   alternates: { canonical: "https://attax.app" },
@@ -90,10 +94,14 @@ export default function HomePage() {
       <Hero />
       <InfoSection />
       <HowItWorks />
+      <DailyLoop />
       <DailyMatch />
+      <CardsShowcase />
+      <Testimonials />
       <VisualGrid />
       <FeaturesGrid />
       <ArenaSection />
+      <PrivacyStrip />
       <FAQ />
     </>
   );

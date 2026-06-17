@@ -1,17 +1,45 @@
-﻿"use client";
+"use client";
 
 import Image from "next/image";
 import PageNavbar from "@/components/PageNavbar";
 import { useT } from "@/lib/i18n";
+import { useInView, fadeUp, clipReveal, slideLeft, slideRight, fadeIn } from "@/hooks/useInView";
+
+function PillarRow({ item }: { item: { n: string; title: string; description: string } }) {
+  const { ref, visible } = useInView<HTMLDivElement>(0.15);
+  return (
+    <div ref={ref} className="d-pillars-row" style={{ display: "grid", gridTemplateColumns: "80px 1fr 2fr", gap: "2rem", alignItems: "start", padding: "2.5rem 0", borderBottom: "1px solid #f0f0f0" }}>
+      <div style={{ ...fadeIn(visible, 0), fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.14em", color: "#ccc", paddingTop: "4px" }}>{item.n}</div>
+      <h3 style={{ ...slideLeft(visible, 60), fontSize: "1.125rem", fontWeight: 700, color: "#0d0d0d", margin: 0, letterSpacing: "-0.025em", lineHeight: 1.3 }}>{item.title}</h3>
+      <p className="d-pillars-desc" style={{ ...fadeUp(visible, 130), fontSize: "0.9375rem", color: "#666", lineHeight: 1.8, margin: 0 }}>{item.description}</p>
+    </div>
+  );
+}
+
+function ScheduleRow({ item }: { item: { n: string; title: string; description: string } }) {
+  const { ref, visible } = useInView<HTMLDivElement>(0.15);
+  return (
+    <div ref={ref} className="d-schedule-row" style={{ display: "grid", gridTemplateColumns: "80px 1fr 2fr", gap: "2rem", alignItems: "start", padding: "2.5rem 0", borderBottom: "1px solid #eaeaea" }}>
+      <div style={{ ...fadeIn(visible, 0), fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.14em", color: "#ccc", paddingTop: "4px" }}>{item.n}</div>
+      <h3 style={{ ...slideLeft(visible, 60), fontSize: "1.0625rem", fontWeight: 700, color: "#0d0d0d", margin: 0, letterSpacing: "-0.02em", lineHeight: 1.3 }}>{item.title}</h3>
+      <p className="d-schedule-desc" style={{ ...fadeUp(visible, 130), fontSize: "0.9375rem", color: "#666", lineHeight: 1.8, margin: 0 }}>{item.description}</p>
+    </div>
+  );
+}
 
 export default function DiscoverPage() {
   const t = useT();
   const d = t.discover;
 
+  const { ref: pillarsHeaderRef, visible: pillarsHeaderVisible } = useInView<HTMLDivElement>(0.1);
+  const { ref: fencingRef, visible: fencingVisible } = useInView<HTMLDivElement>(0.1);
+  const { ref: philosophyRef, visible: philosophyVisible } = useInView<HTMLDivElement>(0.1);
+  const { ref: scheduleHeaderRef, visible: scheduleHeaderVisible } = useInView<HTMLDivElement>(0.1);
+
   return (
     <>
-      <div style={{ backgroundColor: "#ffffff", padding: "12px" }}>
-        <div style={{ position: "relative", backgroundColor: "#0d0d0d", borderRadius: "24px", height: "calc(100vh - 24px)", display: "flex", flexDirection: "column", overflow: "hidden" }}>
+      <div style={{ backgroundColor: "#ffffff", padding: "0 12px 12px" }}>
+        <div style={{ position: "relative", backgroundColor: "#0d0d0d", borderRadius: "24px", minHeight: "calc(100vh - 24px)", display: "flex", flexDirection: "column", overflow: "hidden" }}>
           <Image src="/images/discover-hero.png" alt="Discover Attax" fill style={{ objectFit: "cover", objectPosition: "center 30%" }} priority />
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(10,10,10,0.96) 0%, rgba(10,10,10,0.75) 55%, rgba(10,10,10,0.25) 100%)" }} />
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(10,10,10,0.92) 0%, transparent 50%)" }} />
@@ -32,7 +60,7 @@ export default function DiscoverPage() {
               <a href="/adventure" style={{ display: "inline-flex", alignItems: "center", backgroundColor: "rgba(255,255,255,0.07)", color: "rgba(255,255,255,0.7)", fontWeight: 600, fontSize: "0.9375rem", padding: "13px 26px", borderRadius: "999px", textDecoration: "none", border: "1px solid rgba(255,255,255,0.1)" }}>{d.cta_story}</a>
             </div>
           </div>
-          <div className="hero-stats" style={{ position: "relative", zIndex: 3, display: "flex", padding: "0 4rem 3rem", gap: 0 }}>
+          <div className="hero-stats" style={{ position: "relative", zIndex: 3, display: "flex", padding: "0 4rem clamp(2.5rem, 4vh, 4rem)", gap: 0 }}>
             {d.stats.map((s, i) => (
               <div key={i} style={{ paddingLeft: i > 0 ? "2.5rem" : 0, marginLeft: i > 0 ? "2.5rem" : 0, borderLeft: i > 0 ? "1px solid rgba(255,255,255,0.08)" : "none" }}>
                 <div style={{ fontSize: "0.9375rem", fontWeight: 700, color: "#ffffff", marginBottom: "3px" }}>{s.title}</div>
@@ -45,24 +73,19 @@ export default function DiscoverPage() {
 
       <section className="d-section" style={{ backgroundColor: "#ffffff", padding: "7rem 2rem" }}>
         <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
-          <div className="d-pillars-header" style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "4rem", marginBottom: "4rem" }}>
+          <div ref={pillarsHeaderRef} className="d-pillars-header" style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "4rem", marginBottom: "4rem" }}>
             <div>
-              <p className="section-label" style={{ margin: "0 0 1.25rem" }}>{d.pillars_label}</p>
+              <p className="section-label" style={{ margin: "0 0 1.25rem", ...fadeUp(pillarsHeaderVisible, 0) }}>{d.pillars_label}</p>
               <h2 style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.045em", lineHeight: 1.02, margin: 0 }}>
-                {d.pillars_h2[0]}<br />{d.pillars_h2[1]}
+                <div style={{ overflow: "hidden" }}><span style={{ display: "block", ...clipReveal(pillarsHeaderVisible, 80) }}>{d.pillars_h2[0]}</span></div>
+                <div style={{ overflow: "hidden" }}><span style={{ display: "block", ...clipReveal(pillarsHeaderVisible, 200) }}>{d.pillars_h2[1]}</span></div>
               </h2>
             </div>
-            <p className="d-pillars-sub" style={{ fontSize: "1rem", color: "#888", lineHeight: 1.75, maxWidth: "300px", margin: 0, flex: "0 0 300px" }}>{d.pillars_sub}</p>
+            <p className="d-pillars-sub" style={{ fontSize: "1rem", color: "#888", lineHeight: 1.75, maxWidth: "300px", margin: 0, flex: "0 0 300px", ...slideRight(pillarsHeaderVisible, 180) }}>{d.pillars_sub}</p>
           </div>
           <hr className="rule" style={{ marginBottom: "0" }} />
           <div>
-            {d.pillars.map((p) => (
-              <div key={p.n} className="d-pillars-row" style={{ display: "grid", gridTemplateColumns: "80px 1fr 2fr", gap: "2rem", alignItems: "start", padding: "2.5rem 0", borderBottom: "1px solid #f0f0f0" }}>
-                <div style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.14em", color: "#ccc", paddingTop: "4px" }}>{p.n}</div>
-                <h3 style={{ fontSize: "1.125rem", fontWeight: 700, color: "#0d0d0d", margin: 0, letterSpacing: "-0.025em", lineHeight: 1.3 }}>{p.title}</h3>
-                <p className="d-pillars-desc" style={{ fontSize: "0.9375rem", color: "#666", lineHeight: 1.8, margin: 0 }}>{p.description}</p>
-              </div>
-            ))}
+            {d.pillars.map((p) => <PillarRow key={p.n} item={p} />)}
           </div>
         </div>
       </section>
@@ -72,37 +95,54 @@ export default function DiscoverPage() {
           <div className="d-fencing-img" style={{ position: "relative", borderRadius: "28px", overflow: "hidden", height: "520px" }}>
             <Image src="/images/fencing.jpg" alt="Fencer in action" fill style={{ objectFit: "cover", objectPosition: "center 30%" }} />
             <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0) 100%)" }} />
-            <div className="d-fencing-text" style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "3.5rem 4rem" }}>
-              <p style={{ fontSize: "0.75rem", fontWeight: 600, color: "rgba(255,255,255,0.4)", letterSpacing: "0.14em", textTransform: "uppercase", margin: "0 0 0.75rem" }}>{d.duel_label}</p>
+            <div ref={fencingRef} className="d-fencing-text" style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "3.5rem 4rem" }}>
+              <p style={{ fontSize: "0.75rem", fontWeight: 600, color: "rgba(255,255,255,0.4)", letterSpacing: "0.14em", textTransform: "uppercase", margin: "0 0 0.75rem", ...fadeIn(fencingVisible, 0) }}>{d.duel_label}</p>
               <h2 style={{ fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.04em", lineHeight: 1.05, margin: "0 0 1.25rem" }}>
-                {d.duel_h2[0]}<br />{d.duel_h2[1]}
+                <div style={{ overflow: "hidden" }}><span style={{ display: "block", ...clipReveal(fencingVisible, 80) }}>{d.duel_h2[0]}</span></div>
+                <div style={{ overflow: "hidden" }}><span style={{ display: "block", ...clipReveal(fencingVisible, 200) }}>{d.duel_h2[1]}</span></div>
               </h2>
-              <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.75, margin: 0 }}>{d.duel_body.join(" ")}</p>
+              <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.75, margin: 0, ...fadeUp(fencingVisible, 280) }}>{d.duel_body.join(" ")}</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section style={{ backgroundColor: "#ffffff", padding: "8rem 2rem" }}>
+        <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
+          <div ref={philosophyRef} className="d-pillars-header" style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "4rem", marginBottom: "5rem" }}>
+            <div>
+              <p className="section-label" style={{ margin: "0 0 1.25rem", ...fadeUp(philosophyVisible, 0) }}>{d.philosophy_label}</p>
+              <h2 style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.045em", lineHeight: 1.02, margin: 0 }}>
+                <div style={{ overflow: "hidden" }}><span style={{ display: "block", ...clipReveal(philosophyVisible, 80) }}>{d.philosophy_h2[0]}</span></div>
+                <div style={{ overflow: "hidden" }}><span style={{ display: "block", ...clipReveal(philosophyVisible, 200) }}>{d.philosophy_h2[1]}</span></div>
+              </h2>
+            </div>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "3rem" }}>
+            {d.philosophy_body.map((text: string, i: number) => (
+              <p key={i} style={{ fontSize: "1.0625rem", color: i === 0 ? "#1a1a1a" : "#666", lineHeight: 1.85, margin: 0, fontWeight: i === 0 ? 500 : 400, borderTop: "1px solid #f0f0f0", paddingTop: "2rem", ...fadeUp(philosophyVisible, i * 80 + 100) }}>
+                {text}
+              </p>
+            ))}
           </div>
         </div>
       </section>
 
       <section className="d-section" style={{ backgroundColor: "#f7f7f7", padding: "7rem 2rem 9rem" }}>
         <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
-          <div className="d-schedule-header" style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "4rem", marginBottom: "4rem" }}>
+          <div ref={scheduleHeaderRef} className="d-schedule-header" style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "4rem", marginBottom: "4rem" }}>
             <div>
-              <p className="section-label" style={{ margin: "0 0 1.25rem" }}>{d.schedule_label}</p>
+              <p className="section-label" style={{ margin: "0 0 1.25rem", ...fadeUp(scheduleHeaderVisible, 0) }}>{d.schedule_label}</p>
               <h2 style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.045em", lineHeight: 1.02, margin: 0 }}>
-                {d.schedule_h2[0]}<br />{d.schedule_h2[1]}
+                <div style={{ overflow: "hidden" }}><span style={{ display: "block", ...clipReveal(scheduleHeaderVisible, 80) }}>{d.schedule_h2[0]}</span></div>
+                <div style={{ overflow: "hidden" }}><span style={{ display: "block", ...clipReveal(scheduleHeaderVisible, 200) }}>{d.schedule_h2[1]}</span></div>
               </h2>
             </div>
-            <p className="d-schedule-sub" style={{ fontSize: "1rem", color: "#888", lineHeight: 1.75, maxWidth: "300px", margin: 0, flex: "0 0 300px" }}>{d.schedule_sub}</p>
+            <p className="d-schedule-sub" style={{ fontSize: "1rem", color: "#888", lineHeight: 1.75, maxWidth: "300px", margin: 0, flex: "0 0 300px", ...slideRight(scheduleHeaderVisible, 180) }}>{d.schedule_sub}</p>
           </div>
           <hr className="rule" style={{ marginBottom: "0" }} />
           <div>
-            {d.schedule_items.map((f) => (
-              <div key={f.n} className="d-schedule-row" style={{ display: "grid", gridTemplateColumns: "80px 1fr 2fr", gap: "2rem", alignItems: "start", padding: "2.5rem 0", borderBottom: "1px solid #eaeaea" }}>
-                <div style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.14em", color: "#ccc", paddingTop: "4px" }}>{f.n}</div>
-                <h3 style={{ fontSize: "1.0625rem", fontWeight: 700, color: "#0d0d0d", margin: 0, letterSpacing: "-0.02em", lineHeight: 1.3 }}>{f.title}</h3>
-                <p className="d-schedule-desc" style={{ fontSize: "0.9375rem", color: "#666", lineHeight: 1.8, margin: 0 }}>{f.description}</p>
-              </div>
-            ))}
+            {d.schedule_items.map((f) => <ScheduleRow key={f.n} item={f} />)}
           </div>
         </div>
       </section>

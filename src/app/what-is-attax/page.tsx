@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -342,7 +342,7 @@ export default function WhatIsAttax() {
   return (
     <>
       {/* ── Hero ── */}
-      <div style={{ backgroundColor: "#ffffff", padding: "12px" }}>
+      <div style={{ backgroundColor: "#ffffff", padding: "0 12px 12px" }}>
         <div style={{
           position: "relative",
           backgroundColor: "#0d0d0d",
@@ -422,9 +422,14 @@ export default function WhatIsAttax() {
 
           <hr style={RULE} />
 
-          <div style={{ position: "relative", height: "clamp(300px, 45vh, 560px)", overflow: "hidden", borderRadius: "20px", margin: "2rem 0 0" }}>
-            <Image src="/images/inblack.jpg" alt="" fill style={{ objectFit: "cover", objectPosition: "center 30%" }} />
-            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(0,0,0,0.45) 100%)" }} />
+          <div style={{ position: "relative", height: "clamp(380px, 52vh, 620px)", overflow: "hidden", borderRadius: "20px", margin: "5rem 0" }}>
+            <Image src="/images/inblack.jpg" alt="" fill style={{ objectFit: "cover", objectPosition: "center 60%" }} />
+            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.72) 100%)" }} />
+            <div style={{ position: "absolute", bottom: "2.5rem", left: "2.75rem", right: "2.75rem", zIndex: 1 }}>
+              <p style={{ fontSize: "clamp(1.25rem, 2.2vw, 1.875rem)", fontWeight: 700, color: "#ffffff", letterSpacing: "-0.03em", lineHeight: 1.3, maxWidth: "580px", margin: 0 }}>
+                "Every effort counts. Every day you move, you compete."
+              </p>
+            </div>
           </div>
 
           {/* Section 3 */}

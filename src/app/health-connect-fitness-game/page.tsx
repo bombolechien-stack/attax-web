@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -217,7 +217,7 @@ export default function HealthConnectFitnessGame() {
 
   return (
     <>
-      <div style={{ backgroundColor: "#ffffff", padding: "12px" }}>
+      <div style={{ backgroundColor: "#ffffff", padding: "0 12px 12px" }}>
         <div style={{ position: "relative", backgroundColor: "#0d0d0d", borderRadius: "24px", minHeight: "60vh", display: "flex", flexDirection: "column", overflow: "hidden" }}>
           <Image src="/images/cycling-portrait.jpg" alt="" fill style={{ objectFit: "cover", objectPosition: "center", filter: "brightness(0.22) grayscale(0.25)" }} />
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(5,5,5,0.9) 0%, rgba(5,5,5,0.6) 55%, rgba(5,5,5,0.25) 100%)" }} />
@@ -265,9 +265,14 @@ export default function HealthConnectFitnessGame() {
 
           <hr style={RULE} />
 
-          <div style={{ position: "relative", height: "clamp(300px, 45vh, 560px)", overflow: "hidden", borderRadius: "20px", margin: "2rem 0 0" }}>
-            <Image src="/images/grimper.jpg" alt="" fill style={{ objectFit: "cover", objectPosition: "center 30%" }} />
-            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(0,0,0,0.45) 100%)" }} />
+          <div style={{ position: "relative", height: "clamp(380px, 52vh, 620px)", overflow: "hidden", borderRadius: "20px", margin: "5rem 0" }}>
+            <Image src="/images/grimper.jpg" alt="" fill style={{ objectFit: "cover", objectPosition: "center 20%" }} />
+            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.72) 100%)" }} />
+            <div style={{ position: "absolute", bottom: "2.5rem", left: "2.75rem", right: "2.75rem", zIndex: 1 }}>
+              <p style={{ fontSize: "clamp(1.25rem, 2.2vw, 1.875rem)", fontWeight: 700, color: "#ffffff", letterSpacing: "-0.03em", lineHeight: 1.3, maxWidth: "580px", margin: 0 }}>
+                "Whatever your sport, it all counts. Health Connect tracks it all."
+              </p>
+            </div>
           </div>
 
           <Section label={p.secProgression}>
