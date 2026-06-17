@@ -2,6 +2,8 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import { useT } from "@/lib/i18n";
+import LangSwitcher from "@/components/LangSwitcher";
 
 function useReveal(threshold = 0.15) {
   const ref = useRef<HTMLDivElement>(null);
@@ -23,6 +25,8 @@ const rev = (visible: boolean, delay = 0): React.CSSProperties => ({
 });
 
 export default function ComingSoon() {
+  const t = useT();
+  const cs = t.comingSoon;
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [email2, setEmail2] = useState("");
@@ -51,13 +55,15 @@ export default function ComingSoon() {
         <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(to right, rgba(7,7,7,0.65) 0%, transparent 70%)" }} />
 
         <nav style={{ position: "relative", zIndex: 10, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 3rem", height: "72px", flexShrink: 0 }}>
-          <div style={{ width: "120px" }} />
+          <div style={{ width: "120px" }}>
+            <LangSwitcher />
+          </div>
           <a href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
             <Image src="/images/logo-attax-wh.svg" alt="Attax" width={96} height={36} priority style={{ display: "block" }} />
           </a>
           <div style={{ width: "120px", display: "flex", justifyContent: "flex-end" }}>
             <a href="#early-access" style={{ fontSize: "0.8125rem", fontWeight: 700, color: "rgba(255,255,255,0.85)", textDecoration: "none", padding: "8px 18px", borderRadius: "999px", border: "1px solid rgba(255,255,255,0.16)", backgroundColor: "rgba(255,255,255,0.06)" }}>
-              Early Access
+              {cs.cta}
             </a>
           </div>
         </nav>
@@ -65,26 +71,26 @@ export default function ComingSoon() {
         <div style={{ position: "relative", zIndex: 5, flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "0 3rem 3rem" }}>
           <div style={{ maxWidth: "600px" }}>
             <h1 style={{ ...rev(heroVisible, 0.1), fontSize: "clamp(2.75rem, 5.5vw, 5.5rem)", fontWeight: 800, color: "#ffffff", lineHeight: 1.0, letterSpacing: "-0.04em", margin: "0 0 1.75rem" }}>
-              Your workouts<br />finally matter.
+              {cs.h1[0]}<br />{cs.h1[1]}
             </h1>
             <p style={{ ...rev(heroVisible, 0.26), fontSize: "1rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.75, margin: "0 0 0.5rem", maxWidth: "380px" }}>
-              Turn your daily activity into competition.
+              {cs.subtitle}
             </p>
             <div style={{ ...rev(heroVisible, 0.34), marginBottom: "2.25rem" }}>
-              {["Face real opponents.", "Climb the rankings.", "Make every workout count."].map((line) => (
+              {cs.bullets.map((line) => (
                 <p key={line} style={{ fontSize: "0.9375rem", color: "rgba(255,255,255,0.28)", lineHeight: 1.8, margin: 0 }}>{line}</p>
               ))}
             </div>
             <div style={{ ...rev(heroVisible, 0.46) }}>
               {!submitted ? (
                 <form onSubmit={(e) => submit(e, 1)} style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
-                  <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="your@email.com" style={{ flex: 1, minWidth: "180px", padding: "13px 20px", borderRadius: "999px", border: "1px solid rgba(255,255,255,0.12)", backgroundColor: "rgba(255,255,255,0.05)", color: "#fff", fontSize: "0.9375rem", fontFamily: "inherit", outline: "none" }} />
+                  <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder={cs.placeholder} style={{ flex: 1, minWidth: "180px", padding: "13px 20px", borderRadius: "999px", border: "1px solid rgba(255,255,255,0.12)", backgroundColor: "rgba(255,255,255,0.05)", color: "#fff", fontSize: "0.9375rem", fontFamily: "inherit", outline: "none" }} />
                   <button type="submit" style={{ padding: "13px 26px", borderRadius: "999px", border: "none", backgroundColor: "#fff", color: "#0d0d0d", fontWeight: 700, fontSize: "0.9375rem", fontFamily: "inherit", cursor: "pointer", whiteSpace: "nowrap" }}>
-                    Get Early Access
+                    {cs.cta}
                   </button>
                 </form>
               ) : (
-                <p style={{ fontSize: "0.9375rem", color: "rgba(255,255,255,0.5)", fontStyle: "italic", margin: 0 }}>You&apos;re in. We&apos;ll be in touch.</p>
+                <p style={{ fontSize: "0.9375rem", color: "rgba(255,255,255,0.5)", fontStyle: "italic", margin: 0 }}>{cs.confirmed}</p>
               )}
             </div>
           </div>
@@ -94,14 +100,10 @@ export default function ComingSoon() {
       {/* Section 2: How it works */}
       <section style={{ padding: "9rem 3rem", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
         <div ref={s2.ref} style={{ maxWidth: "72rem", margin: "0 auto" }}>
-          <p style={{ ...rev(s2.visible, 0), fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", margin: "0 0 2rem" }}>How it works</p>
+          <p style={{ ...rev(s2.visible, 0), fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", margin: "0 0 2rem" }}>{cs.howLabel}</p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "3rem" }}>
-            {[
-              { label: "Train", body: "Walk, run, cycle, lift.\nYour activity becomes power.", delay: 0.1 },
-              { label: "Compete", body: "Face a real opponent every day.", delay: 0.22 },
-              { label: "Win", body: "Climb leagues and prove your consistency.", delay: 0.34 },
-            ].map((item) => (
-              <div key={item.label} style={{ ...rev(s2.visible, item.delay), borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "2rem" }}>
+            {cs.how.map((item, i) => (
+              <div key={item.label} style={{ ...rev(s2.visible, 0.1 + i * 0.12), borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "2rem" }}>
                 <h3 style={{ fontSize: "1.0625rem", fontWeight: 700, color: "#ffffff", margin: "0 0 0.75rem", letterSpacing: "-0.02em" }}>{item.label}</h3>
                 <p style={{ fontSize: "0.9375rem", color: "rgba(255,255,255,0.35)", lineHeight: 1.75, margin: 0, whiteSpace: "pre-line" }}>{item.body}</p>
               </div>
@@ -114,17 +116,13 @@ export default function ComingSoon() {
       <section ref={s3.ref} style={{ padding: "10rem 3rem", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
         <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
           <h2 style={{ ...rev(s3.visible, 0), fontSize: "clamp(2rem, 4vw, 4rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.045em", lineHeight: 1.05, margin: "0 0 4rem", maxWidth: "640px" }}>
-            Most fitness apps track activity.<br />
-            <span style={{ color: "rgba(255,255,255,0.38)" }}>Attax gives it a purpose.</span>
+            {cs.purposeTitle[0]}<br />
+            <span style={{ color: "rgba(255,255,255,0.38)" }}>{cs.purposeTitle[1]}</span>
           </h2>
           <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
-            {[
-              { text: "Stay motivated.", delay: 0.12 },
-              { text: "Compete with others.", delay: 0.24 },
-              { text: "Make every workout count.", delay: 0.38 },
-            ].map((item) => (
-              <div key={item.text} style={{ ...rev(s3.visible, item.delay), padding: "2rem 0", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
-                <span style={{ fontSize: "clamp(1.25rem, 2.5vw, 2rem)", fontWeight: 700, color: "rgba(255,255,255,0.55)", letterSpacing: "-0.03em" }}>{item.text}</span>
+            {cs.purposePoints.map((text, i) => (
+              <div key={text} style={{ ...rev(s3.visible, 0.12 + i * 0.14), padding: "2rem 0", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                <span style={{ fontSize: "clamp(1.25rem, 2.5vw, 2rem)", fontWeight: 700, color: "rgba(255,255,255,0.55)", letterSpacing: "-0.03em" }}>{text}</span>
               </div>
             ))}
           </div>
@@ -135,24 +133,24 @@ export default function ComingSoon() {
       <section id="early-access" ref={s4.ref} style={{ padding: "12rem 3rem", textAlign: "center", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
         <div style={{ maxWidth: "520px", margin: "0 auto" }}>
           <p style={{ ...rev(s4.visible, 0), fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.22)", margin: "0 0 2rem" }}>
-            Launching soon
+            {cs.launchLabel}
           </p>
           <h2 style={{ ...rev(s4.visible, 0.14), fontSize: "clamp(2rem, 4.5vw, 3.75rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.045em", lineHeight: 1.0, margin: "0 0 1.5rem" }}>
-            The first leagues<br />open soon.
+            {cs.launchTitle[0]}<br />{cs.launchTitle[1]}
           </h2>
-          <p style={{ ...rev(s4.visible, 0.25), fontSize: "0.9375rem", color: "rgba(255,255,255,0.32)", lineHeight: 1.8, margin: "0 0 2.75rem" }}>
-            The first leagues will open to a limited number of players.<br />Get notified when invitations start.
+          <p style={{ ...rev(s4.visible, 0.25), fontSize: "0.9375rem", color: "rgba(255,255,255,0.32)", lineHeight: 1.8, margin: "0 0 2.75rem", whiteSpace: "pre-line" }}>
+            {cs.launchBody}
           </p>
           <div style={{ ...rev(s4.visible, 0.36) }}>
             {!submitted2 ? (
               <form onSubmit={(e) => submit(e, 2)} style={{ display: "flex", gap: "10px", flexWrap: "wrap", justifyContent: "center" }}>
-                <input type="email" required value={email2} onChange={(e) => setEmail2(e.target.value)} placeholder="your@email.com" style={{ flex: 1, minWidth: "180px", maxWidth: "260px", padding: "14px 20px", borderRadius: "999px", border: "1px solid rgba(255,255,255,0.12)", backgroundColor: "rgba(255,255,255,0.05)", color: "#fff", fontSize: "0.9375rem", fontFamily: "inherit", outline: "none" }} />
+                <input type="email" required value={email2} onChange={(e) => setEmail2(e.target.value)} placeholder={cs.placeholder} style={{ flex: 1, minWidth: "180px", maxWidth: "260px", padding: "14px 20px", borderRadius: "999px", border: "1px solid rgba(255,255,255,0.12)", backgroundColor: "rgba(255,255,255,0.05)", color: "#fff", fontSize: "0.9375rem", fontFamily: "inherit", outline: "none" }} />
                 <button type="submit" style={{ padding: "14px 28px", borderRadius: "999px", border: "none", backgroundColor: "#fff", color: "#0d0d0d", fontWeight: 700, fontSize: "0.9375rem", fontFamily: "inherit", cursor: "pointer", whiteSpace: "nowrap" }}>
-                  Get Early Access
+                  {cs.cta2}
                 </button>
               </form>
             ) : (
-              <p style={{ fontSize: "0.9375rem", color: "rgba(255,255,255,0.45)", fontStyle: "italic", margin: 0 }}>You&apos;re in. We&apos;ll be in touch.</p>
+              <p style={{ fontSize: "0.9375rem", color: "rgba(255,255,255,0.45)", fontStyle: "italic", margin: 0 }}>{cs.confirmed}</p>
             )}
           </div>
         </div>
