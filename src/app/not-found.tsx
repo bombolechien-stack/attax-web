@@ -1,12 +1,13 @@
-import Link from "next/link";
-import type { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "404 — Page not found | Attax",
-  description: "This page doesn't exist. Head back to the arena.",
-};
+import Link from "next/link";
+import { useT, useLang } from "@/lib/i18n";
+import { NOT_FOUND } from "@/lib/translations";
 
 export default function NotFound() {
+  const { lang } = useLang();
+  const t = NOT_FOUND[lang];
+
   return (
     <div style={{
       position: "relative",
@@ -44,7 +45,6 @@ export default function NotFound() {
         alignItems: "center",
         textAlign: "center",
         padding: "0 1.5rem",
-        gap: "0",
       }}>
 
         {/* 404 */}
@@ -58,7 +58,7 @@ export default function NotFound() {
           userSelect: "none",
           fontFamily: "'Plus Jakarta Sans', -apple-system, sans-serif",
         }}>
-          404
+          {t.code}
         </p>
 
         {/* Main heading */}
@@ -71,7 +71,7 @@ export default function NotFound() {
           margin: "-1.5rem 0 0",
           fontFamily: "'Plus Jakarta Sans', -apple-system, sans-serif",
         }}>
-          Wrong arena.
+          {t.title}
         </h1>
 
         {/* Subtitle */}
@@ -83,7 +83,7 @@ export default function NotFound() {
           maxWidth: "360px",
           fontFamily: "'Plus Jakarta Sans', -apple-system, sans-serif",
         }}>
-          This page doesn't exist. But the competition is still going — head back and keep moving.
+          {t.body}
         </p>
 
         {/* CTAs */}
@@ -97,7 +97,6 @@ export default function NotFound() {
           <Link href="/" style={{
             display: "inline-flex",
             alignItems: "center",
-            gap: "6px",
             padding: "13px 28px",
             borderRadius: "999px",
             backgroundColor: "#ffffff",
@@ -108,7 +107,7 @@ export default function NotFound() {
             fontFamily: "'Plus Jakarta Sans', -apple-system, sans-serif",
             whiteSpace: "nowrap",
           }}>
-            Back to home
+            {t.cta_home}
           </Link>
           <Link href="/discover" style={{
             display: "inline-flex",
@@ -124,7 +123,7 @@ export default function NotFound() {
             fontFamily: "'Plus Jakarta Sans', -apple-system, sans-serif",
             whiteSpace: "nowrap",
           }}>
-            Discover Attax
+            {t.cta_discover}
           </Link>
         </div>
 

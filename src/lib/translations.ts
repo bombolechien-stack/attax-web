@@ -718,5 +718,22 @@ export const T = {
   },
 } as const;
 
+export const NOT_FOUND = {
+  en: {
+    code: "404",
+    title: "Wrong arena.",
+    body: "This page doesn't exist. But the competition is still going — head back and keep moving.",
+    cta_home: "Back to home",
+    cta_discover: "Discover Attax",
+  },
+  fr: {
+    code: "404",
+    title: "Mauvaise arène.",
+    body: "Cette page n'existe pas. Mais la compétition continue — reviens et garde le rythme.",
+    cta_home: "Retour à l'accueil",
+    cta_discover: "Découvrir Attax",
+  },
+} as const;
+
 export type Lang = "en" | "fr";
 export type Translations = typeof T.en;
