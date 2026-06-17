@@ -5,6 +5,7 @@ import ScrollNav from "@/components/ScrollNav";
 import Footer from "@/components/Footer";
 import Banner from "@/components/Banner";
 import ScrollProgress from "@/components/ScrollProgress";
+import CookieConsent from "@/components/CookieConsent";
 import { LangProvider } from "@/lib/i18n";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -104,6 +105,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <ScrollNav />
           <main style={{ flex: 1, margin: 0, padding: 0 }}>{children}</main>
           <Footer />
+          <CookieConsent />
         </LangProvider>
       </body>
     </html>
