@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Fitness Competition App | Attax",
+  title: "Fitness Competition App",
   description:
     "Attax is the fitness competition app where real-world activity becomes a competitive advantage. Train, compete, progress and climb the rankings.",
   alternates: { canonical: "https://attax.app/fitness-competition-app" },

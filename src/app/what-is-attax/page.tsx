@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -38,7 +38,7 @@ const RULE: React.CSSProperties = {
 
 function Section({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "200px 1fr", gap: "4rem", alignItems: "start" }}>
+    <div className="seo-section-grid" style={{ display: "grid", gridTemplateColumns: "200px 1fr", gap: "4rem", alignItems: "start" }}>
       <div style={{ paddingTop: "0.3rem" }}>
         <span style={SECTION_LABEL}>{label}</span>
       </div>
@@ -123,8 +123,8 @@ const P: Record<Lang, {
   en: {
     heroLabel: "WHAT IS ATTAX",
     heroTitle: "The fitness game powered by real activity.",
-    heroSubtitle1: "Attax transforms your workouts, runs, walks, rides and daily movement into a competitive experience where every effort contributes to your progression.",
-    heroSubtitle2: "Train in real life. Compete through activity. Climb the rankings.",
+    heroSubtitle1: "Attax turns your workouts and daily movement into a daily duel against a player of your league. Your heart rate and your steps become points — and the most active player wins at 9:30 PM.",
+    heroSubtitle2: "Train in real life. Win your duels. Climb from Rookie to Legend.",
     heroCta: "Download Attax",
 
     problemLabel: "The Problem",
@@ -144,7 +144,7 @@ const P: Record<Lang, {
     diffH2: "What makes Attax different",
     diffP1: "Attax is not simply a fitness tracker.\nIt is not a traditional workout application.\nIt is not another step counter.",
     diffP2: "Attax is a competitive fitness game.",
-    diffP3: "Your real-world activity directly influences your performance against other players.",
+    diffP3: "Your real-world activity, measured by your watch, decides your duels against the other players of your league.",
     diffP4: "Every run contributes.\nEvery walk contributes.\nEvery workout contributes.\nEvery effort becomes part of a larger competitive system.",
     diffP5: "The result is simple. Movement gains purpose. Instead of exercising purely for statistics, players exercise because every action contributes to progression, competition and achievement.",
     diffP6: "The objective is not to create pressure. The objective is to create engagement. When activity influences meaningful outcomes, consistency becomes easier to maintain.",
@@ -153,22 +153,10 @@ const P: Record<Lang, {
     howH2: "How Attax works",
     howIntro: "Attax combines four systems that work together.",
     howSystems: [
-      {
-        title: "Real Activity",
-        body: "The foundation of Attax is movement. The application connects to Apple Health and Health Connect to synchronize your physical activity automatically. Walking. Running. Cycling. Strength training. Sports. Daily movement. Everything contributes.",
-      },
-      {
-        title: "Daily Competition",
-        body: "Each day brings a new challenge. Players face opponents through activity-based competition. Your effort influences your performance. Their effort influences theirs. The outcome depends on what both competitors achieve in the real world.",
-      },
-      {
-        title: "Strategic Decisions",
-        body: "Physical effort is important. Strategy matters too. Players make decisions that can influence how competitions unfold. The objective is not simply to move more. The objective is to move intelligently and consistently.",
-      },
-      {
-        title: "League Progression",
-        body: "Competition becomes more meaningful when progress is visible. Attax organizes players into leagues where rankings evolve over time. Victories help players climb. Consistency creates momentum. Progress becomes tangible.",
-      },
+      { title: "Real Activity", body: "Attax connects to Apple Health and Health Connect and reads your heart rate and your steps. Every minute of real effort earns activity points — the harder you push, the more you score — and your steps count too. Running, cycling, gym, team sports, dance: if your heart works, it counts." },
+      { title: "Daily Competition", body: "Every day, you face a player of your league. Your duel score is your activity over the last 7 days, revealed round by round from 10 AM; today is the final round, live from 7 PM. At 9:30 PM, the fight plays out to the KO." },
+      { title: "Strategic Decisions", body: "Every morning, 3 strategy cards are drawn from a deck of 12. Pick one before 1 PM to boost your session, sabotage your opponent, peek at their curve or hide your own. The right card can flip a close duel." },
+      { title: "League Progression", body: "Leagues gather 8 players of a similar level for 7 days and 7 duels, ending with a podium. Across leagues, a global rank follows you through 5 divisions: Rookie, Challenger, Pro, Elite, Legend." },
     ],
 
     whyLabel: "Why It Works",
@@ -203,7 +191,7 @@ const P: Record<Lang, {
     consLabel: "Consistency",
     consH2: "Why consistency matters more than intensity",
     consP1: "One of the biggest misconceptions in fitness is that success belongs to people who perform extraordinary workouts. In reality, success usually belongs to people who remain consistent.",
-    consP2: "A moderate workout repeated three times per week often creates better results than a perfect workout performed once every month. Attax was designed around this principle.",
+    consP2: "A moderate workout repeated three times a week often creates better results than a perfect workout once a month. Attax was designed around this principle: your duel score covers your last 7 days, so every session keeps counting for a whole week.",
     consP3: "Consistency compounds.\nSmall actions accumulate.\nTiny improvements become meaningful over time.",
     consP4: "The most successful players are rarely those who produce a single exceptional performance. They are usually the ones who continue showing up.",
     consP5: "Again.\nAnd again.\nAnd again.",
@@ -211,18 +199,18 @@ const P: Record<Lang, {
     faqLabel: "FAQ",
     faqH2: "Frequently asked questions",
     faq: [
-      { q: "What is Attax?", a: "Attax is a competitive fitness game where real-world activity influences your performance against other players." },
-      { q: "Is Attax a fitness app or a game?", a: "Both. Attax combines activity tracking with competitive game systems." },
-      { q: "Does walking count?", a: "Yes. Walking contributes to your progression." },
-      { q: "Can beginners use Attax?", a: "Absolutely. Attax rewards consistency and effort at every level." },
-      { q: "Do I need a smartwatch?", a: "Yes. Attax requires a smartwatch or fitness tracker (Apple Watch, Fitbit, Garmin, or similar) to automatically synchronize your activity through Apple Health or Health Connect." },
-      { q: "Is Attax available on iPhone and Android?", a: "Yes." },
-      { q: "Is Attax free?", a: "Yes. Attax is free to download." },
-      { q: "How often do competitions occur?", a: "Players participate in regular activity-based competitions designed around consistency and progression." },
+      { q: "What is Attax?", a: "A competitive fitness game: your real activity, measured by your watch, powers a daily duel against a player of your league." },
+      { q: "Is Attax a fitness app or a game?", a: "Both. Attax reads your activity like a fitness app, and turns it into duels, cards, leagues and ranks like a game." },
+      { q: "Does walking count?", a: "Yes. Your steps earn points all day long, and a brisk walk that gets your heart working counts as effort too." },
+      { q: "Can beginners use Attax?", a: "Absolutely. You play against players of a similar level, and every effort counts — from a brisk walk to an all-out session." },
+      { q: "Do I need a smartwatch?", a: "Yes. You need a device that measures your heart rate — smartwatch, fitness band or chest strap — synced with Apple Health (iPhone) or Health Connect (Android): Apple Watch, Garmin, Amazfit, COROS and more on both; Samsung Galaxy Watch and Fitbit on Android only. Your phone alone counts your steps. Attax checks your connection before your first league." },
+      { q: "Is Attax available on iPhone and Android?", a: "Yes: on iPhone through Apple Health, on Android through Health Connect." },
+      { q: "Is Attax free?", a: "Yes. Attax is free to download and free to play, with no ads." },
+      { q: "How often do duels happen?", a: "Every day. One duel a day, settled at 9:30 PM, in leagues that last 7 days." },
     ],
 
     ctaH2: "Ready to make your activity matter?",
-    ctaBody: "Join thousands of players turning movement into competition. Download Attax and start your journey today.",
+    ctaBody: "Join the first leagues: download Attax and start your first duel.",
     ctaDownload: "Download Attax",
     ctaLearn: "Learn More",
   },
@@ -230,8 +218,8 @@ const P: Record<Lang, {
   fr: {
     heroLabel: "QU’EST-CE QU’ATTAX",
     heroTitle: "Le jeu de fitness propulsé par une activité réelle.",
-    heroSubtitle1: "Attax transforme tes entraînements, courses, marches, sorties à vélo et mouvements quotidiens en une expérience compétitive où chaque effort contribue à ta progression.",
-    heroSubtitle2: "Entraîne-toi dans la vie réelle. Affronte la compétition par l’activité. Grimpe dans le classement.",
+    heroSubtitle1: "Attax transforme tes séances et ton activité quotidienne en un duel quotidien contre un joueur de ta ligue. Ta fréquence cardiaque et tes pas deviennent des points — et le plus actif l'emporte à 21h30.",
+    heroSubtitle2: "Entraîne-toi dans la vraie vie. Gagne tes duels. Grimpe de Rookie à Legend.",
     heroCta: "Télécharger Attax",
 
     problemLabel: "Le Problème",
@@ -251,7 +239,7 @@ const P: Record<Lang, {
     diffH2: "Ce qui rend Attax différent",
     diffP1: "Attax n’est pas simplement un tracker fitness.\nCe n’est pas une application d’entraînement traditionnelle.\nCe n’est pas un podomètre de plus.",
     diffP2: "Attax est un jeu de fitness compétitif.",
-    diffP3: "Ton activité dans la vie réelle influence directement tes performances face aux autres joueurs.",
+    diffP3: "Ton activité réelle, mesurée par ta montre, décide de tes duels contre les autres joueurs de ta ligue.",
     diffP4: "Chaque course contribue.\nChaque marche contribue.\nChaque séance contribue.\nChaque effort fait partie d’un système compétitif plus large.",
     diffP5: "Le résultat est simple. Le mouvement prend du sens. Au lieu de faire du sport uniquement pour des statistiques, les joueurs s’entraînent parce que chaque action contribue à la progression, la compétition et l’accomplissement.",
     diffP6: "L’objectif n’est pas de créer de la pression. L’objectif est de créer de l’engagement. Quand l’activité influe sur des résultats concrets, la régularité devient plus facile à maintenir.",
@@ -260,22 +248,10 @@ const P: Record<Lang, {
     howH2: "Comment fonctionne Attax",
     howIntro: "Attax combine quatre systèmes qui fonctionnent ensemble.",
     howSystems: [
-      {
-        title: "Activité réelle",
-        body: "Le fondement d’Attax, c’est le mouvement. L’application se connecte à Apple Santé et Health Connect pour synchroniser automatiquement ton activité physique. Marche. Course. Vélo. Musculation. Sport. Mouvement du quotidien. Tout compte.",
-      },
-      {
-        title: "Compétition quotidienne",
-        body: "Chaque jour apporte un nouveau défi. Les joueurs affrontent des adversaires dans des compétitions basées sur l’activité. Ton effort influence tes performances. Le leur influence les leurs. Le résultat dépend de ce que les deux compétiteurs accomplissent dans la vie réelle.",
-      },
-      {
-        title: "Décisions stratégiques",
-        body: "L’effort physique est important. La stratégie aussi. Les joueurs prennent des décisions qui peuvent influencer le déroulement des compétitions. L’objectif n’est pas simplement de bouger plus. L’objectif est de bouger intelligemment et régulièrement.",
-      },
-      {
-        title: "Progression en ligue",
-        body: "La compétition prend plus de sens quand les progrès sont visibles. Attax organise les joueurs en ligues où les classements évoluent dans le temps. Les victoires font grimper. La régularité crée l’élan. La progression devient tangible.",
-      },
+      { title: "Activité réelle", body: "Attax se connecte à Apple Santé et Health Connect et lit ta fréquence cardiaque et tes pas. Chaque minute de vrai effort rapporte des points d'activité — plus tu pousses, plus tu marques — et tes pas comptent aussi. Course, vélo, muscu, sports collectifs, danse : si ton cœur travaille, ça compte." },
+      { title: "Compétition quotidienne", body: "Chaque jour, tu affrontes un joueur de ta ligue. Ton score de duel, c'est ton activité des 7 derniers jours, dévoilée round après round dès 10h ; aujourd'hui est le round final, en direct dès 19h. À 21h30, le combat se joue jusqu'au KO." },
+      { title: "Décisions stratégiques", body: "Chaque matin, 3 cartes stratégiques sont tirées d'un deck de 12. Choisis-en une avant 13h pour booster ta séance, saboter ton adversaire, espionner sa courbe ou cacher la tienne. La bonne carte peut renverser un duel serré." },
+      { title: "Progression en ligue", body: "Les ligues réunissent 8 joueurs de niveau proche pendant 7 jours et 7 duels, avec un podium à la clé. De ligue en ligue, un rang global te suit à travers 5 divisions : Rookie, Challenger, Pro, Elite, Legend." },
     ],
 
     whyLabel: "Pourquoi Ça Marche",
@@ -310,7 +286,7 @@ const P: Record<Lang, {
     consLabel: "Régularité",
     consH2: "Pourquoi la régularité compte plus que l’intensité",
     consP1: "L’une des plus grandes erreurs de perception dans le fitness, c’est de croire que le succès appartient à ceux qui font des séances extraordinaires. En réalité, le succès appartient souvent à ceux qui restent réguliers.",
-    consP2: "Une séance modérée répétée trois fois par semaine donne souvent de meilleurs résultats qu’une séance parfaite faite une fois par mois. Attax a été conçu autour de ce principe.",
+    consP2: "Une séance modérée répétée trois fois par semaine donne souvent de meilleurs résultats qu'une séance parfaite une fois par mois. Attax a été conçu autour de ce principe : ton score de duel couvre tes 7 derniers jours, donc chaque séance continue de compter pendant une semaine entière.",
     consP3: "La régularité s’accumule.\nLes petites actions s’additionnent.\nLes micro-progrès deviennent significatifs avec le temps.",
     consP4: "Les joueurs les plus performants sont rarement ceux qui produisent une seule performance exceptionnelle. Ce sont généralement ceux qui continuent à se montrer.",
     consP5: "Encore.\nEt encore.\nEt encore.",
@@ -318,18 +294,18 @@ const P: Record<Lang, {
     faqLabel: "FAQ",
     faqH2: "Questions fréquemment posées",
     faq: [
-      { q: "Qu’est-ce qu’Attax ?", a: "Attax est un jeu de fitness compétitif où ton activité dans la vie réelle influence tes performances face aux autres joueurs." },
-      { q: "Attax est-il une appli fitness ou un jeu ?", a: "Les deux. Attax combine le suivi d’activité et des systèmes de jeu compétitifs." },
-      { q: "La marche compte-t-elle ?", a: "Oui. La marche contribue à ta progression." },
-      { q: "Les débutants peuvent-ils utiliser Attax ?", a: "Absolument. Attax récompense la régularité et l’effort à chaque niveau." },
-      { q: "Ai-je besoin d’une montre connectée ?", a: "Oui. Attax nécessite une montre connectée ou un tracker de fitness (Apple Watch, Fitbit, Garmin ou similaire) pour synchroniser automatiquement ton activité via Apple Santé ou Health Connect." },
-      { q: "Attax est-il disponible sur iPhone et Android ?", a: "Oui." },
-      { q: "Attax est-il gratuit ?", a: "Oui. Attax est gratuit au téléchargement." },
-      { q: "À quelle fréquence les compétitions ont-elles lieu ?", a: "Les joueurs participent à des compétitions basées sur l’activité, conçues autour de la régularité et de la progression." },
+      { q: "Qu'est-ce qu'Attax ?", a: "Un jeu de fitness compétitif : ton activité réelle, mesurée par ta montre, alimente un duel quotidien contre un joueur de ta ligue." },
+      { q: "Attax est-il une appli fitness ou un jeu ?", a: "Les deux. Attax lit ton activité comme une appli fitness, et la transforme en duels, cartes, ligues et rangs comme un jeu." },
+      { q: "La marche compte-t-elle ?", a: "Oui. Tes pas rapportent des points toute la journée, et une marche rapide qui fait travailler ton cœur compte aussi comme effort." },
+      { q: "Les débutants peuvent-ils jouer ?", a: "Absolument. Tu affrontes des joueurs de niveau proche, et chaque effort compte — de la marche rapide à la séance à fond." },
+      { q: "Ai-je besoin d'une montre connectée ?", a: "Oui. Il te faut un appareil qui mesure ta fréquence cardiaque — montre, bracelet ou ceinture cardio — synchronisé avec Apple Santé (iPhone) ou Health Connect (Android) : Apple Watch, Garmin, Amazfit, COROS et d'autres sur les deux ; Samsung Galaxy Watch et Fitbit sur Android uniquement. Ton téléphone seul compte tes pas. Attax vérifie ta connexion avant ta première ligue." },
+      { q: "Attax est-il disponible sur iPhone et Android ?", a: "Oui : sur iPhone via Apple Santé, sur Android via Health Connect." },
+      { q: "Attax est-il gratuit ?", a: "Oui. Attax est gratuit à télécharger et à jouer, sans publicité." },
+      { q: "À quelle fréquence ont lieu les duels ?", a: "Tous les jours. Un duel par jour, tranché à 21h30, dans des ligues qui durent 7 jours." },
     ],
 
     ctaH2: "Prêt à donner du sens à ton activité ?",
-    ctaBody: "Rejoins des milliers de joueurs qui transforment le mouvement en compétition. Télécharge Attax et commence ton parcours aujourd’hui.",
+    ctaBody: "Rejoins les premières ligues : télécharge Attax et lance ton premier duel.",
     ctaDownload: "Télécharger Attax",
     ctaLearn: "En savoir plus",
   },

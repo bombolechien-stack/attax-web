@@ -16,7 +16,7 @@ import FAQ from "@/components/home/FAQ";
 export const metadata: Metadata = {
   title: "Attax — Sport is now a game.",
   description:
-    "Attax is the competitive fitness game where your real-world activity powers daily battles, rankings and progression.",
+    "Attax turns your real workouts into daily duels: heart rate and steps become points, leagues of 8, strategy cards and a verdict every night at 9:30 PM. Free on iPhone & Android.",
   alternates: { canonical: "https://attax.app" },
 };
 
@@ -28,10 +28,9 @@ const softwareAppSchema = {
   operatingSystem: "iOS, Android",
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
   description:
-    "Attax is the competitive fitness game where your real-world activity powers daily battles, rankings and progression.",
+    "Attax turns your real workouts into daily duels: heart rate and steps become points, leagues of 8, strategy cards and a verdict every night at 9:30 PM. Free on iPhone & Android.",
   url: "https://attax.app",
   downloadUrl: "https://attax.app/download",
-  aggregateRating: { "@type": "AggregateRating", ratingValue: "4.8", ratingCount: "120" },
 };
 
 const faqSchema = {
@@ -43,15 +42,31 @@ const faqSchema = {
       name: "Do I need a smartwatch to use Attax?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. Attax requires a smartwatch or fitness tracker (Apple Watch, Fitbit, Garmin, or similar) to automatically synchronize your activity through Apple Health or Health Connect.",
+        text: "Yes. You need a device that measures your heart rate — smartwatch, fitness band or chest strap — synced with Apple Health (iPhone) or Health Connect (Android). Your phone alone counts your steps, but workouts are scored from your heart rate.",
       },
     },
     {
       "@type": "Question",
-      name: "Does walking count in Attax?",
+      name: "How are points calculated in Attax?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. Every form of activity contributes — walking, running, cycling, swimming, gym sessions, and more.",
+        text: "Your watch measures your effort through Apple Health or Health Connect: every minute your heart works hard earns activity points, and your steps count too.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How is a duel decided?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Your duel score is your activity of the day plus the 6 previous days, revealed round by round during the day. At 9:30 PM the highest score wins, after strategy cards are applied.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Can I play Attax with friends?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. Create a league in the app, share the code and start it when everyone is in.",
       },
     },
     {
@@ -59,7 +74,7 @@ const faqSchema = {
       name: "Is Attax free?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. Attax is free to download and play.",
+        text: "Yes. Attax is free to download and play, with no ads.",
       },
     },
     {
@@ -67,7 +82,7 @@ const faqSchema = {
       name: "Does Attax work on iPhone and Android?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. Attax is available on both the App Store (iOS) and Google Play (Android).",
+        text: "Yes. Attax is available on iPhone (App Store) and Android (Google Play).",
       },
     },
     {
@@ -75,9 +90,9 @@ const faqSchema = {
       name: "What is Attax?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Attax is a competitive fitness game where your real-world activity — walking, running, cycling, gym sessions — powers daily battles and rankings against other players.",
+        text: "Attax is a competitive fitness game: your real activity, measured by your watch, powers a daily duel against a player of your league. Leagues of 8 players, 7 duels in 7 days, strategy cards and a global rank from Rookie to Legend.",
       },
-    },
+    }
   ],
 };
 

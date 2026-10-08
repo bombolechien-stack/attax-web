@@ -16,7 +16,8 @@ html {
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 3px; }
 
-body { margin: 0; padding: 0; background: #ffffff; color: #1a1a1a; }
+body { margin: 0; padding: 0; background: #ffffff; color: #1a1a1a; overflow-x: clip; max-width: 100vw; }
+html { overflow-x: clip; }
 
 ::selection { background: #1a1a1a; color: #fff; }
 
@@ -183,6 +184,8 @@ body { margin: 0; padding: 0; background: #ffffff; color: #1a1a1a; }
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: #888;
+  display: block;
+  margin-bottom: 1.25rem;
 }
 .section-label-light {
   font-size: 0.6875rem;
@@ -280,6 +283,7 @@ body { margin: 0; padding: 0; background: #ffffff; color: #1a1a1a; }
   text-transform: uppercase;
   color: #999;
   display: block;
+  margin-bottom: 1.25rem;
 }
 .section-label-light {
   font-size: 0.6875rem;
@@ -363,17 +367,27 @@ body { margin: 0; padding: 0; background: #ffffff; color: #1a1a1a; }
 
 @media (max-width: 768px) {
 
-  /* ── Page navbar ── */
-  .nav-page-links  { display: none !important; }
-  .nav-page-ctas   { display: none !important; }
-  .nav-page-root   { padding: 0 1.25rem !important; height: 60px !important; }
-  /* Show LangSwitcher only — it lives outside nav-page-ctas so it's always visible */
+  /* ── Page navbar — hide desktop items, show mobile layout ── */
+  .nav-page-links       { display: none !important; }
+  .nav-page-right       { display: none !important; }
+  .nav-page-lang-mobile { display: flex !important; }
+  .nav-page-root        { padding: 0 1.25rem !important; height: 60px !important; }
+  .nav-burger           { display: flex !important; }
+
+  /* ── Banner: hide when menu open ── */
+  html.menu-open .banner-root { display: none !important; }
+
+  /* ── Main navbar — hide desktop items, show mobile burger ── */
+  .nav-desktop-links { display: none !important; }
+  .nav-desktop-right { display: none !important; }
+  .nav-mobile-right  { display: flex !important; }
 
   /* ── Banner ── */
   .banner-root { font-size: 0.75rem !important; padding: 7px 10px !important; gap: 6px !important; }
 
   /* ── Hero ── */
-  .hero-text-box { max-width: 100% !important; padding: 0 1.5rem !important; }
+  .hero-text-box { max-width: 100% !important; padding: 2rem 1.5rem 3rem !important; }
+  .hero-text-box h1 { text-wrap: balance !important; }
   .hero-stats    { display: none !important; }
 
   /* ── Info section ── */
@@ -396,9 +410,6 @@ body { margin: 0; padding: 0; background: #ffffff; color: #1a1a1a; }
   .dm-stat    { flex: 1 1 42% !important; border-left: none !important; border-top: 1px solid #f0f0f0 !important; padding-top: 1.5rem !important; padding-left: 0 !important; padding-right: 0 !important; text-align: left !important; }
 
   /* ── VisualGrid ── */
-  .vg-phone-side  { display: none !important; }
-  .vg-label-side  { display: none !important; }
-  .vg-phone-center { width: 88vw !important; height: calc(88vw * 1.149) !important; }
   .vg-section     { padding: 5rem 1.25rem 6rem !important; }
 
   /* ── FeaturesGrid ── */
@@ -464,19 +475,64 @@ body { margin: 0; padding: 0; background: #ffffff; color: #1a1a1a; }
   .adv-manifesto { flex-direction: column !important; gap: 2.5rem !important; }
   .adv-manifesto-left { flex: none !important; }
 
+  /* ── DailyMatch score — no word break ── */
+  .dm-score { white-space: nowrap !important; font-size: clamp(2rem, 7vw, 5rem) !important; }
+
+  /* ── Testimonials — no Y-offset on 1-col ── */
+  .testimonial-center { transform: none !important; }
+
+  /* ── VisualGrid — 3 phones absolute (style Download) ── */
+  .vg-phones-wrap  { position: relative !important; height: calc(72vw * 1.149) !important; overflow: visible !important; align-items: unset !important; justify-content: unset !important; margin-bottom: 2.5rem !important; }
+  .vg-phone-center { position: absolute !important; width: 72vw !important; height: calc(72vw * 1.149) !important; bottom: 0 !important; left: 50% !important; transform: translateX(-50%) !important; z-index: 3 !important; margin: 0 !important; filter: drop-shadow(0 24px 48px rgba(0,0,0,0.25)) !important; }
+  .vg-phone-side   { display: block !important; position: absolute !important; width: 58vw !important; height: calc(58vw * 1.149) !important; bottom: 0 !important; z-index: 1 !important; filter: brightness(0.65) drop-shadow(0 16px 32px rgba(0,0,0,0.2)) !important; }
+  .vg-phone-side:first-child { left: -10vw !important; }
+  .vg-phone-side:last-child  { right: -10vw !important; }
+  .vg-label-side   { display: none !important; }
+  .vg-label-center { width: 100% !important; }
+  .vg-section      { overflow: clip !important; }
+
+  /* ── Hero h1 br — on cache le saut explicite sur mobile ── */
+  .hero-h1-br { display: none !important; }
+
+  /* ── Footer top bar — center on mobile ── */
+  .footer-top-bar { align-items: center !important; }
+
+  /* ── Footer ATTAX text — bigger to fill bottom ── */
+  .footer-attax { font-size: clamp(4.5rem, 24vw, 14rem) !important; bottom: 0 !important; }
+
+  /* ── Discover philosophy 3-col ── */
+  .d-philosophy-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
+
+  /* ── Discover fencing section ── */
+  .d-fencing-img  { height: 500px !important; }
+
+  /* ── ScrollNav mobile ── */
+  .scroll-nav-links { display: none !important; }
+  .scroll-nav-ctas  { display: none !important; }
+  .scroll-nav-mobile { display: flex !important; }
+
+  /* ── InfoSection header ── */
+  .info-header { flex-direction: column !important; align-items: flex-start !important; gap: 1.5rem !important; margin-bottom: 3rem !important; }
+  .info-header p { flex: none !important; max-width: 100% !important; }
+
   /* ── CardsShowcase ── */
   .cards-showcase-inner { flex-direction: column !important; gap: 3rem !important; }
   .cards-showcase-text  { flex: none !important; max-width: 100% !important; }
-  .cards-showcase-fan   { gap: 0.5rem !important; overflow-x: auto !important; padding-bottom: 1rem !important; justify-content: flex-start !important; }
+  .cards-showcase-fan   { gap: 0.75rem !important; overflow: visible !important; padding-bottom: 0.5rem !important; justify-content: center !important; }
+  /* Remove card rotation on mobile (override inline styles) */
+  .cards-showcase-fan > div { transform: none !important; width: min(88vw, 320px) !important; }
+
+  /* ── What-is-attax / secondary content pages ── */
+  .seo-section-grid { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
 
   /* ── PrivacyStrip ── */
   .privacy-inner { flex-direction: column !important; gap: 2rem !important; }
   .privacy-left  { max-width: 100% !important; }
 
   /* ── Download page ── */
-  .dl-hero-inner  { flex-direction: column !important; padding: 2rem 1.5rem 0 !important; gap: 2rem !important; align-items: flex-start !important; }
+  .dl-hero-inner  { flex-direction: column !important; padding: 2rem 1.5rem 2rem !important; gap: 1.5rem !important; align-items: flex-start !important; }
   .dl-hero-text   { max-width: 100% !important; }
-  .dl-phones      { height: 300px !important; width: 100% !important; margin-bottom: -1rem !important; }
+  .dl-phones      { display: none !important; }
   .dl-platform-grid { grid-template-columns: 1fr !important; max-width: 100% !important; }
   .dl-screens-grid { grid-template-columns: 1fr !important; gap: 3rem !important; }
 
@@ -491,7 +547,10 @@ body { margin: 0; padding: 0; background: #ffffff; color: #1a1a1a; }
 @media (max-height: 750px) and (min-width: 769px) {
   .hero-text-box h1 { font-size: clamp(2.25rem, 4.5vw, 4.5rem) !important; margin-bottom: 1rem !important; }
   .hero-text-box p  { margin-bottom: 1.25rem !important; }
-  .hero-stats       { display: none !important; }
+}
+
+@media (max-height: 620px) and (min-width: 769px) {
+  .hero-stats { display: none !important; }
 }
 
 @media (max-width: 480px) {

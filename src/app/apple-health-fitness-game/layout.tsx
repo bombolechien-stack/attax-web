@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Apple Health Fitness Game | Attax",
+  title: "Apple Health Fitness Game",
   description:
     "Attax is the fitness game powered by Apple Health. Every workout contributes. Every step matters. Every day becomes an opportunity to win.",
   alternates: { canonical: "https://attax.app/apple-health-fitness-game" },

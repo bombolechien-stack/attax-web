@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Image from "next/image";
 import PageNavbar from "@/components/PageNavbar";
@@ -41,7 +41,7 @@ export default function DownloadPage() {
 
   return (
     <>
-      {/* ── Hero ── */}
+      {/* -- Hero -- */}
       <div style={{ backgroundColor: "#ffffff", padding: "0 12px 12px" }}>
         <div style={{ position: "relative", backgroundColor: "#080808", borderRadius: "24px", minHeight: "calc(100vh - 24px)", display: "flex", flexDirection: "column", overflow: "hidden" }}>
           {/* Background: subtle gradient + grid lines */}
@@ -62,8 +62,8 @@ export default function DownloadPage() {
                 {d.hero_label}
               </p>
               <h1 style={{ fontSize: "clamp(2.75rem, 5.5vw, 5rem)", fontWeight: 800, color: "#ffffff", lineHeight: 1.0, letterSpacing: "-0.045em", margin: "0 0 1.5rem" }}>
-                <div style={{ overflow: "hidden" }}><span style={clipReveal(heroVisible, 80)}>{d.h1[0]}</span></div>
-                <div style={{ overflow: "hidden" }}><span style={{ ...clipReveal(heroVisible, 200), color: "rgba(255,255,255,0.38)" }}>{d.h1[1]}</span></div>
+                <div><span style={clipReveal(heroVisible, 80)}>{d.h1[0]}</span></div>
+                <div><span style={{ ...clipReveal(heroVisible, 200), color: "rgba(255,255,255,0.38)" }}>{d.h1[1]}</span></div>
               </h1>
               <p style={{ ...fadeUp(heroVisible, 280), fontSize: "1.0625rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.8, margin: "0 0 2.5rem", maxWidth: "420px" }}>
                 {d.subtitle}
@@ -91,12 +91,12 @@ export default function DownloadPage() {
             </div>
 
             {/* Right: stacked phone screens */}
-            <div className="dl-phones" style={{ flex: 1, display: "flex", alignItems: "flex-end", justifyContent: "center", gap: "0", position: "relative", height: "680px", marginBottom: "-3rem" }}>
+            <div className="dl-phones" style={{ flex: 1, display: "flex", alignItems: "flex-end", justifyContent: "center", gap: "0", position: "relative", height: "820px", marginBottom: "-3rem" }}>
               {SCREEN_SRCS.map((src, i) => {
                 const isCenter = i === 1;
-                const W = isCenter ? 320 : 265;
+                const W = isCenter ? 440 : 360;
                 const H = W * (873 / 760);
-                const offsets = [-108, 0, 108];
+                const offsets = [-165, 0, 165];
                 const zIndexes = [1, 3, 2];
                 const scales = [0.88, 1, 0.92];
                 return (
@@ -120,12 +120,12 @@ export default function DownloadPage() {
         </div>
       </div>
 
-      {/* ── Platforms ── */}
+      {/* -- Platforms -- */}
       <section style={{ backgroundColor: "#f7f7f7", padding: "7rem 2rem" }}>
         <div ref={platformsRef} style={{ maxWidth: "64rem", margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "4rem" }}>
             <p style={{ ...fadeUp(platformsVisible, 0), fontSize: "0.6875rem", fontWeight: 700, color: "#aaa", letterSpacing: "0.18em", textTransform: "uppercase", margin: "0 0 1.25rem" }}>{d.platforms_label}</p>
-            <div style={{ overflow: "hidden" }}>
+            <div>
               <h2 style={{ ...clipReveal(platformsVisible, 80), fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.045em", lineHeight: 1.0, margin: "0 0 1.25rem" }}>{d.platforms_h2}</h2>
             </div>
             <p style={{ ...fadeUp(platformsVisible, 200), fontSize: "1rem", color: "#888", lineHeight: 1.75, maxWidth: "520px", margin: "0 auto" }}>{d.platforms_sub}</p>
@@ -177,12 +177,12 @@ export default function DownloadPage() {
         </div>
       </section>
 
-      {/* ── App screens ── */}
+      {/* -- App screens -- */}
       <section style={{ backgroundColor: "#0d0d0d", padding: "8rem 2rem 10rem", overflow: "hidden" }}>
         <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
           <div ref={screensHeaderRef} style={{ marginBottom: "5rem" }}>
             <p style={{ ...fadeUp(screensHeaderVisible, 0), fontSize: "0.6875rem", fontWeight: 700, color: "rgba(255,255,255,0.28)", letterSpacing: "0.18em", textTransform: "uppercase", margin: "0 0 1.25rem" }}>{d.screens_label}</p>
-            <div style={{ overflow: "hidden" }}>
+            <div>
               <h2 style={{ ...clipReveal(screensHeaderVisible, 80), fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.045em", lineHeight: 1.0, margin: 0 }}>{d.screens_h2}</h2>
             </div>
           </div>

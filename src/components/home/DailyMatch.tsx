@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import { useT } from "@/lib/i18n";
@@ -27,8 +27,8 @@ export default function DailyMatch() {
           <span style={{ ...fadeUp(headerVisible, 0), display: "block", marginBottom: "1.5rem" }} className="section-label">{m.label}</span>
           <div className="dm-header" style={{ display: "flex", alignItems: "flex-end", gap: "4rem", flexWrap: "wrap" }}>
             <h2 style={{ fontSize: "clamp(3rem, 5vw, 5.5rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.055em", lineHeight: 0.9, margin: 0 }}>
-              <div style={{ overflow: "hidden" }}><span style={clipReveal(headerVisible, 80)}>{m.h2[0]}</span></div>
-              <div style={{ overflow: "hidden" }}><span style={clipReveal(headerVisible, 220)}>{m.h2[1]}</span></div>
+              <div><span style={clipReveal(headerVisible, 80)}>{m.h2[0]}</span></div>
+              <div><span style={clipReveal(headerVisible, 220)}>{m.h2[1]}</span></div>
             </h2>
             <p style={{ ...slideRight(headerVisible, 350), fontSize: "1.0625rem", color: "#999", lineHeight: 1.75, maxWidth: "360px", margin: 0 }}>{m.subtitle}</p>
           </div>
@@ -65,13 +65,13 @@ export default function DailyMatch() {
             <div style={{ padding: "2.5rem 2.5rem 2rem", display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
               <div>
                 <div style={{ fontSize: "0.6875rem", fontWeight: 700, color: "#60a5fa", letterSpacing: "0.12em", marginBottom: "0.5rem" }}>{m.you}</div>
-                <div style={{ fontSize: "clamp(3rem, 5vw, 5rem)", fontWeight: 900, color: "#ffffff", letterSpacing: "-0.05em", lineHeight: 1, fontVariantNumeric: "tabular-nums" }}>2 847</div>
+                <div className="dm-score" style={{ fontSize: "clamp(3rem, 5vw, 5rem)", fontWeight: 900, color: "#ffffff", letterSpacing: "-0.05em", lineHeight: 1, fontVariantNumeric: "tabular-nums" }}>2 847</div>
                 <div style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.25)", marginTop: "0.5rem" }}>Challenger II</div>
               </div>
               <div style={{ fontSize: "1rem", fontWeight: 900, color: "rgba(255,255,255,0.08)", paddingBottom: "1.5rem" }}>VS</div>
               <div style={{ textAlign: "right" }}>
-                <div style={{ fontSize: "0.6875rem", fontWeight: 700, color: "#f87171", letterSpacing: "0.12em", marginBottom: "0.5rem" }}>ALEX</div>
-                <div style={{ fontSize: "clamp(3rem, 5vw, 5rem)", fontWeight: 900, color: "rgba(255,255,255,0.35)", letterSpacing: "-0.05em", lineHeight: 1, fontVariantNumeric: "tabular-nums" }}>2 231</div>
+                <div style={{ fontSize: "0.6875rem", fontWeight: 700, color: "#f87171", letterSpacing: "0.12em", marginBottom: "0.5rem" }}>{m.opp}</div>
+                <div className="dm-score" style={{ fontSize: "clamp(3rem, 5vw, 5rem)", fontWeight: 900, color: "rgba(255,255,255,0.35)", letterSpacing: "-0.05em", lineHeight: 1, fontVariantNumeric: "tabular-nums" }}>2 231</div>
                 <div style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.25)", marginTop: "0.5rem" }}>Pro III</div>
               </div>
             </div>
@@ -82,13 +82,7 @@ export default function DailyMatch() {
 
             <div style={{ padding: "0 2.5rem 2rem" }}>
               <div style={{ fontSize: "0.6875rem", fontWeight: 700, color: "rgba(255,255,255,0.2)", letterSpacing: "0.1em", marginBottom: "1rem" }}>{m.todayActivity}</div>
-              {[
-                { time: "2:23 PM", text: "Run 32 min · Zone 3 · 5.4 km", pts: "+214 pts", color: "#60a5fa" },
-                { time: "9:47 AM", text: "Strength training 45 min · Zone 2", pts: "+188 pts", color: "#60a5fa" },
-                { time: "8:12 AM", text: "Alex — Cycling 60 min · Zone 3", pts: "+246 pts", color: "#f87171" },
-                { time: "Yesterday", text: "Alex — Run 28 min · 4.1 km", pts: "+198 pts", color: "#f87171" },
-                { time: "Yesterday", text: "Walk 8,200 steps · 6.1 km", pts: "+72 pts", color: "#60a5fa" },
-              ].map((item, i, arr) => (
+              {m.feed.map((f) => ({ ...f, color: f.you ? "#60a5fa" : "#f87171" })).map((item, i, arr) => (
                 <div key={i} style={{ display: "flex", alignItems: "center", gap: "1rem", padding: "0.875rem 0", borderBottom: i < arr.length - 1 ? "1px solid rgba(255,255,255,0.04)" : "none" }}>
                   <div style={{ width: "7px", height: "7px", borderRadius: "50%", backgroundColor: item.color, flexShrink: 0 }} />
                   <div style={{ flex: 1 }}>

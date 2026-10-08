@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useT } from "@/lib/i18n";
 import { useInView, fadeUp, fadeIn, slideLeft, slideRight, clipReveal } from "@/hooks/useInView";
@@ -31,11 +31,11 @@ export default function InfoSection() {
   return (
     <section style={{ backgroundColor: "#ffffff", padding: "7rem 2rem" }}>
       <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
-        <div ref={headerRef} style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "4rem", marginBottom: "5rem" }}>
+        <div ref={headerRef} className="info-header" style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "4rem", marginBottom: "5rem" }}>
           <div>
             <p style={{ ...fadeUp(headerVisible, 0) }} className="section-label">{inf.label}</p>
             <h2 style={{ fontSize: "clamp(2rem, 3.5vw, 2.875rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.04em", lineHeight: 1.06, margin: 0 }}>
-              <div style={{ overflow: "hidden" }}><span style={clipReveal(headerVisible, 100)}>{inf.h2}</span></div>
+              <div><span style={clipReveal(headerVisible, 100)}>{inf.h2}</span></div>
             </h2>
           </div>
           <p style={{ ...slideRight(headerVisible, 240), fontSize: "1rem", color: "#888", lineHeight: 1.75, maxWidth: "300px", margin: 0, flex: "0 0 300px", whiteSpace: "pre-line" }}>{inf.sub}</p>

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "How Attax Works | Attax",
+  title: "How Attax Works",
   description:
     "Discover how Attax transforms your real-world activity into competition, progression, and daily challenges through Apple Health and Health Connect.",
   alternates: { canonical: "https://attax.app/how-attax-works" },

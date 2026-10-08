@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Fitness Gamification Explained | Attax",
+  title: "Fitness Gamification Explained",
   description:
     "Fitness gamification applies game mechanics to exercise. Learn why it works and how Attax uses competition, progression and rewards to keep you active.",
   alternates: { canonical: "https://attax.app/fitness-gamification" },

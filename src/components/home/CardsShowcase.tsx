@@ -6,47 +6,62 @@ import { useInView, fadeUp, clipReveal, scaleIn } from "@/hooks/useInView";
 
 const CARD_IMGS: Record<string, string> = {
   Overdrive: "/cards/overdrive.png",
-  Ghost: "/cards/ghost.png",
-  Freeze: "/cards/freeze.png",
+  Ghost:     "/cards/ghost.png",
+  Blackout:  "/cards/blackout.png",
 };
 
 const CARD_NUMBERS: Record<string, string> = {
   Overdrive: "02",
-  Ghost: "10",
-  Freeze: "05",
+  Ghost:     "10",
+  Blackout:  "11",
 };
 
 const CARD_BG: Record<string, { from: string; to: string }> = {
-  Overdrive: { from: "#c2510a", to: "#7a2d04" },
-  Ghost:     { from: "#4c2d8a", to: "#1e0f4a" },
-  Freeze:    { from: "#0a5fa8", to: "#04305e" },
+  Overdrive: { from: "#e89050", to: "#a03810" },
+  Ghost:     { from: "#eee8f8", to: "#cfc0ec" },
+  Blackout:  { from: "#242424", to: "#0d0d0d" },
 };
 
-function Scanlines() {
+// Cards with light background need dark text
+const LIGHT_CARDS = new Set(["Ghost"]);
+
+function Scanlines({ color }: { color: string }) {
   return (
     <div style={{
       position: "absolute", inset: 0, zIndex: 2, pointerEvents: "none", borderRadius: "inherit",
-      backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.10) 2px, rgba(0,0,0,0.10) 3px)",
+      backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 3px, ${color} 3px, ${color} 4px)`,
     }} />
   );
 }
 
-function AttaxBrand({ color }: { color: string }) {
+function AttaxBrand({ dark }: { dark?: boolean }) {
   return (
-    <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
-      <Image src="/images/attaxlogos.svg" alt="" width={12} height={12}
-        style={{ filter: "brightness(0) invert(1)", opacity: 0.5 }} />
-      <Image src="/images/attaxtxt.svg" alt="Attax" width={32} height={10}
-        style={{ filter: "brightness(0) invert(1)", opacity: 0.45 }} />
-    </div>
+    <Image
+      src="/images/attaxtxt.svg"
+      alt="Attax"
+      width={34}
+      height={11}
+      style={{
+        filter: dark ? "brightness(0)" : "brightness(0) invert(1)",
+        opacity: dark ? 0.55 : 0.5,
+      }}
+    />
   );
 }
 
-function FlagIcon() {
+function FlagIcon({ dark }: { dark?: boolean }) {
+  const opacity = dark ? 0.35 : 0.45;
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(255,255,255,0.4)" xmlns="http://www.w3.org/2000/svg">
-      <path d="M4 4h11l-2 4 2 4H4V4z" /><line x1="4" y1="4" x2="4" y2="20" stroke="rgba(255,255,255,0.4)" strokeWidth="2" strokeLinecap="round"/>
-    </svg>
+    <Image
+      src="/images/flag.svg"
+      alt=""
+      width={13}
+      height={13}
+      style={{
+        filter: dark ? "brightness(0)" : "brightness(0) invert(1)",
+        opacity,
+      }}
+    />
   );
 }
 
@@ -61,6 +76,16 @@ function GameCard({ card, index, visible }: {
   const imgSrc = CARD_IMGS[card.name];
   const num = CARD_NUMBERS[card.name] ?? "01";
   const bg = CARD_BG[card.name] ?? { from: card.color, to: "#000" };
+  const dark = LIGHT_CARDS.has(card.name);
+
+  const scanlineColor = dark
+    ? "rgba(90,40,180,0.10)"
+    : "rgba(0,0,0,0.18)";
+
+  const textWhite = dark ? "#160830" : "#ffffff";
+  const textSub = dark ? "rgba(20,5,50,0.6)" : "rgba(255,255,255,0.7)";
+  const textDesc = dark ? "rgba(20,5,50,0.42)" : "rgba(255,255,255,0.45)";
+  const numColor = dark ? "rgba(80,40,160,0.18)" : "rgba(255,255,255,0.15)";
 
   return (
     <div
@@ -89,16 +114,19 @@ function GameCard({ card, index, visible }: {
         (e.currentTarget as HTMLElement).style.zIndex = "1";
       }}
     >
-      <Scanlines />
+      <Scanlines color={scanlineColor} />
 
-      {/* Artwork — right side */}
+      {/* Artwork — right side, large, partially cropped */}
       {imgSrc && (
         <div style={{
-          position: "absolute", right: "-10px", top: "50%",
-          transform: "translateY(-50%)",
-          width: "140px", height: "140px",
+          position: "absolute",
+          right: card.name === "Ghost" ? "-5px" : "-15px",
+          top: card.name === "Ghost" ? "-10px" : "50%",
+          transform: card.name === "Ghost" ? "none" : "translateY(-50%)",
+          width: "190px",
+          height: "190px",
           zIndex: 1,
-          filter: `drop-shadow(0 0 20px ${card.glow})`,
+          filter: `drop-shadow(0 0 24px ${card.glow})`,
         }}>
           <Image src={imgSrc} alt={card.name} fill style={{ objectFit: "contain" }} />
         </div>
@@ -107,22 +135,21 @@ function GameCard({ card, index, visible }: {
       {/* Left content */}
       <div style={{
         position: "relative", zIndex: 3,
-        height: "100%", width: "62%",
+        height: "100%", width: "60%",
         display: "flex", flexDirection: "column",
         justifyContent: "space-between",
-        padding: "14px 14px 12px 16px",
+        padding: "13px 12px 11px 15px",
       }}>
-        {/* Top row: brand + flag */}
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <AttaxBrand color={card.color} />
-          <FlagIcon />
+        {/* Top row: brand left, flag right (flag is outside left content — positioned absolute) */}
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <AttaxBrand dark={dark} />
         </div>
 
         {/* Category badge */}
         <div style={{
           fontSize: "0.5rem", fontWeight: 800, letterSpacing: "0.18em",
           color: card.color, textTransform: "uppercase",
-          marginTop: "4px",
+          marginTop: "6px",
         }}>
           {card.type}
         </div>
@@ -130,23 +157,22 @@ function GameCard({ card, index, visible }: {
         {/* Card name — big italic */}
         <div style={{
           fontSize: "1.75rem", fontWeight: 900, fontStyle: "italic",
-          color: "#ffffff", letterSpacing: "-0.04em", lineHeight: 0.95,
-          textShadow: `0 2px 16px rgba(0,0,0,0.4)`,
+          color: textWhite, letterSpacing: "-0.04em", lineHeight: 0.95,
           marginTop: "2px",
         }}>
           {card.name.toUpperCase()}
         </div>
 
-        {/* Effect + sub */}
-        <div style={{ marginTop: "4px" }}>
-          <div style={{ fontSize: "0.5625rem", fontWeight: 700, color: "rgba(255,255,255,0.7)", letterSpacing: "0.04em" }}>
+        {/* Effect */}
+        <div style={{ marginTop: "5px" }}>
+          <div style={{ fontSize: "0.5625rem", fontWeight: 700, color: textSub, letterSpacing: "0.04em" }}>
             {card.effect}
           </div>
         </div>
 
         {/* Description */}
         <div style={{
-          fontSize: "0.5rem", color: "rgba(255,255,255,0.45)",
+          fontSize: "0.5rem", color: textDesc,
           lineHeight: 1.5, marginTop: "6px",
           display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden",
         } as React.CSSProperties}>
@@ -154,11 +180,16 @@ function GameCard({ card, index, visible }: {
         </div>
       </div>
 
+      {/* Flag — absolute top-right */}
+      <div style={{ position: "absolute", top: "13px", right: "14px", zIndex: 4 }}>
+        <FlagIcon dark={dark} />
+      </div>
+
       {/* Number — bottom right */}
       <div style={{
         position: "absolute", bottom: "10px", right: "14px",
         fontSize: "2rem", fontWeight: 900, fontStyle: "italic",
-        color: "rgba(255,255,255,0.15)", letterSpacing: "-0.06em",
+        color: numColor, letterSpacing: "-0.06em",
         zIndex: 3, lineHeight: 1,
       }}>
         {num}
@@ -174,16 +205,16 @@ export default function CardsShowcase() {
   const { ref: cardsRef, visible: cardsVisible } = useInView<HTMLDivElement>(0.1);
 
   return (
-    <section style={{ backgroundColor: "#080808", padding: "9rem 2rem", overflow: "hidden" }}>
+    <section style={{ backgroundColor: "#0d0d0d", padding: "9rem 2rem", overflow: "hidden" }}>
       <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
-        <div className="cards-showcase-inner" style={{ display: "flex", alignItems: "center", gap: "5rem", justifyContent: "space-between" }}>
+        <div className="cards-showcase-inner" style={{ display: "flex", alignItems: "center", gap: "10rem", justifyContent: "center" }}>
 
           {/* Left: text */}
           <div ref={headerRef} className="cards-showcase-text" style={{ flex: "0 0 380px", maxWidth: "380px" }}>
             <p style={{ ...fadeUp(headerVisible, 0), fontSize: "0.6875rem", fontWeight: 700, color: "rgba(255,255,255,0.28)", letterSpacing: "0.18em", textTransform: "uppercase", margin: "0 0 1.5rem" }}>{cs.label}</p>
-            <h2 style={{ fontSize: "clamp(2.5rem, 4vw, 3.5rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.045em", lineHeight: 1.0, margin: "0 0 1.5rem" }}>
-              <div style={{ overflow: "hidden" }}><span style={clipReveal(headerVisible, 80)}>{cs.h2[0]}</span></div>
-              <div style={{ overflow: "hidden" }}><span style={clipReveal(headerVisible, 200)}>{cs.h2[1]}</span></div>
+            <h2 style={{ fontSize: "clamp(2.5rem, 4vw, 3.5rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.045em", lineHeight: 1.1, margin: "0 0 1.5rem" }}>
+              <div style={{ overflow: "hidden", paddingBottom: "0.1em" }}><span style={clipReveal(headerVisible, 80)}>{cs.h2[0]}</span></div>
+              <div style={{ overflow: "hidden", paddingBottom: "0.15em" }}><span style={clipReveal(headerVisible, 200)}>{cs.h2[1]}</span></div>
             </h2>
             <p style={{ ...fadeUp(headerVisible, 280), fontSize: "1.0625rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.8, margin: "0 0 2.5rem" }}>{cs.sub}</p>
             <div style={fadeUp(headerVisible, 360)}>
@@ -194,9 +225,9 @@ export default function CardsShowcase() {
 
           {/* Right: stacked cards */}
           <div ref={cardsRef} className="cards-showcase-fan" style={{
-            flex: 1, display: "flex", flexDirection: "column",
-            justifyContent: "center", alignItems: "flex-start",
-            gap: "1rem", paddingLeft: "1rem",
+            flex: "0 0 auto", display: "flex", flexDirection: "column",
+            justifyContent: "center", alignItems: "center",
+            gap: "1rem",
           }}>
             {cs.cards.map((card: { name: string; type: string; effect: string; desc: string; color: string; glow: string }, i: number) => (
               <GameCard key={card.name} card={card} index={i} visible={cardsVisible} />

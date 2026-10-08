@@ -7,7 +7,7 @@ function TestimonialCard({ item, index }: { item: { quote: string; name: string;
   const { ref, visible } = useInView<HTMLDivElement>(0.15);
   const isCenter = index === 1;
   return (
-    <div ref={ref} style={{
+    <div ref={ref} className={isCenter ? "testimonial-center" : ""} style={{
       ...scaleIn(visible, index * 80, 0.95),
       backgroundColor: isCenter ? "#1a1a1a" : "rgba(255,255,255,0.04)",
       border: isCenter ? "1px solid rgba(255,255,255,0.1)" : "1px solid rgba(255,255,255,0.06)",
@@ -19,8 +19,8 @@ function TestimonialCard({ item, index }: { item: { quote: string; name: string;
       gap: "2rem",
       transform: isCenter ? `${scaleIn(visible, index * 80, 0.95).transform} translateY(-16px)` : scaleIn(visible, index * 80, 0.95).transform,
     }}>
-      {/* Quote mark */}
-      <div style={{ fontSize: "4rem", lineHeight: 0.8, color: "rgba(255,255,255,0.1)", fontWeight: 800, letterSpacing: "-0.05em", fontStyle: "normal", marginBottom: "-0.5rem" }}>"</div>
+      {/* Titre du fil de ligue (ex. « LE ROI A PLIÉ ») */}
+      <div style={{ fontSize: "0.75rem", fontWeight: 800, color: "rgba(255,255,255,0.45)", letterSpacing: "0.16em" }}>{item.name}</div>
 
       {/* Quote text */}
       <p style={{ fontSize: "1.0625rem", color: isCenter ? "rgba(255,255,255,0.82)" : "rgba(255,255,255,0.55)", lineHeight: 1.75, margin: 0, flex: 1, fontWeight: 400 }}>
@@ -38,10 +38,7 @@ function TestimonialCard({ item, index }: { item: { quote: string; name: string;
         }}>
           {item.initials}
         </div>
-        <div>
-          <div style={{ fontSize: "0.9375rem", fontWeight: 700, color: "#ffffff", marginBottom: "2px" }}>{item.name}</div>
-          <div style={{ fontSize: "0.8125rem", color: "rgba(255,255,255,0.35)" }}>{item.role}</div>
-        </div>
+        <div style={{ fontSize: "0.8125rem", color: "rgba(255,255,255,0.35)" }}>{item.role}</div>
       </div>
     </div>
   );
@@ -58,8 +55,8 @@ export default function Testimonials() {
         <div ref={headerRef} style={{ marginBottom: "4rem" }}>
           <p style={{ ...fadeUp(headerVisible, 0), fontSize: "0.6875rem", fontWeight: 700, color: "rgba(255,255,255,0.28)", letterSpacing: "0.18em", textTransform: "uppercase", margin: "0 0 1.25rem" }}>{tm.label}</p>
           <h2 style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.045em", lineHeight: 1.0, margin: 0 }}>
-            <div style={{ overflow: "hidden" }}><span style={clipReveal(headerVisible, 80)}>{tm.h2[0]}</span></div>
-            <div style={{ overflow: "hidden" }}><span style={clipReveal(headerVisible, 200)}>{tm.h2[1]}</span></div>
+            <div><span style={clipReveal(headerVisible, 80)}>{tm.h2[0]}</span></div>
+            <div><span style={clipReveal(headerVisible, 200)}>{tm.h2[1]}</span></div>
           </h2>
         </div>
 

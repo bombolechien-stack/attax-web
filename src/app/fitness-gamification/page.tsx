@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -12,7 +12,7 @@ const LABEL_STYLE: React.CSSProperties = { fontSize: "0.6875rem", fontWeight: 70
 
 function Section({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "200px 1fr", gap: "4rem", alignItems: "start" }}>
+    <div className="seo-section-grid" style={{ display: "grid", gridTemplateColumns: "200px 1fr", gap: "4rem", alignItems: "start" }}>
       <div style={{ paddingTop: "0.3rem" }}><span style={LABEL_STYLE}>{label}</span></div>
       <div>{children}</div>
     </div>
@@ -153,11 +153,11 @@ const P: Record<Lang, {
     howAttax1: "Attax combines several gamification systems into a single experience.",
     howAttaxConclusion: "These systems work together to create a fitness experience that feels engaging long after traditional motivation begins to fade.",
     gamificationSystems: [
-      { title: "Real-world activity", body: "Movement powers progression. The game begins outside the screen." },
-      { title: "Daily competition", body: "Players regularly compete against real opponents. Activity influences outcomes." },
-      { title: "Strategic decisions", body: "Players make choices that affect how competitions unfold." },
-      { title: "League progression", body: "Performance contributes to rankings and advancement." },
-      { title: "Long-term objectives", body: "Progress accumulates over time. Consistency creates results." },
+      { title: "Real-world activity", body: "Your heart rate and steps, read from Apple Health or Health Connect, are the only source of points." },
+      { title: "Daily competition", body: "One duel a day against a player of your league, settled at 9:30 PM." },
+      { title: "Strategic decisions", body: "3 cards drawn every morning from a deck of 12, one to play before 1 PM." },
+      { title: "League progression", body: "Leagues of 8 players, 7 duels in 7 days, a podium at the end." },
+      { title: "Long-term objectives", body: "A global rank from Rookie to Legend that follows you from league to league." },
     ],
     secNotPerfection: "Not Perfection",
     notPerfectionH2: "The goal is not perfection",
@@ -186,10 +186,10 @@ const P: Record<Lang, {
       { q: "Is Attax a fitness game?", a: "Yes. Attax combines real-world activity with competition and progression systems inspired by games." },
       { q: "Does fitness gamification replace discipline?", a: "No. It supports discipline by making healthy habits more engaging." },
       { q: "Who benefits from fitness gamification?", a: "Beginners, experienced athletes, and anyone looking for additional motivation." },
-      { q: "Do I need a smartwatch to use Attax?", a: "Yes. Attax requires a smartwatch or fitness tracker (Apple Watch, Fitbit, Garmin, or similar) to automatically synchronize your activity through Apple Health or Health Connect." },
+      { q: "Do I need a smartwatch to use Attax?", a: "Yes. You need a device that measures your heart rate — smartwatch, fitness band or chest strap — synced with Apple Health (iPhone) or Health Connect (Android): Apple Watch, Garmin, Amazfit, COROS and more on both; Samsung Galaxy Watch and Fitbit on Android only. Your phone alone counts your steps. Attax checks your connection before your first league." },
     ],
     ctaTitle: "Turn activity into progression.",
-    ctaBody: "Join a fitness experience designed around competition, consistency, and long-term motivation. Download Attax today.",
+    ctaBody: "Duels, cards, leagues and ranks — all powered by your real activity. Download Attax and start your first duel.",
     ctaDownload: "Download Attax",
     ctaLearnMore: "Learn More",
   },
@@ -249,11 +249,11 @@ const P: Record<Lang, {
     howAttax1: "Attax combine plusieurs systèmes de gamification en une seule expérience.",
     howAttaxConclusion: "Ces systèmes fonctionnent ensemble pour créer une expérience fitness qui reste engageante bien après que la motivation traditionnelle commence à s'estomper.",
     gamificationSystems: [
-      { title: "Activité réelle", body: "Le mouvement alimente la progression. Le jeu commence en dehors de l'écran." },
-      { title: "Compétition quotidienne", body: "Les joueurs s'affrontent régulièrement contre de vrais adversaires. L'activité influence les résultats." },
-      { title: "Décisions stratégiques", body: "Les joueurs font des choix qui affectent le déroulement des compétitions." },
-      { title: "Progression en ligue", body: "Les performances contribuent aux classements et à l'avancement." },
-      { title: "Objectifs à long terme", body: "Les progrès s'accumulent au fil du temps. La régularité crée des résultats." },
+      { title: "Activité réelle", body: "Ta fréquence cardiaque et tes pas, lus dans Apple Santé ou Health Connect, sont la seule source de points." },
+      { title: "Compétition quotidienne", body: "Un duel par jour contre un joueur de ta ligue, tranché à 21h30." },
+      { title: "Décisions stratégiques", body: "3 cartes tirées chaque matin d'un deck de 12, une à jouer avant 13h." },
+      { title: "Progression en ligue", body: "Des ligues de 8 joueurs, 7 duels en 7 jours, un podium à la fin." },
+      { title: "Objectifs à long terme", body: "Un rang global de Rookie à Legend qui te suit de ligue en ligue." },
     ],
     secNotPerfection: "Pas la perfection",
     notPerfectionH2: "L'objectif n'est pas la perfection",
@@ -282,10 +282,10 @@ const P: Record<Lang, {
       { q: "Attax est-il un jeu fitness ?", a: "Oui. Attax combine l'activité réelle avec des systèmes de compétition et de progression inspirés des jeux." },
       { q: "La gamification remplace-t-elle la discipline ?", a: "Non. Elle soutient la discipline en rendant les habitudes saines plus engageantes." },
       { q: "Qui bénéficie de la gamification du fitness ?", a: "Les débutants, les athlètes expérimentés et toute personne cherchant une motivation supplémentaire." },
-      { q: "Ai-je besoin d'une montre connectée pour utiliser Attax ?", a: "Oui. Attax nécessite une montre connectée ou un tracker de fitness (Apple Watch, Fitbit, Garmin ou similaire) pour synchroniser automatiquement ton activité via Apple Health ou Health Connect." },
+      { q: "Ai-je besoin d'une montre connectée pour utiliser Attax ?", a: "Oui. Il te faut un appareil qui mesure ta fréquence cardiaque — montre, bracelet ou ceinture cardio — synchronisé avec Apple Santé (iPhone) ou Health Connect (Android) : Apple Watch, Garmin, Amazfit, COROS et d'autres sur les deux ; Samsung Galaxy Watch et Fitbit sur Android uniquement. Ton téléphone seul compte tes pas. Attax vérifie ta connexion avant ta première ligue." },
     ],
     ctaTitle: "Transforme l'activité en progression.",
-    ctaBody: "Rejoins une expérience fitness conçue autour de la compétition, de la régularité et de la motivation à long terme. Télécharge Attax aujourd'hui.",
+    ctaBody: "Duels, cartes, ligues et rangs — le tout alimenté par ton activité réelle. Télécharge Attax et lance ton premier duel.",
     ctaDownload: "Télécharger Attax",
     ctaLearnMore: "En savoir plus",
   },

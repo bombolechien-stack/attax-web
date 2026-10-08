@@ -70,7 +70,7 @@ export default function Hero() {
             </a>
           </div>
           {/* 3 stat blocks below buttons */}
-          <div className="animate-fade-up delay-300" style={{ display: "flex", gap: 0, paddingTop: "2rem", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+          <div className="hero-stats animate-fade-up delay-300" style={{ display: "flex", gap: 0, paddingTop: "2rem", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
             {h.stats.map((s, i) => (
               <div key={s.n} style={{
                 paddingLeft: i > 0 ? "2rem" : 0,

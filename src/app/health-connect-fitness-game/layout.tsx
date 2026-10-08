@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Health Connect Fitness Game for Android | Attax",
+  title: "Health Connect Fitness Game for Android",
   description:
     "Attax is the fitness game built for Android. Connect your activity through Health Connect and transform movement into competition.",
   alternates: { canonical: "https://attax.app/health-connect-fitness-game" },

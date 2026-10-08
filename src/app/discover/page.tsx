@@ -33,7 +33,7 @@ export default function DiscoverPage() {
 
   const { ref: pillarsHeaderRef, visible: pillarsHeaderVisible } = useInView<HTMLDivElement>(0.1);
   const { ref: fencingRef, visible: fencingVisible } = useInView<HTMLDivElement>(0.1);
-  const { ref: philosophyRef, visible: philosophyVisible } = useInView<HTMLDivElement>(0.1);
+  const { ref: philosophyRef, visible: philosophyVisible } = useInView<HTMLDivElement>(0.1, { oneShot: true });
   const { ref: scheduleHeaderRef, visible: scheduleHeaderVisible } = useInView<HTMLDivElement>(0.1);
 
   return (
@@ -49,7 +49,7 @@ export default function DiscoverPage() {
               <span style={{ fontSize: "0.75rem", fontWeight: 600, color: "rgba(255,255,255,0.4)", letterSpacing: "0.14em", textTransform: "uppercase" }}>{d.hero_label}</span>
             </div>
             <h1 style={{ fontSize: "clamp(3rem, 5.5vw, 4.75rem)", fontWeight: 800, color: "#ffffff", lineHeight: 1.05, letterSpacing: "-0.035em", margin: "0 0 1.25rem" }}>
-              {d.h1[0]}<br /><em style={{ fontStyle: "normal" }}>{d.h1[1]}</em>
+              {d.h1[0]}{" "}<br className="hero-h1-br" /><em style={{ fontStyle: "normal" }}>{d.h1[1]}</em>
             </h1>
             <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.75, margin: "0 0 2rem", maxWidth: "400px" }}>{d.subtitle}</p>
             <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
@@ -77,8 +77,8 @@ export default function DiscoverPage() {
             <div>
               <p className="section-label" style={{ margin: "0 0 1.25rem", ...fadeUp(pillarsHeaderVisible, 0) }}>{d.pillars_label}</p>
               <h2 style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.045em", lineHeight: 1.02, margin: 0 }}>
-                <div style={{ overflow: "hidden" }}><span style={{ display: "block", ...clipReveal(pillarsHeaderVisible, 80) }}>{d.pillars_h2[0]}</span></div>
-                <div style={{ overflow: "hidden" }}><span style={{ display: "block", ...clipReveal(pillarsHeaderVisible, 200) }}>{d.pillars_h2[1]}</span></div>
+                <div><span style={{ display: "block", ...clipReveal(pillarsHeaderVisible, 80) }}>{d.pillars_h2[0]}</span></div>
+                <div><span style={{ display: "block", ...clipReveal(pillarsHeaderVisible, 200) }}>{d.pillars_h2[1]}</span></div>
               </h2>
             </div>
             <p className="d-pillars-sub" style={{ fontSize: "1rem", color: "#888", lineHeight: 1.75, maxWidth: "300px", margin: 0, flex: "0 0 300px", ...slideRight(pillarsHeaderVisible, 180) }}>{d.pillars_sub}</p>
@@ -98,8 +98,8 @@ export default function DiscoverPage() {
             <div ref={fencingRef} className="d-fencing-text" style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "3.5rem 4rem" }}>
               <p style={{ fontSize: "0.75rem", fontWeight: 600, color: "rgba(255,255,255,0.4)", letterSpacing: "0.14em", textTransform: "uppercase", margin: "0 0 0.75rem", ...fadeIn(fencingVisible, 0) }}>{d.duel_label}</p>
               <h2 style={{ fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.04em", lineHeight: 1.05, margin: "0 0 1.25rem" }}>
-                <div style={{ overflow: "hidden" }}><span style={{ display: "block", ...clipReveal(fencingVisible, 80) }}>{d.duel_h2[0]}</span></div>
-                <div style={{ overflow: "hidden" }}><span style={{ display: "block", ...clipReveal(fencingVisible, 200) }}>{d.duel_h2[1]}</span></div>
+                <div><span style={{ display: "block", ...clipReveal(fencingVisible, 80) }}>{d.duel_h2[0]}</span></div>
+                <div><span style={{ display: "block", ...clipReveal(fencingVisible, 200) }}>{d.duel_h2[1]}</span></div>
               </h2>
               <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.75, margin: 0, ...fadeUp(fencingVisible, 280) }}>{d.duel_body.join(" ")}</p>
             </div>
@@ -113,12 +113,12 @@ export default function DiscoverPage() {
             <div>
               <p className="section-label" style={{ margin: "0 0 1.25rem", ...fadeUp(philosophyVisible, 0) }}>{d.philosophy_label}</p>
               <h2 style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.045em", lineHeight: 1.02, margin: 0 }}>
-                <div style={{ overflow: "hidden" }}><span style={{ display: "block", ...clipReveal(philosophyVisible, 80) }}>{d.philosophy_h2[0]}</span></div>
-                <div style={{ overflow: "hidden" }}><span style={{ display: "block", ...clipReveal(philosophyVisible, 200) }}>{d.philosophy_h2[1]}</span></div>
+                <div><span style={{ display: "block", ...clipReveal(philosophyVisible, 80) }}>{d.philosophy_h2[0]}</span></div>
+                <div><span style={{ display: "block", ...clipReveal(philosophyVisible, 200) }}>{d.philosophy_h2[1]}</span></div>
               </h2>
             </div>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "3rem" }}>
+          <div className="d-philosophy-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "3rem" }}>
             {d.philosophy_body.map((text: string, i: number) => (
               <p key={i} style={{ fontSize: "1.0625rem", color: i === 0 ? "#1a1a1a" : "#666", lineHeight: 1.85, margin: 0, fontWeight: i === 0 ? 500 : 400, borderTop: "1px solid #f0f0f0", paddingTop: "2rem", ...fadeUp(philosophyVisible, i * 80 + 100) }}>
                 {text}
@@ -134,8 +134,8 @@ export default function DiscoverPage() {
             <div>
               <p className="section-label" style={{ margin: "0 0 1.25rem", ...fadeUp(scheduleHeaderVisible, 0) }}>{d.schedule_label}</p>
               <h2 style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.045em", lineHeight: 1.02, margin: 0 }}>
-                <div style={{ overflow: "hidden" }}><span style={{ display: "block", ...clipReveal(scheduleHeaderVisible, 80) }}>{d.schedule_h2[0]}</span></div>
-                <div style={{ overflow: "hidden" }}><span style={{ display: "block", ...clipReveal(scheduleHeaderVisible, 200) }}>{d.schedule_h2[1]}</span></div>
+                <div><span style={{ display: "block", ...clipReveal(scheduleHeaderVisible, 80) }}>{d.schedule_h2[0]}</span></div>
+                <div><span style={{ display: "block", ...clipReveal(scheduleHeaderVisible, 200) }}>{d.schedule_h2[1]}</span></div>
               </h2>
             </div>
             <p className="d-schedule-sub" style={{ fontSize: "1rem", color: "#888", lineHeight: 1.75, maxWidth: "300px", margin: 0, flex: "0 0 300px", ...slideRight(scheduleHeaderVisible, 180) }}>{d.schedule_sub}</p>

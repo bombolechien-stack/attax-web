@@ -88,9 +88,8 @@ export function slideRight(visible: boolean, delay = 0): CSSProperties {
 export function clipReveal(visible: boolean, delay = 0): CSSProperties {
   return {
     display: "block",
-    clipPath: visible ? "inset(0 0 0% 0)" : "inset(0 0 100% 0)",
-    transform: visible ? "translateY(0)" : "translateY(10px)",
-    transition: `clip-path 0.6s ${SPRING} ${delay}ms, transform 0.6s ${SPRING} ${delay}ms`,
-    willChange: "clip-path, transform",
+    clipPath: visible ? "inset(0 0 -20% 0)" : "inset(0 0 110% 0)",
+    transition: `clip-path 0.6s ${SPRING} ${delay}ms`,
+    willChange: "clip-path",
   };
 }

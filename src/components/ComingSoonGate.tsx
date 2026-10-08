@@ -83,7 +83,11 @@ export default function ComingSoonGate({ children }: { children: React.ReactNode
   useEffect(() => {
     const isUnlocked = localStorage.getItem(SECRET_KEY) === "1";
     setUnlocked(isUnlocked);
-    if (!isUnlocked) document.body.classList.add("is-coming-soon");
+    if (isUnlocked) {
+      document.cookie = `${SECRET_KEY}=1; path=/; max-age=31536000`;
+    } else {
+      document.body.classList.add("is-coming-soon");
+    }
     return () => document.body.classList.remove("is-coming-soon");
   }, []);
 
@@ -94,6 +98,7 @@ export default function ComingSoonGate({ children }: { children: React.ReactNode
 
     if (clickCount.current >= CLICKS_NEEDED) {
       localStorage.setItem(SECRET_KEY, "1");
+      document.cookie = `${SECRET_KEY}=1; path=/; max-age=31536000`;
       setUnlocked(true);
     }
   }

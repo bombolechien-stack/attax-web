@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useT } from "@/lib/i18n";
 import { useInView, fadeUp, clipReveal, slideLeft, slideRight } from "@/hooks/useInView";
@@ -36,8 +36,8 @@ export default function HowItWorks() {
               {h.label}
             </span>
             <h2 style={{ fontSize: "clamp(3rem, 5vw, 5.5rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.055em", lineHeight: 0.9, margin: 0 }}>
-              <div style={{ overflow: "hidden" }}><span style={clipReveal(headerVisible, 0)}>{h.h2[0]}</span></div>
-              <div style={{ overflow: "hidden" }}><span style={clipReveal(headerVisible, 120)}>{h.h2[1]}</span></div>
+              <div><span style={clipReveal(headerVisible, 0)}>{h.h2[0]}</span></div>
+              <div><span style={clipReveal(headerVisible, 120)}>{h.h2[1]}</span></div>
             </h2>
           </div>
           <p className="hiw-sub" style={{ ...slideRight(headerVisible, 280), fontSize: "1rem", color: "rgba(255,255,255,0.35)", lineHeight: 1.75, maxWidth: "280px", margin: 0, flex: "0 0 280px" }}>

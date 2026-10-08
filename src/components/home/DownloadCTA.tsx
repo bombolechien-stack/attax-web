@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Image from "next/image";
 import { useInView, fadeUp, clipReveal, slideLeft } from "@/hooks/useInView";
@@ -43,8 +43,8 @@ export default function DownloadCTA() {
       <div style={{ position: "relative", zIndex: 1, maxWidth: "600px", margin: "0 auto" }}>
         <p className="section-label-light" style={{ ...fadeUp(visible, 0), margin: "0 0 2rem" }}>Download</p>
         <h2 style={{ fontSize: "clamp(2.5rem, 5vw, 4.5rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.045em", lineHeight: 1.0, margin: "0 0 1.5rem" }}>
-          <div style={{ overflow: "hidden" }}><span style={clipReveal(visible, 80)}>Ready to enter</span></div>
-          <div style={{ overflow: "hidden" }}><span style={clipReveal(visible, 220)}>the arena?</span></div>
+          <div><span style={clipReveal(visible, 80)}>Ready to enter</span></div>
+          <div><span style={clipReveal(visible, 220)}>the arena?</span></div>
         </h2>
         <p style={{ ...slideLeft(visible, 380), fontSize: "1.0625rem", color: "rgba(255,255,255,0.4)", lineHeight: 1.75, margin: "0 auto 3rem", maxWidth: "380px" }}>
           Download Attax and start turning your activity into victories.

@@ -114,7 +114,7 @@ export default function PressPage() {
             </h1>
             <p style={{ fontSize: "1.0625rem", color: "rgba(255,255,255,0.42)", lineHeight: 1.7, margin: "0 0 2.5rem", maxWidth: "480px" }}>{p.hero_sub}</p>
             <a
-              href="mailto:press@attax.app"
+              href="mailto:contact@attax.app"
               style={{ display: "inline-flex", alignItems: "center", gap: "8px", backgroundColor: "#ffffff", color: "#0d0d0d", fontWeight: 700, fontSize: "0.9375rem", padding: "13px 26px", borderRadius: "999px", textDecoration: "none", alignSelf: "flex-start" }}
             >
               {p.hero_cta}
@@ -127,7 +127,7 @@ export default function PressPage() {
         <div style={{ maxWidth: "72rem", margin: "0 auto", padding: "7rem 4rem" }}>
 
           {/* Contact */}
-          <div style={{ display: "grid", gridTemplateColumns: "200px 1fr", gap: "4rem", alignItems: "start" }}>
+          <div className="seo-section-grid" style={{ display: "grid", gridTemplateColumns: "200px 1fr", gap: "4rem", alignItems: "start" }}>
             <span style={LABEL}>{p.contact_label}</span>
             <div>
               <h2 style={{ fontSize: "clamp(1.75rem, 3vw, 2.5rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.04em", lineHeight: 1.1, margin: "0 0 1.25rem" }}>{p.contact_title}</h2>
@@ -145,7 +145,7 @@ export default function PressPage() {
           <hr style={RULE} />
 
           {/* Key Facts */}
-          <div style={{ display: "grid", gridTemplateColumns: "200px 1fr", gap: "4rem", alignItems: "start" }}>
+          <div className="seo-section-grid" style={{ display: "grid", gridTemplateColumns: "200px 1fr", gap: "4rem", alignItems: "start" }}>
             <span style={LABEL}>{p.facts_label}</span>
             <div>
               <h2 style={{ fontSize: "clamp(1.75rem, 3vw, 2.5rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.04em", lineHeight: 1.1, margin: "0 0 2.5rem" }}>{p.facts_title}</h2>
@@ -163,7 +163,7 @@ export default function PressPage() {
           <hr style={RULE} />
 
           {/* Brand Assets — Logos */}
-          <div style={{ display: "grid", gridTemplateColumns: "200px 1fr", gap: "4rem", alignItems: "start" }}>
+          <div className="seo-section-grid" style={{ display: "grid", gridTemplateColumns: "200px 1fr", gap: "4rem", alignItems: "start" }}>
             <span style={LABEL}>{p.assets_label}</span>
             <div>
               <h2 style={{ fontSize: "clamp(1.75rem, 3vw, 2.5rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.04em", lineHeight: 1.1, margin: "0 0 0.75rem" }}>{p.assets_title}</h2>
@@ -191,7 +191,7 @@ export default function PressPage() {
           <hr style={RULE} />
 
           {/* Screenshots */}
-          <div style={{ display: "grid", gridTemplateColumns: "200px 1fr", gap: "4rem", alignItems: "start" }}>
+          <div className="seo-section-grid" style={{ display: "grid", gridTemplateColumns: "200px 1fr", gap: "4rem", alignItems: "start" }}>
             <span style={LABEL}>{p.screenshots_label}</span>
             <div>
               <h2 style={{ fontSize: "clamp(1.75rem, 3vw, 2.5rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.04em", lineHeight: 1.1, margin: "0 0 0.75rem" }}>{p.screenshots_title}</h2>
@@ -213,7 +213,7 @@ export default function PressPage() {
           <hr style={RULE} />
 
           {/* About */}
-          <div style={{ display: "grid", gridTemplateColumns: "200px 1fr", gap: "4rem", alignItems: "start" }}>
+          <div className="seo-section-grid" style={{ display: "grid", gridTemplateColumns: "200px 1fr", gap: "4rem", alignItems: "start" }}>
             <span style={LABEL}>{p.about_label}</span>
             <div>
               <h2 style={{ fontSize: "clamp(1.75rem, 3vw, 2.5rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.04em", lineHeight: 1.1, margin: "0 0 1.5rem" }}>{p.about_title}</h2>
@@ -235,10 +235,10 @@ export default function PressPage() {
               {lang === "en" ? "Our team is available for interviews, demos, and media requests." : "Notre équipe est disponible pour les interviews, démos et demandes médias."}
             </p>
             <a
-              href="mailto:press@attax.app"
+              href="mailto:contact@attax.app"
               style={{ display: "inline-flex", alignItems: "center", gap: "8px", backgroundColor: "#0d0d0d", color: "#fff", fontWeight: 700, fontSize: "0.9375rem", padding: "14px 30px", borderRadius: "999px", textDecoration: "none" }}
             >
-              press@attax.app
+              contact@attax.app
             </a>
           </div>
 

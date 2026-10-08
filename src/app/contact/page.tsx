@@ -76,7 +76,7 @@ export default function ContactPage() {
           <PageNavbar />
           <div ref={heroTextRef} className="contact-hero-content" style={{ position: "relative", zIndex: 3, flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "3rem 4rem 4rem", textAlign: "center" }}>
             <p style={{ ...fadeUp(heroTextVisible, 0), fontSize: "0.75rem", fontWeight: 600, letterSpacing: "0.14em", color: "rgba(255,255,255,0.4)", textTransform: "uppercase", margin: "0 0 1.25rem" }}>{c.hero_label}</p>
-            <div style={{ overflow: "hidden" }}>
+            <div>
               <h1 style={{ ...clipReveal(heroTextVisible, 80), fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800, color: "#ffffff", lineHeight: 1.02, letterSpacing: "-0.035em", margin: "0 0 1.25rem" }}>{c.h1}</h1>
             </div>
             <p style={{ ...fadeUp(heroTextVisible, 200), fontSize: "1.0625rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.7, maxWidth: "440px", margin: "0 auto 2.5rem" }}>{c.subtitle}</p>
@@ -151,7 +151,7 @@ export default function ContactPage() {
         <div style={{ maxWidth: "52rem", margin: "0 auto" }}>
           <div ref={faqHeaderRef}>
             <p style={{ ...fadeUp(faqHeaderVisible, 0), fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#aaa", margin: "0 0 1.25rem" }}>{c.faq_label}</p>
-            <div style={{ overflow: "hidden" }}>
+            <div>
               <h2 style={{ ...clipReveal(faqHeaderVisible, 80), fontSize: "clamp(2rem, 3.5vw, 2.75rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.04em", lineHeight: 1.05, margin: "0 0 3.5rem" }}>{c.faq_h2}</h2>
             </div>
           </div>
@@ -166,7 +166,7 @@ export default function ContactPage() {
       <section style={{ backgroundColor: "#0d0d0d", padding: "7rem 2rem" }}>
         <div ref={communityRef} style={{ maxWidth: "52rem", margin: "0 auto" }}>
           <p style={{ ...fadeUp(communityVisible, 0), fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", margin: "0 0 1.25rem" }}>{c.community_label}</p>
-          <div style={{ overflow: "hidden" }}>
+          <div>
             <h2 style={{ ...clipReveal(communityVisible, 80), fontSize: "clamp(2rem, 3.5vw, 2.75rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.04em", lineHeight: 1.05, margin: "0 0 3.5rem" }}>{c.community_h2}</h2>
           </div>
           <div className="community-links-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1.5rem" }}>

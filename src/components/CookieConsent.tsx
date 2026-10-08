@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useLang } from "@/lib/i18n";
 
 const KEY = "attax_cookie_consent";
 
@@ -8,16 +9,14 @@ export default function CookieConsent() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    if (localStorage.getItem("attax_preview_unlocked") !== "1") return;
     if (!localStorage.getItem(KEY)) setVisible(true);
   }, []);
 
+  const { lang } = useLang();
+
   function accept() {
     localStorage.setItem(KEY, "accepted");
-    setVisible(false);
-  }
-
-  function decline() {
-    localStorage.setItem(KEY, "declined");
     setVisible(false);
   }
 
@@ -50,31 +49,12 @@ export default function CookieConsent() {
         lineHeight: 1.6,
         minWidth: "200px",
       }}>
-        We use cookies to understand how you use Attax and improve your experience.{" "}
+        {lang === "fr" ? "Zéro pub, zéro pistage : ce site ne retient que ta langue et tes préférences." : "No ads, no tracking: this site only stores your language and preferences."}{" "}
         <a href="/cookie-policy" style={{ color: "#0d0d0d", fontWeight: 600, textDecoration: "underline", textUnderlineOffset: "2px" }}>
-          Learn more
+          {lang === "fr" ? "En savoir plus" : "Learn more"}
         </a>
       </p>
       <div style={{ display: "flex", gap: "8px", flexShrink: 0 }}>
-        <button
-          onClick={decline}
-          style={{
-            padding: "9px 20px",
-            borderRadius: "999px",
-            border: "1px solid #e0e0e0",
-            backgroundColor: "#ffffff",
-            color: "#666",
-            fontSize: "0.875rem",
-            fontWeight: 600,
-            fontFamily: "inherit",
-            cursor: "pointer",
-            transition: "border-color 0.15s",
-          }}
-          onMouseEnter={e => (e.currentTarget.style.borderColor = "#bbb")}
-          onMouseLeave={e => (e.currentTarget.style.borderColor = "#e0e0e0")}
-        >
-          Decline
-        </button>
         <button
           onClick={accept}
           style={{
@@ -92,7 +72,7 @@ export default function CookieConsent() {
           onMouseEnter={e => (e.currentTarget.style.opacity = "0.82")}
           onMouseLeave={e => (e.currentTarget.style.opacity = "1")}
         >
-          Accept
+          OK
         </button>
       </div>
     </div>

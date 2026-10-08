@@ -76,8 +76,8 @@ export default function DailyLoop() {
           <div ref={headerRef} className="dl-loop-header" style={{ position: "sticky", top: "8rem" }}>
             <p className="section-label" style={{ ...fadeUp(headerVisible, 0), margin: "0 0 1.5rem" }}>{d.label}</p>
             <h2 style={{ fontSize: "clamp(2.5rem, 4.5vw, 3.75rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.045em", lineHeight: 1.0, margin: "0 0 1.5rem" }}>
-              <div style={{ overflow: "hidden" }}><span style={clipReveal(headerVisible, 80)}>{d.h2[0]}</span></div>
-              <div style={{ overflow: "hidden" }}><span style={clipReveal(headerVisible, 200)}>{d.h2[1]}</span></div>
+              <div><span style={clipReveal(headerVisible, 80)}>{d.h2[0]}</span></div>
+              <div><span style={clipReveal(headerVisible, 200)}>{d.h2[1]}</span></div>
             </h2>
             <p style={{ ...slideLeft(headerVisible, 280), fontSize: "1.0625rem", color: "#aaa", lineHeight: 1.75, margin: 0 }}>{d.sub}</p>
           </div>

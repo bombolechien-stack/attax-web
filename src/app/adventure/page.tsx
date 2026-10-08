@@ -54,7 +54,7 @@ export default function AdventurePage() {
               <span style={{ fontSize: "0.75rem", fontWeight: 600, color: "rgba(255,255,255,0.4)", letterSpacing: "0.14em", textTransform: "uppercase" }}>{a.hero_label}</span>
             </div>
             <h1 style={{ fontSize: "clamp(3rem, 5.5vw, 4.75rem)", fontWeight: 800, color: "#ffffff", lineHeight: 1.02, letterSpacing: "-0.035em", margin: "0 0 1.5rem" }}>
-              {a.h1[0]}<br /><em style={{ fontStyle: "normal" }}>{a.h1[1]}</em>
+              {a.h1[0]}{" "}<br className="hero-h1-br" /><em style={{ fontStyle: "normal" }}>{a.h1[1]}</em>
             </h1>
             <p style={{ fontSize: "1.0625rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.75, margin: "0 0 2.5rem", maxWidth: "420px" }}>{a.subtitle}</p>
             <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
@@ -82,8 +82,8 @@ export default function AdventurePage() {
             <div>
               <p className="section-label" style={{ ...fadeUp(storyHeaderVisible, 0), margin: "0 0 1.25rem" }}>{a.story_label}</p>
               <h2 style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.045em", lineHeight: 1.02, margin: 0 }}>
-                <div style={{ overflow: "hidden" }}><span style={clipReveal(storyHeaderVisible, 80)}>{a.story_h2[0]}</span></div>
-                <div style={{ overflow: "hidden" }}><span style={clipReveal(storyHeaderVisible, 200)}>{a.story_h2[1]}</span></div>
+                <div><span style={clipReveal(storyHeaderVisible, 80)}>{a.story_h2[0]}</span></div>
+                <div><span style={clipReveal(storyHeaderVisible, 200)}>{a.story_h2[1]}</span></div>
               </h2>
             </div>
             <p className="adv-story-sub" style={{ ...slideRight(storyHeaderVisible, 200), fontSize: "1rem", color: "#888", lineHeight: 1.75, maxWidth: "300px", margin: 0, flex: "0 0 300px" }}>{a.story_sub}</p>
@@ -124,8 +124,8 @@ export default function AdventurePage() {
               <div ref={valuesHeaderRef}>
                 <p className="section-label" style={{ ...fadeUp(valuesHeaderVisible, 0), margin: "0 0 1.25rem" }}>{a.values_label}</p>
                 <h2 style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.04em", lineHeight: 1.05, margin: "0 0 3rem" }}>
-                  <div style={{ overflow: "hidden" }}><span style={clipReveal(valuesHeaderVisible, 80)}>{a.values_h2[0]}</span></div>
-                  <div style={{ overflow: "hidden" }}><span style={clipReveal(valuesHeaderVisible, 200)}>{a.values_h2[1]}</span></div>
+                  <div><span style={clipReveal(valuesHeaderVisible, 80)}>{a.values_h2[0]}</span></div>
+                  <div><span style={clipReveal(valuesHeaderVisible, 200)}>{a.values_h2[1]}</span></div>
                 </h2>
               </div>
               <hr className="rule" />

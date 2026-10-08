@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Image from "next/image";
 import { useT } from "@/lib/i18n";
@@ -21,8 +21,8 @@ export default function ArenaSection() {
       <div style={{ position: "absolute", inset: 0, zIndex: 2, pointerEvents: "none", backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E\")", backgroundRepeat: "repeat", backgroundSize: "300px 300px" }} />
       <div ref={textRef} style={{ position: "relative", zIndex: 3, padding: "8rem clamp(2rem, 10vw, 10rem)", width: "100%", maxWidth: "900px" }}>
         <p style={{ fontSize: "clamp(3.5rem, 9vw, 10rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.06em", lineHeight: 0.87, margin: "0 0 4rem" }}>
-          <div style={{ overflow: "hidden" }}><span style={clipReveal(visible, 0)}>{a.h2[0]}</span></div>
-          <div style={{ overflow: "hidden" }}><span style={clipReveal(visible, 180)}>{a.h2[1]}</span></div>
+          <div><span style={clipReveal(visible, 0)}>{a.h2[0]}</span></div>
+          <div><span style={clipReveal(visible, 180)}>{a.h2[1]}</span></div>
         </p>
         <p style={{ ...slideLeft(visible, 380), fontSize: "clamp(1rem, 1.3vw, 1.125rem)", color: "rgba(255,255,255,0.32)", lineHeight: 1.75, margin: "0 0 3.5rem", maxWidth: "360px" }}>
           {a.body[0]}<br />{a.body[1]}

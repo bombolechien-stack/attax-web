@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Image from "next/image";
 import { useT } from "@/lib/i18n";
@@ -23,14 +23,14 @@ export default function VisualGrid() {
         <p style={{ ...fadeUp(headerVisible, 0), textAlign: "center", fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(0,0,0,0.3)", margin: "0 0 1.25rem" }}>
           {v.label}
         </p>
-        <div style={{ overflow: "hidden" }}>
+        <div>
           <h2 style={{ ...clipReveal(headerVisible, 100), textAlign: "center", fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.05em", lineHeight: 1.0, margin: "0 0 5rem" }}>
             {v.h2}
           </h2>
         </div>
       </div>
 
-      <div ref={phonesRef} className="vg-container" style={{ display: "flex", justifyContent: "center", alignItems: "flex-end", gap: "0", marginBottom: "2.5rem" }}>
+      <div ref={phonesRef} className="vg-phones-wrap" style={{ display: "flex", justifyContent: "center", alignItems: "flex-end", gap: "0", marginBottom: "2.5rem" }}>
         {v.phones.map((p, i) => {
           const W = 500 * SCALES[i];
           const H = W * (873 / 760);
@@ -42,7 +42,7 @@ export default function VisualGrid() {
               className={isSide ? "vg-phone-side" : "vg-phone-center"}
               style={{ ...scaleIn(phonesVisible, delay, 0.92), width: W, height: H, position: "relative", flexShrink: 0, filter: "drop-shadow(0 24px 48px rgba(0,0,0,0.18))" }}
             >
-              <Image src={SRCS[i]} alt={p.label} fill style={{ objectFit: "contain" }} />
+              <Image src={SRCS[i]} alt={p.label} fill quality={90} sizes="(max-width: 768px) 90vw, 500px" style={{ objectFit: "contain" }} />
             </div>
           );
         })}
@@ -54,7 +54,7 @@ export default function VisualGrid() {
           return (
             <div
               key={i}
-              className={isSide ? "vg-label-side" : ""}
+              className={isSide ? "vg-label-side" : "vg-label-center"}
               style={{ width: 500 * SCALES[i], flexShrink: 0, textAlign: "center", padding: "0 1.5rem" }}
             >
               <h3 style={{ fontSize: "1.125rem", fontWeight: 700, letterSpacing: "-0.025em", color: "#0d0d0d", margin: "0 0 0.5rem" }}>{p.label}</h3>

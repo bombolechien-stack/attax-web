@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/adventure`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/contact`, lastModified: now, changeFrequency: "yearly", priority: 0.5 },
     { url: `${BASE}/download`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/faq`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/what-is-attax`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/how-attax-works`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/fitness-gamification`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },

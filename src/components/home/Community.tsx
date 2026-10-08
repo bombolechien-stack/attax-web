@@ -73,16 +73,16 @@ export default function Community() {
         {/* Social row */}
         <InView style={{ marginTop: "4rem", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "2rem", flexWrap: "wrap" }}>
           <div>
-            <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.14em", color: "#aaa", textTransform: "uppercase", margin: "0 0 0.5rem" }}>#gowithattax</p>
+            <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.14em", color: "#aaa", textTransform: "uppercase", margin: "0 0 0.5rem" }}>#playattax</p>
             <h3 style={{ fontSize: "clamp(1.5rem, 2.5vw, 2rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.03em", margin: 0, lineHeight: 1.1 }}>
               A community on the move.
             </h3>
           </div>
           <div style={{ display: "flex", gap: "10px" }}>
             {[
-              { label: "Instagram", href: "https://instagram.com/attax.app" },
-              { label: "TikTok", href: "https://tiktok.com/@attax.app" },
-              { label: "YouTube", href: "https://youtube.com/@attax" },
+              { label: "Instagram", href: "https://instagram.com/playattax" },
+              { label: "TikTok", href: "https://tiktok.com/@playattax" },
+              { label: "YouTube", href: "https://youtube.com/@playattax" },
             ].map(s => (
               <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" style={{
                 fontSize: "0.875rem", fontWeight: 600, color: "#0d0d0d",

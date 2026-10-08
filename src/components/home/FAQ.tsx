@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import { useT } from "@/lib/i18n";
@@ -21,6 +21,9 @@ export default function FAQ() {
               {f.contact_text}{" "}
               <a href="/contact" style={{ color: "#0d0d0d", fontWeight: 600, textDecoration: "underline" }}>{f.contact_link}</a>.
             </p>
+            <a href="/faq" style={{ display: "inline-flex", marginTop: "1.75rem", backgroundColor: "#0d0d0d", color: "#ffffff", fontWeight: 700, fontSize: "0.875rem", padding: "12px 22px", borderRadius: "999px", textDecoration: "none" }}>
+              {f.all_link} →
+            </a>
           </div>
           <div>
             {f.items.map((faq, i) => (
