@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import PageNavbar from "@/components/PageNavbar";
 import { useLang } from "@/lib/i18n";
-import { PRESS_CONTENT, KIT_URL, LOGOS, SCREENS, CARDS } from "./content";
+import { PRESS_CONTENT, KIT_URL, LOGOS, SCREENS } from "./content";
 
 const LABEL: React.CSSProperties = {
   fontSize: "0.6875rem", fontWeight: 700, color: "#aaa",
@@ -243,24 +243,6 @@ export default function PressPage() {
                   <p style={{ fontSize: "0.8125rem", color: "#aaa", margin: "0 0 0.75rem" }}>{p.screens[i].caption}</p>
                   <a href={s.file} download style={PILL}><DownloadIcon /> {p.download}</a>
                 </div>
-              ))}
-            </div>
-          </Section>
-
-          <hr style={RULE} />
-
-          {/* Cartes */}
-          <Section label={p.cards_label}>
-            <h2 style={H2}>{p.cards_title}</h2>
-            <p style={SUB}>{p.cards_sub}</p>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(120px, 1fr))", gap: "0.75rem" }}>
-              {CARDS.map((c) => (
-                <a key={c} href={`/cards/${c}.png`} download={`attax-card-${c}.png`} style={{ textDecoration: "none", backgroundColor: "#111", borderRadius: "14px", padding: "0.75rem 0.75rem 0.9rem", display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem" }}>
-                  <div style={{ position: "relative", width: "100%", paddingBottom: "100%" }}>
-                    <Image src={`/cards/${c}.png`} alt={c} fill sizes="140px" style={{ objectFit: "contain" }} />
-                  </div>
-                  <span style={{ fontSize: "0.75rem", fontWeight: 800, color: "#fff", letterSpacing: "0.12em", textTransform: "uppercase" }}>{c}</span>
-                </a>
               ))}
             </div>
           </Section>

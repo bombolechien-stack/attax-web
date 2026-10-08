@@ -12,7 +12,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 PUB = ROOT / "public"
 PRESS = PUB / "press"
-CARDS = ["spike", "overdrive", "recover", "shield", "freeze", "pressure", "parasite", "scan", "mirage", "ghost", "blackout", "counter"]
 SCREENS = {"screenactivity.png": "attax-activity.png", "screenmatch.png": "attax-match.png", "screencards.png": "attax-cards.png"}
 
 # Captures téléchargeables une à une depuis la page
@@ -44,8 +43,6 @@ with zipfile.ZipFile(kit, "w", zipfile.ZIP_DEFLATED) as z:
     for dst in SCREENS.values():
         z.write(PRESS / "screens" / dst, f"attax-press-kit/screenshots/{dst}")
     z.write(PRESS / "attax-match-video.mp4", "attax-press-kit/video/attax-match-video.mp4")
-    for n in CARDS:
-        z.write(PUB / "cards" / f"{n}.png", f"attax-press-kit/cards/attax-card-{n}.png")
     for lang in ("fr", "en"):
         z.writestr(f"attax-press-kit/{'Attax_presentation_FR' if lang == 'fr' else 'Attax_press_EN'}.md", markdown(content[lang], lang))
 print(f"{kit} — {kit.stat().st_size / 1e6:.1f} MB")

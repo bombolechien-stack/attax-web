@@ -16,8 +16,6 @@ export const SCREENS = [
   { src: "/screens/screencards.png", file: "/press/screens/attax-cards.png" },
 ];
 
-export const CARDS = ["spike", "overdrive", "recover", "shield", "freeze", "pressure", "parasite", "scan", "mirage", "ghost", "blackout", "counter"];
-
 type Text = { label: string; body: string };
 export type PressContent = {
   meta_title: string; meta_desc: string;
@@ -33,7 +31,6 @@ export type PressContent = {
   colors_label: string; colors: { name: string; hex: string; usage: string }[]; font_label: string; font_value: string;
   media_label: string; media_title: string; media_sub: string; video_title: string; video_caption: string;
   screens: { label: string; caption: string }[]; download: string;
-  cards_label: string; cards_title: string; cards_sub: string;
   rules_label: string; rules_title: string; rules_do_title: string; rules_do: string[]; rules_dont_title: string; rules_dont: string[];
   contact_label: string; contact_title: string; contact_body: string; contact_email: string; contact_response: string;
 };
@@ -47,14 +44,13 @@ export const PRESS_CONTENT: Record<"en" | "fr", PressContent> = {
     hero_sub: "Journalists, bloggers, creators: logos, screenshots, a gameplay video, ready-to-use texts and key facts. Download the kit and tell the story your way.",
     hero_cta: "Download the press kit",
     hero_cta2: "Contact us",
-    kit_note: "ZIP · 29 MB · logos, screenshots, card artwork, video, texts",
+    kit_note: "ZIP · logos, screenshots, video, texts",
     kit_label: "THE KIT",
     kit_title: "What's inside.",
     kit_items: [
       { title: "Logos", desc: "Full logo, icon and wordmark — black and white, SVG and PNG." },
       { title: "App screenshots", desc: "Activity, daily duel and strategy cards, in high resolution." },
       { title: "Gameplay video", desc: "A 12-second loop of a live duel: fighters, strikes, scores." },
-      { title: "Card artwork", desc: "The 12 strategy cards of the game." },
       { title: "Ready-to-use texts", desc: "Attax in one sentence, one paragraph and a long version — in English and French." },
     ],
     facts_label: "KEY FACTS",
@@ -131,9 +127,6 @@ export const PRESS_CONTENT: Record<"en" | "fr", PressContent> = {
       { label: "Strategy cards", caption: "The cards of the day" },
     ],
     download: "Download",
-    cards_label: "STRATEGY CARDS",
-    cards_title: "The 12 cards.",
-    cards_sub: "Every morning, 3 of these cards are drawn. Each player plays one.",
     rules_label: "GUIDELINES",
     rules_title: "A few simple rules.",
     rules_do_title: "Please do",
@@ -154,14 +147,13 @@ export const PRESS_CONTENT: Record<"en" | "fr", PressContent> = {
     hero_sub: "Journalistes, blogueurs, créateurs : logos, captures, vidéo de jeu, textes prêts à l'emploi et chiffres clés. Télécharge le kit et raconte l'histoire à ta façon.",
     hero_cta: "Télécharger le kit presse",
     hero_cta2: "Nous contacter",
-    kit_note: "ZIP · 29 Mo · logos, captures, visuels des cartes, vidéo, textes",
+    kit_note: "ZIP · logos, captures, vidéo, textes",
     kit_label: "LE KIT",
     kit_title: "Ce qu'il contient.",
     kit_items: [
       { title: "Logos", desc: "Logo complet, icône et logotype — noir et blanc, en SVG et PNG." },
       { title: "Captures de l'app", desc: "Activité, duel du jour et cartes stratégiques, en haute résolution." },
       { title: "Vidéo de jeu", desc: "Une boucle de 12 secondes d'un duel en direct : combattants, frappes, scores." },
-      { title: "Visuels des cartes", desc: "Les 12 cartes stratégiques du jeu." },
       { title: "Textes prêts à l'emploi", desc: "Attax en une phrase, en un paragraphe et en version longue — en français et en anglais." },
     ],
     facts_label: "CHIFFRES CLÉS",
@@ -238,9 +230,6 @@ export const PRESS_CONTENT: Record<"en" | "fr", PressContent> = {
       { label: "Cartes stratégiques", caption: "Les cartes du jour" },
     ],
     download: "Télécharger",
-    cards_label: "CARTES STRATÉGIQUES",
-    cards_title: "Les 12 cartes.",
-    cards_sub: "Chaque matin, 3 de ces cartes sont tirées. Chaque joueur en joue une.",
     rules_label: "BONNES PRATIQUES",
     rules_title: "Quelques règles simples.",
     rules_do_title: "À faire",
