@@ -43,6 +43,15 @@ export default function VisualGrid() {
               style={{ ...scaleIn(phonesVisible, delay, 0.92), width: W, height: H, position: "relative", flexShrink: 0, filter: "drop-shadow(0 24px 48px rgba(0,0,0,0.18))" }}
             >
               <Image src={SRCS[i]} alt={p.label} fill quality={90} sizes="(max-width: 768px) 90vw, 500px" style={{ objectFit: "contain" }} />
+              {i === 1 && (
+                // Combat animé (rendu par le moteur de l'app, tools/attax-export/render-site-match.mjs)
+                // posé exactement sur la zone de match de la capture.
+                <video
+                  src="/screens/match-live.mp4"
+                  autoPlay muted loop playsInline preload="auto" aria-hidden="true"
+                  style={{ position: "absolute", left: "29.044%", top: "33.784%", width: "41.912%", height: "50%", objectFit: "fill", pointerEvents: "none" }}
+                />
+              )}
             </div>
           );
         })}

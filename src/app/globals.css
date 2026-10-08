@@ -524,6 +524,7 @@ html { overflow-x: clip; }
 
   /* ── What-is-attax / secondary content pages ── */
   .seo-section-grid { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
+  .press-wrap { padding: 4rem 1.25rem !important; }
 
   /* ── PrivacyStrip ── */
   .privacy-inner { flex-direction: column !important; gap: 2rem !important; }
