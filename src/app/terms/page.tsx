@@ -33,7 +33,7 @@ function ContentEn() {
         <div style={SECTION}>
           <h2 style={H2}>4. User Accounts</h2>
           <p style={P}>You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account. You agree to provide accurate information during registration — including your year of birth, which is used to calculate your activity points — and to keep it up to date.</p>
-          <p style={P}>You can delete your account at any time from the App (My account → Delete my account) or by contacting us. Deletion is permanent.</p>
+          <p style={P}>You can delete your account at any time from the App (My account → My profile → Delete my account) or by contacting us. Deletion is permanent.</p>
         </div>
 
         <div style={SECTION}>
@@ -102,7 +102,7 @@ function ContentFr() {
         <div style={SECTION}>
           <h2 style={H2}>4. Comptes</h2>
           <p style={P}>Tu es responsable de la confidentialité de tes identifiants et de toute activité réalisée avec ton compte. Tu t'engages à fournir des informations exactes à l'inscription — y compris ton année de naissance, utilisée dans le calcul de tes points d'activité — et à les tenir à jour.</p>
-          <p style={P}>Tu peux supprimer ton compte à tout moment depuis l'App (Mon compte → Supprimer mon compte) ou en nous contactant. La suppression est définitive.</p>
+          <p style={P}>Tu peux supprimer ton compte à tout moment depuis l'App (Mon compte → Mon profil → Supprimer mon compte) ou en nous contactant. La suppression est définitive.</p>
         </div>
 
         <div style={SECTION}>

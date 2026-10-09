@@ -89,7 +89,7 @@ function ContentEn() {
 
         <div style={SECTION} id="delete-account">
           <h2 style={H2}>8. How to Delete Your Account</h2>
-          <p style={P}><strong>In the app:</strong> open Attax, tap your profile photo at the top of the Home screen → <em>My account</em> → <em>Delete my account</em>, then confirm. Deletion is immediate.</p>
+          <p style={P}><strong>In the app:</strong> open Attax, tap your profile photo at the top of the Home screen → <em>My account</em> → <em>My profile</em> → <em>Delete my account</em> (at the bottom of the page), then confirm twice. Deletion is immediate.</p>
           <p style={P}><strong>Without the app:</strong> email <a href="mailto:contact@attax.app?subject=Delete%20my%20Attax%20account" style={LINK}>contact@attax.app</a> from the email address of your account with the subject "Delete my Attax account". We delete it within 7 days and confirm by email.</p>
           <p style={P}>What is deleted: your account (email, password, username, first name, country, year of birth), your profile photo, all your health and activity data, points, duel history, rankings, notifications, reports and push tokens. Nothing is kept except anonymous aggregated statistics.</p>
         </div>
@@ -193,7 +193,7 @@ function ContentFr() {
 
         <div style={SECTION} id="delete-account">
           <h2 style={H2}>8. Supprimer ton compte</h2>
-          <p style={P}><strong>Dans l'app :</strong> ouvre Attax, touche ta photo de profil en haut de l'Accueil → <em>Mon compte</em> → <em>Supprimer mon compte</em>, puis confirme. La suppression est immédiate.</p>
+          <p style={P}><strong>Dans l'app :</strong> ouvre Attax, touche ta photo de profil en haut de l'Accueil → <em>Mon compte</em> → <em>Mon profil</em> → <em>Supprimer mon compte</em> (en bas de la page), puis confirme deux fois. La suppression est immédiate.</p>
           <p style={P}><strong>Sans l'app :</strong> écris à <a href="mailto:contact@attax.app?subject=Supprimer%20mon%20compte%20Attax" style={LINK}>contact@attax.app</a> depuis l'adresse e-mail de ton compte, avec l'objet « Supprimer mon compte Attax ». Nous le supprimons sous 7 jours et te le confirmons par e-mail.</p>
           <p style={P}>Ce qui est supprimé : ton compte (e-mail, mot de passe, pseudo, prénom, pays, année de naissance), ta photo de profil, toutes tes données de santé et d'activité, tes points, ton historique de duels, tes classements, tes notifications, tes signalements et tes jetons de notifications. Rien n'est conservé, à part des statistiques anonymes et agrégées.</p>
         </div>
