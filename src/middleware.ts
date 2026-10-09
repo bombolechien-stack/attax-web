@@ -11,8 +11,11 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(url, 301);
   }
 
-  const unlocked = request.cookies.get("attax_preview_unlocked")?.value === "1";
   const { pathname } = request.nextUrl;
+  // playattax.com : domaine de pré-lancement → UNIQUEMENT la page liste d'attente (« / »),
+  // jamais le site complet (même avec le cookie de prévisualisation), et non indexé.
+  const waitlistOnly = host.includes("playattax");
+  const unlocked = !waitlistOnly && request.cookies.get("attax_preview_unlocked")?.value === "1";
 
   const isStaticAsset = /\.(mp4|webm|mov|png|jpg|jpeg|gif|webp|svg|ico|css|js|json|txt|xml|woff|woff2|ttf)$/i.test(pathname);
 
@@ -20,10 +23,14 @@ export function middleware(request: NextRequest) {
     const url = request.nextUrl.clone();
     url.pathname = "/";
     url.search = "";
-    return NextResponse.redirect(url, 307);
+    const r = NextResponse.redirect(url, 307);
+    if (waitlistOnly) r.headers.set("X-Robots-Tag", "noindex, nofollow");
+    return r;
   }
 
-  return NextResponse.next();
+  const res = NextResponse.next();
+  if (waitlistOnly) res.headers.set("X-Robots-Tag", "noindex, nofollow");
+  return res;
 }
 
 export const config = {

@@ -9,18 +9,24 @@ function WaitlistForm() {
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [website, setWebsite] = useState(""); // champ piège anti-robots (invisible)
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setLoading(true);
+    setLoading(true); setError(false);
     try {
-      await fetch("/api/waitlist", {
+      const lang = typeof navigator !== "undefined" ? navigator.language : "";
+      const res = await fetch("/api/waitlist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, lang, website }),
       });
-    } catch { /* fail silently */ }
-    setSent(true);
+      if (!res.ok) throw new Error(String(res.status));
+      setSent(true);
+    } catch {
+      setError(true); // l'adresse n'a PAS été enregistrée → on le dit
+    }
     setLoading(false);
   }
 
@@ -32,6 +38,11 @@ function WaitlistForm() {
 
   return (
     <form onSubmit={handleSubmit} style={{ display: "flex", gap: "8px", flexWrap: "wrap", justifyContent: "center" }}>
+      <input
+        type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true"
+        value={website} onChange={e => setWebsite(e.target.value)}
+        style={{ position: "absolute", left: "-10000px", width: 1, height: 1, opacity: 0 }}
+      />
       <input
         type="email"
         required
@@ -71,6 +82,11 @@ function WaitlistForm() {
       >
         {loading ? "…" : "Get Early Access"}
       </button>
+      {error && (
+        <p style={{ width: "100%", textAlign: "center", fontSize: "0.8125rem", color: "rgba(255,120,120,0.9)", margin: "4px 0 0", fontFamily: "'Plus Jakarta Sans', -apple-system, sans-serif" }}>
+          Something went wrong — please try again.
+        </p>
+      )}
     </form>
   );
 }
@@ -80,8 +96,11 @@ export default function ComingSoonGate({ children }: { children: React.ReactNode
   const clickCount = useRef(0);
   const clickTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  // playattax.com (domaine de pré-lancement) : UNIQUEMENT la liste d'attente, jamais le site.
+  const waitlistOnly = () => typeof window !== "undefined" && window.location.hostname.includes("playattax");
+
   useEffect(() => {
-    const isUnlocked = localStorage.getItem(SECRET_KEY) === "1";
+    const isUnlocked = !waitlistOnly() && localStorage.getItem(SECRET_KEY) === "1";
     setUnlocked(isUnlocked);
     if (isUnlocked) {
       document.cookie = `${SECRET_KEY}=1; path=/; max-age=31536000`;
@@ -92,6 +111,7 @@ export default function ComingSoonGate({ children }: { children: React.ReactNode
   }, []);
 
   function handleLogoClick() {
+    if (waitlistOnly()) return;
     clickCount.current += 1;
     if (clickTimer.current) clearTimeout(clickTimer.current);
     clickTimer.current = setTimeout(() => { clickCount.current = 0; }, 2000);
