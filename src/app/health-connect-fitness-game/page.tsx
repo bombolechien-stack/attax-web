@@ -133,7 +133,7 @@ const P: Record<Lang, {
     faq: [
       { q: "Does Attax work with Health Connect?", a: "Yes. Attax reads your heart rate and your steps from Health Connect." },
       { q: "What activities are supported?", a: "Any activity that raises your heart rate: running, cycling, gym, swimming, team sports, dance… plus your steps, all day." },
-      { q: "Do I need a smartwatch?", a: "Yes: a device whose app shares heart rate with Health Connect — Garmin, Samsung Galaxy Watch, Fitbit and Pixel Watch, Wear OS watches, Amazfit, COROS and more. Some brands (Xiaomi, Polar) only share heart rate during workouts, so start a session on your watch. Apple Watch and Huawei are not supported on Android." },
+      { q: "Do I need a smartwatch?", a: "Yes: a device whose app shares heart rate with Health Connect — Garmin, Samsung Galaxy Watch, Fitbit and Pixel Watch, Wear OS watches, Amazfit, COROS and more. Some brands only share heart rate during workouts: with Polar, start a session on your watch; with Xiaomi, start and end it in the Mi Fitness app on your phone (not on the watch), and there may still be gaps. Apple Watch and Huawei are not supported on Android." },
       { q: "Is Attax available on Android?", a: "Yes, on Android 8.0 or later." },
       { q: "Is activity synchronized automatically?", a: "Yes. Once access is granted, Attax reads Health Connect every time you open the app." },
       { q: "Is Attax free?", a: "Yes. Attax is free to download and free to play, with no ads." },
@@ -199,7 +199,7 @@ const P: Record<Lang, {
     faq: [
       { q: "Attax fonctionne-t-il avec Health Connect ?", a: "Oui. Attax lit ta fréquence cardiaque et tes pas dans Health Connect." },
       { q: "Quelles activités sont prises en compte ?", a: "Toute activité qui fait monter ton cœur : course, vélo, muscu, natation, sports collectifs, danse… plus tes pas, toute la journée." },
-      { q: "Ai-je besoin d'une montre connectée ?", a: "Oui : un appareil dont l'appli partage la fréquence cardiaque avec Health Connect — Garmin, Samsung Galaxy Watch, Fitbit et Pixel Watch, montres Wear OS, Amazfit, COROS et d'autres. Certaines marques (Xiaomi, Polar) ne partagent la fréquence cardiaque que pendant les exercices : lance une séance sur ta montre. L'Apple Watch et Huawei ne sont pas compatibles sur Android." },
+      { q: "Ai-je besoin d'une montre connectée ?", a: "Oui : un appareil dont l'appli partage la fréquence cardiaque avec Health Connect — Garmin, Samsung Galaxy Watch, Fitbit et Pixel Watch, montres Wear OS, Amazfit, COROS et d'autres. Certaines marques ne partagent la fréquence cardiaque que pendant les exercices : avec Polar, lance une séance sur ta montre ; avec Xiaomi, démarre-la et termine-la dans l'app Mi Fitness du téléphone (pas sur la montre), et il peut quand même y avoir des trous. L'Apple Watch et Huawei ne sont pas compatibles sur Android." },
       { q: "Attax est-il disponible sur Android ?", a: "Oui, sur Android 8.0 ou plus récent." },
       { q: "La synchro est-elle automatique ?", a: "Oui. Une fois l'accès accordé, Attax lit Health Connect à chaque ouverture de l'app." },
       { q: "Attax est-il gratuit ?", a: "Oui. Attax est gratuit à télécharger et à jouer, sans publicité." },
