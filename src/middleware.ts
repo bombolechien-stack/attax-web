@@ -19,7 +19,11 @@ export function middleware(request: NextRequest) {
 
   const isStaticAsset = /\.(mp4|webm|mov|png|jpg|jpeg|gif|webp|svg|ico|css|js|json|txt|xml|woff|woff2|ttf)$/i.test(pathname);
 
-  if (!unlocked && pathname !== "/" && !isStaticAsset) {
+  // Pages légales TOUJOURS publiques sur attax.app (Google Play / App Store exigent une
+  // politique de confidentialité et une page de suppression de compte accessibles).
+  const isLegal = /^\/(privacy|terms|cookie-policy)(\/|$)/.test(pathname);
+
+  if (!unlocked && pathname !== "/" && !isStaticAsset && !(isLegal && !waitlistOnly)) {
     const url = request.nextUrl.clone();
     url.pathname = "/";
     url.search = "";
