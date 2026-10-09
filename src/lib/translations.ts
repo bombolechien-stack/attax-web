@@ -204,6 +204,7 @@ export const T = {
       ],
       links_legal: [
         { label: "Privacy Policy", href: "/privacy" },
+        { label: "Consumer Health Data Privacy Policy", href: "/health-data-privacy" },
         { label: "Terms of Service", href: "/terms" },
         { label: "Cookie Policy", href: "/cookie-policy" },
         { label: "Download", href: "/download" },
@@ -575,6 +576,7 @@ export const T = {
       ],
       links_legal: [
         { label: "Confidentialité", href: "/privacy" },
+        { label: "Données de santé", href: "/health-data-privacy" },
         { label: "Conditions d'utilisation", href: "/terms" },
         { label: "Cookies", href: "/cookie-policy" },
         { label: "Télécharger", href: "/download" },

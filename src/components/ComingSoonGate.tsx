@@ -198,6 +198,13 @@ export default function ComingSoonGate({ children }: { children: React.ReactNode
 
         {/* Waitlist form */}
         <WaitlistForm />
+
+        {/* Liens légaux : la politique « données de santé » doit être accessible depuis l'accueil. */}
+        <p style={{ marginTop: "2.5rem", fontSize: "0.75rem", color: "rgba(255,255,255,0.45)", fontFamily: "'Plus Jakarta Sans', -apple-system, sans-serif", display: "flex", gap: "1.25rem", justifyContent: "center", flexWrap: "wrap" }}>
+          <a href="/privacy" style={{ color: "inherit", textDecoration: "underline" }}>Privacy Policy</a>
+          <a href="/health-data-privacy" style={{ color: "inherit", textDecoration: "underline" }}>Consumer Health Data Privacy Policy</a>
+          <a href="/terms" style={{ color: "inherit", textDecoration: "underline" }}>Terms</a>
+        </p>
       </div>
     </div>
   );

@@ -14,7 +14,7 @@ function ContentEn() {
     <>
         <p style={{ fontSize: "0.75rem", fontWeight: 700, color: "#aaa", letterSpacing: "0.16em", textTransform: "uppercase", margin: "0 0 1rem" }}>Legal</p>
         <h1 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.04em", margin: "0 0 0.5rem" }}>Privacy Policy</h1>
-        <p style={{ fontSize: "0.875rem", color: "#aaa", margin: "0 0 4rem" }}>Last updated: October 8, 2026</p>
+        <p style={{ fontSize: "0.875rem", color: "#aaa", margin: "0 0 4rem" }}>Last updated: October 9, 2026</p>
 
         <div style={SECTION}>
           <h2 style={H2}>1. Introduction</h2>
@@ -24,7 +24,7 @@ function ContentEn() {
 
         <div style={SECTION}>
           <h2 style={H2}>2. Data We Collect</h2>
-          <p style={P}><strong>Account data:</strong> email address, password (stored hashed by our authentication provider), username, first name, country, year of birth, and the profile photo you choose (optional).</p>
+          <p style={P}><strong>Account data:</strong> email address, password (stored hashed by our authentication provider), username, first name, country, year of birth, and the profile photo you add.</p>
           <p style={P}><strong>Health and activity data</strong> (only if you grant access in Apple Health / HealthKit or Health Connect):</p>
           <ul style={UL}>
             <li>Steps (daily totals and the times they were recorded).</li>
@@ -58,10 +58,10 @@ function ContentEn() {
             <li>It is never sold, never used for advertising or marketing, and never shared with data brokers or information resellers.</li>
             <li>It is never used to determine credit-worthiness, insurance or employment eligibility.</li>
             <li>It is not stored in iCloud and is only transferred to our own servers to compute your game results.</li>
-            <li>Other players only see the resulting game data (points, activity duration and intensity in duels), never your raw health records.</li>
+            <li>In a duel, your opponent sees your activity points and the heart-rate curve of your workout for that duel; they never see your other health data.</li>
           </ul>
           <p style={P}>The use of information received from Health Connect adheres to the <a href="https://support.google.com/googleplay/android-developer/answer/12991134" style={LINK}>Health Connect Permissions policy</a>, including the Limited Use requirements. The use of HealthKit data complies with Apple's App Store Review Guidelines.</p>
-          <p style={P}>You can revoke health access at any time in the Health app (iPhone) or in Health Connect settings (Android). Data already synchronized stays attached to your account until you delete it (see section 8).</p>
+          <p style={P}><strong>Consent:</strong> we only process health data with your explicit consent, given by ticking a dedicated checkbox when you create your account. You can revoke health access at any time in the Health app (iPhone) or in Health Connect settings (Android), and withdraw your consent by deleting your account; data already synchronized stays attached to your account until you delete it (see section 8). U.S. residents: see our <Link href="/health-data-privacy" style={LINK}>Consumer Health Data Privacy Policy</Link>.</p>
         </div>
 
         <div style={SECTION}>
@@ -118,7 +118,7 @@ function ContentFr() {
     <>
         <p style={{ fontSize: "0.75rem", fontWeight: 700, color: "#aaa", letterSpacing: "0.16em", textTransform: "uppercase", margin: "0 0 1rem" }}>Légal</p>
         <h1 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.04em", margin: "0 0 0.5rem" }}>Politique de confidentialité</h1>
-        <p style={{ fontSize: "0.875rem", color: "#aaa", margin: "0 0 4rem" }}>Dernière mise à jour : 8 octobre 2026</p>
+        <p style={{ fontSize: "0.875rem", color: "#aaa", margin: "0 0 4rem" }}>Dernière mise à jour : 9 octobre 2026</p>
 
         <div style={SECTION}>
           <h2 style={H2}>1. Introduction</h2>
@@ -128,7 +128,7 @@ function ContentFr() {
 
         <div style={SECTION}>
           <h2 style={H2}>2. Données collectées</h2>
-          <p style={P}><strong>Données de compte :</strong> adresse e-mail, mot de passe (stocké sous forme chiffrée par notre prestataire d'authentification), pseudo, prénom, pays, année de naissance et la photo de profil que tu choisis (facultative).</p>
+          <p style={P}><strong>Données de compte :</strong> adresse e-mail, mot de passe (stocké sous forme chiffrée par notre prestataire d'authentification), pseudo, prénom, pays, année de naissance et la photo de profil que tu ajoutes.</p>
           <p style={P}><strong>Données de santé et d'activité</strong> (uniquement si tu en autorises l'accès dans Apple Santé / HealthKit ou Health Connect) :</p>
           <ul style={UL}>
             <li>Les pas (totaux quotidiens et heures d'enregistrement).</li>
@@ -162,10 +162,10 @@ function ContentFr() {
             <li>Elles ne sont jamais vendues, jamais utilisées pour de la publicité ou du marketing, et jamais partagées avec des courtiers ou revendeurs de données.</li>
             <li>Elles ne sont jamais utilisées pour évaluer une solvabilité, une assurance ou une embauche.</li>
             <li>Elles ne sont pas stockées dans iCloud et ne sont transmises qu'à nos propres serveurs pour calculer tes résultats.</li>
-            <li>Les autres joueurs ne voient que les données de jeu qui en résultent (points, durée et intensité d'activité dans les duels), jamais tes données de santé brutes.</li>
+            <li>Dans un duel, ton adversaire voit tes points d'activité et la courbe cardiaque de ta séance pour ce duel ; il ne voit jamais tes autres données de santé.</li>
           </ul>
           <p style={P}>L'utilisation des informations reçues de Health Connect respecte la <a href="https://support.google.com/googleplay/android-developer/answer/12991134" style={LINK}>politique d'autorisations Health Connect</a>, y compris les exigences d'utilisation limitée. L'utilisation des données HealthKit respecte les règles de l'App Store d'Apple.</p>
-          <p style={P}>Tu peux retirer l'accès à tes données de santé à tout moment dans l'app Santé (iPhone) ou dans les réglages de Health Connect (Android). Les données déjà synchronisées restent liées à ton compte jusqu'à sa suppression (voir section 8).</p>
+          <p style={P}><strong>Consentement :</strong> nous ne traitons tes données de santé qu'avec ton consentement explicite, donné en cochant une case dédiée à la création de ton compte. Tu peux retirer l'accès à tout moment dans l'app Santé (iPhone) ou dans les réglages de Health Connect (Android), et retirer ton consentement en supprimant ton compte ; les données déjà synchronisées restent liées à ton compte jusqu'à sa suppression (voir section 8). Voir aussi notre <Link href="/health-data-privacy" style={LINK}>politique relative aux données de santé</Link>.</p>
         </div>
 
         <div style={SECTION}>
