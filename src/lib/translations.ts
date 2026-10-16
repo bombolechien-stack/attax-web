@@ -55,11 +55,11 @@ export const T = {
       opp: "ALEX",
       todayActivity: "LATEST ACTIVITY",
       feed: [
-        { time: "Today · 6:42 PM", text: "Session 32 min", pts: "+448 AP", you: true },
-        { time: "Today · 12:15 PM", text: "Alex · Session 60 min", pts: "+660 AP", you: false },
-        { time: "Today · 7:10 AM", text: "Session 45 min", pts: "+360 AP", you: true },
-        { time: "Yesterday", text: "Alex · Session 28 min", pts: "+560 AP", you: false },
-        { time: "Yesterday", text: "8,200 steps", pts: "+80 AP", you: true },
+        { time: "Today · 6:42 PM", text: "Session 32 min", pts: "+448 pts", you: true },
+        { time: "Today · 12:15 PM", text: "Alex · Session 60 min", pts: "+660 pts", you: false },
+        { time: "Today · 7:10 AM", text: "Session 45 min", pts: "+360 pts", you: true },
+        { time: "Yesterday", text: "Alex · Session 28 min", pts: "+560 pts", you: false },
+        { time: "Yesterday", text: "8,200 steps", pts: "+80 pts", you: true },
       ],
       stats: [
         { n: "Activity", label: "Every minute of effort counts." },
@@ -103,7 +103,7 @@ export const T = {
       all_link: "See the full FAQ",
       items: [
         { q: "Do I need a smartwatch?", a: "Yes. You need a device that measures your heart rate — smartwatch, fitness band or chest strap — synced with Apple Health (iPhone) or Health Connect (Android). Your phone alone counts your steps, but your workouts are scored from your heart rate. Attax checks your connection before your first league." },
-        { q: "How do I earn points?", a: "Your watch measures your effort: every minute your heart works hard earns activity points (AP), and the harder you push, the more you score. Your steps earn points too. No manual entry — everything comes from Apple Health or Health Connect." },
+        { q: "How do I earn points?", a: "Your watch measures your effort: every minute your heart works hard earns points, and the harder you push, the more you score. Your steps earn points too. No manual entry — everything comes from Apple Health or Health Connect." },
         { q: "How is a duel decided?", a: "Your duel score is your activity of the day plus the 6 previous days. Past days are revealed round by round from 10 AM, today is the final round, live from 7 PM. At 9:30 PM the highest score wins — after the cards are applied." },
           { q: "Will I face players at my level?", a: "Yes. A few questions when you sign up set your starting level, and you join a league at your level. Then your results do the talking: your rank goes up and down with every duel." },
         { q: "Can I play with friends?", a: "Yes. Create a league in the app, share the code with your friends, and start it whenever everyone's in." },
@@ -241,7 +241,7 @@ export const T = {
       pillars_h2: ["Four systems.", "One game."],
       pillars_sub: "Real effort. Strategic choices. A duel every day. Every minute you move feeds your progression.",
       pillars: [
-        { n: "01", title: "Activity Points", description: "Every minute of effort recorded by your watch earns activity points (AP) — the more intense, the more you score. Your steps count too. Your sessions, your points, your progress: everything is in the Activity tab." },
+        { n: "01", title: "Points", description: "Every minute of effort recorded by your watch earns points — the more intense, the more you score. Your steps count too. Your sessions, your points, your progress: everything is in the Activity tab." },
         { n: "02", title: "The Daily Duel", description: "Your duel score is your activity over the last 7 days, today included. Each past day becomes a round revealed during the day; today is the final round, live from 7 PM. Verdict at 9:30 PM. Showing up every day pays off." },
         { n: "03", title: "Strategic Cards", description: "Every morning, 3 cards are drawn from a deck of 12. Pick one before 1 PM: Spike, Overdrive, Shield, Freeze, Parasite, Scan, Ghost, Mirage… Effects are applied at 9:30 PM, with real data." },
         { n: "04", title: "Leagues & Rankings", description: "8 players at your level. 7 days. 7 duels. One podium. Then a rematch with the same group, or a new league. Across leagues, your global rank climbs through 5 divisions, from Rookie to Legend." },
@@ -427,11 +427,11 @@ export const T = {
       opp: "ALEX",
       todayActivity: "DERNIÈRES ACTIVITÉS",
       feed: [
-        { time: "Aujourd'hui · 18h42", text: "Séance 32 min", pts: "+448 AP", you: true },
-        { time: "Aujourd'hui · 12h15", text: "Alex · Séance 60 min", pts: "+660 AP", you: false },
-        { time: "Aujourd'hui · 7h10", text: "Séance 45 min", pts: "+360 AP", you: true },
-        { time: "Hier", text: "Alex · Séance 28 min", pts: "+560 AP", you: false },
-        { time: "Hier", text: "8 200 pas", pts: "+80 AP", you: true },
+        { time: "Aujourd'hui · 18h42", text: "Séance 32 min", pts: "+448 pts", you: true },
+        { time: "Aujourd'hui · 12h15", text: "Alex · Séance 60 min", pts: "+660 pts", you: false },
+        { time: "Aujourd'hui · 7h10", text: "Séance 45 min", pts: "+360 pts", you: true },
+        { time: "Hier", text: "Alex · Séance 28 min", pts: "+560 pts", you: false },
+        { time: "Hier", text: "8 200 pas", pts: "+80 pts", you: true },
       ],
       stats: [
         { n: "Activité", label: "Chaque minute d'effort compte." },
@@ -475,7 +475,7 @@ export const T = {
       all_link: "Voir toute la FAQ",
       items: [
         { q: "Ai-je besoin d'une montre connectée ?", a: "Oui. Il te faut un appareil qui mesure ta fréquence cardiaque — montre, bracelet ou ceinture cardio — synchronisé avec Apple Santé (iPhone) ou Health Connect (Android). Ton téléphone seul compte tes pas, mais tes séances sont notées grâce à ta fréquence cardiaque. Attax vérifie ta connexion avant ta première ligue." },
-        { q: "Comment je gagne des points ?", a: "Ta montre mesure ton effort : chaque minute où ton cœur travaille rapporte des points d'activité (AP), et plus tu pousses, plus tu marques. Tes pas rapportent aussi des points. Aucune saisie manuelle — tout vient d'Apple Santé ou de Health Connect." },
+        { q: "Comment je gagne des points ?", a: "Ta montre mesure ton effort : chaque minute où ton cœur travaille rapporte des points, et plus tu pousses, plus tu marques. Tes pas rapportent aussi des points. Aucune saisie manuelle — tout vient d'Apple Santé ou de Health Connect." },
         { q: "Comment un duel est-il tranché ?", a: "Ton score de duel = ton activité du jour + celle des 6 jours précédents. Les jours passés sont dévoilés round après round dès 10h, le jour même est le round final, en direct dès 19h. À 21h30, le meilleur score l'emporte — après application des cartes." },
           { q: "Vais-je affronter des joueurs de mon niveau ?", a: "Oui. Quelques questions à l'inscription fixent ton niveau de départ, et tu rejoins une ligue de ton niveau. Ensuite, ce sont tes résultats qui parlent : ton rang monte et descend à chaque duel." },
         { q: "Puis-je jouer avec mes amis ?", a: "Oui. Crée une ligue dans l'app, partage le code avec tes amis, et lancez-la quand tout le monde est là." },
@@ -613,7 +613,7 @@ export const T = {
       pillars_h2: ["Quatre systèmes.", "Un seul jeu."],
       pillars_sub: "Un vrai effort. Des choix stratégiques. Un duel chaque jour. Chaque minute où tu bouges nourrit ta progression.",
       pillars: [
-        { n: "01", title: "Points d'activité", description: "Chaque minute d'effort enregistrée par ta montre rapporte des points d'activité (AP) — plus c'est intense, plus tu marques. Tes pas comptent aussi. Tes séances, tes points, ta progression : tout est dans l'onglet Activité." },
+        { n: "01", title: "Points", description: "Chaque minute d'effort enregistrée par ta montre rapporte des points — plus c'est intense, plus tu marques. Tes pas comptent aussi. Tes séances, tes points, ta progression : tout est dans l'onglet Activité." },
         { n: "02", title: "Le duel quotidien", description: "Ton score de duel, c'est ton activité des 7 derniers jours, aujourd'hui compris. Chaque jour passé devient un round dévoilé dans la journée ; aujourd'hui est le round final, en direct dès 19h. Verdict à 21h30. Être là chaque jour, ça paie." },
         { n: "03", title: "Cartes stratégiques", description: "Chaque matin, 3 cartes sont tirées d'un deck de 12. Choisis-en une avant 13h : Spike, Overdrive, Shield, Freeze, Parasite, Scan, Ghost, Mirage… Les effets s'appliquent à 21h30, sur les vraies données." },
         { n: "04", title: "Ligues & classements", description: "8 joueurs de ton niveau. 7 jours. 7 duels. Un podium. Puis une revanche avec le même groupe, ou une nouvelle ligue. De ligue en ligue, ton rang global grimpe à travers 5 divisions, de Rookie à Legend." },
