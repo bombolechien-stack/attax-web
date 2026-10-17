@@ -7,27 +7,25 @@ import { useInView, fadeUp, clipReveal } from "@/hooks/useInView";
 // Panneaux tirés des carrousels : la photo entière en scanlines (même rendu que les carrousels),
 // bleu marine sur bleu glacier. Images 520×780, affichées en 260×390 (rapport 2:1, lignes nettes).
 const SPORTS: { file: string; en: string; fr: string }[] = [
-  { file: "sprint", en: "Running", fr: "Course" },
-  { file: "boxing", en: "Boxing", fr: "Boxe" },
-  { file: "tennis", en: "Tennis", fr: "Tennis" },
-  { file: "indoor-cycling", en: "Indoor cycling", fr: "Vélo d'intérieur" },
-  { file: "swimming", en: "Swimming", fr: "Natation" },
+  { file: "sprint", en: "Sprint", fr: "Sprint" },
+  { file: "cycling", en: "Cycling", fr: "Vélo" },
   { file: "lifting", en: "Lifting", fr: "Musculation" },
-  { file: "wheelchair-basketball", en: "Wheelchair basketball", fr: "Basket fauteuil" },
+  { file: "running", en: "Running", fr: "Course" },
+  { file: "tennis", en: "Tennis", fr: "Tennis" },
+  { file: "rowing", en: "Rowing", fr: "Aviron" },
   { file: "basketball", en: "Basketball", fr: "Basket" },
-  { file: "nordic-walking", en: "Nordic walking", fr: "Marche nordique" },
-  { file: "running", en: "Trail running", fr: "Trail" },
+  { file: "walking", en: "Walking", fr: "Marche" },
 ];
 
 const COPY = {
   en: {
     label: "Every sport counts",
-    h2: ["Run. Ride. Lift.", "Swim. Box. Play."],
+    h2: ["Run. Ride. Lift.", "Row. Play. Walk."],
     body: "If your heart rate goes up, it counts. Your watch measures the effort, Attax turns it into points. Whatever your sport, whatever your age.",
   },
   fr: {
     label: "Tous les sports comptent",
-    h2: ["Cours. Roule. Soulève.", "Nage. Boxe. Joue."],
+    h2: ["Cours. Roule. Soulève.", "Rame. Joue. Marche."],
     body: "Si ton cœur accélère, ça compte. Ta montre mesure l'effort, Attax le transforme en points. Quel que soit ton sport, quel que soit ton âge.",
   },
 };
