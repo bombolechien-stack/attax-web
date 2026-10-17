@@ -1,25 +1,22 @@
 "use client";
 
+import Image from "next/image";
 import { useLang } from "@/lib/i18n";
 import { useInView, fadeUp, clipReveal } from "@/hooks/useInView";
-import ScanAthlete from "@/components/scan/ScanAthlete";
-import ScanBand from "@/components/scan/ScanBand";
-import type { AthleteName } from "@/components/scan/athletes";
 
-const SPORTS: { name: AthleteName; s: number; en: string; fr: string }[] = [
-  { name: "run-woman", s: 0.86, en: "Running", fr: "Course" },
-  { name: "boxing", s: 1, en: "Boxing", fr: "Boxe" },
-  { name: "cycling", s: 0.84, en: "Cycling", fr: "Vélo" },
-  { name: "tennis", s: 0.84, en: "Tennis", fr: "Tennis" },
-  { name: "deadlift", s: 1, en: "Lifting", fr: "Musculation" },
-  { name: "swim-start", s: 0.8, en: "Swimming", fr: "Natation" },
-  { name: "wheelchair", s: 0.72, en: "Wheelchair sports", fr: "Handisport" },
-  { name: "nordic-walk", s: 0.86, en: "Nordic walking", fr: "Marche nordique" },
-  { name: "basketball", s: 1.08, en: "Basketball", fr: "Basket" },
-  { name: "row", s: 0.5, en: "Rowing", fr: "Aviron" },
-  { name: "sprint", s: 0.94, en: "Sprint", fr: "Sprint" },
-  { name: "spin", s: 0.92, en: "Indoor cycling", fr: "Vélo d'intérieur" },
-  { name: "walk-senior", s: 1, en: "Walking", fr: "Marche" },
+// Panneaux tirés des carrousels : la photo entière en scanlines (même rendu que les carrousels),
+// bleu marine sur bleu glacier. Images 520×780, affichées en 260×390 (rapport 2:1, lignes nettes).
+const SPORTS: { file: string; en: string; fr: string }[] = [
+  { file: "sprint", en: "Running", fr: "Course" },
+  { file: "boxing", en: "Boxing", fr: "Boxe" },
+  { file: "tennis", en: "Tennis", fr: "Tennis" },
+  { file: "indoor-cycling", en: "Indoor cycling", fr: "Vélo d'intérieur" },
+  { file: "swimming", en: "Swimming", fr: "Natation" },
+  { file: "lifting", en: "Lifting", fr: "Musculation" },
+  { file: "wheelchair-basketball", en: "Wheelchair basketball", fr: "Basket fauteuil" },
+  { file: "basketball", en: "Basketball", fr: "Basket" },
+  { file: "nordic-walking", en: "Nordic walking", fr: "Marche nordique" },
+  { file: "running", en: "Trail running", fr: "Trail" },
 ];
 
 const COPY = {
@@ -35,44 +32,41 @@ const COPY = {
   },
 };
 
-export default function SportsMarquee({ theme = "light" }: { theme?: "light" | "dark" }) {
-  const dark = theme === "dark";
-  const K = dark
-    ? { bg: "#0B0B0C", ink: "#ffffff", accent: "#C9D5F0", fig: "#C9D5F0", mute: "rgba(255,255,255,0.45)", label: "rgba(201,213,240,0.55)" }
-    : { bg: "#EEF2FA", ink: "#0B0B0C", accent: "#1C2540", fig: "#1C2540", mute: "rgba(28,37,64,0.62)", label: "rgba(28,37,64,0.5)" };
+export default function SportsMarquee() {
   const { lang } = useLang();
   const c = COPY[lang];
   const { ref, visible } = useInView<HTMLDivElement>(0.15);
   const row = [...SPORTS, ...SPORTS];
 
   return (
-    <section style={{ backgroundColor: K.bg, padding: "8rem 0 6rem", overflow: "hidden", position: "relative" }}>
+    <section style={{ backgroundColor: "#ffffff", padding: "7rem 0 8rem", overflow: "hidden", position: "relative" }}>
       <div ref={ref} style={{ maxWidth: "72rem", margin: "0 auto", padding: "0 clamp(1.5rem, 5vw, 4rem)", display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: "3rem", flexWrap: "wrap" }}>
         <div>
-          <p style={{ ...fadeUp(visible, 0), fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: K.label, margin: "0 0 1.5rem" }}>{c.label}</p>
-          <h2 style={{ fontSize: "clamp(2.5rem, 6vw, 5.5rem)", fontWeight: 800, color: K.ink, letterSpacing: "-0.05em", lineHeight: 0.95, margin: 0 }}>
+          <p style={{ ...fadeUp(visible, 0), fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "rgba(28,37,64,0.5)", margin: "0 0 1.5rem" }}>{c.label}</p>
+          <h2 style={{ fontSize: "clamp(2.5rem, 6vw, 5.5rem)", fontWeight: 800, color: "#0B0B0C", letterSpacing: "-0.05em", lineHeight: 0.95, margin: 0 }}>
             <span style={clipReveal(visible, 80)}>{c.h2[0]}</span>
-            <span style={{ ...clipReveal(visible, 220), color: K.accent }}>{c.h2[1]}</span>
+            <span style={{ ...clipReveal(visible, 220), color: "#1C2540" }}>{c.h2[1]}</span>
           </h2>
         </div>
-        <p style={{ ...fadeUp(visible, 350), fontSize: "1rem", color: K.mute, lineHeight: 1.75, maxWidth: "340px", margin: 0 }}>{c.body}</p>
+        <p style={{ ...fadeUp(visible, 350), fontSize: "1rem", color: "rgba(28,37,64,0.62)", lineHeight: 1.75, maxWidth: "340px", margin: 0 }}>{c.body}</p>
       </div>
 
-      <div className="sports-marquee" style={{ marginTop: "5rem", position: "relative", overflow: "hidden" }}>
-        <div className="sports-marquee-track" style={{ display: "flex", flexDirection: "row", flexWrap: "nowrap", alignItems: "flex-end", width: "max-content" }}>
+      <div className="sports-marquee" style={{ marginTop: "4.5rem", position: "relative", overflow: "hidden" }}>
+        <div className="sports-marquee-track" style={{ display: "flex", flexDirection: "row", flexWrap: "nowrap", gap: "16px", width: "max-content", paddingRight: "16px" }}>
           {row.map((s, i) => (
-            <figure key={i} aria-hidden={i >= SPORTS.length} style={{ margin: 0, display: "flex", flexDirection: "column", alignItems: "center", gap: "1.25rem", flexShrink: 0, padding: "0 clamp(1.25rem, 2.5vw, 2.5rem)" }}>
-              <div style={{ height: "clamp(220px, 30vw, 340px)", display: "flex", alignItems: "flex-end" }}>
-                <ScanAthlete name={s.name} color={K.fig} height={`${s.s * 100}%`} reveal={false} label={i < SPORTS.length ? s[lang] : undefined} />
-              </div>
-              <figcaption style={{ fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: K.label }}>{s[lang]}</figcaption>
+            <figure key={i} aria-hidden={i >= SPORTS.length} style={{ margin: 0, flexShrink: 0, width: 260 }}>
+              <Image
+                src={`/scan/panels/${s.file}.webp`}
+                alt={i < SPORTS.length ? s[lang] : ""}
+                width={260}
+                height={390}
+                unoptimized
+                style={{ display: "block", width: 260, height: 390 }}
+              />
+              <figcaption style={{ marginTop: "0.9rem", fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "rgba(28,37,64,0.55)" }}>{s[lang]}</figcaption>
             </figure>
           ))}
         </div>
-      </div>
-
-      <div style={{ maxWidth: "72rem", margin: "4rem auto 0", padding: "0 clamp(1.5rem, 5vw, 4rem)" }}>
-        <ScanBand color={K.fig} lines={7} height={56} opacity={dark ? 0.5 : 0.85} />
       </div>
     </section>
   );

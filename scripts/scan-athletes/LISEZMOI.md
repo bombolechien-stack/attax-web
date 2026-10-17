@@ -12,3 +12,9 @@ Pour en ajouter une :
    `src/components/scan/athletes.ts`.
 
 Réglages utilisés : `spacing` 12 (écart des lignes), `fill` 0.36 (épaisseur max), `contrast` 1.1.
+
+## Panneaux de la section « Every sport counts » (public/scan/panels/*.webp)
+Photo entière en scanlines, exactement comme les carrousels (`scan.js` des carrousels) : bleu marine
+sur bleu glacier, 520×780 avec 8 px entre les lignes, affichés en 260×390 sur le site.
+`node panel.mjs final.json <dossier>` (chemins des images et de scan.js à adapter en haut du script).
+Choisir des images où le sujet est entièrement dans le cadre (rien de coupé sur les bords).

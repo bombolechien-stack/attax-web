@@ -241,7 +241,7 @@ export default function AppleHealthFitnessGame() {
       <div style={{ backgroundColor: "#ffffff", padding: "0 12px 12px" }}>
         <div style={{ position: "relative", backgroundColor: "#0d0d0d", borderRadius: "24px", minHeight: "60vh", display: "flex", flexDirection: "column", overflow: "hidden" }}>
           <div className="scan-hero-lines" />
-          <div className="scan-hero-figure"><ScanAthlete name="cycling" height="100%" /></div>
+          <div className="scan-hero-figure"><ScanAthlete name="spin" height="100%" /></div>
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(5,5,5,0.9) 0%, rgba(5,5,5,0.6) 55%, rgba(5,5,5,0.25) 100%)" }} />
           <PageNavbar />
           <div className="hero-text-box" style={{ position: "relative", zIndex: 3, flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "3rem 4rem 4rem", maxWidth: "720px" }}>
