@@ -10,7 +10,7 @@ W, H, GROUND, T = 520, 780, 712, 560
 S = [("126-A", "running", 1.0, False), ("041-A_flat", "cycling", 0.7, True), ("148-A", "lifting", 1.0, False),
      ("010-B", "sprint", 0.92, False), ("141-A", "tennis", 0.80, False), ("105-A", "wheelchair", 0.78, True),
      ("134-A", "nordic-walking", 0.97, True), ("106-A", "basketball", 1.08, True), ("092-A", "spin", 0.98, False),
-     ("099-A", "walking", 1.0, False)]
+     ("016-A", "walking", 1.0, True)]
 session = new_session("isnet-general-use")
 for src, name, f, flip in S:
     a = np.array(remove(Image.open(SRC + src + ".png").convert("RGB"), session=session).getchannel("A")) > 110
