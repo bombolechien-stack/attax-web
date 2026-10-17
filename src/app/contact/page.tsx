@@ -71,6 +71,7 @@ export default function ContactPage() {
       <div style={{ backgroundColor: "#ffffff", padding: "0 12px 12px" }}>
         <div style={{ position: "relative", backgroundColor: "#0d0d0d", borderRadius: "24px", minHeight: "calc(100vh - 24px)", display: "flex", flexDirection: "column", overflow: "hidden" }}>
           <Image src="/images/strength.jpg" alt="Contact Attax" fill style={{ objectFit: "cover", objectPosition: "center 30%" }} priority />
+          <div className="scan-overlay" />
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(13,13,13,0.95) 0%, rgba(13,13,13,0.75) 55%, rgba(13,13,13,0.3) 100%)" }} />
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(13,13,13,0.8) 0%, transparent 50%)" }} />
           <PageNavbar />

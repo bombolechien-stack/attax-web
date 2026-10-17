@@ -601,3 +601,18 @@ html { overflow-x: clip; }
 .is-coming-soon .banner-root,
 .is-coming-soon footer,
 .is-coming-soon #scroll-nav { display: none !important; }
+
+/* ── Scanlines (direction artistique des carrousels) ───────────────────── */
+.sports-marquee { position: relative; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.sports-marquee-track { display: flex; align-items: flex-end; width: max-content; animation: sportsMarquee 60s linear infinite; }
+.sports-marquee:hover .sports-marquee-track { animation-play-state: paused; }
+@keyframes sportsMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .sports-marquee-track { animation: none; } }
+
+/* Lignes horizontales posées sur une photo (comme les photos des carrousels) */
+.scan-overlay { position: absolute; inset: 0; pointer-events: none; background-image: repeating-linear-gradient(to bottom, rgba(5,5,5,0.32) 0px, rgba(5,5,5,0.32) 2px, transparent 2px, transparent 5px); mix-blend-mode: multiply; }
+
+/* Héros des pages : athlète en scanlines à droite */
+.scan-hero-figure { position: absolute; right: clamp(-2rem, 4vw, 6rem); bottom: 0; height: 86%; z-index: 2; pointer-events: none; display: flex; align-items: flex-end; }
+@media (max-width: 860px) { .scan-hero-figure { opacity: 0.28; right: -3rem; height: 80%; } }
+.scan-hero-lines { position: absolute; inset: 0; z-index: 1; pointer-events: none; background-image: repeating-linear-gradient(to bottom, rgba(201,213,240,0.035) 0px, rgba(201,213,240,0.035) 1px, transparent 1px, transparent 7px); }

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import PageNavbar from "@/components/PageNavbar";
+import ScanAthlete from "@/components/scan/ScanAthlete";
 import { useLang } from "@/lib/i18n";
 
 const BODY: React.CSSProperties = { fontSize: "1.0625rem", color: "#444", lineHeight: 1.85, margin: "0 0 1.25rem" };
@@ -239,7 +240,8 @@ export default function AppleHealthFitnessGame() {
     <>
       <div style={{ backgroundColor: "#ffffff", padding: "0 12px 12px" }}>
         <div style={{ position: "relative", backgroundColor: "#0d0d0d", borderRadius: "24px", minHeight: "60vh", display: "flex", flexDirection: "column", overflow: "hidden" }}>
-          <Image src="/images/runsunrise.jpg" alt="" fill style={{ objectFit: "cover", objectPosition: "center", filter: "brightness(0.22) grayscale(0.25)" }} />
+          <div className="scan-hero-lines" />
+          <div className="scan-hero-figure"><ScanAthlete name="cycling" height="100%" /></div>
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(5,5,5,0.9) 0%, rgba(5,5,5,0.6) 55%, rgba(5,5,5,0.25) 100%)" }} />
           <PageNavbar />
           <div className="hero-text-box" style={{ position: "relative", zIndex: 3, flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "3rem 4rem 4rem", maxWidth: "720px" }}>
@@ -297,7 +299,8 @@ export default function AppleHealthFitnessGame() {
           <hr style={RULE} />
 
           <div style={{ position: "relative", height: "clamp(380px, 52vh, 620px)", overflow: "hidden", borderRadius: "20px", margin: "5rem 0" }}>
-            <Image src="/images/runnnnnn.jpg" alt="" fill style={{ objectFit: "cover", objectPosition: "center 50%" }} />
+            <Image src="/images/sport/124-A.jpg" alt="" fill sizes="(max-width: 1200px) 100vw, 1100px" style={{ objectFit: "cover", objectPosition: "center 55%" }} />
+            <div className="scan-overlay" />
             <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.72) 100%)" }} />
             <div style={{ position: "absolute", bottom: "2.5rem", left: "2.75rem", right: "2.75rem", zIndex: 1 }}>
               <p style={{ fontSize: "clamp(1.25rem, 2.2vw, 1.875rem)", fontWeight: 700, color: "#ffffff", letterSpacing: "-0.03em", lineHeight: 1.3, maxWidth: "580px", margin: 0 }}>

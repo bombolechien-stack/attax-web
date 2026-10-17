@@ -24,6 +24,7 @@ export default function Footer() {
         <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
           <Image src="/images/sport-running-group.png" alt="" fill style={{ objectFit: "cover", objectPosition: "center 40%", filter: "grayscale(25%) contrast(1.1) brightness(0.58)" }} />
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(7,7,7,0.65) 0%, rgba(7,7,7,0.38) 60%, rgba(7,7,7,0) 100%)" }} />
+          <div className="scan-overlay" />
         </div>
 
         <div className="footer-cta-section" style={{ position: "relative", zIndex: 2, padding: "9rem 2rem 7rem", textAlign: "center" }}>

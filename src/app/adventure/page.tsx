@@ -46,6 +46,7 @@ export default function AdventurePage() {
       <div style={{ backgroundColor: "#ffffff", padding: "0 12px 12px" }}>
         <div style={{ position: "relative", backgroundColor: "#0d0d0d", borderRadius: "24px", minHeight: "calc(100vh - 24px)", display: "flex", flexDirection: "column", overflow: "hidden" }}>
           <Image src="/images/cycling-race.jpg" alt="Cycling is Attax" fill style={{ objectFit: "cover", objectPosition: "center 40%" }} priority />
+          <div className="scan-overlay" />
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(10,10,10,0.96) 0%, rgba(10,10,10,0.72) 55%, rgba(10,10,10,0.2) 100%)" }} />
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(10,10,10,0.9) 0%, transparent 50%)" }} />
           <PageNavbar />

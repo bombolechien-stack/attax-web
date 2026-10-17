@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import ComingSoonGate from "@/components/ComingSoonGate";
 import Hero from "@/components/home/Hero";
 import InfoSection from "@/components/home/InfoSection";
+import SportsMarquee from "@/components/home/SportsMarquee";
 import HowItWorks from "@/components/home/HowItWorks";
 import DailyLoop from "@/components/home/DailyLoop";
 import DailyMatch from "@/components/home/DailyMatch";
@@ -109,6 +110,7 @@ export default function HomePage() {
       />
       <Hero />
       <InfoSection />
+      <SportsMarquee />
       <HowItWorks />
       <DailyLoop />
       <DailyMatch />

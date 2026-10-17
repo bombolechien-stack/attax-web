@@ -136,7 +136,7 @@ export const T = {
       h2: ["Every morning,", "choose your weapon."],
       sub: "12 cards. 3 drawn each morning. One to play before 1 PM — revealed in the evening, applied at 9:30 PM.",
       cards: [
-        { name: "Overdrive", type: "BOOST", effect: "Best 20 min ×2", desc: "Your best 20-minute window of the day counts double. Save your hardest effort for it.", color: "#f97316", glow: "rgba(249,115,22,0.35)" },
+        { name: "Overdrive", type: "BOOST", effect: "+10 pts/min in zone 4", desc: "Every minute in zone 4 within your best 20-minute window earns 10 extra points, up to +200. Save your hardest effort for it.", color: "#f97316", glow: "rgba(249,115,22,0.35)" },
         { name: "Ghost", type: "MASK", effect: "Invisible until evening", desc: "Your activity of the day vanishes from your opponent's screen: flat curve, no strikes — until your card is revealed in the evening.", color: "#8b5cf6", glow: "rgba(139,92,246,0.35)" },
         { name: "Blackout", type: "MASK", effect: "2:30 PM – 7 PM", desc: "No score information at all, for either player, from 2:30 PM to 7 PM. Pure suspense.", color: "#888888", glow: "rgba(160,160,160,0.25)" },
       ],
@@ -508,7 +508,7 @@ export const T = {
       h2: ["Chaque matin,", "choisis ton arme."],
       sub: "12 cartes. 3 tirées chaque matin. Une à jouer avant 13h — révélée le soir, appliquée à 21h30.",
       cards: [
-        { name: "Overdrive", type: "BOOST", effect: "Meilleures 20 min ×2", desc: "Ta meilleure fenêtre de 20 minutes de la journée compte double. Garde ton effort le plus intense pour elle.", color: "#f97316", glow: "rgba(249,115,22,0.35)" },
+        { name: "Overdrive", type: "BOOST", effect: "+10 pts/min en zone 4", desc: "Chaque minute en zone 4 dans ta meilleure fenêtre de 20 minutes rapporte 10 points de plus, jusqu'à +200. Garde ton effort le plus intense pour elle.", color: "#f97316", glow: "rgba(249,115,22,0.35)" },
         { name: "Ghost", type: "MASQUE", effect: "Invisible jusqu'au soir", desc: "Ton activité du jour disparaît de l'écran de ton adversaire : courbe plate, aucune frappe — jusqu'à la révélation de ta carte, le soir.", color: "#8b5cf6", glow: "rgba(139,92,246,0.35)" },
         { name: "Blackout", type: "MASQUE", effect: "14h30 – 19h", desc: "Plus aucune information de score, pour les deux joueurs, de 14h30 à 19h. Suspense total.", color: "#888888", glow: "rgba(160,160,160,0.25)" },
       ],

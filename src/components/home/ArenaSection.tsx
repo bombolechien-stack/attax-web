@@ -14,7 +14,8 @@ export default function ArenaSection() {
   return (
     <section style={{ position: "relative", backgroundColor: "#050505", minHeight: "110vh", display: "flex", alignItems: "center", overflow: "hidden" }}>
       <div ref={bgRef} style={{ position: "absolute", inset: "-10%", zIndex: 0 }}>
-        <Image src="/images/photo-race.jpg" alt="Athletes" fill style={{ objectFit: "cover", objectPosition: "center 40%", filter: "grayscale(70%) contrast(1.1) brightness(0.28)" }} />
+        <Image src="/images/sport/033-A.jpg" alt="Runner training at night" fill sizes="100vw" style={{ objectFit: "cover", objectPosition: "center 45%", filter: "grayscale(40%) contrast(1.1) brightness(0.42)" }} />
+        <div className="scan-overlay" />
       </div>
       <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(to right, rgba(5,5,5,0.95) 0%, rgba(5,5,5,0.65) 55%, rgba(5,5,5,0.3) 100%)" }} />
       <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(to bottom, rgba(5,5,5,0.15) 0%, rgba(5,5,5,0) 30%, rgba(5,5,5,0) 70%, rgba(5,5,5,0.9) 100%)" }} />
