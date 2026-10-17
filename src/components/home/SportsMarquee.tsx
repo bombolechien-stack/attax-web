@@ -4,28 +4,31 @@ import Image from "next/image";
 import { useLang } from "@/lib/i18n";
 import { useInView, fadeUp, clipReveal } from "@/hooks/useInView";
 
-// Panneaux tirés des carrousels : la photo entière en scanlines (même rendu que les carrousels),
-// bleu marine sur bleu glacier. Images 520×780, affichées en 260×390 (rapport 2:1, lignes nettes).
+// Silhouettes des images des carrousels, toutes traitées pareil : détourées en silhouette pleine,
+// même taille de personne, posées sur la même ligne de sol, puis scanlines bleu marine sur bleu glacier.
+// On alterne femme / homme et le sens (gauche / droite). Images 520×780, affichées en 260×390 (rapport 2:1, lignes nettes).
 const SPORTS: { file: string; en: string; fr: string }[] = [
-  { file: "sprint", en: "Sprint", fr: "Sprint" },
+  { file: "running", en: "Running", fr: "Course" },
   { file: "cycling", en: "Cycling", fr: "Vélo" },
   { file: "lifting", en: "Lifting", fr: "Musculation" },
-  { file: "running", en: "Running", fr: "Course" },
+  { file: "sprint", en: "Sprint", fr: "Sprint" },
   { file: "tennis", en: "Tennis", fr: "Tennis" },
-  { file: "rowing", en: "Rowing", fr: "Aviron" },
+  { file: "wheelchair", en: "Wheelchair basketball", fr: "Basket fauteuil" },
+  { file: "nordic-walking", en: "Nordic walking", fr: "Marche nordique" },
   { file: "basketball", en: "Basketball", fr: "Basket" },
+  { file: "spin", en: "Indoor cycling", fr: "Vélo d'intérieur" },
   { file: "walking", en: "Walking", fr: "Marche" },
 ];
 
 const COPY = {
   en: {
     label: "Every sport counts",
-    h2: ["Run. Ride. Lift.", "Row. Play. Walk."],
+    h2: ["Run. Ride. Lift.", "Play. Walk. Win."],
     body: "If your heart rate goes up, it counts. Your watch measures the effort, Attax turns it into points. Whatever your sport, whatever your age.",
   },
   fr: {
     label: "Tous les sports comptent",
-    h2: ["Cours. Roule. Soulève.", "Rame. Joue. Marche."],
+    h2: ["Cours. Roule. Soulève.", "Joue. Marche. Gagne."],
     body: "Si ton cœur accélère, ça compte. Ta montre mesure l'effort, Attax le transforme en points. Quel que soit ton sport, quel que soit ton âge.",
   },
 };
