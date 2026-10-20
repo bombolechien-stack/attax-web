@@ -19,6 +19,7 @@ function ContentEn() {
         <div style={SECTION}>
           <h2 style={H2}>1. Introduction</h2>
           <p style={P}>Attax ("we", "our", "us") is a fitness competition app: your real physical activity powers daily duels against other players in a league. This Privacy Policy explains what data we collect when you use the Attax mobile app (iOS and Android) and the website attax.app, why we collect it, who processes it, and how you can delete it.</p>
+          <p style={P}>The data controller is <strong>ATTAX</strong>, SAS with a share capital of €1,000, 61 rue de Lyon, 75012 Paris, France, RCS Paris 107 084 337 (see our <a href="/legal" style={{ color: "#0d0d0d", fontWeight: 600 }}>Legal Notice</a>). Contact: contact@attax.app.</p>
           <p style={P}>Attax is not a medical app and does not provide medical advice.</p>
         </div>
 
@@ -123,6 +124,7 @@ function ContentFr() {
         <div style={SECTION}>
           <h2 style={H2}>1. Introduction</h2>
           <p style={P}>Attax (« nous ») est une application de compétition sportive : ton activité physique réelle alimente des duels quotidiens contre d'autres joueurs d'une ligue. Cette politique explique quelles données nous collectons quand tu utilises l'application mobile Attax (iOS et Android) et le site attax.app, pourquoi nous les collectons, qui les traite et comment tu peux les supprimer.</p>
+          <p style={P}>Le responsable du traitement est <strong>ATTAX</strong>, SAS au capital de 1 000 €, 61 rue de Lyon, 75012 Paris, France, RCS Paris 107 084 337 (voir nos <a href="/legal" style={{ color: "#0d0d0d", fontWeight: 600 }}>mentions légales</a>). Contact : contact@attax.app.</p>
           <p style={P}>Attax n'est pas une application médicale et ne fournit aucun conseil médical.</p>
         </div>
 

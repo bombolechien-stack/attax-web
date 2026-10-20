@@ -207,6 +207,7 @@ export const T = {
         { label: "Consumer Health Data Privacy Policy", href: "/health-data-privacy" },
         { label: "Terms of Service", href: "/terms" },
         { label: "Cookie Policy", href: "/cookie-policy" },
+        { label: "Legal Notice", href: "/legal" },
         { label: "Download", href: "/download" },
       ],
       links_resources: [
@@ -218,7 +219,7 @@ export const T = {
         { label: "Health Connect Fitness Game", href: "/health-connect-fitness-game" },
       ],
       col_resources: "Resources",
-      copyright: "© 2026 Attax — Sport is now a game.",
+      copyright: "© 2026 ATTAX SAS — Sport is now a game.",
     },
     discover: {
       hero_label: "DISCOVER ATTAX",
@@ -579,6 +580,7 @@ export const T = {
         { label: "Données de santé", href: "/health-data-privacy" },
         { label: "Conditions d'utilisation", href: "/terms" },
         { label: "Cookies", href: "/cookie-policy" },
+        { label: "Mentions légales", href: "/legal" },
         { label: "Télécharger", href: "/download" },
       ],
       links_resources: [
@@ -590,7 +592,7 @@ export const T = {
         { label: "Jeu Health Connect", href: "/health-connect-fitness-game" },
       ],
       col_resources: "Ressources",
-      copyright: "© 2026 Attax — Le sport devient un jeu.",
+      copyright: "© 2026 ATTAX SAS — Le sport devient un jeu.",
     },
     discover: {
       hero_label: "DÉCOUVRIR ATTAX",

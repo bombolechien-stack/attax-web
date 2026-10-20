@@ -204,6 +204,10 @@ export default function ComingSoonGate({ children }: { children: React.ReactNode
           <a href="/privacy" style={{ color: "inherit", textDecoration: "underline" }}>Privacy Policy</a>
           <a href="/health-data-privacy" style={{ color: "inherit", textDecoration: "underline" }}>Consumer Health Data Privacy Policy</a>
           <a href="/terms" style={{ color: "inherit", textDecoration: "underline" }}>Terms</a>
+          <a href="/legal" style={{ color: "inherit", textDecoration: "underline" }}>Legal Notice</a>
+        </p>
+        <p style={{ marginTop: "0.75rem", fontSize: "0.6875rem", color: "rgba(255,255,255,0.35)", fontFamily: "'Plus Jakarta Sans', -apple-system, sans-serif", textAlign: "center" }}>
+          © 2026 ATTAX SAS · 61 rue de Lyon, 75012 Paris · RCS Paris 107 084 337
         </p>
       </div>
     </div>

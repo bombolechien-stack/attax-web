@@ -17,6 +17,7 @@ function ContentEn() {
         <div style={SECTION}>
           <h2 style={H2}>1. Acceptance of Terms</h2>
           <p style={P}>By downloading, installing, or using the Attax application ("the App"), you agree to be bound by these Terms of Service. If you do not agree to these terms, do not use the App.</p>
+          <p style={P}>The App is published by <strong>ATTAX</strong>, SAS with a share capital of €1,000, 61 rue de Lyon, 75012 Paris, France, RCS Paris 107 084 337 (see our <a href="/legal" style={{ color: "#0d0d0d", fontWeight: 600 }}>Legal Notice</a>).</p>
         </div>
 
         <div style={SECTION}>
@@ -86,6 +87,7 @@ function ContentFr() {
         <div style={SECTION}>
           <h2 style={H2}>1. Acceptation des conditions</h2>
           <p style={P}>En téléchargeant, en installant ou en utilisant l'application Attax (« l'App »), tu acceptes d'être lié par ces conditions d'utilisation. Si tu ne les acceptes pas, n'utilise pas l'App.</p>
+          <p style={P}>L'App est éditée par <strong>ATTAX</strong>, SAS au capital de 1 000 €, 61 rue de Lyon, 75012 Paris, France, RCS Paris 107 084 337 (voir nos <a href="/legal" style={{ color: "#0d0d0d", fontWeight: 600 }}>mentions légales</a>).</p>
         </div>
 
         <div style={SECTION}>
