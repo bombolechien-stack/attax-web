@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import ScrollNav from "@/components/ScrollNav";
 import Footer from "@/components/Footer";
@@ -13,6 +14,32 @@ const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800"],
   variable: "--font-jakarta",
+});
+
+// Typos des pins réseaux sociaux (titres des héros)
+const interTight = localFont({
+  src: [
+    { path: "./fonts/inter-tight-latin-600-normal.woff2", weight: "600", style: "normal" },
+    { path: "./fonts/inter-tight-latin-700-normal.woff2", weight: "700", style: "normal" },
+  ],
+  variable: "--font-tight",
+  display: "swap",
+});
+const instrumentSerif = localFont({
+  src: [
+    { path: "./fonts/instrument-serif-latin-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/instrument-serif-latin-400-italic.woff2", weight: "400", style: "italic" },
+  ],
+  variable: "--font-serif",
+  display: "swap",
+});
+const plexMono = localFont({
+  src: [
+    { path: "./fonts/ibm-plex-mono-latin-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/ibm-plex-mono-latin-500-normal.woff2", weight: "500", style: "normal" },
+  ],
+  variable: "--font-mono",
+  display: "swap",
 });
 
 const BASE_URL = "https://attax.app";
@@ -86,7 +113,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={jakarta.variable}>
+    <html lang="en" className={`${jakarta.variable} ${interTight.variable} ${instrumentSerif.variable} ${plexMono.variable}`}>
       <body
         style={{
           fontFamily: "var(--font-jakarta), -apple-system, BlinkMacSystemFont, sans-serif",

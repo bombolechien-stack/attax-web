@@ -49,8 +49,8 @@ export default function DiscoverPage() {
             <div style={{ marginBottom: "1.25rem" }}>
               <span style={{ fontSize: "0.75rem", fontWeight: 600, color: "rgba(255,255,255,0.4)", letterSpacing: "0.14em", textTransform: "uppercase" }}>{d.hero_label}</span>
             </div>
-            <h1 style={{ fontSize: "clamp(3rem, 5.5vw, 4.75rem)", fontWeight: 800, color: "#ffffff", lineHeight: 1.05, letterSpacing: "-0.035em", margin: "0 0 1.25rem" }}>
-              {d.h1[0]}{" "}<br className="hero-h1-br" /><em style={{ fontStyle: "normal" }}>{d.h1[1]}</em>
+            <h1 className="pin-title" style={{ fontSize: "clamp(3rem, 5.5vw, 4.75rem)", color: "#ffffff", lineHeight: 1, margin: "0 0 1.25rem" }}>
+              {d.h1[0]}{" "}<br className="hero-h1-br" /><em>{d.h1[1]}</em>
             </h1>
             <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.75, margin: "0 0 2rem", maxWidth: "400px" }}>{d.subtitle}</p>
             <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>

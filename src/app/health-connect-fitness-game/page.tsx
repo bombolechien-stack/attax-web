@@ -5,6 +5,7 @@ import Link from "next/link";
 import PageNavbar from "@/components/PageNavbar";
 import ScanAthlete from "@/components/scan/ScanAthlete";
 import { useLang } from "@/lib/i18n";
+import PinTitle from "@/components/PinTitle";
 
 const BODY: React.CSSProperties = { fontSize: "1.0625rem", color: "#444", lineHeight: 1.85, margin: "0 0 1.25rem" };
 const BODY_EM: React.CSSProperties = { ...BODY, color: "#1a1a1a", fontWeight: 500 };
@@ -80,7 +81,7 @@ const P: Record<Lang, {
 }> = {
   en: {
     heroLabel: "HEALTH CONNECT FITNESS GAME",
-    heroTitle: "The fitness game built for Android.",
+    heroTitle: "The fitness game\nbuilt for Android.",
     heroSubtitle1: "Connect your watch through Health Connect and turn every session into a daily duel against a player of your league.",
     heroSubtitle2: "Every workout counts. Every step adds up. Every evening, a verdict at 9:30 PM.",
     heroCta: "Get it on Google Play",
@@ -146,7 +147,7 @@ const P: Record<Lang, {
   },
   fr: {
     heroLabel: "JEU FITNESS HEALTH CONNECT",
-    heroTitle: "Le jeu de fitness conçu pour Android.",
+    heroTitle: "Le jeu de fitness\nconçu pour Android.",
     heroSubtitle1: "Connecte ta montre via Health Connect et transforme chaque séance en duel quotidien contre un joueur de ta ligue.",
     heroSubtitle2: "Chaque séance compte. Chaque pas s'additionne. Chaque soir, un verdict à 21h30.",
     heroCta: "Obtenir sur Google Play",
@@ -226,8 +227,8 @@ export default function HealthConnectFitnessGame() {
           <PageNavbar />
           <div className="hero-text-box" style={{ position: "relative", zIndex: 3, flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "3rem 4rem 4rem", maxWidth: "720px" }}>
             <span style={{ fontSize: "0.6875rem", fontWeight: 700, color: "rgba(255,255,255,0.3)", letterSpacing: "0.18em", textTransform: "uppercase", display: "block", marginBottom: "1.5rem" }}>{p.heroLabel}</span>
-            <h1 style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800, color: "#ffffff", lineHeight: 1.05, letterSpacing: "-0.04em", margin: "0 0 1.5rem" }}>
-              {p.heroTitle}
+            <h1 className="pin-title" style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", color: "#ffffff", lineHeight: 1, margin: "0 0 1.5rem" }}>
+              <PinTitle text={p.heroTitle} />
             </h1>
             <p style={{ fontSize: "1.0625rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.8, margin: "0 0 0.75rem", maxWidth: "540px" }}>
               {p.heroSubtitle1}

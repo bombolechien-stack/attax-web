@@ -78,7 +78,7 @@ export default function ContactPage() {
           <div ref={heroTextRef} className="contact-hero-content" style={{ position: "relative", zIndex: 3, flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "3rem 4rem 4rem", textAlign: "center" }}>
             <p style={{ ...fadeUp(heroTextVisible, 0), fontSize: "0.75rem", fontWeight: 600, letterSpacing: "0.14em", color: "rgba(255,255,255,0.4)", textTransform: "uppercase", margin: "0 0 1.25rem" }}>{c.hero_label}</p>
             <div>
-              <h1 style={{ ...clipReveal(heroTextVisible, 80), fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800, color: "#ffffff", lineHeight: 1.02, letterSpacing: "-0.035em", margin: "0 0 1.25rem" }}>{c.h1}</h1>
+              <h1 className="pin-title" style={{ ...clipReveal(heroTextVisible, 80), fontSize: "clamp(2.5rem, 5vw, 4rem)", color: "#ffffff", lineHeight: 1, margin: "0 0 1.25rem" }}>{c.h1}</h1>
             </div>
             <p style={{ ...fadeUp(heroTextVisible, 200), fontSize: "1.0625rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.7, maxWidth: "440px", margin: "0 auto 2.5rem" }}>{c.subtitle}</p>
             {/* Scroll indicator */}

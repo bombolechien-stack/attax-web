@@ -61,9 +61,9 @@ export default function DownloadPage() {
               <p style={{ ...fadeIn(heroVisible, 0), fontSize: "0.6875rem", fontWeight: 700, color: "rgba(255,255,255,0.3)", letterSpacing: "0.18em", textTransform: "uppercase", margin: "0 0 1.75rem" }}>
                 {d.hero_label}
               </p>
-              <h1 style={{ fontSize: "clamp(2.75rem, 5.5vw, 5rem)", fontWeight: 800, color: "#ffffff", lineHeight: 1.0, letterSpacing: "-0.045em", margin: "0 0 1.5rem" }}>
+              <h1 className="pin-title" style={{ fontSize: "clamp(2.75rem, 5.5vw, 5rem)", color: "#ffffff", lineHeight: 1, margin: "0 0 1.5rem" }}>
                 <div><span style={clipReveal(heroVisible, 80)}>{d.h1[0]}</span></div>
-                <div><span style={{ ...clipReveal(heroVisible, 200), color: "rgba(255,255,255,0.38)" }}>{d.h1[1]}</span></div>
+                <div><span style={clipReveal(heroVisible, 200)}><em>{d.h1[1]}</em></span></div>
               </h1>
               <p style={{ ...fadeUp(heroVisible, 280), fontSize: "1.0625rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.8, margin: "0 0 2.5rem", maxWidth: "420px" }}>
                 {d.subtitle}

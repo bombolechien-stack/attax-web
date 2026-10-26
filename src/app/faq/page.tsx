@@ -5,6 +5,7 @@ import Link from "next/link";
 import PageNavbar from "@/components/PageNavbar";
 import { useLang } from "@/lib/i18n";
 import { FAQ_CONTENT, type FaqItem } from "./content";
+import PinTitle from "@/components/PinTitle";
 
 function Answer({ item }: { item: FaqItem }) {
   return (
@@ -35,8 +36,8 @@ export default function FaqPage() {
             <span style={{ fontSize: "0.6875rem", fontWeight: 700, color: "rgba(255,255,255,0.3)", letterSpacing: "0.18em", textTransform: "uppercase", display: "block", marginBottom: "1.5rem" }}>
               {c.heroLabel}
             </span>
-            <h1 style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800, color: "#ffffff", lineHeight: 1.05, letterSpacing: "-0.04em", margin: "0 0 1.5rem", whiteSpace: "pre-line" }}>
-              {c.heroTitle}
+            <h1 className="pin-title" style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", color: "#ffffff", lineHeight: 1, margin: "0 0 1.5rem", whiteSpace: "pre-line" }}>
+              <PinTitle text={c.heroTitle} />
             </h1>
             <p style={{ fontSize: "1.0625rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.8, margin: "0 0 2.5rem", maxWidth: "540px" }}>
               {c.heroSub}

@@ -9,7 +9,9 @@ export const T = {
       contact: "Contact",
     },
     hero: {
-      h1: ["Move.", "Power up.", "Battle."],
+      h1: ["Sport is now", "a game."],
+      kicker: ["Every day", "a new rival"],
+      sports: "Box · Lift · Run · Ride · Play",
       subtitle: "Your workouts become daily duels.\nTrain, play your card, and take down your league — verdict every night at 9:30 PM.",
       cta_ios: "Download Attax",
       cta_secondary: "How It Works",
@@ -382,7 +384,9 @@ export const T = {
       contact: "Contact",
     },
     hero: {
-      h1: ["Bouge.", "Progresse.", "Bats-toi."],
+      h1: ["Le sport est", "devenu un jeu."],
+      kicker: ["Chaque jour", "un nouveau rival"],
+      sports: "Boxe · Muscu · Course · Vélo · Jeu",
       subtitle: "Tes séances deviennent des duels quotidiens.\nEntraîne-toi, joue ta carte et domine ta ligue — verdict chaque soir à 21h30.",
       cta_ios: "Télécharger Attax",
       cta_secondary: "Comment ça marche",

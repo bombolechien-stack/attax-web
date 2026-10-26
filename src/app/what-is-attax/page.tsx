@@ -5,6 +5,7 @@ import Image from "next/image";
 import PageNavbar from "@/components/PageNavbar";
 import ScanAthlete from "@/components/scan/ScanAthlete";
 import { useLang } from "@/lib/i18n";
+import PinTitle from "@/components/PinTitle";
 
 type Lang = "en" | "fr";
 
@@ -123,7 +124,7 @@ const P: Record<Lang, {
 }> = {
   en: {
     heroLabel: "WHAT IS ATTAX",
-    heroTitle: "The fitness game powered by real activity.",
+    heroTitle: "The fitness game\npowered by real activity.",
     heroSubtitle1: "Attax turns your workouts and daily movement into a daily duel against a player of your league. Your heart rate and your steps become points — and the most active player wins at 9:30 PM.",
     heroSubtitle2: "Train in real life. Win your duels. Climb from Rookie to Legend.",
     heroCta: "Download Attax",
@@ -218,7 +219,7 @@ const P: Record<Lang, {
 
   fr: {
     heroLabel: "QU’EST-CE QU’ATTAX",
-    heroTitle: "Le jeu de fitness propulsé par une activité réelle.",
+    heroTitle: "Le jeu de fitness\npropulsé par une activité réelle.",
     heroSubtitle1: "Attax transforme tes séances et ton activité quotidienne en un duel quotidien contre un joueur de ta ligue. Ta fréquence cardiaque et tes pas deviennent des points — et le plus actif l'emporte à 21h30.",
     heroSubtitle2: "Entraîne-toi dans la vraie vie. Gagne tes duels. Grimpe de Rookie à Legend.",
     heroCta: "Télécharger Attax",
@@ -337,8 +338,8 @@ export default function WhatIsAttax() {
             <span style={{ fontSize: "0.6875rem", fontWeight: 700, color: "rgba(255,255,255,0.3)", letterSpacing: "0.18em", textTransform: "uppercase", display: "block", marginBottom: "1.5rem" }}>
               {p.heroLabel}
             </span>
-            <h1 style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800, color: "#ffffff", lineHeight: 1.05, letterSpacing: "-0.04em", margin: "0 0 1.5rem" }}>
-              {p.heroTitle}
+            <h1 className="pin-title" style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", color: "#ffffff", lineHeight: 1, margin: "0 0 1.5rem" }}>
+              <PinTitle text={p.heroTitle} />
             </h1>
             <p style={{ fontSize: "1.0625rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.8, margin: "0 0 0.75rem", maxWidth: "540px" }}>
               {p.heroSubtitle1}

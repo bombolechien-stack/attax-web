@@ -5,6 +5,7 @@ import { useState } from "react";
 import PageNavbar from "@/components/PageNavbar";
 import { useLang } from "@/lib/i18n";
 import { PRESS_CONTENT, KIT_URL, LOGOS, SCREENS } from "./content";
+import PinTitle from "@/components/PinTitle";
 
 const LABEL: React.CSSProperties = {
   fontSize: "0.6875rem", fontWeight: 700, color: "#aaa",
@@ -83,8 +84,8 @@ export default function PressPage() {
           </div>
           <div style={{ position: "relative", zIndex: 5, flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "3rem clamp(2rem, 5vw, 5rem) 4rem" }}>
             <span style={{ ...LABEL, color: "rgba(255,255,255,0.28)" }}>{p.hero_label}</span>
-            <h1 style={{ fontSize: "clamp(2.5rem, 5vw, 4.5rem)", fontWeight: 800, color: "#ffffff", lineHeight: 1.02, letterSpacing: "-0.045em", margin: "0 0 1.5rem", maxWidth: "760px", whiteSpace: "pre-line" }}>
-              {p.hero_title}
+            <h1 className="pin-title" style={{ fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#ffffff", lineHeight: 1, margin: "0 0 1.5rem", maxWidth: "760px", whiteSpace: "pre-line" }}>
+              <PinTitle text={p.hero_title} />
             </h1>
             <p style={{ fontSize: "1.0625rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.7, margin: "0 0 2.5rem", maxWidth: "560px" }}>{p.hero_sub}</p>
             <div style={{ display: "flex", gap: "10px", flexWrap: "wrap", alignItems: "center" }}>
