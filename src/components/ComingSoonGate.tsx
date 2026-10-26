@@ -119,6 +119,10 @@ export default function ComingSoonGate({ children }: { children: React.ReactNode
     if (clickCount.current >= CLICKS_NEEDED) {
       localStorage.setItem(SECRET_KEY, "1");
       document.cookie = `${SECRET_KEY}=1; path=/; max-age=31536000`;
+      // Le site complet s'affiche sans rechargement : on réaffiche tout de suite la bannière,
+      // la navigation et le bandeau cookies (masqués tant que la page « Coming soon » était active).
+      document.body.classList.remove("is-coming-soon");
+      window.dispatchEvent(new Event("attax-unlocked"));
       setUnlocked(true);
     }
   }

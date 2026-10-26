@@ -9,8 +9,14 @@ export default function CookieConsent() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (localStorage.getItem("attax_preview_unlocked") !== "1") return;
-    if (!localStorage.getItem(KEY)) setVisible(true);
+    const check = () => {
+      if (localStorage.getItem("attax_preview_unlocked") !== "1") return;
+      if (!localStorage.getItem(KEY)) setVisible(true);
+    };
+    check();
+    // déverrouillage de l'aperçu sans rechargement de page
+    window.addEventListener("attax-unlocked", check);
+    return () => window.removeEventListener("attax-unlocked", check);
   }, []);
 
   const { lang } = useLang();
