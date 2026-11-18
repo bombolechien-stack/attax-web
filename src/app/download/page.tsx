@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import PageNavbar from "@/components/PageNavbar";
-import { useT } from "@/lib/i18n";
+import { useLang, useT } from "@/lib/i18n";
 import { useInView, fadeUp, clipReveal, slideLeft, slideRight, scaleIn, fadeIn } from "@/hooks/useInView";
 
 const AppleIcon = () => (
@@ -24,15 +24,14 @@ const CheckIcon = () => (
   </svg>
 );
 
-const SCREEN_SRCS = [
-  "/screens/screenactivity.png",
-  "/screens/screenmatch.png",
-  "/screens/screencards.png",
-];
+// Captures de l'app (stores, novembre) : Activités, Soir de combat, Cartes — dans la langue du site.
+const SCREEN_SHOTS = [4, 2, 3];
 
 export default function DownloadPage() {
   const t = useT();
+  const { lang } = useLang();
   const d = t.download;
+  const SCREEN_SRCS = SCREEN_SHOTS.map((n) => `/screens/app/${lang}/${n}.webp`);
 
   const { ref: heroRef, visible: heroVisible } = useInView<HTMLDivElement>(0.05, { oneShot: true });
   const { ref: platformsRef, visible: platformsVisible } = useInView<HTMLDivElement>(0.1);

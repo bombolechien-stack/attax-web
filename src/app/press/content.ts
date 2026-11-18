@@ -11,9 +11,10 @@ const LOGOS = [
 export { LOGOS };
 
 export const SCREENS = [
-  { src: "/screens/screenactivity.png", file: "/press/screens/attax-activity.png" },
-  { src: "/screens/screenmatch.png", file: "/press/screens/attax-match.png" },
-  { src: "/screens/screencards.png", file: "/press/screens/attax-cards.png" },
+  // Aperçus = captures de l'app (stores, novembre) ; fichiers = captures stores EN en pleine résolution.
+  { src: "/screens/app/en/4.webp", file: "/press/screens/attax-activity.png" },
+  { src: "/screens/app/en/2.webp", file: "/press/screens/attax-match.png" },
+  { src: "/screens/app/en/3.webp", file: "/press/screens/attax-cards.png" },
 ];
 
 type Text = { label: string; body: string };

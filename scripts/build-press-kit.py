@@ -12,12 +12,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 PUB = ROOT / "public"
 PRESS = PUB / "press"
-SCREENS = {"screenactivity.png": "attax-activity.png", "screenmatch.png": "attax-match.png", "screencards.png": "attax-cards.png"}
-
-# Captures téléchargeables une à une depuis la page
-(PRESS / "screens").mkdir(parents=True, exist_ok=True)
-for src, dst in SCREENS.items():
-    shutil.copyfile(PUB / "screens" / src, PRESS / "screens" / dst)
+# Captures téléchargeables une à une depuis la page : captures stores EN de l'app (1206×2622),
+# copiées à la main dans public/press/screens depuis budyfit/store-assets/app-store/en (screen-4, 2, 3).
+SCREENS = {"attax-activity.png": "attax-activity.png", "attax-match.png": "attax-match.png", "attax-cards.png": "attax-cards.png"}
 
 # Textes FR/EN depuis content.ts (node retire les types TypeScript nativement)
 js = "import { PRESS_CONTENT } from './src/app/press/content.ts'; console.log(JSON.stringify(PRESS_CONTENT));"
