@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import { FAQ_CONTENT } from "./content";
 
 export const metadata: Metadata = {
-  title: "FAQ — Duels, Points, Cards, Ranks & Watches",
+  title: "FAQ — Matches, Rounds, Cards, Ranks & Watches",
   description:
-    "All the answers about Attax: how duels and leagues work, points and heart-rate zones, the 12 strategy cards, ranks from Rookie to Legend, and compatible watches.",
+    "All the answers about Attax: daily boxing duels in 7 rounds, Fight Night at 9:30 PM, leagues of 8 players, the 12 cards, ranks from Rookie to Legend, and compatible watches.",
   alternates: { canonical: "https://attax.app/faq" },
   openGraph: {
     title: "Attax FAQ",
-    description: "Duels, points, heart-rate zones, cards, ranks and compatible watches.",
+    description: "Matches, rounds, cards, leagues, ranks and compatible watches.",
     url: "https://attax.app/faq",
   },
 };

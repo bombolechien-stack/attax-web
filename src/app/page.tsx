@@ -13,11 +13,13 @@ import FeaturesGrid from "@/components/home/FeaturesGrid";
 import ArenaSection from "@/components/home/ArenaSection";
 import PrivacyStrip from "@/components/home/PrivacyStrip";
 import FAQ from "@/components/home/FAQ";
+import FightNight from "@/components/home/FightNight";
+import Beyond from "@/components/home/Beyond";
 
 export const metadata: Metadata = {
-  title: "Attax — Sport is now a game.",
+  title: "Attax — Your workouts become a fight.",
   description:
-    "Attax turns your real workouts into daily duels: heart rate and steps become points, leagues of 8, strategy cards and a verdict every night at 9:30 PM. Free on iPhone & Android.",
+    "Attax turns your real workouts into daily boxing duels: leagues of 8, 7 rounds per match, 12 tactical cards and Fight Night every evening at 9:30 PM. Free on iPhone & Android.",
   alternates: { canonical: "https://attax.app" },
 };
 
@@ -29,7 +31,7 @@ const softwareAppSchema = {
   operatingSystem: "iOS, Android",
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
   description:
-    "Attax turns your real workouts into daily duels: heart rate and steps become points, leagues of 8, strategy cards and a verdict every night at 9:30 PM. Free on iPhone & Android.",
+    "Attax turns your real workouts into daily boxing duels: leagues of 8, 7 rounds per match, 12 tactical cards and Fight Night every evening at 9:30 PM. Free on iPhone & Android.",
   url: "https://attax.app",
   downloadUrl: "https://attax.app/download",
 };
@@ -43,23 +45,23 @@ const faqSchema = {
       name: "Do I need a smartwatch to use Attax?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. You need a device that measures your heart rate — smartwatch, fitness band or chest strap — synced with Apple Health (iPhone) or Health Connect (Android). Your phone alone counts your steps, but workouts are scored from your heart rate.",
+        text: "Yes. You need a device that measures your heart rate — smartwatch, fitness band or chest strap — synced with Apple Health (iPhone) or Health Connect (Android). Your phone alone counts your steps, but your workouts are measured by your watch.",
       },
     },
     {
       "@type": "Question",
-      name: "How are points calculated in Attax?",
+      name: "How do I earn pts in Attax?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Your watch measures your effort through Apple Health or Health Connect: every minute your heart works hard earns activity points, and your steps count too.",
+        text: "Your workouts and your steps, measured by your watch through Apple Health or Health Connect, become pts. Intensity pays, not just volume. Manual entries don't count.",
       },
     },
     {
       "@type": "Question",
-      name: "How is a duel decided?",
+      name: "How is a match decided?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Your duel score is your activity of the day plus the 6 previous days, revealed round by round during the day. At 9:30 PM the highest score wins, after strategy cards are applied.",
+        text: "A match has 7 rounds: the 6 previous days and today. Each day is won by whoever scored the most pts that day, and every round lost costs HP. The final round is fought at 9:30 PM, after the cards are revealed: whoever keeps the most HP wins. Never a draw.",
       },
     },
     {
@@ -67,7 +69,7 @@ const faqSchema = {
       name: "Can I play Attax with friends?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. Create a league in the app, share the code and start it when everyone is in.",
+        text: "Yes. Create a ranked league with your friends, or a custom league from 2 to 40 players. Share the code, they join in seconds.",
       },
     },
     {
@@ -91,7 +93,7 @@ const faqSchema = {
       name: "What is Attax?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Attax is a competitive fitness game: your real activity, measured by your watch, powers a daily duel against a player of your league. Leagues of 8 players, 7 duels in 7 days, strategy cards and a global rank from Rookie to Legend.",
+        text: "Attax is a competitive fitness game: your real workouts, measured by your watch, power a daily boxing duel against a player of your league. Leagues of 8 players, 7 rounds per match, 12 tactical cards, Fight Night every evening at 9:30 PM, a world season and ranks from Rookie to Legend.",
       },
     }
   ],
@@ -114,9 +116,11 @@ export default function HomePage() {
       <HowItWorks />
       <DailyLoop />
       <DailyMatch />
+      <FightNight />
       <CardsShowcase />
       <Testimonials />
       <VisualGrid />
+      <Beyond />
       <FeaturesGrid />
       <ArenaSection />
       <PrivacyStrip />

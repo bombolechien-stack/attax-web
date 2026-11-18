@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Fitness Competition App",
   description:
-    "Attax is the fitness competition app where real-world activity becomes a competitive advantage. Train, compete, progress and climb the rankings.",
+    "Attax is the fitness competition app where your real workouts become daily boxing duels. Train, compete in leagues of 8 players, and climb from Rookie to Legend.",
   alternates: { canonical: "https://attax.app/fitness-competition-app" },
   openGraph: {
     title: "Fitness Competition App | Attax",

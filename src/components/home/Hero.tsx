@@ -1,7 +1,11 @@
 "use client";
 
 import PageNavbar from "@/components/PageNavbar";
+import HeroBackdrop from "@/components/scan/HeroBackdrop";
 import { useT } from "@/lib/i18n";
+
+const INK = "#0B1116";
+const BLUE = "#0443FD";
 
 export default function Hero() {
   const t = useT();
@@ -9,52 +13,55 @@ export default function Hero() {
 
   return (
     <div style={{ backgroundColor: "#ffffff", padding: "0 12px 12px" }}>
-      <div style={{
+      <div className="home-hero" style={{
         position: "relative",
         borderRadius: "24px",
         minHeight: "calc(100vh - 24px)",
         display: "flex",
         flexDirection: "column",
         overflow: "hidden",
-        backgroundColor: "#0d0d0d",
+        backgroundColor: "#EBEFF3",
+        isolation: "isolate",
       }}>
-        {/* Vidéo du héros : 3 athlètes × 3 sports, rendus en scanlines (même DA que les héros des autres pages) */}
+        {/* Fond du hero de l'app (HeroBackdrop : gris-bleu clair + scanlines « crayon » à 17 %) */}
+        <HeroBackdrop />
+        {/* Vidéo : 3 scènes × 3 sports, rendues en scanlines comme les boxeurs de l'app (lignes bleues dont
+            l'épaisseur suit la profondeur dans la silhouette ; scripts/hero-lines). Fond blanc → multiply. */}
         <video
-          className="home-hero-video"
+          className="home-hero-video home-hero-video-light"
           autoPlay muted loop playsInline preload="auto"
-          poster="/videos/hero-scan-poster.jpg"
+          poster="/videos/hero-lines-poster.jpg"
           aria-hidden="true"
         >
-          <source src="/videos/hero-scan.mp4" type="video/mp4" />
+          <source src="/videos/hero-lines.webm" type="video/webm" />
+          <source src="/videos/hero-lines.mp4" type="video/mp4" />
         </video>
-        <div className="scan-hero-lines" />
-        <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(to right, rgba(13,13,13,0.94) 0%, rgba(13,13,13,0.75) 32%, rgba(13,13,13,0.1) 58%, rgba(13,13,13,0) 100%)" }} />
-        <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(to bottom, rgba(13,13,13,0.55) 0%, rgba(13,13,13,0) 22%, rgba(13,13,13,0) 72%, rgba(13,13,13,0.85) 100%)" }} />
+        <div className="home-hero-veil" style={{ position: "absolute", inset: 0, zIndex: 1, pointerEvents: "none", background: "linear-gradient(to right, rgba(235,239,243,0.92) 0%, rgba(235,239,243,0.7) 30%, rgba(235,239,243,0) 52%)" }} />
 
         <div style={{ position: "relative", zIndex: 10, flexShrink: 0 }}>
-          <PageNavbar />
+          <PageNavbar light />
         </div>
 
         <div className="hero-text-box home-hero-copy">
-          <p className="pin-mono animate-fade-up" style={{ color: "rgba(255,255,255,0.4)", margin: "0 0 clamp(1.25rem, 2.5vw, 2rem)" }}>
-            <b>{h.kicker[0]}</b>&nbsp;&nbsp;·&nbsp;&nbsp;{h.kicker[1]}
+          <p className="pin-mono animate-fade-up" style={{ color: "rgba(11,17,22,0.45)", margin: "0 0 clamp(1.25rem, 2.5vw, 2rem)" }}>
+            <b style={{ color: INK }}>{h.kicker[0]}</b>&nbsp;&nbsp;·&nbsp;&nbsp;{h.kicker[1]}
           </p>
           <h1 className="pin-title animate-fade-up" style={{
-            fontSize: "clamp(3.25rem, 7vw, 7.5rem)", color: "#ffffff",
+            fontSize: "clamp(3rem, 6.2vw, 7rem)", color: INK,
             margin: "0 0 clamp(1.5rem, 2.5vw, 2.25rem)",
           }}>
-            {h.h1[0]}<br /><em>{h.h1[1]}</em>
+            {h.h1[0]}<br /><em style={{ color: BLUE }}>{h.h1[1]}</em>
           </h1>
           <p className="animate-fade-up delay-100" style={{
-            fontSize: "clamp(0.9375rem, 1.2vw, 1.125rem)", color: "rgba(255,255,255,0.55)",
-            lineHeight: 1.65, margin: "0 0 clamp(1.75rem, 3vw, 2.5rem)", maxWidth: "430px", whiteSpace: "pre-line",
+            fontSize: "clamp(0.9375rem, 1.2vw, 1.125rem)", color: "rgba(11,17,22,0.62)",
+            lineHeight: 1.65, margin: "0 0 clamp(1.75rem, 3vw, 2.5rem)", maxWidth: "440px", whiteSpace: "pre-line",
           }}>
             {h.subtitle}
           </p>
           <div className="animate-fade-up delay-200" style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginBottom: "clamp(2rem, 4vw, 3rem)" }}>
             <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
-              backgroundColor: "#ffffff", color: "#0d0d0d", fontWeight: 700,
+              backgroundColor: INK, color: "#ffffff", fontWeight: 700,
               fontSize: "clamp(0.8125rem, 1vw, 0.9375rem)",
               padding: "13px 24px", borderRadius: "999px", textDecoration: "none",
             }}>
@@ -63,29 +70,29 @@ export default function Hero() {
             </a>
             <a href="#how-it-works" style={{
               display: "inline-flex", alignItems: "center",
-              backgroundColor: "rgba(255,255,255,0.06)", color: "rgba(255,255,255,0.8)", fontWeight: 600,
+              backgroundColor: "rgba(255,255,255,0.55)", color: INK, fontWeight: 600,
               fontSize: "clamp(0.8125rem, 1vw, 0.9375rem)",
               padding: "13px 24px", borderRadius: "999px", textDecoration: "none",
-              border: "1px solid rgba(201,213,240,0.18)",
+              border: "1px solid rgba(11,17,22,0.12)",
             }}>
               {h.cta_secondary}
             </a>
           </div>
-          <div className="hero-stats animate-fade-up delay-300" style={{ display: "flex", gap: 0, paddingTop: "1.75rem", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+          <div className="hero-stats animate-fade-up delay-300" style={{ display: "flex", gap: 0, paddingTop: "1.75rem", borderTop: "1px solid rgba(11,17,22,0.1)" }}>
             {h.stats.map((s, i) => (
               <div key={s.n} style={{
                 paddingLeft: i > 0 ? "2rem" : 0,
                 marginLeft: i > 0 ? "2rem" : 0,
-                borderLeft: i > 0 ? "1px solid rgba(255,255,255,0.08)" : "none",
+                borderLeft: i > 0 ? "1px solid rgba(11,17,22,0.1)" : "none",
               }}>
-                <div style={{ fontSize: "0.9375rem", fontWeight: 700, color: "#ffffff", marginBottom: "6px" }}>{s.n}</div>
-                <div className="pin-mono" style={{ fontSize: "0.6875rem", letterSpacing: "0.16em", color: "rgba(255,255,255,0.32)" }}>{s.sub}</div>
+                <div style={{ fontSize: "0.9375rem", fontWeight: 700, color: INK, marginBottom: "6px" }}>{s.n}</div>
+                <div className="pin-mono" style={{ fontSize: "0.6875rem", letterSpacing: "0.16em", color: "rgba(11,17,22,0.4)" }}>{s.sub}</div>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="home-hero-foot pin-mono" style={{ fontSize: "0.75rem" }}>
+        <div className="home-hero-foot pin-mono" style={{ fontSize: "0.75rem", color: "rgba(11,17,22,0.4)" }}>
           <span>@playattax</span>
           <span className="home-hero-sports">{h.sports}</span>
         </div>

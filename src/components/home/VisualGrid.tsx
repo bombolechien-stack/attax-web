@@ -1,19 +1,18 @@
 "use client";
 
 import Image from "next/image";
-import { useT } from "@/lib/i18n";
+import { useLang, useT } from "@/lib/i18n";
 import { useInView, fadeUp, scaleIn, clipReveal } from "@/hooks/useInView";
 
-const SRCS = [
-  "/screens/screenactivity.png",
-  "/screens/screenmatch.png",
-  "/screens/screencards.png",
-];
-const SCALES = [0.82, 1, 0.82];
+// Captures réelles de l'app (stores, novembre) : Activités, Cartes du jour, Classement de la ligue.
+const SHOTS = [4, 3, 5];
+const SCALES = [0.86, 1, 0.86];
+const RATIO = 1107 / 560;
 
 export default function VisualGrid() {
   const t = useT();
   const v = t.visualGrid;
+  const { lang } = useLang();
   const { ref: headerRef, visible: headerVisible } = useInView<HTMLDivElement>(0.1);
   const { ref: phonesRef, visible: phonesVisible } = useInView<HTMLDivElement>(0.08);
 
@@ -32,26 +31,17 @@ export default function VisualGrid() {
 
       <div ref={phonesRef} className="vg-phones-wrap" style={{ display: "flex", justifyContent: "center", alignItems: "flex-end", gap: "0", marginBottom: "2.5rem" }}>
         {v.phones.map((p, i) => {
-          const W = 500 * SCALES[i];
-          const H = W * (873 / 760);
+          const W = 340 * SCALES[i];
+          const H = W * RATIO;
           const isSide = i !== 1;
           const delay = i === 1 ? 0 : i === 0 ? 150 : 300;
           return (
             <div
               key={i}
               className={isSide ? "vg-phone-side" : "vg-phone-center"}
-              style={{ ...scaleIn(phonesVisible, delay, 0.92), width: W, height: H, position: "relative", flexShrink: 0, filter: "drop-shadow(0 24px 48px rgba(0,0,0,0.18))" }}
+              style={{ ...scaleIn(phonesVisible, delay, 0.92), width: W, height: H, position: "relative", flexShrink: 0, margin: "0 1.75rem", filter: "drop-shadow(0 24px 48px rgba(11,17,22,0.16))" }}
             >
-              <Image src={SRCS[i]} alt={p.label} fill quality={90} sizes="(max-width: 768px) 90vw, 500px" style={{ objectFit: "contain" }} />
-              {i === 1 && (
-                // Combat animé (rendu par le moteur de l'app, tools/attax-export/render-site-match.mjs)
-                // posé exactement sur la zone de match de la capture.
-                <video
-                  src="/screens/match-live.mp4"
-                  autoPlay muted loop playsInline preload="auto" aria-hidden="true"
-                  style={{ position: "absolute", left: "29.044%", top: "33.784%", width: "41.912%", height: "50%", objectFit: "fill", pointerEvents: "none" }}
-                />
-              )}
+              <Image src={`/screens/app/${lang}/${SHOTS[i]}.webp`} alt={p.label} fill quality={90} sizes="(max-width: 768px) 72vw, 340px" style={{ objectFit: "contain" }} />
             </div>
           );
         })}
@@ -64,7 +54,7 @@ export default function VisualGrid() {
             <div
               key={i}
               className={isSide ? "vg-label-side" : "vg-label-center"}
-              style={{ width: 500 * SCALES[i], flexShrink: 0, textAlign: "center", padding: "0 1.5rem" }}
+              style={{ width: 340 * SCALES[i] + 56, flexShrink: 0, textAlign: "center", padding: "0 1.5rem" }}
             >
               <h3 style={{ fontSize: "1.125rem", fontWeight: 700, letterSpacing: "-0.025em", color: "#0d0d0d", margin: "0 0 0.5rem" }}>{p.label}</h3>
               <p style={{ fontSize: "0.9375rem", color: "#666", lineHeight: 1.7, margin: 0 }}>{p.caption}</p>

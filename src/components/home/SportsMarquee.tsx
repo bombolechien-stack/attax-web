@@ -5,7 +5,8 @@ import { useLang } from "@/lib/i18n";
 import { useInView, fadeUp, clipReveal } from "@/hooks/useInView";
 
 // Silhouettes des images des carrousels, toutes traitées pareil : détourées en silhouette pleine,
-// même taille de personne, posées sur la même ligne de sol, puis scanlines bleu marine sur bleu glacier.
+// même taille de personne, posées sur la même ligne de sol, puis re-tracées comme les boxeurs de l'app
+// (lignes encre #0B1116 effilées aux bords, sur le fond clair des captures #EEF1F7 : scripts/hero-lines/relines.py).
 // On alterne femme / homme et le sens (gauche / droite). Images 520×780, affichées en 260×390 (rapport 2:1, lignes nettes).
 const SPORTS: { file: string; en: string; fr: string }[] = [
   { file: "running", en: "Running", fr: "Course" },
@@ -24,12 +25,12 @@ const COPY = {
   en: {
     label: "Every sport counts",
     h2: ["Run. Ride. Lift.", "Play. Walk. Win."],
-    body: "If your heart rate goes up, it counts. Your watch measures the effort, Attax turns it into points. Whatever your sport, whatever your age.",
+    body: "If your heart rate goes up, it counts. Your watch measures the effort, Attax turns it into pts. Whatever your sport, whatever your age.",
   },
   fr: {
     label: "Tous les sports comptent",
     h2: ["Cours. Roule. Soulève.", "Joue. Marche. Gagne."],
-    body: "Si ton cœur accélère, ça compte. Ta montre mesure l'effort, Attax le transforme en points. Quel que soit ton sport, quel que soit ton âge.",
+    body: "Si ton cœur accélère, ça compte. Ta montre mesure l'effort, Attax le transforme en pts. Quel que soit ton sport, quel que soit ton âge.",
   },
 };
 
@@ -46,7 +47,7 @@ export default function SportsMarquee() {
           <p style={{ ...fadeUp(visible, 0), fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "rgba(28,37,64,0.5)", margin: "0 0 1.5rem" }}>{c.label}</p>
           <h2 style={{ fontSize: "clamp(2.5rem, 6vw, 5.5rem)", fontWeight: 800, color: "#0B0B0C", letterSpacing: "-0.05em", lineHeight: 0.95, margin: 0 }}>
             <span style={clipReveal(visible, 80)}>{c.h2[0]}</span>
-            <span style={{ ...clipReveal(visible, 220), color: "#1C2540" }}>{c.h2[1]}</span>
+            <span style={{ ...clipReveal(visible, 220), color: "#0443FD" }}>{c.h2[1]}</span>
           </h2>
         </div>
         <p style={{ ...fadeUp(visible, 350), fontSize: "1rem", color: "rgba(28,37,64,0.62)", lineHeight: 1.75, maxWidth: "340px", margin: 0 }}>{c.body}</p>
