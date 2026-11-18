@@ -3,8 +3,8 @@
 Source : Desktop/Attax/MotionDesign/01_Combat/*.mov — les animations du moteur de combat ACTUEL de l'app
 (ProRes 4444 à fond transparent, 1512 × 1080, 30 i/s ; bleu regarde à droite, rouge regarde à gauche).
 On pose le bleu à gauche et le rouge à droite, on enchaîne quelques échanges (coup + réaction décalée,
-décalages de la bible : jab +130 ms, hook +170 ms, cross +200 ms, high kick +500 ms), sur fond blanc
-(le site l'affiche en mix-blend-mode: multiply, le blanc disparaît dans le fond de la section).
+décalages de la bible : jab +130 ms, hook +170 ms, cross +200 ms, high kick +500 ms), sur le fond
+clair de l'app (#EEF1F7) ; le site l'affiche dans un panneau du même fond.
 Boucle de 6,8 s = 2 cycles de garde (idle 3,4 s) : raccord sans saut.
 
 Sortie : public/videos/fight-loop.mp4 + fight-loop-poster.jpg
@@ -22,9 +22,10 @@ OUT = ROOT / "public" / "videos"
 FPS = 30
 SCALE = 0.75                     # 1512 × 1080 → 1134 × 810 (net en écran 2x)
 CW, CH = int(1512 * SCALE), int(1080 * SCALE)
-DX = int(210 * SCALE)            # écart de chaque boxeur par rapport au centre
-CROP = tuple(int(v * SCALE) for v in (156, 0, 1356, 1080))   # cadre 900 × 810 autour des deux boxeurs
+DX = int(190 * SCALE)            # écart de chaque boxeur par rapport au centre
+CROP = tuple(int(v * SCALE) for v in (0, 40, 1512, 1080))     # toute la largeur : le high kick ne sort pas du cadre
 LOOP = 6.8
+BG = np.array([238, 241, 247], np.float32)   # #EEF1F7, le fond de l'app
 
 # (début en s, animation) ; entre deux animations, le boxeur est en garde (idle)
 BLUE = [(0.30, "jab"), (1.80, "hit_light"), (2.90, "hook"), (4.70, "hit_heavy")]
@@ -71,7 +72,7 @@ def frames():
     n = int(round(LOOP * FPS))
     for i in range(n):
         t = i / FPS
-        canvas = np.full((CH, CW, 3), 255.0, np.float32)
+        canvas = np.full((CH, CW, 3), BG, np.float32)
         canvas = over(canvas, shift(pose("bleu", BLUE, t), -DX))
         canvas = over(canvas, shift(pose("rouge", RED, t), DX))
         x0, y0, x1, y1 = CROP

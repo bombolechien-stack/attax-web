@@ -6,7 +6,7 @@ import HeroBackdrop from "@/components/scan/HeroBackdrop";
 
 /** Soir de combat (révélation de 21h30) : un seul échange entre les deux boxeurs de l'app (scanlines bleu / rouge),
  *  rendu avec les animations du moteur de combat actuel (scripts/fight-night-video/combat.py → public/videos/fight-loop.mp4).
- *  Fond blanc + multiply : le blanc disparaît dans le fond de la section, il ne reste que les boxeurs. */
+ *  Sur le fond clair de l'app (#EEF1F7), dans un panneau arrondi. */
 export default function FightNight() {
   const t = useT();
   const f = t.fightNight;
@@ -18,12 +18,12 @@ export default function FightNight() {
       <HeroBackdrop />
 
       <div ref={ref} className="fn-inner" style={{ position: "relative", maxWidth: "72rem", margin: "0 auto", display: "flex", alignItems: "center", gap: "6rem" }}>
-        <div className="fn-phone" style={{ ...scaleIn(visible, 100, 0.94), flex: "0 0 auto", width: "min(480px, 88vw)" }}>
+        <div className="fn-phone" style={{ ...scaleIn(visible, 100, 0.94), flex: "0 0 auto", width: "min(560px, 48%)" }}>
           <video
             autoPlay muted loop playsInline preload="metadata"
             poster="/videos/fight-loop-poster.jpg"
             aria-label={f.alt}
-            style={{ display: "block", width: "100%", height: "auto", aspectRatio: "900 / 810", mixBlendMode: "multiply" }}
+            style={{ display: "block", width: "100%", height: "auto", aspectRatio: "1134 / 780", borderRadius: 28, backgroundColor: "#EEF1F7", boxShadow: "0 30px 60px rgba(11,17,22,0.10), 0 0 0 1px rgba(11,17,22,0.05)" }}
           >
             <source src="/videos/fight-loop.mp4" type="video/mp4" />
           </video>

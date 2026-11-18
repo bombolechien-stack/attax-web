@@ -656,7 +656,7 @@ html { overflow-x: clip; }
 @media (max-width: 860px) {
   .cards-section, .by-section, .fn-section { padding: 5rem 1.25rem !important; }
   .fn-inner { flex-direction: column !important; align-items: flex-start !important; }
-  .fn-phone { align-self: center !important; }
+  .fn-phone { align-self: center !important; width: 100% !important; max-width: 560px; }
   .dm-card { padding: 1.5rem 1.25rem 1.75rem !important; border-radius: 22px !important; }
   .dm-rounds { gap: 4px !important; }
   .dm-card-head { flex-direction: column !important; align-items: flex-start !important; gap: 0.5rem !important; }
