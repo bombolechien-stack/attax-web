@@ -631,8 +631,11 @@ html { overflow-x: clip; }
 .home-hero-copy { position: relative; z-index: 5; flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0 clamp(2rem, 5vw, 5rem); max-width: 56%; }
 .home-hero-foot { position: relative; z-index: 5; display: flex; justify-content: space-between; gap: 1rem; padding: 0 clamp(2rem, 5vw, 5rem) 2rem; color: rgba(255,255,255,0.32); }
 @media (max-width: 860px) {
-  .home-hero-video { top: 64px; bottom: auto; height: 48%; object-position: 76% 62%; }
-  .home-hero-copy { max-width: 100%; justify-content: flex-end; padding-bottom: 1.5rem; }
+  /* Mobile : la vidéo passe dans le flux, entre la barre et le texte (plus de chevauchement) */
+  .home-hero-video { position: relative; inset: auto; order: 1; width: 100%; height: auto; aspect-ratio: 4 / 3; object-position: 78% 88%; transform: scale(1.22); transform-origin: 70% 92%; }
+  .home-hero-veil { display: none; }
+  .home-hero-copy { order: 2; max-width: 100%; justify-content: flex-start; padding-top: 0.5rem; padding-bottom: 1.5rem; }
+  .home-hero-foot { order: 3; }
   .home-hero-foot .home-hero-sports { display: none; }
 }
 
@@ -650,6 +653,7 @@ html { overflow-x: clip; }
   .by-shot { height: 400px !important; }
   .dm-card { padding: 1.5rem 1.25rem 1.75rem !important; border-radius: 22px !important; }
   .dm-rounds { gap: 4px !important; }
+  .dm-card-head { flex-direction: column !important; align-items: flex-start !important; gap: 0.5rem !important; }
 }
 @media (max-width: 640px) {
   .cards-grid { grid-template-columns: 1fr !important; gap: 0.9rem !important; }

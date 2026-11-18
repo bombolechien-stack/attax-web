@@ -61,7 +61,7 @@ export default function DailyMatch() {
             padding: "2.25rem 2.5rem 2.5rem",
             border: "1px solid rgba(11,17,22,0.06)",
           }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "2.25rem" }}>
+            <div className="dm-card-head" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "2.25rem" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                 <span style={{ width: 7, height: 7, borderRadius: "50%", backgroundColor: RED }} />
                 <span className="pin-mono" style={{ fontSize: "0.6875rem", letterSpacing: "0.18em", color: RED }}>{m.live}</span>
