@@ -24,7 +24,7 @@ export default function Hero() {
         isolation: "isolate",
       }}>
         {/* Fond du hero de l'app (HeroBackdrop : gris-bleu clair + scanlines « crayon » à 17 %) */}
-        <HeroBackdrop />
+        <HeroBackdrop lineOpacity={0.06} />   {/* 18/11 : rayures du fond très discrètes, sinon elles se mélangent aux lignes des sportifs */}
         {/* Vidéo : 3 scènes × 3 sports, rendues en scanlines comme les boxeurs de l'app (lignes bleues dont
             l'épaisseur suit la profondeur dans la silhouette ; scripts/hero-lines). Fond blanc → multiply. */}
         <video
