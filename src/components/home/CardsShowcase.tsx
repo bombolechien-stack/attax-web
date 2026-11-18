@@ -1,85 +1,105 @@
 "use client";
 
 import Image from "next/image";
-import { useT } from "@/lib/i18n";
-import { useInView, fadeUp, clipReveal } from "@/hooks/useInView";
+import { useLang, useT } from "@/lib/i18n";
+import { useInView, fadeUp, clipReveal, scaleIn } from "@/hooks/useInView";
 
-// 3 des 12 cartes de l'app (une attaque, un sabotage, une ruse), assez grandes pour être lues.
-const SHOWN = ["spike", "freeze", "ghost"];
-// Les 12 cartes de l'app : fond validé (scène HD + scanlines de l'app, budyfit/assets/cards/v3/bg_*),
-// textes posés par-dessus comme dans l'app (app/(tabs)/match.tsx → V3_BG). dark = scène claire → textes sombres.
-const STYLE: Record<string, { dark: boolean; cat: string }> = {
-  spike: { dark: true, cat: "#1D4ED8" },
-  overdrive: { dark: true, cat: "#C2410C" },
-  recover: { dark: true, cat: "#15803D" },
-  shield: { dark: true, cat: "#DC2626" },
-  freeze: { dark: true, cat: "#0891B2" },
-  pressure: { dark: false, cat: "#93C5FD" },
-  parasite: { dark: false, cat: "#7CE03A" },
-  scan: { dark: true, cat: "#15803D" },
-  mirage: { dark: false, cat: "#BFDBFE" },
-  ghost: { dark: true, cat: "#7C3AED" },
-  bluff: { dark: true, cat: "#475569" },
-  counter: { dark: true, cat: "#DB2777" },
+// Section « Les cartes » : la mise en page de la version en ligne (fond noir, texte à gauche, éventail de
+// 3 cartes inclinées qui se redressent au survol), avec les cartes au format PORTRAIT de l'app
+// (budyfit app/(tabs)/match.tsx → CardPortraitV3, gabarit 270 × 378) : « Attax » + n°, famille, nom,
+// scène de la planche, effet sur bandeau noir, accroche, grand numéro.
+const SHOWN = ["spike", "freeze", "ghost"] as const;
+const ACC: Record<string, string> = { spike: "#1D4ED8", freeze: "#0891B2", ghost: "#7C3AED" };
+// Accroches de la planche (v3Tagline de l'app)
+const TAGLINE: Record<"en" | "fr", Record<string, string>> = {
+  en: { spike: "All or nothing, tonight.", freeze: "Freeze their best day.", ghost: "Vanish until 9:30 PM." },
+  fr: { spike: "Tout ou rien, ce soir.", freeze: "Gèle son meilleur jour.", ghost: "Disparais jusqu'à 21h30." },
 };
 
 type Card = { id: string; n: string; fam: string; name: string; punchy: string; sub: string };
 
-function GameCard({ card, family, visible, delay }: { card: Card; family: string; visible: boolean; delay: number }) {
-  const st = STYLE[card.id];
-  const ink = st.dark ? "#0B1116" : "#ffffff";
-  const soft = st.dark ? "rgba(11,17,22,0.55)" : "rgba(255,255,255,0.7)";
+const INK = "#0E141A";
+
+/** Carte portrait, en unités du gabarit de l'app (k = largeur / 270) via container queries. */
+function PortraitCard({ card, family, tagline }: { card: Card; family: string; tagline: string }) {
+  const u = (v: number) => `${(v / 270) * 100}cqw`;
   return (
-    <div className="game-card" style={{
-      ...fadeUp(visible, delay),
-      position: "relative", aspectRatio: "2 / 1", borderRadius: 18, overflow: "hidden",
-      boxShadow: "0 18px 40px rgba(11,17,22,0.10), 0 2px 6px rgba(11,17,22,0.05)",
-      containerType: "inline-size",
-    }}>
-      <Image src={`/cards/v3/${card.id}.webp`} alt="" fill sizes="(max-width: 860px) 92vw, 420px" style={{ objectFit: "cover" }} />
-      <div style={{ position: "absolute", inset: 0, padding: "6.5cqw 6cqw", display: "flex", flexDirection: "column" }}>
-        <div style={{ fontSize: "4.2cqw", fontWeight: 800, fontStyle: "italic", letterSpacing: "-0.03em", color: ink, lineHeight: 1 }}>Attax</div>
-        <div style={{ fontSize: "2.9cqw", fontWeight: 800, letterSpacing: "0.16em", color: st.cat, marginTop: "1.2cqw" }}>{family}</div>
-        <div style={{ fontSize: "8.4cqw", fontWeight: 900, fontStyle: "italic", letterSpacing: "-0.045em", color: ink, lineHeight: 0.95, marginTop: "1.4cqw", textTransform: "uppercase", maxWidth: "70%" }}>{card.name}</div>
-        <div style={{ marginTop: "auto", maxWidth: "62%" }}>
-          <div style={{ fontSize: "3.4cqw", fontWeight: 800, color: ink, letterSpacing: "0.01em" }}>{card.punchy}</div>
-          <div style={{ fontSize: "2.5cqw", fontWeight: 600, color: soft, letterSpacing: "0.06em", textTransform: "uppercase", marginTop: "0.8cqw", lineHeight: 1.35 }}>{card.sub}</div>
-        </div>
+    <div style={{ containerType: "inline-size", width: "100%" }}>
+    <div style={{ position: "relative", width: "100%", aspectRatio: "270 / 378", borderRadius: u(14), overflow: "hidden", backgroundColor: "#EEF1F6" }}>
+      {/* scanlines de la carte (34 lignes très légères) */}
+      <div aria-hidden style={{ position: "absolute", inset: 0, backgroundImage: "repeating-linear-gradient(to bottom, transparent 0, transparent calc(100% / 34 - 1.2px), rgba(15,23,42,0.035) calc(100% / 34 - 1.2px), rgba(15,23,42,0.035) calc(100% / 34))" }} />
+      <div style={{ position: "absolute", top: u(12), left: u(14), right: u(14), display: "flex", alignItems: "center", gap: u(7) }}>
+        <span style={{ fontSize: u(12), fontWeight: 800, fontStyle: "italic", color: INK, letterSpacing: "-0.02em", lineHeight: 1 }}>Attax</span>
+        <span style={{ flex: 1, height: 1, backgroundColor: "rgba(14,20,26,0.25)" }} />
+        <span style={{ fontSize: u(9), fontWeight: 800, color: INK }}>n°{card.n}</span>
       </div>
-      <div style={{ position: "absolute", right: "5cqw", bottom: "4cqw", fontSize: "11cqw", fontWeight: 900, fontStyle: "italic", letterSpacing: "-0.06em", color: ink, lineHeight: 1 }}>{card.n}</div>
+      <div style={{ position: "absolute", top: u(33), left: u(14), fontSize: u(7), fontWeight: 800, letterSpacing: u(1.4), color: ACC[card.id], textTransform: "uppercase" }}>{family}</div>
+      <div style={{ position: "absolute", top: u(41), left: u(13), right: u(40), fontSize: u(Math.min(30, 360 / card.name.length)), lineHeight: u(34), fontWeight: 900, fontStyle: "italic", letterSpacing: u(-1.4), color: INK, whiteSpace: "nowrap", textTransform: "uppercase" }}>{card.name}</div>
+      <Image src="/images/flag.svg" alt="" width={15} height={15} style={{ position: "absolute", top: u(48), right: u(14), width: u(15), height: u(15), filter: "brightness(0)" }} />
+      <div style={{ position: "absolute", top: u(81), left: u(14), right: u(14), height: u(172), borderRadius: u(9), overflow: "hidden" }}>
+        <Image src={`/cards/v3/${card.id}.webp`} alt="" fill sizes="(max-width: 860px) 60vw, 300px" style={{ objectFit: "cover", objectPosition: "right" }} />
+      </div>
+      <div style={{ position: "absolute", top: u(262), left: u(14), right: u(14), height: u(72), borderRadius: u(8), backgroundColor: INK, padding: `0 ${u(12)}`, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+        <div style={{ fontSize: u(17), fontWeight: 800, color: "#fff", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{card.punchy}</div>
+        <div style={{ marginTop: u(4), fontSize: u(10), lineHeight: u(13), fontWeight: 700, color: "rgba(255,255,255,0.78)" }}>{card.sub}</div>
+      </div>
+      <div style={{ position: "absolute", left: u(14), right: u(70), bottom: u(17), fontSize: u(9.5), fontWeight: 500, color: INK, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{tagline}</div>
+      <div style={{ position: "absolute", right: u(13), bottom: u(8), fontSize: u(34), lineHeight: u(38), fontWeight: 900, fontStyle: "italic", letterSpacing: u(-1.6), color: INK }}>{card.n}</div>
+    </div>
     </div>
   );
 }
 
 export default function CardsShowcase() {
   const t = useT();
+  const { lang } = useLang();
   const cs = t.cardsShowcase;
-  const { ref: headerRef, visible: headerVisible } = useInView<HTMLDivElement>(0.1);
-  const { ref: cardsRef, visible: cardsVisible } = useInView<HTMLDivElement>(0.05, { oneShot: true });
   const fam = cs.families as Record<string, string>;
+  const { ref: headerRef, visible: headerVisible } = useInView<HTMLDivElement>(0.1);
+  const { ref: cardsRef, visible: cardsVisible } = useInView<HTMLDivElement>(0.1, { oneShot: true });
+  const cards = SHOWN.map((id) => (cs.cards as readonly Card[]).find((c) => c.id === id)!);
+  const rotations = [-6, 0, 6];
+  const lifts = [18, 0, 18];
+  const delays = [180, 60, 300];
 
   return (
-    <section id="cards" className="cards-section" style={{ backgroundColor: "#F5F5F8", padding: "9rem 2rem" }}>
-      <div style={{ maxWidth: "80rem", margin: "0 auto" }}>
-        <div ref={headerRef} className="cards-head" style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "3rem", flexWrap: "wrap", marginBottom: "4rem" }}>
-          <div>
-            <span style={{ ...fadeUp(headerVisible, 0), marginBottom: "1.5rem" }} className="section-label">{cs.label}</span>
-            <h2 style={{ fontSize: "clamp(2.75rem, 5vw, 5rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.05em", lineHeight: 0.98, margin: 0 }}>
-              <div style={{ overflow: "hidden", paddingBottom: "0.08em" }}><span style={clipReveal(headerVisible, 80)}>{cs.h2[0]}</span></div>
-              <div style={{ overflow: "hidden", paddingBottom: "0.12em" }}><span style={{ ...clipReveal(headerVisible, 200), color: "#0443FD" }}>{cs.h2[1]}</span></div>
+    <section id="cards" className="cards-section" style={{ backgroundColor: "#0d0d0d", padding: "9rem 2rem", overflow: "hidden" }}>
+      <div style={{ maxWidth: "76rem", margin: "0 auto" }}>
+        <div className="cards-showcase-inner" style={{ display: "flex", alignItems: "center", gap: "6rem", justifyContent: "center" }}>
+          <div ref={headerRef} className="cards-showcase-text" style={{ flex: "0 0 380px", maxWidth: "380px" }}>
+            <p style={{ ...fadeUp(headerVisible, 0), fontSize: "0.6875rem", fontWeight: 700, color: "rgba(255,255,255,0.28)", letterSpacing: "0.18em", textTransform: "uppercase", margin: "0 0 1.5rem" }}>{cs.label}</p>
+            <h2 style={{ fontSize: "clamp(2.5rem, 4vw, 3.5rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.045em", lineHeight: 1.1, margin: "0 0 1.5rem" }}>
+              <div style={{ overflow: "hidden", paddingBottom: "0.1em" }}><span style={clipReveal(headerVisible, 80)}>{cs.h2[0]}</span></div>
+              <div style={{ overflow: "hidden", paddingBottom: "0.15em" }}><span style={{ ...clipReveal(headerVisible, 200), color: "#4D7BFF" }}>{cs.h2[1]}</span></div>
             </h2>
+            <p style={{ ...fadeUp(headerVisible, 280), fontSize: "1.0625rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.8, margin: "0 0 2.5rem" }}>{cs.sub}</p>
+            <div style={fadeUp(headerVisible, 360)}>
+              <p style={{ fontSize: "1rem", fontWeight: 700, color: "#ffffff", margin: "0 0 0.25rem" }}>{cs.cta}</p>
+              <p style={{ fontSize: "0.875rem", color: "rgba(255,255,255,0.38)", margin: 0 }}>{cs.cta_sub}</p>
+            </div>
           </div>
-          <div style={{ ...fadeUp(headerVisible, 280), maxWidth: 420 }}>
-            <p style={{ fontSize: "1.0625rem", color: "#666", lineHeight: 1.75, margin: "0 0 1.25rem" }}>{cs.sub}</p>
-            <p style={{ fontSize: "0.9375rem", fontWeight: 700, color: "#0d0d0d", margin: "0 0 0.25rem" }}>{cs.cta}</p>
-            <p style={{ fontSize: "0.875rem", color: "#999", margin: 0 }}>{cs.cta_sub}</p>
-          </div>
-        </div>
 
-        <div ref={cardsRef} className="cards-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1.25rem" }}>
-          {SHOWN.map((id) => (cs.cards as readonly Card[]).find((c) => c.id === id)!).map((c, i) => (
-            <GameCard key={c.id} card={c} family={fam[c.fam]} visible={cardsVisible} delay={i * 90} />
-          ))}
+          <div ref={cardsRef} className="cards-fan" style={{ flex: "0 1 auto", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            {cards.map((c, i) => {
+              const base = `rotate(${rotations[i]}deg) translateY(${lifts[i]}px)`;
+              const appear = scaleIn(cardsVisible, delays[i], 0.88);
+              return (
+                <div key={c.id} className="cards-fan-item"
+                  style={{
+                    ...appear,
+                    transform: `${appear.transform} ${base}`,
+                    width: 250, flexShrink: 0, margin: "0 -6px", zIndex: i === 1 ? 2 : 1, position: "relative",
+                    borderRadius: 16, boxShadow: "0 30px 70px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08)",
+                    transition: "transform 0.45s cubic-bezier(0.16,1,0.3,1), box-shadow 0.45s cubic-bezier(0.16,1,0.3,1), opacity 1s cubic-bezier(0.16,1,0.3,1)",
+                  }}
+                  onMouseEnter={(e) => { const el = e.currentTarget; el.style.transform = "rotate(0deg) translateY(-16px) scale(1.05)"; el.style.zIndex = "10"; el.style.boxShadow = `0 44px 90px rgba(0,0,0,0.7), 0 0 36px ${ACC[c.id]}66, 0 0 0 1px rgba(255,255,255,0.14)`; }}
+                  onMouseLeave={(e) => { const el = e.currentTarget; el.style.transform = base; el.style.zIndex = i === 1 ? "2" : "1"; el.style.boxShadow = "0 30px 70px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08)"; }}
+                >
+                  <PortraitCard card={c} family={fam[c.fam]} tagline={TAGLINE[lang][c.id]} />
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

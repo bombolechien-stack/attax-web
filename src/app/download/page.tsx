@@ -3,6 +3,7 @@
 import Image from "next/image";
 import PageNavbar from "@/components/PageNavbar";
 import { useLang, useT } from "@/lib/i18n";
+import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/stores";
 import { useInView, fadeUp, clipReveal, slideLeft, slideRight, scaleIn, fadeIn } from "@/hooks/useInView";
 
 const AppleIcon = () => (
@@ -69,11 +70,11 @@ export default function DownloadPage() {
               </p>
 
               <div style={{ ...fadeUp(heroVisible, 360), display: "flex", gap: "12px", flexWrap: "wrap", marginBottom: "2.5rem" }}>
-                <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer"
+                <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer"
                   style={{ display: "inline-flex", alignItems: "center", gap: "10px", backgroundColor: "#ffffff", color: "#0d0d0d", fontWeight: 700, fontSize: "0.9375rem", padding: "14px 28px", borderRadius: "999px", textDecoration: "none", whiteSpace: "nowrap" }}>
                   <AppleIcon />{d.cta_ios}
                 </a>
-                <a href="https://play.google.com" target="_blank" rel="noopener noreferrer"
+                <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer"
                   style={{ display: "inline-flex", alignItems: "center", gap: "10px", backgroundColor: "rgba(255,255,255,0.07)", color: "rgba(255,255,255,0.8)", fontWeight: 700, fontSize: "0.9375rem", padding: "14px 28px", borderRadius: "999px", textDecoration: "none", border: "1px solid rgba(255,255,255,0.12)", whiteSpace: "nowrap" }}>
                   <AndroidIcon />{d.cta_android}
                 </a>
@@ -146,9 +147,9 @@ export default function DownloadPage() {
                 <div style={{ marginBottom: "0.25rem" }}>{d.ios_req}</div>
                 <div>{d.ios_sub}</div>
               </div>
-              <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer"
+              <a href="/download/ios"
                 style={{ display: "inline-flex", alignItems: "center", gap: "7px", backgroundColor: "#0d0d0d", color: "#fff", fontWeight: 700, fontSize: "0.8125rem", padding: "11px 20px", borderRadius: "999px", textDecoration: "none" }}>
-                <AppleIcon /> {d.cta_ios.split(" ")[0]}
+                <AppleIcon /> {d.ios_more}
               </a>
             </div>
 
@@ -167,9 +168,9 @@ export default function DownloadPage() {
                 <div style={{ marginBottom: "0.25rem" }}>{d.android_req}</div>
                 <div>{d.android_sub}</div>
               </div>
-              <a href="https://play.google.com" target="_blank" rel="noopener noreferrer"
+              <a href="/download/android"
                 style={{ display: "inline-flex", alignItems: "center", gap: "7px", backgroundColor: "#0d0d0d", color: "#fff", fontWeight: 700, fontSize: "0.8125rem", padding: "11px 20px", borderRadius: "999px", textDecoration: "none" }}>
-                <AndroidIcon /> {d.cta_android.split(" ")[0]}
+                <AndroidIcon /> {d.android_more}
               </a>
             </div>
           </div>

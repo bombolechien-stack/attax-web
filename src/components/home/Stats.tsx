@@ -59,7 +59,7 @@ export default function Stats() {
                 <p style={{ fontSize: "1rem", color: "#777", lineHeight: 1.75, margin: "0 0 2.5rem", maxWidth: "340px" }}>
                   Every day, attax matches you against a real opponent. Your workouts become your weapon — the more you move, the stronger your score. Win the day. Win the league.
                 </p>
-                <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" className="btn-dark-primary" style={{
+                <a href="/download/ios" className="btn-dark-primary" style={{
                   display: "inline-flex", alignItems: "center", gap: "8px", width: "fit-content",
                   backgroundColor: "#0d0d0d", color: "#fff",
                   fontWeight: 700, fontSize: "0.9375rem",

@@ -80,10 +80,10 @@ export default function PageNavbar({ light = false }: { light?: boolean } = {}) 
           <div className="nav-page-right" style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
             <LangSwitcher light={light} />
             <div className="nav-page-ctas" style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-              <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: "6px", backgroundColor: light ? "#0B1116" : "#ffffff", color: light ? "#ffffff" : "#0d0d0d", fontWeight: 700, fontSize: "0.75rem", padding: "7px 14px", borderRadius: "999px", textDecoration: "none", whiteSpace: "nowrap" }}>
+              <a href="/download/ios" style={{ display: "inline-flex", alignItems: "center", gap: "6px", backgroundColor: light ? "#0B1116" : "#ffffff", color: light ? "#ffffff" : "#0d0d0d", fontWeight: 700, fontSize: "0.75rem", padding: "7px 14px", borderRadius: "999px", textDecoration: "none", whiteSpace: "nowrap" }}>
                 <AppleIcon /> iOS
               </a>
-              <a href="https://play.google.com" target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: "6px", backgroundColor: light ? "rgba(255,255,255,0.6)" : "rgba(255,255,255,0.1)", color: light ? "#0B1116" : "rgba(255,255,255,0.85)", fontWeight: 700, fontSize: "0.75rem", padding: "7px 14px", borderRadius: "999px", textDecoration: "none", border: light ? "1px solid rgba(11,17,22,0.12)" : "1px solid rgba(255,255,255,0.15)", whiteSpace: "nowrap" }}>
+              <a href="/download/android" style={{ display: "inline-flex", alignItems: "center", gap: "6px", backgroundColor: light ? "rgba(255,255,255,0.6)" : "rgba(255,255,255,0.1)", color: light ? "#0B1116" : "rgba(255,255,255,0.85)", fontWeight: 700, fontSize: "0.75rem", padding: "7px 14px", borderRadius: "999px", textDecoration: "none", border: light ? "1px solid rgba(11,17,22,0.12)" : "1px solid rgba(255,255,255,0.15)", whiteSpace: "nowrap" }}>
                 <GooglePlayIcon /> Android
               </a>
             </div>
@@ -155,10 +155,10 @@ export default function PageNavbar({ light = false }: { light?: boolean } = {}) 
           borderTop: "1px solid rgba(255,255,255,0.06)",
           flexShrink: 0,
         }}>
-          <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", backgroundColor: "#ffffff", color: "#0d0d0d", fontWeight: 700, fontSize: "0.9375rem", padding: "14px", borderRadius: "999px", textDecoration: "none" }}>
+          <a href="/download/ios" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", backgroundColor: "#ffffff", color: "#0d0d0d", fontWeight: 700, fontSize: "0.9375rem", padding: "14px", borderRadius: "999px", textDecoration: "none" }}>
             <AppleIcon /> {lang === "fr" ? "Télécharger sur iOS" : "Download on iOS"}
           </a>
-          <a href="https://play.google.com" target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", backgroundColor: "rgba(255,255,255,0.07)", color: "rgba(255,255,255,0.85)", fontWeight: 700, fontSize: "0.9375rem", padding: "14px", borderRadius: "999px", textDecoration: "none", border: "1px solid rgba(255,255,255,0.12)" }}>
+          <a href="/download/android" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", backgroundColor: "rgba(255,255,255,0.07)", color: "rgba(255,255,255,0.85)", fontWeight: 700, fontSize: "0.9375rem", padding: "14px", borderRadius: "999px", textDecoration: "none", border: "1px solid rgba(255,255,255,0.12)" }}>
             <GooglePlayIcon /> {lang === "fr" ? "Disponible sur Android" : "Get it on Android"}
           </a>
           <div style={{ display: "flex", justifyContent: "center", paddingTop: "0.5rem" }}>

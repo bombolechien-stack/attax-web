@@ -163,7 +163,7 @@ export const T = {
         { n: "04", t: "The verdict comes last" },
       ],
       note: "Before the fight, send your opponent a quick message. After it, share your wins and recaps as images.",
-      alt: "Fight Night in the Attax app, recorded on a phone: the rounds replay, the cards flip, the final round and the winner",
+      alt: "The two Attax boxers, drawn in blue and red scanlines, trade punches in the final round",
     },
     beyond: {
       label: "BEYOND THE MATCH",
@@ -199,6 +199,8 @@ export const T = {
       platforms_h2: "Works with your watch.",
       platforms_sub: "Attax needs a device that measures your heart rate — Apple Watch, Garmin, Amazfit, COROS, Withings, Oura and more — synced with Apple Health or Health Connect. Your phone alone counts your steps.",
       ios_title: "iPhone",
+      ios_more: "Attax for iPhone",
+      android_more: "Attax for Android",
       ios_req: "Requires iOS 15.1 or later",
       ios_sub: "Apple Health integration",
       android_title: "Android",
@@ -243,6 +245,8 @@ export const T = {
         { label: "Cookie Policy", href: "/cookie-policy" },
         { label: "Legal Notice", href: "/legal" },
         { label: "Download", href: "/download" },
+        { label: "Attax for iPhone", href: "/download/ios" },
+        { label: "Attax for Android", href: "/download/android" },
       ],
       links_resources: [
         { label: "What Is Attax", href: "/what-is-attax" },
@@ -570,7 +574,7 @@ export const T = {
         { n: "04", t: "Le résultat, à la fin" },
       ],
       note: "Avant le combat, envoie un message rapide à ton adversaire. Après, partage tes victoires et tes bilans en image.",
-      alt: "Le Soir de combat dans l'app Attax, filmé sur un téléphone : les rounds rejoués, les cartes retournées, le round final et le vainqueur",
+      alt: "Les deux boxeurs d’Attax, en scanlines bleues et rouges, échangent des coups au round final",
     },
     beyond: {
       label: "AU-DELÀ DU MATCH",
@@ -606,6 +610,8 @@ export const T = {
       platforms_h2: "Fonctionne avec ta montre.",
       platforms_sub: "Attax a besoin d'un appareil qui mesure ta fréquence cardiaque — Apple Watch, Garmin, Amazfit, COROS, Withings, Oura et d'autres — synchronisé avec Apple Santé ou Health Connect. Ton téléphone seul compte tes pas.",
       ios_title: "iPhone",
+      ios_more: "Attax sur iPhone",
+      android_more: "Attax sur Android",
       ios_req: "iOS 15.1 ou plus récent",
       ios_sub: "Intégration Apple Santé",
       android_title: "Android",
@@ -650,6 +656,8 @@ export const T = {
         { label: "Cookies", href: "/cookie-policy" },
         { label: "Mentions légales", href: "/legal" },
         { label: "Télécharger", href: "/download" },
+        { label: "Attax sur iPhone", href: "/download/ios" },
+        { label: "Attax sur Android", href: "/download/android" },
       ],
       links_resources: [
         { label: "Qu'est-ce qu'Attax", href: "/what-is-attax" },
@@ -660,7 +668,7 @@ export const T = {
         { label: "Jeu Health Connect", href: "/health-connect-fitness-game" },
       ],
       col_resources: "Ressources",
-      copyright: "© 2026 ATTAX SAS — Le sport devient un jeu.",
+      copyright: "© 2026 ATTAX SAS — Sport is now a game.",
     },
     discover: {
       hero_label: "DÉCOUVRIR ATTAX",

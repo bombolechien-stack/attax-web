@@ -36,7 +36,7 @@ export default function Download() {
                 Download the attax app to get into sport and stay motivated every day with us. Free to download.
               </p>
               <div style={{ display: "flex", gap: "10px", flexWrap: "wrap", alignItems: "center" }}>
-                <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" className="btn-white" style={{
+                <a href="/download/ios" className="btn-white" style={{
                   display: "inline-flex", alignItems: "center", gap: "8px",
                   backgroundColor: "#ffffff", color: "#0d0d0d",
                   fontWeight: 700, fontSize: "0.9375rem",
@@ -47,7 +47,7 @@ export default function Download() {
                   </svg>
                   App Store
                 </a>
-                <a href="https://play.google.com" target="_blank" rel="noopener noreferrer" className="btn-ghost" style={{
+                <a href="/download/android" className="btn-ghost" style={{
                   display: "inline-flex", alignItems: "center", gap: "8px",
                   backgroundColor: "rgba(255,255,255,0.07)", color: "rgba(255,255,255,0.7)",
                   fontWeight: 600, fontSize: "0.9375rem",

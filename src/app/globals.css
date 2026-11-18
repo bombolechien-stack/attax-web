@@ -635,7 +635,7 @@ html { overflow-x: clip; }
      sur un voile clair qui monte du bas (lisible), les sportifs restent visibles au-dessus. */
   .home-hero { min-height: calc(100svh - 24px) !important; }
   .home-hero-video { top: 48px; bottom: auto; height: calc(80% - 48px); object-position: 54% 62%; }
-  .home-hero-veil { background: linear-gradient(to bottom, rgba(235,239,243,0) 0%, rgba(235,239,243,0) 42%, rgba(235,239,243,0.55) 56%, rgba(235,239,243,0.88) 70%, rgba(235,239,243,0.96) 100%) !important; }
+  .home-hero-veil { background: linear-gradient(to bottom, rgba(5,7,11,0) 0%, rgba(5,7,11,0) 42%, rgba(5,7,11,0.55) 56%, rgba(5,7,11,0.86) 70%, rgba(5,7,11,0.94) 100%) !important; }
   .home-hero-copy { max-width: 100%; justify-content: flex-end; padding-bottom: 1.25rem; }
   .home-hero-copy > p:first-child { margin-bottom: 1rem !important; }
   .hero-stats { display: none !important; }
@@ -646,16 +646,14 @@ html { overflow-x: clip; }
 }
 @media (max-width: 860px) {
   .home-hero-foot .home-hero-sports { display: none; }
-  .home-hero-veil { background: linear-gradient(to bottom, rgba(235,239,243,0) 0%, rgba(235,239,243,0) 34%, rgba(235,239,243,0.62) 47%, rgba(235,239,243,0.9) 62%, rgba(235,239,243,0.96) 100%) !important; }
+  .home-hero-veil { background: linear-gradient(to bottom, rgba(5,7,11,0) 0%, rgba(5,7,11,0) 34%, rgba(5,7,11,0.6) 47%, rgba(5,7,11,0.88) 62%, rgba(5,7,11,0.94) 100%) !important; }
 }
 
 /* ── Novembre : nouvelles sections de l'accueil ── */
-.home-hero-video-light { mix-blend-mode: multiply; }
 @media (max-width: 1100px) {
   .fn-inner { gap: 3.5rem !important; }
 }
 @media (max-width: 860px) {
-  .cards-grid { grid-template-columns: 1fr !important; max-width: 520px; margin: 0 auto; gap: 1rem !important; }
   .cards-section, .by-section, .fn-section { padding: 5rem 1.25rem !important; }
   .fn-inner { flex-direction: column !important; align-items: flex-start !important; }
   .fn-phone { align-self: center !important; }
@@ -667,6 +665,25 @@ html { overflow-x: clip; }
   .by-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 3rem 2rem !important; }
 }
 @media (max-width: 640px) {
-  .cards-grid { grid-template-columns: 1fr !important; gap: 0.9rem !important; }
   .by-grid { grid-template-columns: 1fr !important; gap: 3.5rem !important; }
+}
+
+/* ── Les cartes (mise en page de la version en ligne, cartes portrait) ── */
+@media (max-width: 1100px) {
+  .cards-showcase-inner { flex-direction: column !important; gap: 4rem !important; }
+  .cards-showcase-text { flex: none !important; max-width: 560px !important; align-self: flex-start; }
+}
+@media (max-width: 640px) {
+  /* Téléphone : les 3 cartes en grand, côte à côte, à faire défiler du doigt (sans rotation) */
+  .cards-fan { width: calc(100% + 2.5rem); margin: 0 -1.25rem; justify-content: flex-start !important; overflow-x: auto; scroll-snap-type: x mandatory; padding: 1rem 1.25rem 1.5rem; gap: 14px; scrollbar-width: none; }
+  .cards-fan::-webkit-scrollbar { display: none; }
+  .cards-fan-item { width: 68vw !important; margin: 0 !important; transform: none !important; scroll-snap-align: center; }
+}
+
+/* ── Pages /download/ios et /download/android ── */
+@media (max-width: 860px) {
+  .sp-hero { flex-direction: column !important; align-items: flex-start !important; gap: 2rem !important; }
+  .sp-hero-text { padding-bottom: 0 !important; }
+  .sp-hero-phone { align-self: center !important; margin-bottom: -3rem !important; width: min(280px, 72vw) !important; }
+  .sp-grid { grid-template-columns: 1fr !important; gap: 3.5rem !important; }
 }

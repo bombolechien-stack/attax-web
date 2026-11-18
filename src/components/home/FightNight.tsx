@@ -1,14 +1,14 @@
 "use client";
 
-import { useLang, useT } from "@/lib/i18n";
+import { useT } from "@/lib/i18n";
 import { useInView, fadeUp, clipReveal, scaleIn } from "@/hooks/useInView";
 import HeroBackdrop from "@/components/scan/HeroBackdrop";
 
-/** Soir de combat (révélation de 21h30) : la VRAIE révélation de l'app, filmée image par image sur un téléphone
- *  le 17/11/2026 (scripts/fight-night-video/build.py → public/videos/fight-night-{en,fr}.mp4), dans un cadre de téléphone. */
+/** Soir de combat (révélation de 21h30) : un seul échange entre les deux boxeurs de l'app (scanlines bleu / rouge),
+ *  rendu avec les animations du moteur de combat actuel (scripts/fight-night-video/combat.py → public/videos/fight-loop.mp4).
+ *  Fond blanc + multiply : le blanc disparaît dans le fond de la section, il ne reste que les boxeurs. */
 export default function FightNight() {
   const t = useT();
-  const { lang } = useLang();
   const f = t.fightNight;
   const { ref, visible } = useInView<HTMLDivElement>(0.12, { oneShot: true });
 
@@ -18,18 +18,15 @@ export default function FightNight() {
       <HeroBackdrop />
 
       <div ref={ref} className="fn-inner" style={{ position: "relative", maxWidth: "72rem", margin: "0 auto", display: "flex", alignItems: "center", gap: "6rem" }}>
-        <div className="fn-phone" style={{ ...scaleIn(visible, 100, 0.94), flex: "0 0 auto", width: "min(340px, 74vw)", filter: "drop-shadow(0 40px 60px rgba(11,17,22,0.20))" }}>
-          <div style={{ position: "relative", borderRadius: 46, padding: 10, backgroundColor: "#0B1116" }}>
-            <video
-              key={lang}
-              autoPlay muted loop playsInline preload="metadata"
-              poster={`/videos/fight-night-${lang}-poster.jpg`}
-              aria-label={f.alt}
-              style={{ display: "block", width: "100%", height: "auto", aspectRatio: "540 / 1064", borderRadius: 36, backgroundColor: "#EEF1F7", objectFit: "cover" }}
-            >
-              <source src={`/videos/fight-night-${lang}.mp4`} type="video/mp4" />
-            </video>
-          </div>
+        <div className="fn-phone" style={{ ...scaleIn(visible, 100, 0.94), flex: "0 0 auto", width: "min(480px, 88vw)" }}>
+          <video
+            autoPlay muted loop playsInline preload="metadata"
+            poster="/videos/fight-loop-poster.jpg"
+            aria-label={f.alt}
+            style={{ display: "block", width: "100%", height: "auto", aspectRatio: "900 / 810", mixBlendMode: "multiply" }}
+          >
+            <source src="/videos/fight-loop.mp4" type="video/mp4" />
+          </video>
         </div>
         <div style={{ flex: 1, minWidth: 0 }}>
           <span style={{ ...fadeUp(visible, 0), marginBottom: "1.5rem" }} className="section-label">{f.label}</span>

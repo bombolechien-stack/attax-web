@@ -1,12 +1,12 @@
-"""Vidéo « Soir de combat » du site, montée à partir de VRAIES captures de l'app (17/11/2026).
+"""Vidéo « Soir de combat » du KIT PRESSE, montée à partir de VRAIES captures de l'app (17/11/2026).
 
 Source : budyfit/store-assets/shots-2026-11-17/fn-*.png (FR) et en/fn-*.png (EN), images
 successives de la révélation de 21h30 sur un téléphone Android (1080 × 2340).
 On retire la barre d'état et la barre de navigation Android, puis on enchaîne les images en
 fondu, au rythme de la révélation (rounds rapides, cartes, round final, vainqueur).
 
-Sorties : public/videos/fight-night-{fr,en}.mp4 + poster .jpg (540 × 1064, site)
-          public/press/attax-fight-night-{en,fr}.mp4 (1080 × 2128, kit presse).
+Sorties : public/press/attax-fight-night-{en,fr}.mp4 (1080 × 2128) + poster .jpg.
+(La section du site montre, elle, un seul échange des boxeurs : voir combat.py.)
 Usage : python scripts/fight-night-video/build.py
 """
 import subprocess
@@ -79,7 +79,6 @@ def encode(lang: str, out: Path, w: int, h: int, crf: int):
 if __name__ == "__main__":
     PRESS = ROOT / "public" / "press"
     for lang in ("en", "fr"):
-        encode(lang, OUT / f"fight-night-{lang}.mp4", W, H, 24)
         poster = {"en": "fn-29", "fr": "fn-30"}[lang]   # les deux boxeurs au round final
-        load(lang, poster).save(OUT / f"fight-night-{lang}-poster.jpg", quality=86)
+        load(lang, poster).save(PRESS / f"attax-fight-night-{lang}-poster.jpg", quality=86)
         encode(lang, PRESS / f"attax-fight-night-{lang}.mp4", 1080, BOTTOM - TOP, 22)

@@ -104,10 +104,10 @@ export default function ScrollNav() {
           {/* Desktop: right CTAs */}
           <div className="scroll-nav-ctas" style={{ display: "flex", alignItems: "center", gap: "12px", flex: 1, justifyContent: "flex-end" }}>
             <div data-fade="1" style={{ opacity: 0 }}><LangSwitcher /></div>
-            <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" data-fade="1" style={{ display: "inline-flex", alignItems: "center", gap: "5px", backgroundColor: "#fff", color: "#0d0d0d", fontWeight: 700, fontSize: "0.75rem", padding: "7px 13px", borderRadius: "999px", textDecoration: "none", opacity: 0, whiteSpace: "nowrap" }}>
+            <a href="/download/ios" data-fade="1" style={{ display: "inline-flex", alignItems: "center", gap: "5px", backgroundColor: "#fff", color: "#0d0d0d", fontWeight: 700, fontSize: "0.75rem", padding: "7px 13px", borderRadius: "999px", textDecoration: "none", opacity: 0, whiteSpace: "nowrap" }}>
               <AppleIcon /> iOS
             </a>
-            <a href="https://play.google.com" target="_blank" rel="noopener noreferrer" data-fade="1" style={{ display: "inline-flex", alignItems: "center", gap: "5px", backgroundColor: "rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.85)", fontWeight: 700, fontSize: "0.75rem", padding: "7px 13px", borderRadius: "999px", textDecoration: "none", opacity: 0, whiteSpace: "nowrap", border: "1px solid rgba(255,255,255,0.15)" }}>
+            <a href="/download/android" data-fade="1" style={{ display: "inline-flex", alignItems: "center", gap: "5px", backgroundColor: "rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.85)", fontWeight: 700, fontSize: "0.75rem", padding: "7px 13px", borderRadius: "999px", textDecoration: "none", opacity: 0, whiteSpace: "nowrap", border: "1px solid rgba(255,255,255,0.15)" }}>
               <GooglePlayIcon /> Android
             </a>
           </div>
@@ -176,10 +176,10 @@ export default function ScrollNav() {
           borderTop: "1px solid rgba(255,255,255,0.06)",
           flexShrink: 0,
         }}>
-          <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", backgroundColor: "#ffffff", color: "#0d0d0d", fontWeight: 700, fontSize: "0.9375rem", padding: "14px", borderRadius: "999px", textDecoration: "none" }}>
+          <a href="/download/ios" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", backgroundColor: "#ffffff", color: "#0d0d0d", fontWeight: 700, fontSize: "0.9375rem", padding: "14px", borderRadius: "999px", textDecoration: "none" }}>
             <AppleIcon /> {lang === "fr" ? "Télécharger sur iOS" : "Download on iOS"}
           </a>
-          <a href="https://play.google.com" target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", backgroundColor: "rgba(255,255,255,0.07)", color: "rgba(255,255,255,0.85)", fontWeight: 700, fontSize: "0.9375rem", padding: "14px", borderRadius: "999px", textDecoration: "none", border: "1px solid rgba(255,255,255,0.12)" }}>
+          <a href="/download/android" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", backgroundColor: "rgba(255,255,255,0.07)", color: "rgba(255,255,255,0.85)", fontWeight: 700, fontSize: "0.9375rem", padding: "14px", borderRadius: "999px", textDecoration: "none", border: "1px solid rgba(255,255,255,0.12)" }}>
             <GooglePlayIcon /> {lang === "fr" ? "Disponible sur Android" : "Get it on Android"}
           </a>
           <div style={{ display: "flex", justifyContent: "center", paddingTop: "0.5rem" }}>

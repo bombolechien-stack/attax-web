@@ -229,7 +229,7 @@ export default function PressPage() {
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: "1.5rem" }}>
               <div>
                 <div style={{ position: "relative", width: "100%", paddingBottom: "205.6%", backgroundColor: "#ffffff", border: "1px solid #ebebeb", borderRadius: "16px", overflow: "hidden", marginBottom: "1rem" }}>
-                  <video key={lang} src={VIDEO(lang)} poster={`/videos/fight-night-${lang}-poster.jpg`} autoPlay muted loop playsInline preload="metadata" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "contain" }} />
+                  <video key={lang} src={VIDEO(lang)} poster={`/press/attax-fight-night-${lang}-poster.jpg`} autoPlay muted loop playsInline preload="metadata" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "contain" }} />
                 </div>
                 <p style={{ fontSize: "0.875rem", fontWeight: 700, color: "#0d0d0d", margin: "0 0 0.2rem" }}>{p.video_title}</p>
                 <p style={{ fontSize: "0.8125rem", color: "#aaa", margin: "0 0 0.75rem" }}>{p.video_caption}</p>
