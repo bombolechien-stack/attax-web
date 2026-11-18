@@ -29,11 +29,15 @@ export const FAQ_CONTENT: Record<"en" | "fr", FaqContent> = {
         items: [
           { q: "What is Attax?", a: "Attax turns your real workouts into daily boxing duels. Your watch measures your effort, your boxer throws the punches. Every day, a new opponent from your league. Every evening at 9:30 PM, Fight Night." },
           { q: "How does a match work?", a: "A match is 7 rounds: your previous 6 days, plus today. Each day is a round, won by the player with the most pts that day. You have to have moved to win it; otherwise, the round is a draw. Every lost round costs HP, and the player with the most HP left wins the match. There's never a draw.", list: ["10 AM → 5:30 PM — the 6 past rounds are revealed one by one.", "7 PM → 9:30 PM — the final round, today, is live. It takes 2 HP. Everything synced before 9:30 PM counts.", "9:30 PM — Fight Night: the boxers walk out, the rounds replay, the cards flip, then the final round decides. The result lands at the end."] },
+          { q: "Why does my first match have fewer rounds?", a: "Your 1st league starts gently: only the days played in the league count. Your 1st match has 1 round, your 2nd has 2, and so on." },
           { q: "How does a league work?", a: "A league is 8 players at your level, 7 days, a new opponent every day — and 1 champion, who leaves with the crown. Then you can run it back with the same group or join a new league." },
           { q: "How can I play?", a: "However you like:", list: ["Random leagues, with players at your level.", "Ranked leagues with your friends.", "Custom leagues, from 2 to 40 players: share your code."] },
-          { q: "Can I talk to my opponent?", a: "Yes: send quick messages before the fight. And after it, share your wins and recaps as images." },
+          { q: "Can I talk to my opponent?", a: "Yes: send them quick messages before the fight — ready-made phrases, no free chat. And after it, share your wins and recaps as images." },
+          { q: "Can I report or block a player?", a: "Yes, right from their profile." },
           { q: "Does it work in my time zone?", a: "Yes. Every league plays on its own local time: rounds are revealed from 10 AM and Fight Night starts at 9:30 PM, wherever you are." },
-          { q: "Is Attax free?", a: "Yes. Attax is free to download and free to play, with no ads, on iPhone and Android. Sign in with Apple or Google." },
+          { q: "Is Attax free?", a: "Yes. Attax is free to download and free to play, with no ads and no in-app purchases, on iPhone and Android." },
+          { q: "How do I sign in?", a: "With your e-mail and a password, or with Apple or Google." },
+          { q: "Who can play?", a: "Anyone aged 16 or over, with an iPhone or an Android phone, and a watch that measures heart rate. There is no iPad version." },
         ],
       },
       {
@@ -50,7 +54,7 @@ export const FAQ_CONTENT: Record<"en" | "fr", FaqContent> = {
       {
         id: "cards", label: "Cards", title: "The cards",
         items: [
-          { q: "How do cards work?", a: "Every morning, 3 cards are drawn — the same for both players. Pick one before 1 PM; otherwise, a card is played for you. Your opponent's card stays secret until 9:30 PM, when the cards flip during Fight Night. Some cards arrive after your first matches." },
+          { q: "How do cards work?", a: "Every morning, 3 cards are drawn — the same for both players. Pick one before 1 PM; otherwise, a card is played for you. Your opponent's card stays secret until 9:30 PM, when the cards flip during Fight Night. On the league's 1st match day, you have until 5 PM. Some cards arrive after your first matches." },
           { q: "What are the 12 cards?", a: "12 cards in 4 families: Attack, Defense, Sabotage and Trick.", list: ["Double or nothing (Attack) — the final round takes 3 HP: from them… or from you.", "Overdrive (Attack) — your workout of the day counts ×1.5.", "Steps ×3 (Attack) — your steps count triple tonight.", "Counter (Attack) — behind? Your final round takes 4 HP.", "Guard (Defense) — their final round only takes 1 HP from you.", "Dodge (Defense) — their card does nothing.", "Mirror (Defense) — Parasite or Freeze? Back to sender.", "Freeze (Sabotage) — their best past round is cancelled.", "Parasite (Sabotage) — you take 20% of their pts of the day.", "Scan (Trick) — at 1 PM, all remaining rounds are revealed.", "Ghost (Trick) — they don't know you're training, until 9:30 PM.", "Bluff (Trick) — they see a fake score for you until 9:30 PM."] },
         ],
       },
@@ -63,7 +67,7 @@ export const FAQ_CONTENT: Record<"en" | "fr", FaqContent> = {
           { q: "Will I face players at my level?", a: "Yes. A few questions when you sign up set your starting level, and you join a league at your level. Then your results do the talking." },
           { q: "What's on my profile?", a: "Your streak, your unlocked moves, your badges, your trophies and your crowns." },
           { q: "What is the Season?", a: "A worldwide season ranking, based on effort: every pt counts. You can filter it by country." },
-          { q: "What is a partner?", a: "From your 2nd league, you get a partner of your rank, from another league. Both reach the daily goal: +1 point each." },
+          { q: "What is a duo partner?", a: "From your 2nd league, you get a duo partner of your rank, from another league. You both hit your daily goal: +1 point each. You can cheer each other on with quick messages." },
         ],
       },
       {
@@ -75,7 +79,7 @@ export const FAQ_CONTENT: Record<"en" | "fr", FaqContent> = {
           { q: "What does \"workouts only\" mean?", a: "Some brands only send your heart rate to Apple Health or Health Connect during a workout. Your sessions count as long as you start them on your watch, but everyday walking won't." },
           { q: "I have an Apple Watch. Anything to know?", a: "On models before Series 12, the watch measures your heart rate only every few minutes outside of workouts. Start a workout in the Workout app so your sessions count in full." },
           { q: "How do I connect my watch?", a: "In your watch app (Garmin Connect, Samsung Health, Zepp, COROS…), turn on sharing with Apple Health or Health Connect, including steps and heart rate. Then allow Attax to read them when the app asks. For the best results, set heart-rate measurement to continuous in your watch app." },
-          { q: "What happens to my data?", a: "Attax only reads your workouts and steps, in read-only mode. Your data is never sold and never used for ads. You can delete your account anytime, right from the app." },
+          { q: "What happens to my data?", a: "Attax only reads your workouts, the heart rate measured during them, and your steps, in read-only mode. Your data is never sold and never used for ads. You can delete your account anytime, right from the app (My account), or by writing to contact@attax.app." },
         ],
       },
       {
@@ -103,11 +107,15 @@ export const FAQ_CONTENT: Record<"en" | "fr", FaqContent> = {
         items: [
           { q: "Qu'est-ce qu'Attax ?", a: "Attax transforme tes vraies séances en duels de boxe quotidiens. Ta montre mesure ton effort, ton boxeur frappe. Chaque jour, un nouvel adversaire de ta ligue. Chaque soir à 21h30, le Soir de combat." },
           { q: "Comment se passe un match ?", a: "Un match se joue en 7 rounds : tes 6 jours d'avant, plus aujourd'hui. Chaque jour est un round, gagné par celui qui a le plus de pts ce jour-là. Il faut avoir bougé pour le gagner, sinon le round est nul. Chaque round perdu coûte des PV, et le joueur qui garde le plus de PV gagne le match. Jamais de match nul.", list: ["10h → 17h30 — les 6 rounds passés se dévoilent un par un.", "19h → 21h30 — le round final, aujourd'hui, se joue en direct. Il retire 2 PV. Tout ce qui est synchronisé avant 21h30 compte.", "21h30 — Soir de combat : entrée des boxeurs, rounds rejoués, cartes retournées, puis le round final décide. Le résultat tombe à la fin."] },
+          { q: "Pourquoi mon premier match a-t-il moins de rounds ?", a: "Ta 1ère ligue démarre en douceur : seuls les jours joués dans la ligue comptent. Ton 1er match a 1 round, ton 2ème en a 2, et ainsi de suite." },
           { q: "Comment fonctionne une ligue ?", a: "Une ligue, c'est 8 joueurs de ton niveau, 7 jours, un nouvel adversaire chaque jour — et 1 champion, qui repart avec la couronne. Ensuite, tu peux rejouer avec le même groupe ou rejoindre une nouvelle ligue." },
           { q: "Comment puis-je jouer ?", a: "Comme tu veux :", list: ["Ligues au hasard, avec des joueurs de ton niveau.", "Ligues classées entre amis.", "Ligues personnalisées, de 2 à 40 joueurs : partage ton code."] },
-          { q: "Puis-je parler à mon adversaire ?", a: "Oui : envoie-lui des messages rapides avant le combat. Et après, partage tes victoires et tes bilans en image." },
+          { q: "Puis-je parler à mon adversaire ?", a: "Oui : envoie-lui des messages rapides avant le combat — des phrases toutes faites, pas de discussion libre. Et après, partage tes victoires et tes bilans en image." },
+          { q: "Puis-je signaler ou bloquer un joueur ?", a: "Oui, directement depuis son profil." },
           { q: "Ça marche dans mon fuseau horaire ?", a: "Oui. Chaque ligue se joue à son heure locale : les rounds se dévoilent dès 10h et le Soir de combat commence à 21h30, où que tu sois." },
-          { q: "Attax est-il gratuit ?", a: "Oui. Attax est gratuit à télécharger et à jouer, sans publicité, sur iPhone et Android. Connexion avec Apple ou Google." },
+          { q: "Attax est-il gratuit ?", a: "Oui. Attax est gratuit à télécharger et à jouer, sans publicité ni achat intégré, sur iPhone et Android." },
+          { q: "Comment me connecter ?", a: "Avec ton e-mail et un mot de passe, ou avec Apple ou Google." },
+          { q: "Qui peut jouer ?", a: "Tout le monde à partir de 16 ans, avec un iPhone ou un téléphone Android, et une montre qui mesure la fréquence cardiaque. Il n'y a pas de version iPad." },
         ],
       },
       {
@@ -124,7 +132,7 @@ export const FAQ_CONTENT: Record<"en" | "fr", FaqContent> = {
       {
         id: "cards", label: "Cartes", title: "Les cartes",
         items: [
-          { q: "Comment fonctionnent les cartes ?", a: "Chaque matin, 3 cartes sont tirées — les mêmes pour les deux joueurs. Choisis-en une avant 13h, sinon une carte est jouée pour toi. Celle de ton adversaire reste secrète jusqu'à 21h30, quand les cartes sont retournées pendant le Soir de combat. Certaines cartes arrivent après tes premiers matchs." },
+          { q: "Comment fonctionnent les cartes ?", a: "Chaque matin, 3 cartes sont tirées — les mêmes pour les deux joueurs. Choisis-en une avant 13h, sinon une carte est jouée pour toi. Celle de ton adversaire reste secrète jusqu'à 21h30, quand les cartes sont retournées pendant le Soir de combat. Le jour du 1er match de la ligue, tu as jusqu'à 17h. Certaines cartes arrivent après tes premiers matchs." },
           { q: "Quelles sont les 12 cartes ?", a: "12 cartes en 4 familles : Attaque, Défense, Sabotage et Ruse.", list: ["Quitte ou double (Attaque) — le round final retire 3 PV : à lui… ou à toi.", "Overdrive (Attaque) — ta séance du jour compte ×1,5.", "Pas de géant (Attaque) — tes pas comptent triple ce soir.", "Counter (Attaque) — mené ? Ton round final retire 4 PV.", "Garde (Défense) — son round final ne te retire qu'1 PV.", "Esquive (Défense) — sa carte ne fait rien.", "Miroir (Défense) — Parasite ou Freeze ? Retour à l'envoyeur.", "Freeze (Sabotage) — son meilleur round passé est annulé.", "Parasite (Sabotage) — tu lui prends 20 % de ses pts du jour.", "Scan (Ruse) — à 13h, tous les rounds restants sont dévoilés.", "Ghost (Ruse) — il ne sait pas que tu t'entraînes, jusqu'à 21h30.", "Bluff (Ruse) — il voit ton score faussé jusqu'à 21h30."] },
         ],
       },
@@ -137,7 +145,7 @@ export const FAQ_CONTENT: Record<"en" | "fr", FaqContent> = {
           { q: "Vais-je affronter des joueurs de mon niveau ?", a: "Oui. Quelques questions à l'inscription fixent ton niveau de départ, et tu rejoins une ligue de ton niveau. Ensuite, ce sont tes résultats qui parlent." },
           { q: "Qu'y a-t-il sur mon profil ?", a: "Ta série, tes coups débloqués, tes badges, tes trophées et tes couronnes." },
           { q: "C'est quoi, la Saison ?", a: "Un classement mondial de saison, à l'effort : chaque pt compte. Tu peux le filtrer par pays." },
-          { q: "C'est quoi, le binôme ?", a: "Dès ta 2ème ligue, tu as un partenaire de ton rang, venu d'une autre ligue. Objectif du jour atteint à deux : +1 point chacun." },
+          { q: "C'est quoi, le binôme ?", a: "Dès ta 2ème ligue, tu as un partenaire de ton rang, venu d'une autre ligue. Objectif du jour atteint à deux : +1 point chacun. Vous pouvez vous encourager avec des messages rapides." },
         ],
       },
       {
@@ -149,7 +157,7 @@ export const FAQ_CONTENT: Record<"en" | "fr", FaqContent> = {
           { q: "Que veut dire « exercices seulement » ?", a: "Certaines marques n'envoient ta fréquence cardiaque à Apple Santé ou Health Connect que pendant un exercice. Tes séances comptent à condition de les lancer sur ta montre, mais la marche du quotidien ne comptera pas." },
           { q: "J'ai une Apple Watch. Quelque chose à savoir ?", a: "Sur les modèles antérieurs à la Series 12, la montre ne mesure ta fréquence cardiaque que toutes les quelques minutes en dehors des exercices. Lance un exercice dans l'app Exercice pour que tes séances comptent entièrement." },
           { q: "Comment connecter ma montre ?", a: "Dans l'appli de ta montre (Garmin Connect, Samsung Health, Zepp, COROS…), active le partage avec Apple Santé ou Health Connect, pas et fréquence cardiaque compris. Autorise ensuite Attax à les lire quand l'app te le demande. Pour de meilleurs résultats, règle la mesure cardio sur « en continu » dans l'appli de ta montre." },
-          { q: "Que deviennent mes données ?", a: "Attax lit seulement tes séances et tes pas, en lecture seule. Tes données ne sont jamais vendues ni utilisées pour de la pub. Tu peux supprimer ton compte à tout moment, directement dans l'app." },
+          { q: "Que deviennent mes données ?", a: "Attax lit seulement tes séances, la fréquence cardiaque mesurée pendant l'effort et tes pas, en lecture seule. Tes données ne sont jamais vendues ni utilisées pour de la pub. Tu peux supprimer ton compte à tout moment, directement dans l'app (Mon compte), ou en écrivant à contact@attax.app." },
         ],
       },
       {

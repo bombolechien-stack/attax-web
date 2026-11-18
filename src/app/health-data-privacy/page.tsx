@@ -20,7 +20,7 @@ function ContentEn() {
     <>
       <p style={KICKER}>Legal</p>
       <h1 style={H1}>Consumer Health Data Privacy Policy</h1>
-      <p style={DATE}>Last updated: October 9, 2026</p>
+      <p style={DATE}>Last updated: November 18, 2026</p>
 
       <div style={SECTION}>
         <p style={P}>This policy explains how Attax collects, uses and shares <strong>consumer health data</strong>, as defined by the Washington My Health My Data Act and similar laws in Nevada, Connecticut and other U.S. states. It supplements our general <Link href="/privacy" style={LINK}>Privacy Policy</Link>.</p>
@@ -31,19 +31,20 @@ function ContentEn() {
         <ul style={UL}>
           <li>Heart rate, including per-minute heart-rate values recorded during your workouts.</li>
           <li>Step counts.</li>
-          <li>Workout session times and the time spent in each heart-rate zone, derived from the data above.</li>
-          <li>Your year of birth, used to adjust heart-rate zones to your age.</li>
+          <li>Workouts: start and end times and the workout type (for example running or swimming).</li>
+          <li>The minutes of effort and activity points we calculate from the data above.</li>
+          <li>Technical information about how your watch records this data (for example how often measurements arrive and which app provided your steps), used only to diagnose synchronization problems.</li>
         </ul>
       </div>
 
       <div style={SECTION}>
         <h2 style={H2}>2. Sources</h2>
-        <p style={P}>We collect this data from you, through Apple Health (HealthKit) on iPhone or Health Connect on Android, only after you give your consent in the app and grant access in your phone's health settings. On iPhone, if no watch data is available, step counts may come from your phone's motion sensor.</p>
+        <p style={P}>We collect this data from you, through Apple Health (HealthKit) on iPhone or Health Connect on Android, only after you give your consent in the app and grant access in your phone's health settings. If you allow it, Attax can also read this data in the background (on Android, a few times a day; on iPhone, when Apple Health signals new data), so that your day counts even if you do not open the app. Attax never writes anything to Apple Health or Health Connect.</p>
       </div>
 
       <div style={SECTION}>
         <h2 style={H2}>3. How we use it</h2>
-        <p style={P}>We use consumer health data <strong>only</strong> to provide the Attax game you asked for: calculating your activity points, resolving your daily duels, updating rankings and showing your activity history. We do not use it for advertising, marketing, profiling, or to determine eligibility for credit, insurance, housing or employment.</p>
+        <p style={P}>We use consumer health data <strong>only</strong> to provide the Attax game you asked for: calculating your activity points, resolving your daily matches, updating rankings, running the duo partner and the season, and showing your activity history. We do not use it for advertising, marketing, profiling, or to determine eligibility for credit, insurance, housing or employment.</p>
       </div>
 
       <div style={SECTION}>
@@ -54,22 +55,22 @@ function ContentEn() {
       <div style={SECTION}>
         <h2 style={H2}>5. Sharing</h2>
         <ul style={UL}>
-          <li><strong>Other players:</strong> in a duel, your opponent sees your activity points and the heart-rate curve of your workout for that duel. They never see your other health data.</li>
-          <li><strong>Service providers (processors):</strong> our hosting and database provider (Supabase) stores this data on our behalf, under contract, only to run Attax.</li>
+          <li><strong>Other players:</strong> in a match, your opponent of the day sees your activity points, the heart-rate curve of your workout for that match and your workout type of the day. The players of your leagues see your points; your duo partner sees whether you reached your goal of the day; if you join the season, all season players see your total points. Nobody sees your other health data.</li>
+          <li><strong>Service providers (processors):</strong> our hosting and database provider (Supabase, servers in the European Union) stores this data on our behalf, under contract, only to run Attax. Consumer health data is never sent to our analytics provider.</li>
           <li>We <strong>never sell</strong> consumer health data and never share it with advertisers, data brokers or other third parties.</li>
         </ul>
       </div>
 
       <div style={SECTION}>
         <h2 style={H2}>6. Security and retention</h2>
-        <p style={P}>Data is encrypted in transit and access is restricted to the minimum needed to run the game. We keep it for as long as your account exists. When you delete your account, it is deleted from our database immediately and from backups within 30 days.</p>
+        <p style={P}>Data is encrypted in transit and at rest, and access is restricted to the minimum needed to run the game. We keep it for as long as your account exists. When you delete your account, it is deleted from our database immediately and from backups within 30 days.</p>
       </div>
 
       <div style={SECTION} id="rights">
         <h2 style={H2}>7. Your rights</h2>
         <p style={P}>You have the right to confirm whether we collect your consumer health data, to access it, to obtain the list of third parties and processors it is shared with, to withdraw your consent, and to have it deleted.</p>
         <ul style={UL}>
-          <li><strong>Delete your data:</strong> in the app, tap your profile photo at the top of the Home screen &gt; My account &gt; My profile &gt; Delete my account. All your data is deleted.</li>
+          <li><strong>Delete your data:</strong> in the app, tap your profile photo at the top of the Home screen &gt; My account &gt; Edit profile (My profile in earlier versions) &gt; Delete my account. All your health data is deleted. You can also email us (see below and our <Link href="/privacy#delete-account" style={LINK}>Privacy Policy</Link>).</li>
           <li><strong>Any other request:</strong> email <a href="mailto:contact@attax.app?subject=Consumer%20health%20data%20request" style={LINK}>contact@attax.app</a> from the email address of your account. We respond within 45 days.</li>
           <li><strong>Appeal:</strong> if we decline your request, you can appeal by replying to our answer. If your appeal is denied, you may contact your state Attorney General.</li>
         </ul>
@@ -86,9 +87,9 @@ function ContentEn() {
 function ContentFr() {
   return (
     <>
-      <p style={KICKER}>Mentions légales</p>
+      <p style={KICKER}>Légal</p>
       <h1 style={H1}>Politique relative aux données de santé</h1>
-      <p style={DATE}>Dernière mise à jour : 9 octobre 2026</p>
+      <p style={DATE}>Dernière mise à jour : 18 novembre 2026</p>
 
       <div style={SECTION}>
         <p style={P}>Cette politique explique comment Attax collecte, utilise et partage tes <strong>données de santé</strong>. Elle répond notamment aux lois américaines sur les données de santé des consommateurs (Washington My Health My Data Act, Nevada, Connecticut et autres États) et complète notre <Link href="/privacy" style={LINK}>politique de confidentialité</Link>.</p>
@@ -99,19 +100,20 @@ function ContentFr() {
         <ul style={UL}>
           <li>Fréquence cardiaque, y compris les valeurs minute par minute enregistrées pendant tes séances.</li>
           <li>Nombre de pas.</li>
-          <li>Horaires des séances et temps passé dans chaque zone cardio, déduits des données ci-dessus.</li>
-          <li>Ton année de naissance, utilisée pour adapter les zones cardio à ton âge.</li>
+          <li>Séances : heures de début et de fin, et type de séance (par exemple course ou natation).</li>
+          <li>Les minutes d'effort et les points d'activité que nous calculons à partir de ces données.</li>
+          <li>Des informations techniques sur la façon dont ta montre enregistre ces données (par exemple la fréquence d'arrivée des mesures et l'application qui a fourni tes pas), utilisées uniquement pour diagnostiquer les problèmes de synchronisation.</li>
         </ul>
       </div>
 
       <div style={SECTION}>
         <h2 style={H2}>2. Provenance</h2>
-        <p style={P}>Ces données viennent de toi, via Apple Santé (HealthKit) sur iPhone ou Health Connect sur Android, uniquement après ton consentement dans l'app et ton autorisation dans les réglages santé de ton téléphone. Sur iPhone, sans données de montre, les pas peuvent venir du capteur de mouvement du téléphone.</p>
+        <p style={P}>Ces données viennent de toi, via Apple Santé (HealthKit) sur iPhone ou Health Connect sur Android, uniquement après ton consentement dans l'app et ton autorisation dans les réglages santé de ton téléphone. Si tu l'autorises, Attax peut aussi lire ces données en arrière-plan (sur Android, quelques fois par jour ; sur iPhone, quand Apple Santé signale de nouvelles données), pour que ta journée compte même si tu n'ouvres pas l'app. Attax n'écrit jamais rien dans Apple Santé ou Health Connect.</p>
       </div>
 
       <div style={SECTION}>
         <h2 style={H2}>3. Utilisation</h2>
-        <p style={P}>Nous utilisons ces données <strong>uniquement</strong> pour faire fonctionner le jeu Attax : calcul de tes points d'activité, résolution de tes duels quotidiens, classements et historique d'activité. Jamais pour de la publicité, du marketing, du profilage, ni pour évaluer une solvabilité, une assurance, un logement ou un emploi.</p>
+        <p style={P}>Nous utilisons ces données <strong>uniquement</strong> pour faire fonctionner le jeu Attax : calcul de tes points d'activité, résolution de tes matchs quotidiens, classements, binôme, saison et historique d'activité. Jamais pour de la publicité, du marketing, du profilage, ni pour évaluer une solvabilité, une assurance, un logement ou un emploi.</p>
       </div>
 
       <div style={SECTION}>
@@ -122,22 +124,22 @@ function ContentFr() {
       <div style={SECTION}>
         <h2 style={H2}>5. Partage</h2>
         <ul style={UL}>
-          <li><strong>Autres joueurs :</strong> dans un duel, ton adversaire voit tes points d'activité et la courbe cardiaque de ta séance pour ce duel. Il ne voit jamais tes autres données de santé.</li>
-          <li><strong>Prestataires (sous-traitants) :</strong> notre hébergeur et fournisseur de base de données (Supabase) stocke ces données pour notre compte, sous contrat, uniquement pour faire fonctionner Attax.</li>
+          <li><strong>Autres joueurs :</strong> dans un match, ton adversaire du jour voit tes points d'activité, la courbe cardiaque de ta séance pour ce match et ton type de séance du jour. Les joueurs de tes ligues voient tes points ; ton binôme voit si tu as atteint ton objectif du jour ; si tu participes à la saison, tous les joueurs de la saison voient ton total de points. Personne ne voit tes autres données de santé.</li>
+          <li><strong>Prestataires (sous-traitants) :</strong> notre hébergeur et fournisseur de base de données (Supabase, serveurs dans l'Union européenne) stocke ces données pour notre compte, sous contrat, uniquement pour faire fonctionner Attax. Elles ne sont jamais envoyées à notre outil de statistiques.</li>
           <li>Nous ne <strong>vendons jamais</strong> ces données et ne les partageons jamais avec des annonceurs, des courtiers en données ou d'autres tiers.</li>
         </ul>
       </div>
 
       <div style={SECTION}>
         <h2 style={H2}>6. Sécurité et conservation</h2>
-        <p style={P}>Les données sont chiffrées pendant leur transfert et leur accès est limité au strict nécessaire. Nous les conservons tant que ton compte existe. À la suppression de ton compte, elles sont effacées immédiatement de notre base et sous 30 jours des sauvegardes.</p>
+        <p style={P}>Les données sont chiffrées pendant leur transfert et au repos, et leur accès est limité au strict nécessaire. Nous les conservons tant que ton compte existe. À la suppression de ton compte, elles sont effacées immédiatement de notre base et sous 30 jours des sauvegardes.</p>
       </div>
 
       <div style={SECTION} id="rights">
         <h2 style={H2}>7. Tes droits</h2>
         <p style={P}>Tu as le droit de savoir si nous collectons tes données de santé, d'y accéder, d'obtenir la liste des tiers et sous-traitants qui les reçoivent, de retirer ton consentement et de les faire supprimer.</p>
         <ul style={UL}>
-          <li><strong>Supprimer tes données :</strong> dans l'app, touche ta photo de profil en haut de l'Accueil &gt; Mon compte &gt; Mon profil &gt; Supprimer mon compte. Toutes tes données sont supprimées.</li>
+          <li><strong>Supprimer tes données :</strong> dans l'app, touche ta photo de profil en haut de l'Accueil &gt; Mon compte &gt; Éditer le profil (Mon profil dans les versions précédentes) &gt; Supprimer mon compte. Toutes tes données de santé sont supprimées. Tu peux aussi nous écrire (voir ci-dessous et notre <Link href="/privacy#delete-account" style={LINK}>politique de confidentialité</Link>).</li>
           <li><strong>Toute autre demande :</strong> écris à <a href="mailto:contact@attax.app?subject=Demande%20donn%C3%A9es%20de%20sant%C3%A9" style={LINK}>contact@attax.app</a> depuis l'adresse e-mail de ton compte. Nous répondons sous 45 jours.</li>
           <li><strong>Recours :</strong> si nous refusons ta demande, tu peux faire appel en répondant à notre réponse, puis saisir l'autorité compétente de ton pays ou de ton État (en France, la CNIL).</li>
         </ul>

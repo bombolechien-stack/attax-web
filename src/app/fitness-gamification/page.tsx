@@ -160,6 +160,7 @@ const P: Record<Lang, {
       { title: "Strategic decisions", body: "3 cards drawn every morning, the same for both players, from 12 cards in 4 families. One to play before 1 PM; theirs stays secret until 9:30 PM." },
       { title: "League progression", body: "Leagues of 8 players at your level, 7 days, 1 champion who leaves with the crown." },
       { title: "Long-term objectives", body: "A rank from Rookie to Legend that follows you from league to league, a worldwide season, and a profile with your streak, moves, badges and trophies." },
+      { title: "Social play", body: "Ranked leagues with your friends, custom leagues from 2 to 40 players, a duo partner of your rank from your 2nd league, and quick messages to your opponent." },
     ],
     secNotPerfection: "Not Perfection",
     notPerfectionH2: "The goal is not perfection",
@@ -256,6 +257,7 @@ const P: Record<Lang, {
       { title: "Décisions stratégiques", body: "3 cartes tirées chaque matin, les mêmes pour les deux joueurs, parmi 12 cartes en 4 familles. Une à jouer avant 13h ; la sienne reste secrète jusqu'à 21h30." },
       { title: "Progression en ligue", body: "Des ligues de 8 joueurs de ton niveau, 7 jours, 1 champion qui repart avec la couronne." },
       { title: "Objectifs à long terme", body: "Un rang de Rookie à Legend qui te suit de ligue en ligue, une saison mondiale, et un profil avec ta série, tes coups, tes badges et tes trophées." },
+      { title: "Jeu social", body: "Des ligues classées avec tes amis, des ligues personnalisées de 2 à 40 joueurs, un binôme de ton rang dès ta 2ème ligue, et des messages rapides à ton adversaire." },
     ],
     secNotPerfection: "Pas la perfection",
     notPerfectionH2: "L'objectif n'est pas la perfection",
@@ -374,7 +376,9 @@ export default function FitnessGamification() {
             <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.72) 100%)" }} />
             <div style={{ position: "absolute", bottom: "2.5rem", left: "2.75rem", right: "2.75rem", zIndex: 1 }}>
               <p style={{ fontSize: "clamp(1.25rem, 2.2vw, 1.875rem)", fontWeight: 700, color: "#ffffff", letterSpacing: "-0.03em", lineHeight: 1.3, maxWidth: "580px", margin: 0 }}>
-                "Gamification turns effort into progression. Every session moves you forward."
+                {lang === "en"
+                  ? "“Gamification turns effort into progression. Every session moves you forward.”"
+                  : "« La gamification transforme l'effort en progression. Chaque séance te fait avancer. »"}
               </p>
             </div>
           </div>

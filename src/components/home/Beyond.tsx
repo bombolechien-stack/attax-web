@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useLang, useT } from "@/lib/i18n";
 import { useInView, fadeUp, clipReveal } from "@/hooks/useInView";
 
-/** Saison, binôme, palmarès : trois captures de l'app, comme sur les stores. */
+/** Ligue, saison, binôme, palmarès : quatre captures de l'app, montrées EN ENTIER (la coupe du profil était coupée). */
 export default function Beyond() {
   const t = useT();
   const { lang } = useLang();
@@ -23,15 +23,15 @@ export default function Beyond() {
           </h2>
         </div>
 
-        <div ref={ref} className="by-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "2.5rem" }}>
+        <div ref={ref} className="by-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "2rem" }}>
           {b.items.map((it, i) => (
             <article key={it.k} style={{ ...fadeUp(visible, i * 120) }}>
-              <div className="by-shot" style={{ backgroundColor: "#EEF1F7", borderRadius: 24, padding: "2.5rem 2.5rem 0", overflow: "hidden", height: 460, display: "flex", justifyContent: "center" }}>
-                <Image src={`/screens/app/${lang}/${it.img}.webp`} alt={`${it.t[0]} ${it.t[1]}`} width={560} height={1107} sizes="(max-width: 860px) 70vw, 300px"
-                  style={{ width: "min(280px, 100%)", height: "auto", alignSelf: "flex-start", filter: "drop-shadow(0 24px 40px rgba(11,17,22,0.16))" }} />
+              <div className="by-shot" style={{ backgroundColor: "#EEF1F7", borderRadius: 24, padding: "2rem 1.5rem", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                <Image src={`/screens/app/${lang}/${it.img}.webp`} alt={`${it.t[0]} ${it.t[1]}`} width={560} height={1107} quality={90} sizes="(max-width: 640px) 70vw, (max-width: 1100px) 40vw, 260px"
+                  style={{ width: "min(240px, 100%)", height: "auto", filter: "drop-shadow(0 20px 36px rgba(11,17,22,0.16))" }} />
               </div>
               <span className="pin-mono" style={{ display: "block", fontSize: "0.6875rem", color: "rgba(11,17,22,0.4)", margin: "1.75rem 0 0.75rem" }}>{it.k}</span>
-              <h3 style={{ fontSize: "1.5rem", fontWeight: 800, letterSpacing: "-0.035em", lineHeight: 1.1, color: "#0d0d0d", margin: "0 0 0.75rem" }}>
+              <h3 style={{ fontSize: "1.375rem", fontWeight: 800, letterSpacing: "-0.035em", lineHeight: 1.1, color: "#0d0d0d", margin: "0 0 0.75rem" }}>
                 {it.t[0]} <span style={{ color: "#0443FD" }}>{it.t[1]}</span>
               </h3>
               <p style={{ fontSize: "0.9375rem", color: "#777", lineHeight: 1.7, margin: 0, maxWidth: 360 }}>{it.d}</p>

@@ -153,12 +153,13 @@ const P: Record<Lang, {
 
     howLabel: "How It Works",
     howH2: "How Attax works",
-    howIntro: "Attax combines four systems that work together.",
+    howIntro: "Attax combines five systems that work together.",
     howSystems: [
       { title: "Real Activity", body: "Attax reads your workouts and your steps from Apple Health or Health Connect, in read-only mode, and turns them into pts. It's intensity that pays, not just volume. Running, cycling, gym, team sports, dance: if your watch measures it, it counts. Manual entries don't." },
       { title: "Daily Competition", body: "Every day, a new opponent from your league. A match is 7 rounds: your previous 6 days, plus today. Each day is a round, won by the player with the most pts. Every lost round costs HP. The past rounds are revealed from 10 AM to 5:30 PM, the final round is live from 7 PM, and at 9:30 PM, Fight Night decides. Never a draw." },
       { title: "Strategic Decisions", body: "Every morning, 3 cards are drawn — the same for both players — from 12 cards in 4 families: Attack, Defense, Sabotage, Trick. Pick one before 1 PM. Your opponent's card stays secret until 9:30 PM. The right card can flip a close match." },
       { title: "League Progression", body: "A league is 8 players at your level, 7 days, and 1 champion who leaves with the crown. Across leagues, a rank follows you from Rookie to Legend, and a worldwide season ranking rewards every pt of effort." },
+      { title: "Play Together", body: "Play ranked leagues with your friends, or custom leagues from 2 to 40 players: share your code, they join in seconds. From your 2nd league, a duo partner of your rank, from another league, keeps you going. And before each fight, send your opponent a quick message." },
     ],
 
     whyLabel: "Why It Works",
@@ -206,13 +207,14 @@ const P: Record<Lang, {
       { q: "Does walking count?", a: "Yes. Your steps count every day, even with your phone alone. For your workouts, you need a device that measures your heart rate." },
       { q: "Can beginners use Attax?", a: "Absolutely. You play against players at your level, and every effort counts — from a brisk walk to an all-out session." },
       { q: "Do I need a smartwatch?", a: "Yes. You need a device that measures your heart rate — smartwatch, fitness band or chest strap — synced with Apple Health (iPhone) or Health Connect (Android): Apple Watch, Garmin, Amazfit, COROS and more on both; Samsung Galaxy Watch and Fitbit on Android only. Your phone alone counts your steps. Attax checks your connection before your first league." },
-      { q: "Is Attax available on iPhone and Android?", a: "Yes: on iPhone through Apple Health, on Android through Health Connect." },
-      { q: "Is Attax free?", a: "Yes. Attax is free to download and free to play, with no ads." },
+      { q: "Is Attax available on iPhone and Android?", a: "Yes: on iPhone through Apple Health, on Android through Health Connect. There is no iPad version." },
+      { q: "Can I play with my friends?", a: "Yes. Create a ranked league with your friends, or a custom league from 2 to 40 players. Share your code, they join in seconds." },
+      { q: "Is Attax free?", a: "Yes. Attax is free to download and free to play, with no ads and no in-app purchases." },
       { q: "How often do duels happen?", a: "Every day. One match a day against a new opponent, decided at Fight Night, 9:30 PM, in leagues that last 7 days." },
     ],
 
     ctaH2: "Ready to make your activity matter?",
-    ctaBody: "Join the first leagues: download Attax and start your first duel.",
+    ctaBody: "Download Attax, join a league and start your first duel.",
     ctaDownload: "Download Attax",
     ctaLearn: "Learn More",
   },
@@ -248,12 +250,13 @@ const P: Record<Lang, {
 
     howLabel: "Comment Ça Marche",
     howH2: "Comment fonctionne Attax",
-    howIntro: "Attax combine quatre systèmes qui fonctionnent ensemble.",
+    howIntro: "Attax combine cinq systèmes qui fonctionnent ensemble.",
     howSystems: [
       { title: "Activité réelle", body: "Attax lit tes séances et tes pas dans Apple Santé ou Health Connect, en lecture seule, et les transforme en pts. C'est l'intensité qui paie, pas seulement le volume. Course, vélo, muscu, sports collectifs, danse : si ta montre le mesure, ça compte. Les saisies à la main, non." },
       { title: "Compétition quotidienne", body: "Chaque jour, un nouvel adversaire de ta ligue. Un match se joue en 7 rounds : tes 6 jours d'avant, plus aujourd'hui. Chaque jour est un round, gagné par celui qui a le plus de pts. Chaque round perdu coûte des PV. Les rounds passés se dévoilent de 10h à 17h30, le round final se joue en direct dès 19h, et à 21h30, le Soir de combat décide. Jamais de match nul." },
       { title: "Décisions stratégiques", body: "Chaque matin, 3 cartes sont tirées — les mêmes pour les deux joueurs — parmi 12 cartes en 4 familles : Attaque, Défense, Sabotage, Ruse. Choisis-en une avant 13h. Celle de ton adversaire reste secrète jusqu'à 21h30. La bonne carte peut renverser un match serré." },
       { title: "Progression en ligue", body: "Une ligue, c'est 8 joueurs de ton niveau, 7 jours, et 1 champion qui repart avec la couronne. De ligue en ligue, un rang te suit de Rookie à Legend, et un classement mondial de saison récompense chaque pt d'effort." },
+      { title: "Jouer ensemble", body: "Joue des ligues classées avec tes amis, ou des ligues personnalisées de 2 à 40 joueurs : partage ton code, ils te rejoignent en quelques secondes. Dès ta 2ème ligue, un binôme de ton rang, venu d'une autre ligue, te pousse à bouger. Et avant chaque combat, envoie un message rapide à ton adversaire." },
     ],
 
     whyLabel: "Pourquoi Ça Marche",
@@ -301,13 +304,14 @@ const P: Record<Lang, {
       { q: "La marche compte-t-elle ?", a: "Oui. Tes pas comptent chaque jour, même avec ton téléphone seul. Pour tes séances, il te faut un appareil qui mesure ta fréquence cardiaque." },
       { q: "Les débutants peuvent-ils jouer ?", a: "Absolument. Tu affrontes des joueurs de ton niveau, et chaque effort compte — de la marche rapide à la séance à fond." },
       { q: "Ai-je besoin d'une montre connectée ?", a: "Oui. Il te faut un appareil qui mesure ta fréquence cardiaque — montre, bracelet ou ceinture cardio — synchronisé avec Apple Santé (iPhone) ou Health Connect (Android) : Apple Watch, Garmin, Amazfit, COROS et d'autres sur les deux ; Samsung Galaxy Watch et Fitbit sur Android uniquement. Ton téléphone seul compte tes pas. Attax vérifie ta connexion avant ta première ligue." },
-      { q: "Attax est-il disponible sur iPhone et Android ?", a: "Oui : sur iPhone via Apple Santé, sur Android via Health Connect." },
-      { q: "Attax est-il gratuit ?", a: "Oui. Attax est gratuit à télécharger et à jouer, sans publicité." },
+      { q: "Attax est-il disponible sur iPhone et Android ?", a: "Oui : sur iPhone via Apple Santé, sur Android via Health Connect. Il n'y a pas de version iPad." },
+      { q: "Puis-je jouer avec mes amis ?", a: "Oui. Crée une ligue classée avec tes amis, ou une ligue personnalisée de 2 à 40 joueurs. Partage ton code, ils te rejoignent en quelques secondes." },
+      { q: "Attax est-il gratuit ?", a: "Oui. Attax est gratuit à télécharger et à jouer, sans publicité ni achat intégré." },
       { q: "À quelle fréquence ont lieu les duels ?", a: "Tous les jours. Un match par jour contre un nouvel adversaire, décidé au Soir de combat, à 21h30, dans des ligues qui durent 7 jours." },
     ],
 
     ctaH2: "Prêt à donner du sens à ton activité ?",
-    ctaBody: "Rejoins les premières ligues : télécharge Attax et lance ton premier duel.",
+    ctaBody: "Télécharge Attax, rejoins une ligue et lance ton premier duel.",
     ctaDownload: "Télécharger Attax",
     ctaLearn: "En savoir plus",
   },
@@ -407,7 +411,9 @@ export default function WhatIsAttax() {
             <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.72) 100%)" }} />
             <div style={{ position: "absolute", bottom: "2.5rem", left: "2.75rem", right: "2.75rem", zIndex: 1 }}>
               <p style={{ fontSize: "clamp(1.25rem, 2.2vw, 1.875rem)", fontWeight: 700, color: "#ffffff", letterSpacing: "-0.03em", lineHeight: 1.3, maxWidth: "580px", margin: 0 }}>
-                "Every effort counts. Every day you move, you compete."
+                {lang === "en"
+                  ? "“Every effort counts. Every day you move, you compete.”"
+                  : "« Chaque effort compte. Chaque jour où tu bouges, tu combats. »"}
               </p>
             </div>
           </div>

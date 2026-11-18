@@ -89,12 +89,12 @@ const P: Record<Lang, {
     whatItIsH2: "What is a Health Connect fitness game?",
     whatItIs1: "Health Connect allows Android applications to securely access activity and health information.",
     whatItIs2: "Most applications use this data for tracking. Attax uses it for competition.",
-    whatItIs3: "By connecting activity data to game systems, rankings, progression, and challenges, Attax creates a new type of fitness experience.",
+    whatItIs3: "By connecting activity data to game systems, rankings, progression, and daily duels, Attax creates a new type of fitness experience.",
     whatItIs4: "One where movement has consequences.",
     secHowItConnects: "How It Connects",
     howItConnectsH2: "How Health Connect works with Attax",
     howItConnects1: "Attax integrates with Health Connect to synchronize physical activity automatically.",
-    howItConnects2: "Attax reads two things from Health Connect: your workouts and your steps, written there by your watch app (Garmin Connect, Samsung Health, Fitbit, Zepp, COROS…). Read-only: nothing is written back, and your data is never sold or used for ads.",
+    howItConnects2: "Attax reads your workouts, the heart rate measured during them, and your steps from Health Connect, written there by your watch app (Garmin Connect, Samsung Health, Fitbit, Zepp, COROS…). Read-only: nothing is written back, and your data is never sold or used for ads.",
     howItConnectsEm: "Simply stay active.\nThe platform handles the rest.",
     secProgression: "Progression",
     progressionH2: "Activity becomes progression",
@@ -102,7 +102,7 @@ const P: Record<Lang, {
     progressionEm: "Movement contributes to competitive performance.\nConsistency contributes to rankings.\nActivity contributes to long-term progression.",
     progression2: "The system transforms exercise into something more engaging than a simple statistic.",
     secWhyAndroid: "Why Android Users",
-    whyAndroidH2: "Why Android users choose Attax",
+    whyAndroidH2: "Why Attax for Android users",
     whyAndroid1: "Many Android users already collect activity data through:",
     androidSources: ["Smartwatches", "Fitness trackers", "Running applications", "Cycling applications", "Health platforms"],
     whyAndroid2: "Attax provides a new purpose for that activity.",
@@ -133,12 +133,12 @@ const P: Record<Lang, {
     secFaq: "FAQ",
     faqH2: "Frequently asked questions",
     faq: [
-      { q: "Does Attax work with Health Connect?", a: "Yes. Attax reads your workouts and your steps from Health Connect, read-only." },
+      { q: "Does Attax work with Health Connect?", a: "Yes. Attax reads your workouts, the heart rate measured during them, and your steps from Health Connect, read-only." },
       { q: "What activities are supported?", a: "Any workout your watch measures: running, cycling, gym, swimming, team sports, dance… plus your steps, every day. Manual entries don't count." },
       { q: "Do I need a smartwatch?", a: "Yes: a device whose app shares heart rate with Health Connect — Garmin, Samsung Galaxy Watch, Fitbit and Pixel Watch, Wear OS watches, Amazfit, COROS and more. Some brands only share heart rate during workouts: with Polar, start a session on your watch; with Xiaomi, start and end it in the Mi Fitness app on your phone (not on the watch), and there may still be gaps. Apple Watch and Huawei are not supported on Android." },
-      { q: "Is Attax available on Android?", a: "Yes, on Android 8.0 or later." },
-      { q: "Is activity synchronized automatically?", a: "Yes. Once access is granted, Attax reads Health Connect every time you open the app." },
-      { q: "Is Attax free?", a: "Yes. Attax is free to download and free to play, with no ads." },
+      { q: "Is Attax available on Android?", a: "Yes, on Android 9 or later, with Health Connect." },
+      { q: "Is activity synchronized automatically?", a: "Yes. Once access is granted, Attax reads Health Connect every time you open the app. On match day, everything synced before 9:30 PM counts." },
+      { q: "Is Attax free?", a: "Yes. Attax is free to download and free to play, with no ads and no in-app purchases." },
     ],
     finalH2: "Turn Health Connect into competition.",
     finalBody: "Turn activity into boxing duels. Turn consistency into victories. Download Attax on Android.",
@@ -155,12 +155,12 @@ const P: Record<Lang, {
     whatItIsH2: "Qu'est-ce qu'un jeu de fitness Health Connect ?",
     whatItIs1: "Health Connect permet aux applications Android d'accéder de façon sécurisée aux données d'activité et de santé.",
     whatItIs2: "La plupart des applications utilisent ces données pour le suivi. Attax les utilise pour la compétition.",
-    whatItIs3: "En connectant les données d'activité à des systèmes de jeu, classements, progression et défis, Attax crée un nouveau type d'expérience fitness.",
+    whatItIs3: "En connectant les données d'activité à des systèmes de jeu, classements, progression et duels quotidiens, Attax crée un nouveau type d'expérience fitness.",
     whatItIs4: "Un environnement où le mouvement a des conséquences.",
     secHowItConnects: "La connexion",
     howItConnectsH2: "Comment Health Connect fonctionne avec Attax",
     howItConnects1: "Attax s'intègre à Health Connect pour synchroniser automatiquement l'activité physique.",
-    howItConnects2: "Attax lit deux choses dans Health Connect : tes séances et tes pas, qui y sont écrits par l'appli de ta montre (Garmin Connect, Samsung Health, Fitbit, Zepp, COROS…). En lecture seule : rien n'est écrit en retour, et tes données ne sont jamais vendues ni utilisées pour de la pub.",
+    howItConnects2: "Attax lit dans Health Connect tes séances, la fréquence cardiaque mesurée pendant l'effort et tes pas, qui y sont écrits par l'appli de ta montre (Garmin Connect, Samsung Health, Fitbit, Zepp, COROS…). En lecture seule : rien n'est écrit en retour, et tes données ne sont jamais vendues ni utilisées pour de la pub.",
     howItConnectsEm: "Reste simplement actif.\nLa plateforme s'occupe du reste.",
     secProgression: "Progression",
     progressionH2: "L'activité devient progression",
@@ -168,7 +168,7 @@ const P: Record<Lang, {
     progressionEm: "Le mouvement contribue à la performance compétitive.\nLa régularité contribue au classement.\nL'activité contribue à la progression à long terme.",
     progression2: "Le système transforme l'exercice en quelque chose de plus engageant qu'une simple statistique.",
     secWhyAndroid: "Pourquoi Android",
-    whyAndroidH2: "Pourquoi les utilisateurs Android choisissent Attax",
+    whyAndroidH2: "Pourquoi Attax pour les utilisateurs Android",
     whyAndroid1: "De nombreux utilisateurs Android collectent déjà des données d'activité via :",
     androidSources: ["Montres connectées", "Trackers de fitness", "Applications de course", "Applications de vélo", "Plateformes de santé"],
     whyAndroid2: "Attax offre un nouveau sens à cette activité.",
@@ -199,12 +199,12 @@ const P: Record<Lang, {
     secFaq: "FAQ",
     faqH2: "Questions fréquentes",
     faq: [
-      { q: "Attax fonctionne-t-il avec Health Connect ?", a: "Oui. Attax lit tes séances et tes pas dans Health Connect, en lecture seule." },
+      { q: "Attax fonctionne-t-il avec Health Connect ?", a: "Oui. Attax lit tes séances, la fréquence cardiaque mesurée pendant l'effort et tes pas dans Health Connect, en lecture seule." },
       { q: "Quelles activités sont prises en compte ?", a: "Toute séance mesurée par ta montre : course, vélo, muscu, natation, sports collectifs, danse… plus tes pas, chaque jour. Les saisies à la main ne comptent pas." },
       { q: "Ai-je besoin d'une montre connectée ?", a: "Oui : un appareil dont l'appli partage la fréquence cardiaque avec Health Connect — Garmin, Samsung Galaxy Watch, Fitbit et Pixel Watch, montres Wear OS, Amazfit, COROS et d'autres. Certaines marques ne partagent la fréquence cardiaque que pendant les exercices : avec Polar, lance une séance sur ta montre ; avec Xiaomi, démarre-la et termine-la dans l'app Mi Fitness du téléphone (pas sur la montre), et il peut quand même y avoir des trous. L'Apple Watch et Huawei ne sont pas compatibles sur Android." },
-      { q: "Attax est-il disponible sur Android ?", a: "Oui, sur Android 8.0 ou plus récent." },
-      { q: "La synchro est-elle automatique ?", a: "Oui. Une fois l'accès accordé, Attax lit Health Connect à chaque ouverture de l'app." },
-      { q: "Attax est-il gratuit ?", a: "Oui. Attax est gratuit à télécharger et à jouer, sans publicité." },
+      { q: "Attax est-il disponible sur Android ?", a: "Oui, sur Android 9 ou plus récent, avec Health Connect." },
+      { q: "La synchro est-elle automatique ?", a: "Oui. Une fois l'accès accordé, Attax lit Health Connect à chaque ouverture de l'app. Le jour du match, tout ce qui est synchronisé avant 21h30 compte." },
+      { q: "Attax est-il gratuit ?", a: "Oui. Attax est gratuit à télécharger et à jouer, sans publicité ni achat intégré." },
     ],
     finalH2: "Transforme Health Connect en compétition.",
     finalBody: "Transforme ton activité en duels de boxe. Transforme ta régularité en victoires. Télécharge Attax sur Android.",
@@ -274,7 +274,9 @@ export default function HealthConnectFitnessGame() {
             <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.72) 100%)" }} />
             <div style={{ position: "absolute", bottom: "2.5rem", left: "2.75rem", right: "2.75rem", zIndex: 1 }}>
               <p style={{ fontSize: "clamp(1.25rem, 2.2vw, 1.875rem)", fontWeight: 700, color: "#ffffff", letterSpacing: "-0.03em", lineHeight: 1.3, maxWidth: "580px", margin: 0 }}>
-                "Whatever your sport, it all counts. Health Connect tracks it all."
+                {lang === "en"
+                  ? "“Whatever your sport, if your watch measures it, it counts.”"
+                  : "« Quel que soit ton sport, si ta montre le mesure, ça compte. »"}
               </p>
             </div>
           </div>

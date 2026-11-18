@@ -48,7 +48,7 @@ export const T = {
       ],
     },
     dailyMatch: {
-      label: "THE MATCH",
+      label: "02 · THE MATCH",
       h2: ["7 days.", "7 rounds."],
       subtitle: "A match covers your week: the 6 previous days and today. Each day is a round, won by whoever moved the most that day. Every round lost costs HP, and whoever keeps the most HP wins. Never a draw.",
       live: "LIVE",
@@ -65,7 +65,6 @@ export const T = {
       card_opp: "THEIR CARD · SECRET UNTIL 9:30 PM",
       stats: [
         { n: "10 AM → 5:30 PM", label: "The 6 past rounds are revealed." },
-        { n: "1 PM", label: "Last call for your card." },
         { n: "7 PM", label: "The final round goes live." },
         { n: "9:30 PM", label: "Fight Night. The verdict." },
       ],
@@ -105,8 +104,6 @@ export const T = {
       all_link: "See the full FAQ",
       items: [
         { q: "Do I need a smartwatch?", a: "Yes. You need a device that measures your heart rate — smartwatch, fitness band or chest strap — synced with Apple Health (iPhone) or Health Connect (Android). Your phone alone counts your steps, but your workouts are measured by your watch. Attax checks your connection before your first league." },
-        { q: "How do I earn pts?", a: "Your workouts and your steps, measured by your watch, become pts. The more you move, the more you score, and intensity pays, not just volume. No manual entry: everything comes from Apple Health or Health Connect." },
-        { q: "How is a match decided?", a: "A match has 7 rounds: the 6 previous days and today. Each day is won by whoever scored the most pts that day, and every round lost costs HP. The past rounds are revealed from 10 AM to 5:30 PM, the final round (2 HP) is live from 7 PM. At 9:30 PM the cards are revealed and whoever keeps the most HP wins. Never a draw." },
         { q: "Will I face players at my level?", a: "Yes. A few questions when you sign up set your starting level, and you join a league of players at your level. Then your results do the talking: your rank follows you from league to league." },
         { q: "Can I play with friends?", a: "Yes. Create a ranked league with your friends, or a custom league from 2 to 40 players. Share the code, they join in seconds." },
         { q: "Is Attax free?", a: "Yes. Attax is free to download and free to play, with no ads." },
@@ -134,9 +131,9 @@ export const T = {
       ],
     },
     cardsShowcase: {
-      label: "THE CARDS",
+      label: "03 · THE CARDS",
       h2: ["Play a card.", "Flip the match."],
-      sub: "12 cards. 3 drawn every morning, the same for both players. One to play before 1 PM — your opponent's stays secret until 9:30 PM.",
+      sub: "Every morning, 3 cards are drawn, the same for both players. Play one before 1 PM: your opponent's stays secret until 9:30 PM.",
       families: { atk: "ATTACK", def: "DEFENSE", sab: "SABOTAGE", ruse: "TRICK" },
       cards: [
         { id: "spike", n: "01", fam: "atk", name: "Double or nothing", punchy: "DOUBLE OR NOTHING", sub: "The final round takes 3 HP, from them… or from you" },
@@ -152,11 +149,11 @@ export const T = {
         { id: "bluff", n: "11", fam: "ruse", name: "Bluff", punchy: "FAKE SCORE", sub: "They see a fake score until 9:30 PM" },
         { id: "counter", n: "12", fam: "atk", name: "Counter", punchy: "COMEBACK +2", sub: "Behind? Your final round takes 4 HP" },
       ],
-      cta: "12 cards. 4 families.",
-      cta_sub: "Attack, Defense, Sabotage, Trick. Some cards unlock after your first matches.",
+      cta: "3 of the 12 cards.",
+      cta_sub: "4 families: Attack, Defense, Sabotage, Trick. Some cards unlock after your first matches.",
     },
     fightNight: {
-      label: "FIGHT NIGHT",
+      label: "04 · FIGHT NIGHT",
       h2: ["Every night,", "the final round."],
       body: "At 9:30 PM your match comes alive: the fighters walk in, the past rounds replay, the cards flip, and the final round decides. The result comes last.",
       steps: [
@@ -166,21 +163,22 @@ export const T = {
         { n: "04", t: "The verdict comes last" },
       ],
       note: "Before the fight, send your opponent a quick message. After it, share your wins and recaps as images.",
-      alt: "Fight Night in the Attax app: the final round between two boxers drawn in scanlines",
+      alt: "Fight Night in the Attax app, recorded on a phone: the rounds replay, the cards flip, the final round and the winner",
     },
     beyond: {
-      label: "BEYOND THE LEAGUE",
+      label: "BEYOND THE MATCH",
       h2: ["A league a week.", "A story all season."],
       items: [
+        { img: 5, k: "LEAGUE", t: ["Climb", "the ranks."], d: "8 players, 7 days, 1 champion who takes the crown. Your rank follows you from league to league, from Rookie to Legend. Or play with friends: custom leagues from 2 to 40." },
         { img: 6, k: "SEASON", t: ["One season.", "The whole world."], d: "The world ranking of effort: every pt counts, from your very first workout. Your place moves every night, by country or worldwide." },
         { img: 7, k: "DUO", t: ["Never alone.", "Your duo partner."], d: "From your 2nd league, a partner of your rank from another league. You both hit your daily goal: +1 point each." },
-        { img: 8, k: "PROFILE", t: ["Your trophies.", "Your crown."], d: "Streak, moves, badges, trophies: everything stays on your profile. The league champion takes the crown." },
+        { img: 8, k: "PROFILE", t: ["Your trophies.", "Your crown."], d: "Streak, moves, badges, trophies: everything you win stays on your profile." },
       ],
     },
     privacy: {
       label: "YOUR DATA",
       title: "Your health data stays yours.",
-      body: "Attax only reads your steps and heart rate — it never writes anything to Apple Health or Health Connect. Your data powers your game and nothing else, and you can delete your account in the app at any time.",
+      body: "Attax only reads your workouts, steps and heart rate — it never writes anything to Apple Health or Health Connect. Your data powers your game and nothing else, and you can delete your account in the app at any time.",
       points: ["Read-only access", "Never sold, no ads", "Delete anytime, in the app"],
     },
     download: {
@@ -204,7 +202,7 @@ export const T = {
       ios_req: "Requires iOS 15.1 or later",
       ios_sub: "Apple Health integration",
       android_title: "Android",
-      android_req: "Requires Android 8.0 or later",
+      android_req: "Requires Android 9 or later (Health Connect)",
       android_sub: "Health Connect integration",
       screens_label: "INSIDE THE APP",
       screens_h2: "Built for competition.",
@@ -225,8 +223,9 @@ export const T = {
       col_legal: "Legal",
       links_product: [
         { label: "How It Works", href: "/#how-it-works" },
-        { label: "Features", href: "/#features" },
-        { label: "Daily Battle", href: "/#daily-match" },
+        { label: "The Match", href: "/#daily-match" },
+        { label: "The Cards", href: "/#cards" },
+        { label: "Fight Night", href: "/#fight-night" },
         { label: "FAQ", href: "/faq" },
         { label: "Discover", href: "/discover" },
       ],
@@ -277,7 +276,7 @@ export const T = {
       pillars_h2: ["Four systems.", "One game."],
       pillars_sub: "Real effort. Strategic choices. A boxing duel every day. Every day you move is a round you can win.",
       pillars: [
-        { n: "01", title: "Pts", description: "Your watch measures your workouts and your steps, through Apple Health or Health Connect. They become pts. It's intensity that pays, not just volume. Manual entries don't count." },
+        { n: "01", title: "Points", description: "Your watch measures your workouts and your steps, through Apple Health or Health Connect. They become pts. It's intensity that pays, not just volume. Manual entries don't count." },
         { n: "02", title: "The Daily Duel", description: "A match is 7 rounds: your previous 6 days, plus today. Each day is a round, won by the player with the most pts. Every lost round costs HP; the player with the most HP left wins. Never a draw." },
         { n: "03", title: "The Cards", description: "12 cards in 4 families: Attack, Defense, Sabotage, Trick. Every morning, 3 are drawn, the same for both players. Pick one before 1 PM: Double or nothing, Guard, Freeze, Ghost… Your opponent's stays secret until 9:30 PM." },
         { n: "04", title: "Leagues & Rankings", description: "8 players at your level. 7 days. A new opponent every day. 1 champion, who leaves with the crown. Then run it back with the same group, or start a new league. Across leagues, your rank climbs from Rookie to Legend." },
@@ -373,7 +372,7 @@ export const T = {
       faq_label: "QUICK ANSWERS",
       faq_h2: "Common questions",
       faq: [
-        { q: "My points stay at 0. What should I do?", a: "Check that your watch app shares your heart rate with Apple Health or Health Connect, and that Attax is allowed to read it. In the app, the watch check tells you exactly what's missing." },
+        { q: "My pts stay at 0. What should I do?", a: "Check that your watch app shares your heart rate with Apple Health or Health Connect, and that Attax is allowed to read it. In the app, the watch check tells you exactly what's missing." },
         { q: "Can I report a bug in the app?", a: "Absolutely. Write to contact@attax.app or use My account → Support in the app. Tell us your phone and watch model — screenshots always help." },
         { q: "Where can I follow Attax?", a: "On Instagram and TikTok: @playattax. Follow us for news, behind the scenes and the best league moments." },
       ],
@@ -456,7 +455,7 @@ export const T = {
       ],
     },
     dailyMatch: {
-      label: "LE MATCH",
+      label: "02 · LE MATCH",
       h2: ["7 jours.", "7 rounds."],
       subtitle: "Un match couvre ta semaine : les 6 jours d'avant et aujourd'hui. Chaque jour est un round, gagné par celui qui a le plus bougé ce jour-là. Chaque round perdu coûte des PV, et celui qui garde le plus de PV gagne. Jamais de match nul.",
       live: "EN DIRECT",
@@ -473,7 +472,6 @@ export const T = {
       card_opp: "SA CARTE · SECRÈTE JUSQU'À 21h30",
       stats: [
         { n: "10h → 17h30", label: "Les 6 rounds passés se dévoilent." },
-        { n: "13h", label: "Dernier délai pour ta carte." },
         { n: "19h", label: "Le round final passe en direct." },
         { n: "21h30", label: "Soir de combat. Le verdict." },
       ],
@@ -513,8 +511,6 @@ export const T = {
       all_link: "Voir toute la FAQ",
       items: [
         { q: "Ai-je besoin d'une montre connectée ?", a: "Oui. Il te faut un appareil qui mesure ta fréquence cardiaque — montre, bracelet ou ceinture cardio — synchronisé avec Apple Santé (iPhone) ou Health Connect (Android). Ton téléphone seul compte tes pas, mais tes séances sont mesurées par ta montre. Attax vérifie ta connexion avant ta première ligue." },
-        { q: "Comment je gagne des pts ?", a: "Tes séances et tes pas, mesurés par ta montre, deviennent des pts. Plus tu bouges, plus tu marques, et c'est l'intensité qui paie, pas seulement le volume. Aucune saisie manuelle : tout vient d'Apple Santé ou de Health Connect." },
-        { q: "Comment un match est-il tranché ?", a: "Un match compte 7 rounds : les 6 jours d'avant et aujourd'hui. Chaque jour est gagné par celui qui a marqué le plus de pts ce jour-là, et chaque round perdu coûte des PV. Les rounds passés se dévoilent de 10h à 17h30, le round final (2 PV) est en direct dès 19h. À 21h30, les cartes se révèlent et celui qui garde le plus de PV gagne. Jamais de match nul." },
         { q: "Vais-je affronter des joueurs de mon niveau ?", a: "Oui. Quelques questions à l'inscription fixent ton niveau de départ, et tu rejoins une ligue de joueurs de ton niveau. Ensuite, ce sont tes résultats qui parlent : ton rang te suit de ligue en ligue." },
         { q: "Puis-je jouer avec mes amis ?", a: "Oui. Crée une ligue classée avec tes amis, ou une ligue personnalisée de 2 à 40 joueurs. Partage le code, ils te rejoignent en quelques secondes." },
         { q: "Attax est-il gratuit ?", a: "Oui. Attax est gratuit à télécharger et à jouer, sans publicité." },
@@ -542,9 +538,9 @@ export const T = {
       ],
     },
     cardsShowcase: {
-      label: "LES CARTES",
+      label: "03 · LES CARTES",
       h2: ["Joue une carte.", "Renverse le match."],
-      sub: "12 cartes. 3 tirées chaque matin, les mêmes pour les deux joueurs. Une à jouer avant 13h — celle de ton adversaire reste secrète jusqu'à 21h30.",
+      sub: "Chaque matin, 3 cartes sont tirées, les mêmes pour les deux joueurs. Joues-en une avant 13h : celle de ton adversaire reste secrète jusqu'à 21h30.",
       families: { atk: "ATTAQUE", def: "DÉFENSE", sab: "SABOTAGE", ruse: "RUSE" },
       cards: [
         { id: "spike", n: "01", fam: "atk", name: "Quitte ou double", punchy: "QUITTE OU DOUBLE", sub: "Le round final retire 3 PV, à lui… ou à toi" },
@@ -560,11 +556,11 @@ export const T = {
         { id: "bluff", n: "11", fam: "ruse", name: "Bluff", punchy: "FAUX SCORE", sub: "Il voit ton score faussé jusqu'à 21h30" },
         { id: "counter", n: "12", fam: "atk", name: "Counter", punchy: "REMONTÉE +2", sub: "Mené ? Ton round final retire 4 PV" },
       ],
-      cta: "12 cartes. 4 familles.",
-      cta_sub: "Attaque, Défense, Sabotage, Ruse. Certaines cartes arrivent après tes premiers matchs.",
+      cta: "3 des 12 cartes.",
+      cta_sub: "4 familles : Attaque, Défense, Sabotage, Ruse. Certaines cartes arrivent après tes premiers matchs.",
     },
     fightNight: {
-      label: "SOIR DE COMBAT",
+      label: "04 · SOIR DE COMBAT",
       h2: ["Chaque soir,", "le round final."],
       body: "À 21h30, ton match s'anime : entrée des boxeurs, rounds rejoués, cartes retournées, puis le round final décide. Le résultat tombe à la fin.",
       steps: [
@@ -574,21 +570,22 @@ export const T = {
         { n: "04", t: "Le résultat, à la fin" },
       ],
       note: "Avant le combat, envoie un message rapide à ton adversaire. Après, partage tes victoires et tes bilans en image.",
-      alt: "Le Soir de combat dans l'app Attax : le round final entre deux boxeurs dessinés en scanlines",
+      alt: "Le Soir de combat dans l'app Attax, filmé sur un téléphone : les rounds rejoués, les cartes retournées, le round final et le vainqueur",
     },
     beyond: {
-      label: "AU-DELÀ DE LA LIGUE",
+      label: "AU-DELÀ DU MATCH",
       h2: ["Une ligue par semaine.", "Une histoire toute la saison."],
       items: [
+        { img: 5, k: "LIGUE", t: ["Grimpe", "au classement."], d: "8 joueurs, 7 jours, 1 champion qui repart avec la couronne. Ton rang te suit de ligue en ligue, de Rookie à Legend. Ou joue entre amis : ligues personnalisées de 2 à 40." },
         { img: 6, k: "SAISON", t: ["Une saison.", "Le monde entier."], d: "Le classement mondial à l'effort : chaque pt compte, dès ta première séance. Ta place bouge chaque nuit, dans ton pays ou dans le monde." },
         { img: 7, k: "BINÔME", t: ["Jamais seul.", "Ton binôme."], d: "Dès ta 2ème ligue, un partenaire de ton rang venu d'une autre ligue. Objectif du jour atteint à deux : +1 point chacun." },
-        { img: 8, k: "PROFIL", t: ["Ton palmarès.", "Ta couronne."], d: "Série, coups, badges, trophées : tout reste sur ton profil. Le champion de la ligue repart avec la couronne." },
+        { img: 8, k: "PROFIL", t: ["Ton palmarès.", "Ta couronne."], d: "Série, coups, badges, trophées : tout ce que tu gagnes reste sur ton profil." },
       ],
     },
     privacy: {
       label: "TES DONNÉES",
       title: "Tes données de santé restent les tiennes.",
-      body: "Attax lit uniquement tes pas et ta fréquence cardiaque — il n'écrit jamais rien dans Apple Santé ou Health Connect. Tes données servent à ton jeu, et à rien d'autre. Et tu peux supprimer ton compte depuis l'app, à tout moment.",
+      body: "Attax lit uniquement tes séances, tes pas et ta fréquence cardiaque — il n'écrit jamais rien dans Apple Santé ou Health Connect. Tes données servent à ton jeu, et à rien d'autre. Et tu peux supprimer ton compte depuis l'app, à tout moment.",
       points: ["Accès en lecture seule", "Jamais vendues, zéro pub", "Suppression à tout moment, dans l'app"],
     },
     download: {
@@ -612,7 +609,7 @@ export const T = {
       ios_req: "iOS 15.1 ou plus récent",
       ios_sub: "Intégration Apple Santé",
       android_title: "Android",
-      android_req: "Android 8.0 ou plus récent",
+      android_req: "Android 9 ou plus récent (Health Connect)",
       android_sub: "Intégration Health Connect",
       screens_label: "DANS L'APP",
       screens_h2: "Conçu pour la compétition.",
@@ -633,8 +630,9 @@ export const T = {
       col_legal: "Légal",
       links_product: [
         { label: "Comment ça marche", href: "/#how-it-works" },
-        { label: "Fonctionnalités", href: "/#features" },
-        { label: "Duel quotidien", href: "/#daily-match" },
+        { label: "Le match", href: "/#daily-match" },
+        { label: "Les cartes", href: "/#cards" },
+        { label: "Soir de combat", href: "/#fight-night" },
         { label: "FAQ", href: "/faq" },
         { label: "Découvrir", href: "/discover" },
       ],
@@ -685,7 +683,7 @@ export const T = {
       pillars_h2: ["Quatre systèmes.", "Un seul jeu."],
       pillars_sub: "Un vrai effort. Des choix stratégiques. Un duel de boxe chaque jour. Chaque jour où tu bouges est un round à gagner.",
       pillars: [
-        { n: "01", title: "Pts", description: "Ta montre mesure tes séances et tes pas, via Apple Santé ou Health Connect. Ils deviennent des pts. C'est l'intensité qui paie, pas seulement le volume. Les saisies à la main ne comptent pas." },
+        { n: "01", title: "Points", description: "Ta montre mesure tes séances et tes pas, via Apple Santé ou Health Connect. Ils deviennent des pts. C'est l'intensité qui paie, pas seulement le volume. Les saisies à la main ne comptent pas." },
         { n: "02", title: "Le duel quotidien", description: "Un match se joue en 7 rounds : tes 6 jours d'avant, plus aujourd'hui. Chaque jour est un round, gagné par celui qui a le plus de pts. Chaque round perdu coûte des PV ; celui qui garde le plus de PV gagne. Jamais de match nul." },
         { n: "03", title: "Les cartes", description: "12 cartes en 4 familles : Attaque, Défense, Sabotage, Ruse. Chaque matin, 3 sont tirées, les mêmes pour les deux joueurs. Choisis-en une avant 13h : Quitte ou double, Garde, Freeze, Ghost… Celle de ton adversaire reste secrète jusqu'à 21h30." },
         { n: "04", title: "Ligues & classements", description: "8 joueurs de ton niveau. 7 jours. Un nouvel adversaire chaque jour. 1 champion, qui repart avec la couronne. Puis tu rejoues avec le même groupe, ou tu lances une nouvelle ligue. De ligue en ligue, ton rang grimpe de Rookie à Legend." },
@@ -781,7 +779,7 @@ export const T = {
       faq_label: "RÉPONSES RAPIDES",
       faq_h2: "Questions fréquentes",
       faq: [
-        { q: "Mes points restent à 0. Que faire ?", a: "Vérifie que l'appli de ta montre partage ta fréquence cardiaque avec Apple Santé ou Health Connect, et qu'Attax a le droit de la lire. Dans l'app, la vérification de la montre te dit exactement ce qui manque." },
+        { q: "Mes pts restent à 0. Que faire ?", a: "Vérifie que l'appli de ta montre partage ta fréquence cardiaque avec Apple Santé ou Health Connect, et qu'Attax a le droit de la lire. Dans l'app, la vérification de la montre te dit exactement ce qui manque." },
         { q: "Puis-je signaler un bug ?", a: "Bien sûr. Écris à contact@attax.app ou passe par Mon compte → Support dans l'app. Indique ton modèle de téléphone et de montre — les captures d'écran aident toujours." },
         { q: "Où suivre Attax ?", a: "Sur Instagram et TikTok : @playattax. Suis-nous pour les nouveautés, les coulisses et les meilleurs moments des ligues." },
       ],

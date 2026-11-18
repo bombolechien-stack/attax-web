@@ -12,7 +12,7 @@ function ContentEn() {
     <>
         <p style={{ fontSize: "0.75rem", fontWeight: 700, color: "#aaa", letterSpacing: "0.16em", textTransform: "uppercase", margin: "0 0 1rem" }}>Legal</p>
         <h1 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.04em", margin: "0 0 0.5rem" }}>Terms of Service</h1>
-        <p style={{ fontSize: "0.875rem", color: "#aaa", margin: "0 0 4rem" }}>Last updated: October 8, 2026</p>
+        <p style={{ fontSize: "0.875rem", color: "#aaa", margin: "0 0 4rem" }}>Last updated: November 18, 2026</p>
 
         <div style={SECTION}>
           <h2 style={H2}>1. Acceptance of Terms</h2>
@@ -22,8 +22,8 @@ function ContentEn() {
 
         <div style={SECTION}>
           <h2 style={H2}>2. Description of Service</h2>
-          <p style={P}>Attax is a competitive fitness game. The App reads your steps and heart rate from Apple Health (iOS) or Health Connect (Android), converts them into activity points, and uses those points in daily duels between players of a league, together with strategy cards, league standings and a global rank.</p>
-          <p style={P}>The App is free to download and to play. Game rules (scoring, schedules, cards, ranks) may evolve to keep the game fair and enjoyable.</p>
+          <p style={P}>Attax is a competitive fitness game. The App reads your steps, heart rate and workouts from Apple Health (iPhone) or Health Connect (Android), converts them into activity points, and uses those points in daily matches between the players of a league, together with tactical cards, league standings, a rank, a duo partner and a season ranking. Players can send each other ready-made messages chosen from a fixed list.</p>
+          <p style={P}>The App is free to download and to play, without ads or in-app purchases. It requires a watch, band or other device that measures heart rate and syncs with Apple Health or Health Connect. Game rules (scoring, schedules, cards, ranks) may evolve to keep the game fair and enjoyable.</p>
         </div>
 
         <div style={SECTION}>
@@ -33,8 +33,8 @@ function ContentEn() {
 
         <div style={SECTION}>
           <h2 style={H2}>4. User Accounts</h2>
-          <p style={P}>You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account. You agree to provide accurate information during registration — including your year of birth, which is used to calculate your activity points — and to keep it up to date.</p>
-          <p style={P}>You can delete your account at any time from the App (My account → My profile → Delete my account) or by contacting us. Deletion is permanent.</p>
+          <p style={P}>You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account. You can sign up with an email address and password, or with Apple or Google. You agree to provide accurate information — including your year of birth, which is used to adapt the game to you and keep it fair — and to keep it up to date.</p>
+          <p style={P}>You can delete your account at any time from the App (profile photo on the Home screen → My account → Edit profile → Delete my account) or by emailing contact@attax.app (see our <Link href="/privacy#delete-account" style={{ color: "#0d0d0d", fontWeight: 600 }}>Privacy Policy</Link>). Deletion is permanent.</p>
         </div>
 
         <div style={SECTION}>
@@ -44,13 +44,13 @@ function ContentEn() {
         </div>
 
         <div style={SECTION}>
-          <h2 style={H2}>6. Usernames, Profile Photos and Reports</h2>
-          <p style={P}>Your username and profile photo are visible to other players. They must not be offensive, hateful, sexual, misleading, or infringe anyone's rights. You can report a player or block them from their profile in the App. We review reports within 24 hours and may remove content or suspend accounts that break these rules.</p>
+          <h2 style={H2}>6. Usernames, Profile Photos, League Names and Reports</h2>
+          <p style={P}>Your username, profile photo and the names you give to custom leagues are visible to other players. They must not be offensive, hateful, sexual, misleading, or infringe anyone's rights. You can report a player or block them from their profile in the App. We review reports within 24 hours and may remove content or suspend accounts that break these rules.</p>
         </div>
 
         <div style={SECTION}>
           <h2 style={H2}>7. Health Disclaimer</h2>
-          <p style={P}>Attax is not a medical device and does not provide medical advice. Points, zones and duels are game mechanics, not health assessments. Consult a healthcare professional before beginning any new fitness program, and stop exercising if you feel unwell. By using the App, you acknowledge that you participate in physical activity at your own risk.</p>
+          <p style={P}>Attax is not a medical device and does not provide medical advice. Points, matches and rankings are game mechanics, not health assessments. Consult a healthcare professional before beginning any new fitness program, and stop exercising if you feel unwell. By using the App, you acknowledge that you participate in physical activity at your own risk.</p>
         </div>
 
         <div style={SECTION}>
@@ -82,7 +82,7 @@ function ContentFr() {
     <>
         <p style={{ fontSize: "0.75rem", fontWeight: 700, color: "#aaa", letterSpacing: "0.16em", textTransform: "uppercase", margin: "0 0 1rem" }}>Légal</p>
         <h1 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.04em", margin: "0 0 0.5rem" }}>Conditions d'utilisation</h1>
-        <p style={{ fontSize: "0.875rem", color: "#aaa", margin: "0 0 4rem" }}>Dernière mise à jour : 8 octobre 2026</p>
+        <p style={{ fontSize: "0.875rem", color: "#aaa", margin: "0 0 4rem" }}>Dernière mise à jour : 18 novembre 2026</p>
 
         <div style={SECTION}>
           <h2 style={H2}>1. Acceptation des conditions</h2>
@@ -92,8 +92,8 @@ function ContentFr() {
 
         <div style={SECTION}>
           <h2 style={H2}>2. Description du service</h2>
-          <p style={P}>Attax est un jeu de fitness compétitif. L'App lit tes pas et ta fréquence cardiaque dans Apple Santé (iOS) ou Health Connect (Android), les convertit en points d'activité et utilise ces points dans des duels quotidiens entre les joueurs d'une ligue, avec des cartes stratégiques, des classements de ligue et un rang global.</p>
-          <p style={P}>L'App est gratuite à télécharger et à jouer. Les règles du jeu (points, horaires, cartes, rangs) peuvent évoluer pour que le jeu reste équitable et agréable.</p>
+          <p style={P}>Attax est un jeu sportif compétitif. L'App lit tes pas, ta fréquence cardiaque et tes séances dans Apple Santé (iPhone) ou Health Connect (Android), les convertit en points d'activité et utilise ces points dans des matchs quotidiens entre les joueurs d'une ligue, avec des cartes tactiques, des classements de ligue, un rang, un binôme et un classement de saison. Les joueurs peuvent s'envoyer des messages tout faits, choisis dans une liste fixe.</p>
+          <p style={P}>L'App est gratuite à télécharger et à jouer, sans publicité ni achat intégré. Elle nécessite une montre, un bracelet ou un autre appareil qui mesure la fréquence cardiaque et se synchronise avec Apple Santé ou Health Connect. Les règles du jeu (points, horaires, cartes, rangs) peuvent évoluer pour que le jeu reste équitable et agréable.</p>
         </div>
 
         <div style={SECTION}>
@@ -103,8 +103,8 @@ function ContentFr() {
 
         <div style={SECTION}>
           <h2 style={H2}>4. Comptes</h2>
-          <p style={P}>Tu es responsable de la confidentialité de tes identifiants et de toute activité réalisée avec ton compte. Tu t'engages à fournir des informations exactes à l'inscription — y compris ton année de naissance, utilisée dans le calcul de tes points d'activité — et à les tenir à jour.</p>
-          <p style={P}>Tu peux supprimer ton compte à tout moment depuis l'App (Mon compte → Mon profil → Supprimer mon compte) ou en nous contactant. La suppression est définitive.</p>
+          <p style={P}>Tu es responsable de la confidentialité de tes identifiants et de toute activité réalisée avec ton compte. Tu peux t'inscrire avec une adresse e-mail et un mot de passe, ou avec Apple ou Google. Tu t'engages à fournir des informations exactes — y compris ton année de naissance, qui sert à adapter le jeu à toi et à le garder équitable — et à les tenir à jour.</p>
+          <p style={P}>Tu peux supprimer ton compte à tout moment depuis l'App (photo de profil sur l'Accueil → Mon compte → Éditer le profil → Supprimer mon compte) ou en écrivant à contact@attax.app (voir notre <Link href="/privacy#delete-account" style={{ color: "#0d0d0d", fontWeight: 600 }}>politique de confidentialité</Link>). La suppression est définitive.</p>
         </div>
 
         <div style={SECTION}>
@@ -114,13 +114,13 @@ function ContentFr() {
         </div>
 
         <div style={SECTION}>
-          <h2 style={H2}>6. Pseudos, photos de profil et signalements</h2>
-          <p style={P}>Ton pseudo et ta photo de profil sont visibles par les autres joueurs. Ils ne doivent pas être offensants, haineux, sexuels, trompeurs, ni porter atteinte aux droits de quiconque. Tu peux signaler un joueur ou le bloquer depuis son profil dans l'App. Nous examinons les signalements sous 24 heures et pouvons supprimer du contenu ou suspendre des comptes qui enfreignent ces règles.</p>
+          <h2 style={H2}>6. Pseudos, photos de profil, noms de ligues et signalements</h2>
+          <p style={P}>Ton pseudo, ta photo de profil et les noms que tu donnes à tes ligues personnalisées sont visibles par les autres joueurs. Ils ne doivent pas être offensants, haineux, sexuels, trompeurs, ni porter atteinte aux droits de quiconque. Tu peux signaler un joueur ou le bloquer depuis son profil dans l'App. Nous examinons les signalements sous 24 heures et pouvons supprimer du contenu ou suspendre des comptes qui enfreignent ces règles.</p>
         </div>
 
         <div style={SECTION}>
           <h2 style={H2}>7. Avertissement santé</h2>
-          <p style={P}>Attax n'est pas un dispositif médical et ne fournit aucun conseil médical. Les points et les duels sont des mécaniques de jeu, pas des évaluations de santé. Consulte un professionnel de santé avant de commencer un nouveau programme sportif, et arrête-toi si tu ne te sens pas bien. En utilisant l'App, tu reconnais pratiquer une activité physique à tes propres risques.</p>
+          <p style={P}>Attax n'est pas un dispositif médical et ne fournit aucun conseil médical. Les points, les matchs et les classements sont des mécaniques de jeu, pas des évaluations de santé. Consulte un professionnel de santé avant de commencer un nouveau programme sportif, et arrête-toi si tu ne te sens pas bien. En utilisant l'App, tu reconnais pratiquer une activité physique à tes propres risques.</p>
         </div>
 
         <div style={SECTION}>

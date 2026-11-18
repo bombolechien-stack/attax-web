@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import PageNavbar from "@/components/PageNavbar";
 import { useLang } from "@/lib/i18n";
-import { PRESS_CONTENT, KIT_URL, LOGOS, SCREENS } from "./content";
+import { PRESS_CONTENT, KIT_URL, LOGOS, SCREENS, VIDEO } from "./content";
 import PinTitle from "@/components/PinTitle";
 
 const LABEL: React.CSSProperties = {
@@ -229,20 +229,20 @@ export default function PressPage() {
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: "1.5rem" }}>
               <div>
                 <div style={{ position: "relative", width: "100%", paddingBottom: "205.6%", backgroundColor: "#ffffff", border: "1px solid #ebebeb", borderRadius: "16px", overflow: "hidden", marginBottom: "1rem" }}>
-                  <video src="/press/attax-match-video.mp4" autoPlay muted loop playsInline style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "contain" }} />
+                  <video key={lang} src={VIDEO(lang)} poster={`/videos/fight-night-${lang}-poster.jpg`} autoPlay muted loop playsInline preload="metadata" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "contain" }} />
                 </div>
                 <p style={{ fontSize: "0.875rem", fontWeight: 700, color: "#0d0d0d", margin: "0 0 0.2rem" }}>{p.video_title}</p>
                 <p style={{ fontSize: "0.8125rem", color: "#aaa", margin: "0 0 0.75rem" }}>{p.video_caption}</p>
-                <a href="/press/attax-match-video.mp4" download style={PILL}><DownloadIcon /> {p.download}</a>
+                <a href={VIDEO(lang)} download style={PILL}><DownloadIcon /> {p.download}</a>
               </div>
               {SCREENS.map((s, i) => (
-                <div key={s.src}>
+                <div key={s.n}>
                   <div style={{ position: "relative", width: "100%", paddingBottom: "205.6%", backgroundColor: "#ffffff", border: "1px solid #ebebeb", borderRadius: "16px", overflow: "hidden", marginBottom: "1rem" }}>
-                    <Image src={s.src} alt={p.screens[i].label} fill sizes="300px" style={{ objectFit: "contain" }} />
+                    <Image src={`/screens/app/${lang}/${s.n}.webp`} alt={p.screens[i].label} fill sizes="300px" style={{ objectFit: "contain" }} />
                   </div>
                   <p style={{ fontSize: "0.875rem", fontWeight: 700, color: "#0d0d0d", margin: "0 0 0.2rem" }}>{p.screens[i].label}</p>
                   <p style={{ fontSize: "0.8125rem", color: "#aaa", margin: "0 0 0.75rem" }}>{p.screens[i].caption}</p>
-                  <a href={s.file} download style={PILL}><DownloadIcon /> {p.download}</a>
+                  <a href={`/press/screens/${lang}/${s.file}`} download style={PILL}><DownloadIcon /> {p.download}</a>
                 </div>
               ))}
             </div>

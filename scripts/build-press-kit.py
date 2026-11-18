@@ -2,8 +2,10 @@
 
     python scripts/build-press-kit.py
 
-Prérequis déjà générés dans public/press : logos (attax-*-black/white .svg/.png)
-et attax-match-video.mp4 (budyfit/tools/attax-export/render-site-match.mjs --full).
+Prérequis : logos (public/press/attax-*-black/white .svg/.png) et la vidéo du Soir de combat
+(public/press/attax-fight-night-{en,fr}.mp4, faite de vraies captures de l'app :
+python scripts/fight-night-video/build.py).
+Captures : recadrées ici sur le téléphone des captures stores (budyfit/store-assets/app-store/{en,fr}/screen-2..8.png).
 Les textes viennent de src/app/press/content.ts (source unique, lue via node).
 """
 import json, shutil, subprocess, zipfile
@@ -12,9 +14,36 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 PUB = ROOT / "public"
 PRESS = PUB / "press"
-# Captures téléchargeables une à une depuis la page : captures stores EN de l'app (1206×2622),
-# copiées à la main dans public/press/screens depuis budyfit/store-assets/app-store/en (screen-4, 2, 3).
-SCREENS = {"attax-activity.png": "attax-activity.png", "attax-match.png": "attax-match.png", "attax-cards.png": "attax-cards.png"}
+from PIL import Image, ImageDraw
+
+STORE = Path("C:/Users/guill/budyfit/store-assets/app-store")
+# Captures stores (1206 × 2622) → le téléphone seul (1016 × 2012), en JPG.
+PHONE_BOX = (95, 579, 1111, 2591)
+SCREENS = {2: "fight-night", 3: "cards", 4: "activity", 5: "league", 6: "season", 7: "duo", 8: "profile"}
+# Règle publique : jamais de nombre de joueurs. La capture 8 affiche « World champion ahead of 10 players » /
+# « Champion du monde devant 10 joueurs » : on efface la fin (fond uni de l'écran), il reste « World champion » /
+# « Champion du monde ». Rectangles dans le repère de la capture store.
+ERASE = {
+    ("en", 8): [(866, 1938, 1060, 1992), (575, 1990, 820, 2040)],
+    ("fr", 8): [(575, 1932, 960, 1990)],
+}
+
+def build_screens():
+    out_files = []
+    for lang in ("en", "fr"):
+        dst_dir = PRESS / "screens" / lang
+        dst_dir.mkdir(parents=True, exist_ok=True)
+        for n, name in SCREENS.items():
+            im = Image.open(STORE / lang / f"screen-{n}.png").convert("RGB")
+            for box in ERASE.get((lang, n), []):
+                bg = im.getpixel((box[0] - 6, box[3] + 12))
+                ImageDraw.Draw(im).rectangle(box, fill=bg)
+            dst = dst_dir / f"attax-{n - 1:02d}-{name}.jpg"
+            im.crop(PHONE_BOX).save(dst, quality=90)
+            out_files.append((dst, f"{lang}/{dst.name}"))
+    return out_files
+
+screens = build_screens()
 
 # Textes FR/EN depuis content.ts (node retire les types TypeScript nativement)
 js = "import { PRESS_CONTENT } from './src/app/press/content.ts'; console.log(JSON.stringify(PRESS_CONTENT));"
@@ -37,9 +66,10 @@ with zipfile.ZipFile(kit, "w", zipfile.ZIP_DEFLATED) as z:
     for f in sorted(PRESS.glob("attax-*-*.svg")) + sorted(PRESS.glob("attax-*-*.png")):
         z.write(f, f"attax-press-kit/logos/{f.name}")
     z.write(PUB / "images" / "apple-touch-icon.png", "attax-press-kit/logos/attax-app-icon.png")
-    for dst in SCREENS.values():
-        z.write(PRESS / "screens" / dst, f"attax-press-kit/screenshots/{dst}")
-    z.write(PRESS / "attax-match-video.mp4", "attax-press-kit/video/attax-match-video.mp4")
+    for f, arc in screens:
+        z.write(f, f"attax-press-kit/screenshots/{arc}")
+    for lang in ("en", "fr"):
+        z.write(PRESS / f"attax-fight-night-{lang}.mp4", f"attax-press-kit/video/attax-fight-night-{lang}.mp4")
     for lang in ("fr", "en"):
         z.writestr(f"attax-press-kit/{'Attax_presentation_FR' if lang == 'fr' else 'Attax_press_EN'}.md", markdown(content[lang], lang))
 print(f"{kit} — {kit.stat().st_size / 1e6:.1f} MB")

@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useT } from "@/lib/i18n";
 import { useInView, fadeUp, clipReveal } from "@/hooks/useInView";
 
+// 3 des 12 cartes de l'app (une attaque, un sabotage, une ruse), assez grandes pour être lues.
+const SHOWN = ["spike", "freeze", "ghost"];
 // Les 12 cartes de l'app : fond validé (scène HD + scanlines de l'app, budyfit/assets/cards/v3/bg_*),
 // textes posés par-dessus comme dans l'app (app/(tabs)/match.tsx → V3_BG). dark = scène claire → textes sombres.
 const STYLE: Record<string, { dark: boolean; cat: string }> = {
@@ -34,7 +36,7 @@ function GameCard({ card, family, visible, delay }: { card: Card; family: string
       boxShadow: "0 18px 40px rgba(11,17,22,0.10), 0 2px 6px rgba(11,17,22,0.05)",
       containerType: "inline-size",
     }}>
-      <Image src={`/cards/v3/${card.id}.webp`} alt="" fill sizes="(max-width: 700px) 92vw, (max-width: 1100px) 46vw, 380px" style={{ objectFit: "cover" }} />
+      <Image src={`/cards/v3/${card.id}.webp`} alt="" fill sizes="(max-width: 860px) 92vw, 420px" style={{ objectFit: "cover" }} />
       <div style={{ position: "absolute", inset: 0, padding: "6.5cqw 6cqw", display: "flex", flexDirection: "column" }}>
         <div style={{ fontSize: "4.2cqw", fontWeight: 800, fontStyle: "italic", letterSpacing: "-0.03em", color: ink, lineHeight: 1 }}>Attax</div>
         <div style={{ fontSize: "2.9cqw", fontWeight: 800, letterSpacing: "0.16em", color: st.cat, marginTop: "1.2cqw" }}>{family}</div>
@@ -75,8 +77,8 @@ export default function CardsShowcase() {
         </div>
 
         <div ref={cardsRef} className="cards-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1.25rem" }}>
-          {(cs.cards as readonly Card[]).map((c, i) => (
-            <GameCard key={c.id} card={c} family={fam[c.fam]} visible={cardsVisible} delay={(i % 6) * 60} />
+          {SHOWN.map((id) => (cs.cards as readonly Card[]).find((c) => c.id === id)!).map((c, i) => (
+            <GameCard key={c.id} card={c} family={fam[c.fam]} visible={cardsVisible} delay={i * 90} />
           ))}
         </div>
       </div>

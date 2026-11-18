@@ -56,7 +56,7 @@ export default function Download() {
                 }}>Google Play</a>
               </div>
               <p style={{ marginTop: "1.75rem", fontSize: "0.8125rem", color: "rgba(255,255,255,0.2)", letterSpacing: "0.02em" }}>
-                Free · iOS 15+ · Android 8.0+
+                Free · iOS 15+ · Android 9+
               </p>
             </div>
 

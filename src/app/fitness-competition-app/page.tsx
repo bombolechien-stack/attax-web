@@ -133,7 +133,9 @@ const P: Record<Lang, {
       "A boxing duel every day, in 7 rounds",
       "3 cards every morning",
       "Leagues of 8 players at your level",
+      "Ranked leagues with friends, and custom leagues from 2 to 40 players",
       "A rank from Rookie to Legend, and a worldwide season",
+      "A duo partner of your rank, from your 2nd league",
     ],
     different4: "The result feels less like a fitness tracker and more like a living competition.",
     secRealActivity: "Real Activity",
@@ -190,11 +192,12 @@ const P: Record<Lang, {
       { q: "What is a fitness competition app?", a: "An app that uses rankings, duels and challenges to motivate physical activity. In Attax, your real workouts decide daily boxing duels within leagues of 8 players." },
       { q: "How does Attax create competition?", a: "Every day, you face a new player of your league. The match is 7 rounds — your previous 6 days, plus today — each won by the player with the most pts that day. Add the card you chose, and Fight Night decides at 9:30 PM." },
       { q: "Can beginners compete?", a: "Yes. You join a league at your level, and every effort counts." },
+      { q: "Can I compete with my friends?", a: "Yes. Create a ranked league with your friends, or a custom league from 2 to 40 players. Share your code, they join in seconds." },
       { q: "Does walking count?", a: "Yes. Your steps count every day, even with your phone alone. For your workouts, you need a device that measures your heart rate." },
       { q: "Is Attax available on iPhone?", a: "Yes, through Apple Health." },
-      { q: "Is Attax available on Android?", a: "Yes, through Health Connect (Android 8.0 or later)." },
+      { q: "Is Attax available on Android?", a: "Yes, through Health Connect (Android 9 or later)." },
       { q: "Does Attax require a smartwatch?", a: "Yes. You need a device that measures your heart rate — smartwatch, fitness band or chest strap — synced with Apple Health (iPhone) or Health Connect (Android): Apple Watch, Garmin, Amazfit, COROS and more on both; Samsung Galaxy Watch and Fitbit on Android only. Your phone alone counts your steps. Attax checks your connection before your first league." },
-      { q: "Is Attax free?", a: "Yes. Attax is free to download and free to play, with no ads." },
+      { q: "Is Attax free?", a: "Yes. Attax is free to download and free to play, with no ads and no in-app purchases." },
     ],
     ctaTitle: "A better reason to move.",
     ctaBody: "Turn activity into duels. Turn consistency into wins. Download Attax and start your first league.",
@@ -224,7 +227,7 @@ const P: Record<Lang, {
     competitionConclude: "C'est pourquoi Attax utilise la compétition comme cadre de motivation. L'objectif n'est pas de créer de la pression. L'objectif est de rendre l'activité plus significative.",
     secDifferent: "Ce qui est différent",
     differentH2: "Qu'est-ce qui rend Attax différent ?",
-    different1: "La plupart des applications fitness te demandent de te compétitionner contre toi-même. Attax te permet de te compétitionner contre les autres.",
+    different1: "La plupart des applications fitness te demandent de te mesurer à toi-même. Attax te permet de te mesurer aux autres.",
     different2: "La différence est significative. Quand l'activité influence les classements, les victoires, la progression et les résultats, l'engagement change.",
     differentEm: "Chaque jour est différent.\nChaque entraînement compte.\nChaque décision a du poids.",
     different3: "Attax combine :",
@@ -233,7 +236,9 @@ const P: Record<Lang, {
       "Un duel de boxe chaque jour, en 7 rounds",
       "3 cartes chaque matin",
       "Des ligues de 8 joueurs de ton niveau",
+      "Des ligues classées entre amis, et des ligues personnalisées de 2 à 40 joueurs",
       "Un rang de Rookie à Legend, et une saison mondiale",
+      "Un binôme de ton rang, dès ta 2ème ligue",
     ],
     different4: "Le résultat ressemble moins à un tracker fitness et plus à une compétition vivante.",
     secRealActivity: "Activité réelle",
@@ -278,7 +283,7 @@ const P: Record<Lang, {
     who: [
       { title: "Coureurs", body: "Transforme chaque course en progression." },
       { title: "Marcheurs", body: "Transforme le mouvement quotidien en compétition." },
-      { title: "Cyclistes", body: "Compétitionne à chaque sortie." },
+      { title: "Cyclistes", body: "Affronte les autres à chaque sortie." },
       { title: "Fans de salle", body: "Intègre tes entraînements dans un système plus grand." },
       { title: "Professionnels actifs", body: "Reste motivé malgré un temps limité." },
       { title: "Débutants", body: "Construis la régularité sans pression." },
@@ -290,11 +295,12 @@ const P: Record<Lang, {
       { q: "Qu'est-ce qu'une appli de compétition sportive ?", a: "Une appli qui utilise classements, duels et défis pour motiver l'activité physique. Dans Attax, tes vraies séances décident de duels de boxe quotidiens au sein de ligues de 8 joueurs." },
       { q: "Comment Attax crée-t-il la compétition ?", a: "Chaque jour, tu affrontes un nouveau joueur de ta ligue. Le match se joue en 7 rounds — tes 6 jours d'avant, plus aujourd'hui — chacun gagné par celui qui a le plus de pts ce jour-là. Ajoute la carte que tu as choisie, et le Soir de combat décide à 21h30." },
       { q: "Les débutants peuvent-ils jouer ?", a: "Oui. Tu rejoins une ligue de ton niveau, et chaque effort compte." },
+      { q: "Puis-je affronter mes amis ?", a: "Oui. Crée une ligue classée avec tes amis, ou une ligue personnalisée de 2 à 40 joueurs. Partage ton code, ils te rejoignent en quelques secondes." },
       { q: "La marche compte-t-elle ?", a: "Oui. Tes pas comptent chaque jour, même avec ton téléphone seul. Pour tes séances, il te faut un appareil qui mesure ta fréquence cardiaque." },
       { q: "Attax est-il disponible sur iPhone ?", a: "Oui, via Apple Santé." },
-      { q: "Attax est-il disponible sur Android ?", a: "Oui, via Health Connect (Android 8.0 ou plus récent)." },
+      { q: "Attax est-il disponible sur Android ?", a: "Oui, via Health Connect (Android 9 ou plus récent)." },
       { q: "Attax nécessite-t-il une montre connectée ?", a: "Oui. Il te faut un appareil qui mesure ta fréquence cardiaque — montre, bracelet ou ceinture cardio — synchronisé avec Apple Santé (iPhone) ou Health Connect (Android) : Apple Watch, Garmin, Amazfit, COROS et d'autres sur les deux ; Samsung Galaxy Watch et Fitbit sur Android uniquement. Ton téléphone seul compte tes pas. Attax vérifie ta connexion avant ta première ligue." },
-      { q: "Attax est-il gratuit ?", a: "Oui. Attax est gratuit à télécharger et à jouer, sans publicité." },
+      { q: "Attax est-il gratuit ?", a: "Oui. Attax est gratuit à télécharger et à jouer, sans publicité ni achat intégré." },
     ],
     ctaTitle: "Une meilleure raison de bouger.",
     ctaBody: "Transforme ton activité en duels. Transforme ta régularité en victoires. Télécharge Attax et lance ta première ligue.",
@@ -378,7 +384,9 @@ export default function FitnessCompetitionApp() {
             <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.72) 100%)" }} />
             <div style={{ position: "absolute", bottom: "2.5rem", left: "2.75rem", right: "2.75rem", zIndex: 1 }}>
               <p style={{ fontSize: "clamp(1.25rem, 2.2vw, 1.875rem)", fontWeight: 700, color: "#ffffff", letterSpacing: "-0.03em", lineHeight: 1.3, maxWidth: "580px", margin: 0 }}>
-                "Real competition. Real motivation. Every single day."
+                {lang === "en"
+                  ? "“Real competition. Real motivation. Every single day.”"
+                  : "« Vraie compétition. Vraie motivation. Chaque jour. »"}
               </p>
             </div>
           </div>

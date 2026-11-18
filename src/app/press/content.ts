@@ -10,12 +10,18 @@ const LOGOS = [
 ] as const;
 export { LOGOS };
 
+// Captures de l'app (stores, novembre 2026). Aperçu = /screens/app/{lang}/N.webp ;
+// fichier = le téléphone recadré en pleine résolution (scripts/build-press-kit.py → public/press/screens/{lang}/).
 export const SCREENS = [
-  // Aperçus = captures de l'app (stores, novembre) ; fichiers = captures stores EN en pleine résolution.
-  { src: "/screens/app/en/4.webp", file: "/press/screens/attax-activity.png" },
-  { src: "/screens/app/en/2.webp", file: "/press/screens/attax-match.png" },
-  { src: "/screens/app/en/3.webp", file: "/press/screens/attax-cards.png" },
-];
+  { n: 2, file: "attax-01-fight-night.jpg" },
+  { n: 3, file: "attax-02-cards.jpg" },
+  { n: 4, file: "attax-03-activity.jpg" },
+  { n: 5, file: "attax-04-league.jpg" },
+  { n: 6, file: "attax-05-season.jpg" },
+  { n: 7, file: "attax-06-duo.jpg" },
+  { n: 8, file: "attax-07-profile.jpg" },
+] as const;
+export const VIDEO = (lang: "en" | "fr") => `/press/attax-fight-night-${lang}.mp4`;
 
 type Text = { label: string; body: string };
 export type PressContent = {
@@ -50,8 +56,8 @@ export const PRESS_CONTENT: Record<"en" | "fr", PressContent> = {
     kit_title: "What's inside.",
     kit_items: [
       { title: "Logos", desc: "Full logo, icon and wordmark — black and white, SVG and PNG." },
-      { title: "App screenshots", desc: "Activity, daily match and cards, in high resolution." },
-      { title: "Gameplay video", desc: "A 12-second loop of a live duel: fighters, strikes, scores." },
+      { title: "App screenshots", desc: "Fight Night, cards, activity, league, season, duo and profile, in high resolution — English and French." },
+      { title: "Fight Night video", desc: "The 9:30 PM reveal, recorded in the app: the rounds replay, the cards flip, the final round, the winner. English and French." },
       { title: "Ready-to-use texts", desc: "Attax in one sentence, one paragraph and a long version — in English and French." },
     ],
     facts_label: "KEY FACTS",
@@ -65,6 +71,7 @@ export const PRESS_CONTENT: Record<"en" | "fr", PressContent> = {
       { label: "Requires", value: "A watch, band or chest strap that measures heart rate" },
       { label: "Format", value: "Leagues of 8 players, 7 days, a new opponent every day — matches in 7 rounds" },
       { label: "Cards", value: "12 cards in 4 families — 3 drawn every morning, 1 to play" },
+      { label: "Fight Night", value: "Every evening at 9:30 PM, league local time" },
       { label: "Progression", value: "A rank from Rookie to Legend, a worldwide season" },
       { label: "Languages", value: "English, French" },
       { label: "Founded", value: "2026" },
@@ -120,12 +127,16 @@ export const PRESS_CONTENT: Record<"en" | "fr", PressContent> = {
     media_label: "SCREENSHOTS & VIDEO",
     media_title: "Inside the app.",
     media_sub: "Free to use in editorial and creator content, with credit to Attax.",
-    video_title: "A live duel",
-    video_caption: "12-second loop · MP4",
+    video_title: "Fight Night",
+    video_caption: "The 9:30 PM reveal · 23 s · MP4",
     screens: [
-      { label: "Activity", caption: "Your pts and sessions of the day" },
-      { label: "Daily match", caption: "The fight, round by round" },
-      { label: "Cards", caption: "The cards of the day" },
+      { label: "Fight Night", caption: "The final round, every night at 9:30 PM" },
+      { label: "Cards", caption: "Play a card, flip the match" },
+      { label: "Activity", caption: "Your pts of the day" },
+      { label: "League", caption: "8 players, 7 days, 1 champion" },
+      { label: "Season", caption: "The world ranking of effort" },
+      { label: "Duo", caption: "Your duo partner" },
+      { label: "Profile", caption: "Trophies, badges, streak" },
     ],
     download: "Download",
     rules_label: "GUIDELINES",
@@ -153,8 +164,8 @@ export const PRESS_CONTENT: Record<"en" | "fr", PressContent> = {
     kit_title: "Ce qu'il contient.",
     kit_items: [
       { title: "Logos", desc: "Logo complet, icône et logotype — noir et blanc, en SVG et PNG." },
-      { title: "Captures de l'app", desc: "Activité, match du jour et cartes, en haute résolution." },
-      { title: "Vidéo de jeu", desc: "Une boucle de 12 secondes d'un duel en direct : combattants, frappes, scores." },
+      { title: "Captures de l'app", desc: "Soir de combat, cartes, activités, ligue, saison, binôme et profil, en haute résolution — en français et en anglais." },
+      { title: "Vidéo du Soir de combat", desc: "La révélation de 21h30, enregistrée dans l'app : rounds rejoués, cartes retournées, round final, vainqueur. En français et en anglais." },
       { title: "Textes prêts à l'emploi", desc: "Attax en une phrase, en un paragraphe et en version longue — en français et en anglais." },
     ],
     facts_label: "CHIFFRES CLÉS",
@@ -168,6 +179,7 @@ export const PRESS_CONTENT: Record<"en" | "fr", PressContent> = {
       { label: "Prérequis", value: "Une montre, un bracelet ou une ceinture qui mesure la fréquence cardiaque" },
       { label: "Format", value: "Ligues de 8 joueurs, 7 jours, un nouvel adversaire chaque jour — matchs en 7 rounds" },
       { label: "Cartes", value: "12 cartes en 4 familles — 3 tirées chaque matin, 1 à jouer" },
+      { label: "Soir de combat", value: "Chaque soir à 21h30, heure locale de la ligue" },
       { label: "Progression", value: "Un rang de Rookie à Legend, une saison mondiale" },
       { label: "Langues", value: "Français, anglais" },
       { label: "Création", value: "2026" },
@@ -223,12 +235,16 @@ export const PRESS_CONTENT: Record<"en" | "fr", PressContent> = {
     media_label: "CAPTURES & VIDÉO",
     media_title: "Dans l'app.",
     media_sub: "Libres d'utilisation dans un contexte éditorial ou de création de contenu, avec mention d'Attax.",
-    video_title: "Un duel en direct",
-    video_caption: "Boucle de 12 secondes · MP4",
+    video_title: "Soir de combat",
+    video_caption: "La révélation de 21h30 · 23 s · MP4",
     screens: [
-      { label: "Activité", caption: "Tes pts et tes séances du jour" },
-      { label: "Match du jour", caption: "Le combat, round après round" },
-      { label: "Cartes", caption: "Les cartes du jour" },
+      { label: "Soir de combat", caption: "Le round final, chaque soir à 21h30" },
+      { label: "Cartes", caption: "Joue une carte, renverse le match" },
+      { label: "Activités", caption: "Tes pts du jour" },
+      { label: "Ligue", caption: "8 joueurs, 7 jours, 1 champion" },
+      { label: "Saison", caption: "Le classement mondial de l'effort" },
+      { label: "Binôme", caption: "Ton binôme" },
+      { label: "Profil", caption: "Trophées, badges, série" },
     ],
     download: "Télécharger",
     rules_label: "BONNES PRATIQUES",
