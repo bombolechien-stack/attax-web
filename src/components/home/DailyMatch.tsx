@@ -32,12 +32,11 @@ export default function DailyMatch() {
   const m = t.dailyMatch;
   const { ref: headerRef, visible: headerVisible } = useInView<HTMLDivElement>(0.1);
   const { ref: cardRef, visible: cardVisible } = useInView<HTMLDivElement>(0.12, { oneShot: true });
-  const { ref: statsRef, visible: statsVisible } = useInView<HTMLDivElement>(0.1);
   const yourLost = ROUNDS.filter((r) => r === "O").length;
   const oppLost = ROUNDS.filter((r) => r === "Y").length;
 
   return (
-    <section id="daily-match" className="dm-section" style={{ backgroundColor: "#F3F5F8", padding: "8rem 2rem", overflow: "hidden" }}>
+    <section id="daily-match" className="dm-section" style={{ backgroundColor: "#ffffff", padding: "8rem 2rem", overflow: "hidden" }}>
       <div style={{ maxWidth: "80rem", margin: "0 auto" }}>
 
         <div ref={headerRef} style={{ marginBottom: "5rem" }}>
@@ -56,7 +55,7 @@ export default function DailyMatch() {
           <div className="dm-card" style={{
             ...scaleIn(cardVisible, 0, 0.96),
             width: "min(820px, 100%)",
-            backgroundColor: "#ffffff",
+            backgroundColor: "#F5F5F8",
             borderRadius: 28,
             padding: "2.25rem 2.5rem 2.5rem",
             border: "1px solid rgba(11,17,22,0.06)",
@@ -113,14 +112,6 @@ export default function DailyMatch() {
           </div>
         </div>
 
-        <div ref={statsRef} className="dm-stats" style={{ display: "flex", justifyContent: "center", gap: "0", marginTop: "5rem", borderTop: "1px solid rgba(11,17,22,0.09)" }}>
-          {m.stats.map((s, i) => (
-            <div key={s.n} className="dm-stat" style={{ ...fadeUp(statsVisible, i * 80), flex: 1, padding: "2.5rem 2rem 0", textAlign: "center", borderLeft: i > 0 ? "1px solid rgba(11,17,22,0.09)" : "none" }}>
-              <div style={{ fontSize: "1.125rem", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.03em" }}>{s.n}</div>
-              <div style={{ fontSize: "0.8125rem", color: "#999", marginTop: "4px" }}>{s.label}</div>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
   );

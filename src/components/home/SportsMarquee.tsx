@@ -23,12 +23,12 @@ const SPORTS: { file: string; en: string; fr: string }[] = [
 
 const COPY = {
   en: {
-    label: "01 · Every sport counts",
+    label: "Every sport counts",
     h2: ["Run. Ride. Lift.", "Play. Walk. Win."],
     body: "If your heart rate goes up, it counts. Your watch measures your workouts and steps through Apple Health or Health Connect, and Attax turns them into pts. No manual entry. Whatever your sport, whatever your level.",
   },
   fr: {
-    label: "01 · Tous les sports comptent",
+    label: "Tous les sports comptent",
     h2: ["Cours. Roule. Soulève.", "Joue. Marche. Gagne."],
     body: "Si ton cœur accélère, ça compte. Ta montre mesure tes séances et tes pas via Apple Santé ou Health Connect, et Attax les transforme en pts. Aucune saisie à la main. Quel que soit ton sport, quel que soit ton niveau.",
   },
@@ -41,7 +41,7 @@ export default function SportsMarquee() {
   const row = [...SPORTS, ...SPORTS];
 
   return (
-    <section id="how-it-works" style={{ backgroundColor: "#ffffff", padding: "7rem 0 8rem", overflow: "hidden", position: "relative", scrollMarginTop: "80px" }}>
+    <section style={{ backgroundColor: "#ffffff", padding: "7rem 0 8rem", overflow: "hidden", position: "relative" }}>
       <div ref={ref} style={{ maxWidth: "72rem", margin: "0 auto", padding: "0 clamp(1.5rem, 5vw, 4rem)", display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: "3rem", flexWrap: "wrap" }}>
         <div>
           <p style={{ ...fadeUp(visible, 0), fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "rgba(28,37,64,0.5)", margin: "0 0 1.5rem" }}>{c.label}</p>

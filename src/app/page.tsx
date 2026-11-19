@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
 import ComingSoonGate from "@/components/ComingSoonGate";
 import Hero from "@/components/home/Hero";
+import InfoSection from "@/components/home/InfoSection";
 import SportsMarquee from "@/components/home/SportsMarquee";
+import HowItWorks from "@/components/home/HowItWorks";
 import DailyMatch from "@/components/home/DailyMatch";
 import CardsShowcase from "@/components/home/CardsShowcase";
 import FightNight from "@/components/home/FightNight";
+import Testimonials from "@/components/home/Testimonials";
+import VisualGrid from "@/components/home/VisualGrid";
 import Beyond from "@/components/home/Beyond";
+import FeaturesGrid from "@/components/home/FeaturesGrid";
+import ArenaSection from "@/components/home/ArenaSection";
 import PrivacyStrip from "@/components/home/PrivacyStrip";
 import FAQ from "@/components/home/FAQ";
 import { T } from "@/lib/translations";
@@ -52,14 +58,20 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      {/* Parcours court, une idée par section, sans redite :
-          01 bouger (pts) → 02 le match (7 rounds) → 03 les cartes → 04 Soir de combat → au-delà du match. */}
+      {/* L'ordre et la richesse de la version en ligne (master) ; « Comment ça marche » et « Une journée »
+          fusionnés (la journée type) ; ajouts : Soir de combat et Au-delà de la ligue. Rythme clair / foncé. */}
       <Hero />
+      <InfoSection />
       <SportsMarquee />
+      <HowItWorks />
       <DailyMatch />
       <CardsShowcase />
       <FightNight />
+      <Testimonials />
+      <VisualGrid />
       <Beyond />
+      <FeaturesGrid />
+      <ArenaSection />
       <PrivacyStrip />
       <FAQ />
     </ComingSoonGate>

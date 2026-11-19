@@ -3,7 +3,7 @@
 import { useT } from "@/lib/i18n";
 import { useInView, fadeUp, clipReveal, slideLeft, slideRight } from "@/hooks/useInView";
 
-function HiwStep({ step, index }: { step: { title: string; body: string }; index: number }) {
+function HiwStep({ step, index }: { step: { time?: string; title: string; body: string }; index: number }) {
   const { ref, visible } = useInView<HTMLDivElement>(0.15);
   return (
     <div ref={ref} className="hiw-step" style={{ display: "grid", gridTemplateColumns: "80px 1fr", gap: "0", padding: "4rem 0", borderBottom: "1px solid rgba(255,255,255,0.06)", alignItems: "start" }}>
@@ -11,6 +11,9 @@ function HiwStep({ step, index }: { step: { title: string; body: string }; index
         {String(index + 1).padStart(2, "0")}
       </div>
       <div className="hiw-step-body" style={{ paddingLeft: "3rem" }}>
+        {step.time && (
+          <div className="pin-mono" style={{ ...fadeUp(visible, 40), fontSize: "0.75rem", color: "#C9D5F0", marginBottom: "1.25rem" }}>{step.time}</div>
+        )}
         <div className="hiw-step-title" style={{ ...clipReveal(visible, 80), fontSize: "clamp(2.5rem, 4.5vw, 5rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.05em", lineHeight: 0.95, marginBottom: "1.5rem" }}>
           {step.title}
         </div>

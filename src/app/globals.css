@@ -642,6 +642,7 @@ html { overflow-x: clip; }
   .fn-inner { gap: 3.5rem !important; }
 }
 @media (max-width: 860px) {
+  .by-grid { grid-template-columns: 1fr !important; gap: 3.5rem !important; }
   .cards-section, .by-section, .fn-section { padding: 5rem 1.25rem !important; }
   .fn-inner { flex-direction: column !important; align-items: flex-start !important; }
   .fn-phone { align-self: center !important; }
@@ -649,11 +650,7 @@ html { overflow-x: clip; }
   .dm-rounds { gap: 4px !important; }
   .dm-card-head { flex-direction: column !important; align-items: flex-start !important; gap: 0.5rem !important; }
 }
-@media (max-width: 1100px) {
-  .by-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 3rem 2rem !important; }
-}
 @media (max-width: 640px) {
-  .by-grid { grid-template-columns: 1fr !important; gap: 3.5rem !important; }
 }
 
 /* ── Les cartes (mise en page de la version en ligne, cartes portrait) ── */
