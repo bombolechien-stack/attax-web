@@ -22,11 +22,12 @@ export default function FightNight() {
             la zone de combat du round final de l'app actuelle (barres de PV, boxeurs en scanlines). */}
         <div className="fn-phone" style={{ ...scaleIn(visible, 100, 0.94), flex: "0 0 auto", width: "min(300px, 70vw)", position: "relative", filter: "drop-shadow(0 30px 60px rgba(11,17,22,0.20))" }}>
           <Image src="/screens/phone-fight.png" alt={f.alt} width={1440} height={2960} sizes="300px" style={{ display: "block", width: "100%", height: "auto" }} />
+          {/* Écran plein : en-tête réel du Match + combat du round final + barre d'onglets (scripts/fight-night-video/screen.py) */}
           <video
-            autoPlay muted loop playsInline preload="metadata" aria-hidden="true"
-            style={{ position: "absolute", left: "12.996%", top: "28.322%", width: "73.8%", height: "49.2%", objectFit: "fill", pointerEvents: "none" }}
+            autoPlay muted loop playsInline preload="metadata" aria-hidden="true" poster="/videos/match-screen-poster.jpg"
+            style={{ position: "absolute", left: "11.806%", top: "9.966%", width: "76.389%", height: "83.446%", objectFit: "fill", borderRadius: "13.6% / 6.1%", pointerEvents: "none" }}
           >
-            <source src="/videos/match-live.mp4" type="video/mp4" />
+            <source src="/videos/match-screen.mp4" type="video/mp4" />
           </video>
         </div>
         <div style={{ flex: 1, minWidth: 0 }}>

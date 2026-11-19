@@ -2,7 +2,7 @@
 écran vidé (on ne garde que la barre d'état et l'île), au fond de l'app ; le combat (match-live.mp4, refait au rendu actuel
 dans Desktop/Attax/MotionDesign/04_Site) est posé dessus par le site, aux coordonnées imprimées ici.
 
-Sorties : public/screens/phone-fight.png (cadre) + public/videos/match-live.mp4 (copie muette)
+Sortie : public/screens/phone-fight.png (cadre) ; l écran est fait par screen.py
 Usage : python scripts/fight-night-video/phone.py
 """
 import subprocess
@@ -81,6 +81,3 @@ vy = STATUS_END + ((bottom - STATUS_END) - vh) / 2
 print("BG", BG, "screen", left, top, right, bottom)
 print(f"left: {vx / W * 100:.3f}%  top: {vy / H * 100:.3f}%  width: {vw / W * 100:.3f}%  height: {vh / H * 100:.3f}%")
 
-subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(SRC_VIDEO), "-an", "-c:v", "libx264", "-crf", "22",
-                "-preset", "slow", "-pix_fmt", "yuv420p", "-movflags", "+faststart",
-                str(ROOT / "public" / "videos" / "match-live.mp4")], check=True)
