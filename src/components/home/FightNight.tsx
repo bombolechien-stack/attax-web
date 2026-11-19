@@ -1,12 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import { useT } from "@/lib/i18n";
 import { useInView, fadeUp, clipReveal, scaleIn } from "@/hooks/useInView";
 import HeroBackdrop from "@/components/scan/HeroBackdrop";
 
-/** Soir de combat (révélation de 21h30) : un seul échange entre les deux boxeurs de l'app (scanlines bleu / rouge),
- *  rendu avec les animations du moteur de combat actuel (scripts/fight-night-video/combat.py → public/videos/fight-loop.mp4).
- *  Sur le fond clair de l'app (#EEF1F7), dans un panneau arrondi. */
+/** Soir de combat (révélation de 21h30) : le combat du round final de l'app, dans un téléphone (comme la version en ligne). */
 export default function FightNight() {
   const t = useT();
   const f = t.fightNight;
@@ -18,14 +17,16 @@ export default function FightNight() {
       <HeroBackdrop />
 
       <div ref={ref} className="fn-inner" style={{ position: "relative", maxWidth: "72rem", margin: "0 auto", display: "flex", alignItems: "center", gap: "6rem" }}>
-        <div className="fn-phone" style={{ ...scaleIn(visible, 100, 0.94), flex: "0 0 auto", width: "min(560px, 48%)" }}>
+        {/* Comme sur la version en ligne : le combat DANS l'écran d'un téléphone (même cadre que master).
+            Écran vidé sauf la barre d'état (scripts/fight-night-video/phone.py) ; la vidéo match-live.mp4 =
+            la zone de combat du round final de l'app actuelle (barres de PV, boxeurs en scanlines). */}
+        <div className="fn-phone" style={{ ...scaleIn(visible, 100, 0.94), flex: "0 0 auto", width: "min(300px, 70vw)", position: "relative", filter: "drop-shadow(0 30px 60px rgba(11,17,22,0.20))" }}>
+          <Image src="/screens/phone-fight.png" alt={f.alt} width={1440} height={2960} sizes="300px" style={{ display: "block", width: "100%", height: "auto" }} />
           <video
-            autoPlay muted loop playsInline preload="metadata"
-            poster="/videos/fight-loop-poster.jpg"
-            aria-label={f.alt}
-            style={{ display: "block", width: "100%", height: "auto", aspectRatio: "1134 / 780", borderRadius: 28, backgroundColor: "#EEF1F7", boxShadow: "0 30px 60px rgba(11,17,22,0.10), 0 0 0 1px rgba(11,17,22,0.05)" }}
+            autoPlay muted loop playsInline preload="metadata" aria-hidden="true"
+            style={{ position: "absolute", left: "12.996%", top: "28.322%", width: "73.8%", height: "49.2%", objectFit: "fill", pointerEvents: "none" }}
           >
-            <source src="/videos/fight-loop.mp4" type="video/mp4" />
+            <source src="/videos/match-live.mp4" type="video/mp4" />
           </video>
         </div>
         <div style={{ flex: 1, minWidth: 0 }}>

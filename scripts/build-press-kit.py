@@ -20,13 +20,8 @@ STORE = Path("C:/Users/guill/budyfit/store-assets/app-store")
 # Captures stores (1206 × 2622) → le téléphone seul (1016 × 2012), en JPG.
 PHONE_BOX = (95, 579, 1111, 2591)
 SCREENS = {2: "fight-night", 3: "cards", 4: "activity", 5: "league", 6: "season", 7: "duo", 8: "profile"}
-# Règle publique : jamais de nombre de joueurs. La capture 8 affiche « World champion ahead of 10 players » /
-# « Champion du monde devant 10 joueurs » : on efface la fin (fond uni de l'écran), il reste « World champion » /
-# « Champion du monde ». Rectangles dans le repère de la capture store.
-ERASE = {
-    ("en", 8): [(866, 1938, 1060, 1992), (575, 1990, 820, 2040)],
-    ("fr", 8): [(575, 1932, 960, 1990)],
-}
+# Les captures stores du 19/11 (saison « Beta Season 2027 », sans nombre de joueurs) sont propres : plus rien à effacer.
+ERASE: dict = {}
 
 def build_screens():
     out_files = []

@@ -675,7 +675,7 @@ html { overflow-x: clip; }
 @media (max-width: 860px) {
   .cards-section, .by-section, .fn-section { padding: 5rem 1.25rem !important; }
   .fn-inner { flex-direction: column !important; align-items: flex-start !important; }
-  .fn-phone { align-self: center !important; width: 100% !important; max-width: 560px; }
+  .fn-phone { align-self: center !important; }
   .dm-card { padding: 1.5rem 1.25rem 1.75rem !important; border-radius: 22px !important; }
   .dm-rounds { gap: 4px !important; }
   .dm-card-head { flex-direction: column !important; align-items: flex-start !important; gap: 0.5rem !important; }
@@ -696,7 +696,7 @@ html { overflow-x: clip; }
   /* Téléphone : les 3 cartes en grand, côte à côte, à faire défiler du doigt (sans rotation) */
   .cards-fan { width: calc(100% + 2.5rem); margin: 0 -1.25rem; justify-content: flex-start !important; overflow-x: auto; scroll-snap-type: x mandatory; padding: 1rem 1.25rem 1.5rem; gap: 14px; scrollbar-width: none; }
   .cards-fan::-webkit-scrollbar { display: none; }
-  .cards-fan-item { width: 68vw !important; margin: 0 !important; transform: none !important; scroll-snap-align: center; }
+  .cards-fan-item { width: 54vw !important; margin: 0 !important; transform: none !important; scroll-snap-align: center; }
 }
 
 /* ── Pages /download/ios et /download/android ── */

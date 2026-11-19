@@ -8,7 +8,7 @@ import { useInView, fadeUp, clipReveal, scaleIn } from "@/hooks/useInView";
 // 3 cartes inclinées qui se redressent au survol), avec les cartes au format PORTRAIT de l'app
 // (budyfit app/(tabs)/match.tsx → CardPortraitV3, gabarit 270 × 378) : « Attax » + n°, famille, nom,
 // scène de la planche, effet sur bandeau noir, accroche, grand numéro.
-const SHOWN = ["spike", "freeze", "ghost"] as const;
+const SHOWN = ["ghost", "spike", "freeze"] as const;   // ordre voulu par gui : Ghost, Quitte ou double (au centre), Freeze
 const ACC: Record<string, string> = { spike: "#1D4ED8", freeze: "#0891B2", ghost: "#7C3AED" };
 // Accroches de la planche (v3Tagline de l'app)
 const TAGLINE: Record<"en" | "fr", Record<string, string>> = {
@@ -88,7 +88,7 @@ export default function CardsShowcase() {
                   style={{
                     ...appear,
                     transform: `${appear.transform} ${base}`,
-                    width: 250, flexShrink: 0, margin: "0 -6px", zIndex: i === 1 ? 2 : 1, position: "relative",
+                    width: 200, flexShrink: 0, margin: "0 -6px", zIndex: i === 1 ? 2 : 1, position: "relative",
                     borderRadius: 16, boxShadow: "0 30px 70px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08)",
                     transition: "transform 0.45s cubic-bezier(0.16,1,0.3,1), box-shadow 0.45s cubic-bezier(0.16,1,0.3,1), opacity 1s cubic-bezier(0.16,1,0.3,1)",
                   }}
