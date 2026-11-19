@@ -38,28 +38,40 @@ LIVE_Y = HEAD_Y + head.shape[0]
 master = subprocess.run(["git", "show", "master:public/screens/screenmatch.png"], cwd=ROOT, capture_output=True, check=True).stdout
 tmp = ROOT / "scripts" / "fight-night-video" / "_m.png"; tmp.write_bytes(master)
 tabsrc = np.asarray(Image.open(tmp).convert("RGB"))[2440:2720, SX0:SX1].copy(); tmp.unlink()
-white = (tabsrc.min(-1) >= 252)
-ys, xs = np.where(white)
-rows = np.where(white.sum(1) > white.shape[1] * 0.5)[0]
-py0, py1 = rows.min(), rows.max()
-cols = np.where(white[py0:py1].sum(0) > (py1 - py0) * 0.5)[0]
-px0, px1 = cols.min(), cols.max()
+py0, py1, px0, px1 = 40, 214, 114, 988                # la pilule dans la capture de la version en ligne (relevé à l'œil)
 from PIL import ImageDraw, ImageFilter
-pill = Image.new("L", (SW, tabsrc.shape[0]), 0)
-ImageDraw.Draw(pill).rounded_rectangle((px0, py0, px1, py1), radius=(py1 - py0) // 2, fill=255)
-shadow = pill.filter(ImageFilter.GaussianBlur(18))
-TAB_PILL = np.asarray(pill, np.float32)[..., None] / 255
-TAB_SHADOW = np.asarray(shadow, np.float32)[..., None] / 255 * 0.10
-TAB = tabsrc.astype(np.float32)
-TAB_Y = SH - tabsrc.shape[0] - 10
+# pilule seule, remise à l'échelle comme dans les captures stores : ~82 % de la largeur, marges égales,
+# posée au-dessus du bas arrondi de l'écran, ombre douce
+pill_img = Image.fromarray(tabsrc[py0:py1 + 1, px0:px1 + 1])
+# coins de la capture d'origine hors de la pilule : remplacés par du blanc (le masque arrondi les recoupe)
+PW = round(SW * 0.78); PH = round(pill_img.height * PW / pill_img.width)
+pill_img = pill_img.resize((PW, PH), Image.LANCZOS)
+PAD = 40
+TW, TH = PW + 2 * PAD, PH + 2 * PAD
+mask = Image.new("L", (TW, TH), 0)
+ImageDraw.Draw(mask).rounded_rectangle((PAD, PAD, PAD + PW - 1, PAD + PH - 1), radius=PH // 2, fill=255)
+shadow = Image.new("L", (TW, TH), 0)
+ImageDraw.Draw(shadow).rounded_rectangle((PAD + 8, PAD + 6, PAD + PW - 9, PAD + PH + 5), radius=PH // 2, fill=255)
+shadow = shadow.filter(ImageFilter.GaussianBlur(14))
+TAB = np.zeros((TH, TW, 3), np.float32); TAB[PAD:PAD + PH, PAD:PAD + PW] = np.asarray(pill_img, np.float32)
+TAB_PILL = np.asarray(mask, np.float32)[..., None] / 255
+TAB_SHADOW = np.asarray(shadow, np.float32)[..., None] / 255 * 0.07
+TAB_X = (SW - TW) // 2
+TAB_Y = SH - 52 - PAD - PH                             # bas de la pilule à 52 px du bas de l'écran
+FADE_TOP, FADE_BOT = TAB_Y + PAD - 40, TAB_Y + PAD + PH // 2    # fond uni sous la pilule (le combat s'arrête au-dessus)
 
 def draw_tab(img):
-    zone = img[TAB_Y:TAB_Y + TAB.shape[0]].astype(np.float32)
-    zone = zone * (1 - TAB_SHADOW)                       # ombre
-    zone = zone * (1 - TAB_PILL) + TAB * TAB_PILL        # pilule
-    img[TAB_Y:TAB_Y + TAB.shape[0]] = np.clip(zone, 0, 255).astype(np.uint8)
+    f = img.astype(np.float32)
+    # fondu du contenu vers le fond de l'écran sous la pilule
+    ramp = np.clip((np.arange(SH) - FADE_TOP) / max(1, FADE_BOT - FADE_TOP), 0, 1)[:, None, None]
+    f = f * (1 - ramp) + BG.astype(np.float32) * ramp
+    zone = f[TAB_Y:TAB_Y + TH, TAB_X:TAB_X + TW]
+    zone = zone * (1 - TAB_SHADOW)
+    zone = zone * (1 - TAB_PILL) + TAB * TAB_PILL
+    f[TAB_Y:TAB_Y + TH, TAB_X:TAB_X + TW] = zone
+    img[:] = np.clip(f, 0, 255).astype(np.uint8)
 
-LIVE_CROP = 1000                                    # match-live 810 × 1110 : on garde le haut (jusqu'au statut du round)
+LIVE_CROP = 878                                     # match-live 810 × 1110 : jusqu'à la ligne de commentaire (« JOHNNY unleashes a flurry. »)
 lw, lh = SW, round(LIVE_CROP * SW / 810)
 dec = subprocess.Popen(["ffmpeg", "-loglevel", "error", "-i", str(LIVE), "-vf", f"crop=810:{LIVE_CROP}:0:0,scale={lw}:{lh}",
                         "-f", "rawvideo", "-pix_fmt", "rgb24", "-"], stdout=subprocess.PIPE)
@@ -83,4 +95,4 @@ while True:
     enc.stdin.write(out.tobytes())
 enc.stdin.close(); enc.wait()
 first.save(ROOT / "public" / "videos" / "match-screen-poster.jpg", quality=88)
-print("live", LIVE_Y, LIVE_Y + lh, "tab", TAB_Y, "screen", SW, SH)
+print("live", LIVE_Y, LIVE_Y + lh, "pill", TAB_Y + PAD, TAB_Y + PAD + PH, "screen", SW, SH)
