@@ -71,7 +71,8 @@ def draw_tab(img):
     f[TAB_Y:TAB_Y + TH, TAB_X:TAB_X + TW] = zone
     img[:] = np.clip(f, 0, 255).astype(np.uint8)
 
-LIVE_CROP = 878                                     # match-live 810 × 1110 : jusqu'à la ligne de commentaire (« JOHNNY unleashes a flurry. »)
+LIVE_CROP = 1000   # 20/11 : jusqu'à « AT STAKE / ROUND STATUS », comme l'écran réel (pas de barre d'onglets pendant la révélation)
+_OLD_CROP = 878                                     # match-live 810 × 1110 : jusqu'à la ligne de commentaire (« JOHNNY unleashes a flurry. »)
 lw, lh = SW, round(LIVE_CROP * SW / 810)
 dec = subprocess.Popen(["ffmpeg", "-loglevel", "error", "-i", str(LIVE), "-vf", f"crop=810:{LIVE_CROP}:0:0,scale={lw}:{lh}",
                         "-f", "rawvideo", "-pix_fmt", "rgb24", "-"], stdout=subprocess.PIPE)
@@ -88,7 +89,7 @@ while True:
     live = np.frombuffer(buf, np.uint8).reshape(lh, lw, 3)
     h = min(lh, SH - LIVE_Y)
     img[LIVE_Y:LIVE_Y + h] = live[:h]
-    draw_tab(img)
+    # 20/11 (gui : « le bas est encore cata ») : plus de barre d'onglets, l'écran du Soir de combat est plein écran dans l'app
     out = Image.fromarray(img).resize((OUT_W, OUT_H), Image.LANCZOS)
     if first is None:
         first = out
