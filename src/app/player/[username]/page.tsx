@@ -5,7 +5,7 @@ type Props = { params: Promise<{ username: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { username } = await params;
   return {
-    title: `${username} — Attax Athlete Profile`,
+    title: `${username}, Attax athlete profile`,
     description: `View ${username}'s public Attax profile: ranking, stats, and sports activity.`,
   };
 }

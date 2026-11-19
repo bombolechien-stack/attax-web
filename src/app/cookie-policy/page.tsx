@@ -21,9 +21,9 @@ function ContentEn() {
 
         <div style={SECTION}>
           <h2 style={H2}>2. What We Store on Your Device</h2>
-          <p style={P}><strong>attax-lang</strong> (local storage) — your language preference (English or French). Essential.</p>
-          <p style={P}><strong>attax_cookie_consent</strong> (local storage) — remembers that you have seen this notice. Essential.</p>
-          <p style={P}><strong>attax_preview_unlocked</strong> (cookie, 1 year, and local storage) — remembers access to the full website while it is in preview. Essential.</p>
+          <p style={P}><strong>attax-lang</strong> (local storage): your language preference (English or French). Essential.</p>
+          <p style={P}><strong>attax_cookie_consent</strong> (local storage): remembers that you have seen this notice. Essential.</p>
+          <p style={P}><strong>attax_preview_unlocked</strong> (cookie, 1 year, and local storage): remembers access to the full website while it is in preview. Essential.</p>
           <p style={P}>None of these contain personal data, and none are shared with anyone. Like any website, our host (Vercel) processes technical connection data such as your IP address to deliver and secure the site; this does not involve cookies.</p>
         </div>
 
@@ -60,9 +60,9 @@ function ContentFr() {
 
         <div style={SECTION}>
           <h2 style={H2}>2. Ce que nous enregistrons sur ton appareil</h2>
-          <p style={P}><strong>attax-lang</strong> (stockage local) — ta langue (français ou anglais). Indispensable.</p>
-          <p style={P}><strong>attax_cookie_consent</strong> (stockage local) — retient que tu as vu ce message. Indispensable.</p>
-          <p style={P}><strong>attax_preview_unlocked</strong> (cookie, 1 an, et stockage local) — retient l'accès au site complet pendant sa phase de prévisualisation. Indispensable.</p>
+          <p style={P}><strong>attax-lang</strong> (stockage local) : ta langue (français ou anglais). Indispensable.</p>
+          <p style={P}><strong>attax_cookie_consent</strong> (stockage local) : retient que tu as vu ce message. Indispensable.</p>
+          <p style={P}><strong>attax_preview_unlocked</strong> (cookie, 1 an, et stockage local) : retient l'accès au site complet pendant sa phase de prévisualisation. Indispensable.</p>
           <p style={P}>Aucune de ces données ne contient d'informations personnelles, et aucune n'est partagée. Comme pour tout site, notre hébergeur (Vercel) traite des données techniques de connexion, comme ton adresse IP, pour afficher et sécuriser le site ; cela ne passe pas par des cookies.</p>
         </div>
 

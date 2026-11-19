@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "The Adventure — Attax Story",
+  title: "The Adventure: Attax Story",
   description:
-    "The story behind Attax — a fitness game built around real activity, competition, and the belief that sport should be more than just tracking.",
+    "The story behind Attax: a fitness game built around real activity, competition, and the belief that sport should be more than just tracking.",
   alternates: { canonical: "https://attax.app/adventure" },
   openGraph: {
-    title: "The Adventure — Attax Story",
-    description: "The story behind Attax — built around real activity and real competition.",
+    title: "The Adventure: Attax Story",
+    description: "The story behind Attax: built around real activity and real competition.",
     url: "https://attax.app/adventure",
   },
 };

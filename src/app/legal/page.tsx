@@ -19,14 +19,14 @@ function ContentFr() {
       <div style={SECTION}>
         <h2 style={H2}>Éditeur</h2>
         <p style={P}>Le site attax.app et l'application mobile Attax (iOS et Android) sont édités par <strong>ATTAX</strong>, société par actions simplifiée (SAS) au capital de 1 000 €, dont le siège social est situé 61 rue de Lyon, 75012 Paris, France.</p>
-        <p style={P}>Immatriculée au Registre du commerce et des sociétés de Paris sous le numéro 107 084 337 (RCS Paris 107 084 337) — SIRET du siège : 107 084 337 00016 — N° de TVA intracommunautaire : FR81107084337.</p>
+        <p style={P}>Immatriculée au Registre du commerce et des sociétés de Paris sous le numéro 107 084 337 (RCS Paris 107 084 337). SIRET du siège : 107 084 337 00016. N° de TVA intracommunautaire : FR81107084337.</p>
         <p style={P}>Contact : <a href="mailto:contact@attax.app" style={LINK}>contact@attax.app</a></p>
         <p style={P}>Directeur de la publication : Guillaume Ruiz, Président.</p>
       </div>
 
       <div style={SECTION}>
         <h2 style={H2}>Hébergement</h2>
-        <p style={P}><strong>Site web</strong> : Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis — vercel.com.</p>
+        <p style={P}><strong>Site web</strong> : Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis (vercel.com).</p>
         <p style={P}><strong>Données de l'application</strong> : Supabase Inc. (supabase.com), sur des serveurs situés dans l'Union européenne (Paris, France).</p>
       </div>
 
@@ -53,14 +53,14 @@ function ContentEn() {
       <div style={SECTION}>
         <h2 style={H2}>Publisher</h2>
         <p style={P}>The website attax.app and the Attax mobile app (iOS and Android) are published by <strong>ATTAX</strong>, a French simplified joint-stock company (SAS) with a share capital of €1,000, whose registered office is at 61 rue de Lyon, 75012 Paris, France.</p>
-        <p style={P}>Registered with the Paris Trade and Companies Register under number 107 084 337 (RCS Paris 107 084 337) — SIRET: 107 084 337 00016 — EU VAT number: FR81107084337.</p>
+        <p style={P}>Registered with the Paris Trade and Companies Register under number 107 084 337 (RCS Paris 107 084 337). SIRET: 107 084 337 00016. EU VAT number: FR81107084337.</p>
         <p style={P}>Contact: <a href="mailto:contact@attax.app" style={LINK}>contact@attax.app</a></p>
         <p style={P}>Publication director: Guillaume Ruiz, President.</p>
       </div>
 
       <div style={SECTION}>
         <h2 style={H2}>Hosting</h2>
-        <p style={P}><strong>Website</strong>: Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, USA — vercel.com.</p>
+        <p style={P}><strong>Website</strong>: Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, USA (vercel.com).</p>
         <p style={P}><strong>App data</strong>: Supabase Inc. (supabase.com), on servers located in the European Union (Paris, France).</p>
       </div>
 

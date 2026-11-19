@@ -78,7 +78,7 @@ function ContentEn() {
 
       <div style={SECTION}>
         <h2 style={H2}>8. Contact</h2>
-        <p style={P}>Attax — <a href="mailto:contact@attax.app" style={LINK}>contact@attax.app</a></p>
+        <p style={P}>Attax: <a href="mailto:contact@attax.app" style={LINK}>contact@attax.app</a></p>
       </div>
     </>
   );
@@ -147,7 +147,7 @@ function ContentFr() {
 
       <div style={SECTION}>
         <h2 style={H2}>8. Contact</h2>
-        <p style={P}>Attax — <a href="mailto:contact@attax.app" style={LINK}>contact@attax.app</a></p>
+        <p style={P}>Attax : <a href="mailto:contact@attax.app" style={LINK}>contact@attax.app</a></p>
       </div>
     </>
   );

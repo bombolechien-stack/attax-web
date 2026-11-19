@@ -193,7 +193,7 @@ export default function PressPage() {
                   <div key={f} style={{ borderRadius: "16px", overflow: "hidden", border: "1px solid #ebebeb" }}>
                     <div style={{ backgroundColor: dark ? "#0d0d0d" : "#ffffff", height: "150px", display: "flex", alignItems: "center", justifyContent: "center", padding: "2rem" }}>
                       {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={`/press/${f}.svg`} alt={`Attax — ${p.logo_names[l.key]}`} style={{ maxHeight: l.key === "icon" ? "72px" : "48px", maxWidth: "100%" }} />
+                      <img src={`/press/${f}.svg`} alt={`Attax: ${p.logo_names[l.key]}`} style={{ maxHeight: l.key === "icon" ? "72px" : "48px", maxWidth: "100%" }} />
                     </div>
                     <div style={{ padding: "1rem 1.25rem", backgroundColor: "#fafafa", display: "flex", justifyContent: "space-between", alignItems: "center", gap: "0.5rem", flexWrap: "wrap" }}>
                       <div>

@@ -626,13 +626,14 @@ html { overflow-x: clip; }
 .pin-mono { font-family: var(--font-mono), ui-monospace, monospace; font-size: 0.8125rem; font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; }
 .pin-mono b { font-weight: 500; color: #ffffff; }
 
-/* Héros de l'accueil : vidéo en scanlines (identique à la version en ligne, master). La nouvelle vidéo cadre les
-   sportifs un peu plus petits que celle de master : agrandie (scale) pour retrouver la même taille ; fond noir en « screen ». */
-.home-hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 62% 70%; z-index: 0; mix-blend-mode: screen; transform: scale(1.32); transform-origin: 74% 92%; }
+/* Héros de l'accueil : vidéo en scanlines (identique à la version en ligne, master). Mesuré sur 30 images de chaque
+   vidéo : les sportifs de la nouvelle occupent la même zone que ceux de master (x 46-91 %, y 37-90 % du cadre),
+   à peine plus petits → ×1,05 depuis le bas des silhouettes. Fond noir posé en « screen ». */
+.home-hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 62% 70%; z-index: 0; mix-blend-mode: screen; transform: scale(1.05); transform-origin: 70% 90%; }
 .home-hero-copy { position: relative; z-index: 5; flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0 clamp(2rem, 5vw, 5rem); max-width: 50%; }
 .home-hero-foot { position: relative; z-index: 5; display: flex; justify-content: space-between; gap: 1rem; padding: 0 clamp(2rem, 5vw, 5rem) 2rem; color: rgba(255,255,255,0.32); }
 @media (max-width: 860px) {
-  .home-hero-video { top: 64px; bottom: auto; height: 48%; object-position: 76% 62%; transform: scale(1.3); transform-origin: 70% 88%; }
+  .home-hero-video { top: 64px; bottom: auto; height: 48%; object-position: 76% 62%; transform: scale(1.05); transform-origin: 70% 90%; }
   .home-hero-copy { max-width: 100%; justify-content: flex-end; padding-bottom: 1.5rem; }
   .home-hero-foot .home-hero-sports { display: none; }
 }

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://attax.app/fitness-competition-app" },
   openGraph: {
     title: "Fitness Competition App | Attax",
-    description: "A better reason to stay active — compete through real activity.",
+    description: "A better reason to stay active: compete through real activity.",
     url: "https://attax.app/fitness-competition-app",
   },
 };

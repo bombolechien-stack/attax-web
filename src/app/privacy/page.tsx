@@ -85,13 +85,13 @@ function ContentEn() {
           <h2 style={H2}>6. Service Providers</h2>
           <p style={P}>We share data only with the providers that run Attax for us (processors), under contract and only for that purpose:</p>
           <ul style={UL}>
-            <li><strong>Supabase</strong> — database, authentication, file storage (profile photos) and server functions (servers in the European Union, Paris).</li>
-            <li><strong>PostHog</strong> — pseudonymised usage statistics and error reports (EU hosting). Health data is never sent to PostHog, nor your name or email address.</li>
-            <li><strong>Amazon Web Services (Amazon SES)</strong> — sending emails from the app (account emails, support messages, reports).</li>
-            <li><strong>Expo</strong>, <strong>Google Firebase Cloud Messaging</strong> and <strong>Apple Push Notification service</strong> — delivery of push notifications (push token and notification content); Expo also delivers app updates.</li>
-            <li><strong>Cloudflare (R2)</strong> — storage and delivery of app update files.</li>
-            <li><strong>Apple</strong> and <strong>Google</strong> — sign-in, only if you choose Sign in with Apple or Google, and access to Apple Health or Health Connect on your phone.</li>
-            <li><strong>Vercel</strong> — hosting of the attax.app website; <strong>Resend</strong> — delivery of the messages sent through the website's forms to our inbox.</li>
+            <li><strong>Supabase</strong>: database, authentication, file storage (profile photos) and server functions (servers in the European Union, Paris).</li>
+            <li><strong>PostHog</strong>: pseudonymised usage statistics and error reports (EU hosting). Health data is never sent to PostHog, nor your name or email address.</li>
+            <li><strong>Amazon Web Services (Amazon SES)</strong>: sending emails from the app (account emails, support messages, reports).</li>
+            <li><strong>Expo</strong>, <strong>Google Firebase Cloud Messaging</strong> and <strong>Apple Push Notification service</strong>: delivery of push notifications (push token and notification content); Expo also delivers app updates.</li>
+            <li><strong>Cloudflare (R2)</strong>: storage and delivery of app update files.</li>
+            <li><strong>Apple</strong> and <strong>Google</strong>: sign-in, only if you choose Sign in with Apple or Google, and access to Apple Health or Health Connect on your phone.</li>
+            <li><strong>Vercel</strong>: hosting of the attax.app website; <strong>Resend</strong>: delivery of the messages sent through the website's forms to our inbox.</li>
           </ul>
           <p style={P}>We do not sell your personal data. Some of these providers are based in, or may process data in, the United States. Where personal data is transferred outside the European Union, the transfer relies on the safeguards provided by the GDPR, such as the European Commission's Standard Contractual Clauses or, for certified providers, the EU-U.S. Data Privacy Framework. You can ask us for more information at contact@attax.app.</p>
         </div>
@@ -208,13 +208,13 @@ function ContentFr() {
           <h2 style={H2}>6. Prestataires</h2>
           <p style={P}>Nous ne partageons des données qu'avec les prestataires qui font fonctionner Attax pour nous (sous-traitants), sous contrat et uniquement dans ce but :</p>
           <ul style={UL}>
-            <li><strong>Supabase</strong> — base de données, authentification, stockage de fichiers (photos de profil) et fonctions serveur (serveurs dans l'Union européenne, à Paris).</li>
-            <li><strong>PostHog</strong> — statistiques d'usage pseudonymisées et rapports d'erreur (hébergement dans l'UE). Ni les données de santé, ni ton nom, ni ton adresse e-mail ne sont envoyés à PostHog.</li>
-            <li><strong>Amazon Web Services (Amazon SES)</strong> — envoi des e-mails de l'app (e-mails de compte, messages au support, signalements).</li>
-            <li><strong>Expo</strong>, <strong>Google Firebase Cloud Messaging</strong> et <strong>Apple Push Notification service</strong> — acheminement des notifications (jeton de notifications et contenu de la notification) ; Expo distribue aussi les mises à jour de l'app.</li>
-            <li><strong>Cloudflare (R2)</strong> — stockage et distribution des fichiers de mise à jour de l'app.</li>
-            <li><strong>Apple</strong> et <strong>Google</strong> — connexion, uniquement si tu choisis « Se connecter avec Apple » ou Google, et accès à Apple Santé ou Health Connect sur ton téléphone.</li>
-            <li><strong>Vercel</strong> — hébergement du site attax.app ; <strong>Resend</strong> — acheminement vers notre boîte de réception des messages envoyés via les formulaires du site.</li>
+            <li><strong>Supabase</strong> : base de données, authentification, stockage de fichiers (photos de profil) et fonctions serveur (serveurs dans l'Union européenne, à Paris).</li>
+            <li><strong>PostHog</strong> : statistiques d'usage pseudonymisées et rapports d'erreur (hébergement dans l'UE). Ni les données de santé, ni ton nom, ni ton adresse e-mail ne sont envoyés à PostHog.</li>
+            <li><strong>Amazon Web Services (Amazon SES)</strong> : envoi des e-mails de l'app (e-mails de compte, messages au support, signalements).</li>
+            <li><strong>Expo</strong>, <strong>Google Firebase Cloud Messaging</strong> et <strong>Apple Push Notification service</strong> : acheminement des notifications (jeton de notifications et contenu de la notification) ; Expo distribue aussi les mises à jour de l'app.</li>
+            <li><strong>Cloudflare (R2)</strong> : stockage et distribution des fichiers de mise à jour de l'app.</li>
+            <li><strong>Apple</strong> et <strong>Google</strong> : connexion, uniquement si tu choisis « Se connecter avec Apple » ou Google, et accès à Apple Santé ou Health Connect sur ton téléphone.</li>
+            <li><strong>Vercel</strong> : hébergement du site attax.app ; <strong>Resend</strong> : acheminement vers notre boîte de réception des messages envoyés via les formulaires du site.</li>
           </ul>
           <p style={P}>Nous ne vendons pas tes données personnelles. Certains de ces prestataires sont établis aux États-Unis ou peuvent y traiter des données. Lorsque des données personnelles sont transférées hors de l'Union européenne, le transfert repose sur les garanties prévues par le RGPD, comme les clauses contractuelles types de la Commission européenne ou, pour les prestataires certifiés, le cadre de protection des données UE–États-Unis (Data Privacy Framework). Tu peux nous demander plus d'informations à contact@attax.app.</p>
         </div>

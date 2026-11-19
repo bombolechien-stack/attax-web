@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { FAQ_CONTENT } from "./content";
 
 export const metadata: Metadata = {
-  title: "FAQ — Matches, Rounds, Cards, Ranks & Watches",
+  title: "FAQ: Matches, Rounds, Cards, Ranks & Watches",
   description:
     "All the answers about Attax: daily boxing duels in 7 rounds, Fight Night at 9:30 PM, leagues of 8 players, leagues with friends, the 12 cards, ranks from Rookie to Legend, the Season, the duo partner and compatible watches.",
   alternates: { canonical: "https://attax.app/faq" },

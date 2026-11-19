@@ -84,7 +84,7 @@ function WaitlistForm() {
       </button>
       {error && (
         <p style={{ width: "100%", textAlign: "center", fontSize: "0.8125rem", color: "rgba(255,120,120,0.9)", margin: "4px 0 0", fontFamily: "'Plus Jakarta Sans', -apple-system, sans-serif" }}>
-          Something went wrong — please try again.
+          Something went wrong. Please try again.
         </p>
       )}
     </form>

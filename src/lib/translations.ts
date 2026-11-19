@@ -1,6 +1,6 @@
 export const T = {
   en: {
-    banner: "Attax is now on iPhone & Android — free to play.",
+    banner: "Attax is now on iPhone & Android, free to play.",
     banner_cta: "Learn more",
     nav: {
       home: "Home",
@@ -12,7 +12,7 @@ export const T = {
       h1: ["Sport is now", "a game."],
       kicker: ["Every day", "a new opponent"],
       sports: "Run · Ride · Lift · Play · Walk",
-      subtitle: "Your workouts become a fight: your watch measures, your boxer hits.\nA duel every day against a player from your league — the final round is fought every night at 9:30 PM.",
+      subtitle: "Your workouts become a fight: your watch measures, your boxer hits.\nA duel every day against a player from your league, the final round is fought every night at 9:30 PM.",
       cta_ios: "Download Attax",
       cta_secondary: "How It Works",
       stats: [
@@ -105,7 +105,7 @@ export const T = {
       contact_link: "Get in touch",
       all_link: "See the full FAQ",
       items: [
-        { q: "Do I need a smartwatch?", a: "Yes. You need a device that measures your heart rate — smartwatch, fitness band or chest strap — synced with Apple Health (iPhone) or Health Connect (Android). Your phone alone counts your steps, but your workouts are measured by your watch. Attax checks your connection before your first league." },
+        { q: "Do I need a smartwatch?", a: "Yes. You need a device that measures your heart rate (smartwatch, fitness band or chest strap) synced with Apple Health (iPhone) or Health Connect (Android). Your phone alone counts your steps, but your workouts are measured by your watch. Attax checks your connection before your first league." },
         { q: "How do I earn pts?", a: "Your workouts and your steps, measured by your watch, become pts. The more you move, the more you score, and intensity pays, not just volume. No manual entry: everything comes from Apple Health or Health Connect." },
         { q: "How is a match decided?", a: "A match has 7 rounds: the 6 previous days and today. Each day is won by whoever scored the most pts that day, and every round lost costs HP. The past rounds are revealed from 10 AM to 5:30 PM, the final round (2 HP) is live from 7 PM. At 9:30 PM the cards are revealed and whoever keeps the most HP wins. Never a draw." },
         { q: "Will I face players at my level?", a: "Yes. A few questions when you sign up set your starting level, and you join a league of players at your level. Then your results do the talking: your rank follows you from league to league." },
@@ -129,7 +129,7 @@ export const T = {
       label: "THE LEAGUE FEED",
       h2: ["Every night,", "a new story."],
       items: [
-        { quote: "Julia dropped today — the top spot is up for grabs.", name: "THE KING FELL", role: "League feed · after the 9:30 PM verdict", initials: "👑" },
+        { quote: "Julia dropped today: the top spot is up for grabs.", name: "THE KING FELL", role: "League feed · after the 9:30 PM verdict", initials: "👑" },
         { quote: "Sam is unstoppable: 4 wins in a row.", name: "ON FIRE", role: "League feed · after the 9:30 PM verdict", initials: "🔥" },
         { quote: "You pass Leo and take 2nd place.", name: "YOU OVERTAKE", role: "League feed · after the 9:30 PM verdict", initials: "⚔️" },
       ],
@@ -181,13 +181,13 @@ export const T = {
     privacy: {
       label: "YOUR DATA",
       title: "Your health data stays yours.",
-      body: "Attax only reads your workouts, steps and heart rate — it never writes anything to Apple Health or Health Connect. Your data powers your game and nothing else, and you can delete your account in the app at any time.",
+      body: "Attax only reads your workouts, steps and heart rate: it never writes anything to Apple Health or Health Connect. Your data powers your game and nothing else, and you can delete your account in the app at any time.",
       points: ["Read-only access", "Never sold, no ads", "Delete anytime, in the app"],
     },
     download: {
       hero_label: "FREE TO DOWNLOAD",
       h1: ["Get Attax.", "Start battling."],
-      subtitle: "Turn your workouts into daily duels. On iPhone and Android — free to download, free to play.",
+      subtitle: "Turn your workouts into daily duels. On iPhone and Android: free to download, free to play.",
       cta_ios: "Download on the App Store",
       cta_android: "Get it on Google Play",
       features: [
@@ -200,7 +200,7 @@ export const T = {
       ],
       platforms_label: "COMPATIBILITY",
       platforms_h2: "Works with your watch.",
-      platforms_sub: "Attax needs a device that measures your heart rate — Apple Watch, Garmin, Amazfit, COROS, Withings, Oura and more — synced with Apple Health or Health Connect. Your phone alone counts your steps.",
+      platforms_sub: "Attax needs a device that measures your heart rate (Apple Watch, Garmin, Amazfit, COROS, Withings, Oura and more) synced with Apple Health or Health Connect. Your phone alone counts your steps.",
       ios_title: "iPhone",
       ios_more: "Attax for iPhone",
       android_more: "Attax for Android",
@@ -260,7 +260,7 @@ export const T = {
         { label: "Health Connect Fitness Game", href: "/health-connect-fitness-game" },
       ],
       col_resources: "Resources",
-      copyright: "© 2026 ATTAX SAS — Sport is now a game.",
+      copyright: "© 2026 ATTAX SAS. Sport is now a game.",
     },
     discover: {
       hero_label: "DISCOVER ATTAX",
@@ -292,12 +292,12 @@ export const T = {
       duel_h2: ["Every evening,", "a winner is decided."],
       duel_body: [
         "Every match comes down to what each player actually did: real workouts, real steps.",
-        "No manual input — just the data from your watch and the card you chose to play.",
+        "No manual input, just the data from your watch and the card you chose to play.",
         "At 9:30 PM, Fight Night: the boxers walk out, the rounds replay, the cards flip, and the final round decides. Tomorrow, a new opponent.",
       ],
       schedule_label: "THE DAILY RHYTHM",
       schedule_h2: ["Consistency creates", "momentum."],
-      schedule_sub: "A duel every day turns your activity into a habit — and your habit into wins.",
+      schedule_sub: "A duel every day turns your activity into a habit, and your habit into wins.",
       schedule_items: [
         { n: "10:00 AM", title: "Match opens", description: "Meet today's opponent. The 6 past rounds are revealed one by one until 5:30 PM. Pick your card from the 3 drawn before 1 PM." },
         { n: "7:00 PM", title: "Final round", description: "Today's round goes live. It takes 2 HP. Everything synced before 9:30 PM counts." },
@@ -307,7 +307,7 @@ export const T = {
       philosophy_h2: ["Winning isn't about", "being the best."],
       philosophy_body: [
         "Attax isn't built for elite athletes. It's built for anyone who wants their sport to matter, every single day.",
-        "You face players at your level, and every effort counts — from a brisk walk to an all-out session.",
+        "You face players at your level, and every effort counts: from a brisk walk to an all-out session.",
         "Every day is a round, so showing up every day beats one big session a week. That's the point: the most powerful thing in fitness is the habit of coming back.",
       ],
     },
@@ -329,7 +329,7 @@ export const T = {
       story_sub: "A simple idea: make sport more engaging by turning consistency into competition.",
       timeline: [
         { n: "01", year: "The Problem", title: "Fitness apps that track. Nothing more.", description: "Trackers, step counters, calorie logs: we kept seeing the same thing. Numbers nobody else sees, nothing at stake, nothing that makes Monday exciting." },
-        { n: "02", year: "The Insight", title: "Consistency is the real superpower", description: "The people who progress aren't the most talented — they're the ones who keep showing up. We wanted a game that rewards coming back every day, not one heroic session." },
+        { n: "02", year: "The Insight", title: "Consistency is the real superpower", description: "The people who progress aren't the most talented: they're the ones who keep showing up. We wanted a game that rewards coming back every day, not one heroic session." },
         { n: "03", year: "The Vision", title: "What if sport had stakes?", description: "What if your morning run could win you a duel tonight? What if your league standing reflected how hard you actually trained this week? We wanted to give everyday sport a real competitive layer." },
         { n: "04", year: "Today", title: "Attax launches", description: "Attax is now on iPhone and Android, and the first leagues are underway. We're just getting started." },
       ],
@@ -339,14 +339,14 @@ export const T = {
         { n: "01", title: "Competition", description: "Healthy competition is one of the most powerful forces in sport. It pushes you beyond what self-motivation alone can reach. We use it to make every training day feel like it counts." },
         { n: "02", title: "Consistency", description: "Showing up regularly beats training perfectly once in a while. That's why every day is a round: we reward the people who keep going, even on the hard days." },
         { n: "03", title: "Fairness", description: "Players at your level, and pts that come only from what your watch records. No manual entries. Everyone gets a real shot." },
-        { n: "04", title: "Community", description: "Sport is more fun when you share it. Your opponent isn't an enemy — they're the reason your workout mattered today. And with leagues between friends, your crew finally has a scoreboard." },
+        { n: "04", title: "Community", description: "Sport is more fun when you share it. Your opponent isn't an enemy: they're the reason your workout mattered today. And with leagues between friends, your crew finally has a scoreboard." },
       ],
       manifesto_label: "OUR BELIEF",
       manifesto_h2: "Sport deserves stakes.",
       manifesto_body: [
         "Most people exercise alone, tracking numbers only they can see. Progress is invisible. Competition is absent. The finish line doesn't feel real.",
         "We think that's the problem. We're wired for challenge. We push harder when there's something at stake, when our effort can be measured against someone else's.",
-        "Attax puts stakes back into everyday sport. Not prize money. Not medals. Just the simple satisfaction of knowing you trained harder than someone else today — and that it counted.",
+        "Attax puts stakes back into everyday sport. Not prize money. Not medals. Just the simple satisfaction of knowing you trained harder than someone else today, and that it counted.",
       ],
     },
     contact: {
@@ -380,7 +380,7 @@ export const T = {
       faq_h2: "Common questions",
       faq: [
         { q: "My pts stay at 0. What should I do?", a: "Check that your watch app shares your heart rate with Apple Health or Health Connect, and that Attax is allowed to read it. In the app, the watch check tells you exactly what's missing." },
-        { q: "Can I report a bug in the app?", a: "Absolutely. Write to contact@attax.app or use My account → Support in the app. Tell us your phone and watch model — screenshots always help." },
+        { q: "Can I report a bug in the app?", a: "Absolutely. Write to contact@attax.app or use My account → Support in the app. Tell us your phone and watch model: screenshots always help." },
         { q: "Where can I follow Attax?", a: "On Instagram and TikTok: @playattax. Follow us for news, behind the scenes and the best league moments." },
       ],
       community_label: "FIND US",
@@ -414,7 +414,7 @@ export const T = {
   },
 
   fr: {
-    banner: "Attax est disponible sur iPhone & Android — gratuit.",
+    banner: "Attax est disponible sur iPhone & Android, gratuitement.",
     banner_cta: "En savoir plus",
     nav: {
       home: "Accueil",
@@ -426,7 +426,7 @@ export const T = {
       h1: ["Sport is now", "a game."],
       kicker: ["Chaque jour", "un nouvel adversaire"],
       sports: "Course · Vélo · Muscu · Jeu · Marche",
-      subtitle: "Ton sport devient un combat : ta montre mesure, ton boxeur frappe.\nUn duel par jour contre un joueur de ta ligue — le round final se joue chaque soir à 21h30.",
+      subtitle: "Ton sport devient un combat : ta montre mesure, ton boxeur frappe.\nUn duel par jour contre un joueur de ta ligue, le round final se joue chaque soir à 21h30.",
       cta_ios: "Télécharger Attax",
       cta_secondary: "Comment ça marche",
       stats: [
@@ -519,7 +519,7 @@ export const T = {
       contact_link: "Contacte-nous",
       all_link: "Voir toute la FAQ",
       items: [
-        { q: "Ai-je besoin d'une montre connectée ?", a: "Oui. Il te faut un appareil qui mesure ta fréquence cardiaque — montre, bracelet ou ceinture cardio — synchronisé avec Apple Santé (iPhone) ou Health Connect (Android). Ton téléphone seul compte tes pas, mais tes séances sont mesurées par ta montre. Attax vérifie ta connexion avant ta première ligue." },
+        { q: "Ai-je besoin d'une montre connectée ?", a: "Oui. Il te faut un appareil qui mesure ta fréquence cardiaque (montre, bracelet ou ceinture cardio) synchronisé avec Apple Santé (iPhone) ou Health Connect (Android). Ton téléphone seul compte tes pas, mais tes séances sont mesurées par ta montre. Attax vérifie ta connexion avant ta première ligue." },
         { q: "Comment je gagne des pts ?", a: "Tes séances et tes pas, mesurés par ta montre, deviennent des pts. Plus tu bouges, plus tu marques, et c'est l'intensité qui paie, pas seulement le volume. Aucune saisie manuelle : tout vient d'Apple Santé ou de Health Connect." },
         { q: "Comment un match est-il tranché ?", a: "Un match compte 7 rounds : les 6 jours d'avant et aujourd'hui. Chaque jour est gagné par celui qui a marqué le plus de pts ce jour-là, et chaque round perdu coûte des PV. Les rounds passés se dévoilent de 10h à 17h30, le round final (2 PV) est en direct dès 19h. À 21h30, les cartes se révèlent et celui qui garde le plus de PV gagne. Jamais de match nul." },
         { q: "Vais-je affronter des joueurs de mon niveau ?", a: "Oui. Quelques questions à l'inscription fixent ton niveau de départ, et tu rejoins une ligue de joueurs de ton niveau. Ensuite, ce sont tes résultats qui parlent : ton rang te suit de ligue en ligue." },
@@ -543,7 +543,7 @@ export const T = {
       label: "LE FIL DE LA LIGUE",
       h2: ["Chaque soir,", "une nouvelle histoire."],
       items: [
-        { quote: "Julia a chuté aujourd'hui — la tête est à prendre.", name: "LE ROI A PLIÉ", role: "Fil de la ligue · après le verdict de 21h30", initials: "👑" },
+        { quote: "Julia a chuté aujourd'hui : la tête est à prendre.", name: "LE ROI A PLIÉ", role: "Fil de la ligue · après le verdict de 21h30", initials: "👑" },
         { quote: "Sam est injouable : 4 victoires de rang.", name: "EN FEU", role: "Fil de la ligue · après le verdict de 21h30", initials: "🔥" },
         { quote: "Tu dépasses Léo et t'empares de la 2e place.", name: "TU DOUBLES", role: "Fil de la ligue · après le verdict de 21h30", initials: "⚔️" },
       ],
@@ -595,13 +595,13 @@ export const T = {
     privacy: {
       label: "TES DONNÉES",
       title: "Tes données de santé restent les tiennes.",
-      body: "Attax lit uniquement tes séances, tes pas et ta fréquence cardiaque — il n'écrit jamais rien dans Apple Santé ou Health Connect. Tes données servent à ton jeu, et à rien d'autre. Et tu peux supprimer ton compte depuis l'app, à tout moment.",
+      body: "Attax lit uniquement tes séances, tes pas et ta fréquence cardiaque : il n'écrit jamais rien dans Apple Santé ou Health Connect. Tes données servent à ton jeu, et à rien d'autre. Et tu peux supprimer ton compte depuis l'app, à tout moment.",
       points: ["Accès en lecture seule", "Jamais vendues, zéro pub", "Suppression à tout moment, dans l'app"],
     },
     download: {
       hero_label: "GRATUIT",
       h1: ["Télécharge Attax.", "Commence le combat."],
-      subtitle: "Transforme tes séances en duels quotidiens. Sur iPhone et Android — gratuit à télécharger, gratuit à jouer.",
+      subtitle: "Transforme tes séances en duels quotidiens. Sur iPhone et Android : gratuit à télécharger, gratuit à jouer.",
       cta_ios: "Télécharger sur l'App Store",
       cta_android: "Disponible sur Google Play",
       features: [
@@ -614,7 +614,7 @@ export const T = {
       ],
       platforms_label: "COMPATIBILITÉ",
       platforms_h2: "Fonctionne avec ta montre.",
-      platforms_sub: "Attax a besoin d'un appareil qui mesure ta fréquence cardiaque — Apple Watch, Garmin, Amazfit, COROS, Withings, Oura et d'autres — synchronisé avec Apple Santé ou Health Connect. Ton téléphone seul compte tes pas.",
+      platforms_sub: "Attax a besoin d'un appareil qui mesure ta fréquence cardiaque (Apple Watch, Garmin, Amazfit, COROS, Withings, Oura et d'autres) synchronisé avec Apple Santé ou Health Connect. Ton téléphone seul compte tes pas.",
       ios_title: "iPhone",
       ios_more: "Attax sur iPhone",
       android_more: "Attax sur Android",
@@ -674,7 +674,7 @@ export const T = {
         { label: "Jeu Health Connect", href: "/health-connect-fitness-game" },
       ],
       col_resources: "Ressources",
-      copyright: "© 2026 ATTAX SAS — Sport is now a game.",
+      copyright: "© 2026 ATTAX SAS. Sport is now a game.",
     },
     discover: {
       hero_label: "DÉCOUVRIR ATTAX",
@@ -706,12 +706,12 @@ export const T = {
       duel_h2: ["Chaque soir,", "un vainqueur."],
       duel_body: [
         "Chaque match se joue sur ce que chacun a vraiment fait : de vraies séances, de vrais pas.",
-        "Pas de saisie manuelle — juste les données de ta montre et la carte que tu as choisi de jouer.",
+        "Pas de saisie manuelle : juste les données de ta montre et la carte que tu as choisi de jouer.",
         "À 21h30, le Soir de combat : entrée des boxeurs, rounds rejoués, cartes retournées, puis le round final décide. Demain, un nouvel adversaire.",
       ],
       schedule_label: "LE RYTHME QUOTIDIEN",
       schedule_h2: ["La régularité crée", "l'élan."],
-      schedule_sub: "Un duel par jour transforme ton activité en habitude — et ton habitude en victoires.",
+      schedule_sub: "Un duel par jour transforme ton activité en habitude, et ton habitude en victoires.",
       schedule_items: [
         { n: "10h00", title: "Ouverture du match", description: "Découvre ton adversaire du jour. Les 6 rounds passés se dévoilent un par un jusqu'à 17h30. Choisis ta carte parmi les 3 tirées avant 13h." },
         { n: "19h00", title: "Round final", description: "Le round du jour passe en direct. Il retire 2 PV. Tout ce qui est synchronisé avant 21h30 compte." },
@@ -721,7 +721,7 @@ export const T = {
       philosophy_h2: ["Gagner, ce n'est pas", "être le meilleur."],
       philosophy_body: [
         "Attax n'est pas fait pour les athlètes d'élite. Il est fait pour tous ceux qui veulent que leur sport compte, chaque jour.",
-        "Tu affrontes des joueurs de ton niveau, et chaque effort compte — de la marche rapide à la séance à fond.",
+        "Tu affrontes des joueurs de ton niveau, et chaque effort compte : de la marche rapide à la séance à fond.",
         "Chaque jour est un round : être là chaque jour bat une grosse séance par semaine. C'est voulu : ce qu'il y a de plus puissant dans le sport, c'est l'habitude de revenir.",
       ],
     },
@@ -743,7 +743,7 @@ export const T = {
       story_sub: "Une idée simple : rendre le sport plus prenant en transformant la régularité en compétition.",
       timeline: [
         { n: "01", year: "Le problème", title: "Des applis qui mesurent. Rien de plus.", description: "Trackers, podomètres, journaux de calories : on retrouvait toujours la même chose. Des chiffres que personne d'autre ne voit, aucun enjeu, rien qui rende le lundi excitant." },
-        { n: "02", year: "L'intuition", title: "La régularité est le vrai super-pouvoir", description: "Ceux qui progressent ne sont pas les plus doués — ce sont ceux qui reviennent. Nous voulions un jeu qui récompense le fait d'être là chaque jour, pas une séance héroïque." },
+        { n: "02", year: "L'intuition", title: "La régularité est le vrai super-pouvoir", description: "Ceux qui progressent ne sont pas les plus doués : ce sont ceux qui reviennent. Nous voulions un jeu qui récompense le fait d'être là chaque jour, pas une séance héroïque." },
         { n: "03", year: "La vision", title: "Et si le sport avait des enjeux ?", description: "Et si ton footing du matin pouvait te faire gagner un duel le soir ? Et si ta place au classement reflétait ton entraînement réel de la semaine ? Nous voulions donner au sport du quotidien une vraie dimension compétitive." },
         { n: "04", year: "Aujourd'hui", title: "Attax est lancé", description: "Attax est disponible sur iPhone et Android, et les premières ligues sont lancées. Ce n'est que le début." },
       ],
@@ -753,14 +753,14 @@ export const T = {
         { n: "01", title: "Compétition", description: "La compétition saine est l'une des forces les plus puissantes du sport. Elle pousse au-delà de ce que la motivation seule permet. Nous l'utilisons pour que chaque jour d'entraînement compte vraiment." },
         { n: "02", title: "Régularité", description: "Être là souvent bat s'entraîner parfaitement de temps en temps. C'est pour ça que chaque jour est un round : on récompense ceux qui continuent, même les jours difficiles." },
         { n: "03", title: "Équité", description: "Des joueurs de ton niveau, et des pts qui viennent uniquement de ce que ta montre enregistre. Pas de saisie à la main. Tout le monde a sa chance." },
-        { n: "04", title: "Communauté", description: "Le sport est plus fun quand on le partage. Ton adversaire n'est pas un ennemi — c'est la raison pour laquelle ta séance a compté aujourd'hui. Et avec les ligues entre amis, ta bande a enfin son tableau des scores." },
+        { n: "04", title: "Communauté", description: "Le sport est plus fun quand on le partage. Ton adversaire n'est pas un ennemi : c'est la raison pour laquelle ta séance a compté aujourd'hui. Et avec les ligues entre amis, ta bande a enfin son tableau des scores." },
       ],
       manifesto_label: "NOTRE CONVICTION",
       manifesto_h2: "Le sport mérite des enjeux.",
       manifesto_body: [
         "La plupart des gens s'entraînent seuls, en suivant des chiffres qu'ils sont les seuls à voir. Le progrès est invisible. La compétition est absente. La ligne d'arrivée ne semble pas réelle.",
         "Nous pensons que c'est là le problème. Nous sommes faits pour le défi. On se dépasse quand il y a un enjeu, quand notre effort peut se mesurer à celui de quelqu'un d'autre.",
-        "Attax remet de l'enjeu dans le sport du quotidien. Pas d'argent. Pas de médailles. Juste la satisfaction simple de savoir que tu t'es entraîné plus dur que quelqu'un d'autre aujourd'hui — et que ça a compté.",
+        "Attax remet de l'enjeu dans le sport du quotidien. Pas d'argent. Pas de médailles. Juste la satisfaction simple de savoir que tu t'es entraîné plus dur que quelqu'un d'autre aujourd'hui, et que ça a compté.",
       ],
     },
     contact: {
@@ -794,7 +794,7 @@ export const T = {
       faq_h2: "Questions fréquentes",
       faq: [
         { q: "Mes pts restent à 0. Que faire ?", a: "Vérifie que l'appli de ta montre partage ta fréquence cardiaque avec Apple Santé ou Health Connect, et qu'Attax a le droit de la lire. Dans l'app, la vérification de la montre te dit exactement ce qui manque." },
-        { q: "Puis-je signaler un bug ?", a: "Bien sûr. Écris à contact@attax.app ou passe par Mon compte → Support dans l'app. Indique ton modèle de téléphone et de montre — les captures d'écran aident toujours." },
+        { q: "Puis-je signaler un bug ?", a: "Bien sûr. Écris à contact@attax.app ou passe par Mon compte → Support dans l'app. Indique ton modèle de téléphone et de montre : les captures d'écran aident toujours." },
         { q: "Où suivre Attax ?", a: "Sur Instagram et TikTok : @playattax. Suis-nous pour les nouveautés, les coulisses et les meilleurs moments des ligues." },
       ],
       community_label: "NOUS TROUVER",
@@ -832,14 +832,14 @@ export const NOT_FOUND = {
   en: {
     code: "404",
     title: "Wrong arena.",
-    body: "This page doesn't exist. But the competition is still going — head back and keep moving.",
+    body: "This page doesn't exist. But the competition is still going: head back and keep moving.",
     cta_home: "Back to home",
     cta_discover: "Discover Attax",
   },
   fr: {
     code: "404",
     title: "Mauvaise arène.",
-    body: "Cette page n'existe pas. Mais la compétition continue — reviens et garde le rythme.",
+    body: "Cette page n'existe pas. Mais la compétition continue : reviens et garde le rythme.",
     cta_home: "Retour à l'accueil",
     cta_discover: "Découvrir Attax",
   },

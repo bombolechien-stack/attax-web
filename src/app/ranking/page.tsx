@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Global Ranking — Attax",
-  description: "The Attax global ranking — see where athletes stand worldwide. Coming soon.",
+  title: "Attax global ranking",
+  description: "The Attax global ranking: see where athletes stand worldwide. Coming soon.",
 };
 
 export default function RankingPage() {

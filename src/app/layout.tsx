@@ -47,7 +47,7 @@ const BASE_URL = "https://attax.app";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Attax — Sport is now a game.",
+    default: "Attax: Sport is now a game.",
     template: "%s | Attax",
   },
   description:
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Attax",
-    title: "Attax — Sport is now a game.",
+    title: "Attax: Sport is now a game.",
     description:
       "Attax turns your real workouts into daily duels: heart rate and steps become points, leagues of 8, strategy cards and a verdict every night at 9:30 PM. Free on iPhone & Android.",
     url: BASE_URL,
@@ -83,7 +83,7 @@ export const metadata: Metadata = {
         url: "/images/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Attax — Sport is now a game.",
+        alt: "Attax: Sport is now a game.",
       },
     ],
   },
@@ -91,7 +91,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@playattax",
     creator: "@playattax",
-    title: "Attax — Sport is now a game.",
+    title: "Attax: Sport is now a game.",
     description:
       "Attax turns your real workouts into daily duels: heart rate and steps become points, leagues of 8, strategy cards and a verdict every night at 9:30 PM. Free on iPhone & Android.",
     images: ["/images/og-image.jpg"],

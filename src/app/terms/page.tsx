@@ -33,7 +33,7 @@ function ContentEn() {
 
         <div style={SECTION}>
           <h2 style={H2}>4. User Accounts</h2>
-          <p style={P}>You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account. You can sign up with an email address and password, or with Apple or Google. You agree to provide accurate information — including your year of birth, which is used to adapt the game to you and keep it fair — and to keep it up to date.</p>
+          <p style={P}>You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account. You can sign up with an email address and password, or with Apple or Google. You agree to provide accurate information (including your year of birth, which is used to adapt the game to you and keep it fair) and to keep it up to date.</p>
           <p style={P}>You can delete your account at any time from the App (profile photo on the Home screen → My account → Edit profile → Delete my account) or by emailing contact@attax.app (see our <Link href="/privacy#delete-account" style={{ color: "#0d0d0d", fontWeight: 600 }}>Privacy Policy</Link>). Deletion is permanent.</p>
         </div>
 
@@ -103,7 +103,7 @@ function ContentFr() {
 
         <div style={SECTION}>
           <h2 style={H2}>4. Comptes</h2>
-          <p style={P}>Tu es responsable de la confidentialité de tes identifiants et de toute activité réalisée avec ton compte. Tu peux t'inscrire avec une adresse e-mail et un mot de passe, ou avec Apple ou Google. Tu t'engages à fournir des informations exactes — y compris ton année de naissance, qui sert à adapter le jeu à toi et à le garder équitable — et à les tenir à jour.</p>
+          <p style={P}>Tu es responsable de la confidentialité de tes identifiants et de toute activité réalisée avec ton compte. Tu peux t'inscrire avec une adresse e-mail et un mot de passe, ou avec Apple ou Google. Tu t'engages à fournir des informations exactes (y compris ton année de naissance, qui sert à adapter le jeu à toi et à le garder équitable) et à les tenir à jour.</p>
           <p style={P}>Tu peux supprimer ton compte à tout moment depuis l'App (photo de profil sur l'Accueil → Mon compte → Éditer le profil → Supprimer mon compte) ou en écrivant à contact@attax.app (voir notre <Link href="/privacy#delete-account" style={{ color: "#0d0d0d", fontWeight: 600 }}>politique de confidentialité</Link>). La suppression est définitive.</p>
         </div>
 

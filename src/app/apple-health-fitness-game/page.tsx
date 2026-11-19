@@ -149,7 +149,7 @@ const P: Record<Lang, {
       { q: "Do I need an Apple Watch?", a: "You need a device that measures your heart rate and syncs it to Apple Health: an Apple Watch, or a Garmin, Amazfit, COROS or Withings watch, among others. Fitbit doesn't sync with Apple Health. On Apple Watch models before Series 12, start a workout in the Workout app so your sessions count in full." },
       { q: "Is Attax free?", a: "Yes. Attax is free to download and free to play, with no ads and no in-app purchases." },
       { q: "Is Attax available on iPhone?", a: "Yes, on iPhone. There is no iPad version and no app to install on the Apple Watch: your watch just needs to sync with Apple Health." },
-      { q: "Does Attax automatically sync activity?", a: "Yes. Attax reads Apple Health every time you open the app — no manual entry. On match day, everything synced before 9:30 PM counts." },
+      { q: "Does Attax automatically sync activity?", a: "Yes. Attax reads Apple Health every time you open the app. No manual entry. On match day, everything synced before 9:30 PM counts." },
     ],
     finalH2: "Turn Apple Health into a game.",
     finalBody: "Turn your Apple Health activity into daily boxing duels. Download Attax and start your first league.",
@@ -224,7 +224,7 @@ const P: Record<Lang, {
       { q: "Ai-je besoin d'une Apple Watch ?", a: "Il te faut un appareil qui mesure ta fréquence cardiaque et l'envoie à Apple Santé : une Apple Watch, ou une montre Garmin, Amazfit, COROS ou Withings, entre autres. Fitbit ne se synchronise pas avec Apple Santé. Sur les Apple Watch antérieures à la Series 12, lance un exercice dans l'app Exercice pour que tes séances comptent entièrement." },
       { q: "Attax est-il gratuit ?", a: "Oui. Attax est gratuit à télécharger et à jouer, sans publicité ni achat intégré." },
       { q: "Attax est-il disponible sur iPhone ?", a: "Oui, sur iPhone. Il n'y a pas de version iPad ni d'app à installer sur l'Apple Watch : ta montre doit simplement se synchroniser avec Apple Santé." },
-      { q: "La synchro est-elle automatique ?", a: "Oui. Attax lit Apple Santé à chaque ouverture de l'app — aucune saisie manuelle. Le jour du match, tout ce qui est synchronisé avant 21h30 compte." },
+      { q: "La synchro est-elle automatique ?", a: "Oui. Attax lit Apple Santé à chaque ouverture de l'app. Aucune saisie manuelle. Le jour du match, tout ce qui est synchronisé avant 21h30 compte." },
     ],
     finalH2: "Transforme Apple Santé en jeu.",
     finalBody: "Transforme ton activité Apple Santé en duels de boxe quotidiens. Télécharge Attax et lance ta première ligue.",
@@ -306,8 +306,8 @@ export default function AppleHealthFitnessGame() {
             <div style={{ position: "absolute", bottom: "2.5rem", left: "2.75rem", right: "2.75rem", zIndex: 1 }}>
               <p style={{ fontSize: "clamp(1.25rem, 2.2vw, 1.875rem)", fontWeight: 700, color: "#ffffff", letterSpacing: "-0.03em", lineHeight: 1.3, maxWidth: "580px", margin: 0 }}>
                 {lang === "en"
-                  ? "“Every run, every ride, every walk — now part of your game.”"
-                  : "« Chaque course, chaque sortie vélo, chaque marche — fait maintenant partie de ton jeu. »"}
+                  ? "“Every run, every ride, every walk: now part of your game.”"
+                  : "« Chaque course, chaque sortie vélo, chaque marche : fait maintenant partie de ton jeu. »"}
               </p>
             </div>
           </div>

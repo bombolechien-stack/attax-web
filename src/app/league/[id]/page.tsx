@@ -6,7 +6,7 @@ type Props = { params: Promise<{ id: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   return {
-    title: `League #${id} — Attax`,
+    title: `Attax league #${id}`,
     description: `Join or view this Attax league: participants, scores, and rankings.`,
   };
 }

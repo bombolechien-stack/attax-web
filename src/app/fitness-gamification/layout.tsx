@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://attax.app/fitness-gamification" },
   openGraph: {
     title: "Fitness Gamification Explained | Attax",
-    description: "Why games succeed where motivation fails — and how Attax applies it to fitness.",
+    description: "Why games succeed where motivation fails, and how Attax applies it to fitness.",
     url: "https://attax.app/fitness-gamification",
   },
 };
