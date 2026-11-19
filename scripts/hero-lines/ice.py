@@ -1,9 +1,10 @@
-"""Variante SOMBRE de la vidéo du hero (18/11) : mêmes scanlines que hero-lines.mp4 (non retouchées),
-seulement la couleur change — fond noir, lignes bleu clair lumineuses.
+"""Variante « bleu glacier » de la vidéo du hero (19/11) : mêmes scanlines que hero-lines.mp4 (non retouchées),
+seulement la couleur change — fond noir, lignes #C9D5F0, le bleu glacier des athlètes des héros des autres pages
+(ScanAthlete) et des titres « pins ». Le site la pose en « screen » sur la carte #0d0d0d.
 Intensité d'une ligne = 1 − min(R, G, B) de l'image d'origine (0 sur le blanc, ~1 sur le bleu).
 
-Sortie : public/videos/hero-lines-dark.mp4 + hero-lines-dark-poster.jpg
-Usage : python scripts/hero-lines/dark.py
+Sortie : public/videos/hero-lines-ice.mp4 + hero-lines-ice-poster.jpg
+Usage : python scripts/hero-lines/ice.py
 """
 import subprocess
 from pathlib import Path
@@ -13,8 +14,8 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[2]
 V = ROOT / "public" / "videos"
-COL = np.array([0.52, 0.70, 1.0], np.float32) * 1.2   # bleu lumineux
-BG = np.zeros(3, np.float32)                           # noir : la couche est posée en « screen » sur le dégradé
+COL = np.array([0xC9, 0xD5, 0xF0], np.float32) / 255  # bleu glacier #C9D5F0
+BG = np.zeros(3, np.float32)                           # noir : posée en « screen » sur la carte #0d0d0d
 
 
 def recolor(rgb: np.ndarray) -> np.ndarray:
@@ -33,7 +34,7 @@ def main():
                           "-of", "csv=p=0", str(src)], capture_output=True, text=True).stdout.strip()
     enc = subprocess.Popen(["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{w}x{h}",
                             "-r", fps, "-i", "-", "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "24", "-preset", "slow",
-                            "-movflags", "+faststart", "-an", str(V / "hero-lines-dark.mp4")], stdin=subprocess.PIPE)
+                            "-movflags", "+faststart", "-an", str(V / "hero-lines-ice.mp4")], stdin=subprocess.PIPE)
     n = w * h * 3
     while True:
         buf = dec.stdout.read(n)
@@ -43,8 +44,8 @@ def main():
     enc.stdin.close()
     enc.wait()
     Image.fromarray(recolor(np.asarray(Image.open(V / "hero-lines-poster.jpg").convert("RGB")))).save(
-        V / "hero-lines-dark-poster.jpg", quality=86)
-    print((V / "hero-lines-dark.mp4").stat().st_size // 1024, "Ko")
+        V / "hero-lines-ice-poster.jpg", quality=86)
+    print((V / "hero-lines-ice.mp4").stat().st_size // 1024, "Ko")
 
 
 if __name__ == "__main__":
