@@ -73,7 +73,11 @@ def draw_tab(img):
 
 LIVE_CROP = 1000   # 20/11 : jusqu'à « AT STAKE / ROUND STATUS », comme l'écran réel (pas de barre d'onglets pendant la révélation)
 _OLD_CROP = 878                                     # match-live 810 × 1110 : jusqu'à la ligne de commentaire (« JOHNNY unleashes a flurry. »)
-lw, lh = SW, round(LIVE_CROP * SW / 810)
+# 20/11 : une vraie marge en bas (le bas arrondi de l'écran ne mord plus « At stake / Round status » ni les « + ») :
+# le combat est mis à l'échelle pour finir BOTTOM_GAP px au-dessus du bas de l'écran, centré.
+BOTTOM_GAP = 230
+lh = SH - BOTTOM_GAP - LIVE_Y; lw = round(lh * 810 / LIVE_CROP)
+LIVE_X = (SW - lw) // 2
 dec = subprocess.Popen(["ffmpeg", "-loglevel", "error", "-i", str(LIVE), "-vf", f"crop=810:{LIVE_CROP}:0:0,scale={lw}:{lh}",
                         "-f", "rawvideo", "-pix_fmt", "rgb24", "-"], stdout=subprocess.PIPE)
 enc = subprocess.Popen(["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{OUT_W}x{OUT_H}",
@@ -88,7 +92,7 @@ while True:
     img = base.copy()
     live = np.frombuffer(buf, np.uint8).reshape(lh, lw, 3)
     h = min(lh, SH - LIVE_Y)
-    img[LIVE_Y:LIVE_Y + h] = live[:h]
+    img[LIVE_Y:LIVE_Y + h, LIVE_X:LIVE_X + lw] = live[:h]
     # 20/11 (gui : « le bas est encore cata ») : plus de barre d'onglets, l'écran du Soir de combat est plein écran dans l'app
     out = Image.fromarray(img).resize((OUT_W, OUT_H), Image.LANCZOS)
     if first is None:
