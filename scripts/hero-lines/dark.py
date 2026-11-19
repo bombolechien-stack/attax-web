@@ -13,13 +13,13 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[2]
 V = ROOT / "public" / "videos"
-COL = np.array([0.46, 0.64, 1.0], np.float32) * 1.1   # bleu lumineux
-BG = np.array([5, 7, 11], np.float32) / 255             # = fond du hero (#05070B)
+COL = np.array([0.52, 0.70, 1.0], np.float32) * 1.2   # bleu lumineux
+BG = np.zeros(3, np.float32)                           # noir : la couche est posée en « screen » sur le dégradé
 
 
 def recolor(rgb: np.ndarray) -> np.ndarray:
     a = rgb.astype(np.float32) / 255
-    ink = 1 - a.min(axis=2, keepdims=True)
+    ink = (1 - a.min(axis=2, keepdims=True)) ** 0.75   # renforce les lignes fines (petits écrans)
     out = BG * (1 - ink) + ink * COL
     return (np.clip(out, 0, 1) * 255).astype(np.uint8)
 

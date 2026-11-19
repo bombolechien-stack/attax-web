@@ -626,27 +626,46 @@ html { overflow-x: clip; }
 .pin-mono { font-family: var(--font-mono), ui-monospace, monospace; font-size: 0.8125rem; font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; }
 .pin-mono b { font-weight: 500; color: #ffffff; }
 
-/* Héros de l'accueil : vidéo en scanlines */
+/* Héros de l'accueil : vidéo en scanlines sur un dégradé clair (côté texte) → bleu nuit (côté sportifs).
+   Le fond et les masques des deux couches vidéo partagent le même angle et la même zone de fondu. */
+.home-hero-bg { background: linear-gradient(100deg, #EBEFF3 0%, #E4E9F0 44%, #33405C 55%, #121B30 66%, #0C1426 100%); }
 .home-hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 62% 70%; z-index: 0; }
+.home-hero-video-light { mix-blend-mode: multiply;
+  -webkit-mask-image: linear-gradient(100deg, #000 0%, #000 44%, transparent 66%);
+          mask-image: linear-gradient(100deg, #000 0%, #000 44%, transparent 66%); }
+.home-hero-video-dark { mix-blend-mode: screen;
+  -webkit-mask-image: linear-gradient(100deg, transparent 0%, transparent 44%, #000 66%);
+          mask-image: linear-gradient(100deg, transparent 0%, transparent 44%, #000 66%); }
+.home-hero-veil { background: linear-gradient(to right, rgba(235,239,243,0.85) 0%, rgba(235,239,243,0.55) 28%, rgba(235,239,243,0) 46%); }
 .home-hero-copy { position: relative; z-index: 5; flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0 clamp(2rem, 5vw, 5rem); max-width: 56%; }
-.home-hero-foot { position: relative; z-index: 5; display: flex; justify-content: space-between; gap: 1rem; padding: 0 clamp(2rem, 5vw, 5rem) 2rem; color: rgba(255,255,255,0.32); }
+.home-hero-foot { position: relative; z-index: 5; display: flex; justify-content: space-between; gap: 1rem; padding: 0 clamp(2rem, 5vw, 5rem) 2rem; }
 @media (max-width: 1100px) {
-  /* Mobile et tablette : la vidéo reste un FOND plein cadre ; titre et texte posés par-dessus en bas,
-     sur un voile clair qui monte du bas (lisible), les sportifs restent visibles au-dessus. */
+  /* Mobile et tablette : sportifs en haut sur la partie sombre, titre et texte en bas sur la partie claire. */
   .home-hero { min-height: calc(100svh - 24px) !important; }
+  /* Les sportifs tiennent entièrement dans le haut sombre : seule la couche lumineuse est montrée
+     (les masques sont relatifs à la boîte de la vidéo, qui ne couvre plus tout le hero ici). */
+  .home-hero-video-light { display: none; }
+  .home-hero-video-dark { -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 78%, transparent 100%);
+                                  mask-image: linear-gradient(180deg, #000 0%, #000 78%, transparent 100%); }
+  .home-hero-bg { background: linear-gradient(180deg, #0C1426 0%, #121B30 36%, #33405C 47%, #E4E9F0 58%, #EBEFF3 100%); }
   .home-hero-video { top: 48px; bottom: auto; height: calc(80% - 48px); object-position: 54% 62%; }
-  .home-hero-veil { background: linear-gradient(to bottom, rgba(5,7,11,0) 0%, rgba(5,7,11,0) 42%, rgba(5,7,11,0.55) 56%, rgba(5,7,11,0.86) 70%, rgba(5,7,11,0.94) 100%) !important; }
+  .home-hero-veil { background: linear-gradient(to bottom, rgba(235,239,243,0) 0%, rgba(235,239,243,0) 55%, rgba(235,239,243,0.6) 66%, rgba(235,239,243,0.9) 80%, rgba(235,239,243,0.95) 100%) !important; }
   .home-hero-copy { max-width: 100%; justify-content: flex-end; padding-bottom: 1.25rem; }
   .home-hero-copy > p:first-child { margin-bottom: 1rem !important; }
   .hero-stats { display: none !important; }
+  .home-hero-foot .home-hero-sports { display: none; }
 }
 @media (min-width: 861px) and (max-width: 1100px) {
   .home-hero-copy { max-width: 640px; }
-  .home-hero-video { top: 40px; height: calc(90% - 40px); object-position: 58% 60%; }
+  .home-hero-video { top: 56px; height: calc(50% - 56px); object-position: 58% 60%; }
+  .home-hero-bg { background: linear-gradient(180deg, #0C1426 0%, #121B30 42%, #33405C 48%, #E4E9F0 54%, #EBEFF3 100%); }
 }
 @media (max-width: 860px) {
   .home-hero-foot .home-hero-sports { display: none; }
-  .home-hero-veil { background: linear-gradient(to bottom, rgba(5,7,11,0) 0%, rgba(5,7,11,0) 34%, rgba(5,7,11,0.6) 47%, rgba(5,7,11,0.88) 62%, rgba(5,7,11,0.94) 100%) !important; }
+  /* Téléphone : les sportifs dans le haut sombre, le texte entier sur la partie claire. */
+  .home-hero-bg { background: linear-gradient(180deg, #0C1426 0%, #121B30 32%, #33405C 39%, #E4E9F0 46%, #EBEFF3 100%); }
+  .home-hero-video { top: 44px; height: calc(40% - 44px); object-position: 56% 60%; }
+  .home-hero-veil { display: none; }
 }
 
 /* ── Novembre : nouvelles sections de l'accueil ── */

@@ -11,7 +11,7 @@ import FAQ from "@/components/home/FAQ";
 import { T } from "@/lib/translations";
 
 export const metadata: Metadata = {
-  title: "Attax — Your workouts become a fight.",
+  title: "Attax — Sport is now a game.",
   description:
     "Attax turns your real workouts into daily boxing duels: leagues of 8, 7 rounds per match, 12 tactical cards and Fight Night every evening at 9:30 PM. Free on iPhone & Android.",
   alternates: { canonical: "https://attax.app" },

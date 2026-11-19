@@ -9,10 +9,10 @@ export const T = {
       contact: "Contact",
     },
     hero: {
-      h1: ["Your workouts", "become a fight."],
+      h1: ["Sport is now", "a game."],
       kicker: ["Every day", "a new opponent"],
       sports: "Run · Ride · Lift · Play · Walk",
-      subtitle: "Your watch measures. Your boxer hits.\nA duel every day against a player from your league — the final round is fought every night at 9:30 PM.",
+      subtitle: "Your workouts become a fight: your watch measures, your boxer hits.\nA duel every day against a player from your league — the final round is fought every night at 9:30 PM.",
       cta_ios: "Download Attax",
       cta_secondary: "How It Works",
       stats: [
@@ -420,10 +420,10 @@ export const T = {
       contact: "Contact",
     },
     hero: {
-      h1: ["Ton sport", "devient un combat."],
+      h1: ["Sport is now", "a game."],
       kicker: ["Chaque jour", "un nouvel adversaire"],
       sports: "Course · Vélo · Muscu · Jeu · Marche",
-      subtitle: "Ta montre mesure. Ton boxeur frappe.\nUn duel par jour contre un joueur de ta ligue — le round final se joue chaque soir à 21h30.",
+      subtitle: "Ton sport devient un combat : ta montre mesure, ton boxeur frappe.\nUn duel par jour contre un joueur de ta ligue — le round final se joue chaque soir à 21h30.",
       cta_ios: "Télécharger Attax",
       cta_secondary: "Comment ça marche",
       stats: [

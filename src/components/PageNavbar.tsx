@@ -17,8 +17,10 @@ const GooglePlayIcon = () => (
   </svg>
 );
 
-/** `light` : variante sur fond clair (hero de l'accueil) — textes encre, logo noir. */
-export default function PageNavbar({ light = false }: { light?: boolean } = {}) {
+/** `light` : variante sur fond clair (hero de l'accueil) — textes encre, logo noir.
+ *  `rightDark` : la partie droite (langue, boutons) posée sur un fond sombre (hero en dégradé, desktop). */
+export default function PageNavbar({ light = false, rightDark = false }: { light?: boolean; rightDark?: boolean } = {}) {
+  const rl = light && !rightDark;
   const t = useT();
   const { lang } = useLang();
   const nav = t.nav;
@@ -78,12 +80,12 @@ export default function PageNavbar({ light = false }: { light?: boolean } = {}) 
         {/* Right: desktop lang + CTAs / mobile burger */}
         <div style={{ flex: 1, display: "flex", justifyContent: "flex-end", alignItems: "center", gap: "0.75rem" }}>
           <div className="nav-page-right" style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-            <LangSwitcher light={light} />
+            <LangSwitcher light={rl} />
             <div className="nav-page-ctas" style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-              <a href="/download/ios" style={{ display: "inline-flex", alignItems: "center", gap: "6px", backgroundColor: light ? "#0B1116" : "#ffffff", color: light ? "#ffffff" : "#0d0d0d", fontWeight: 700, fontSize: "0.75rem", padding: "7px 14px", borderRadius: "999px", textDecoration: "none", whiteSpace: "nowrap" }}>
+              <a href="/download/ios" style={{ display: "inline-flex", alignItems: "center", gap: "6px", backgroundColor: rl ? "#0B1116" : "#ffffff", color: rl ? "#ffffff" : "#0d0d0d", fontWeight: 700, fontSize: "0.75rem", padding: "7px 14px", borderRadius: "999px", textDecoration: "none", whiteSpace: "nowrap" }}>
                 <AppleIcon /> iOS
               </a>
-              <a href="/download/android" style={{ display: "inline-flex", alignItems: "center", gap: "6px", backgroundColor: light ? "rgba(255,255,255,0.6)" : "rgba(255,255,255,0.1)", color: light ? "#0B1116" : "rgba(255,255,255,0.85)", fontWeight: 700, fontSize: "0.75rem", padding: "7px 14px", borderRadius: "999px", textDecoration: "none", border: light ? "1px solid rgba(11,17,22,0.12)" : "1px solid rgba(255,255,255,0.15)", whiteSpace: "nowrap" }}>
+              <a href="/download/android" style={{ display: "inline-flex", alignItems: "center", gap: "6px", backgroundColor: rl ? "rgba(255,255,255,0.6)" : "rgba(255,255,255,0.1)", color: rl ? "#0B1116" : "rgba(255,255,255,0.85)", fontWeight: 700, fontSize: "0.75rem", padding: "7px 14px", borderRadius: "999px", textDecoration: "none", border: rl ? "1px solid rgba(11,17,22,0.12)" : "1px solid rgba(255,255,255,0.15)", whiteSpace: "nowrap" }}>
                 <GooglePlayIcon /> Android
               </a>
             </div>
