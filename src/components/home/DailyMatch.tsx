@@ -1,94 +1,103 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import Image from "next/image";
 import { useLang, useT } from "@/lib/i18n";
 import { useInView, fadeUp, clipReveal, slideRight } from "@/hooks/useInView";
-import AppScanlines from "./AppScanlines";
+import PLAN from "./matchFight.json";
 
-// « 7 jours. 7 rounds. » = la page Match de l'app (app/(tabs)/match.tsx), reproduite avec ses vrais éléments :
-// barres de vie (components/match/LifeBar.tsx : 7 fractions fines, bleu depuis la gauche pour toi, rouge depuis la
-// droite pour lui, les fractions en jeu ce soir respirent), frise TIMELINE et cartes de round
-// (components/v3/RoundsTimeline.tsx : gagné = bleu à scanlines blanches, perdu = rouge, nul = gris, round final = noir).
-// Exemple cohérent avec les règles (docs/regles/01-match.md) : chacun part de 7 PV, round passé perdu = −1 PV ;
-// avant le final : toi 4 PV, Sophie 4 PV ; le final vaut 2 PV ; K.O. seulement à 0 PV ; jamais de nul.
-// Les rounds se dévoilent un par un comme sur la page Match (frise, carte, PV qui tombe) et, en fond, les deux boxeurs
-// de l'app échangent des coups (public/videos/match-boxers.*, rendu par scripts/fight-night-video/boxers-bg.mjs).
+// « 7 jours. 7 rounds. » = l'écran Match de l'app pendant le combat (app/(tabs)/match.tsx + révélation de 21h30,
+// captures _captures_app/14_*, 19b_*, 19c_*) : en haut les avatars, le round et les barres de vie (components/match/
+// HealthBars.tsx : capsule chromée, dégradé du bord vers le centre, coup jaune puis barre noire, 7 tirets), l'écart du
+// round ; au centre les deux boxeurs de l'app en très gros plan (bleu à gauche, rouge à droite) ; en bas les pts de
+// chacun, l'enjeu et l'état du round. Les rounds se jouent un par un au rythme des coups : la vidéo
+// (public/videos/match-fight-*, rendue par scripts/fight-night-video/boxers-match.mjs avec le moteur de l'app) et la page
+// partagent la même chorégraphie (matchFight.json) ; à l'impact du gagnant, le perdant perd 1 PV (2 au round final).
+// Chacun part de 7 PV ; avant le final 4 PV partout ; le final se gagne 4 PV à 2 ; K.O. seulement à 0 PV ; jamais de nul.
 
-const BLUE = "#0443FD", RED = "#EC0420", INK = "#0B1116", SUB = "#6B7280", MUTED = "#94A3B8", EMPTY = "#E2E6EC";
+type Round = { winner: "Y" | "O"; strike: string; feint: string; start: number; at: number; impact: number; y: number; o: number; final?: boolean };
+const ROUNDS = PLAN.rounds as Round[];
+const DUR = PLAN.duration, VERDICT = PLAN.verdictAt, HP0 = 7;
+const BLUE = "#0443FD", RED = "#EC0420", INK = "#0B1116", SUB = "#6B7280", MUTED = "#94A3B8";
 const FONT = "var(--font-manrope), var(--font-jakarta), sans-serif";
-const LIFE_MAX = 7;
-
-type Res = "Y" | "O";
-const ROUNDS: { res: Res; y: number; o: number }[] = [
-  { res: "Y", y: 486, o: 312 },
-  { res: "O", y: 210, o: 455 },
-  { res: "Y", y: 530, o: 380 },
-  { res: "O", y: 95, o: 268 },
-  { res: "Y", y: 620, o: 540 },
-  { res: "O", y: 140, o: 395 },
-];
-const STEP_MS = 1150;
+const G_ME = "linear-gradient(90deg, #0024c8 0%, #0443FD 45%, #4b78ff 82%, #9bb1ff 100%)";
+const G_OPP = "linear-gradient(270deg, #a8001a 0%, #EC0420 45%, #ff3a55 82%, #ffa1a9 100%)";
 
 const COPY = {
   en: {
-    days: ["Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Monday", "Today"],
-    round: "ROUND", finalRound: "FINAL ROUND", won: "WON", lost: "LOST", live: "LIVE", upcoming: "UPCOMING", revealing: "REVEALING",
-    forOpp: (n: string) => `−1 HP for ${n}`, forYou: "−1 HP for you", replay: "Replay the rounds",
-    timeline: "TIMELINE", finalLive: "Final round live", liveSub: "Live from 7 PM to 9:30 PM, cards included",
-    worth: "worth 2 HP", stake: (me: number, opp: number) => `At stake: you ${me} HP, Sophie ${opp} HP. Tonight's winner takes 2 HP from the other. K.O. only at 0 HP.`,
-    yourCard: "YOUR CARD", theirCard: "THEIR CARD", secret: "Secret until 9:30 PM", overdrive: "Overdrive", overdriveFx: "Workout pts ×1.5",
-    played: "‹ played", next: "tonight ›",
+    you: "YOU", opp: "SOPHIE", rank: "Pro II", match: "MATCH 6", round: "ROUND", final: "FINAL", stakeSub: "2 HP AT STAKE",
+    days: ["Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Monday", "Tonight"],
+    ahead: "pts ahead", behind: "pts behind", wins: "WINS THE ROUND", atStake: "AT STAKE", status: "ROUND STATUS",
+    st: { blue: "BLUE EDGE", red: "RED EDGE", close: "CLOSE", bw: "BLUE TAKES IT", rw: "RED TAKES IT" },
+    // Le commentaire du combat : « You throw… » / « Sophie throws… ».
+    say: (who: "Y" | "O", move: string) => `${who === "Y" ? "You" : "Sophie"} ${({ jab: ["throw a jab", "throws a jab"], cross: ["throw a cross", "throws a cross"], hook: ["land a hook", "lands a hook"], body_shot: ["dig a body shot", "digs a body shot"], lowkick: ["fire a low kick", "fires a low kick"], overdrive: ["unleash a flurry", "unleashes a flurry"] } as Record<string, string[]>)[move]?.[who === "Y" ? 0 : 1] ?? ""}`,
+    dodge: (who: "Y" | "O") => (who === "Y" ? "you slip it" : "Sophie slips it"), winner: "WINNER", verdict: "Wins the match, 4 HP to 2.", ready: "The match starts",
   },
   fr: {
-    days: ["Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche", "Lundi", "Aujourd'hui"],
-    round: "ROUND", finalRound: "ROUND FINAL", won: "GAGNÉ", lost: "PERDU", live: "EN DIRECT", upcoming: "À VENIR", revealing: "RÉVÉLATION",
-    forOpp: (n: string) => `−1 PV pour ${n}`, forYou: "−1 PV pour toi", replay: "Rejouer les rounds",
-    timeline: "TIMELINE", finalLive: "Round final en direct", liveSub: "En direct de 19h à 21h30, cartes comprises",
-    worth: "vaut 2 PV", stake: (me: number, opp: number) => `L'enjeu : toi ${me} PV, Sophie ${opp} PV. Le gagnant de ce soir retire 2 PV à l'autre. K.O. seulement à 0 PV.`,
-    yourCard: "TA CARTE", theirCard: "SA CARTE", secret: "Secrète jusqu'à 21h30", overdrive: "Overdrive", overdriveFx: "pts de séance ×1,5",
-    played: "‹ rounds joués", next: "ce soir ›",
+    you: "TOI", opp: "SOPHIE", rank: "Pro II", match: "MATCH 6", round: "ROUND", final: "FINAL", stakeSub: "2 PV EN JEU",
+    days: ["Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche", "Lundi", "Ce soir"],
+    ahead: "pts d'avance", behind: "pts de retard", wins: "REMPORTE LE ROUND", atStake: "EN JEU", status: "ÉTAT DU ROUND",
+    st: { blue: "AVANTAGE BLEU", red: "AVANTAGE ROUGE", close: "SERRÉ", bw: "LE BLEU L'EMPORTE", rw: "LE ROUGE L'EMPORTE" },
+    say: (who: "Y" | "O", move: string) => `${who === "Y" ? "Tu" : "Sophie"} ${({ jab: ["envoies un jab", "envoie un jab"], cross: ["envoies un direct", "envoie un direct"], hook: ["places un crochet", "place un crochet"], body_shot: ["frappes au corps", "frappe au corps"], lowkick: ["lances un low kick", "lance un low kick"], overdrive: ["déchaînes une rafale", "déchaîne une rafale"] } as Record<string, string[]>)[move]?.[who === "Y" ? 0 : 1] ?? ""}`,
+    dodge: (who: "Y" | "O") => (who === "Y" ? "tu esquives" : "Sophie esquive"), winner: "VAINQUEUR", verdict: "Remporte le match, 4 PV à 2.", ready: "Le match commence",
   },
 };
 
-/** Barre de vie de l'app : 7 fractions fines ; la vie part de l'extérieur, les pertes s'éteignent vers le centre. */
-function LifeBar({ side, life, stake }: { side: "me" | "opp"; life: number; stake: number }) {
-  const col = side === "me" ? BLUE : RED;
-  const order = Array.from({ length: LIFE_MAX }, (_, k) => (side === "me" ? k : LIFE_MAX - 1 - k));
+const clamp = (v: number, a = 0, b = 1) => Math.max(a, Math.min(b, v));
+const eo = (u: number) => 1 - Math.pow(1 - u, 3);
+const eio = (u: number) => (u < 0.5 ? 4 * u * u * u : 1 - Math.pow(-2 * u + 2, 3) / 2);
+
+// Media queries lues sans effet (pas de rendu en double au chargement).
+function useMedia(q: string) {
+  return useSyncExternalStore(
+    (cb) => { const m = window.matchMedia(q); m.addEventListener("change", cb); return () => m.removeEventListener("change", cb); },
+    () => window.matchMedia(q).matches,
+    () => false,
+  );
+}
+
+/** Vie d'un côté à l'instant t, avec le coup jaune : le jaune file vers la nouvelle vie, puis la barre noire le rattrape. */
+function lifeAt(side: "Y" | "O", t: number) {
+  let life = HP0, front = HP0, edge = HP0;
+  for (const r of ROUNDS) {
+    if (r.winner === side || t < r.impact) continue;
+    const loss = r.final ? 2 : 1, from = life, to = life - loss, dt = t - r.impact;
+    life = to;
+    front = from + (to - from) * eo(clamp(dt / 0.42));
+    edge = from + (to - from) * eio(clamp((dt - 0.54) / 0.34));
+  }
+  return { life, front, edge };
+}
+
+/** La barre de vie de l'app (HealthBars) : capsule chromée, couleur du bord vers le centre, jaune du coup, barre noire. */
+function HpBar({ side, t, hp }: { side: "me" | "opp"; t: number; hp: string }) {
+  const { life, front, edge } = lifeAt(side === "me" ? "Y" : "O", t);
+  const me = side === "me", ef = edge / HP0, ff = front / HP0;
   return (
-    <div className="dm2-life" aria-hidden="true">
-      {order.map((k) => {
-        const on = k < life;
-        const inStake = on && stake > 0 && k >= life - stake;
-        return (
-          <span key={k} className="dm2-life-seg" style={{ backgroundColor: EMPTY }}>
-            <span className={inStake ? "dm2-breath" : undefined} style={{
-              position: "absolute", inset: 0, borderRadius: 2, backgroundColor: col,
-              transform: on ? "scaleX(1)" : "scaleX(0)", opacity: on ? 1 : 0,
-              transition: "transform 0.7s cubic-bezier(0.55,0,0.85,0.35), opacity 0.7s ease 0.1s",
-            }} />
-          </span>
-        );
-      })}
+    <div className="mx-bar-wrap">
+      <div className="mx-bar">
+        <span className="mx-bar-fill" style={{ background: me ? G_ME : G_OPP, [me ? "left" : "right"]: 0, width: `${ef * 100}%` }} />
+        {ff < ef - 0.001 && <span className="mx-bar-hit" style={{ [me ? "left" : "right"]: `${ff * 100}%`, width: `${(ef - ff) * 100}%` }} />}
+        <span className="mx-bar-sheen" />
+      </div>
+      {ef < 0.999 && <span className="mx-notch" style={{ [me ? "left" : "right"]: `${ef * 100}%` }} />}
+      <div className="mx-ticks">{Array.from({ length: HP0 - 1 }, (_, k) => <i key={k} style={{ left: `${((k + 1) / HP0) * 100}%` }} />)}</div>
+      <div className="mx-hp" style={{ color: me ? BLUE : RED, textAlign: me ? "left" : "right" }}>
+        <span key={life}>{life}</span> {hp}
+      </div>
     </div>
   );
 }
 
-function Player({ side, name, life, stake, hp, hit }: { side: "me" | "opp"; name: string; life: number; stake: number; hp: string; hit: number }) {
-  const col = side === "me" ? BLUE : RED;
-  const right = side === "opp";
+function Fighter({ side, name, rank }: { side: "me" | "opp"; name: string; rank: string }) {
+  const me = side === "me";
   return (
-    <div className="dm2-player" style={{ alignItems: right ? "flex-end" : "flex-start", textAlign: right ? "right" : "left" }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 12, flexDirection: right ? "row-reverse" : "row" }}>
-        <span className="dm2-avatar" style={{ borderColor: col, color: col }}>{name.charAt(0)}</span>
-        <div>
-          <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: "clamp(1.05rem, 2vw, 1.375rem)", letterSpacing: "-0.03em", color: INK, lineHeight: 1.1 }}>{name}</div>
-          <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: "0.8125rem", color: col, marginTop: 2, fontVariantNumeric: "tabular-nums" }}>
-            <span key={life} className="dm2-tick">{life}</span> {hp}
-            {hit > 0 && <span key={`hit-${hit}`} className="dm2-hit" style={{ color: col }}>−1 {hp}</span>}
-          </div>
-        </div>
-      </div>
-      <LifeBar side={side} life={life} stake={stake} />
+    <div className="mx-fighter" style={{ alignItems: "center" }}>
+      <span className="mx-avatar" style={{ borderColor: me ? BLUE : RED }}>
+        <Image src={`/match/${me ? "you" : "sophie"}.webp`} alt="" width={96} height={96} />
+      </span>
+      <span className="mx-name">{name} <b style={{ color: me ? BLUE : RED }}>#{me ? 1 : 2}</b></span>
+      <span className="mx-rank"><i />{rank}</span>
     </div>
   );
 }
@@ -99,58 +108,53 @@ export default function DailyMatch() {
   const m = t.dailyMatch;
   const c = COPY[lang];
   const { ref: headerRef, visible: headerVisible } = useInView<HTMLDivElement>(0.1);
-  const { ref: boardRef, visible: boardVisible } = useInView<HTMLDivElement>(0.18, { oneShot: true });
-  const { ref: sectionRef, visible: sectionNear } = useInView<HTMLElement>(0.01);
-  const { ref: boxersRef, visible: videoOn } = useInView<HTMLDivElement>(0.01, { oneShot: true });
+  const { ref: screenRef, visible: onScreen } = useInView<HTMLDivElement>(0.12);
+  const { ref: nearRef, visible: near } = useInView<HTMLDivElement>(0.01, { oneShot: true });
+  const tall = useMedia("(max-width: 760px)");
+  const reduce = useMedia("(prefers-reduced-motion: reduce)");
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [time, setTime] = useState(VERDICT + 1.2); // avant le lancement : l'image du verdict (= affiche de la vidéo)
 
-  // Le match se rejoue round par round, comme sur la page Match : la carte du round se dévoile, la frise se remplit,
-  // le PV tombe chez celui qui perd le round ; après le 6e, le round final passe en direct. Rejouable.
-  const [step, setStep] = useState(0);
-  const [run, setRun] = useState(0);
+  // L'horloge du match = la vidéo (les PV tombent à l'instant exact du coup) ; sinon une horloge à elle.
   useEffect(() => {
-    if (!boardVisible) return;
-    const red = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    let i = red ? ROUNDS.length : 0;
-    const tick = () => {
-      i += 1; setStep(i);
-      if (i <= ROUNDS.length) timer = setTimeout(tick, i === ROUNDS.length ? 900 : STEP_MS);
-    };
-    let timer = setTimeout(() => { setStep(i); timer = setTimeout(tick, red ? 0 : 500); }, 0);
-    return () => clearTimeout(timer);
-  }, [boardVisible, run]);
-
-  // Les boxeurs en fond : chargés seulement à l'approche de la section, en pause hors de l'écran, jamais animés si
-  // l'utilisateur réduit les animations (l'image fixe reste).
-  useEffect(() => {
+    if (reduce || !onScreen) return;
     const v = videoRef.current;
-    if (!v || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    if (sectionNear) v.play().catch(() => {}); else v.pause();
-  }, [sectionNear, videoOn]);
+    if (v) v.play().catch(() => {});
+    let raf = 0, last = 0;
+    const t0 = performance.now();
+    const loop = (now: number) => {
+      raf = requestAnimationFrame(loop);
+      if (now - last < 33) return;
+      last = now;
+      const vid = videoRef.current;
+      const cur = vid && vid.readyState >= 2 && !vid.paused ? vid.currentTime : ((now - t0) / 1000) % DUR;
+      setTime(cur);
+    };
+    raf = requestAnimationFrame(loop);
+    return () => { cancelAnimationFrame(raf); v?.pause(); };
+  }, [onScreen, reduce, near, tall]);
 
-  const played = ROUNDS.slice(0, Math.min(step, ROUNDS.length));
-  const lifeMe = LIFE_MAX - played.filter((r) => r.res === "O").length;
-  const lifeOpp = LIFE_MAX - played.filter((r) => r.res === "Y").length;
-  const finalOn = step > ROUNDS.length;
-  const current = step >= 1 && step <= ROUNDS.length ? step - 1 : -1; // le round qui vient de se dévoiler
-  const hitMe = current >= 0 && ROUNDS[current].res === "O" ? step : 0;
-  const hitOpp = current >= 0 && ROUNDS[current].res === "Y" ? step : 0;
+  const ri = ROUNDS.reduce((k, r, i) => (time >= r.start - 0.3 ? i : k), -1);
+  const r = ri >= 0 ? ROUNDS[ri] : null;
+  const done = r ? time >= r.impact : false;
+  const k = r ? eo(clamp((time - r.start) / Math.max(0.1, r.impact - r.start))) : 0;
+  const yPts = r ? Math.round(r.y * k) : 0, oPts = r ? Math.round(r.o * k) : 0, diff = yPts - oPts;
+  const isFinal = !!r?.final;
+  const verdict = time >= VERDICT;
+  const loser = r ? (r.winner === "Y" ? "O" : "Y") : "Y";
+  const caption = !r ? c.ready
+    : time >= r.at ? `${c.say(r.winner, r.strike)}.`
+      : time >= r.start + 0.35 ? `${c.say(loser, r.feint)}, ${c.dodge(r.winner)}.` : `${c.round} ${ri + 1} / 7`;
+  const status = !r ? c.st.close : done ? (r.winner === "Y" ? c.st.bw : c.st.rw) : Math.abs(diff) < 20 ? c.st.close : diff > 0 ? c.st.blue : c.st.red;
+  const statusCol = !r ? MUTED : done ? (r.winner === "Y" ? BLUE : RED) : Math.abs(diff) < 20 ? SUB : diff > 0 ? BLUE : RED;
   const nf = (n: number) => n.toLocaleString(lang === "fr" ? "fr-FR" : "en-US");
+  const fade = reduce ? 1 : clamp(Math.min((DUR - time) / 0.45, time / 0.3 + 0.2));
+  const fmt = tall ? "tall" : "wide";
 
   return (
-    <section id="daily-match" ref={sectionRef} className="dm2-section">
-      {/* En fond : les boxeurs bleu et rouge de l'app échangent des coups (même fond que la section, très atténués) */}
-      <div ref={boxersRef} className="dm2-boxers" aria-hidden="true">
-        {videoOn && (
-          <video ref={videoRef} muted loop playsInline preload="none" poster="/videos/match-boxers-poster.jpg">
-            <source src="/videos/match-boxers.webm" type="video/webm" />
-            <source src="/videos/match-boxers.mp4" type="video/mp4" />
-          </video>
-        )}
-      </div>
-      <div style={{ position: "relative", maxWidth: "76rem", margin: "0 auto" }}>
-
-        <div ref={headerRef} style={{ marginBottom: "4rem" }}>
+    <section id="daily-match" className="mx-section">
+      <div style={{ maxWidth: "76rem", margin: "0 auto" }}>
+        <div ref={headerRef} style={{ marginBottom: "3.5rem" }}>
           <span style={{ ...fadeUp(headerVisible, 0), display: "block", marginBottom: "1.5rem" }} className="section-label">{m.label}</span>
           <div className="dm-header" style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "4rem", flexWrap: "wrap" }}>
             <h2 style={{ fontSize: "clamp(3rem, 5vw, 5.5rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.055em", lineHeight: 0.95, margin: 0 }}>
@@ -160,174 +164,88 @@ export default function DailyMatch() {
             <p style={{ ...slideRight(headerVisible, 350), fontSize: "1.0625rem", color: "rgba(11,17,22,0.58)", lineHeight: 1.75, maxWidth: "460px", margin: 0 }}>{m.subtitle}</p>
           </div>
         </div>
+      </div>
 
-        {/* L'écran Match */}
-        <div ref={boardRef} className="dm2-board" style={{ opacity: boardVisible ? 1 : 0, transform: boardVisible ? "none" : "translateY(28px)", transition: "opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1)" }}>
-
-          {/* Les deux joueurs et leur vie */}
-          <div className="dm2-versus">
-            <Player side="me" name={m.you.charAt(0) + m.you.slice(1).toLowerCase()} life={lifeMe} stake={finalOn ? 2 : 0} hp={m.hp} hit={hitMe} />
-            <div className="dm2-vs">
-              <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: "0.625rem", letterSpacing: "0.22em", color: MUTED }}>{m.match}</span>
-              <span style={{ fontFamily: FONT, fontWeight: 800, fontStyle: "italic", fontSize: "1.5rem", letterSpacing: "-0.04em", color: INK, lineHeight: 1 }}>VS</span>
-              <span className="dm2-vs-time" style={{ fontFamily: FONT, fontWeight: 800, fontSize: "0.625rem", letterSpacing: "0.18em", color: SUB }}>{m.resolves}</span>
+      {/* L'écran Match de l'app */}
+      <div ref={screenRef} className="mx-screen" style={{ fontFamily: FONT }}>
+        <div ref={nearRef} className="mx-top">
+          <div className="mx-versus">
+            <Fighter side="me" name={c.you} rank={c.rank} />
+            <div className="mx-center">
+              <span className="mx-kick">{c.match}</span>
+              <span className="mx-kick" style={{ marginTop: 10 }}>{c.round}</span>
+              <span key={isFinal ? "f" : ri} className="mx-roundnum">{isFinal ? c.final : r ? ri + 1 : 1}</span>
+              <span className="mx-kick" style={{ color: isFinal ? RED : SUB }}>{isFinal ? c.stakeSub : r ? c.days[ri].toUpperCase() : c.days[0].toUpperCase()}</span>
             </div>
-            <Player side="opp" name={m.opp.charAt(0) + m.opp.slice(1).toLowerCase()} life={lifeOpp} stake={finalOn ? 2 : 0} hp={m.hp} hit={hitOpp} />
+            <Fighter side="opp" name={c.opp} rank={c.rank} />
           </div>
+          <div className="mx-bars">
+            <HpBar side="me" t={time} hp={m.hp} />
+            <HpBar side="opp" t={time} hp={m.hp} />
+          </div>
+          {/* L'écart du round, comme « 194 pts behind » de l'app */}
+          <div className="mx-gap" style={{ opacity: verdict ? 0 : 1 }}>
+            <span className="mx-kick">{isFinal ? `${c.final} ${c.round}` : `${c.round} ${Math.max(1, ri + 1)} / 7`}  ·  {r ? c.days[ri].toUpperCase() : ""}</span>
+            <span className="mx-gap-v" style={{ color: diff >= 0 ? BLUE : RED }}>{nf(Math.abs(diff))} {diff >= 0 ? c.ahead : c.behind}</span>
+            <span className="mx-gap-bar"><i style={{ flex: Math.max(1, yPts), background: BLUE }} /><i style={{ flex: Math.max(1, oPts), background: RED }} /></span>
+          </div>
+        </div>
 
-          {/* La frise */}
-          <div className="dm2-timeline">
-            <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between" }}>
-              <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: "0.65625rem", letterSpacing: "0.25em", color: SUB }}>{c.timeline}</span>
-              <span style={{ display: "inline-flex", alignItems: "center", gap: 14 }}>
-                <span style={{ display: "inline-flex", alignItems: "center", gap: 7, fontFamily: FONT, fontWeight: 800, fontSize: "0.8125rem", color: INK, opacity: finalOn ? 1 : 0.35, transition: "opacity 0.6s ease" }}>
-                  <span className={finalOn ? "dm2-livedot" : undefined} style={{ width: 7, height: 7, borderRadius: "50%", backgroundColor: RED }} />
-                  {c.finalLive}
-                </span>
-                <button type="button" className="dm2-replay" onClick={() => setRun((r) => r + 1)} disabled={!finalOn} aria-label={c.replay} title={c.replay}>
-                  <svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" d="M3 12a9 9 0 1 0 3-6.7M3 4v5h5" /></svg>
-                </button>
-              </span>
-            </div>
-            <div className="dm2-track">
-              {[...ROUNDS, null].map((r, i) => {
-                const isFinal = r === null;
-                const done = !isFinal && step > i;
-                const fill = !r ? RED : r.res === "Y" ? BLUE : RED;
-                return (
-                  <div key={i} style={{ flex: isFinal ? 1.8 : 1, minWidth: 0 }}>
-                    <div style={{ height: 3, borderRadius: 2, backgroundColor: "#D5DBE4", overflow: "hidden" }}>
-                      <div style={{
-                        height: 3, backgroundColor: fill, width: isFinal ? (finalOn ? "45%" : "0%") : done ? "100%" : "0%",
-                        transition: "width 0.5s cubic-bezier(0.16,1,0.3,1)",
-                      }} className={isFinal && finalOn ? "dm2-breath" : undefined} />
-                    </div>
-                    <div style={{ marginTop: 7, fontFamily: FONT, fontWeight: 800, fontSize: "0.625rem", letterSpacing: "0.08em", color: isFinal ? (finalOn ? RED : MUTED) : done ? INK : MUTED, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", transition: "color 0.4s ease" }}>
-                      {isFinal ? `${m.final} ×2` : m.days[i]}
-                    </div>
-                  </div>
-                );
+        {/* Les deux boxeurs, en très gros plan */}
+        <div className={`mx-stage mx-stage-${fmt}`} style={{ opacity: fade }}>
+          {near && !reduce ? (
+            <video key={fmt} ref={videoRef} muted loop playsInline preload="none" poster={`/videos/match-fight-${fmt}-poster.jpg`} aria-hidden="true">
+              <source src={`/videos/match-fight-${fmt}.webm`} type="video/webm" />
+              <source src={`/videos/match-fight-${fmt}.mp4`} type="video/mp4" />
+            </video>
+          ) : (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={`/videos/match-fight-${fmt}-poster.jpg`} alt="" aria-hidden="true" loading="lazy" />
+          )}
+
+          {/* Le verdict, comme « WINNER JOHNNY » de l'app */}
+          <div className="mx-verdict" style={{ opacity: verdict ? 1 : 0, transform: verdict ? "none" : "translateY(10px) scale(0.98)" }}>
+            <span className="mx-kick" style={{ letterSpacing: "0.4em", color: SUB }}>{c.winner}</span>
+            <span className="mx-verdict-name">{c.you}</span>
+            <span className="mx-verdict-sub">{c.verdict}</span>
+          </div>
+        </div>
+
+        {/* En bas : les pts de chacun, l'enjeu, l'état du round */}
+        <div className="mx-bottom">
+          <div className="mx-score" style={{ opacity: verdict ? 0.35 : 1 }}>
+            <span className="mx-kick" style={{ color: BLUE }}>{c.you}{done && r?.winner === "Y" && !verdict ? `  ·  ${c.wins}` : ""}</span>
+            <span className="mx-pts" style={{ color: BLUE }}>{nf(yPts)}<small>pts</small></span>
+          </div>
+          <div className="mx-mid">
+            <span key={caption} className="mx-caption">{verdict ? c.verdict : caption}</span>
+            <div className="mx-rounds" aria-hidden="true">
+              {ROUNDS.map((x, i) => {
+                const played = time >= x.impact;
+                return <i key={i} className={x.final ? "is-final" : undefined} style={{ background: played ? (x.winner === "Y" ? BLUE : RED) : i === ri ? INK : "#D5DBE4" }} />;
               })}
             </div>
-            <div style={{ display: "flex", justifyContent: "space-between", marginTop: 10, fontFamily: FONT, fontWeight: 600, fontSize: "0.6875rem", color: MUTED }}>
-              <span>{c.played}</span><span>{c.next}</span>
+            <div className="mx-meta">
+              <span><b>{c.atStake}</b> {isFinal ? 2 : 1} {m.hp}</span>
+              <span><b>{c.status}</b> <em style={{ color: statusCol }}>{status}</em></span>
             </div>
           </div>
-
-          {/* Les cartes de round */}
-          <div className="dm2-grid">
-            {ROUNDS.map((r, i) => {
-              const done = step > i;
-              const won = r.res === "Y";
-              const bg = won ? BLUE : RED;
-              const white = true;
-              const pill = won ? { t: c.won, c: BLUE } : { t: c.lost, c: RED };
-              const sub = won ? c.forOpp(m.opp.charAt(0) + m.opp.slice(1).toLowerCase()) : c.forYou;
-              const next = !done && step === i && boardVisible; // le prochain à se dévoiler
-              return (
-                <article key={i} className={i === current ? "dm2-card dm2-focus" : "dm2-card"}>
-                  {/* Avant : la carte « à venir » (gris, scanlines grises) */}
-                  <div className="dm2-face" style={{ backgroundColor: "#EEF1F5" }}>
-                    <AppScanlines w={300} h={190} color={MUTED} opacity={0.3} />
-                    <CardHead label={`${c.round} ${i + 1}`} pill={next ? c.revealing : c.upcoming} pillColor={next ? INK : SUB} pillBg="rgba(255,255,255,0.75)" white={false} live={next} />
-                    <div className="dm2-day" style={{ color: SUB }}>{c.days[i]}</div>
-                  </div>
-                  {/* Après : le résultat, dévoilé de haut en bas comme une trame qui s'imprime */}
-                  <div className="dm2-face dm2-result" style={{ backgroundColor: bg, clipPath: done ? "inset(0 0 0 0 round 18px)" : "inset(0 0 100% 0 round 18px)" }}>
-                    <AppScanlines w={300} h={190} color={white ? "#FFFFFF" : MUTED} opacity={white ? 0.2 : 0.35} />
-                    <CardHead label={`${c.round} ${i + 1}`} pill={pill.t} pillColor={pill.c} pillBg="#FFFFFF" white={white} />
-                    <div className="dm2-day" style={{ color: white ? "#FFFFFF" : INK }}>{c.days[i]}</div>
-                    <div className="dm2-sub" style={{ color: white ? "rgba(255,255,255,0.82)" : SUB }}>{sub}</div>
-                    <div className="dm2-sides">
-                      {[true, false].map((mine) => (
-                        <div key={String(mine)} className={mine ? "dm2-side" : "dm2-side dm2-side-r"} style={!mine ? { borderLeftColor: white ? "rgba(255,255,255,0.35)" : "#D5DBE4" } : undefined}>
-                          <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: "0.59375rem", letterSpacing: "0.16em", color: white ? "rgba(255,255,255,0.75)" : mine ? BLUE : RED }}>{mine ? m.you : m.opp}</div>
-                          <div className="dm2-pts" style={{ color: white ? "#FFFFFF" : mine ? BLUE : RED }}><Count to={mine ? r.y : r.o} on={done} fmt={nf} /> <small>pts</small></div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </article>
-              );
-            })}
-
-            {/* Le round final : la carte noire grisée de l'app */}
-            <article className="dm2-card dm2-final" style={{ backgroundColor: "#262D35" }}>
-              <AppScanlines w={320} h={460} color="#FFFFFF" opacity={0.1} />
-              <div style={{ position: "relative", height: "100%", display: "flex", flexDirection: "column" }}>
-                <CardHead label={c.finalRound} pill={c.live} pillColor="#FF5A6E" pillBg="rgba(255,255,255,0.1)" white live={finalOn} />
-                <div className="dm2-day" style={{ color: "#FFFFFF" }}>{c.days[6]}</div>
-                <div className="dm2-sub" style={{ color: "rgba(255,255,255,0.75)" }}>{c.liveSub}</div>
-                <div style={{ display: "flex", alignItems: "baseline", gap: 10, marginTop: "1.1rem" }}>
-                  <span style={{ fontFamily: FONT, fontWeight: 800, fontStyle: "italic", fontSize: "clamp(2.75rem, 4vw, 3.5rem)", letterSpacing: "-0.05em", color: "rgba(255,255,255,0.9)", lineHeight: 1 }}>×2</span>
-                  <span style={{ fontFamily: FONT, fontWeight: 600, fontSize: "0.875rem", color: "rgba(255,255,255,0.72)" }}>{c.worth}</span>
-                </div>
-                <p style={{ fontFamily: FONT, fontWeight: 700, fontSize: "0.875rem", lineHeight: 1.5, color: "#FFFFFF", margin: "0.85rem 0 0" }}>
-                  {c.stake(LIFE_MAX - ROUNDS.filter((r) => r.res === "O").length, LIFE_MAX - ROUNDS.filter((r) => r.res === "Y").length)}
-                </p>
-                <div className="dm2-sides" style={{ marginTop: "auto", paddingTop: "1.25rem" }}>
-                  {[true, false].map((mine) => (
-                    <div key={String(mine)} className={mine ? "dm2-side" : "dm2-side dm2-side-r"} style={!mine ? { borderLeftColor: "rgba(255,255,255,0.2)" } : undefined}>
-                      <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: "0.59375rem", letterSpacing: "0.16em", color: "rgba(255,255,255,0.6)" }}>{mine ? c.yourCard : c.theirCard}</div>
-                      {mine ? (
-                        <div style={{ marginTop: 6 }}>
-                          <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: "1rem", color: "#FFFFFF", letterSpacing: "-0.02em" }}>{c.overdrive}</div>
-                          <div style={{ fontFamily: FONT, fontWeight: 600, fontSize: "0.75rem", color: "#8FA8FF", marginTop: 2 }}>{c.overdriveFx}</div>
-                        </div>
-                      ) : (
-                        <div style={{ marginTop: 6, display: "flex", flexDirection: "column", alignItems: "flex-end" }}>
-                          <span className="dm2-facedown" aria-hidden="true" />
-                          <div style={{ fontFamily: FONT, fontWeight: 600, fontSize: "0.75rem", color: "rgba(255,255,255,0.6)", marginTop: 6 }}>{c.secret}</div>
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </article>
+          <div className="mx-score" style={{ alignItems: "flex-end", textAlign: "right", opacity: verdict ? 0.35 : 1 }}>
+            <span className="mx-kick" style={{ color: RED }}>{done && r?.winner === "O" && !verdict ? `${c.wins}  ·  ` : ""}{c.opp}</span>
+            <span className="mx-pts" style={{ color: RED }}>{nf(oPts)}<small>pts</small></span>
           </div>
         </div>
+      </div>
 
-        {/* Le rythme de la journée */}
-        <div className="dm2-rhythm">
-          {m.stats.map((s, i) => (
-            <div key={i} className="dm2-rhythm-item" style={fadeUp(boardVisible, 500 + i * 120)}>
-              <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: "1.0625rem", letterSpacing: "-0.02em", color: i === 2 ? BLUE : INK }}>{s.n}</div>
-              <div style={{ fontSize: "0.875rem", color: "rgba(11,17,22,0.55)", lineHeight: 1.55, marginTop: 4 }}>{s.label}</div>
-            </div>
-          ))}
-        </div>
-
+      {/* Le rythme de la journée */}
+      <div className="dm2-rhythm" style={{ maxWidth: "76rem", margin: "2.75rem auto 0" }}>
+        {m.stats.map((s, i) => (
+          <div key={i} className="dm2-rhythm-item" style={fadeUp(headerVisible, 500 + i * 120)}>
+            <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: "1.0625rem", letterSpacing: "-0.02em", color: i === 2 ? BLUE : INK }}>{s.n}</div>
+            <div style={{ fontSize: "0.875rem", color: "rgba(11,17,22,0.55)", lineHeight: 1.55, marginTop: 4 }}>{s.label}</div>
+          </div>
+        ))}
       </div>
     </section>
-  );
-}
-
-/** Les pts du round comptent jusqu'à leur valeur quand la carte se dévoile (comme les chiffres de l'app). */
-function Count({ to, on, fmt }: { to: number; on: boolean; fmt: (n: number) => string }) {
-  const [v, setV] = useState(on ? to : 0);
-  useEffect(() => {
-    const instant = !on || window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const t0 = performance.now(), D = 650;
-    const f = (t: number) => {
-      const k = instant ? 1 : Math.min(1, (t - t0) / D);
-      setV(on ? Math.round(to * (1 - Math.pow(1 - k, 3))) : 0);
-      if (k < 1) raf = requestAnimationFrame(f);
-    };
-    let raf = requestAnimationFrame(f);
-    return () => cancelAnimationFrame(raf);
-  }, [on, to]);
-  return <>{fmt(v)}</>;
-}
-
-function CardHead({ label, pill, pillColor, pillBg, white, live }: { label: string; pill: string; pillColor: string; pillBg: string; white: boolean; live?: boolean }) {
-  return (
-    <div style={{ position: "relative", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
-      <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: "0.59375rem", letterSpacing: "0.2em", color: white ? "rgba(255,255,255,0.72)" : MUTED }}>{label}</span>
-      <span style={{ display: "inline-flex", alignItems: "center", gap: 5, padding: "3px 8px", borderRadius: 9, backgroundColor: pillBg, fontFamily: FONT, fontWeight: 800, fontSize: "0.625rem", letterSpacing: "0.08em", color: pillColor }}>
-        {live && <span className="dm2-livedot" style={{ width: 5, height: 5, borderRadius: "50%", backgroundColor: pillColor }} />}
-        {pill}
-      </span>
-    </div>
   );
 }

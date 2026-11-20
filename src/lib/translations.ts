@@ -125,15 +125,6 @@ export const T = {
         { n: "04", time: "7 PM → 9:30 PM", title: "Fight.", body: "The final round goes live at 7 PM, and everything synced before 9:30 PM counts. At 9:30 PM it's Fight Night: the fighters walk in, the cards flip, the verdict comes last.", icon: "battle" },
       ],
     },
-    testimonials: {
-      label: "THE LEAGUE FEED",
-      h2: ["Every night,", "a new story."],
-      items: [
-        { quote: "Julia dropped today: the top spot is up for grabs.", name: "THE KING FELL", role: "League feed · after the 9:30 PM verdict", initials: "👑" },
-        { quote: "Sam is unstoppable: 4 wins in a row.", name: "ON FIRE", role: "League feed · after the 9:30 PM verdict", initials: "🔥" },
-        { quote: "You pass Leo and take 2nd place.", name: "YOU OVERTAKE", role: "League feed · after the 9:30 PM verdict", initials: "⚔️" },
-      ],
-    },
     cardsShowcase: {
       label: "THE CARDS",
       h2: ["Play a card.", "Flip the match."],
@@ -537,15 +528,6 @@ export const T = {
         { n: "02", time: "10h → 17h30", title: "Bouge.", body: "Cours, roule, soulève, marche : tes séances et tes pas deviennent des pts. Pendant ce temps, les rounds de tes 6 derniers jours se dévoilent un par un.", icon: "run" },
         { n: "03", time: "Automatique", title: "Synchronise.", body: "Attax lit Apple Santé ou Health Connect à chaque ouverture de l'app. Aucune saisie manuelle, jamais.", icon: "sync" },
         { n: "04", time: "19h → 21h30", title: "Combats.", body: "Le round final passe en direct à 19h, et tout ce qui est synchronisé avant 21h30 compte. À 21h30, c'est le Soir de combat : entrée des boxeurs, cartes retournées, le résultat tombe à la fin.", icon: "battle" },
-      ],
-    },
-    testimonials: {
-      label: "LE FIL DE LA LIGUE",
-      h2: ["Chaque soir,", "une nouvelle histoire."],
-      items: [
-        { quote: "Julia a chuté aujourd'hui : la tête est à prendre.", name: "LE ROI A PLIÉ", role: "Fil de la ligue · après le verdict de 21h30", initials: "👑" },
-        { quote: "Sam est injouable : 4 victoires de rang.", name: "EN FEU", role: "Fil de la ligue · après le verdict de 21h30", initials: "🔥" },
-        { quote: "Tu dépasses Léo et t'empares de la 2e place.", name: "TU DOUBLES", role: "Fil de la ligue · après le verdict de 21h30", initials: "⚔️" },
       ],
     },
     cardsShowcase: {

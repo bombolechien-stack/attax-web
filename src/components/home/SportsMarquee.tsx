@@ -8,8 +8,8 @@ import AppScanlines from "./AppScanlines";
 
 // « Tous les sports comptent » : une seule scène, calme, au lieu d'un défilé. Les silhouettes en scanlines (les mêmes
 // lignes encre que les boxeurs de l'app, scripts/hero-lines/panels_tone.py) se succèdent dans un grand cadre, la trame
-// s'imprime de haut en bas à chaque sport. Des sports volontairement variés (yoga, curling, corde à sauter…) et, en
-// dernier, « Et tout sport ou toute activité intense » : la liste n'est qu'un échantillon, rien n'est exclu.
+// s'imprime de haut en bas à chaque sport. 9 sports en image puis, en dernier, « Et tout sport ou toute activité
+// intense » : ce cadre fait défiler d'autres sports (yoga, curling, danse…), la liste n'est qu'un échantillon.
 // À côté, ce qui compte vraiment, comme dans l'écran Activités de l'app : les 4 zones cardio et leur barème
 // (3 / 8 / 14 / 20 pts par minute, lib/scoring.ts) et les pas (10 pts par 1 000 pas).
 // Le sport lui-même ne change rien aux pts (docs/regles/02-activite.md § 3.3).
@@ -20,23 +20,23 @@ const STAGE_BG = "#EEF1F7"; // fond des images (captures de l'app)
 const INTERVAL = 2800, ANY_INTERVAL = 5600;
 
 const SPORTS: { file: string; en: string; fr: string }[] = [
-  { file: "yoga", en: "Yoga", fr: "Yoga" },
-  { file: "curling", en: "Curling", fr: "Curling" },
-  { file: "boxing", en: "Boxing", fr: "Boxe" },
-  { file: "swimming", en: "Swimming", fr: "Natation" },
-  { file: "rowing", en: "Rowing", fr: "Aviron" },
-  { file: "jump-rope", en: "Jump rope", fr: "Corde à sauter" },
-  { file: "wheelchair", en: "Wheelchair basketball", fr: "Basket fauteuil" },
-  { file: "football", en: "Football", fr: "Football" },
+  { file: "running", en: "Running", fr: "Course" },
   { file: "cycling", en: "Cycling", fr: "Vélo" },
+  { file: "lifting", en: "Lifting", fr: "Musculation" },
+  { file: "tennis", en: "Tennis", fr: "Tennis" },
+  { file: "wheelchair", en: "Wheelchair basketball", fr: "Basket fauteuil" },
+  { file: "sprint", en: "Sprint", fr: "Sprint" },
+  { file: "nordic-walking", en: "Nordic walking", fr: "Marche nordique" },
+  { file: "basketball", en: "Basketball", fr: "Basket" },
+  { file: "walking", en: "Walking", fr: "Marche" },
 ];
 const ANY = SPORTS.length; // le 10e et dernier : tout le reste
 const TOTAL = SPORTS.length + 1;
 
 // Le 10e cadre fait défiler d'autres sports, sans image : la liste n'a pas de fin.
 const MORE = {
-  en: ["Dance", "Climbing", "Padel", "Skiing", "Hiking", "Martial arts", "Pilates", "Handball", "Skating", "Surfing", "HIIT", "Trail running"],
-  fr: ["Danse", "Escalade", "Padel", "Ski", "Randonnée", "Arts martiaux", "Pilates", "Handball", "Patin", "Surf", "HIIT", "Trail"],
+  en: ["Yoga", "Curling", "Dance", "Climbing", "Padel", "Skiing", "Hiking", "Martial arts", "Pilates", "Jump rope", "Swimming", "Boxing", "Rowing", "Surfing"],
+  fr: ["Yoga", "Curling", "Danse", "Escalade", "Padel", "Ski", "Randonnée", "Arts martiaux", "Pilates", "Corde à sauter", "Natation", "Boxe", "Aviron", "Surf"],
 };
 
 const ZONES = [

@@ -7,7 +7,6 @@ import HowItWorks from "@/components/home/HowItWorks";
 import DailyMatch from "@/components/home/DailyMatch";
 import CardsShowcase from "@/components/home/CardsShowcase";
 import FightNight from "@/components/home/FightNight";
-import Testimonials from "@/components/home/Testimonials";
 import VisualGrid from "@/components/home/VisualGrid";
 import Beyond from "@/components/home/Beyond";
 import FeaturesGrid from "@/components/home/FeaturesGrid";
@@ -67,7 +66,6 @@ export default function HomePage() {
       <DailyMatch />
       <CardsShowcase />
       <FightNight />
-      <Testimonials />
       <VisualGrid />
       <Beyond />
       <FeaturesGrid />
