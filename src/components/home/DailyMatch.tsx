@@ -133,7 +133,7 @@ export default function DailyMatch() {
   const fmt = tall ? "tall" : "wide";
 
   return (
-    <section id="daily-match" className="mr-section">
+    <section id="daily-match" className="mr-section p-lines p-lines-light">
       <div style={{ maxWidth: "76rem", margin: "0 auto" }}>
         <div ref={headerRef} style={{ marginBottom: "3.5rem" }}>
           <span style={{ ...fadeUp(headerVisible, 0), display: "block", marginBottom: "1.5rem" }} className="section-label">{m.label}</span>

@@ -44,7 +44,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="footer-panel" style={{ position: "relative", zIndex: 2, backgroundColor: "#0B0B0C", borderRadius: "20px 20px 0 0", overflow: "hidden" }}>
+        <div className="footer-panel p-lines" style={{ position: "relative", zIndex: 2, backgroundColor: "#0B0B0C", borderRadius: "20px 20px 0 0", overflow: "hidden" }}>
           <div className="footer-attax" style={{ position: "absolute", bottom: "36px", left: "50%", transform: "translateX(-50%)", fontSize: "clamp(5rem, 13vw, 14rem)", fontWeight: 900, color: "#f0f0f0", letterSpacing: "-0.06em", lineHeight: 1, whiteSpace: "nowrap", userSelect: "none", pointerEvents: "none", fontFamily: "var(--font-jakarta), sans-serif", zIndex: 0 }}>
             ATTAX
           </div>

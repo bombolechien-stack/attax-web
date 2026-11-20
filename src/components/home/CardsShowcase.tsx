@@ -63,8 +63,7 @@ export default function CardsShowcase() {
   const delays = [180, 60, 300];
 
   return (
-    <section id="cards" className="cards-section p-section p-dark" style={{ position: "relative", overflow: "hidden" }}>
-      <div className="p-glow p-glow-l" aria-hidden="true" />
+    <section id="cards" className="cards-section p-section p-dark p-lines" style={{ position: "relative", overflow: "hidden" }}>
       <div style={{ position: "relative", maxWidth: "76rem", margin: "0 auto" }}>
         <div className="cards-showcase-inner" style={{ display: "flex", alignItems: "center", gap: "6rem", justifyContent: "center" }}>
           <div ref={headerRef} className="cards-showcase-text" style={{ flex: "0 0 380px", maxWidth: "380px" }}>

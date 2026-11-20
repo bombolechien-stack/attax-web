@@ -1,32 +1,39 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { useLang, useT } from "@/lib/i18n";
 import { useInView, fadeUp, clipReveal } from "@/hooks/useInView";
 
-// « Une journée avec Attax » (version premium, 20/11) : 6 cartes arrondies, une par moment de la journée. En haut une
-// photo de campagne ou une vraie capture de l'app (chaque écran une seule fois sur la page), puis l'heure, le titre et
-// une phrase. Fond clair, filets fins, pas d'effets.
+// « Une journée avec Attax » (passe 3) : le récit de la journée piloté par le défilement. À gauche, les moments de la
+// journée (10h, 13h, la journée, 19h, 21h30) défilent ; à droite, UN téléphone collant dont l'écran se fond vers la vraie
+// capture de l'app du moment (les rounds qui se dévoilent, la carte jouée, l'activité, le round final, le classement),
+// avec la frise de la journée au-dessus. Sur téléphone, chaque moment montre sa capture sous son texte.
+// Captures : public/screens/story/<lang>/*.webp (écrans réels de l'app, barre d'état retirée).
 
-type Visual = { photo: string; pos?: string } | { app: string; panel?: boolean };
-const VISUALS: Visual[] = [
-  { photo: "/images/runsunrise.jpg", pos: "50% 60%" },        // Connecte : la course du matin, la montre au poignet
-  { photo: "/images/photo-runners.jpg", pos: "50% 40%" },     // Le match s'ouvre : un nouvel adversaire
-  { app: "card-overdrive", panel: true },                              // Joue ta carte : Overdrive (capture réelle)
-  { app: "4" },                                                // Bouge : l'écran Activité (capture réelle)
-  { photo: "/images/fatigue.jpg", pos: "50% 35%" },          // Le round final : le dernier effort de la journée
-  { app: "5" },                                                // Soir de combat : le classement après le verdict
-];
+const SHOTS = ["rounds", "card", "activity", "final", "ranking"] as const;
 
 export default function HowItWorks() {
   const t = useT();
   const h = t.howItWorks;
   const { lang } = useLang();
   const { ref: headerRef, visible: headerVisible } = useInView<HTMLDivElement>(0.1);
-  const { ref: gridRef, visible: gridVisible } = useInView<HTMLDivElement>(0.08, { oneShot: true });
+  const steps = h.steps.slice(1); // 0 = « Connecte » (une fois), présenté en introduction
+  const connect = h.steps[0];
+  const [active, setActive] = useState(0);
+  const refs = useRef<(HTMLDivElement | null)[]>([]);
+
+  // L'étape active = celle dont le texte croise le milieu de l'écran.
+  useEffect(() => {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) setActive(Number((e.target as HTMLElement).dataset.i)); });
+    }, { rootMargin: "-45% 0px -45% 0px" });
+    refs.current.forEach((el) => el && obs.observe(el));
+    return () => obs.disconnect();
+  }, []);
 
   return (
-    <section id="how-it-works" className="p-section">
+    <section id="how-it-works" className="p-section story-section">
       <div className="p-wrap">
         <div ref={headerRef} className="p-head">
           <div>
@@ -36,29 +43,50 @@ export default function HowItWorks() {
               <div><span style={clipReveal(headerVisible, 120)}>{h.h2[1]}</span></div>
             </h2>
           </div>
-          <p className="p-body" style={{ ...fadeUp(headerVisible, 240), maxWidth: 340, whiteSpace: "pre-line" }}>{h.subtitle}</p>
+          <div className="story-connect" style={fadeUp(headerVisible, 240)}>
+            <p className="p-label" style={{ marginBottom: "0.5rem" }}>{connect.time} · {connect.title.replace(/\.$/, "")}</p>
+            <p className="p-body">{connect.body}</p>
+          </div>
         </div>
 
-        <div ref={gridRef} className="hiw-grid">
-          {h.steps.map((s, i) => {
-            const v = VISUALS[i];
-            return (
-              <article key={i} className="hiw-card" style={fadeUp(gridVisible, 80 * i)}>
-                <div className={"photo" in v ? "hiw-media" : "hiw-media hiw-media-app"}>
-                  {"photo" in v ? (
-                    <Image src={v.photo} alt="" fill sizes="(max-width: 760px) 92vw, (max-width: 1100px) 46vw, 380px" className="p-photo" style={{ objectFit: "cover", objectPosition: v.pos }} />
-                  ) : (
-                    <Image src={`/screens/app/${lang}/${v.app}.webp`} alt={s.title} width={v.panel ? 500 : 560} height={v.panel ? 400 : 1107} sizes="300px"
-                      className={v.panel ? "hiw-app-panel" : "hiw-app-phone"} />
-                  )}
-                  <span className="hiw-num">{String(i + 1).padStart(2, "0")}</span>
+        <div className="story">
+          <div className="story-steps">
+            {steps.map((s, i) => (
+              <div key={i} ref={(el) => { refs.current[i] = el; }} data-i={i} className={i === active ? "story-step is-on" : "story-step"}>
+                <p className="story-time">{s.time}</p>
+                <h3 className="story-title">{s.title}</h3>
+                <p className="p-body story-body">{s.body}</p>
+                {/* Téléphone : la capture sous le texte */}
+                <div className="story-inline">
+                  <div className="story-phone">
+                    <div className="story-screen">
+                      <Image src={`/screens/story/${lang}/${SHOTS[i]}.webp`} alt={s.title} width={522} height={1017} sizes="70vw" />
+                    </div>
+                  </div>
                 </div>
-                <p className="p-label" style={{ margin: "1.25rem 0 0.4rem" }}>{s.time}</p>
-                <h3 className="p-h3">{s.title}</h3>
-                <p className="p-body" style={{ marginTop: "0.5rem" }}>{s.body}</p>
-              </article>
-            );
-          })}
+              </div>
+            ))}
+          </div>
+
+          <div className="story-stick" aria-hidden="true">
+            <div className="story-sticky">
+              <div className="story-timeline">
+                {steps.map((s, i) => (
+                  <span key={i} className={i === active ? "is-on" : i < active ? "is-past" : undefined}>
+                    <i />{s.time}
+                  </span>
+                ))}
+              </div>
+              <div className="story-phone story-phone-lg">
+                <div className="story-screen">
+                  {steps.map((s, i) => (
+                    <Image key={i} src={`/screens/story/${lang}/${SHOTS[i]}.webp`} alt="" width={522} height={1017} sizes="340px"
+                      loading={i === 0 ? "eager" : "lazy"} style={{ opacity: i === active ? 1 : 0 }} />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
