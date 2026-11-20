@@ -12,7 +12,7 @@ export default function ArenaSection() {
   const bgRef = useParallax(0.06);
 
   return (
-    <section className="arena-wrap"><div className="arena-card" style={{ position: "relative", backgroundColor: "#0B0B0C", minHeight: "78vh", display: "flex", alignItems: "center", overflow: "hidden" }}>
+    <section className="arena-wrap"><div className="arena-card p-lines" style={{ position: "relative", backgroundColor: "#0B0B0C", minHeight: "78vh", display: "flex", alignItems: "center", overflow: "hidden" }}>
       <div ref={bgRef} style={{ position: "absolute", inset: "-10%", zIndex: 0 }}>
         <Image src="/images/sport/033-A.jpg" alt="Runner training at night" fill sizes="100vw" style={{ objectFit: "cover", objectPosition: "center 45%", filter: "grayscale(100%) contrast(1.05) brightness(0.6)" }} />
       </div>

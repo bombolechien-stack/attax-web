@@ -405,7 +405,7 @@ export const T = {
       contact: "Contact",
     },
     hero: {
-      h1: ["Sport is now", "a game."],
+      h1: ["Le sport devient", "un jeu."],
       kicker: ["Chaque jour", "un nouvel adversaire"],
       sports: "Course · Vélo · Musculation · Jeu · Marche",
       subtitle: "Ta montre mesure. Ton boxeur frappe.\nChaque soir à 21h30, le round final.",
@@ -638,7 +638,7 @@ export const T = {
         { label: "Jeu Health Connect", href: "/health-connect-fitness-game" },
       ],
       col_resources: "Ressources",
-      copyright: "© 2026 ATTAX SAS. Sport is now a game.",
+      copyright: "© 2026 ATTAX SAS. Le sport devient un jeu.",
     },
     discover: {
       hero_label: "DÉCOUVRIR ATTAX",
