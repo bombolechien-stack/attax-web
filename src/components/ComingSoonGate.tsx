@@ -128,7 +128,9 @@ export default function ComingSoonGate({ children }: { children: React.ReactNode
   }
 
   /* Waiting for hydration */
-  if (unlocked === null) return null;
+  // Tant que l'état n'est pas lu : un écran vide de la hauteur de la fenêtre (avant : rien → le pied de page et la
+  // bannière s'affichaient en haut puis sautaient sous le contenu, gros décalage au chargement).
+  if (unlocked === null) return <div style={{ minHeight: "100vh" }} />;
 
   /* Full site */
   if (unlocked) return <>{children}</>;

@@ -110,7 +110,8 @@ export default function DailyMatch() {
       raf = requestAnimationFrame(loop);
       if (now - last < 33) return;
       last = now;
-      setClock(((now - t0) / 1000) % CYCLE);
+      // rAF donne l'heure du DÉBUT de l'image : elle peut précéder t0 de quelques ms → temps négatif (ROUNDS[-1] plantait).
+      setClock(Math.max(0, ((now - t0) / 1000) % CYCLE));
     };
     raf = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(raf);
@@ -118,7 +119,7 @@ export default function DailyMatch() {
   }, [reduce, onScreen]);
 
   const time = reduce ? 5 * ROUND_LEN + T_HIT + 0.6 : clock;
-  const ri = Math.min(ROUNDS.length - 1, Math.floor(time / ROUND_LEN));
+  const ri = Math.max(0, Math.min(ROUNDS.length - 1, Math.floor(Math.max(0, time) / ROUND_LEN) || 0));
   const verdict = time >= ROUNDS.length * ROUND_LEN;
   const r = ROUNDS[ri], lt = verdict ? ROUND_LEN : time - ri * ROUND_LEN;
   const yPts = Math.round(r.y * eo(clamp((lt - T_ME0) / (T_ME1 - T_ME0))));
