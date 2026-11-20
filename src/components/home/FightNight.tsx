@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { useT } from "@/lib/i18n";
 import { useInView, fadeUp, clipReveal, scaleIn } from "@/hooks/useInView";
-import HeroBackdrop from "@/components/scan/HeroBackdrop";
 
 /** Soir de combat (révélation de 21h30) : le combat du round final de l'app, dans un téléphone (comme la version en ligne). */
 export default function FightNight() {
@@ -12,9 +11,7 @@ export default function FightNight() {
   const { ref, visible } = useInView<HTMLDivElement>(0.12, { oneShot: true });
 
   return (
-    <section id="fight-night" className="fn-section" style={{ position: "relative", backgroundColor: "#EBEFF3", padding: "9rem 2rem", overflow: "hidden" }}>
-      {/* Fond du hero de l'app (HeroBackdrop porté tel quel) */}
-      <HeroBackdrop />
+    <section id="fight-night" className="fn-section p-section" style={{ position: "relative", backgroundColor: "#FAFAFA", overflow: "hidden" }}>
 
       <div ref={ref} className="fn-inner" style={{ position: "relative", maxWidth: "72rem", margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "center", gap: "clamp(3.5rem, 7vw, 6.5rem)" }}>
         {/* Comme sur la version en ligne : le combat DANS l'écran d'un téléphone (même cadre que master).
@@ -33,9 +30,9 @@ export default function FightNight() {
         {/* Colonne de texte à largeur fixe : le bloc (téléphone + texte) est centré dans la grille du site, quelle que soit la largeur. */}
         <div className="fn-text" style={{ flex: "0 1 34rem", minWidth: 0 }}>
           <span style={{ ...fadeUp(visible, 0), marginBottom: "1.5rem" }} className="section-label">{f.label}</span>
-          <h2 style={{ fontSize: "clamp(2.75rem, 5vw, 5rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.05em", lineHeight: 0.98, margin: "0 0 2rem" }}>
+          <h2 className="p-h2">
             <div style={{ overflow: "hidden", paddingBottom: "0.08em" }}><span style={clipReveal(visible, 80)}>{f.h2[0]}</span></div>
-            <div style={{ overflow: "hidden", paddingBottom: "0.12em" }}><span style={{ ...clipReveal(visible, 200), color: "#0443FD" }}>{f.h2[1]}</span></div>
+            <div style={{ overflow: "hidden", paddingBottom: "0.12em" }}><span style={{ ...clipReveal(visible, 200) }}>{f.h2[1]}</span></div>
           </h2>
           <p style={{ ...fadeUp(visible, 280), fontSize: "1.125rem", color: "#4a5560", lineHeight: 1.75, margin: "0 0 2.5rem", maxWidth: 480 }}>{f.body}</p>
           <ol style={{ listStyle: "none", padding: 0, margin: "0 0 2.5rem", borderTop: "1px solid rgba(11,17,22,0.1)" }}>

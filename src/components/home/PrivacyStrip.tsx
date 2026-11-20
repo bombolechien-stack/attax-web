@@ -24,7 +24,7 @@ export default function PrivacyStrip() {
           <div style={{ color: "#0d0d0d", flexShrink: 0, paddingTop: "3px" }}><ShieldIcon /></div>
           <div>
             <p style={{ fontSize: "0.6875rem", fontWeight: 700, color: "#aaa", letterSpacing: "0.14em", textTransform: "uppercase", margin: "0 0 0.5rem" }}>{p.label}</p>
-            <h3 style={{ fontSize: "1.25rem", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.03em", lineHeight: 1.2, margin: 0 }}>{p.title}</h3>
+            <h3 style={{ fontSize: "1.25rem", fontWeight: 500, color: "#0d0d0d", letterSpacing: "-0.02em", lineHeight: 1.2, margin: 0 }}>{p.title}</h3>
           </div>
         </div>
 

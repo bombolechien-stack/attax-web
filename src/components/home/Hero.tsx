@@ -28,23 +28,19 @@ export default function Hero() {
         >
           <source src="/videos/hero-scan.mp4" type="video/mp4" />
         </video>
-        <div className="scan-hero-lines" />
         <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(to right, rgba(13,13,13,0.94) 0%, rgba(13,13,13,0.75) 32%, rgba(13,13,13,0.1) 58%, rgba(13,13,13,0) 100%)" }} />
         <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(to bottom, rgba(13,13,13,0.55) 0%, rgba(13,13,13,0) 22%, rgba(13,13,13,0) 72%, rgba(13,13,13,0.85) 100%)" }} />
 
         <div style={{ position: "relative", zIndex: 10, flexShrink: 0 }}>
-          <PageNavbar />
+          <PageNavbar pill />
         </div>
 
         <div className="hero-text-box home-hero-copy">
-          <p className="pin-mono animate-fade-up" style={{ color: "rgba(255,255,255,0.4)", margin: "0 0 clamp(1.25rem, 2.5vw, 2rem)" }}>
-            <b>{h.kicker[0]}</b>&nbsp;&nbsp;·&nbsp;&nbsp;{h.kicker[1]}
+          <p className="p-label animate-fade-up" style={{ color: "rgba(255,255,255,0.55)", margin: "0 0 1.25rem" }}>
+            {h.kicker[0]} · {h.kicker[1]}
           </p>
-          <h1 className="pin-title animate-fade-up" style={{
-            fontSize: "clamp(3.25rem, 7vw, 7.5rem)", color: "#ffffff",
-            margin: "0 0 clamp(1.5rem, 2.5vw, 2.25rem)",
-          }}>
-            {h.h1[0]}<br /><em>{h.h1[1]}</em>
+          <h1 className="p-h1 animate-fade-up">
+            {h.h1[0]} {h.h1[1]}
           </h1>
           <p className="animate-fade-up delay-100" style={{
             fontSize: "clamp(0.9375rem, 1.2vw, 1.125rem)", color: "rgba(255,255,255,0.55)",
@@ -72,21 +68,21 @@ export default function Hero() {
               {h.cta_secondary}
             </a>
           </div>
-          <div className="hero-stats animate-fade-up delay-300" style={{ display: "flex", gap: 0, paddingTop: "1.75rem", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+          <div className="hero-stats animate-fade-up delay-300" style={{ display: "flex", gap: 0, paddingTop: "1.5rem", borderTop: "1px solid rgba(255,255,255,0.12)" }}>
             {h.stats.map((s, i) => (
               <div key={s.n} style={{
                 paddingLeft: i > 0 ? "2rem" : 0,
                 marginLeft: i > 0 ? "2rem" : 0,
                 borderLeft: i > 0 ? "1px solid rgba(255,255,255,0.08)" : "none",
               }}>
-                <div style={{ fontSize: "0.9375rem", fontWeight: 700, color: "#ffffff", marginBottom: "6px" }}>{s.n}</div>
-                <div className="pin-mono" style={{ fontSize: "0.6875rem", letterSpacing: "0.16em", color: "rgba(255,255,255,0.32)" }}>{s.sub}</div>
+                <div style={{ fontSize: "0.9375rem", fontWeight: 500, color: "#ffffff", marginBottom: "4px" }}>{s.n}</div>
+                <div style={{ fontSize: "0.8125rem", color: "rgba(255,255,255,0.5)" }}>{s.sub}</div>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="home-hero-foot pin-mono" style={{ fontSize: "0.75rem" }}>
+        <div className="home-hero-foot" style={{ fontSize: "0.8125rem" }}>
           <span>@playattax</span>
           <span className="home-hero-sports">{h.sports}</span>
         </div>

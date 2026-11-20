@@ -19,7 +19,8 @@ const GooglePlayIcon = () => (
 
 /** `light` : variante sur fond clair (hero de l'accueil) — textes encre, logo noir.
  *  `rightDark` : la partie droite (langue, boutons) posée sur un fond sombre (hero en dégradé, desktop). */
-export default function PageNavbar({ light = false, rightDark = false }: { light?: boolean; rightDark?: boolean } = {}) {
+export default function PageNavbar({ light: light0 = false, rightDark = false, pill = false }: { light?: boolean; rightDark?: boolean; pill?: boolean } = {}) {
+  const light = light0 || pill;
   const rl = light && !rightDark;
   const t = useT();
   const { lang } = useLang();
@@ -55,7 +56,7 @@ export default function PageNavbar({ light = false, rightDark = false }: { light
 
   return (
     <>
-      <div className="nav-page-root" style={{
+      <div className={pill ? "nav-page-root nav-pill" : "nav-page-root"} style={{
         position: "relative", zIndex: 10,
         display: "flex", alignItems: "center", justifyContent: "space-between",
         padding: "0 2.5rem", height: "68px", flexShrink: 0,
@@ -81,6 +82,9 @@ export default function PageNavbar({ light = false, rightDark = false }: { light
         <div style={{ flex: 1, display: "flex", justifyContent: "flex-end", alignItems: "center", gap: "0.75rem" }}>
           <div className="nav-page-right" style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
             <LangSwitcher light={rl} />
+            {pill ? (
+              <a href="/download" className="nav-pill-cta">{lang === "fr" ? "Télécharger" : "Download"}</a>
+            ) : (
             <div className="nav-page-ctas" style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
               <a href="/download/ios" style={{ display: "inline-flex", alignItems: "center", gap: "6px", backgroundColor: rl ? "#0B1116" : "#ffffff", color: rl ? "#ffffff" : "#0d0d0d", fontWeight: 700, fontSize: "0.75rem", padding: "7px 14px", borderRadius: "999px", textDecoration: "none", whiteSpace: "nowrap" }}>
                 <AppleIcon /> iOS
@@ -89,6 +93,7 @@ export default function PageNavbar({ light = false, rightDark = false }: { light
                 <GooglePlayIcon /> Android
               </a>
             </div>
+            )}
           </div>
           <button
             className="nav-burger"

@@ -138,9 +138,9 @@ export default function DailyMatch() {
         <div ref={headerRef} style={{ marginBottom: "3.5rem" }}>
           <span style={{ ...fadeUp(headerVisible, 0), display: "block", marginBottom: "1.5rem" }} className="section-label">{m.label}</span>
           <div className="dm-header" style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "4rem", flexWrap: "wrap" }}>
-            <h2 style={{ fontSize: "clamp(3rem, 5vw, 5.5rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.055em", lineHeight: 0.95, margin: 0 }}>
+            <h2 className="p-h2">
               <div><span style={clipReveal(headerVisible, 80)}>{m.h2[0]}</span></div>
-              <div><span style={{ ...clipReveal(headerVisible, 220), color: BLUE }}>{m.h2[1]}</span></div>
+              <div><span style={{ ...clipReveal(headerVisible, 220) }}>{m.h2[1]}</span></div>
             </h2>
             <p style={{ ...slideRight(headerVisible, 350), fontSize: "1.0625rem", color: "rgba(11,17,22,0.58)", lineHeight: 1.75, maxWidth: "460px", margin: 0 }}>{m.subtitle}</p>
           </div>

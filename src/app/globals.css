@@ -826,3 +826,106 @@ html { overflow-x: clip; }
   .hiw-step { grid-template-columns: 56px 1fr !important; }
   .hiw-shot { grid-column: 2; width: min(230px, 60vw); margin: 2rem 0 0 1rem; }
 }
+
+/* ════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+   SYSTÈME PREMIUM (branche site-premium, 20/11). Inspirations : retenue et typographie calme (superpower.com),
+   vitrines sombres avec un seul accent en lueur (melon.studio). Une seule police (Manrope, celle de l'app) en graisse
+   régulière ; encre, gris, un bleu d'accent (#0A3DFF) ; blanc / blanc cassé chaud / une vitrine sombre ; filets fins.
+   ════════════════════════════════════════════════════════════════════════════════════════════════════════════════ */
+.pm { --ink: #0B0B0C; --sub: #6B6F76; --line: rgba(11,11,12,0.09); --accent: #0A3DFF; --warm: #F4F1EC; font-family: var(--font-manrope), var(--font-jakarta), sans-serif; color: var(--ink); }
+.pm .p-wrap { max-width: 72rem; margin: 0 auto; }
+.pm .p-narrow { max-width: 52rem; }
+.pm .p-section { padding: 7.5rem clamp(1.25rem, 5vw, 4rem) !important; }
+.pm .p-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 3rem; flex-wrap: wrap; margin-bottom: 3.5rem; }
+.pm .p-label, .pm .section-label { display: block; font-family: var(--font-manrope), sans-serif !important; font-size: 0.75rem !important; font-weight: 600 !important; letter-spacing: 0.08em !important; text-transform: uppercase; color: var(--sub) !important; margin: 0 0 1rem !important; }
+.pm .p-mono { font-family: var(--font-mono), ui-monospace, monospace; font-size: 0.6875rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--sub); }
+.pm .p-h1 { font-family: var(--font-manrope), sans-serif; font-weight: 500; font-size: clamp(2.75rem, 5.4vw, 4.75rem); letter-spacing: -0.035em; line-height: 1.02; color: #fff; margin: 0 0 1.5rem; max-width: 11ch; }
+.pm .p-h2 { font-family: var(--font-manrope), sans-serif !important; font-weight: 500 !important; font-size: clamp(2rem, 3.6vw, 3.25rem) !important; letter-spacing: -0.03em !important; line-height: 1.08 !important; color: var(--ink) !important; margin: 0 !important; }
+.pm .p-h2 * { color: inherit !important; }
+.pm .p-h3 { font-family: var(--font-manrope), sans-serif; font-weight: 500; font-size: 1.1875rem; letter-spacing: -0.015em; line-height: 1.3; color: var(--ink); margin: 0; }
+.pm .p-body { font-size: 0.9375rem; line-height: 1.65; color: var(--sub); margin: 0; }
+.pm .p-statement { font-family: var(--font-manrope), sans-serif; font-weight: 400; font-size: clamp(1.9rem, 3.4vw, 3rem); letter-spacing: -0.03em; line-height: 1.12; margin: 0; }
+.pm .p-hl { color: var(--accent); }
+
+/* La vitrine sombre (et sa lueur bleue au bord) */
+.pm .p-dark { background: #0B0B0C !important; color: #fff; position: relative; overflow: hidden; }
+.pm .p-dark .p-h2, .pm .p-dark .p-h3, .pm .p-dark .p-statement { color: #fff !important; }
+.pm .p-dark .p-body, .pm .p-dark .p-label, .pm .p-dark .section-label, .pm .p-dark .p-mono { color: rgba(255,255,255,0.55) !important; }
+.pm .p-dark .p-hl { color: #5B7CFF; }
+.pm .p-glow { position: absolute; width: 60vw; height: 60vw; max-width: 900px; max-height: 900px; border-radius: 50%; background: radial-gradient(circle, rgba(10,61,255,0.55) 0%, rgba(10,61,255,0.18) 38%, rgba(10,61,255,0) 70%); filter: blur(40px); pointer-events: none; }
+.pm .p-glow-r { right: -22vw; top: -10vw; }
+.pm .p-glow-l { left: -24vw; bottom: -20vw; }
+
+/* Hero : la carte sombre arrondie garde la vidéo des sportifs, nav en pilule blanche flottante */
+.pm .nav-pill { margin: 14px auto 0 !important; width: min(1120px, calc(100% - 28px)); height: 54px !important; padding: 0 0.75rem 0 1.5rem !important; border-radius: 999px; background: rgba(255,255,255,0.94); box-shadow: 0 1px 0 rgba(11,11,12,0.04), 0 10px 30px -14px rgba(0,0,0,0.35); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.pm .nav-pill .nav-link { color: var(--ink) !important; opacity: 0.72; font-weight: 500 !important; }
+.pm .nav-pill-cta { display: inline-flex; align-items: center; background: var(--ink); color: #fff; font-weight: 500; font-size: 0.875rem; padding: 9px 18px; border-radius: 999px; text-decoration: none; white-space: nowrap; }
+.pm .home-hero-copy { max-width: 46%; }
+
+/* Bande de confiance */
+.pm .trust { padding: 3rem clamp(1.25rem, 5vw, 4rem) 3.25rem; border-bottom: 1px solid var(--line); text-align: center; }
+.pm .trust-kick { font-size: 0.8125rem; color: var(--sub); margin: 0 0 1.1rem; }
+.pm .trust-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem 2.25rem; }
+.pm .trust-list li { font-size: 1.0625rem; font-weight: 500; letter-spacing: -0.02em; color: rgba(11,11,12,0.55); }
+.pm .trust-meta { margin: 1.25rem 0 0; display: flex; justify-content: center; gap: 1.5rem; font-size: 0.8125rem; color: var(--sub); }
+.pm .trust-meta span::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-right: 8px; vertical-align: 1px; }
+
+/* L'idée : vitrine sombre, capture en perspective */
+.pm .idea { padding: 8rem clamp(1.25rem, 5vw, 4rem); }
+.pm .idea-grid { position: relative; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: 4rem; align-items: center; }
+.pm .idea-copy .p-statement { margin-top: 0.75rem; }
+.pm .idea-list { margin-top: 3rem; border-top: 1px solid rgba(255,255,255,0.1); }
+.pm .idea-row { display: grid; grid-template-columns: 3rem 1fr; gap: 1rem; padding: 1.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.pm .idea-row .p-h3 { margin-bottom: 0.35rem; }
+.pm .idea-stage { display: flex; justify-content: center; }
+.pm .idea-phone { width: min(330px, 70vw); border-radius: 44px; transform-origin: 50% 50%; box-shadow: 0 60px 120px -30px rgba(0,0,0,0.8), 0 0 80px -10px rgba(10,61,255,0.35); transition: transform 0.2s linear; will-change: transform; }
+.pm .idea-phone img { border-radius: 40px; }
+
+/* Une journée : cartes à photo */
+.pm .hiw-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.5rem 1.5rem; }
+.pm .hiw-media { position: relative; aspect-ratio: 4 / 5; border-radius: 20px; overflow: hidden; background: #ECEEF2; display: flex; align-items: center; justify-content: center; }
+.pm .hiw-media-app { background: #EEF1F7; }
+.pm .hiw-app-phone { width: 62%; height: auto; filter: drop-shadow(0 24px 34px rgba(11,17,22,0.18)); margin-top: 12%; }
+.pm .hiw-app-panel { width: 86%; height: auto; border-radius: 14px; box-shadow: 0 24px 40px -18px rgba(11,17,22,0.3); }
+.pm .hiw-num { position: absolute; top: 14px; left: 14px; width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,0.92); color: var(--ink); font-size: 0.75rem; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; }
+
+/* Fonctionnalités : tableau */
+.pm .ft-table { border-top: 1px solid var(--line); }
+.pm .ft-row { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.6fr); gap: 2rem; padding: 1.4rem 0; border-bottom: 1px solid var(--line); }
+.pm .ft-title { font-size: 1.0625rem; font-weight: 500; letter-spacing: -0.015em; color: var(--ink); }
+
+/* Sections existantes, ramenées au système */
+.pm .spt-section { background: #fff; padding-top: 7.5rem; padding-bottom: 7.5rem; }
+.pm .spt-head p { color: var(--sub) !important; }
+.pm .mr-section { background: var(--warm) !important; }
+.pm .mr-section .dm-header p { color: var(--sub) !important; }
+.pm .by-section { background: #fff !important; padding: 7.5rem clamp(1.25rem, 5vw, 4rem) !important; }
+.pm .by-section h3 { font-weight: 500 !important; }
+.pm .by-section h3 span { color: inherit !important; }
+.pm .by-shot { background: var(--warm) !important; }
+.pm .faq-section { padding: 7.5rem clamp(1.25rem, 5vw, 4rem) !important; }
+.pm .fn-section ol li span:last-child { font-weight: 500 !important; }
+.pm .cards-section .p-h2 { margin-bottom: 0.5rem !important; }
+
+/* Pied de page : le contact en grand */
+.footer-mail { display: flex; flex-direction: column; gap: 0.75rem; padding: 3.5rem 4rem 2.5rem; border-bottom: 1px solid #f0f0f0; }
+.footer-mail .p-mono { font-family: var(--font-mono), ui-monospace, monospace; font-size: 0.6875rem; letter-spacing: 0.06em; text-transform: uppercase; color: #6B6F76; }
+.footer-mail a { font-family: var(--font-manrope), sans-serif; font-weight: 400; font-size: clamp(2.2rem, 6vw, 5.25rem); letter-spacing: -0.04em; line-height: 1; color: #0B0B0C; text-decoration: none; }
+.footer-mail a:hover { color: #0A3DFF; }
+footer .p-h2 { font-family: var(--font-manrope), sans-serif; font-weight: 500; font-size: clamp(2.2rem, 4.4vw, 3.75rem); letter-spacing: -0.03em; line-height: 1.05; }
+
+@media (max-width: 1024px) {
+  .pm .idea-grid { grid-template-columns: 1fr; }
+  .pm .idea-stage { order: -1; margin-bottom: 1rem; }
+  .pm .hiw-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pm .home-hero-copy { max-width: 100%; }
+}
+@media (max-width: 760px) {
+  .pm .p-section, .pm .idea { padding: 5rem 1.25rem !important; }
+  .pm .hiw-grid { grid-template-columns: 1fr; }
+  .pm .ft-row { grid-template-columns: 1fr; gap: 0.4rem; }
+  .pm .nav-pill { width: calc(100% - 20px); padding: 0 0.5rem 0 1rem !important; }
+  .pm .nav-pill-cta { display: none; }
+  .footer-mail { padding: 2.5rem 1.5rem 2rem; }
+}
+@media (prefers-reduced-motion: reduce) { .pm .idea-phone { transition: none; } }

@@ -1,58 +1,75 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 import { useLang, useT } from "@/lib/i18n";
-import { useInView, fadeUp, fadeIn, slideLeft, slideRight, clipReveal } from "@/hooks/useInView";
+import { useInView, fadeUp } from "@/hooks/useInView";
 
-function InfoStep({ step, index }: { step: { title: string; body: string }; index: number }) {
-  const { ref, visible } = useInView<HTMLDivElement>(0.15);
-  return (
-    <div ref={ref} className={index > 0 ? "info-step-border" : ""} style={{
-      borderTop: "1px solid #e8e8e8",
-      borderLeft: index > 0 ? "1px solid #e8e8e8" : "none",
-      padding: "2.5rem 2.5rem 2.5rem 0",
-      paddingLeft: index > 0 ? "2.5rem" : 0,
-    }}>
-      <span style={{ ...fadeIn(visible, 0), display: "block", fontSize: "0.75rem", fontWeight: 700, color: "#c0c0c0", letterSpacing: "0.1em", marginBottom: "1.5rem" }}>
-        {String(index + 1).padStart(2, "0")}
-      </span>
-      <h3 style={{ ...index % 2 === 0 ? slideLeft(visible, 80) : slideRight(visible, 80), fontSize: "1.0625rem", fontWeight: 700, color: "#0d0d0d", letterSpacing: "-0.025em", lineHeight: 1.3, margin: "0 0 0.875rem" }}>
-        {step.title}
-      </h3>
-      <p style={{ ...fadeUp(visible, 200), fontSize: "0.9rem", color: "#888", lineHeight: 1.75, margin: 0 }}>{step.body}</p>
-    </div>
-  );
-}
+// « L'idée » (version premium, 20/11) : la vitrine sombre de la page. Une grande phrase en graisse régulière avec un seul
+// passage en bleu, une lueur bleue floue au bord, et la page Match de l'app (capture réelle) en panneau flottant incliné
+// en perspective, qui se redresse doucement au défilement. Les 3 idées en lignes séparées par des filets fins.
+
+const COPY = {
+  en: { pre: "Attax turns every workout into a duel you can ", hl: "win tonight", post: "." },
+  fr: { pre: "Attax transforme chaque séance en un duel que tu peux ", hl: "gagner ce soir", post: "." },
+};
 
 export default function InfoSection() {
   const t = useT();
   const inf = t.info;
   const { lang } = useLang();
+  const c = COPY[lang];
   const { ref: headerRef, visible: headerVisible } = useInView<HTMLDivElement>(0.1);
+  const { ref: listRef, visible: listVisible } = useInView<HTMLDivElement>(0.1, { oneShot: true });
+  const phoneRef = useRef<HTMLDivElement>(null);
+  const [tilt, setTilt] = useState(1);
+
+  // Parallaxe douce : le panneau se redresse en entrant dans l'écran (rien si les animations sont réduites).
+  useEffect(() => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let raf = 0;
+    const on = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const el = phoneRef.current; if (!el) return;
+        if (reduce) { setTilt(0.4); return; }
+        const r = el.getBoundingClientRect();
+        const k = Math.max(0, Math.min(1, (r.top + r.height / 2) / window.innerHeight));
+        setTilt(k);
+      });
+    };
+    on();
+    if (reduce) return () => cancelAnimationFrame(raf);
+    window.addEventListener("scroll", on, { passive: true });
+    return () => { window.removeEventListener("scroll", on); cancelAnimationFrame(raf); };
+  }, []);
 
   return (
-    <section style={{ backgroundColor: "#ffffff", padding: "7rem 2rem" }}>
-      <div className="info-wrap" style={{ maxWidth: "72rem", margin: "0 auto" }}>
-        {/* L'app dès le début : la page Match, le duel du jour (capture réelle, iPhone, EN / FR) */}
-        <div className="info-phone" style={{ ...fadeUp(headerVisible, 200) }}>
-          <Image src={`/screens/app/${lang}/2.webp`} alt={lang === "fr" ? "La page Match d'Attax : le duel du jour contre Sophie" : "The Attax Match page: today's duel against Sophie"}
-            width={560} height={1107} quality={90} sizes="(max-width: 860px) 64vw, 280px" style={{ width: "100%", height: "auto", display: "block" }} />
-        </div>
-        <div className="info-main">
-        <div ref={headerRef} className="info-header" style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "4rem", marginBottom: "5rem" }}>
-          <div>
-            <p style={{ ...fadeUp(headerVisible, 0) }} className="section-label">{inf.label}</p>
-            <h2 style={{ fontSize: "clamp(2rem, 3.5vw, 2.875rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.04em", lineHeight: 1.06, margin: 0 }}>
-              <div><span style={clipReveal(headerVisible, 100)}>{inf.h2}</span></div>
-            </h2>
+    <section className="p-dark idea">
+      <div className="p-glow p-glow-r" aria-hidden="true" />
+      <div className="p-wrap idea-grid">
+        <div ref={headerRef} className="idea-copy">
+          <p className="p-mono" style={fadeUp(headerVisible, 0)}>{inf.label}</p>
+          <h2 className="p-statement" style={fadeUp(headerVisible, 100)}>
+            {inf.h2} {c.pre}<span className="p-hl">{c.hl}</span>{c.post}
+          </h2>
+          <div ref={listRef} className="idea-list">
+            {inf.steps.map((s, i) => (
+              <div key={i} className="idea-row" style={fadeUp(listVisible, 80 * i)}>
+                <span className="p-mono">{String(i + 1).padStart(2, "0")}</span>
+                <div>
+                  <h3 className="p-h3">{s.title}</h3>
+                  <p className="p-body">{s.body}</p>
+                </div>
+              </div>
+            ))}
           </div>
-          <p style={{ ...slideRight(headerVisible, 240), fontSize: "1rem", color: "#888", lineHeight: 1.75, maxWidth: "300px", margin: 0, flex: "0 0 300px", whiteSpace: "pre-line" }}>{inf.sub}</p>
         </div>
-        <div className="info-steps-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "0" }}>
-          {inf.steps.map((step, i) => (
-            <InfoStep key={i} step={step} index={i} />
-          ))}
-        </div>
+        <div className="idea-stage">
+          <div ref={phoneRef} className="idea-phone" style={{ transform: `perspective(1400px) rotateY(${-16 * tilt}deg) rotateX(${6 * tilt}deg) rotateZ(${2 * tilt}deg) translateY(${30 * tilt}px)` }}>
+            <Image src={`/screens/app/${lang}/2.webp`} alt={lang === "fr" ? "La page Match d'Attax : le duel du jour contre Sophie" : "The Attax Match page: today's duel against Sophie"}
+              width={560} height={1107} quality={90} sizes="(max-width: 860px) 70vw, 340px" style={{ width: "100%", height: "auto", display: "block" }} />
+          </div>
         </div>
       </div>
     </section>

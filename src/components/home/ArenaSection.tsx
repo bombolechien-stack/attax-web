@@ -15,13 +15,12 @@ export default function ArenaSection() {
     <section style={{ position: "relative", backgroundColor: "#050505", minHeight: "110vh", display: "flex", alignItems: "center", overflow: "hidden" }}>
       <div ref={bgRef} style={{ position: "absolute", inset: "-10%", zIndex: 0 }}>
         <Image src="/images/sport/033-A.jpg" alt="Runner training at night" fill sizes="100vw" style={{ objectFit: "cover", objectPosition: "center 45%", filter: "grayscale(30%) contrast(1.08) brightness(0.72)" }} />
-        <div className="scan-overlay" />
       </div>
       <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(to right, rgba(5,5,5,0.82) 0%, rgba(5,5,5,0.42) 50%, rgba(5,5,5,0.08) 100%)" }} />
       <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(to bottom, rgba(5,5,5,0.15) 0%, rgba(5,5,5,0) 30%, rgba(5,5,5,0) 70%, rgba(5,5,5,0.9) 100%)" }} />
       <div style={{ position: "absolute", inset: 0, zIndex: 2, pointerEvents: "none", backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E\")", backgroundRepeat: "repeat", backgroundSize: "300px 300px" }} />
       <div ref={textRef} style={{ position: "relative", zIndex: 3, padding: "8rem clamp(2rem, 10vw, 10rem)", width: "100%", maxWidth: "900px" }}>
-        <div role="heading" aria-level={2} style={{ fontSize: "clamp(3.5rem, 9vw, 10rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.06em", lineHeight: 0.87, margin: "0 0 4rem" }}>
+        <div role="heading" aria-level={2} style={{ fontSize: "clamp(3rem, 7vw, 7rem)", fontWeight: 500, color: "#ffffff", letterSpacing: "-0.04em", lineHeight: 0.87, margin: "0 0 4rem" }}>
           <div><span style={clipReveal(visible, 0)}>{a.h2[0]}</span></div>
           <div><span style={clipReveal(visible, 180)}>{a.h2[1]}</span></div>
         </div>

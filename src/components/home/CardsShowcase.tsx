@@ -63,19 +63,20 @@ export default function CardsShowcase() {
   const delays = [180, 60, 300];
 
   return (
-    <section id="cards" className="cards-section" style={{ backgroundColor: "#0d0d0d", padding: "9rem 2rem", overflow: "hidden" }}>
-      <div style={{ maxWidth: "76rem", margin: "0 auto" }}>
+    <section id="cards" className="cards-section p-section p-dark" style={{ position: "relative", overflow: "hidden" }}>
+      <div className="p-glow p-glow-l" aria-hidden="true" />
+      <div style={{ position: "relative", maxWidth: "76rem", margin: "0 auto" }}>
         <div className="cards-showcase-inner" style={{ display: "flex", alignItems: "center", gap: "6rem", justifyContent: "center" }}>
           <div ref={headerRef} className="cards-showcase-text" style={{ flex: "0 0 380px", maxWidth: "380px" }}>
-            <p style={{ ...fadeUp(headerVisible, 0), fontSize: "0.6875rem", fontWeight: 700, color: "rgba(255,255,255,0.28)", letterSpacing: "0.18em", textTransform: "uppercase", margin: "0 0 1.5rem" }}>{cs.label}</p>
-            <h2 style={{ fontSize: "clamp(2.5rem, 4vw, 3.5rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.045em", lineHeight: 1.1, margin: "0 0 1.5rem" }}>
+            <p className="p-label" style={fadeUp(headerVisible, 0)}>{cs.label}</p>
+            <h2 className="p-h2">
               <div style={{ overflow: "hidden", paddingBottom: "0.1em" }}><span style={clipReveal(headerVisible, 80)}>{cs.h2[0]}</span></div>
-              <div style={{ overflow: "hidden", paddingBottom: "0.15em" }}><span style={{ ...clipReveal(headerVisible, 200), color: "#4D7BFF" }}>{cs.h2[1]}</span></div>
+              <div style={{ overflow: "hidden", paddingBottom: "0.15em" }}><span style={{ ...clipReveal(headerVisible, 200) }}>{cs.h2[1]}</span></div>
             </h2>
-            <p style={{ ...fadeUp(headerVisible, 280), fontSize: "1.0625rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.8, margin: "0 0 2.5rem" }}>{cs.sub}</p>
+            <p className="p-body" style={{ ...fadeUp(headerVisible, 280), margin: "1.25rem 0 2rem" }}>{cs.sub}</p>
             <div style={fadeUp(headerVisible, 360)}>
-              <p style={{ fontSize: "1rem", fontWeight: 700, color: "#ffffff", margin: "0 0 0.25rem" }}>{cs.cta}</p>
-              <p style={{ fontSize: "0.875rem", color: "rgba(255,255,255,0.38)", margin: 0 }}>{cs.cta_sub}</p>
+              <p style={{ fontSize: "1rem", fontWeight: 500, margin: "0 0 0.25rem" }}>{cs.cta}</p>
+              <p className="p-body" style={{ fontSize: "0.875rem", margin: 0 }}>{cs.cta_sub}</p>
             </div>
           </div>
 
@@ -89,11 +90,11 @@ export default function CardsShowcase() {
                     ...appear,
                     transform: `${appear.transform} ${base}`,
                     width: 200, flexShrink: 0, margin: "0 -6px", zIndex: i === 1 ? 2 : 1, position: "relative",
-                    borderRadius: 16, boxShadow: "0 30px 70px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08)",
+                    borderRadius: 16, boxShadow: "0 40px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.08)",
                     transition: "transform 0.45s cubic-bezier(0.16,1,0.3,1), box-shadow 0.45s cubic-bezier(0.16,1,0.3,1), opacity 1s cubic-bezier(0.16,1,0.3,1)",
                   }}
-                  onMouseEnter={(e) => { const el = e.currentTarget; el.style.transform = "rotate(0deg) translateY(-16px) scale(1.05)"; el.style.zIndex = "10"; el.style.boxShadow = `0 44px 90px rgba(0,0,0,0.7), 0 0 36px ${ACC[c.id]}66, 0 0 0 1px rgba(255,255,255,0.14)`; }}
-                  onMouseLeave={(e) => { const el = e.currentTarget; el.style.transform = base; el.style.zIndex = i === 1 ? "2" : "1"; el.style.boxShadow = "0 30px 70px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08)"; }}
+                  onMouseEnter={(e) => { const el = e.currentTarget; el.style.transform = "rotate(0deg) translateY(-16px) scale(1.05)"; el.style.zIndex = "10"; el.style.boxShadow = "0 50px 90px rgba(0,0,0,0.6), 0 0 60px rgba(10,61,255,0.35), 0 0 0 1px rgba(255,255,255,0.14)"; }}
+                  onMouseLeave={(e) => { const el = e.currentTarget; el.style.transform = base; el.style.zIndex = i === 1 ? "2" : "1"; el.style.boxShadow = "0 40px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.08)"; }}
                 >
                   <PortraitCard card={c} family={fam[c.fam]} tagline={TAGLINE[lang][c.id]} />
                 </div>

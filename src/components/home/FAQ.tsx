@@ -14,7 +14,7 @@ export default function FAQ() {
         <div className="faq-layout" style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr", gap: "6rem", alignItems: "start" }}>
           <div className="faq-sticky" style={{ position: "sticky", top: "6rem" }}>
             <p className="section-label" style={{ margin: "0 0 1.5rem" }}>{f.label}</p>
-            <h2 style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.04em", lineHeight: 1.05, margin: "0 0 1.25rem" }}>
+            <h2 className="p-h2">
               {f.h2}
             </h2>
             <p style={{ fontSize: "0.9375rem", color: "#888", lineHeight: 1.7, margin: 0 }}>

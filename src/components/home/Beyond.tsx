@@ -18,9 +18,9 @@ export default function Beyond() {
       <div style={{ maxWidth: "80rem", margin: "0 auto" }}>
         <div ref={headRef} style={{ marginBottom: "5rem" }}>
           <span style={{ ...fadeUp(headVisible, 0), marginBottom: "1.5rem" }} className="section-label">{b.label}</span>
-          <h2 style={{ fontSize: "clamp(2.5rem, 4.6vw, 4.5rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.05em", lineHeight: 1, margin: 0 }}>
+          <h2 className="p-h2">
             <div style={{ overflow: "hidden", paddingBottom: "0.08em" }}><span style={clipReveal(headVisible, 80)}>{b.h2[0]}</span></div>
-            <div style={{ overflow: "hidden", paddingBottom: "0.12em" }}><span style={{ ...clipReveal(headVisible, 200), color: "#0443FD" }}>{b.h2[1]}</span></div>
+            <div style={{ overflow: "hidden", paddingBottom: "0.12em" }}><span style={{ ...clipReveal(headVisible, 200) }}>{b.h2[1]}</span></div>
           </h2>
         </div>
 
@@ -35,7 +35,7 @@ export default function Beyond() {
                 )}
               </div>
               <span className="pin-mono" style={{ display: "block", fontSize: "0.6875rem", color: "rgba(11,17,22,0.4)", margin: "1.75rem 0 0.75rem" }}>{it.k}</span>
-              <h3 style={{ fontSize: "1.375rem", fontWeight: 800, letterSpacing: "-0.035em", lineHeight: 1.1, color: "#0d0d0d", margin: "0 0 0.75rem" }}>
+              <h3 style={{ fontSize: "1.375rem", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.1, color: "#0d0d0d", margin: "0 0 0.75rem" }}>
                 {it.t[0]} <span style={{ color: "#0443FD" }}>{it.t[1]}</span>
               </h3>
               <p style={{ fontSize: "0.9375rem", color: "#777", lineHeight: 1.7, margin: 0, maxWidth: 360 }}>{it.d}</p>

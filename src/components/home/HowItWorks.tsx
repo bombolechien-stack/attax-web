@@ -2,68 +2,63 @@
 
 import Image from "next/image";
 import { useLang, useT } from "@/lib/i18n";
-import { useInView, fadeUp, clipReveal, slideLeft, slideRight } from "@/hooks/useInView";
+import { useInView, fadeUp, clipReveal } from "@/hooks/useInView";
 
-function HiwStep({ step, index, shot }: { step: { time?: string; title: string; body: string }; index: number; shot?: { src: string; alt: string; panel?: boolean } }) {
-  const { ref, visible } = useInView<HTMLDivElement>(0.15);
-  return (
-    <div ref={ref} className="hiw-step" style={{ display: "grid", gridTemplateColumns: shot ? (shot.panel ? "80px 1fr 260px" : "80px 1fr 210px") : "80px 1fr", gap: "0", padding: "4rem 0", borderBottom: "1px solid rgba(255,255,255,0.06)", alignItems: "start" }}>
-      <div className="hiw-step-num" style={{ ...slideLeft(visible, 0), fontSize: "clamp(3.5rem, 5vw, 5rem)", fontWeight: 900, color: "rgba(255,255,255,0.06)", letterSpacing: "-0.05em", lineHeight: 1, paddingTop: "0.1em" }}>
-        {String(index + 1).padStart(2, "0")}
-      </div>
-      <div className="hiw-step-body" style={{ paddingLeft: "3rem" }}>
-        {step.time && (
-          <div className="pin-mono" style={{ ...fadeUp(visible, 40), fontSize: "0.75rem", color: "#C9D5F0", marginBottom: "1.25rem" }}>{step.time}</div>
-        )}
-        <div className="hiw-step-title" style={{ ...clipReveal(visible, 80), fontSize: "clamp(2.5rem, 4.5vw, 5rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.05em", lineHeight: 0.95, marginBottom: "1.5rem" }}>
-          {step.title}
-        </div>
-        <p style={{ ...fadeUp(visible, 200), fontSize: "1.0625rem", color: "rgba(255,255,255,0.4)", lineHeight: 1.75, margin: 0, maxWidth: "560px" }}>
-          {step.body}
-        </p>
-      </div>
-      {shot && (
-        <div className={shot.panel ? "hiw-shot hiw-shot-panel" : "hiw-shot"} style={{ ...fadeUp(visible, 260) }}>
-          <Image src={shot.src} alt={shot.alt} width={shot.panel ? 500 : 560} height={shot.panel ? 400 : 1107} quality={88} sizes="(max-width: 860px) 60vw, 260px" style={{ width: "100%", height: "auto", display: "block" }} />
-        </div>
-      )}
-    </div>
-  );
-}
+// « Une journée avec Attax » (version premium, 20/11) : 6 cartes arrondies, une par moment de la journée. En haut une
+// photo de campagne ou une vraie capture de l'app (chaque écran une seule fois sur la page), puis l'heure, le titre et
+// une phrase. Fond clair, filets fins, pas d'effets.
+
+type Visual = { photo: string; pos?: string } | { app: string; panel?: boolean };
+const VISUALS: Visual[] = [
+  { photo: "/images/runsunrise.jpg", pos: "50% 60%" },        // Connecte : la course du matin, la montre au poignet
+  { photo: "/images/photo-runners.jpg", pos: "50% 40%" },     // Le match s'ouvre : un nouvel adversaire
+  { app: "3-card", panel: true },                              // Joue ta carte : Overdrive (capture réelle)
+  { app: "4" },                                                // Bouge : l'écran Activité (capture réelle)
+  { photo: "/images/hero-boxing-2.jpg", pos: "50% 30%" },     // Le round final
+  { app: "5" },                                                // Soir de combat : le classement après le verdict
+];
 
 export default function HowItWorks() {
   const t = useT();
   const h = t.howItWorks;
   const { lang } = useLang();
-  // Captures réelles (iPhone) : la carte jouée (Overdrive, détail de l'écran 3), 4 = activité du jour, 5 = classement de la ligue.
-  const SHOTS: Record<number, { n: number | string; en: string; fr: string; panel?: boolean }> = {
-    2: { n: "3-card", panel: true, en: "An Attax card: Overdrive, today's workout counts ×1.5", fr: "Une carte Attax : Overdrive, la séance du jour compte ×1,5" },
-    3: { n: 4, en: "Attax Activity screen: today's pts", fr: "L'écran Activité d'Attax : les pts du jour" },
-    5: { n: 5, en: "Attax league standings after the 9:30 PM verdict", fr: "Le classement de la ligue Attax après le verdict de 21h30" },
-  };
   const { ref: headerRef, visible: headerVisible } = useInView<HTMLDivElement>(0.1);
+  const { ref: gridRef, visible: gridVisible } = useInView<HTMLDivElement>(0.08, { oneShot: true });
 
   return (
-    <section id="how-it-works" className="hiw-section" style={{ backgroundColor: "#070707", padding: "10rem 0" }}>
-      <div style={{ maxWidth: "80rem", margin: "0 auto", padding: "0 2rem" }}>
-        <div ref={headerRef} className="hiw-header" style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: "6rem", paddingBottom: "4rem", borderBottom: "1px solid rgba(255,255,255,0.06)", gap: "3rem" }}>
+    <section id="how-it-works" className="p-section" style={{ background: "#FAFAFA" }}>
+      <div className="p-wrap">
+        <div ref={headerRef} className="p-head">
           <div>
-            <span style={{ ...fadeUp(headerVisible, 0), display: "block", marginBottom: "1.5rem", fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.28)" }}>
-              {h.label}
-            </span>
-            <h2 style={{ fontSize: "clamp(3rem, 5vw, 5.5rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.055em", lineHeight: 0.9, margin: 0 }}>
+            <p className="p-label" style={fadeUp(headerVisible, 0)}>{h.label}</p>
+            <h2 className="p-h2">
               <div><span style={clipReveal(headerVisible, 0)}>{h.h2[0]}</span></div>
               <div><span style={clipReveal(headerVisible, 120)}>{h.h2[1]}</span></div>
             </h2>
           </div>
-          <p className="hiw-sub" style={{ ...slideRight(headerVisible, 280), fontSize: "1rem", color: "rgba(255,255,255,0.35)", lineHeight: 1.75, maxWidth: "280px", margin: 0, flex: "0 0 280px" }}>
-            {h.subtitle}
-          </p>
+          <p className="p-body" style={{ ...fadeUp(headerVisible, 240), maxWidth: 340, whiteSpace: "pre-line" }}>{h.subtitle}</p>
         </div>
-        <div>
-          {h.steps.map((s, i) => (
-            <HiwStep key={i} step={s} index={i} shot={SHOTS[i] ? { src: `/screens/app/${lang}/${SHOTS[i].n}.webp`, alt: SHOTS[i][lang], panel: SHOTS[i].panel } : undefined} />
-          ))}
+
+        <div ref={gridRef} className="hiw-grid">
+          {h.steps.map((s, i) => {
+            const v = VISUALS[i];
+            return (
+              <article key={i} className="hiw-card" style={fadeUp(gridVisible, 80 * i)}>
+                <div className={"photo" in v ? "hiw-media" : "hiw-media hiw-media-app"}>
+                  {"photo" in v ? (
+                    <Image src={v.photo} alt="" fill sizes="(max-width: 760px) 92vw, (max-width: 1100px) 46vw, 380px" style={{ objectFit: "cover", objectPosition: v.pos }} />
+                  ) : (
+                    <Image src={`/screens/app/${lang}/${v.app}.webp`} alt={s.title} width={v.panel ? 500 : 560} height={v.panel ? 400 : 1107} sizes="300px"
+                      className={v.panel ? "hiw-app-panel" : "hiw-app-phone"} />
+                  )}
+                  <span className="hiw-num">{String(i + 1).padStart(2, "0")}</span>
+                </div>
+                <p className="p-label" style={{ margin: "1.25rem 0 0.4rem" }}>{s.time}</p>
+                <h3 className="p-h3">{s.title}</h3>
+                <p className="p-body" style={{ marginTop: "0.5rem" }}>{s.body}</p>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>

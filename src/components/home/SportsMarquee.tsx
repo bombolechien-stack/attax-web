@@ -121,9 +121,9 @@ export default function SportsMarquee() {
       <div ref={ref} className="spt-head">
         <div>
           <p style={{ ...fadeUp(visible, 0), fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "rgba(28,37,64,0.5)", margin: "0 0 1.5rem" }}>{c.label}</p>
-          <h2 style={{ fontSize: "clamp(2.5rem, 6vw, 5.5rem)", fontWeight: 800, color: "#0B0B0C", letterSpacing: "-0.05em", lineHeight: 0.95, margin: 0 }}>
+          <h2 className="p-h2">
             <span style={clipReveal(visible, 80)}>{c.h2[0]}</span>
-            <span style={{ ...clipReveal(visible, 220), color: BLUE }}>{c.h2[1]}</span>
+            <span style={{ ...clipReveal(visible, 220) }}>{c.h2[1]}</span>
           </h2>
         </div>
         <p style={{ ...fadeUp(visible, 350), fontSize: "1rem", color: "rgba(28,37,64,0.62)", lineHeight: 1.75, maxWidth: "380px", margin: 0 }}>{c.body}</p>

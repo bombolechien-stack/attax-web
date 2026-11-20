@@ -24,12 +24,11 @@ export default function Footer() {
         <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
           <Image src="/images/sport-running-group.png" alt="" fill style={{ objectFit: "cover", objectPosition: "center 40%", filter: "grayscale(25%) contrast(1.1) brightness(0.58)" }} />
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(7,7,7,0.65) 0%, rgba(7,7,7,0.38) 60%, rgba(7,7,7,0) 100%)" }} />
-          <div className="scan-overlay" />
         </div>
 
         <div className="footer-cta-section" style={{ position: "relative", zIndex: 2, padding: "9rem 2rem 7rem", textAlign: "center" }}>
           <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", margin: "0 0 1.25rem" }}>{f.cta_label}</p>
-          <h2 style={{ fontSize: "clamp(2.75rem, 5.5vw, 5rem)", fontWeight: 800, color: "#fff", letterSpacing: "-0.05em", lineHeight: 0.95, margin: "0 0 1.5rem" }}>
+          <h2 className="p-h2" style={{ color: "#fff", margin: "0 0 1.25rem" }}>
             {f.cta_h2[0]}<br />{f.cta_h2[1]}
           </h2>
           <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.42)", lineHeight: 1.7, margin: "0 auto 2.75rem", maxWidth: "340px" }}>{f.cta_sub}</p>
@@ -50,6 +49,11 @@ export default function Footer() {
             ATTAX
           </div>
           <div style={{ position: "relative", zIndex: 1 }}>
+            {/* Le contact en grand (une seule adresse : contact@) */}
+            <div className="footer-mail">
+              <span className="p-mono">Contact</span>
+              <a href="mailto:contact@attax.app">contact@attax.app</a>
+            </div>
             <div className="footer-top-bar" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "2.75rem 4rem", borderBottom: "1px solid #f0f0f0", flexWrap: "wrap", gap: "1.5rem" }}>
               <Image src="/images/logo-attax-wh.svg" alt="Attax" width={130} height={49} style={{ display: "block", filter: "brightness(0)" }} />
               <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>

@@ -12,6 +12,7 @@ import FeaturesGrid from "@/components/home/FeaturesGrid";
 import ArenaSection from "@/components/home/ArenaSection";
 import PrivacyStrip from "@/components/home/PrivacyStrip";
 import FAQ from "@/components/home/FAQ";
+import TrustStrip from "@/components/home/TrustStrip";
 import { T } from "@/lib/translations";
 
 export const metadata: Metadata = {
@@ -59,7 +60,9 @@ export default function HomePage() {
       {/* 20/11 : une histoire logique (ce qu'est Attax → comment l'effort devient des pts → la journée → le match → les
           cartes → le verdict de 21h30 → au-delà), et l'app visible dès le début : L'idée et Une journée montrent de vraies
           captures (chaque écran de l'app n'apparaît qu'une fois sur la page). */}
+      <div className="pm">
       <Hero />
+      <TrustStrip />
       <InfoSection />
       <SportsMarquee />
       <HowItWorks />
@@ -71,6 +74,7 @@ export default function HomePage() {
       <ArenaSection />
       <PrivacyStrip />
       <FAQ />
+      </div>
     </ComingSoonGate>
   );
 }
