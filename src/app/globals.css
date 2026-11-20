@@ -729,79 +729,62 @@ html { overflow-x: clip; }
   .spt-seg-run { animation: none; transform: scaleX(1); }
 }
 
-/* ── 7 jours. 7 rounds. : la page Match de l'app, dans un téléphone (20/11, v3) ── */
-.mp-section { background: #F4F5F8; padding: 8rem clamp(1.25rem, 5vw, 4rem); overflow: hidden; }
-.mp-inner { max-width: 72rem; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 34rem) auto; gap: clamp(3rem, 7vw, 6.5rem); align-items: center; justify-content: center; }
-.mp-copy { max-width: 34rem; }
-.mp-rhythm { margin-top: 2.5rem; display: flex; flex-direction: column; }
-.mp-rhythm-item { border-top: 1px solid rgba(11,17,22,0.1); padding: 1rem 0; }
-.mp-phone { width: 384px; aspect-ratio: 1080 / 2250; border-radius: 52px; background: #0B0B0C; padding: 9px; box-sizing: border-box; filter: drop-shadow(0 30px 60px rgba(11,17,22,0.2)); }
-.mp-screen { position: relative; height: 100%; border-radius: 44px; background: #EEF1F7; overflow: hidden; padding: 0 12px; box-sizing: border-box; color: #09090B; }
-.mp-status { display: flex; justify-content: space-between; align-items: center; height: 38px; padding: 0 16px; font-weight: 700; font-size: 12px; }
-.mp-island { width: 92px; height: 26px; border-radius: 14px; background: #0B0B0C; display: block; }
-.mp-icons { width: 30px; height: 9px; border-radius: 2px; background: linear-gradient(90deg, #09090B 0 58%, transparent 58% 64%, #09090B 64%); }
-.mp-head { display: flex; align-items: center; gap: 7px; padding: 2px 4px 0; }
-.mp-title { font-weight: 800; font-size: 30px; letter-spacing: -1px; line-height: 40px; }
-.mp-dot { width: 7px; height: 7px; border-radius: 50%; background: #EF4444; display: block; margin-left: 4px; }
-.mp-live { font-weight: 700; font-size: 10px; letter-spacing: 0.8px; color: #EF4444; }
-.mp-head-r { margin-left: auto; display: flex; gap: 6px; }
-.mp-head-r b { width: 28px; height: 28px; border-radius: 50%; background: #E2E6EC; display: inline-flex; align-items: center; justify-content: center; font-size: 16px; color: #09090B; line-height: 1; }
-.mp-info { display: flex; justify-content: space-between; align-items: center; margin-top: 6px; padding: 0 6px; }
-.mp-daylbl { width: 52px; font-weight: 800; font-size: 10px; letter-spacing: 0.6px; }
-.mp-clock { display: flex; flex-direction: column; align-items: center; }
-.mp-lbl { font-weight: 800; font-size: 8px; letter-spacing: 1.2px; color: #94A3B8; }
-.mp-time { font-weight: 800; font-size: 34px; letter-spacing: -0.5px; line-height: 38px; font-variant-numeric: tabular-nums; }
-.mp-row { position: relative; display: grid; grid-template-columns: 1fr 1fr; margin-top: 12px; }
-.mp-col { display: flex; flex-direction: column; align-items: center; }
-.mp-av { width: 62px; height: 62px; border-radius: 50%; border: 2px solid; overflow: hidden; background: #DDE2EA; }
-.mp-av img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.mp-name { margin-top: 8px; font-weight: 800; font-size: 12.5px; letter-spacing: 1px; white-space: pre; }
-.mp-rank { margin-top: 5px; display: inline-flex; align-items: center; gap: 5px; padding: 2px 9px; border-radius: 10px; background: #FFF6D6; color: #B58400; font-weight: 700; font-size: 11px; }
-.mp-rank i { width: 9px; height: 9px; border-radius: 2px; background: #FFC400; transform: rotate(12deg); display: block; }
-.mp-vs { position: absolute; left: 50%; top: 22px; transform: translateX(-50%); font-weight: 800; font-size: 13px; letter-spacing: 1px; color: #94A3B8; }
-.mp-bars { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 16px; }
-.mp-bar-wrap { position: relative; }
-.mp-bar { position: relative; height: 10px; border-radius: 5px; overflow: hidden; background: linear-gradient(180deg, #F4F6F9 0%, #DCE1E8 45%, #CBD2DB 60%, #E1E6EC 100%); }
-.mp-bar-fill { position: absolute; top: 0; bottom: 0; }
-.mp-bar-sheen { position: absolute; inset: 0 0 50% 0; background: linear-gradient(180deg, rgba(255,255,255,0.4), rgba(255,255,255,0)); }
-.mp-notch { position: absolute; top: -4px; width: 1.4px; height: 18px; margin: 0 -0.7px; background: rgba(0,0,0,0.92); }
-.mp-ticks { position: relative; height: 6px; margin-top: 3px; }
-.mp-ticks i { position: absolute; top: 0; width: 1px; height: 3px; background: rgba(100,116,139,0.28); }
-.mp-hp { display: flex; justify-content: space-between; padding: 0 4px; margin-top: -3px; font-weight: 800; font-size: 13px; font-variant-numeric: tabular-nums; }
-.mp-dashes { display: flex; justify-content: center; gap: 4px; margin-top: 12px; }
-.mp-dashes button { all: unset; cursor: pointer; width: 18px; height: 3px; border-radius: 2px; }
-.mp-dashes button:focus-visible { outline: 2px solid #0443FD !important; outline-offset: 3px; }
-.mp-round { display: flex; flex-direction: column; align-items: center; text-align: center; margin-top: 12px; min-height: 262px; }
-.mp-kick { font-weight: 700; font-size: 10px; letter-spacing: 2.2px; color: #94A3B8; }
-.mp-dayname { margin-top: 2px; font-weight: 700; font-size: 22px; letter-spacing: -0.4px; }
-.mp-big { font-weight: 800; font-size: 44px; letter-spacing: -1.5px; line-height: 46px; font-variant-numeric: tabular-nums; }
-.mp-big small { font-size: 11px; font-weight: 700; letter-spacing: 0; margin-left: 4px; opacity: 0.75; }
-.mp-small { font-weight: 600; font-size: 11px; color: #6B7280; }
-.mp-vs2 { margin: 6px 0 4px; font-weight: 700; font-size: 10px; letter-spacing: 3px; color: #94A3B8; }
-.mp-split { display: flex; gap: 2px; width: 124px; margin-top: 10px; }
-.mp-split i { display: block; height: 3px; border-radius: 2px; }
-.mp-finaltitle { margin-top: 8px; font-weight: 800; font-size: 24px; letter-spacing: -0.5px; }
-.mp-finaltitle em { font-style: normal; font-weight: 600; font-size: 15px; color: #94A3B8; margin-left: 4px; }
-.mp-secret { margin-top: 6px; font-weight: 700; font-size: 14px; }
-.mp-stake { margin-top: 8px; font-weight: 700; font-size: 13px; color: #6B7280; }
-.mp-stake b { font-size: 26px; font-weight: 800; }
-.mp-stakesub { margin-top: 6px; padding: 0 10px; font-weight: 600; font-size: 12.5px; line-height: 1.45; color: #09090B; }
-.mp-sess { margin-top: 10px; padding: 10px 6px 0; border-top: 1px solid #DDE2EA; }
-.mp-sess-row { display: grid; grid-template-columns: 52px 8px minmax(0, 1fr) auto; align-items: center; gap: 6px; padding: 5px 0; font-size: 11.5px; }
-.mp-sess-row i { width: 6px; height: 6px; border-radius: 50%; display: block; }
-.mp-sess-at { font-weight: 600; font-size: 10.5px; color: #6B7280; font-variant-numeric: tabular-nums; }
-.mp-sess-t { font-weight: 500; color: #6B7280; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.mp-sess-t b { font-weight: 700; color: #09090B; }
-.mp-sess-pts { font-weight: 800; font-size: 12px; font-variant-numeric: tabular-nums; }
-.mp-sess-steps { padding: 3px 0 0 64px; font-weight: 500; font-size: 11px; color: #6B7280; }
-@media (max-width: 960px) {
-  .mp-inner { grid-template-columns: 1fr; justify-items: center; }
-  .mp-copy { max-width: none; width: 100%; }
-}
+/* ── 7 jours. 7 rounds. : l'écran Match de l'app pendant les rounds, agrandi (20/11, v4) ── */
+.mr-section { background: #EEF1F7; padding: 8rem clamp(1.25rem, 5vw, 4rem) 6rem; overflow: hidden; }
+.mr-stage { position: relative; color: #09090B; }
+.mr-boxers { position: absolute; z-index: 0; left: 50%; top: 50%; width: 100vw; height: calc(100% + 6rem); transform: translate(-50%, -48%); pointer-events: none; overflow: hidden; }
+.mr-boxers img { position: absolute; left: 50%; top: 50%; translate: -50% -50%; width: max(155%, 1700px); height: 118%; object-fit: cover; object-position: 50% 22%; transition: opacity 0.28s ease;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 12%, #000 72%, transparent 100%); mask-image: linear-gradient(180deg, transparent 0, #000 12%, #000 72%, transparent 100%); }
+.mr-inner { position: relative; z-index: 1; max-width: 76rem; margin: 0 auto; }
+.mr-bars { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.mr-bar-wrap { position: relative; }
+.mr-bar { position: relative; height: 14px; border-radius: 7px; overflow: hidden; background: linear-gradient(180deg, #F4F6F9 0%, #DCE1E8 45%, #CBD2DB 60%, #E1E6EC 100%); }
+.mr-bar-fill { position: absolute; top: 0; bottom: 0; }
+.mr-bar-sheen { position: absolute; inset: 0 0 50% 0; background: linear-gradient(180deg, rgba(255,255,255,0.4), rgba(255,255,255,0)); }
+.mr-notch { position: absolute; top: -5px; width: 2px; height: 24px; margin: 0 -1px; background: rgba(0,0,0,0.92); }
+/* Le morceau jaune qui se détache de la barre et tombe (Frag de la révélation de l'app) */
+.mr-frag { position: absolute; top: 0; height: 14px; border-radius: 3px; background: linear-gradient(180deg, #FFE267, #FFD112 50%, #E0B400); z-index: 2; animation: mrFrag 1.05s cubic-bezier(0.5, 0, 0.75, 0) forwards; }
+@keyframes mrFrag { 0% { transform: none; opacity: 1; } 12% { transform: translateY(-3px) rotate(-2deg); opacity: 1; } 100% { transform: translateY(70px) rotate(9deg); opacity: 0; } }
+.mr-ticks { position: relative; height: 8px; margin-top: 4px; }
+.mr-ticks i { position: absolute; top: 0; width: 1px; height: 4px; background: rgba(100,116,139,0.3); }
+.mr-hp { margin-top: 2px; font-weight: 800; font-size: 0.9375rem; font-variant-numeric: tabular-nums; }
+.mr-hp b { color: #09090B; letter-spacing: 0.12em; font-size: 0.75rem; margin: 0 4px; }
+.mr-hp span { display: inline-block; animation: mrPop 0.45s cubic-bezier(0.16,1,0.3,1); }
+@keyframes mrPop { from { transform: scale(1.4); } to { transform: none; } }
+.mr-dashes { display: flex; justify-content: center; gap: 6px; margin-top: 1.4rem; }
+.mr-dashes i { width: 34px; height: 4px; border-radius: 2px; display: block; }
+.mr-dashes i.is-final { width: 50px; }
+.mr-round { display: flex; flex-direction: column; align-items: center; text-align: center; margin-top: 1.6rem; min-height: 470px; }
+.mr-kick { font-weight: 700; font-size: 0.75rem; letter-spacing: 0.24em; color: #94A3B8; }
+.mr-day { margin-top: 4px; font-weight: 800; font-size: clamp(2rem, 3.4vw, 2.75rem); letter-spacing: -0.03em; animation: mrIn 0.45s cubic-bezier(0.16,1,0.3,1); }
+@keyframes mrIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.mr-wins { margin-top: 1.2rem; transition: opacity 0.25s ease; }
+.mr-big { font-weight: 800; font-size: clamp(4rem, 8vw, 6.5rem); letter-spacing: -0.05em; line-height: 1; font-variant-numeric: tabular-nums; transition: opacity 0.28s cubic-bezier(0.16,1,0.3,1); text-shadow: 0 0 30px #EEF1F7; }
+.mr-big small { font-size: 0.2em; font-weight: 700; letter-spacing: 0; margin-left: 6px; opacity: 0.75; }
+.mr-vs { margin: 0.9rem 0 0; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.4em; color: #94A3B8; transition: opacity 0.2s ease; }
+.mr-split { display: flex; gap: 3px; width: 180px; margin-top: 1.1rem; transition: opacity 0.2s ease; }
+.mr-split i { display: block; height: 4px; border-radius: 2px; }
+.mr-verdict { justify-content: center; }
+.mr-verdict-name { font-weight: 800; font-size: clamp(4.5rem, 11vw, 8.5rem); letter-spacing: -0.05em; line-height: 1; color: #0443FD; animation: mrIn 0.6s cubic-bezier(0.16,1,0.3,1); }
+.mr-verdict-sub { margin-top: 0.8rem; font-weight: 700; font-size: 1.125rem; }
+.dm2-rhythm { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; padding: 0 0.5rem; }
+.dm2-rhythm-item { border-top: 1px solid rgba(11,17,22,0.1); padding-top: 1.1rem; }
 @media (max-width: 760px) {
-  .mp-section { padding: 5rem 1rem; }
-  .mp-phone { width: min(372px, 100%); aspect-ratio: auto; }
-  .mp-screen { height: auto; min-height: 700px; padding-bottom: 26px; }
+  .mr-section { padding: 5rem 1rem 4rem; }
+  .mr-bar { height: 10px; border-radius: 5px; }
+  .mr-frag { height: 10px; }
+  .mr-notch { top: -4px; height: 18px; width: 1.5px; }
+  .mr-hp { font-size: 0.8125rem; }
+  .mr-hp b { font-size: 0.6875rem; letter-spacing: 0.08em; }
+  .mr-dashes i { width: 22px; height: 3px; }
+  .mr-dashes i.is-final { width: 32px; }
+  .mr-round { min-height: 420px; }
+  .mr-boxers img { width: 175%; height: 112%; object-position: 50% 18%; }
+  .dm2-rhythm { grid-template-columns: 1fr; gap: 1.1rem; padding: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mr-frag, .mr-day, .mr-hp span, .mr-verdict-name { animation: none; }
+  .mr-frag { display: none; }
 }
 
 /* ── Profil : la vitrine des trophées refaite en HTML (TrophyScreen.tsx, 20/11) ── */
