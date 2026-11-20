@@ -1,9 +1,22 @@
 "use client";
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 import PageNavbar from "@/components/PageNavbar";
-import { useT } from "@/lib/i18n";
+import { useLang, useT } from "@/lib/i18n";
 
 export default function Hero() {
+  const { lang } = useLang();
+  const phoneRef = useRef<HTMLDivElement>(null);
+  const [k, setK] = useState(0);
+  // Parallaxe douce : le téléphone se redresse et monte un peu au défilement (rien si les animations sont réduites).
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let raf = 0;
+    const on = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(() => setK(Math.min(1, window.scrollY / 700))); };
+    window.addEventListener("scroll", on, { passive: true });
+    return () => { window.removeEventListener("scroll", on); cancelAnimationFrame(raf); };
+  }, []);
   const t = useT();
   const h = t.hero;
 
@@ -39,8 +52,9 @@ export default function Hero() {
           <p className="p-label animate-fade-up" style={{ color: "rgba(255,255,255,0.55)", margin: "0 0 1.25rem" }}>
             {h.kicker[0]} · {h.kicker[1]}
           </p>
-          <h1 className="p-h1 animate-fade-up">
-            {h.h1[0]} {h.h1[1]}
+          {/* Le titre façon affiche des pins : 2e ligne en italique serif, bleu glacier */}
+          <h1 className="p-h1 p-h1-A animate-fade-up">
+            <span className="l1">{h.h1[0]}</span> <span className="l2">{h.h1[1]}</span>
           </h1>
           <p className="animate-fade-up delay-100" style={{
             fontSize: "clamp(0.9375rem, 1.2vw, 1.125rem)", color: "rgba(255,255,255,0.55)",
@@ -79,6 +93,13 @@ export default function Hero() {
                 <div style={{ fontSize: "0.8125rem", color: "rgba(255,255,255,0.5)" }}>{s.sub}</div>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Le produit : la page Match en direct, dans un téléphone, devant la vidéo des sportifs */}
+        <div className="hero-phone" aria-hidden="true">
+          <div ref={phoneRef} className="hero-phone-in" style={{ transform: `perspective(1400px) rotateY(${-14 + 10 * k}deg) rotateX(${5 - 4 * k}deg) translateY(${-30 * k}px)` }}>
+            <Image src={`/screens/app/${lang}/match-final.webp`} alt="" width={560} height={1107} priority sizes="300px" />
           </div>
         </div>
 

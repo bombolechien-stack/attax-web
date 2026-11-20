@@ -13,6 +13,8 @@ import ArenaSection from "@/components/home/ArenaSection";
 import PrivacyStrip from "@/components/home/PrivacyStrip";
 import FAQ from "@/components/home/FAQ";
 import TrustStrip from "@/components/home/TrustStrip";
+import Statement from "@/components/home/Statement";
+import GameFacts from "@/components/home/GameFacts";
 import { T } from "@/lib/translations";
 
 export const metadata: Metadata = {
@@ -64,11 +66,14 @@ export default function HomePage() {
       <Hero />
       <TrustStrip />
       <InfoSection />
+      <GameFacts />
       <SportsMarquee />
       <HowItWorks />
+      <Statement id="night" />
       <DailyMatch />
       <CardsShowcase />
       <FightNight />
+      <Statement id="season" />
       <Beyond />
       <FeaturesGrid />
       <ArenaSection />

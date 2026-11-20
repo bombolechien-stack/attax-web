@@ -49,14 +49,14 @@ const COPY = {
   en: {
     label: "Every sport counts",
     h2: ["Every sport.", "Every effort."],
-    body: "Yoga, curling or a marathon: if your heart rate goes up, it counts. Your watch measures your workouts and steps through Apple Health or Health Connect, and Attax turns them into pts. No manual entry, whatever your level.",
+    body: "If your heart rate goes up, it counts.\nYoga, curling or a marathon.",
     panelKick: "YOUR EFFORT → PTS",
     panelTitle: "Your heart sets the score.",
     zone: "Zone",
     perMin: "pts / min",
     steps: "1,000 steps",
     stepsPts: "10 pts",
-    note: "The sport never changes the score: only your heart rate and your steps do. Zones adapt to your age, and past 90 minutes in a day, each minute counts a little less.",
+    note: "Only your heart rate and your steps set the score. Zones adapt to your age.",
     index: "SPORT",
     any: "And any sport or any intense activity",
     anyShort: "And any sport",
@@ -67,14 +67,14 @@ const COPY = {
   fr: {
     label: "Tous les sports comptent",
     h2: ["Tous les sports.", "Tous les efforts."],
-    body: "Yoga, curling ou marathon : si ton cœur accélère, ça compte. Ta montre mesure tes séances et tes pas via Apple Santé ou Health Connect, et Attax les transforme en pts. Aucune saisie à la main, quel que soit ton niveau.",
+    body: "Si ton cœur accélère, ça compte.\nYoga, curling ou marathon.",
     panelKick: "TON EFFORT → PTS",
     panelTitle: "C'est ton cœur qui marque.",
     zone: "Zone",
     perMin: "pts / min",
     steps: "1 000 pas",
     stepsPts: "10 pts",
-    note: "Le sport ne change jamais le score : seuls ton cœur et tes pas comptent. Les zones s'adaptent à ton âge, et au-delà de 90 minutes dans la journée, chaque minute compte un peu moins.",
+    note: "Seuls ton cœur et tes pas font le score. Les zones s'adaptent à ton âge.",
     index: "SPORT",
     any: "Et tout sport ou toute activité intense",
     anyShort: "Et tout sport",
@@ -126,12 +126,12 @@ export default function SportsMarquee() {
             <span style={{ ...clipReveal(visible, 220) }}>{c.h2[1]}</span>
           </h2>
         </div>
-        <p style={{ ...fadeUp(visible, 350), fontSize: "1rem", color: "rgba(28,37,64,0.62)", lineHeight: 1.75, maxWidth: "380px", margin: 0 }}>{c.body}</p>
+        <p style={{ ...fadeUp(visible, 350), fontSize: "1rem", color: "rgba(28,37,64,0.62)", lineHeight: 1.75, maxWidth: "380px", margin: 0, whiteSpace: "pre-line" }}>{c.body}</p>
       </div>
 
       <div className="spt-grid">
         {/* La scène */}
-        <div ref={stageRef} className="spt-stage spt-v-C" style={{ backgroundColor: STAGE_BG }}
+        <div ref={stageRef} className="spt-stage spt-v-C spt-v2a" style={{ backgroundColor: STAGE_BG }}
           onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
           {SPORTS.map((s, i) => {
             const on = i === active;
@@ -145,7 +145,6 @@ export default function SportsMarquee() {
                   : "opacity 0.6s ease 0.35s, clip-path 0s linear 0.95s, transform 0s linear 0.95s",
                 zIndex: on ? 2 : 1,
               }}>
-                <GhostName name={s[lang]} />
                 <Image className="spt-photo" src={`/sports/${s.file}.webp`} alt={on ? s[lang] : ""} width={520} height={780} unoptimized loading={i < 2 ? "eager" : "lazy"}
                   style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 40%", display: "block" }} />
               </div>
@@ -254,26 +253,5 @@ export default function SportsMarquee() {
         </div>
       </div>
     </section>
-  );
-}
-
-/** Le nom du sport en grand, derrière l'athlète : coupé en 2 lignes s'il est long, chaque ligne ajustée à la largeur. */
-function GhostName({ name }: { name: string }) {
-  const words = name.split(" ");
-  let lines = [name];
-  if (words.length > 1 && name.length > 9) {
-    // coupe la plus équilibrée
-    let best = 0, gap = Infinity;
-    for (let k = 1; k < words.length; k++) {
-      const d = Math.abs(words.slice(0, k).join(" ").length - words.slice(k).join(" ").length);
-      if (d < gap) { gap = d; best = k; }
-    }
-    lines = [words.slice(0, best).join(" "), words.slice(best).join(" ")];
-  }
-  const n = Math.max(...lines.map((l) => l.length), 5);
-  return (
-    <span className="spt-ghost" aria-hidden="true" style={{ ["--n" as string]: n }}>
-      {lines.map((l) => <span key={l}>{l}</span>)}
-    </span>
   );
 }

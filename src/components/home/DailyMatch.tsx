@@ -143,7 +143,7 @@ export default function DailyMatch() {
               <div><span style={clipReveal(headerVisible, 80)}>{m.h2[0]}</span></div>
               <div><span style={{ ...clipReveal(headerVisible, 220) }}>{m.h2[1]}</span></div>
             </h2>
-            <p style={{ ...slideRight(headerVisible, 350), fontSize: "1.0625rem", color: "rgba(11,17,22,0.58)", lineHeight: 1.75, maxWidth: "460px", margin: 0 }}>{m.subtitle}</p>
+            <p style={{ ...slideRight(headerVisible, 350), fontSize: "1.0625rem", color: "rgba(11,17,22,0.58)", lineHeight: 1.75, maxWidth: "460px", margin: 0, whiteSpace: "pre-line" }}>{m.subtitle}</p>
           </div>
         </div>
       </div>

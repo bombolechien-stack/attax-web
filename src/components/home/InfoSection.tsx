@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
 import { useLang, useT } from "@/lib/i18n";
 import { useInView, fadeUp } from "@/hooks/useInView";
 
@@ -21,32 +19,10 @@ export default function InfoSection() {
   const c = COPY[lang];
   const { ref: headerRef, visible: headerVisible } = useInView<HTMLDivElement>(0.1);
   const { ref: listRef, visible: listVisible } = useInView<HTMLDivElement>(0.1, { oneShot: true });
-  const phoneRef = useRef<HTMLDivElement>(null);
-  const [tilt, setTilt] = useState(1);
-
-  // Parallaxe douce : le panneau se redresse en entrant dans l'écran (rien si les animations sont réduites).
-  useEffect(() => {
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    let raf = 0;
-    const on = () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        const el = phoneRef.current; if (!el) return;
-        if (reduce) { setTilt(0.4); return; }
-        const r = el.getBoundingClientRect();
-        const k = Math.max(0, Math.min(1, (r.top + r.height / 2) / window.innerHeight));
-        setTilt(k);
-      });
-    };
-    on();
-    if (reduce) return () => cancelAnimationFrame(raf);
-    window.addEventListener("scroll", on, { passive: true });
-    return () => { window.removeEventListener("scroll", on); cancelAnimationFrame(raf); };
-  }, []);
 
   return (
     <section className="idea p-tint">
-      <div className="p-wrap idea-grid">
+      <div className="p-wrap idea-grid idea-solo">
         <div ref={headerRef} className="idea-copy">
           <p className="p-mono" style={fadeUp(headerVisible, 0)}>{inf.label}</p>
           <h2 className="p-statement" style={fadeUp(headerVisible, 100)}>
@@ -62,12 +38,6 @@ export default function InfoSection() {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-        <div className="idea-stage">
-          <div ref={phoneRef} className="idea-phone" style={{ transform: `perspective(1400px) rotateY(${-16 * tilt}deg) rotateX(${6 * tilt}deg) rotateZ(${2 * tilt}deg) translateY(${30 * tilt}px)` }}>
-            <Image src={`/screens/app/${lang}/match-final.webp`} alt={lang === "fr" ? "La page Match d'Attax : le duel du jour contre Sophie" : "The Attax Match page: today's duel against Sophie"}
-              width={560} height={1107} quality={90} sizes="(max-width: 860px) 70vw, 340px" style={{ width: "100%", height: "auto", display: "block" }} />
           </div>
         </div>
       </div>
