@@ -730,7 +730,7 @@ html { overflow-x: clip; }
 }
 
 /* ── 7 jours. 7 rounds. : l'écran Match de l'app pendant les rounds, agrandi (20/11, v4) ── */
-.mr-section { background: #EEF1F7; padding: 8rem clamp(1.25rem, 5vw, 4rem) 6rem; overflow: hidden; }
+.mr-section { background: #EEF1F7; padding: 8rem clamp(1.25rem, 5vw, 4rem) 4rem; overflow: hidden; }
 .mr-stage { position: relative; color: #09090B; }
 .mr-boxers { position: absolute; z-index: 0; left: 50%; top: 50%; width: 100vw; height: calc(100% + 6rem); transform: translate(-50%, -48%); pointer-events: none; overflow: hidden; }
 .mr-boxers img { position: absolute; left: 50%; top: 50%; translate: -50% -50%; width: max(155%, 1700px); height: 118%; object-fit: cover; object-position: 50% 22%; transition: opacity 0.28s ease;
@@ -771,8 +771,6 @@ html { overflow-x: clip; }
 .mr-verdict { justify-content: center; }
 .mr-verdict-name { font-weight: 800; font-size: clamp(4.5rem, 11vw, 8.5rem); letter-spacing: -0.05em; line-height: 1; color: #0443FD; animation: mrIn 0.6s cubic-bezier(0.16,1,0.3,1); }
 .mr-verdict-sub { margin-top: 0.8rem; font-weight: 700; font-size: 1.125rem; }
-.dm2-rhythm { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; padding: 0 0.5rem; }
-.dm2-rhythm-item { border-top: 1px solid rgba(11,17,22,0.1); padding-top: 1.1rem; }
 @media (max-width: 760px) {
   .mr-section { padding: 5rem 1rem 4rem; }
   .mr-bar { height: 10px; border-radius: 5px; }
@@ -787,7 +785,6 @@ html { overflow-x: clip; }
     -webkit-mask-image: radial-gradient(ellipse 30% 46% at 50% 44%, rgba(0,0,0,0.1) 45%, #000 100%), linear-gradient(180deg, transparent 0, #000 12%, #000 72%, transparent 100%);
     mask-image: radial-gradient(ellipse 30% 46% at 50% 44%, rgba(0,0,0,0.1) 45%, #000 100%), linear-gradient(180deg, transparent 0, #000 12%, #000 72%, transparent 100%); }
   .mr-boxers { opacity: 0.5; }
-  .dm2-rhythm { grid-template-columns: 1fr; gap: 1.1rem; padding: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   .mr-frag, .mr-day, .mr-hp span, .mr-verdict-name { animation: none; }

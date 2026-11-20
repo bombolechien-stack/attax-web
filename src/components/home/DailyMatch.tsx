@@ -29,7 +29,8 @@ const ROUNDS: Round[] = [
   { w: "Y", y: 512, o: 388, final: true },
 ];
 // Le déroulé d'un round (secondes depuis son début).
-const T_ME0 = 0.45, T_ME1 = 1.75, T_VS = 1.85, T_OPP0 = 2.05, T_OPP1 = 3.35, T_HIT = 3.5, T_FADE = 4.7, ROUND_LEN = 5.3;
+// Les deux scores comptent ensemble (comme l'app), s'arrêtent ensemble, puis le coup.
+const T_ME0 = 0.5, T_ME1 = 2.1, T_VS = 0.5, T_OPP0 = 0.5, T_OPP1 = 2.1, T_HIT = 2.3, T_FADE = 3.6, ROUND_LEN = 4.3;
 const VERDICT_LEN = 3.6, CYCLE = ROUNDS.length * ROUND_LEN + VERDICT_LEN;
 
 const COPY = {
@@ -192,15 +193,6 @@ export default function DailyMatch() {
         </div>
       </div>
 
-      {/* Le rythme de la journée */}
-      <div className="dm2-rhythm" style={{ maxWidth: "76rem", margin: "1.5rem auto 0" }}>
-        {m.stats.map((s, i) => (
-          <div key={i} className="dm2-rhythm-item" style={fadeUp(headerVisible, 500 + i * 120)}>
-            <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: "1.0625rem", letterSpacing: "-0.02em", color: i === 2 ? BLUE : INK }}>{s.n}</div>
-            <div style={{ fontSize: "0.875rem", color: "rgba(11,17,22,0.55)", lineHeight: 1.55, marginTop: 4 }}>{s.label}</div>
-          </div>
-        ))}
-      </div>
     </section>
   );
 }
