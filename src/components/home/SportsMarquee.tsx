@@ -145,7 +145,7 @@ export default function SportsMarquee() {
                   : "opacity 0.6s ease 0.35s, clip-path 0s linear 0.95s, transform 0s linear 0.95s",
                 zIndex: on ? 2 : 1,
               }}>
-                <span className="spt-ghost" aria-hidden="true">{s[lang]}</span>
+                <GhostName name={s[lang]} />
                 <Image className="spt-photo" src={`/sports/${s.file}.webp`} alt={on ? s[lang] : ""} width={520} height={780} unoptimized loading={i < 2 ? "eager" : "lazy"}
                   style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 40%", display: "block" }} />
               </div>
@@ -254,5 +254,26 @@ export default function SportsMarquee() {
         </div>
       </div>
     </section>
+  );
+}
+
+/** Le nom du sport en grand, derrière l'athlète : coupé en 2 lignes s'il est long, chaque ligne ajustée à la largeur. */
+function GhostName({ name }: { name: string }) {
+  const words = name.split(" ");
+  let lines = [name];
+  if (words.length > 1 && name.length > 9) {
+    // coupe la plus équilibrée
+    let best = 0, gap = Infinity;
+    for (let k = 1; k < words.length; k++) {
+      const d = Math.abs(words.slice(0, k).join(" ").length - words.slice(k).join(" ").length);
+      if (d < gap) { gap = d; best = k; }
+    }
+    lines = [words.slice(0, best).join(" "), words.slice(best).join(" ")];
+  }
+  const n = Math.max(...lines.map((l) => l.length), 5);
+  return (
+    <span className="spt-ghost" aria-hidden="true" style={{ ["--n" as string]: n }}>
+      {lines.map((l) => <span key={l}>{l}</span>)}
+    </span>
   );
 }

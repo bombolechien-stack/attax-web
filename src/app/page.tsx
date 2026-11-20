@@ -56,16 +56,16 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      {/* 20/11 : l'app d'abord (le match, les cartes, le Soir de combat) dès le premier défilement, puis les explications
-          (l'idée, les sports, la journée type), puis au-delà de la ligue, les fonctionnalités, l'arène, les données, la FAQ.
-          La galerie de captures (VisualGrid) est retirée : elle doublait les écrans montrés plus haut. */}
+      {/* 20/11 : une histoire logique (ce qu'est Attax → comment l'effort devient des pts → la journée → le match → les
+          cartes → le verdict de 21h30 → au-delà), et l'app visible dès le début : L'idée et Une journée montrent de vraies
+          captures (chaque écran de l'app n'apparaît qu'une fois sur la page). */}
       <Hero />
-      <DailyMatch />
-      <CardsShowcase />
-      <FightNight />
       <InfoSection />
       <SportsMarquee />
       <HowItWorks />
+      <DailyMatch />
+      <CardsShowcase />
+      <FightNight />
       <Beyond />
       <FeaturesGrid />
       <ArenaSection />

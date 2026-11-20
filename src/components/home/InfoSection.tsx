@@ -1,6 +1,7 @@
 "use client";
 
-import { useT } from "@/lib/i18n";
+import Image from "next/image";
+import { useLang, useT } from "@/lib/i18n";
 import { useInView, fadeUp, fadeIn, slideLeft, slideRight, clipReveal } from "@/hooks/useInView";
 
 function InfoStep({ step, index }: { step: { title: string; body: string }; index: number }) {
@@ -26,11 +27,18 @@ function InfoStep({ step, index }: { step: { title: string; body: string }; inde
 export default function InfoSection() {
   const t = useT();
   const inf = t.info;
+  const { lang } = useLang();
   const { ref: headerRef, visible: headerVisible } = useInView<HTMLDivElement>(0.1);
 
   return (
     <section style={{ backgroundColor: "#ffffff", padding: "7rem 2rem" }}>
-      <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
+      <div className="info-wrap" style={{ maxWidth: "72rem", margin: "0 auto" }}>
+        {/* L'app dès le début : la page Match, le duel du jour (capture réelle, iPhone, EN / FR) */}
+        <div className="info-phone" style={{ ...fadeUp(headerVisible, 200) }}>
+          <Image src={`/screens/app/${lang}/2.webp`} alt={lang === "fr" ? "La page Match d'Attax : le duel du jour contre Sophie" : "The Attax Match page: today's duel against Sophie"}
+            width={560} height={1107} quality={90} sizes="(max-width: 860px) 64vw, 280px" style={{ width: "100%", height: "auto", display: "block" }} />
+        </div>
+        <div className="info-main">
         <div ref={headerRef} className="info-header" style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "4rem", marginBottom: "5rem" }}>
           <div>
             <p style={{ ...fadeUp(headerVisible, 0) }} className="section-label">{inf.label}</p>
@@ -44,6 +52,7 @@ export default function InfoSection() {
           {inf.steps.map((step, i) => (
             <InfoStep key={i} step={step} index={i} />
           ))}
+        </div>
         </div>
       </div>
     </section>
