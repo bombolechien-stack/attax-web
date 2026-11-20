@@ -317,8 +317,8 @@ export default function AppleHealthFitnessGame() {
             <p style={BODY}>{p.whyUsers1}</p>
             <p style={BODY}>{p.whyUsers2}</p>
             <p style={{ ...BODY, fontWeight: 600, color: "#0d0d0d" }}>{p.whyUsers3}</p>
-            <p style={BODY}>Instead of asking: <em>{p.whyUsersQ}</em></p>
-            <p style={{ ...BODY, fontWeight: 700, color: "#0d0d0d", fontSize: "1.125rem" }}>Players begin asking: <em>{p.whyUsersA}</em></p>
+            <p style={BODY}>{lang === "en" ? "Instead of asking:" : "Au lieu de se demander :"} <em>{p.whyUsersQ}</em></p>
+            <p style={{ ...BODY, fontWeight: 700, color: "#0d0d0d", fontSize: "1.125rem" }}>{lang === "en" ? "Players begin asking:" : "Les joueurs se demandent :"} <em>{p.whyUsersA}</em></p>
             <p style={BODY}>{p.whyUsers4}</p>
           </Section>
 

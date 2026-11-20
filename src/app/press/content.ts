@@ -92,7 +92,7 @@ export const PRESS_CONTENT: Record<"en" | "fr", PressContent> = {
     how_title: "Attax in four points.",
     how: [
       { title: "Your real effort", body: "Your watch measures your effort through Apple Health or Health Connect. Your workouts and steps become pts. Manual entries don't count." },
-      { title: "A duel every day", body: "A new opponent from your league every day, a match in 7 rounds. Past rounds revealed from 10 AM to 5:30 PM, the final round live from 7 PM, Fight Night at 9:30 PM." },
+      { title: "A duel every day", body: "A new opponent from your league every day, a match in 7 rounds. Past rounds played out from 10 AM to 5:30 PM, the final round live from 7 PM, Fight Night at 9:30 PM." },
       { title: "The cards", body: "3 cards drawn every morning, the same for both players, one to play before 1 PM: Double or nothing, Guard, Freeze, Ghost… The right card can flip a close match." },
       { title: "Leagues and ranks", body: "Leagues of 8 players over 7 days, 1 champion with the crown, then run it back or start a new league. A rank from Rookie to Legend." },
     ],
@@ -105,7 +105,7 @@ export const PRESS_CONTENT: Record<"en" | "fr", PressContent> = {
       { title: "Friends league", body: "Create a league with your crew, share the code and document the week: trash talk, comebacks, the crown." },
       { title: "From Rookie to Legend", body: "A series following your climb, league after league." },
       { title: "The comeback session", body: "Behind before the final round? Show the session that turns the match around before 9:30 PM." },
-      { title: "Every sport counts", body: "Run, ride, lift, dance: show that whatever your sport, it becomes power in Attax." },
+      { title: "Every sport counts", body: "Run, ride, lift, dance: show that whatever your sport, if your watch measures it, it becomes pts in Attax." },
     ],
     tags_label: "Tag us",
     tags: ["#playattax", "@playattax"],
@@ -130,7 +130,7 @@ export const PRESS_CONTENT: Record<"en" | "fr", PressContent> = {
     video_title: "Fight Night",
     video_caption: "The 9:30 PM reveal · 23 s · MP4",
     screens: [
-      { label: "Fight Night", caption: "The final round, every night at 9:30 PM" },
+      { label: "Fight Night", caption: "The verdict, every night at 9:30 PM" },
       { label: "Cards", caption: "Play a card, flip the match" },
       { label: "Activity", caption: "Your pts of the day" },
       { label: "League", caption: "8 players, 7 days, 1 champion" },
@@ -200,7 +200,7 @@ export const PRESS_CONTENT: Record<"en" | "fr", PressContent> = {
     how_title: "Attax en quatre points.",
     how: [
       { title: "Ton vrai effort", body: "Ta montre mesure ton effort via Apple Santé ou Health Connect. Tes séances et tes pas deviennent des pts. Les saisies à la main ne comptent pas." },
-      { title: "Un duel par jour", body: "Un nouvel adversaire de ta ligue chaque jour, un match en 7 rounds. Rounds passés dévoilés de 10h à 17h30, round final en direct dès 19h, Soir de combat à 21h30." },
+      { title: "Un duel par jour", body: "Un nouvel adversaire de ta ligue chaque jour, un match en 7 rounds. Rounds passés joués de 10h à 17h30, round final en direct dès 19h, Soir de combat à 21h30." },
       { title: "Les cartes", body: "3 cartes tirées chaque matin, les mêmes pour les deux joueurs, une à jouer avant 13h : Quitte ou double, Garde, Freeze, Ghost… La bonne carte peut renverser un match serré." },
       { title: "Ligues et rangs", body: "Des ligues de 8 joueurs sur 7 jours, 1 champion couronné, puis on rejoue ou on change de ligue. Un rang de Rookie à Legend." },
     ],
@@ -213,7 +213,7 @@ export const PRESS_CONTENT: Record<"en" | "fr", PressContent> = {
       { title: "La ligue entre potes", body: "Crée une ligue avec ta bande, partage le code et raconte la semaine : chambrage, remontadas, couronne." },
       { title: "De Rookie à Legend", body: "Une série qui suit ta montée, ligue après ligue." },
       { title: "La séance de la remontada", body: "Mené avant le round final ? Montre la séance qui renverse le match avant 21h30." },
-      { title: "Tous les sports comptent", body: "Course, vélo, muscu, danse : montre que quel que soit ton sport, il devient de la puissance dans Attax." },
+      { title: "Tous les sports comptent", body: "Course, vélo, muscu, danse : montre que quel que soit ton sport, si ta montre le mesure, il devient des pts dans Attax." },
     ],
     tags_label: "Identifie-nous",
     tags: ["#playattax", "@playattax"],
@@ -238,7 +238,7 @@ export const PRESS_CONTENT: Record<"en" | "fr", PressContent> = {
     video_title: "Soir de combat",
     video_caption: "La révélation de 21h30 · 23 s · MP4",
     screens: [
-      { label: "Soir de combat", caption: "Le round final, chaque soir à 21h30" },
+      { label: "Soir de combat", caption: "Le verdict, chaque soir à 21h30" },
       { label: "Cartes", caption: "Joue une carte, renverse le match" },
       { label: "Activités", caption: "Tes pts du jour" },
       { label: "Ligue", caption: "8 joueurs, 7 jours, 1 champion" },
