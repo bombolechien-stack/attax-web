@@ -4,11 +4,10 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useLang } from "@/lib/i18n";
 import { useInView, fadeUp, clipReveal } from "@/hooks/useInView";
-import AppScanlines from "./AppScanlines";
 
-// « Tous les sports comptent » : une seule scène, calme, au lieu d'un défilé. Les silhouettes en scanlines (les mêmes
-// lignes encre que les boxeurs de l'app, scripts/hero-lines/panels_tone.py) se succèdent dans un grand cadre, la trame
-// s'imprime de haut en bas à chaque sport. 9 sports en image puis, en dernier, « Et tout sport ou toute activité
+// « Tous les sports comptent » : une seule scène, calme, au lieu d'un défilé. Les athlètes des photos d'origine, détourés
+// (public/sports/*.webp, scripts/scan-athletes/sports-cutouts.py), en encre sur le fond clair, le nom du sport en grand
+// derrière ; chaque athlète se dévoile de haut en bas à chaque sport. 9 sports en image puis, en dernier, « Et tout sport ou toute activité
 // intense » : ce cadre fait défiler d'autres sports (yoga, curling, danse…), la liste n'est qu'un échantillon.
 // À côté, ce qui compte vraiment, comme dans l'écran Activités de l'app : les 4 zones cardio et leur barème
 // (3 / 8 / 14 / 20 pts par minute, lib/scoring.ts) et les pas (10 pts par 1 000 pas).
@@ -24,10 +23,10 @@ const SPORTS: { file: string; en: string; fr: string }[] = [
   { file: "cycling", en: "Cycling", fr: "Vélo" },
   { file: "lifting", en: "Lifting", fr: "Musculation" },
   { file: "tennis", en: "Tennis", fr: "Tennis" },
-  { file: "wheelchair", en: "Wheelchair basketball", fr: "Basket fauteuil" },
+  { file: "wheelchair", en: "Wheelchair basketball", fr: "Basketball en fauteuil" },
   { file: "sprint", en: "Sprint", fr: "Sprint" },
   { file: "nordic-walking", en: "Nordic walking", fr: "Marche nordique" },
-  { file: "basketball", en: "Basketball", fr: "Basket" },
+  { file: "basketball", en: "Basketball", fr: "Basketball" },
   { file: "walking", en: "Walking", fr: "Marche" },
 ];
 const ANY = SPORTS.length; // le 10e et dernier : tout le reste
@@ -132,7 +131,7 @@ export default function SportsMarquee() {
 
       <div className="spt-grid">
         {/* La scène */}
-        <div ref={stageRef} className="spt-stage" style={{ backgroundColor: STAGE_BG }}
+        <div ref={stageRef} className="spt-stage spt-v-C" style={{ backgroundColor: STAGE_BG }}
           onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
           {SPORTS.map((s, i) => {
             const on = i === active;
@@ -146,8 +145,9 @@ export default function SportsMarquee() {
                   : "opacity 0.6s ease 0.35s, clip-path 0s linear 0.95s, transform 0s linear 0.95s",
                 zIndex: on ? 2 : 1,
               }}>
-                <Image src={`/scan/panels/${s.file}.webp`} alt={on ? s[lang] : ""} width={520} height={780} unoptimized priority={i < 2}
-                  style={{ height: "100%", width: "auto", maxWidth: "100%", objectFit: "contain", display: "block", transform: "scale(1.12)", transformOrigin: "50% 100%" }} />
+                <span className="spt-ghost" aria-hidden="true">{s[lang]}</span>
+                <Image className="spt-photo" src={`/sports/${s.file}.webp`} alt={on ? s[lang] : ""} width={520} height={780} unoptimized loading={i < 2 ? "eager" : "lazy"}
+                  style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 40%", display: "block" }} />
               </div>
             );
           })}
@@ -159,7 +159,6 @@ export default function SportsMarquee() {
             transition: isAny ? "clip-path 1.1s cubic-bezier(0.65,0,0.35,1), opacity 0.3s ease" : "opacity 0.6s ease 0.35s, clip-path 0s linear 0.95s",
             zIndex: isAny ? 2 : 1,
           }}>
-            <AppScanlines w={520} h={650} color={INK} opacity={0.06} />
             <div className="spt-any-inner">
               <span className="spt-any-kick">{c.anyKick}</span>
               <div className="spt-any-roll">

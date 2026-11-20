@@ -678,7 +678,12 @@ html { overflow-x: clip; }
 .spt-head { max-width: 76rem; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-end; gap: 3rem; flex-wrap: wrap; }
 .spt-grid { max-width: 76rem; margin: 4.5rem auto 0; display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); gap: clamp(1.5rem, 3.5vw, 3.5rem); align-items: stretch; }
 .spt-stage { position: relative; border-radius: 28px; overflow: hidden; aspect-ratio: 4 / 5; max-height: 680px; width: 100%; }
-.spt-frame { position: absolute; inset: 4% 0 13%; display: flex; justify-content: center; align-items: flex-end; will-change: clip-path, opacity, transform; }
+.spt-frame { position: absolute; inset: 0; display: flex; justify-content: center; align-items: stretch; will-change: clip-path, opacity, transform; }
+/* Athlète détouré sur le fond clair, nom du sport en filigrane derrière (traitement C retenu le 20/11) */
+.spt-v-C::after { display: none; }
+.spt-v-C .spt-frame { align-items: flex-end; }
+.spt-v-C .spt-photo { object-fit: contain !important; object-position: 50% 100% !important; height: 86% !important; margin-bottom: 9%; filter: drop-shadow(0 24px 30px rgba(11,17,22,0.22)); position: relative; z-index: 1; }
+.spt-ghost { position: absolute; left: 0; right: 0; top: 18%; text-align: center; font-family: var(--font-manrope), var(--font-jakarta), sans-serif; font-weight: 800; font-size: clamp(3.5rem, 7.5vw, 6.5rem); letter-spacing: -0.06em; line-height: 0.9; color: rgba(11,17,22,0.07); text-transform: uppercase; white-space: nowrap; overflow: hidden; }
 .spt-stage-top { position: absolute; top: 1.5rem; left: 1.75rem; right: 1.75rem; display: flex; justify-content: space-between; align-items: baseline; z-index: 3; }
 .spt-stage-bottom { position: absolute; left: 1.75rem; right: 1.75rem; bottom: 1.6rem; z-index: 3; }
 .spt-name-wrap { overflow: hidden; height: clamp(2.2rem, 3.6vw, 3rem); }
