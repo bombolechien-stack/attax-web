@@ -31,7 +31,7 @@ export const T = {
       h2: "Your activity is the game engine.",
       sub: "Most fitness apps stop at tracking.\nAttax turns every workout into a fight you can win tonight.",
       steps: [
-        { title: "Real effort", body: "Your workouts and your steps, measured by your watch, become pts. Running, cycling, gym, football, dance, walking: every minute of effort counts, and intensity pays, not just volume." },
+        { title: "Real effort", body: "Your workouts and your steps, measured by your watch, become pts. Running, cycling, strength training, football, dance, walking: every minute of effort counts, and intensity pays, not just volume." },
         { title: "Strategy", body: "Every morning, 3 cards are drawn, the same for you and your opponent. Pick yours before 1 PM: raise the stakes, dodge, freeze a round, hide your day. Theirs stays secret until the fight." },
         { title: "Competition", body: "Every day, a new opponent from your league, and every day of the week is a round. At 9:30 PM the final round is fought, and the table moves with it." },
       ],
@@ -416,7 +416,7 @@ export const T = {
     hero: {
       h1: ["Sport is now", "a game."],
       kicker: ["Chaque jour", "un nouvel adversaire"],
-      sports: "Course · Vélo · Muscu · Jeu · Marche",
+      sports: "Course · Vélo · Musculation · Jeu · Marche",
       subtitle: "Ta montre mesure. Ton boxeur frappe.\nChaque soir à 21h30, le round final.",
       cta_ios: "Télécharger Attax",
       cta_secondary: "Comment ça marche",
@@ -434,9 +434,9 @@ export const T = {
     info: {
       label: "L'IDÉE",
       h2: "Ton activité est le moteur du jeu.",
-      sub: "La plupart des applis fitness s'arrêtent au suivi.\nAttax transforme chaque séance en combat à gagner le soir même.",
+      sub: "La plupart des applications fitness s'arrêtent au suivi.\nAttax transforme chaque séance en combat à gagner le soir même.",
       steps: [
-        { title: "Ton vrai effort", body: "Tes séances et tes pas, mesurés par ta montre, deviennent des pts. Course, vélo, muscu, foot, danse, marche : chaque minute d'effort compte, et c'est l'intensité qui paie, pas seulement le volume." },
+        { title: "Ton vrai effort", body: "Tes séances et tes pas, mesurés par ta montre, deviennent des pts. Course, vélo, musculation, football, danse, marche : chaque minute d'effort compte, et c'est l'intensité qui paie, pas seulement le volume." },
         { title: "Stratégie", body: "Chaque matin, 3 cartes sont tirées, les mêmes pour toi et ton adversaire. Choisis la tienne avant 13h : fais monter l'enjeu, esquive, gèle un round, cache ta journée. La sienne reste secrète jusqu'au combat." },
         { title: "Compétition", body: "Chaque jour, un nouvel adversaire de ta ligue, et chaque jour de la semaine est un round. À 21h30, le round final se joue, et le classement bouge avec." },
       ],
@@ -510,7 +510,7 @@ export const T = {
       contact_link: "Contacte-nous",
       all_link: "Voir toute la FAQ",
       items: [
-        { q: "Ai-je besoin d'une montre connectée ?", a: "Oui. Il te faut un appareil qui mesure ta fréquence cardiaque (montre, bracelet ou ceinture cardio) synchronisé avec Apple Santé (iPhone) ou Health Connect (Android). Ton téléphone seul compte tes pas, mais tes séances sont mesurées par ta montre. Attax vérifie ta connexion avant ta première ligue." },
+        { q: "Ai-je besoin d'une montre connectée ?", a: "Oui. Il te faut un appareil qui mesure ta fréquence cardiaque (montre, bracelet ou ceinture thoracique) synchronisé avec Apple Santé (iPhone) ou Health Connect (Android). Ton téléphone seul compte tes pas, mais tes séances sont mesurées par ta montre. Attax vérifie ta connexion avant ta première ligue." },
         { q: "Comment je gagne des pts ?", a: "Tes séances et tes pas, mesurés par ta montre, deviennent des pts. Plus tu bouges, plus tu marques, et c'est l'intensité qui paie, pas seulement le volume. Aucune saisie manuelle : tout vient d'Apple Santé ou de Health Connect." },
         { q: "Comment un match est-il tranché ?", a: "Un match compte 7 rounds : les 6 jours d'avant et aujourd'hui (dans ta première ligue, les matchs montent en puissance : le match 1 se résume au round final, le match 2 compte 2 rounds, et ainsi de suite). Chaque jour est gagné par celui qui a marqué le plus de pts ce jour-là, avec au moins 5 minutes d'effort ou 2 000 pas. Chacun part de 7 PV et chaque round perdu coûte des PV. Les rounds passés se jouent de 10h à 17h30, le round final (2 PV) est en direct dès 19h. À 21h30, les cartes se révèlent et celui qui garde le plus de PV gagne, par K.O. si l'autre tombe à 0 PV. Égalité de PV ? Les pts du match décident, puis les pas. Jamais de match nul." },
         { q: "Vais-je affronter des joueurs de mon niveau ?", a: "Oui. Quelques questions à l'inscription fixent ton niveau de départ, et tu rejoins une ligue de joueurs de ton niveau. Ensuite, ce sont tes résultats qui parlent : ton rang te suit de ligue en ligue." },
@@ -710,7 +710,7 @@ export const T = {
     adventure: {
       hero_label: "L'AVENTURE",
       h1: ["Pourquoi nous avons", "créé Attax."],
-      subtitle: "La plupart des applis fitness mesurent l'activité.\nNous voulions en créer une qui la récompense.",
+      subtitle: "La plupart des applications fitness mesurent l'activité.\nNous voulions en créer une qui la récompense.",
       cta_download: "Télécharger Attax",
       cta_contact: "Nous contacter",
       widget_quote: "Le sport n'a de sens que s'il te donne envie de revenir le lendemain.",
@@ -724,7 +724,7 @@ export const T = {
       story_h2: ["Comment tout", "a commencé."],
       story_sub: "Une idée simple : rendre le sport plus prenant en transformant la régularité en compétition.",
       timeline: [
-        { n: "01", year: "Le problème", title: "Des applis qui mesurent. Rien de plus.", description: "Trackers, podomètres, journaux de calories : on retrouvait toujours la même chose. Des chiffres que personne d'autre ne voit, aucun enjeu, rien qui rende le lundi excitant." },
+        { n: "01", year: "Le problème", title: "Des applications qui mesurent. Rien de plus.", description: "Trackers, podomètres, journaux de calories : on retrouvait toujours la même chose. Des chiffres que personne d'autre ne voit, aucun enjeu, rien qui rende le lundi excitant." },
         { n: "02", year: "L'intuition", title: "La régularité est le vrai super-pouvoir", description: "Ceux qui progressent ne sont pas les plus doués : ce sont ceux qui reviennent. Nous voulions un jeu qui récompense le fait d'être là chaque jour, pas une séance héroïque." },
         { n: "03", year: "La vision", title: "Et si le sport avait des enjeux ?", description: "Et si ton footing du matin pouvait te faire gagner un duel le soir ? Et si ta place au classement reflétait ton entraînement réel de la semaine ? Nous voulions donner au sport du quotidien une vraie dimension compétitive." },
         { n: "04", year: "Aujourd'hui", title: "Attax est lancé", description: "Attax est disponible sur iPhone et Android, et les premières ligues sont lancées. Ce n'est que le début." },
@@ -775,7 +775,7 @@ export const T = {
       faq_label: "RÉPONSES RAPIDES",
       faq_h2: "Questions fréquentes",
       faq: [
-        { q: "Mes pts restent à 0. Que faire ?", a: "Vérifie que l'appli de ta montre partage ta fréquence cardiaque avec Apple Santé ou Health Connect, et qu'Attax a le droit de la lire. Dans l'app, la vérification de la montre te dit exactement ce qui manque." },
+        { q: "Mes pts restent à 0. Que faire ?", a: "Vérifie que l'application de ta montre partage ta fréquence cardiaque avec Apple Santé ou Health Connect, et qu'Attax a le droit de la lire. Dans l'app, la vérification de la montre te dit exactement ce qui manque." },
         { q: "Puis-je signaler un bug ?", a: "Bien sûr. Écris à contact@attax.app ou passe par Mon compte → Support dans l'app. Indique ton modèle de téléphone et de montre : les captures d'écran aident toujours." },
         { q: "Où suivre Attax ?", a: "Sur Instagram et TikTok : @playattax. Suis-nous pour les nouveautés, les coulisses et les meilleurs moments des ligues." },
       ],
@@ -800,7 +800,7 @@ export const T = {
         { label: "Affronte", body: "Un nouvel adversaire de ta ligue chaque jour." },
         { label: "Gagne", body: "Décroche le podium et grimpe de Rookie à Legend." },
       ],
-      purposeTitle: ["La plupart des applis fitness mesurent l'activité.", "Attax lui donne un sens."],
+      purposeTitle: ["La plupart des applications fitness mesurent l'activité.", "Attax lui donne un sens."],
       purposePoints: ["Reste motivé.", "Affronte les autres.", "Donne un but à chaque séance."],
       launchLabel: "Bientôt disponible",
       launchTitle: ["Les premières ligues", "ouvrent bientôt."],

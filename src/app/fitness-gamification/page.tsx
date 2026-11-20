@@ -286,7 +286,7 @@ const P: Record<Lang, {
       { q: "Attax est-il un jeu fitness ?", a: "Oui. Attax transforme tes vraies séances en duels de boxe quotidiens, avec des cartes, des ligues, des rangs et une saison inspirés des jeux." },
       { q: "La gamification remplace-t-elle la discipline ?", a: "Non. Elle soutient la discipline en rendant les habitudes saines plus engageantes." },
       { q: "Qui bénéficie de la gamification du fitness ?", a: "Les débutants, les athlètes expérimentés et toute personne cherchant une motivation supplémentaire." },
-      { q: "Ai-je besoin d'une montre connectée pour utiliser Attax ?", a: "Oui. Il te faut un appareil qui mesure ta fréquence cardiaque (montre, bracelet ou ceinture cardio) synchronisé avec Apple Santé (iPhone) ou Health Connect (Android) : Apple Watch, Garmin, Amazfit, COROS et d'autres sur les deux ; Samsung Galaxy Watch et Fitbit sur Android uniquement. Ton téléphone seul compte tes pas. Attax vérifie ta connexion avant ta première ligue." },
+      { q: "Ai-je besoin d'une montre connectée pour utiliser Attax ?", a: "Oui. Il te faut un appareil qui mesure ta fréquence cardiaque (montre, bracelet ou ceinture thoracique) synchronisé avec Apple Santé (iPhone) ou Health Connect (Android) : Apple Watch, Garmin, Amazfit, COROS et d'autres sur les deux ; Samsung Galaxy Watch et Fitbit sur Android uniquement. Ton téléphone seul compte tes pas. Attax vérifie ta connexion avant ta première ligue." },
     ],
     ctaTitle: "Transforme l'activité en progression.",
     ctaBody: "Duels de boxe, cartes, ligues et rangs : le tout alimenté par tes vraies séances. Télécharge Attax et lance ta première ligue.",

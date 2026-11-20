@@ -103,7 +103,7 @@ const P: Record<Lang, {
     activities: [
       "Running",
       "Cycling",
-      "Gym workouts",
+      "Strength training",
       "Swimming",
       "Team sports",
       "Walking (steps)",
@@ -145,7 +145,7 @@ const P: Record<Lang, {
     faqH2: "Frequently asked questions",
     faq: [
       { q: "Does Attax work with Apple Health?", a: "Yes. Attax reads your workouts, the heart rate measured during them, and your steps from Apple Health, read-only." },
-      { q: "What activities count?", a: "Any workout your watch measures: running, cycling, gym, swimming, team sports, dance… plus your steps, every day. Manual entries don't count." },
+      { q: "What activities count?", a: "Any workout your watch measures: running, cycling, strength training, swimming, team sports, dance… plus your steps, every day. Manual entries don't count." },
       { q: "Do I need an Apple Watch?", a: "You need a device that measures your heart rate and syncs it to Apple Health: an Apple Watch, or a Garmin, Amazfit, COROS or Withings watch, among others. Fitbit doesn't sync with Apple Health. On Apple Watch models before Series 12, start a workout in the Workout app so your sessions count in full." },
       { q: "Is Attax free?", a: "Yes. Attax is free to download and free to play, with no ads and no in-app purchases." },
       { q: "Is Attax available on iPhone?", a: "Yes, on iPhone. There is no iPad version and no app to install on the Apple Watch: your watch just needs to sync with Apple Health." },
@@ -178,7 +178,7 @@ const P: Record<Lang, {
     activities: [
       "Course",
       "Vélo",
-      "Muscu",
+      "Musculation",
       "Natation",
       "Sports collectifs",
       "Marche (pas)",
@@ -220,7 +220,7 @@ const P: Record<Lang, {
     faqH2: "Questions fréquentes",
     faq: [
       { q: "Attax fonctionne-t-il avec Apple Santé ?", a: "Oui. Attax lit tes séances, la fréquence cardiaque mesurée pendant l'effort et tes pas dans Apple Santé, en lecture seule." },
-      { q: "Quelles activités comptent ?", a: "Toute séance mesurée par ta montre : course, vélo, muscu, natation, sports collectifs, danse… plus tes pas, chaque jour. Les saisies à la main ne comptent pas." },
+      { q: "Quelles activités comptent ?", a: "Toute séance mesurée par ta montre : course, vélo, musculation, natation, sports collectifs, danse… plus tes pas, chaque jour. Les saisies à la main ne comptent pas." },
       { q: "Ai-je besoin d'une Apple Watch ?", a: "Il te faut un appareil qui mesure ta fréquence cardiaque et l'envoie à Apple Santé : une Apple Watch, ou une montre Garmin, Amazfit, COROS ou Withings, entre autres. Fitbit ne se synchronise pas avec Apple Santé. Sur les Apple Watch antérieures à la Series 12, lance un exercice dans l'app Exercice pour que tes séances comptent entièrement." },
       { q: "Attax est-il gratuit ?", a: "Oui. Attax est gratuit à télécharger et à jouer, sans publicité ni achat intégré." },
       { q: "Attax est-il disponible sur iPhone ?", a: "Oui, sur iPhone. Il n'y a pas de version iPad ni d'app à installer sur l'Apple Watch : ta montre doit simplement se synchroniser avec Apple Santé." },

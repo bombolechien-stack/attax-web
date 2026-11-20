@@ -6,7 +6,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { username } = await params;
   return {
     title: `${username}, Attax athlete profile`,
-    description: `View ${username}'s public Attax profile: ranking, stats, and sports activity.`,
+    description: `View ${username}'s public Attax profile: ranking, statistics, and sports activity.`,
   };
 }
 
@@ -25,7 +25,7 @@ export default async function PlayerProfilePage({ params }: Props) {
           @{username}
         </h1>
         <p style={{ color: "rgba(255,255,255,0.4)", lineHeight: 1.75, marginBottom: "2.5rem", fontSize: "1rem" }}>
-          Public athlete profiles are coming in Attax V2. Rankings, stats, badges, and full activity history for every athlete.
+          Public athlete profiles are coming in Attax V2. Rankings, statistics, badges, and full activity history for every athlete.
         </p>
         <a href="/download/ios" style={{ display: "inline-flex", padding: "12px 28px", backgroundColor: "#ffffff", color: "#0d0d0d", fontWeight: 700, fontSize: "0.9375rem", borderRadius: "999px", textDecoration: "none" }}>
           Download Attax

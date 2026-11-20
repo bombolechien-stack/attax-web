@@ -130,7 +130,7 @@ function ContentFr() {
 
         <div style={SECTION}>
           <h2 style={H2}>9. Limitation de responsabilité</h2>
-          <p style={P}>Dans toute la mesure permise par la loi, Attax ne pourra être tenu responsable des dommages indirects, accessoires ou consécutifs liés à ton utilisation de l'App, y compris des données manquantes ou retardées en raison de ton appareil, de l'appli de ta montre, d'Apple Santé ou de Health Connect.</p>
+          <p style={P}>Dans toute la mesure permise par la loi, Attax ne pourra être tenu responsable des dommages indirects, accessoires ou consécutifs liés à ton utilisation de l'App, y compris des données manquantes ou retardées en raison de ton appareil, de l'application de ta montre, d'Apple Santé ou de Health Connect.</p>
         </div>
 
         <div style={SECTION}>

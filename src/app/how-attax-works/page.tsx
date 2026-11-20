@@ -229,7 +229,7 @@ const P: Record<Lang, {
     faq: [
       { q: "How does Attax track activity?", a: "Through Apple Health (iPhone) or Health Connect (Android): Attax reads your workouts, the heart rate measured during them, and your steps, read-only." },
       { q: "Do I need to manually enter workouts?", a: "No. Everything comes from your watch, through Apple Health or Health Connect. There is no manual entry." },
-      { q: "What activities count?", a: "Any workout your watch measures: running, cycling, gym, swimming, team sports, dance… plus your steps, every day." },
+      { q: "What activities count?", a: "Any workout your watch measures: running, cycling, strength training, swimming, team sports, dance… plus your steps, every day." },
       { q: "Does consistency matter?", a: "Yes. A match is 7 rounds, one per day: showing up every day is the surest way to win." },
       { q: "Do I need a smartwatch?", a: "Yes. You need a device that measures your heart rate (smartwatch, fitness band or chest strap) synced with Apple Health (iPhone) or Health Connect (Android): Apple Watch, Garmin, Amazfit, COROS and more on both; Samsung Galaxy Watch and Fitbit on Android only. Your phone alone counts your steps. Attax checks your connection before your first league." },
       { q: "Is Attax suitable for beginners?", a: "Absolutely. You join a league at your level, and every effort counts." },
@@ -259,7 +259,7 @@ const P: Record<Lang, {
     foundationP3: "Contrairement à beaucoup de jeux, la progression ne s'achète pas : il n'y a rien à acheter dans Attax. Tes pts viennent uniquement de ce que ta montre enregistre.",
     foundationP4: "Tes performances viennent de ce que tu accomplis dans la vie réelle.",
     foundationP5: "Course.\nVélo.\nMuscu.\nSports collectifs.\nMarche.\nTout ce qui fait travailler ton cœur.",
-    foundationP6: "Le système récompense l'activité pratiquée en dehors de l'appli et la transforme en progression concrète à l'intérieur de l'expérience.",
+    foundationP6: "Le système récompense l'activité pratiquée en dehors de l'application et la transforme en progression concrète à l'intérieur de l'expérience.",
     foundationP7: "Cela crée un lien direct entre l'effort physique et les résultats compétitifs.",
     foundationP8: "Plus tu es régulier, plus ta position se renforce.",
 
@@ -271,7 +271,7 @@ const P: Record<Lang, {
     connectP4: "Attax lit tes séances, la fréquence cardiaque mesurée pendant l'effort et tes pas : en lecture seule, rien d'autre. Tes données ne sont jamais vendues ni utilisées pour de la pub.",
     connectP5: "Pas de tableurs.\nPas de saisie manuelle.\nPas de configuration compliquée.",
     connectP6: "L'objectif est simple : passer moins de temps à enregistrer l'activité et plus de temps à la pratiquer.",
-    connectP7: "Avant ta première ligue, Attax vérifie que tes données cardio arrivent bien. Ensuite, la synchro se fait à chaque ouverture de l'app. Le jour du match, tout ce qui est synchronisé avant 21h30 compte.",
+    connectP7: "Avant ta première ligue, Attax vérifie que tes données de fréquence cardiaque arrivent bien. Ensuite, la synchro se fait à chaque ouverture de l'app. Le jour du match, tout ce qui est synchronisé avant 21h30 compte.",
 
     activityLabel: "Activité",
     activityH2: "L'activité devient des pts",
@@ -317,7 +317,7 @@ const P: Record<Lang, {
     whyP2: "Attax a été conçu pour répondre à ce défi.",
     whyP3: "Le système combine plusieurs principes de motivation :",
     whyMotivation: ["Progression visible", "Objectifs quotidiens", "Responsabilité compétitive", "Prise de décision stratégique", "Classements à long terme"],
-    whyP4: "Ensemble, ces systèmes créent une raison de revenir. Pas parce que l'appli l'exige. Parce que l'expérience reste engageante.",
+    whyP4: "Ensemble, ces systèmes créent une raison de revenir. Pas parce que l'application l'exige. Parce que l'expérience reste engageante.",
     whyP5: "L'objectif n'est pas de forcer l'activité. L'objectif est de rendre l'activité plus gratifiante.",
 
     consLabel: "Régularité",
@@ -333,9 +333,9 @@ const P: Record<Lang, {
     faq: [
       { q: "Comment Attax suit-il l'activité ?", a: "Via Apple Santé (iPhone) ou Health Connect (Android) : Attax lit tes séances, la fréquence cardiaque mesurée pendant l'effort et tes pas, en lecture seule." },
       { q: "Dois-je saisir mes séances à la main ?", a: "Non. Tout vient de ta montre, via Apple Santé ou Health Connect. Il n'y a aucune saisie manuelle." },
-      { q: "Quelles activités comptent ?", a: "Toute séance mesurée par ta montre : course, vélo, muscu, natation, sports collectifs, danse… plus tes pas, chaque jour." },
+      { q: "Quelles activités comptent ?", a: "Toute séance mesurée par ta montre : course, vélo, musculation, natation, sports collectifs, danse… plus tes pas, chaque jour." },
       { q: "La régularité compte-t-elle ?", a: "Oui. Un match se joue en 7 rounds, un par jour : être là chaque jour, c'est le moyen le plus sûr de gagner." },
-      { q: "Ai-je besoin d'une montre connectée ?", a: "Oui. Il te faut un appareil qui mesure ta fréquence cardiaque (montre, bracelet ou ceinture cardio) synchronisé avec Apple Santé (iPhone) ou Health Connect (Android) : Apple Watch, Garmin, Amazfit, COROS et d'autres sur les deux ; Samsung Galaxy Watch et Fitbit sur Android uniquement. Ton téléphone seul compte tes pas. Attax vérifie ta connexion avant ta première ligue." },
+      { q: "Ai-je besoin d'une montre connectée ?", a: "Oui. Il te faut un appareil qui mesure ta fréquence cardiaque (montre, bracelet ou ceinture thoracique) synchronisé avec Apple Santé (iPhone) ou Health Connect (Android) : Apple Watch, Garmin, Amazfit, COROS et d'autres sur les deux ; Samsung Galaxy Watch et Fitbit sur Android uniquement. Ton téléphone seul compte tes pas. Attax vérifie ta connexion avant ta première ligue." },
       { q: "Attax convient-il aux débutants ?", a: "Absolument. Tu rejoins une ligue de ton niveau, et chaque effort compte." },
       { q: "Puis-je jouer avec mes amis ?", a: "Oui. Crée une ligue classée avec tes amis, ou une ligue personnalisée de 2 à 40 joueurs. Partage ton code, ils te rejoignent en quelques secondes." },
       { q: "Puis-je progresser sans être un athlète d'élite ?", a: "Oui. Tu affrontes des joueurs de ton niveau, et ton rang dépend de tes résultats, pas d'une performance absolue." },
@@ -423,7 +423,7 @@ export default function HowAttaxWorks() {
               <p style={{ fontSize: "clamp(1.25rem, 2.2vw, 1.875rem)", fontWeight: 700, color: "#ffffff", letterSpacing: "-0.03em", lineHeight: 1.3, maxWidth: "580px", margin: 0 }}>
                 {lang === "en"
                   ? "“Connect your health app. Every workout becomes a fight.”"
-                  : "« Connecte ton appli santé. Chaque séance devient un combat. »"}
+                  : "« Connecte ton application santé. Chaque séance devient un combat. »"}
               </p>
             </div>
           </div>

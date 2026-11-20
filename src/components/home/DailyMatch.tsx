@@ -28,13 +28,13 @@ const G_OPP = "linear-gradient(270deg, #a8001a 0%, #EC0420 45%, #ff3a55 82%, #ff
 type Act = { en: [string, string]; fr: [string, string] };
 type Round = { w: "Y" | "O"; y: number; o: number; a: Act; final?: boolean };
 const ROUNDS: Round[] = [
-  { w: "Y", y: 486, o: 312, a: { en: ["Run · 38 min", "Yoga · 55 min"], fr: ["Course · 38 min", "Yoga · 55 min"] } },
-  { w: "O", y: 210, o: 455, a: { en: ["Weights · 40 min", "Swim · 53 min"], fr: ["Muscu · 40 min", "Natation · 53 min"] } },
+  { w: "Y", y: 486, o: 312, a: { en: ["Running · 38 min", "Yoga · 55 min"], fr: ["Course · 38 min", "Yoga · 55 min"] } },
+  { w: "O", y: 210, o: 455, a: { en: ["Weight training · 40 min", "Swimming · 53 min"], fr: ["Musculation · 40 min", "Natation · 53 min"] } },
   { w: "Y", y: 530, o: 380, a: { en: ["Cycling · 1 h 00", "Tennis · 1 h 10"], fr: ["Vélo · 1 h 00", "Tennis · 1 h 10"] } },
-  { w: "O", y: 95, o: 268, a: { en: ["Walk · 5,000 steps", "Climbing · 45 min"], fr: ["Marche · 5 000 pas", "Escalade · 45 min"] } },
-  { w: "Y", y: 620, o: 540, a: { en: ["Football · 1 h 15", "Run · 50 min"], fr: ["Foot · 1 h 15", "Course · 50 min"] } },
+  { w: "O", y: 95, o: 268, a: { en: ["Walking · 5,000 steps", "Climbing · 45 min"], fr: ["Marche · 5 000 pas", "Escalade · 45 min"] } },
+  { w: "Y", y: 620, o: 540, a: { en: ["Football · 1 h 15", "Running · 50 min"], fr: ["Football · 1 h 15", "Course · 50 min"] } },
   { w: "O", y: 140, o: 395, a: { en: ["Yoga · 30 min", "HIIT · 35 min"], fr: ["Yoga · 30 min", "HIIT · 35 min"] } },
-  { w: "Y", y: 512, o: 388, final: true, a: { en: ["Weights · 55 min", "Swim · 53 min"], fr: ["Muscu · 55 min", "Natation · 53 min"] } },
+  { w: "Y", y: 512, o: 388, final: true, a: { en: ["Weight training · 55 min", "Swimming · 53 min"], fr: ["Musculation · 55 min", "Natation · 53 min"] } },
 ];
 // Le déroulé d'un round (secondes depuis son début).
 // Les deux scores comptent ensemble (comme l'app), s'arrêtent ensemble, puis le coup.
