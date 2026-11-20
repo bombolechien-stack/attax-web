@@ -61,19 +61,19 @@ export default function ScrollNav() {
       const raw = Math.min(window.scrollY / SCROLL_END, 1);
       const t2 = raw < 0.5 ? 2 * raw * raw : 1 - Math.pow(-2 * raw + 2, 2) / 2;
       const vw = window.innerWidth;
-      const PILL_W = Math.min(880, vw - 32);
+      const PILL_W = Math.min(1120, vw - 28);
       pill.style.width        = `${vw - (vw - PILL_W) * t2}px`;
       pill.style.marginTop    = `${t2 * 14}px`;
-      pill.style.height       = `${68 - t2 * 16}px`;
+      pill.style.height       = `${68 - t2 * 14}px`;
       pill.style.borderRadius = `${t2 * 999}px`;
       pill.style.paddingLeft  = `${36 - t2 * 12}px`;
-      pill.style.paddingRight = `${36 - t2 * 12}px`;
-      pill.style.backgroundColor = `rgba(8,8,8,${t2 * 0.88})`;
-      const bf = `blur(${t2 * 28}px) saturate(${100 + t2 * 80}%)`;
+      pill.style.paddingRight = `${36 - t2 * 24}px`;
+      pill.style.backgroundColor = `rgba(255,255,255,${t2 * 0.78})`;
+      const bf = `blur(${t2 * 16}px) saturate(${100 + t2 * 60}%)`;
       pill.style.backdropFilter = bf;
       (pill.style as any).webkitBackdropFilter = bf;
-      pill.style.borderColor = `rgba(255,255,255,${t2 * 0.09})`;
-      pill.style.boxShadow   = `0 ${t2 * 6}px ${t2 * 40}px rgba(0,0,0,${t2 * 0.4})`;
+      pill.style.borderColor = `rgba(11,11,12,${t2 * 0.06})`;
+      pill.style.boxShadow   = `0 ${t2 * 10}px ${t2 * 30}px -14px rgba(0,0,0,${t2 * 0.35})`;
       outer.querySelectorAll<HTMLElement>("[data-fade]").forEach((el) => { el.style.opacity = String(t2); });
       outer.style.pointerEvents = raw > 0.05 ? "auto" : "none";
     };
@@ -90,7 +90,7 @@ export default function ScrollNav() {
           {/* Desktop: left links */}
           <div className="scroll-nav-links" style={{ display: "flex", gap: "24px", flex: 1, alignItems: "center" }}>
             {NAV_LINKS.map((l) => (
-              <Link key={l.href} href={l.href} data-fade="1" style={{ fontSize: "0.8125rem", fontWeight: 500, color: "rgba(255,255,255,0.65)", textDecoration: "none", opacity: 0, whiteSpace: "nowrap" }}>
+              <Link key={l.href} href={l.href} data-fade="1" style={{ fontSize: "0.875rem", fontWeight: 500, color: "rgba(11,11,12,0.72)", textDecoration: "none", opacity: 0, whiteSpace: "nowrap" }}>
                 {l.label}
               </Link>
             ))}
@@ -98,17 +98,14 @@ export default function ScrollNav() {
 
           {/* Logo center */}
           <Link href="/" data-fade="1" style={{ position: "absolute", left: "50%", transform: "translateX(-50%)", textDecoration: "none", opacity: 0, display: "flex", alignItems: "center" }}>
-            <Image src="/images/logo-attax-wh.svg" alt="Attax" width={72} height={27} style={{ display: "block" }} />
+            <Image src="/images/logo-attax-wh.svg" alt="Attax" width={80} height={30} style={{ display: "block", filter: "brightness(0)" }} />
           </Link>
 
           {/* Desktop: right CTAs */}
           <div className="scroll-nav-ctas" style={{ display: "flex", alignItems: "center", gap: "12px", flex: 1, justifyContent: "flex-end" }}>
-            <div data-fade="1" style={{ opacity: 0 }}><LangSwitcher /></div>
-            <a href="/download/ios" data-fade="1" style={{ display: "inline-flex", alignItems: "center", gap: "5px", backgroundColor: "#fff", color: "#0d0d0d", fontWeight: 700, fontSize: "0.75rem", padding: "7px 13px", borderRadius: "999px", textDecoration: "none", opacity: 0, whiteSpace: "nowrap" }}>
-              <AppleIcon /> iOS
-            </a>
-            <a href="/download/android" data-fade="1" style={{ display: "inline-flex", alignItems: "center", gap: "5px", backgroundColor: "rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.85)", fontWeight: 700, fontSize: "0.75rem", padding: "7px 13px", borderRadius: "999px", textDecoration: "none", opacity: 0, whiteSpace: "nowrap", border: "1px solid rgba(255,255,255,0.15)" }}>
-              <GooglePlayIcon /> Android
+            <div data-fade="1" style={{ opacity: 0 }}><LangSwitcher light /></div>
+            <a href="/download" data-fade="1" className="nav-pill-cta" style={{ display: "inline-flex", alignItems: "center", background: "#0B0B0C", color: "#fff", fontWeight: 500, fontSize: "0.875rem", padding: "9px 18px", borderRadius: "999px", textDecoration: "none", opacity: 0, whiteSpace: "nowrap" }}>
+              {lang === "fr" ? "Télécharger" : "Download"}
             </a>
           </div>
 
@@ -120,9 +117,9 @@ export default function ScrollNav() {
               aria-label="Open menu"
               style={{ opacity: 0, background: "none", border: "none", cursor: "pointer", padding: "6px", display: "flex", flexDirection: "column", gap: "5px" }}
             >
-              <span style={{ display: "block", width: "22px", height: "2px", backgroundColor: "#ffffff", borderRadius: "2px" }} />
-              <span style={{ display: "block", width: "22px", height: "2px", backgroundColor: "#ffffff", borderRadius: "2px" }} />
-              <span style={{ display: "block", width: "15px", height: "2px", backgroundColor: "#ffffff", borderRadius: "2px" }} />
+              <span style={{ display: "block", width: "22px", height: "2px", backgroundColor: "#0B0B0C", borderRadius: "2px" }} />
+              <span style={{ display: "block", width: "22px", height: "2px", backgroundColor: "#0B0B0C", borderRadius: "2px" }} />
+              <span style={{ display: "block", width: "15px", height: "2px", backgroundColor: "#0B0B0C", borderRadius: "2px" }} />
             </button>
           </div>
 
