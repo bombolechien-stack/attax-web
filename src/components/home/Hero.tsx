@@ -18,16 +18,15 @@ export default function Hero() {
         overflow: "hidden",
         backgroundColor: "#0d0d0d",
       }}>
-        {/* Hero = celui de la version en ligne (master), à l'identique. Seules différences : le titre (slogan),
-            le bouton Télécharger → /download, et la vidéo des sportifs refaite au ton le 18/11, recolorée en bleu
-            glacier sur fond noir (scripts/hero-lines/ice.py), posée exactement comme celle de master. */}
+        {/* Vidéo du héros : 3 athlètes × 3 sports, rendus en scanlines (même DA que les héros des autres pages) ; vidéo,
+            cadrage et transitions = ceux de la version en ligne (master). Seuls le titre et le bouton → /download changent. */}
         <video
           className="home-hero-video"
           autoPlay muted loop playsInline preload="auto"
-          poster="/videos/hero-lines-ice-poster.jpg"
+          poster="/videos/hero-scan-poster.jpg"
           aria-hidden="true"
         >
-          <source src="/videos/hero-lines-ice.mp4" type="video/mp4" />
+          <source src="/videos/hero-scan.mp4" type="video/mp4" />
         </video>
         <div className="scan-hero-lines" />
         <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(to right, rgba(13,13,13,0.94) 0%, rgba(13,13,13,0.75) 32%, rgba(13,13,13,0.1) 58%, rgba(13,13,13,0) 100%)" }} />

@@ -8,8 +8,9 @@ import { useInView, fadeUp, clipReveal, slideRight } from "@/hooks/useInView";
 // 1. en haut, les deux barres de vie de l'app (components/match/HealthBars.tsx : capsule chromée, dégradé du bord vers le
 //    centre, barre noire, 7 tirets ; la mienne en bleu à gauche, la sienne en rouge à droite) ;
 // 2. la frise des 7 rounds (les tirets de l'app) ;
-// 3. chaque round, l'un après l'autre : le jour (« ROUND n / 7 »), MON score bleu qui compte, « vs », son score rouge qui
-//    compte (empilés et centrés, comme la révélation des rounds de l'app, captures fn-02…fn-07) ;
+// 3. chaque round, l'un après l'autre, comme la carte de round de l'app (ScoreCard, components/reveal/FightNight.tsx) :
+//    « ROUND n / 7 », le jour, puis pour chacun « WINS THE ROUND » (au-dessus du gagnant), le score qui compte + « pts »,
+//    et dessous son activité du jour sur une ligne grise ; « VS » entre les deux ; la barre bleu / rouge dessous ;
 // 4. quand les scores s'arrêtent : les deux boxeurs de l'app apparaissent EN FOND, en très gros plan, figés à l'instant où
 //    le gagnant touche (images fixes rendues avec le moteur de l'app : scripts/fight-night-video/punch-stills.mjs), et au
 //    même instant la barre du perdant perd son PV : le morceau jaune tombe (le « Frag » de la révélation, fast), et le
@@ -22,26 +23,19 @@ const FONT = "var(--font-manrope), var(--font-jakarta), sans-serif";
 const G_ME = "linear-gradient(90deg, #0024c8 0%, #0443FD 45%, #4b78ff 82%, #9bb1ff 100%)";
 const G_OPP = "linear-gradient(270deg, #a8001a 0%, #EC0420 45%, #ff3a55 82%, #ffa1a9 100%)";
 
-// Les séances du jour de chaque round (comme les lignes de séance de l'app : heure, pastille + joueur, sport, durée,
-// pts), puis les pas. Total du jour = pts des séances + pts des pas (10 pts par tranche complète de 1 000 pas).
-type Sport = { en: string; fr: string };
-type Sess = { who: "Y" | "O"; at: string; sport: Sport; min: number; pts: number };
-type Round = { w: "Y" | "O"; y: number; o: number; ys: number; os: number; sess: Sess[]; final?: boolean };
-const SP = (en: string, fr: string): Sport => ({ en, fr });
+// Chaque round : le gagnant, les pts du jour de chacun, et l'activité du jour de chacun sur UNE ligne, comme la carte de
+// round de l'app (ScoreCard de components/reveal/FightNight.tsx, libellés sur le modèle de R6 / R6_EN : « Course · 48 min »).
+type Act = { en: [string, string]; fr: [string, string] };
+type Round = { w: "Y" | "O"; y: number; o: number; a: Act; final?: boolean };
 const ROUNDS: Round[] = [
-  { w: "Y", y: 486, o: 312, ys: 10020, os: 9040, sess: [{ who: "Y", at: "7:10 AM", sport: SP("Running", "Course"), min: 38, pts: 386 }, { who: "O", at: "6:40 PM", sport: SP("Yoga", "Yoga"), min: 55, pts: 222 }] },
-  { w: "O", y: 210, o: 455, ys: 6010, os: 7020, sess: [{ who: "Y", at: "12:30 PM", sport: SP("Strength training", "Musculation"), min: 40, pts: 150 }, { who: "O", at: "6:35 PM", sport: SP("Swimming", "Natation"), min: 53, pts: 385 }] },
-  { w: "Y", y: 530, o: 380, ys: 8030, os: 8000, sess: [{ who: "Y", at: "6:05 PM", sport: SP("Cycling", "Vélo"), min: 60, pts: 450 }, { who: "O", at: "1:45 PM", sport: SP("Tennis", "Tennis"), min: 70, pts: 300 }] },
-  { w: "O", y: 95, o: 268, ys: 5000, os: 7000, sess: [{ who: "Y", at: "8:20 AM", sport: SP("Walking", "Marche"), min: 35, pts: 45 }, { who: "O", at: "10:15 AM", sport: SP("Climbing", "Escalade"), min: 45, pts: 198 }] },
-  { w: "Y", y: 620, o: 540, ys: 10000, os: 9000, sess: [{ who: "Y", at: "5:30 PM", sport: SP("Football", "Football"), min: 75, pts: 520 }, { who: "O", at: "7:00 AM", sport: SP("Running", "Course"), min: 50, pts: 450 }] },
-  { w: "O", y: 140, o: 395, ys: 6000, os: 8000, sess: [{ who: "Y", at: "6:50 AM", sport: SP("Yoga", "Yoga"), min: 30, pts: 80 }, { who: "O", at: "7:15 PM", sport: SP("HIIT", "HIIT"), min: 35, pts: 315 }] },
-  { w: "Y", y: 512, o: 388, ys: 10000, os: 9000, final: true, sess: [{ who: "Y", at: "6:05 PM", sport: SP("Strength training", "Musculation"), min: 55, pts: 412 }, { who: "O", at: "6:35 PM", sport: SP("Swimming", "Natation"), min: 53, pts: 298 }] },
+  { w: "Y", y: 486, o: 312, a: { en: ["Run · 38 min", "Yoga · 55 min"], fr: ["Course · 38 min", "Yoga · 55 min"] } },
+  { w: "O", y: 210, o: 455, a: { en: ["Weights · 40 min", "Swim · 53 min"], fr: ["Muscu · 40 min", "Natation · 53 min"] } },
+  { w: "Y", y: 530, o: 380, a: { en: ["Cycling · 1 h 00", "Tennis · 1 h 10"], fr: ["Vélo · 1 h 00", "Tennis · 1 h 10"] } },
+  { w: "O", y: 95, o: 268, a: { en: ["Walk · 5,000 steps", "Climbing · 45 min"], fr: ["Marche · 5 000 pas", "Escalade · 45 min"] } },
+  { w: "Y", y: 620, o: 540, a: { en: ["Football · 1 h 15", "Run · 50 min"], fr: ["Foot · 1 h 15", "Course · 50 min"] } },
+  { w: "O", y: 140, o: 395, a: { en: ["Yoga · 30 min", "HIIT · 35 min"], fr: ["Yoga · 30 min", "HIIT · 35 min"] } },
+  { w: "Y", y: 512, o: 388, final: true, a: { en: ["Weights · 55 min", "Swim · 53 min"], fr: ["Muscu · 55 min", "Natation · 53 min"] } },
 ];
-// Contrôle : chaque total = séances + pas.
-if (process.env.NODE_ENV !== "production") ROUNDS.forEach((r, i) => {
-  const sum = (w: "Y" | "O", st: number) => r.sess.filter((x) => x.who === w).reduce((a, x) => a + x.pts, 0) + Math.floor(st / 1000) * 10;
-  if (sum("Y", r.ys) !== r.y || sum("O", r.os) !== r.o) console.warn("DailyMatch: round", i + 1, "pts do not add up");
-});
 // Le déroulé d'un round (secondes depuis son début).
 // Les deux scores comptent ensemble (comme l'app), s'arrêtent ensemble, puis le coup.
 const T_ME0 = 0.5, T_ME1 = 2.1, T_VS = 0.5, T_OPP0 = 0.5, T_OPP1 = 2.1, T_HIT = 2.3, T_FADE = 3.6, ROUND_LEN = 4.3;
@@ -52,13 +46,11 @@ const COPY = {
     me: "JOHNNY", opp: "SOPHIE", hp: "HP", round: (n: number) => `ROUND ${n} / 7`, finalRound: "FINAL ROUND", stake: "2 HP AT STAKE",
     days: ["Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Monday", "Tuesday"], wins: "WINS THE ROUND", vs: "vs",
     winner: "WINNER", verdict: "Wins the match, 4 HP to 2.",
-    workouts: (d: string) => `${d.toUpperCase()}'S WORKOUTS`, steps: "Steps",
   },
   fr: {
     me: "JOHNNY", opp: "SOPHIE", hp: "PV", round: (n: number) => `ROUND ${n} / 7`, finalRound: "ROUND FINAL", stake: "2 PV EN JEU",
     days: ["Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche", "Lundi", "Mardi"], wins: "REMPORTE LE ROUND", vs: "vs",
     winner: "VAINQUEUR", verdict: "Remporte le match, 4 PV à 2.",
-    workouts: (d: string) => `SÉANCES DU ${d.toUpperCase()}`, steps: "Pas",
   },
 };
 
@@ -137,8 +129,7 @@ export default function DailyMatch() {
   // Le morceau jaune : seulement pendant la seconde qui suit le coup.
   const dropFor = (side: "Y" | "O") => (hit && lt < T_HIT + 1.1 && r.w !== side && !verdict ? { key: `${ri}`, from: (side === "Y" ? lifeMe : lifeOpp) + (r.final ? 2 : 1) } : null);
   const nf = (n: number) => n.toLocaleString(lang === "fr" ? "fr-FR" : "en-US");
-  const clockTxt = (x: string) => (lang === "fr" ? x.replace(/^(\d+):(\d+) (AM|PM)$/, (_, h, mm, ap) => `${(+h % 12) + (ap === "PM" ? 12 : 0)}h${mm}`) : x);
-  const who = (w: "Y" | "O") => (w === "Y" ? "Johnny" : "Sophie");
+
   const fmt = tall ? "tall" : "wide";
 
   return (
@@ -194,31 +185,20 @@ export default function DailyMatch() {
               <span className="mr-kick">{r.final ? c.finalRound : c.round(ri + 1)}</span>
               <span className="mr-day">{c.days[ri]}</span>
               {r.final && <span className="mr-kick" style={{ color: RED, marginTop: 4 }}>{c.stake}</span>}
-              <span className="mr-kick mr-wins" style={{ color: BLUE, opacity: hit && r.w === "Y" ? 1 : 0 }}>{c.wins}</span>
-              <span className="mr-big" style={{ color: BLUE, opacity: lt < T_ME0 ? 0 : hit && r.w !== "Y" ? 0.26 : 1 }}>{nf(yPts)}<small>pts</small></span>
-              <span className="mr-vs" style={{ opacity: lt >= T_VS ? 1 : 0 }}>{c.vs}</span>
-              <span className="mr-kick mr-wins" style={{ color: RED, opacity: hit && r.w === "O" ? 1 : 0 }}>{c.wins}</span>
-              <span className="mr-big" style={{ color: RED, opacity: lt < T_OPP0 ? 0 : hit && r.w !== "O" ? 0.26 : 1 }}>{nf(oPts)}<small>pts</small></span>
-              <span className="mr-split" style={{ opacity: lt >= T_OPP0 ? 1 : 0 }}><i style={{ flex: Math.max(1, yPts), background: BLUE }} /><i style={{ flex: Math.max(1, oPts), background: RED }} /></span>
-
-              {/* Les séances du jour, sous les scores (lignes de séance de l'app) */}
-              <div className="mr-sess">
-                <span className="mr-kick" style={{ color: INK, letterSpacing: "0.18em" }}>{c.workouts(c.days[ri])}</span>
-                {[...r.sess].sort((a, b) => (a.who === b.who ? 0 : a.who === "Y" ? -1 : 1)).map((x, k) => (
-                  <div key={k} className="mr-sess-row">
-                    <span className="mr-sess-at">{clockTxt(x.at)}</span>
-                    <i style={{ background: x.who === "Y" ? BLUE : RED }} />
-                    <span className="mr-sess-t"><b>{who(x.who)}</b> · {x.sport[lang]} · {x.min} min</span>
-                    <span className="mr-sess-pts" style={{ color: x.who === "Y" ? BLUE : RED }}>{nf(x.pts)} pts</span>
+              {(["Y", "O"] as const).map((side) => {
+                const col = side === "Y" ? BLUE : RED, won = side === r.w, v = side === "Y" ? yPts : oPts;
+                return (
+                  <div key={side} style={{ display: "contents" }}>
+                    {side === "O" && <span className="mr-vs" style={{ opacity: lt >= T_VS ? 1 : 0 }}>VS</span>}
+                    <div className="mr-line" style={{ opacity: lt < T_ME0 ? 0 : hit && !won ? 0.26 : 1 }}>
+                      <span className="mr-won" style={{ color: col, opacity: hit && won ? 1 : 0, transform: hit && won ? "none" : "translateY(4px)" }}>{c.wins}</span>
+                      <span className="mr-big" style={{ color: col }}>{nf(v)}<small>pts</small></span>
+                      <span className="mr-act">{r.a[lang][side === "Y" ? 0 : 1]}</span>
+                    </div>
                   </div>
-                ))}
-                <div className="mr-sess-row mr-sess-steps">
-                  <span className="mr-sess-at">{c.steps}</span>
-                  <i style={{ background: "transparent" }} />
-                  <span className="mr-sess-t"><b style={{ color: BLUE }}>{nf(r.ys)}</b> · <b style={{ color: RED }}>{nf(r.os)}</b></span>
-                  <span className="mr-sess-pts"><span style={{ color: BLUE }}>{Math.floor(r.ys / 1000) * 10}</span> · <span style={{ color: RED }}>{Math.floor(r.os / 1000) * 10}</span> pts</span>
-                </div>
-              </div>
+                );
+              })}
+              <span className="mr-split" style={{ opacity: lt >= T_OPP0 ? 1 : 0, transform: lt >= T_OPP0 ? "scaleX(1)" : "scaleX(0)" }}><i style={{ flex: r.y, background: BLUE }} /><b /><i style={{ flex: r.o, background: RED }} /></span>
             </div>
           ) : (
             <div className="mr-round mr-verdict" key="verdict">
