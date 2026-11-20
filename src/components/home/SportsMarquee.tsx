@@ -4,30 +4,40 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useLang } from "@/lib/i18n";
 import { useInView, fadeUp, clipReveal } from "@/hooks/useInView";
+import AppScanlines from "./AppScanlines";
 
 // « Tous les sports comptent » : une seule scène, calme, au lieu d'un défilé. Les silhouettes en scanlines (les mêmes
-// lignes encre que les boxeurs de l'app, scripts/hero-lines/relines.py) se succèdent dans un grand cadre, la trame
-// s'imprime de haut en bas à chaque sport. À côté, ce qui compte vraiment, comme dans l'écran Activités de l'app :
-// les 4 zones cardio et leur barème (3 / 8 / 14 / 20 pts par minute, lib/scoring.ts) et les pas (10 pts par 1 000 pas).
+// lignes encre que les boxeurs de l'app, scripts/hero-lines/panels_tone.py) se succèdent dans un grand cadre, la trame
+// s'imprime de haut en bas à chaque sport. Des sports volontairement variés (yoga, curling, corde à sauter…) et, en
+// dernier, « Et tout sport ou toute activité intense » : la liste n'est qu'un échantillon, rien n'est exclu.
+// À côté, ce qui compte vraiment, comme dans l'écran Activités de l'app : les 4 zones cardio et leur barème
+// (3 / 8 / 14 / 20 pts par minute, lib/scoring.ts) et les pas (10 pts par 1 000 pas).
 // Le sport lui-même ne change rien aux pts (docs/regles/02-activite.md § 3.3).
 
 const BLUE = "#0443FD", INK = "#0B1116", SUB = "#6B7280", MUTED = "#94A3B8";
 const FONT = "var(--font-manrope), var(--font-jakarta), sans-serif";
 const STAGE_BG = "#EEF1F7"; // fond des images (captures de l'app)
-const INTERVAL = 2800;
+const INTERVAL = 2800, ANY_INTERVAL = 5600;
 
 const SPORTS: { file: string; en: string; fr: string }[] = [
-  { file: "running", en: "Running", fr: "Course" },
-  { file: "cycling", en: "Cycling", fr: "Vélo" },
-  { file: "lifting", en: "Lifting", fr: "Musculation" },
-  { file: "tennis", en: "Tennis", fr: "Tennis" },
+  { file: "yoga", en: "Yoga", fr: "Yoga" },
+  { file: "curling", en: "Curling", fr: "Curling" },
+  { file: "boxing", en: "Boxing", fr: "Boxe" },
+  { file: "swimming", en: "Swimming", fr: "Natation" },
+  { file: "rowing", en: "Rowing", fr: "Aviron" },
+  { file: "jump-rope", en: "Jump rope", fr: "Corde à sauter" },
   { file: "wheelchair", en: "Wheelchair basketball", fr: "Basket fauteuil" },
-  { file: "sprint", en: "Sprint", fr: "Sprint" },
-  { file: "nordic-walking", en: "Nordic walking", fr: "Marche nordique" },
-  { file: "basketball", en: "Basketball", fr: "Basket" },
-  { file: "spin", en: "Indoor cycling", fr: "Vélo d'intérieur" },
-  { file: "walking", en: "Walking", fr: "Marche" },
+  { file: "football", en: "Football", fr: "Football" },
+  { file: "cycling", en: "Cycling", fr: "Vélo" },
 ];
+const ANY = SPORTS.length; // le 10e et dernier : tout le reste
+const TOTAL = SPORTS.length + 1;
+
+// Le 10e cadre fait défiler d'autres sports, sans image : la liste n'a pas de fin.
+const MORE = {
+  en: ["Dance", "Climbing", "Padel", "Skiing", "Hiking", "Martial arts", "Pilates", "Handball", "Skating", "Surfing", "HIIT", "Trail running"],
+  fr: ["Danse", "Escalade", "Padel", "Ski", "Randonnée", "Arts martiaux", "Pilates", "Handball", "Patin", "Surf", "HIIT", "Trail"],
+};
 
 const ZONES = [
   { en: "Endurance", fr: "Endurance", pts: 3 },
@@ -39,8 +49,8 @@ const ZONES = [
 const COPY = {
   en: {
     label: "Every sport counts",
-    h2: ["Run. Ride. Lift.", "Play. Walk. Win."],
-    body: "If your heart rate goes up, it counts. Your watch measures your workouts and steps through Apple Health or Health Connect, and Attax turns them into pts. No manual entry. Whatever your sport, whatever your level.",
+    h2: ["Every sport.", "Every effort."],
+    body: "Yoga, curling or a marathon: if your heart rate goes up, it counts. Your watch measures your workouts and steps through Apple Health or Health Connect, and Attax turns them into pts. No manual entry, whatever your level.",
     panelKick: "YOUR EFFORT → PTS",
     panelTitle: "Your heart sets the score.",
     zone: "Zone",
@@ -49,11 +59,16 @@ const COPY = {
     stepsPts: "10 pts",
     note: "The sport never changes the score: only your heart rate and your steps do. Zones adapt to your age, and past 90 minutes in a day, each minute counts a little less.",
     index: "SPORT",
+    any: "And any sport or any intense activity",
+    anyShort: "And any sport",
+    anyKick: "AND ANY SPORT",
+    anyLine: "or any intense activity.",
+    listKick: "A FEW EXAMPLES. NOTHING IS LEFT OUT.",
   },
   fr: {
     label: "Tous les sports comptent",
-    h2: ["Cours. Roule. Soulève.", "Joue. Marche. Gagne."],
-    body: "Si ton cœur accélère, ça compte. Ta montre mesure tes séances et tes pas via Apple Santé ou Health Connect, et Attax les transforme en pts. Aucune saisie à la main. Quel que soit ton sport, quel que soit ton niveau.",
+    h2: ["Tous les sports.", "Tous les efforts."],
+    body: "Yoga, curling ou marathon : si ton cœur accélère, ça compte. Ta montre mesure tes séances et tes pas via Apple Santé ou Health Connect, et Attax les transforme en pts. Aucune saisie à la main, quel que soit ton niveau.",
     panelKick: "TON EFFORT → PTS",
     panelTitle: "C'est ton cœur qui marque.",
     zone: "Zone",
@@ -62,6 +77,11 @@ const COPY = {
     stepsPts: "10 pts",
     note: "Le sport ne change jamais le score : seuls ton cœur et tes pas comptent. Les zones s'adaptent à ton âge, et au-delà de 90 minutes dans la journée, chaque minute compte un peu moins.",
     index: "SPORT",
+    any: "Et tout sport ou toute activité intense",
+    anyShort: "Et tout sport",
+    anyKick: "ET TOUT SPORT",
+    anyLine: "ou toute activité intense.",
+    listKick: "QUELQUES EXEMPLES. RIEN N'EST EXCLU.",
   },
 };
 
@@ -73,16 +93,29 @@ export default function SportsMarquee() {
   const { ref: panelRef, visible: panelVisible } = useInView<HTMLDivElement>(0.3, { oneShot: true });
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [more, setMore] = useState(0);
+  const isAny = active === ANY;
+  const names = [...SPORTS.map((s) => s[lang]), c.anyShort];
 
-  // Un sport toutes les 2,8 s, seulement quand la scène est à l'écran (et jamais si l'utilisateur réduit les animations).
+  // Un sport toutes les 2,8 s (le dernier cadre reste plus longtemps), seulement quand la scène est à l'écran,
+  // et jamais si l'utilisateur réduit les animations.
   useEffect(() => {
     if (!stageVisible || paused) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const id = setInterval(() => setActive((a) => (a + 1) % SPORTS.length), INTERVAL);
-    return () => clearInterval(id);
-  }, [stageVisible, paused]);
+    const id = setTimeout(() => setActive((a) => (a + 1) % TOTAL), isAny ? ANY_INTERVAL : INTERVAL);
+    return () => clearTimeout(id);
+  }, [stageVisible, paused, active, isAny]);
+
+  // Dernier cadre : les autres sports défilent un par un.
+  useEffect(() => {
+    if (!isAny) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const id = setInterval(() => setMore((m) => (m + 1) % MORE.en.length), 460);
+    return () => { clearInterval(id); setMore(0); };
+  }, [isAny]);
 
   const pad = (n: number) => String(n).padStart(2, "0");
+  const segDur = isAny ? ANY_INTERVAL : INTERVAL;
 
   return (
     <section className="spt-section">
@@ -94,7 +127,7 @@ export default function SportsMarquee() {
             <span style={{ ...clipReveal(visible, 220), color: BLUE }}>{c.h2[1]}</span>
           </h2>
         </div>
-        <p style={{ ...fadeUp(visible, 350), fontSize: "1rem", color: "rgba(28,37,64,0.62)", lineHeight: 1.75, maxWidth: "360px", margin: 0 }}>{c.body}</p>
+        <p style={{ ...fadeUp(visible, 350), fontSize: "1rem", color: "rgba(28,37,64,0.62)", lineHeight: 1.75, maxWidth: "380px", margin: 0 }}>{c.body}</p>
       </div>
 
       <div className="spt-grid">
@@ -119,24 +152,47 @@ export default function SportsMarquee() {
             );
           })}
 
+          {/* 10e cadre : tous les autres sports, en typographie (pas d'image : la liste continue) */}
+          <div className="spt-any" aria-hidden={!isAny} style={{
+            opacity: isAny ? 1 : 0,
+            clipPath: isAny ? "inset(0 0 0 0)" : "inset(0 0 100% 0)",
+            transition: isAny ? "clip-path 1.1s cubic-bezier(0.65,0,0.35,1), opacity 0.3s ease" : "opacity 0.6s ease 0.35s, clip-path 0s linear 0.95s",
+            zIndex: isAny ? 2 : 1,
+          }}>
+            <AppScanlines w={520} h={650} color={INK} opacity={0.06} />
+            <div className="spt-any-inner">
+              <span className="spt-any-kick">{c.anyKick}</span>
+              <div className="spt-any-roll">
+                {MORE[lang].map((n, i) => (
+                  <span key={n} className="spt-any-word" style={{
+                    opacity: i === more ? 1 : 0,
+                    transform: i === more ? "translateY(0)" : i === (more + MORE.en.length - 1) % MORE.en.length ? "translateY(-45%)" : "translateY(45%)",
+                  }}>{n}</span>
+                ))}
+              </div>
+              <span className="spt-any-line">{c.anyLine}</span>
+            </div>
+          </div>
+
           <div className="spt-stage-top">
             <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: "0.65625rem", letterSpacing: "0.25em", color: SUB }}>{c.index}</span>
             <span style={{ fontFamily: FONT, fontWeight: 800, fontSize: "0.8125rem", color: INK, fontVariantNumeric: "tabular-nums" }}>
-              {pad(active + 1)} <span style={{ color: MUTED }}>/ {pad(SPORTS.length)}</span>
+              {pad(active + 1)} <span style={{ color: MUTED }}>/ {pad(TOTAL)}</span>
             </span>
           </div>
 
           <div className="spt-stage-bottom">
             <div className="spt-name-wrap">
-              <span key={active} className="spt-name">{SPORTS[active][lang]}</span>
+              <span key={active} className="spt-name" style={isAny ? { color: BLUE } : undefined}>{names[active]}</span>
             </div>
             {/* La frise de l'app : un segment par sport, celui en cours se remplit */}
             <div className="spt-track" role="tablist" aria-label={c.label}>
-              {SPORTS.map((s, i) => (
-                <button key={s.file} type="button" role="tab" aria-selected={i === active} aria-label={s[lang]}
+              {names.map((n, i) => (
+                <button key={i} type="button" role="tab" aria-selected={i === active} aria-label={i === ANY ? c.any : n}
                   onClick={() => setActive(i)} className="spt-seg">
                   <span className="spt-seg-bg" />
-                  <span key={i === active ? `on-${active}` : "off"} className={i === active ? (paused || !stageVisible ? "spt-seg-fill spt-seg-full" : "spt-seg-fill spt-seg-run") : i < active ? "spt-seg-fill spt-seg-full" : "spt-seg-fill"} />
+                  <span key={i === active ? `on-${active}` : "off"} style={i === active ? { animationDuration: `${segDur}ms` } : undefined}
+                    className={i === active ? (paused || !stageVisible ? "spt-seg-fill spt-seg-full" : "spt-seg-fill spt-seg-run") : i < active ? "spt-seg-fill spt-seg-full" : "spt-seg-fill"} />
                 </button>
               ))}
             </div>
@@ -183,16 +239,19 @@ export default function SportsMarquee() {
 
           <p style={{ ...fadeUp(panelVisible, 350), fontSize: "0.875rem", color: "rgba(11,17,22,0.55)", lineHeight: 1.65, margin: 0 }}>{c.note}</p>
 
-          {/* Index des sports (desktop) */}
-          <ul className="spt-index" style={{ ...fadeUp(panelVisible, 450), display: undefined }}>
-            {SPORTS.map((s, i) => (
-              <li key={s.file}>
-                <button type="button" onClick={() => setActive(i)} className={i === active ? "spt-index-btn is-on" : "spt-index-btn"}>
-                  <span className="spt-index-n">{pad(i + 1)}</span>{s[lang]}
-                </button>
-              </li>
-            ))}
-          </ul>
+          {/* Index des sports : 9 exemples, puis tout le reste */}
+          <div style={{ ...fadeUp(panelVisible, 450) }}>
+            <div className="spt-index-kick">{c.listKick}</div>
+            <ul className="spt-index">
+              {names.map((n, i) => (
+                <li key={i} className={i === ANY ? "spt-index-any" : undefined}>
+                  <button type="button" onClick={() => setActive(i)} className={i === active ? "spt-index-btn is-on" : "spt-index-btn"}>
+                    <span className="spt-index-n">{pad(i + 1)}</span>{i === ANY ? c.any : n}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>

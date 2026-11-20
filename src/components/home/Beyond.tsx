@@ -3,8 +3,9 @@
 import Image from "next/image";
 import { useLang, useT } from "@/lib/i18n";
 import { useInView, fadeUp, clipReveal } from "@/hooks/useInView";
+import TrophyScreen from "./TrophyScreen";
 
-/** Saison, binôme, palmarès : trois captures de l'app, montrées EN ENTIER (la coupe du profil était coupée). La ligue est dans « L'expérience ». */
+/** Saison, binôme, palmarès : deux captures de l'app montrées en entier, et la vitrine des trophées du profil (TrophyScreen). */
 export default function Beyond() {
   const t = useT();
   const { lang } = useLang();
@@ -23,12 +24,15 @@ export default function Beyond() {
           </h2>
         </div>
 
-        <div ref={ref} className="by-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "2.5rem" }}>
+        <div ref={ref} className="by-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: "2.5rem" }}>
           {b.items.map((it, i) => (
             <article key={it.k} style={{ ...fadeUp(visible, i * 120) }}>
               <div className="by-shot" style={{ backgroundColor: "#EEF1F7", borderRadius: 24, padding: "2rem 1.5rem", display: "flex", justifyContent: "center", alignItems: "center" }}>
-                <Image src={`/screens/app/${lang}/${it.img}.webp`} alt={`${it.t[0]} ${it.t[1]}`} width={560} height={1107} quality={90} sizes="(max-width: 860px) 70vw, 300px"
-                  style={{ width: "min(260px, 100%)", height: "auto", filter: "drop-shadow(0 20px 36px rgba(11,17,22,0.16))" }} />
+                {/* Profil : la vitrine des trophées (bas de l'écran Profil), refaite en HTML depuis l'app */}
+                {it.img === 8 ? <TrophyScreen /> : (
+                  <Image src={`/screens/app/${lang}/${it.img}.webp`} alt={`${it.t[0]} ${it.t[1]}`} width={560} height={1107} quality={90} sizes="(max-width: 860px) 70vw, 300px"
+                    style={{ width: "min(260px, 100%)", height: "auto", filter: "drop-shadow(0 20px 36px rgba(11,17,22,0.16))" }} />
+                )}
               </div>
               <span className="pin-mono" style={{ display: "block", fontSize: "0.6875rem", color: "rgba(11,17,22,0.4)", margin: "1.75rem 0 0.75rem" }}>{it.k}</span>
               <h3 style={{ fontSize: "1.375rem", fontWeight: 800, letterSpacing: "-0.035em", lineHeight: 1.1, color: "#0d0d0d", margin: "0 0 0.75rem" }}>

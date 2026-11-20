@@ -175,7 +175,7 @@ export const T = {
       items: [
         { img: 6, k: "SEASON", t: ["One season.", "The whole world."], d: "The world ranking of effort: every pt counts, from your very first workout. Your place moves every day, by country or worldwide." },
         { img: 7, k: "DUO", t: ["Never alone.", "Your duo partner."], d: "From your 2nd league, a partner of your rank from another league. You both hit your daily goal: +1 point each." },
-        { img: 8, k: "PROFILE", t: ["Your trophies.", "Your crown."], d: "Streak, moves, badges, trophies: everything you win stays on your profile." },
+        { img: 8, k: "PROFILE", t: ["Your trophies.", "Your crown."], d: "Every league you win puts a trophy on your shelf, from Rookie to Legend. The next one is always in sight, and everything you win stays on your profile." },
       ],
     },
     privacy: {
@@ -589,7 +589,7 @@ export const T = {
       items: [
         { img: 6, k: "SAISON", t: ["Une saison.", "Le monde entier."], d: "Le classement mondial à l'effort : chaque pt compte, dès ta première séance. Ta place bouge chaque jour, dans ton pays ou dans le monde." },
         { img: 7, k: "BINÔME", t: ["Jamais seul.", "Ton binôme."], d: "Dès ta 2ème ligue, un partenaire de ton rang venu d'une autre ligue. Objectif du jour atteint à deux : +1 point chacun." },
-        { img: 8, k: "PROFIL", t: ["Ton palmarès.", "Ta couronne."], d: "Série, coups, badges, trophées : tout ce que tu gagnes reste sur ton profil." },
+        { img: 8, k: "PROFIL", t: ["Ton palmarès.", "Ta couronne."], d: "Chaque ligue gagnée pose un trophée sur ton étagère, de Rookie à Legend. Le prochain est toujours en vue, et tout ce que tu gagnes reste sur ton profil." },
       ],
     },
     privacy: {

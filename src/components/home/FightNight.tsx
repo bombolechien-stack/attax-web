@@ -16,7 +16,7 @@ export default function FightNight() {
       {/* Fond du hero de l'app (HeroBackdrop porté tel quel) */}
       <HeroBackdrop />
 
-      <div ref={ref} className="fn-inner" style={{ position: "relative", maxWidth: "72rem", margin: "0 auto", display: "flex", alignItems: "center", gap: "6rem" }}>
+      <div ref={ref} className="fn-inner" style={{ position: "relative", maxWidth: "72rem", margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "center", gap: "clamp(3.5rem, 7vw, 6.5rem)" }}>
         {/* Comme sur la version en ligne : le combat DANS l'écran d'un téléphone (même cadre que master).
             Écran vidé sauf la barre d'état (scripts/fight-night-video/phone.py) ; la vidéo match-live.mp4 =
             la zone de combat du round final de l'app actuelle (barres de PV, boxeurs en scanlines). */}
@@ -30,7 +30,8 @@ export default function FightNight() {
             <source src="/videos/match-screen.mp4" type="video/mp4" />
           </video>
         </div>
-        <div style={{ flex: 1, minWidth: 0 }}>
+        {/* Colonne de texte à largeur fixe : le bloc (téléphone + texte) est centré dans la grille du site, quelle que soit la largeur. */}
+        <div className="fn-text" style={{ flex: "0 1 34rem", minWidth: 0 }}>
           <span style={{ ...fadeUp(visible, 0), marginBottom: "1.5rem" }} className="section-label">{f.label}</span>
           <h2 style={{ fontSize: "clamp(2.75rem, 5vw, 5rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.05em", lineHeight: 0.98, margin: "0 0 2rem" }}>
             <div style={{ overflow: "hidden", paddingBottom: "0.08em" }}><span style={clipReveal(visible, 80)}>{f.h2[0]}</span></div>
