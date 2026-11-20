@@ -5,8 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import { useLang, useT } from "@/lib/i18n";
 import { useInView, fadeUp } from "@/hooks/useInView";
 
-// « L'idée » (version premium, 20/11) : la vitrine sombre de la page. Une grande phrase en graisse régulière avec un seul
-// passage en bleu, une lueur bleue floue au bord, et la page Match de l'app (capture réelle) en panneau flottant incliné
+// « L'idée » (version premium, passe 2) : section claire. Une grande phrase en graisse régulière avec un seul mot en
+// bleu (le seul accent bleu de la page hors de la vitrine sombre), et la page Match de l'app (capture réelle) en panneau flottant incliné
 // en perspective, qui se redresse doucement au défilement. Les 3 idées en lignes séparées par des filets fins.
 
 const COPY = {
@@ -45,8 +45,7 @@ export default function InfoSection() {
   }, []);
 
   return (
-    <section className="p-dark idea">
-      <div className="p-glow p-glow-r" aria-hidden="true" />
+    <section className="idea p-tint">
       <div className="p-wrap idea-grid">
         <div ref={headerRef} className="idea-copy">
           <p className="p-mono" style={fadeUp(headerVisible, 0)}>{inf.label}</p>

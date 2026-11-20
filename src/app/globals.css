@@ -832,7 +832,7 @@ html { overflow-x: clip; }
    vitrines sombres avec un seul accent en lueur (melon.studio). Une seule police (Manrope, celle de l'app) en graisse
    régulière ; encre, gris, un bleu d'accent (#0A3DFF) ; blanc / blanc cassé chaud / une vitrine sombre ; filets fins.
    ════════════════════════════════════════════════════════════════════════════════════════════════════════════════ */
-.pm { --ink: #0B0B0C; --sub: #6B6F76; --line: rgba(11,11,12,0.09); --accent: #0A3DFF; --warm: #F4F1EC; font-family: var(--font-manrope), var(--font-jakarta), sans-serif; color: var(--ink); }
+.pm { --ink: #0B0B0C; --sub: #6B6F76; --line: rgba(11,11,12,0.09); --accent: #0A3DFF; --warm: #F3F5F8; font-family: var(--font-manrope), var(--font-jakarta), sans-serif; color: var(--ink); }
 .pm .p-wrap { max-width: 72rem; margin: 0 auto; }
 .pm .p-narrow { max-width: 52rem; }
 .pm .p-section { padding: 7.5rem clamp(1.25rem, 5vw, 4rem) !important; }
@@ -929,3 +929,53 @@ footer .p-h2 { font-family: var(--font-manrope), sans-serif; font-weight: 500; f
   .footer-mail { padding: 2.5rem 1.5rem 2rem; }
 }
 @media (prefers-reduced-motion: reduce) { .pm .idea-phone { transition: none; } }
+
+/* ── Passe 2 (20/11) : une seule famille de couleurs (neutres froids de l'app), une page claire, UNE vitrine sombre
+   (les cartes + Soir de combat), le pied de page sombre pour fermer ; mêmes rayons, ombres et espacements partout. ── */
+.pm { --tint: #F3F5F8; --app: #EEF1F6; --r-lg: 28px; --r-md: 20px; --shadow: 0 30px 60px -28px rgba(11,17,22,0.28), 0 1px 0 rgba(11,17,22,0.04); --sec: clamp(5.5rem, 9vw, 8.5rem); background: #fff; }
+.pm .p-section, .pm .idea, .pm .spt-section, .pm .mr-section, .pm .by-section, .pm .faq-section { padding-top: var(--sec) !important; padding-bottom: var(--sec) !important; }
+.pm .p-tint { background: var(--tint) !important; }
+.pm .p-h2 { font-size: clamp(1.9rem, 3.2vw, 2.875rem) !important; letter-spacing: -0.032em !important; line-height: 1.1 !important; }
+.pm .p-statement { font-size: clamp(1.75rem, 3vw, 2.625rem); }
+.pm .p-label, .pm .section-label { font-size: 0.6875rem !important; letter-spacing: 0.1em !important; }
+.pm .p-dark .p-hl { color: #fff; }
+.pm .idea .p-mono, .pm .idea .p-label { color: var(--sub) !important; }
+.pm .idea .p-statement, .pm .idea .p-h3 { color: var(--ink); }
+.pm .idea-list { border-top-color: var(--line); }
+.pm .idea-row { border-bottom-color: var(--line); }
+.pm .idea-phone { box-shadow: 0 50px 90px -34px rgba(11,17,22,0.45); }
+.pm .p-photo { filter: grayscale(1) contrast(1.05) brightness(0.98); }
+.pm .hiw-media, .pm .by-shot, .pm .spt-stage, .pm .spt-panel { border-radius: var(--r-md) !important; }
+.pm .hiw-media-app, .pm .by-shot { background: var(--app) !important; }
+.pm .mr-section { background: var(--app) !important; }
+.pm .by-section { background: #fff !important; }
+.pm .by-shot img { filter: drop-shadow(0 22px 34px rgba(11,17,22,0.18)) !important; }
+
+/* La vitrine sombre, d'un seul tenant (cartes puis Soir de combat) */
+.pm .cards-section.p-dark { padding-bottom: calc(var(--sec) * 0.5) !important; }
+.pm .p-dark-cont { padding-top: calc(var(--sec) * 0.5) !important; }
+.pm .p-dark-cont::before { content: ""; position: absolute; left: 50%; top: 0; width: min(72rem, calc(100% - 2.5rem)); transform: translateX(-50%); border-top: 1px solid rgba(255,255,255,0.08); }
+.pm .fn-section.p-dark p, .pm .fn-section.p-dark li span:last-child { color: rgba(255,255,255,0.62) !important; }
+.pm .fn-section.p-dark li span:last-child { color: #fff !important; }
+.pm .fn-section.p-dark li { border-bottom-color: rgba(255,255,255,0.1) !important; }
+.pm .fn-section.p-dark ol { border-top-color: rgba(255,255,255,0.1) !important; }
+.pm .fn-section.p-dark .pin-mono { color: rgba(255,255,255,0.4) !important; }
+.pm .fn-phone { filter: drop-shadow(0 40px 70px rgba(0,0,0,0.6)) !important; }
+.pm .p-glow { opacity: 0.55; }
+
+/* L'arène : carte arrondie posée sur la page, comme le hero */
+.pm .arena-wrap { padding: 0 12px; background: #fff; }
+.pm .arena-card { border-radius: var(--r-lg); }
+
+/* Pied de page sombre */
+.footer-panel .footer-mail { border-bottom-color: rgba(255,255,255,0.08) !important; }
+.footer-panel .footer-mail a { color: #fff !important; }
+.footer-panel .footer-mail a:hover { color: #8FA8FF !important; }
+.footer-panel .footer-top-bar, .footer-panel .footer-btm-bar { border-color: rgba(255,255,255,0.08) !important; }
+.footer-panel .footer-link-grid a { color: rgba(255,255,255,0.62) !important; }
+.footer-panel .footer-link-grid span { color: rgba(255,255,255,0.38) !important; }
+.footer-panel .footer-attax { color: rgba(255,255,255,0.035) !important; }
+.footer-panel .footer-top-bar a[aria-label] { background: rgba(255,255,255,0.08) !important; color: rgba(255,255,255,0.8) !important; }
+.footer-panel .footer-top-bar a[href^="/download/ios"] { background: #fff !important; color: #0B0B0C !important; }
+.footer-panel .footer-top-bar a[href^="/download/android"] { background: rgba(255,255,255,0.08) !important; color: rgba(255,255,255,0.8) !important; }
+.footer-panel .footer-btm-bar span { color: rgba(255,255,255,0.35) !important; }

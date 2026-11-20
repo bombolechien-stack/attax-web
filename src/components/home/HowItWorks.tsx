@@ -12,9 +12,9 @@ type Visual = { photo: string; pos?: string } | { app: string; panel?: boolean }
 const VISUALS: Visual[] = [
   { photo: "/images/runsunrise.jpg", pos: "50% 60%" },        // Connecte : la course du matin, la montre au poignet
   { photo: "/images/photo-runners.jpg", pos: "50% 40%" },     // Le match s'ouvre : un nouvel adversaire
-  { app: "3-card", panel: true },                              // Joue ta carte : Overdrive (capture réelle)
+  { app: "card-overdrive", panel: true },                              // Joue ta carte : Overdrive (capture réelle)
   { app: "4" },                                                // Bouge : l'écran Activité (capture réelle)
-  { photo: "/images/hero-boxing-2.jpg", pos: "50% 30%" },     // Le round final
+  { photo: "/images/fatigue.jpg", pos: "50% 35%" },          // Le round final : le dernier effort de la journée
   { app: "5" },                                                // Soir de combat : le classement après le verdict
 ];
 
@@ -26,7 +26,7 @@ export default function HowItWorks() {
   const { ref: gridRef, visible: gridVisible } = useInView<HTMLDivElement>(0.08, { oneShot: true });
 
   return (
-    <section id="how-it-works" className="p-section" style={{ background: "#FAFAFA" }}>
+    <section id="how-it-works" className="p-section">
       <div className="p-wrap">
         <div ref={headerRef} className="p-head">
           <div>
@@ -46,7 +46,7 @@ export default function HowItWorks() {
               <article key={i} className="hiw-card" style={fadeUp(gridVisible, 80 * i)}>
                 <div className={"photo" in v ? "hiw-media" : "hiw-media hiw-media-app"}>
                   {"photo" in v ? (
-                    <Image src={v.photo} alt="" fill sizes="(max-width: 760px) 92vw, (max-width: 1100px) 46vw, 380px" style={{ objectFit: "cover", objectPosition: v.pos }} />
+                    <Image src={v.photo} alt="" fill sizes="(max-width: 760px) 92vw, (max-width: 1100px) 46vw, 380px" className="p-photo" style={{ objectFit: "cover", objectPosition: v.pos }} />
                   ) : (
                     <Image src={`/screens/app/${lang}/${v.app}.webp`} alt={s.title} width={v.panel ? 500 : 560} height={v.panel ? 400 : 1107} sizes="300px"
                       className={v.panel ? "hiw-app-panel" : "hiw-app-phone"} />

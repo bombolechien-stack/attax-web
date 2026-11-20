@@ -11,7 +11,7 @@ export default function FightNight() {
   const { ref, visible } = useInView<HTMLDivElement>(0.12, { oneShot: true });
 
   return (
-    <section id="fight-night" className="fn-section p-section" style={{ position: "relative", backgroundColor: "#FAFAFA", overflow: "hidden" }}>
+    <section id="fight-night" className="fn-section p-section p-dark p-dark-cont" style={{ position: "relative", overflow: "hidden" }}>
 
       <div ref={ref} className="fn-inner" style={{ position: "relative", maxWidth: "72rem", margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "center", gap: "clamp(3.5rem, 7vw, 6.5rem)" }}>
         {/* Comme sur la version en ligne : le combat DANS l'écran d'un téléphone (même cadre que master).

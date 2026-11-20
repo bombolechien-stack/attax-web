@@ -12,7 +12,7 @@ export default function FeaturesGrid() {
   const { ref: listRef, visible: listVisible } = useInView<HTMLDivElement>(0.1, { oneShot: true });
 
   return (
-    <section id="features" className="p-section" style={{ background: "#FAFAFA" }}>
+    <section id="features" className="p-section p-tint">
       <div className="p-wrap p-narrow">
         <div ref={headerRef} style={{ textAlign: "center", marginBottom: "3.5rem" }}>
           <p className="p-label" style={fadeUp(headerVisible, 0)}>{f.label}</p>

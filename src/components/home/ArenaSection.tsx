@@ -12,9 +12,9 @@ export default function ArenaSection() {
   const bgRef = useParallax(0.06);
 
   return (
-    <section style={{ position: "relative", backgroundColor: "#050505", minHeight: "110vh", display: "flex", alignItems: "center", overflow: "hidden" }}>
+    <section className="arena-wrap"><div className="arena-card" style={{ position: "relative", backgroundColor: "#0B0B0C", minHeight: "78vh", display: "flex", alignItems: "center", overflow: "hidden" }}>
       <div ref={bgRef} style={{ position: "absolute", inset: "-10%", zIndex: 0 }}>
-        <Image src="/images/sport/033-A.jpg" alt="Runner training at night" fill sizes="100vw" style={{ objectFit: "cover", objectPosition: "center 45%", filter: "grayscale(30%) contrast(1.08) brightness(0.72)" }} />
+        <Image src="/images/sport/033-A.jpg" alt="Runner training at night" fill sizes="100vw" style={{ objectFit: "cover", objectPosition: "center 45%", filter: "grayscale(100%) contrast(1.05) brightness(0.6)" }} />
       </div>
       <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(to right, rgba(5,5,5,0.82) 0%, rgba(5,5,5,0.42) 50%, rgba(5,5,5,0.08) 100%)" }} />
       <div style={{ position: "absolute", inset: 0, zIndex: 1, background: "linear-gradient(to bottom, rgba(5,5,5,0.15) 0%, rgba(5,5,5,0) 30%, rgba(5,5,5,0) 70%, rgba(5,5,5,0.9) 100%)" }} />
@@ -38,7 +38,7 @@ export default function ArenaSection() {
           </a>
         </div>
       </div>
-    </section>
+    </div></section>
   );
 }
 

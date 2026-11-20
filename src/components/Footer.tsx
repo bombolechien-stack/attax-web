@@ -22,7 +22,7 @@ export default function Footer() {
     <footer>
       <div style={{ position: "relative", overflow: "hidden", padding: "0 12px" }}>
         <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
-          <Image src="/images/sport-running-group.png" alt="" fill style={{ objectFit: "cover", objectPosition: "center 40%", filter: "grayscale(25%) contrast(1.1) brightness(0.58)" }} />
+          <Image src="/images/sport-running-group.png" alt="" fill style={{ objectFit: "cover", objectPosition: "center 40%", filter: "grayscale(100%) contrast(1.05) brightness(0.55)" }} />
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(7,7,7,0.65) 0%, rgba(7,7,7,0.38) 60%, rgba(7,7,7,0) 100%)" }} />
         </div>
 
@@ -44,7 +44,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div style={{ position: "relative", zIndex: 2, backgroundColor: "#ffffff", borderRadius: "20px 20px 0 0", overflow: "hidden" }}>
+        <div className="footer-panel" style={{ position: "relative", zIndex: 2, backgroundColor: "#0B0B0C", borderRadius: "20px 20px 0 0", overflow: "hidden" }}>
           <div className="footer-attax" style={{ position: "absolute", bottom: "36px", left: "50%", transform: "translateX(-50%)", fontSize: "clamp(5rem, 13vw, 14rem)", fontWeight: 900, color: "#f0f0f0", letterSpacing: "-0.06em", lineHeight: 1, whiteSpace: "nowrap", userSelect: "none", pointerEvents: "none", fontFamily: "var(--font-jakarta), sans-serif", zIndex: 0 }}>
             ATTAX
           </div>
@@ -55,7 +55,7 @@ export default function Footer() {
               <a href="mailto:contact@attax.app">contact@attax.app</a>
             </div>
             <div className="footer-top-bar" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "2.75rem 4rem", borderBottom: "1px solid #f0f0f0", flexWrap: "wrap", gap: "1.5rem" }}>
-              <Image src="/images/logo-attax-wh.svg" alt="Attax" width={130} height={49} style={{ display: "block", filter: "brightness(0)" }} />
+              <Image src="/images/logo-attax-wh.svg" alt="Attax" width={130} height={49} style={{ display: "block" }} />
               <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
                 {SOCIALS.map(s => (
                   <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label} style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: "38px", height: "38px", borderRadius: "50%", backgroundColor: "#f4f4f4", color: "#333", textDecoration: "none" }}>
