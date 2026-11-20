@@ -7,7 +7,6 @@ import HowItWorks from "@/components/home/HowItWorks";
 import DailyMatch from "@/components/home/DailyMatch";
 import CardsShowcase from "@/components/home/CardsShowcase";
 import FightNight from "@/components/home/FightNight";
-import VisualGrid from "@/components/home/VisualGrid";
 import Beyond from "@/components/home/Beyond";
 import FeaturesGrid from "@/components/home/FeaturesGrid";
 import ArenaSection from "@/components/home/ArenaSection";
@@ -57,16 +56,16 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      {/* L'ordre et la richesse de la version en ligne (master) ; « Comment ça marche » et « Une journée »
-          fusionnés (la journée type) ; ajouts : Soir de combat et Au-delà de la ligue. Rythme clair / foncé. */}
+      {/* 20/11 : l'app d'abord (le match, les cartes, le Soir de combat) dès le premier défilement, puis les explications
+          (l'idée, les sports, la journée type), puis au-delà de la ligue, les fonctionnalités, l'arène, les données, la FAQ.
+          La galerie de captures (VisualGrid) est retirée : elle doublait les écrans montrés plus haut. */}
       <Hero />
-      <InfoSection />
-      <SportsMarquee />
-      <HowItWorks />
       <DailyMatch />
       <CardsShowcase />
       <FightNight />
-      <VisualGrid />
+      <InfoSection />
+      <SportsMarquee />
+      <HowItWorks />
       <Beyond />
       <FeaturesGrid />
       <ArenaSection />

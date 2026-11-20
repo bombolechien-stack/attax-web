@@ -71,15 +71,6 @@ export const T = {
         { n: "9:30 PM", label: "Fight Night. The verdict." },
       ],
     },
-    visualGrid: {
-      label: "THE EXPERIENCE",
-      h2: "Everything in one place.",
-      phones: [
-        { label: "Activity", caption: "Your workouts and steps of the day, turned into pts. Every minute of effort counts." },
-        { label: "Cards", caption: "3 cards every morning. Play yours before 1 PM and flip the match." },
-        { label: "League", caption: "8 players, 7 days, 1 champion. The table moves every night." },
-      ],
-    },
     features: {
       label: "FEATURES",
       h2: ["Built for athletes.", "Designed for players."],
@@ -474,15 +465,6 @@ export const T = {
         { n: "10h → 17h30", label: "Les 6 rounds passés se jouent, un par un." },
         { n: "19h", label: "Le round final passe en direct." },
         { n: "21h30", label: "Soir de combat. Le verdict." },
-      ],
-    },
-    visualGrid: {
-      label: "L'EXPÉRIENCE",
-      h2: "Tout en un seul endroit.",
-      phones: [
-        { label: "Activités", caption: "Tes séances et tes pas du jour, transformés en pts. Chaque minute d'effort compte." },
-        { label: "Cartes", caption: "3 cartes chaque matin. Joue la tienne avant 13h et renverse le match." },
-        { label: "Ligue", caption: "8 joueurs, 7 jours, 1 champion. Le classement bouge chaque soir." },
       ],
     },
     features: {

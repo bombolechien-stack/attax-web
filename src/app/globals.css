@@ -336,11 +336,6 @@ html { overflow-x: clip; }
 @media (max-width: 1024px) {
   .hero-duel-widget { display: none !important; }
 
-  /* ── VisualGrid: hide side phones, center only ── */
-  .vg-phone-side  { display: none !important; }
-  .vg-label-side  { display: none !important; }
-  .vg-phone-center { width: min(320px, 64vw) !important; height: calc(min(320px, 64vw) * 1.977) !important; }
-
   /* ── Hero: text box full width on tablet ── */
   .hero-text-box { max-width: 80% !important; }
 
@@ -409,9 +404,6 @@ html { overflow-x: clip; }
   .dm-stats   { flex-wrap: wrap !important; }
   .dm-stat    { flex: 1 1 42% !important; border-left: none !important; border-top: 1px solid #f0f0f0 !important; padding-top: 1.5rem !important; padding-left: 0 !important; padding-right: 0 !important; text-align: left !important; }
 
-  /* ── VisualGrid ── */
-  .vg-section     { padding: 5rem 1.25rem 6rem !important; }
-
   /* ── FeaturesGrid ── */
   .features-section { padding: 5rem 1.25rem !important; }
   .features-h2      { font-size: clamp(2.5rem, 9vw, 4rem) !important; }
@@ -477,17 +469,7 @@ html { overflow-x: clip; }
   /* ── DailyMatch score — no word break ── */
   .dm-score { white-space: nowrap !important; font-size: clamp(2rem, 7vw, 5rem) !important; }
 
-  /* ── Testimonials — no Y-offset on 1-col ── */
 
-  /* ── VisualGrid — 3 phones absolute (style Download) ── */
-  .vg-phones-wrap  { position: relative !important; height: calc(56vw * 1.977) !important; overflow: visible !important; align-items: unset !important; justify-content: unset !important; margin-bottom: 2.5rem !important; }
-  .vg-phone-center { position: absolute !important; width: 56vw !important; height: calc(56vw * 1.977) !important; bottom: 0 !important; left: 50% !important; transform: translateX(-50%) !important; z-index: 3 !important; margin: 0 !important; filter: drop-shadow(0 24px 48px rgba(0,0,0,0.25)) !important; }
-  .vg-phone-side   { display: block !important; position: absolute !important; width: 46vw !important; height: calc(46vw * 1.977) !important; bottom: 0 !important; z-index: 1 !important; margin: 0 !important; filter: brightness(0.82) drop-shadow(0 16px 32px rgba(0,0,0,0.2)) !important; }
-  .vg-phone-side:first-child { left: -8vw !important; }
-  .vg-phone-side:last-child  { right: -8vw !important; }
-  .vg-label-side   { display: none !important; }
-  .vg-label-center { width: 100% !important; }
-  .vg-section      { overflow: clip !important; }
 
   /* ── Hero h1 br — on cache le saut explicite sur mobile ── */
   .hero-h1-br { display: none !important; }
