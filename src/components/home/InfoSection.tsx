@@ -66,7 +66,7 @@ export default function InfoSection() {
         </div>
         <div className="idea-stage">
           <div ref={phoneRef} className="idea-phone" style={{ transform: `perspective(1400px) rotateY(${-16 * tilt}deg) rotateX(${6 * tilt}deg) rotateZ(${2 * tilt}deg) translateY(${30 * tilt}px)` }}>
-            <Image src={`/screens/app/${lang}/2.webp`} alt={lang === "fr" ? "La page Match d'Attax : le duel du jour contre Sophie" : "The Attax Match page: today's duel against Sophie"}
+            <Image src={`/screens/app/${lang}/match-final.webp`} alt={lang === "fr" ? "La page Match d'Attax : le duel du jour contre Sophie" : "The Attax Match page: today's duel against Sophie"}
               width={560} height={1107} quality={90} sizes="(max-width: 860px) 70vw, 340px" style={{ width: "100%", height: "auto", display: "block" }} />
           </div>
         </div>

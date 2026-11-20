@@ -145,7 +145,7 @@ export default function StorePlatformPage({ platform }: { platform: Platform }) 
               </div>
             </div>
             <div className="sp-hero-phone" style={{ ...scaleIn(heroVisible, 200, 0.92), flex: "0 0 auto", width: "min(340px, 70vw)", alignSelf: "flex-end", marginBottom: "-6rem", filter: "drop-shadow(0 40px 70px rgba(0,0,0,0.6))" }}>
-              <Image src={`/screens/app/${lang}/2.webp`} alt={c.alt} width={560} height={1107} priority sizes="340px" style={{ width: "100%", height: "auto" }} />
+              <Image src={`/screens/app/${lang}/match-final.webp`} alt={c.alt} width={560} height={1107} priority sizes="340px" style={{ width: "100%", height: "auto" }} />
             </div>
           </div>
         </div>
