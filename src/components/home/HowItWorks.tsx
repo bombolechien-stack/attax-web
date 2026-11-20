@@ -4,10 +4,10 @@ import Image from "next/image";
 import { useLang, useT } from "@/lib/i18n";
 import { useInView, fadeUp, clipReveal, slideLeft, slideRight } from "@/hooks/useInView";
 
-function HiwStep({ step, index, shot }: { step: { time?: string; title: string; body: string }; index: number; shot?: { src: string; alt: string } }) {
+function HiwStep({ step, index, shot }: { step: { time?: string; title: string; body: string }; index: number; shot?: { src: string; alt: string; panel?: boolean } }) {
   const { ref, visible } = useInView<HTMLDivElement>(0.15);
   return (
-    <div ref={ref} className="hiw-step" style={{ display: "grid", gridTemplateColumns: shot ? "80px 1fr 210px" : "80px 1fr", gap: "0", padding: "4rem 0", borderBottom: "1px solid rgba(255,255,255,0.06)", alignItems: "start" }}>
+    <div ref={ref} className="hiw-step" style={{ display: "grid", gridTemplateColumns: shot ? (shot.panel ? "80px 1fr 260px" : "80px 1fr 210px") : "80px 1fr", gap: "0", padding: "4rem 0", borderBottom: "1px solid rgba(255,255,255,0.06)", alignItems: "start" }}>
       <div className="hiw-step-num" style={{ ...slideLeft(visible, 0), fontSize: "clamp(3.5rem, 5vw, 5rem)", fontWeight: 900, color: "rgba(255,255,255,0.06)", letterSpacing: "-0.05em", lineHeight: 1, paddingTop: "0.1em" }}>
         {String(index + 1).padStart(2, "0")}
       </div>
@@ -23,8 +23,8 @@ function HiwStep({ step, index, shot }: { step: { time?: string; title: string; 
         </p>
       </div>
       {shot && (
-        <div className="hiw-shot" style={{ ...fadeUp(visible, 260) }}>
-          <Image src={shot.src} alt={shot.alt} width={560} height={1107} quality={88} sizes="(max-width: 860px) 52vw, 210px" style={{ width: "100%", height: "auto", display: "block" }} />
+        <div className={shot.panel ? "hiw-shot hiw-shot-panel" : "hiw-shot"} style={{ ...fadeUp(visible, 260) }}>
+          <Image src={shot.src} alt={shot.alt} width={shot.panel ? 500 : 560} height={shot.panel ? 400 : 1107} quality={88} sizes="(max-width: 860px) 60vw, 260px" style={{ width: "100%", height: "auto", display: "block" }} />
         </div>
       )}
     </div>
@@ -35,9 +35,9 @@ export default function HowItWorks() {
   const t = useT();
   const h = t.howItWorks;
   const { lang } = useLang();
-  // Captures réelles (iPhone) : 3 = cartes du jour (Overdrive), 4 = activité du jour (pts), 5 = classement de la ligue.
-  const SHOTS: Record<number, { n: number; en: string; fr: string }> = {
-    2: { n: 3, en: "Attax cards: Overdrive played for the final round", fr: "Les cartes d'Attax : Overdrive jouée pour le round final" },
+  // Captures réelles (iPhone) : la carte jouée (Overdrive, détail de l'écran 3), 4 = activité du jour, 5 = classement de la ligue.
+  const SHOTS: Record<number, { n: number | string; en: string; fr: string; panel?: boolean }> = {
+    2: { n: "3-card", panel: true, en: "An Attax card: Overdrive, today's workout counts ×1.5", fr: "Une carte Attax : Overdrive, la séance du jour compte ×1,5" },
     3: { n: 4, en: "Attax Activity screen: today's pts", fr: "L'écran Activité d'Attax : les pts du jour" },
     5: { n: 5, en: "Attax league standings after the 9:30 PM verdict", fr: "Le classement de la ligue Attax après le verdict de 21h30" },
   };
@@ -62,7 +62,7 @@ export default function HowItWorks() {
         </div>
         <div>
           {h.steps.map((s, i) => (
-            <HiwStep key={i} step={s} index={i} shot={SHOTS[i] ? { src: `/screens/app/${lang}/${SHOTS[i].n}.webp`, alt: SHOTS[i][lang] } : undefined} />
+            <HiwStep key={i} step={s} index={i} shot={SHOTS[i] ? { src: `/screens/app/${lang}/${SHOTS[i].n}.webp`, alt: SHOTS[i][lang], panel: SHOTS[i].panel } : undefined} />
           ))}
         </div>
       </div>
