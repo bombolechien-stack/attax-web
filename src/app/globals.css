@@ -758,7 +758,7 @@ html { overflow-x: clip; }
 .mr-dashes { display: flex; justify-content: center; gap: 6px; margin-top: 1.4rem; }
 .mr-dashes i { width: 34px; height: 4px; border-radius: 2px; display: block; }
 .mr-dashes i.is-final { width: 50px; }
-.mr-round { display: flex; flex-direction: column; align-items: center; text-align: center; margin-top: 1.6rem; min-height: 470px; }
+.mr-round { display: flex; flex-direction: column; align-items: center; text-align: center; margin-top: 1.6rem; min-height: 640px; }
 .mr-kick { font-weight: 700; font-size: 0.75rem; letter-spacing: 0.24em; color: #94A3B8; }
 .mr-day { margin-top: 4px; font-weight: 800; font-size: clamp(2rem, 3.4vw, 2.75rem); letter-spacing: -0.03em; animation: mrIn 0.45s cubic-bezier(0.16,1,0.3,1); }
 @keyframes mrIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
@@ -768,6 +768,15 @@ html { overflow-x: clip; }
 .mr-vs { margin: 0.9rem 0 0; font-weight: 700; font-size: 0.875rem; letter-spacing: 0.4em; color: #94A3B8; transition: opacity 0.2s ease; }
 .mr-split { display: flex; gap: 3px; width: 180px; margin-top: 1.1rem; transition: opacity 0.2s ease; }
 .mr-split i { display: block; height: 4px; border-radius: 2px; }
+.mr-sess { width: min(100%, 30rem); margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(11,17,22,0.1); text-align: left; background: rgba(238,241,247,0.72); border-radius: 0 0 14px 14px; }
+.mr-sess > .mr-kick { display: block; margin-bottom: 0.4rem; }
+.mr-sess-row { display: grid; grid-template-columns: 4.6rem 8px minmax(0, 1fr) auto; align-items: center; gap: 0.6rem; padding: 0.42rem 0; font-size: 0.875rem; }
+.mr-sess-row > i { width: 7px; height: 7px; border-radius: 50%; display: block; }
+.mr-sess-at { font-weight: 600; font-size: 0.8125rem; color: #6B7280; font-variant-numeric: tabular-nums; }
+.mr-sess-t { font-weight: 500; color: #6B7280; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mr-sess-t b { font-weight: 700; color: #09090B; }
+.mr-sess-pts { font-weight: 800; font-size: 0.875rem; font-variant-numeric: tabular-nums; color: #6B7280; }
+.mr-sess-steps { border-top: 1px dashed rgba(11,17,22,0.1); margin-top: 0.2rem; }
 .mr-verdict { justify-content: center; }
 .mr-verdict-name { font-weight: 800; font-size: clamp(4.5rem, 11vw, 8.5rem); letter-spacing: -0.05em; line-height: 1; color: #0443FD; animation: mrIn 0.6s cubic-bezier(0.16,1,0.3,1); }
 .mr-verdict-sub { margin-top: 0.8rem; font-weight: 700; font-size: 1.125rem; }
@@ -780,7 +789,9 @@ html { overflow-x: clip; }
   .mr-hp b { font-size: 0.6875rem; letter-spacing: 0.08em; }
   .mr-dashes i { width: 22px; height: 3px; }
   .mr-dashes i.is-final { width: 32px; }
-  .mr-round { min-height: 420px; }
+  .mr-round { min-height: 600px; }
+  .mr-sess-row { grid-template-columns: 3.8rem 8px minmax(0, 1fr) auto; gap: 0.45rem; font-size: 0.8125rem; }
+  .mr-sess-at { font-size: 0.75rem; }
   .mr-boxers img { width: 175%; height: 112%; object-position: 50% 18%; scale: 1;
     -webkit-mask-image: radial-gradient(ellipse 30% 46% at 50% 44%, rgba(0,0,0,0.1) 45%, #000 100%), linear-gradient(180deg, transparent 0, #000 12%, #000 72%, transparent 100%);
     mask-image: radial-gradient(ellipse 30% 46% at 50% 44%, rgba(0,0,0,0.1) 45%, #000 100%), linear-gradient(180deg, transparent 0, #000 12%, #000 72%, transparent 100%); }

@@ -22,12 +22,26 @@ const FONT = "var(--font-manrope), var(--font-jakarta), sans-serif";
 const G_ME = "linear-gradient(90deg, #0024c8 0%, #0443FD 45%, #4b78ff 82%, #9bb1ff 100%)";
 const G_OPP = "linear-gradient(270deg, #a8001a 0%, #EC0420 45%, #ff3a55 82%, #ffa1a9 100%)";
 
-type Round = { w: "Y" | "O"; y: number; o: number; final?: boolean };
+// Les séances du jour de chaque round (comme les lignes de séance de l'app : heure, pastille + joueur, sport, durée,
+// pts), puis les pas. Total du jour = pts des séances + pts des pas (10 pts par tranche complète de 1 000 pas).
+type Sport = { en: string; fr: string };
+type Sess = { who: "Y" | "O"; at: string; sport: Sport; min: number; pts: number };
+type Round = { w: "Y" | "O"; y: number; o: number; ys: number; os: number; sess: Sess[]; final?: boolean };
+const SP = (en: string, fr: string): Sport => ({ en, fr });
 const ROUNDS: Round[] = [
-  { w: "Y", y: 486, o: 312 }, { w: "O", y: 210, o: 455 }, { w: "Y", y: 530, o: 380 },
-  { w: "O", y: 95, o: 268 }, { w: "Y", y: 620, o: 540 }, { w: "O", y: 140, o: 395 },
-  { w: "Y", y: 512, o: 388, final: true },
+  { w: "Y", y: 486, o: 312, ys: 10020, os: 9040, sess: [{ who: "Y", at: "7:10 AM", sport: SP("Running", "Course"), min: 38, pts: 386 }, { who: "O", at: "6:40 PM", sport: SP("Yoga", "Yoga"), min: 55, pts: 222 }] },
+  { w: "O", y: 210, o: 455, ys: 6010, os: 7020, sess: [{ who: "Y", at: "12:30 PM", sport: SP("Strength training", "Musculation"), min: 40, pts: 150 }, { who: "O", at: "6:35 PM", sport: SP("Swimming", "Natation"), min: 53, pts: 385 }] },
+  { w: "Y", y: 530, o: 380, ys: 8030, os: 8000, sess: [{ who: "Y", at: "6:05 PM", sport: SP("Cycling", "Vélo"), min: 60, pts: 450 }, { who: "O", at: "1:45 PM", sport: SP("Tennis", "Tennis"), min: 70, pts: 300 }] },
+  { w: "O", y: 95, o: 268, ys: 5000, os: 7000, sess: [{ who: "Y", at: "8:20 AM", sport: SP("Walking", "Marche"), min: 35, pts: 45 }, { who: "O", at: "10:15 AM", sport: SP("Climbing", "Escalade"), min: 45, pts: 198 }] },
+  { w: "Y", y: 620, o: 540, ys: 10000, os: 9000, sess: [{ who: "Y", at: "5:30 PM", sport: SP("Football", "Football"), min: 75, pts: 520 }, { who: "O", at: "7:00 AM", sport: SP("Running", "Course"), min: 50, pts: 450 }] },
+  { w: "O", y: 140, o: 395, ys: 6000, os: 8000, sess: [{ who: "Y", at: "6:50 AM", sport: SP("Yoga", "Yoga"), min: 30, pts: 80 }, { who: "O", at: "7:15 PM", sport: SP("HIIT", "HIIT"), min: 35, pts: 315 }] },
+  { w: "Y", y: 512, o: 388, ys: 10000, os: 9000, final: true, sess: [{ who: "Y", at: "6:05 PM", sport: SP("Strength training", "Musculation"), min: 55, pts: 412 }, { who: "O", at: "6:35 PM", sport: SP("Swimming", "Natation"), min: 53, pts: 298 }] },
 ];
+// Contrôle : chaque total = séances + pas.
+if (process.env.NODE_ENV !== "production") ROUNDS.forEach((r, i) => {
+  const sum = (w: "Y" | "O", st: number) => r.sess.filter((x) => x.who === w).reduce((a, x) => a + x.pts, 0) + Math.floor(st / 1000) * 10;
+  if (sum("Y", r.ys) !== r.y || sum("O", r.os) !== r.o) console.warn("DailyMatch: round", i + 1, "pts do not add up");
+});
 // Le déroulé d'un round (secondes depuis son début).
 // Les deux scores comptent ensemble (comme l'app), s'arrêtent ensemble, puis le coup.
 const T_ME0 = 0.5, T_ME1 = 2.1, T_VS = 0.5, T_OPP0 = 0.5, T_OPP1 = 2.1, T_HIT = 2.3, T_FADE = 3.6, ROUND_LEN = 4.3;
@@ -38,11 +52,13 @@ const COPY = {
     me: "JOHNNY", opp: "SOPHIE", hp: "HP", round: (n: number) => `ROUND ${n} / 7`, finalRound: "FINAL ROUND", stake: "2 HP AT STAKE",
     days: ["Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Monday", "Tuesday"], wins: "WINS THE ROUND", vs: "vs",
     winner: "WINNER", verdict: "Wins the match, 4 HP to 2.",
+    workouts: (d: string) => `${d.toUpperCase()}'S WORKOUTS`, steps: "Steps",
   },
   fr: {
     me: "JOHNNY", opp: "SOPHIE", hp: "PV", round: (n: number) => `ROUND ${n} / 7`, finalRound: "ROUND FINAL", stake: "2 PV EN JEU",
     days: ["Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche", "Lundi", "Mardi"], wins: "REMPORTE LE ROUND", vs: "vs",
     winner: "VAINQUEUR", verdict: "Remporte le match, 4 PV à 2.",
+    workouts: (d: string) => `SÉANCES DU ${d.toUpperCase()}`, steps: "Pas",
   },
 };
 
@@ -121,6 +137,8 @@ export default function DailyMatch() {
   // Le morceau jaune : seulement pendant la seconde qui suit le coup.
   const dropFor = (side: "Y" | "O") => (hit && lt < T_HIT + 1.1 && r.w !== side && !verdict ? { key: `${ri}`, from: (side === "Y" ? lifeMe : lifeOpp) + (r.final ? 2 : 1) } : null);
   const nf = (n: number) => n.toLocaleString(lang === "fr" ? "fr-FR" : "en-US");
+  const clockTxt = (x: string) => (lang === "fr" ? x.replace(/^(\d+):(\d+) (AM|PM)$/, (_, h, mm, ap) => `${(+h % 12) + (ap === "PM" ? 12 : 0)}h${mm}`) : x);
+  const who = (w: "Y" | "O") => (w === "Y" ? "Johnny" : "Sophie");
   const fmt = tall ? "tall" : "wide";
 
   return (
@@ -182,6 +200,25 @@ export default function DailyMatch() {
               <span className="mr-kick mr-wins" style={{ color: RED, opacity: hit && r.w === "O" ? 1 : 0 }}>{c.wins}</span>
               <span className="mr-big" style={{ color: RED, opacity: lt < T_OPP0 ? 0 : hit && r.w !== "O" ? 0.26 : 1 }}>{nf(oPts)}<small>pts</small></span>
               <span className="mr-split" style={{ opacity: lt >= T_OPP0 ? 1 : 0 }}><i style={{ flex: Math.max(1, yPts), background: BLUE }} /><i style={{ flex: Math.max(1, oPts), background: RED }} /></span>
+
+              {/* Les séances du jour, sous les scores (lignes de séance de l'app) */}
+              <div className="mr-sess">
+                <span className="mr-kick" style={{ color: INK, letterSpacing: "0.18em" }}>{c.workouts(c.days[ri])}</span>
+                {[...r.sess].sort((a, b) => (a.who === b.who ? 0 : a.who === "Y" ? -1 : 1)).map((x, k) => (
+                  <div key={k} className="mr-sess-row">
+                    <span className="mr-sess-at">{clockTxt(x.at)}</span>
+                    <i style={{ background: x.who === "Y" ? BLUE : RED }} />
+                    <span className="mr-sess-t"><b>{who(x.who)}</b> · {x.sport[lang]} · {x.min} min</span>
+                    <span className="mr-sess-pts" style={{ color: x.who === "Y" ? BLUE : RED }}>{nf(x.pts)} pts</span>
+                  </div>
+                ))}
+                <div className="mr-sess-row mr-sess-steps">
+                  <span className="mr-sess-at">{c.steps}</span>
+                  <i style={{ background: "transparent" }} />
+                  <span className="mr-sess-t"><b style={{ color: BLUE }}>{nf(r.ys)}</b> · <b style={{ color: RED }}>{nf(r.os)}</b></span>
+                  <span className="mr-sess-pts"><span style={{ color: BLUE }}>{Math.floor(r.ys / 1000) * 10}</span> · <span style={{ color: RED }}>{Math.floor(r.os / 1000) * 10}</span> pts</span>
+                </div>
+              </div>
             </div>
           ) : (
             <div className="mr-round mr-verdict" key="verdict">
