@@ -11,7 +11,7 @@ import { useInView, fadeUp, clipReveal } from "@/hooks/useInView";
 // avec la frise de la journée au-dessus. Sur téléphone, chaque moment montre sa capture sous son texte.
 // Captures : public/screens/story/<lang>/*.webp (écrans réels de l'app, barre d'état retirée).
 
-const SHOTS = ["rounds", "card", "activity", "final", "ranking"] as const;
+const SHOTS = ["rounds", "card", "activity", "final-round", "ranking"] as const;
 
 export default function HowItWorks() {
   const t = useT();

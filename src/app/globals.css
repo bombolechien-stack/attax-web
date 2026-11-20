@@ -1099,3 +1099,11 @@ footer .p-h2 { font-family: var(--font-manrope), sans-serif; font-weight: 500; f
 .pm a:focus-visible, .pm button:focus-visible { outline: 2px solid #0A3DFF; outline-offset: 3px; border-radius: 8px; }
 .pm .p-head { margin-bottom: 3rem; }
 .pm .p-body { line-height: 1.6; }
+
+/* Nav du hero, posée sur la carte sombre : même pilule de verre, version sombre (lisible, sans barre grise) */
+.pm .nav-pill { background: rgba(20,22,26,0.55) !important; border: 1px solid rgba(255,255,255,0.1) !important; box-shadow: 0 10px 30px -14px rgba(0,0,0,0.6) !important; -webkit-backdrop-filter: saturate(1.4) blur(18px) !important; backdrop-filter: saturate(1.4) blur(18px) !important; }
+.pm .nav-pill .nav-link { color: rgba(255,255,255,0.78) !important; opacity: 1; }
+.pm .nav-pill .nav-link:hover { color: #fff !important; }
+.pm .nav-pill img { filter: none !important; }
+.pm .nav-pill .nav-pill-cta { background: #fff !important; color: #0B0B0C !important; }
+.pm .nav-pill span[style*="0B1116"] { background-color: #fff !important; }

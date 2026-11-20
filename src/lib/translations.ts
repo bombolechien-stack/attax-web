@@ -11,7 +11,7 @@ export const T = {
     hero: {
       h1: ["Sport is now", "a game."],
       kicker: ["Every day", "a new opponent"],
-      sports: "Run · Ride · Lift · Play · Walk",
+      sports: "Run · Ride · Lift · Swim · Walk",
       subtitle: "Your watch measures. Your boxer hits.\nEvery night at 9:30 PM, the final round.",
       cta_ios: "Download Attax",
       cta_secondary: "How It Works",
@@ -407,7 +407,7 @@ export const T = {
     hero: {
       h1: ["Le sport devient", "un jeu."],
       kicker: ["Chaque jour", "un nouvel adversaire"],
-      sports: "Course · Vélo · Musculation · Jeu · Marche",
+      sports: "Course · Vélo · Musculation · Natation · Marche",
       subtitle: "Ta montre mesure. Ton boxeur frappe.\nChaque soir à 21h30, le round final.",
       cta_ios: "Télécharger Attax",
       cta_secondary: "Comment ça marche",

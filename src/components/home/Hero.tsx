@@ -99,7 +99,7 @@ export default function Hero() {
         {/* Le produit : la page Match en direct, dans un téléphone, devant la vidéo des sportifs */}
         <div className="hero-phone" aria-hidden="true">
           <div ref={phoneRef} className="hero-phone-in" style={{ transform: `perspective(1400px) rotateY(${-14 + 10 * k}deg) rotateX(${5 - 4 * k}deg) translateY(${-30 * k}px)` }}>
-            <Image src={`/screens/app/${lang}/match-final.webp`} alt="" width={560} height={1107} priority sizes="300px" />
+            <Image src={`/screens/app/${lang}/match-final-${lang}.webp`} alt="" width={560} height={1107} priority sizes="300px" />
           </div>
         </div>
 

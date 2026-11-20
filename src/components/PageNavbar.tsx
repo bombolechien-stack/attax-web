@@ -20,7 +20,7 @@ const GooglePlayIcon = () => (
 /** `light` : variante sur fond clair (hero de l'accueil) — textes encre, logo noir.
  *  `rightDark` : la partie droite (langue, boutons) posée sur un fond sombre (hero en dégradé, desktop). */
 export default function PageNavbar({ light: light0 = false, rightDark = false, pill = false }: { light?: boolean; rightDark?: boolean; pill?: boolean } = {}) {
-  const light = light0 || pill;
+  const light = light0;
   const rl = light && !rightDark;
   const t = useT();
   const { lang } = useLang();
