@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useLang, useT } from "@/lib/i18n";
-import { useInView, fadeUp, clipReveal } from "@/hooks/useInView";
+import { useInView, fadeUp } from "@/hooks/useInView";
 import TrophyScreen from "./TrophyScreen";
 
 /** Saison, binôme, palmarès : deux captures de l'app montrées en entier, et la vitrine des trophées du profil (TrophyScreen). */
@@ -10,35 +10,25 @@ export default function Beyond() {
   const t = useT();
   const { lang } = useLang();
   const b = t.beyond;
-  const { ref: headRef, visible: headVisible } = useInView<HTMLDivElement>(0.1);
   const { ref, visible } = useInView<HTMLDivElement>(0.08, { oneShot: true });
 
   return (
-    <section id="season" className="by-section" style={{ backgroundColor: "#ffffff", padding: "9rem 2rem" }}>
-      <div style={{ maxWidth: "80rem", margin: "0 auto" }}>
-        <div ref={headRef} style={{ marginBottom: "5rem" }}>
-          <span style={{ ...fadeUp(headVisible, 0), marginBottom: "1.5rem" }} className="section-label">{b.label}</span>
-          <h2 className="p-h2">
-            <div style={{ overflow: "hidden", paddingBottom: "0.08em" }}><span style={clipReveal(headVisible, 80)}>{b.h2[0]}</span></div>
-            <div style={{ overflow: "hidden", paddingBottom: "0.12em" }}><span style={{ ...clipReveal(headVisible, 200) }}>{b.h2[1]}</span></div>
-          </h2>
-        </div>
-
-        <div ref={ref} className="by-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: "2.5rem" }}>
+    <section id="season" className="p5-sec by5">
+      <div className="p5-wrap">
+        <div className="by5-top"><p className="p5-label">{b.label}</p><p className="by5-line">{b.h2[0]} {b.h2[1]}</p></div>
+        <div ref={ref} className="by5-grid">
           {b.items.map((it, i) => (
-            <article key={it.k} style={{ ...fadeUp(visible, i * 120) }}>
-              <div className="by-shot" style={{ backgroundColor: "#EEF1F7", borderRadius: 24, padding: "2rem 1.5rem", display: "flex", justifyContent: "center", alignItems: "center" }}>
-                {/* Profil : la vitrine des trophées (bas de l'écran Profil), refaite en HTML depuis l'app */}
+            <article key={it.k} className="by5-item" style={{ ...fadeUp(visible, i * 120) }}>
+              <div className="by5-shot">
                 {it.img === 8 ? <TrophyScreen /> : (
-                  <Image src={`/screens/app/${lang}/${it.img}.webp`} alt={`${it.t[0]} ${it.t[1]}`} width={560} height={1107} quality={90} sizes="(max-width: 860px) 70vw, 300px"
-                    style={{ width: "min(260px, 100%)", height: "auto", filter: "drop-shadow(0 20px 36px rgba(11,17,22,0.16))" }} />
+                  <Image src={`/screens/app/${lang}/${it.img}.webp`} alt={`${it.t[0]} ${it.t[1]}`} width={560} height={1107} quality={90} sizes="(max-width: 860px) 60vw, 240px" />
                 )}
               </div>
-              <span className="pin-mono" style={{ display: "block", fontSize: "0.6875rem", color: "rgba(11,17,22,0.4)", margin: "1.75rem 0 0.75rem" }}>{it.k}</span>
-              <h3 style={{ fontSize: "1.375rem", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.1, color: "#0d0d0d", margin: "0 0 0.75rem" }}>
-                {it.t[0]} <span style={{ color: "#0443FD" }}>{it.t[1]}</span>
-              </h3>
-              <p style={{ fontSize: "0.9375rem", color: "#777", lineHeight: 1.7, margin: 0, maxWidth: 360 }}>{it.d}</p>
+              <div className="by5-txt">
+                <span className="p5-label">{it.k}</span>
+                <h3 className="by5-h3">{it.t[0]} {it.t[1]}</h3>
+                <p className="by5-p">{it.d}</p>
+              </div>
             </article>
           ))}
         </div>

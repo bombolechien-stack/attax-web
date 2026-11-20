@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useLang } from "@/lib/i18n";
-import { useInView, fadeUp, clipReveal } from "@/hooks/useInView";
+import { useInView, fadeUp } from "@/hooks/useInView";
+import SectionHead from "./SectionHead";
 
 // « Tous les sports comptent » : une seule scène, calme, au lieu d'un défilé. Les athlètes des photos d'origine, détourés
 // (public/sports/*.webp, scripts/scan-athletes/sports-cutouts.py), en encre sur le fond clair, le nom du sport en grand
@@ -87,7 +88,6 @@ const COPY = {
 export default function SportsMarquee() {
   const { lang } = useLang();
   const c = COPY[lang];
-  const { ref, visible } = useInView<HTMLDivElement>(0.15);
   const { ref: stageRef, visible: stageVisible } = useInView<HTMLDivElement>(0.25);
   const { ref: panelRef, visible: panelVisible } = useInView<HTMLDivElement>(0.3, { oneShot: true });
   const [active, setActive] = useState(0);
@@ -117,16 +117,9 @@ export default function SportsMarquee() {
   const segDur = isAny ? ANY_INTERVAL : INTERVAL;
 
   return (
-    <section className="spt-section">
-      <div ref={ref} className="spt-head">
-        <div>
-          <p style={{ ...fadeUp(visible, 0), fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "rgba(28,37,64,0.5)", margin: "0 0 1.5rem" }}>{c.label}</p>
-          <h2 className="p-h2">
-            <span style={clipReveal(visible, 80)}>{c.h2[0]}</span>
-            <span style={{ ...clipReveal(visible, 220) }}>{c.h2[1]}</span>
-          </h2>
-        </div>
-        <p style={{ ...fadeUp(visible, 350), fontSize: "1rem", color: "rgba(28,37,64,0.62)", lineHeight: 1.75, maxWidth: "380px", margin: 0, whiteSpace: "pre-line" }}>{c.body}</p>
+    <section className="spt-section p5-sec">
+      <div className="p5-wrap">
+        <SectionHead label={c.label} title={[c.h2[0], c.h2[1]]} lead={c.body} />
       </div>
 
       <div className="spt-grid">
@@ -237,19 +230,6 @@ export default function SportsMarquee() {
 
           <p style={{ ...fadeUp(panelVisible, 350), fontSize: "0.875rem", color: "rgba(11,17,22,0.55)", lineHeight: 1.65, margin: 0 }}>{c.note}</p>
 
-          {/* Index des sports : 9 exemples, puis tout le reste */}
-          <div style={{ ...fadeUp(panelVisible, 450) }}>
-            <div className="spt-index-kick">{c.listKick}</div>
-            <ul className="spt-index">
-              {names.map((n, i) => (
-                <li key={i} className={i === ANY ? "spt-index-any" : undefined}>
-                  <button type="button" onClick={() => setActive(i)} className={i === active ? "spt-index-btn is-on" : "spt-index-btn"}>
-                    <span className="spt-index-n">{pad(i + 1)}</span>{i === ANY ? c.any : n}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
       </div>
     </section>

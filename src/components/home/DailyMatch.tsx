@@ -2,7 +2,8 @@
 
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { useLang, useT } from "@/lib/i18n";
-import { useInView, fadeUp, clipReveal, slideRight } from "@/hooks/useInView";
+import { useInView } from "@/hooks/useInView";
+import SectionHead from "./SectionHead";
 
 // « 7 jours. 7 rounds. » = l'écran Match de l'app pendant les rounds, agrandi à la largeur du bloc (pas de téléphone) :
 // 1. en haut, les deux barres de vie de l'app (components/match/HealthBars.tsx : capsule chromée, dégradé du bord vers le
@@ -73,7 +74,7 @@ function lifeAt(side: "Y" | "O", t: number) {
 }
 
 /** La barre de vie de l'app ; « drop » = le morceau jaune qui vient de se détacher (il tombe, en CSS). */
-function HpBar({ side, life, drop }: { side: "me" | "opp"; life: number; drop: { key: string; from: number } | null }) {
+export function HpBar({ side, life, drop }: { side: "me" | "opp"; life: number; drop: { key: string; from: number } | null }) {
   const me = side === "me", f = life / HP0;
   const pos = me ? "left" : "right";
   return (
@@ -96,7 +97,6 @@ export default function DailyMatch() {
   const c = COPY[lang];
   const reduce = useMedia("(prefers-reduced-motion: reduce)");
   const tall = useMedia("(max-width: 760px)");
-  const { ref: headerRef, visible: headerVisible } = useInView<HTMLDivElement>(0.1);
   const { ref: stageRef, visible: onScreen } = useInView<HTMLDivElement>(0.25);
   const [clock, setClock] = useState(0);
 
@@ -134,18 +134,9 @@ export default function DailyMatch() {
   const fmt = tall ? "tall" : "wide";
 
   return (
-    <section id="daily-match" className="mr-section p-lines p-lines-light">
-      <div style={{ maxWidth: "76rem", margin: "0 auto" }}>
-        <div ref={headerRef} style={{ marginBottom: "3.5rem" }}>
-          <span style={{ ...fadeUp(headerVisible, 0), display: "block", marginBottom: "1.5rem" }} className="section-label">{m.label}</span>
-          <div className="dm-header" style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "4rem", flexWrap: "wrap" }}>
-            <h2 className="p-h2">
-              <div><span style={clipReveal(headerVisible, 80)}>{m.h2[0]}</span></div>
-              <div><span style={{ ...clipReveal(headerVisible, 220) }}>{m.h2[1]}</span></div>
-            </h2>
-            <p style={{ ...slideRight(headerVisible, 350), fontSize: "1.0625rem", color: "rgba(11,17,22,0.58)", lineHeight: 1.75, maxWidth: "460px", margin: 0, whiteSpace: "pre-line" }}>{m.subtitle}</p>
-          </div>
-        </div>
+    <section id="daily-match" className="mr-section p5-sec p-lines p-lines-light">
+      <div className="p5-wrap">
+        <SectionHead label={m.label} title={[m.h2[0], m.h2[1]]} lead={m.subtitle} />
       </div>
 
       {/* L'écran Match de l'app, agrandi */}

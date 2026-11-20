@@ -1,21 +1,16 @@
 import type { Metadata } from "next";
 import ComingSoonGate from "@/components/ComingSoonGate";
 import Hero from "@/components/home/Hero";
-import InfoSection from "@/components/home/InfoSection";
+import TrustStrip from "@/components/home/TrustStrip";
 import SportsMarquee from "@/components/home/SportsMarquee";
-import HowItWorks from "@/components/home/HowItWorks";
 import DailyMatch from "@/components/home/DailyMatch";
 import CardsShowcase from "@/components/home/CardsShowcase";
 import FightNight from "@/components/home/FightNight";
+import LeagueTable from "@/components/home/LeagueTable";
 import Beyond from "@/components/home/Beyond";
-import FeaturesGrid from "@/components/home/FeaturesGrid";
-import ArenaSection from "@/components/home/ArenaSection";
-import PrivacyStrip from "@/components/home/PrivacyStrip";
 import FAQ from "@/components/home/FAQ";
-import TrustStrip from "@/components/home/TrustStrip";
-import Statement from "@/components/home/Statement";
-import GameFacts from "@/components/home/GameFacts";
 import { T } from "@/lib/translations";
+import "./home-p5.css";
 
 export const metadata: Metadata = {
   title: "Attax: Sport is now a game.",
@@ -59,25 +54,19 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      {/* 20/11 : une histoire logique (ce qu'est Attax → comment l'effort devient des pts → la journée → le match → les
-          cartes → le verdict de 21h30 → au-delà), et l'app visible dès le début : L'idée et Une journée montrent de vraies
-          captures (chaque écran de l'app n'apparaît qu'une fois sur la page). */}
-      <div className="pm">
+      {/* Passe 5 (20/11) : une page deux fois plus courte et vivante. Hero (vidéo des sportifs, le haut du téléphone) →
+          le match du jour (boxeurs face à face, adversaire, compte à rebours, faits du jeu) → tous les sports comptent →
+          une journée (frise de 5 captures) → 7 jours. 7 rounds. → les cartes → Soir de combat (les coups, le K.O.) →
+          la ligue (classement vivant, rangs) → au-delà → FAQ → appel final. */}
+      <div className="pm p5">
       <Hero />
       <TrustStrip />
-      <InfoSection />
-      <GameFacts />
       <SportsMarquee />
-      <HowItWorks />
-      <Statement id="night" />
       <DailyMatch />
       <CardsShowcase />
       <FightNight />
-      <Statement id="season" />
+      <LeagueTable />
       <Beyond />
-      <FeaturesGrid />
-      <ArenaSection />
-      <PrivacyStrip />
       <FAQ />
       </div>
     </ComingSoonGate>

@@ -1,5 +1,4 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 import PageNavbar from "@/components/PageNavbar";
@@ -7,16 +6,6 @@ import { useLang, useT } from "@/lib/i18n";
 
 export default function Hero() {
   const { lang } = useLang();
-  const phoneRef = useRef<HTMLDivElement>(null);
-  const [k, setK] = useState(0);
-  // Parallaxe douce : le téléphone se redresse et monte un peu au défilement (rien si les animations sont réduites).
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    let raf = 0;
-    const on = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(() => setK(Math.min(1, window.scrollY / 700))); };
-    window.addEventListener("scroll", on, { passive: true });
-    return () => { window.removeEventListener("scroll", on); cancelAnimationFrame(raf); };
-  }, []);
   const t = useT();
   const h = t.hero;
 
@@ -57,55 +46,42 @@ export default function Hero() {
             <span className="l1">{h.h1[0]}</span> <span className="l2">{h.h1[1]}</span>
           </h1>
           <p className="animate-fade-up delay-100" style={{
-            fontSize: "clamp(0.9375rem, 1.2vw, 1.125rem)", color: "rgba(255,255,255,0.55)",
-            lineHeight: 1.65, margin: "0 0 clamp(1.75rem, 3vw, 2.5rem)", maxWidth: "430px", whiteSpace: "pre-line",
+            fontSize: "clamp(1.0625rem, 1.4vw, 1.25rem)", color: "rgba(255,255,255,0.8)",
+            lineHeight: 1.65, margin: "0 0 clamp(1.75rem, 3vw, 2.5rem)", maxWidth: "470px", whiteSpace: "pre-line",
           }}>
             {h.subtitle}
           </p>
-          <div className="animate-fade-up delay-200" style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginBottom: "clamp(2rem, 4vw, 3rem)" }}>
+          <div className="animate-fade-up delay-200" style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginBottom: 0 }}>
             <a href="/download" style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
               backgroundColor: "#ffffff", color: "#0d0d0d", fontWeight: 700,
-              fontSize: "clamp(0.8125rem, 1vw, 0.9375rem)",
-              padding: "13px 24px", borderRadius: "999px", textDecoration: "none",
+              fontSize: "1rem",
+              padding: "15px 26px", borderRadius: "999px", textDecoration: "none",
             }}>
               <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
               {h.cta_ios}
             </a>
-            <a href="#how-it-works" style={{
+            <a href="#opponent" style={{
               display: "inline-flex", alignItems: "center",
               backgroundColor: "rgba(255,255,255,0.06)", color: "rgba(255,255,255,0.8)", fontWeight: 600,
-              fontSize: "clamp(0.8125rem, 1vw, 0.9375rem)",
-              padding: "13px 24px", borderRadius: "999px", textDecoration: "none",
+              fontSize: "1rem",
+              padding: "15px 26px", borderRadius: "999px", textDecoration: "none",
               border: "1px solid rgba(201,213,240,0.18)",
             }}>
               {h.cta_secondary}
             </a>
           </div>
-          <div className="hero-stats animate-fade-up delay-300" style={{ display: "flex", gap: 0, paddingTop: "1.5rem", borderTop: "1px solid rgba(255,255,255,0.12)" }}>
-            {h.stats.map((s, i) => (
-              <div key={s.n} style={{
-                paddingLeft: i > 0 ? "2rem" : 0,
-                marginLeft: i > 0 ? "2rem" : 0,
-                borderLeft: i > 0 ? "1px solid rgba(255,255,255,0.08)" : "none",
-              }}>
-                <div style={{ fontSize: "0.9375rem", fontWeight: 500, color: "#ffffff", marginBottom: "4px" }}>{s.n}</div>
-                <div style={{ fontSize: "0.8125rem", color: "rgba(255,255,255,0.5)" }}>{s.sub}</div>
-              </div>
-            ))}
-          </div>
         </div>
 
-        {/* Le produit : la page Match en direct, dans un téléphone, devant la vidéo des sportifs */}
-        <div className="hero-phone" aria-hidden="true">
-          <div ref={phoneRef} className="hero-phone-in" style={{ transform: `perspective(1400px) rotateY(${-14 + 10 * k}deg) rotateX(${5 - 4 * k}deg) translateY(${-30 * k}px)` }}>
-            <Image src={`/screens/app/${lang}/match-final-${lang}.webp`} alt="" width={560} height={1107} priority sizes="300px" />
+        {/* Passe 5 : seulement le HAUT du téléphone, qui monte du bord bas de la carte, sous les boutons (jamais devant les
+            sportifs). Cadre dessiné en CSS (bords nets), écran = vraie capture de la page Match (round final), EN / FR. */}
+        <div className="hero-peek" aria-hidden="true">
+          <div className="hero-peek-frame">
+            <div className="hero-peek-screen">
+              <div className="hero-peek-status"><b>9:41</b><i className="hero-peek-island" /><span className="hero-peek-icons"><i /><i /><i /><em /></span></div>
+              <Image src={`/screens/story/${lang}/final-round.webp`} alt="" width={522} height={1017} priority sizes="280px" />
+            </div>
           </div>
-        </div>
-
-        <div className="home-hero-foot" style={{ fontSize: "0.8125rem" }}>
-          <span>@playattax</span>
-          <span className="home-hero-sports">{h.sports}</span>
         </div>
       </div>
     </div>

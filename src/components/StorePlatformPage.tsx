@@ -19,7 +19,7 @@ const COPY = {
       need_h: "What you need",
       need: [
         "An iPhone with iOS 15.1 or later.",
-        "An Apple Watch, or any watch, band or chest strap that shares heart rate with Apple Health: Garmin, Amazfit, COROS, Withings, Oura and more.",
+        "An Apple Watch, or any watch, band or chest strap that shares heart rate with Apple Health: Garmin, Amazfit, COROS, Withings, Oura, CMF by Nothing and more.",
         "Read access to Apple Health: workouts, steps and heart rate. Attax never writes anything to Apple Health.",
       ],
       note: "iPhone only: no iPad version, and nothing to install on your Apple Watch, it simply syncs with Apple Health.",
@@ -42,7 +42,7 @@ const COPY = {
       need_h: "Ce qu'il te faut",
       need: [
         "Un iPhone sous iOS 15.1 ou plus récent.",
-        "Une Apple Watch, ou une montre, un bracelet ou une ceinture thoracique qui partage la fréquence cardiaque avec Apple Santé : Garmin, Amazfit, COROS, Withings, Oura et d'autres.",
+        "Une Apple Watch, ou une montre, un bracelet ou une ceinture thoracique qui partage la fréquence cardiaque avec Apple Santé : Garmin, Amazfit, COROS, Withings, Oura, CMF by Nothing et d'autres.",
         "L'accès en lecture à Apple Santé : séances, pas et fréquence cardiaque. Attax n'écrit jamais rien dans Apple Santé.",
       ],
       note: "iPhone uniquement : pas de version iPad, et rien à installer sur ton Apple Watch, elle se synchronise simplement avec Apple Santé.",
@@ -67,7 +67,7 @@ const COPY = {
       need_h: "What you need",
       need: [
         "An Android phone with Android 9 or later and Health Connect.",
-        "A watch, band or chest strap that shares heart rate with Health Connect: Garmin, Samsung Galaxy Watch, Fitbit, Pixel Watch, Wear OS, Amazfit, COROS, Withings, Oura and more.",
+        "A watch, band or chest strap that shares heart rate with Health Connect: Garmin, Samsung Galaxy Watch, Fitbit, Pixel Watch, Wear OS, Amazfit, COROS, Withings, Oura, CMF by Nothing and more.",
         "Read access to Health Connect: workouts, steps and heart rate. Attax never writes anything to Health Connect.",
       ],
       note: "Your phone alone counts your steps; your workouts are measured by your watch.",
@@ -90,7 +90,7 @@ const COPY = {
       need_h: "Ce qu'il te faut",
       need: [
         "Un téléphone Android 9 ou plus récent, avec Health Connect.",
-        "Une montre, un bracelet ou une ceinture thoracique qui partage la fréquence cardiaque avec Health Connect : Garmin, Samsung Galaxy Watch, Fitbit, Pixel Watch, Wear OS, Amazfit, COROS, Withings, Oura et d'autres.",
+        "Une montre, un bracelet ou une ceinture thoracique qui partage la fréquence cardiaque avec Health Connect : Garmin, Samsung Galaxy Watch, Fitbit, Pixel Watch, Wear OS, Amazfit, COROS, Withings, Oura, CMF by Nothing et d'autres.",
         "L'accès en lecture à Health Connect : séances, pas et fréquence cardiaque. Attax n'écrit jamais rien dans Health Connect.",
       ],
       note: "Ton téléphone seul compte tes pas ; tes séances sont mesurées par ta montre.",

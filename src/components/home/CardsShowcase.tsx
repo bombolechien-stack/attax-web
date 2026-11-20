@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useLang, useT } from "@/lib/i18n";
-import { useInView, fadeUp, clipReveal, scaleIn } from "@/hooks/useInView";
+import { useInView, scaleIn } from "@/hooks/useInView";
 
 // Section « Les cartes » : la mise en page de la version en ligne (fond noir, texte à gauche, éventail de
 // 3 cartes inclinées qui se redressent au survol), avec les cartes au format PORTRAIT de l'app
@@ -63,20 +63,14 @@ export default function CardsShowcase() {
   const delays = [180, 60, 300];
 
   return (
-    <section id="cards" className="cards-section p-section p-dark p-lines" style={{ position: "relative", overflow: "hidden" }}>
-      <div style={{ position: "relative", maxWidth: "76rem", margin: "0 auto" }}>
-        <div className="cards-showcase-inner" style={{ display: "flex", alignItems: "center", gap: "6rem", justifyContent: "center" }}>
-          <div ref={headerRef} className="cards-showcase-text" style={{ flex: "0 0 380px", maxWidth: "380px" }}>
-            <p className="p-label" style={fadeUp(headerVisible, 0)}>{cs.label}</p>
-            <h2 className="p-h2">
-              <div style={{ overflow: "hidden", paddingBottom: "0.1em" }}><span style={clipReveal(headerVisible, 80)}>{cs.h2[0]}</span></div>
-              <div style={{ overflow: "hidden", paddingBottom: "0.15em" }}><span style={{ ...clipReveal(headerVisible, 200) }}>{cs.h2[1]}</span></div>
-            </h2>
-            <p className="p-body" style={{ ...fadeUp(headerVisible, 280), margin: "1.25rem 0 2rem" }}>{cs.sub}</p>
-            <div style={fadeUp(headerVisible, 360)}>
-              <p style={{ fontSize: "1rem", fontWeight: 500, margin: "0 0 0.25rem" }}>{cs.cta}</p>
-              <p className="p-body" style={{ fontSize: "0.875rem", margin: 0 }}>{cs.cta_sub}</p>
-            </div>
+    <section id="cards" className="cards-section p5-sec p5-dark" style={{ position: "relative", overflow: "hidden" }}>
+      <div className="p5-wrap" style={{ position: "relative" }}>
+        <div className="cards-showcase-inner" style={{ display: "flex", alignItems: "center", gap: "4rem", justifyContent: "space-between" }}>
+          <div ref={headerRef} className={`cards-showcase-text p5-head-stack${headerVisible ? " is-in" : ""}`}>
+            <p className="p5-label">{cs.label}</p>
+            <h2 className="p5-h2"><span>{cs.h2[0]}</span> <span>{cs.h2[1]}</span></h2>
+            <p className="p5-lead">{cs.sub}</p>
+            <p className="cards-cta"><b>{cs.cta}</b> {cs.cta_sub}</p>
           </div>
 
           <div ref={cardsRef} className="cards-fan" style={{ flex: "0 1 auto", display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -88,14 +82,18 @@ export default function CardsShowcase() {
                   style={{
                     ...appear,
                     transform: `${appear.transform} ${base}`,
-                    width: 200, flexShrink: 0, margin: "0 -6px", zIndex: i === 1 ? 2 : 1, position: "relative",
+                    width: 230, flexShrink: 0, margin: "0 -6px", zIndex: i === 1 ? 2 : 1, position: "relative",
                     borderRadius: 16, boxShadow: "0 40px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.08)",
                     transition: "transform 0.45s cubic-bezier(0.16,1,0.3,1), box-shadow 0.45s cubic-bezier(0.16,1,0.3,1), opacity 1s cubic-bezier(0.16,1,0.3,1)",
                   }}
                   onMouseEnter={(e) => { const el = e.currentTarget; el.style.transform = "rotate(0deg) translateY(-16px) scale(1.05)"; el.style.zIndex = "10"; el.style.boxShadow = "0 50px 90px rgba(0,0,0,0.6), 0 0 60px rgba(10,61,255,0.35), 0 0 0 1px rgba(255,255,255,0.14)"; }}
                   onMouseLeave={(e) => { const el = e.currentTarget; el.style.transform = base; el.style.zIndex = i === 1 ? "2" : "1"; el.style.boxShadow = "0 40px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.08)"; }}
                 >
-                  <PortraitCard card={c} family={fam[c.fam]} tagline={TAGLINE[lang][c.id]} />
+                  {/* Passe 5 : les cartes arrivent face cachée et se retournent l'une après l'autre (le tirage du matin) */}
+                  <div className="card-flip" style={{ transform: cardsVisible ? "rotateY(0deg)" : "rotateY(180deg)", transitionDelay: `${400 + delays[i] * 2}ms` }}>
+                    <div className="card-face"><PortraitCard card={c} family={fam[c.fam]} tagline={TAGLINE[lang][c.id]} /></div>
+                    <div className="card-back" aria-hidden="true"><Image src="/images/flag.svg" alt="" width={44} height={44} /><span>Attax</span></div>
+                  </div>
                 </div>
               );
             })}
