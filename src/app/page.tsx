@@ -11,6 +11,7 @@ import FeaturesGrid from "@/components/live/FeaturesGrid";
 import ArenaSection from "@/components/live/ArenaSection";
 import PrivacyStrip from "@/components/live/PrivacyStrip";
 import FAQ from "@/components/live/FAQ";
+import MidCta from "@/components/live/MidCta";
 import { LIVE } from "@/lib/liveCopy";
 import "./home-p5.css";
 
@@ -71,10 +72,11 @@ export default function HomePage() {
       <DailyMatch />
       <CardTwist6 />
       <LeagueTable />
+      <MidCta />
       <FeaturesGrid />
-      <ArenaSection />
-      <PrivacyStrip />
       <FAQ />
+      <PrivacyStrip />
+      <ArenaSection />
       </div>
     </ComingSoonGate>
   );

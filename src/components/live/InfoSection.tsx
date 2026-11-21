@@ -15,11 +15,11 @@ export default function InfoSection() {
 
   return (
     <section id="idea" className="h7 h7-idea">
+      {/* Passe 7 : une grande phrase + 3 mots-clés courts (accord du propriétaire, 21/11). */}
       <div className="p5-wrap">
         <div ref={headRef} className={`h7-head${headIn ? " is-in" : ""}`}>
           <p className="st6-kick">{inf.label}</p>
           <h2 className="h7-h2">{inf.h2}</h2>
-          <p className="h7-line">{inf.sub}</p>
         </div>
         <div ref={gridRef} className={`h7-grid${gridIn ? " is-in" : ""}`}>
           {inf.steps.map((step, i) => (

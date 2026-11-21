@@ -867,20 +867,27 @@ body:has(.p5) { background: #EEF1F7; }
 .h7-arena .h7-h2 { color: #fff; }
 .h7-arena .h7-line { color: rgba(255,255,255,0.78); }
 
-/* Tes données : une simple rangée entre deux filets */
-.h7-data { padding-top: clamp(4rem, 7vw, 6rem); padding-bottom: 0; }
-.h7-row { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1.25fr) minmax(0, 0.9fr); gap: 2.5rem clamp(2rem, 4vw, 3.5rem); align-items: start; padding: 2.25rem 0; border-top: 1px solid rgba(9,9,11,0.12); border-bottom: 1px solid rgba(9,9,11,0.12); }
-.h7-row > * { opacity: 0; transform: translateY(14px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
-.h7-row.is-in > * { opacity: 1; transform: none; }
-.h7-row.is-in > *:nth-child(2) { transition-delay: 0.08s; } .h7-row.is-in > *:nth-child(3) { transition-delay: 0.16s; }
-.h7-row-a .st6-kick { display: flex; align-items: center; gap: 0.5rem; margin: 0 0 0.75rem; }
-.h7-row-a svg { flex-shrink: 0; width: 18px; height: 18px; color: var(--blue); }
-.h7-row-t { margin: 0; font-family: var(--font-manrope), sans-serif; font-size: clamp(1.5rem, 2.2vw, 1.875rem); font-weight: 500; letter-spacing: -0.025em; line-height: 1.12; color: var(--ink); }
-.h7-row .h7-p { margin: 0; font-size: 1.125rem; }
-.h7-checks { list-style: none; margin: 0; padding: 0; }
-.h7-checks li { display: flex; align-items: center; gap: 0.65rem; padding: 0.55rem 0; font-size: 1.0625rem; color: var(--ink); }
-.h7-checks li:first-child { padding-top: 0.2rem; }
-.h7-checks i { width: 6px; height: 6px; border-radius: 50%; background: var(--ink); flex-shrink: 0; }
+/* Tes données : une seule ligne sous la FAQ (bouclier + phrase + lien) */
+.h7-data { padding: 1.5rem 0 clamp(4.5rem, 8vw, 7rem); }
+.h7-dataline { display: flex; align-items: flex-start; gap: 0.75rem; margin: 0; font-size: 1.125rem; line-height: 1.5; color: var(--ink2); }
+.h7-dataline svg { flex-shrink: 0; margin-top: 3px; color: var(--blue); }
+.h7-dataline a { color: var(--ink); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+.h7-faq { padding-bottom: 0; }
+
+/* Appel du milieu (après le chapitre 05) : une ligne entre deux filets + les pilules */
+.h7-mid { padding: clamp(1rem, 2vw, 2rem) 0 0; }
+.h7-mid-row { display: flex; align-items: center; justify-content: space-between; gap: 1.25rem 2rem; flex-wrap: wrap; padding: 2rem 0; border-top: 1px solid rgba(9,9,11,0.12); border-bottom: 1px solid rgba(9,9,11,0.12); opacity: 0; transform: translateY(14px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+.h7-mid-row.is-in { opacity: 1; transform: none; }
+.h7-mid-t { margin: 0; font-family: var(--font-manrope), sans-serif; font-size: clamp(1.5rem, 2.4vw, 2rem); font-weight: 500; letter-spacing: -0.025em; line-height: 1.15; color: var(--ink); }
+.h7-mid .h7-ctas { margin-top: 0; }
+.h7-btn-line { background: transparent; color: var(--ink); font-weight: 600; border: 1px solid rgba(9,9,11,0.2); }
+
+/* L'idée (3 mots-clés) et Fonctionnalités (une rangée de 4) : cellules courtes */
+.h7-idea .h7-cell, .h7-features .h7-cell { padding-bottom: 0.5rem; }
+.h7-grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.h7-grid-4 .h7-cell, .h7-grid-4 .h7-cell:nth-child(3n+1) { border-left: 1px solid rgba(9,9,11,0.12); padding-left: 1.75rem; }
+.h7-grid-4 .h7-cell:nth-child(4n+1) { border-left: 0; padding-left: 0; }
+.h7-features { padding-top: clamp(4.5rem, 8vw, 7rem); padding-bottom: clamp(1.5rem, 3vw, 2.5rem); }
 
 /* FAQ : en-tête du système, liste à filets */
 .h7-faq-head { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 1.5rem 4rem; align-items: end; }
@@ -890,7 +897,7 @@ body:has(.p5) { background: #EEF1F7; }
 .h7-faq-side .h7-ctas { margin-top: 0; }
 .h7-faq-list { border-top: 1px solid rgba(9,9,11,0.12); }
 .h7-faq-item { border-bottom: 1px solid rgba(9,9,11,0.12); }
-.h7-faq-q { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; padding: 1.5rem 0; background: none; border: 0; cursor: pointer; text-align: left; font-family: var(--font-manrope), sans-serif; font-size: 1.375rem; font-weight: 500; letter-spacing: -0.02em; line-height: 1.3; color: var(--ink); }
+.h7-faq-q { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; padding: 1.2rem 0; background: none; border: 0; cursor: pointer; text-align: left; font-family: var(--font-manrope), sans-serif; font-size: 1.375rem; font-weight: 500; letter-spacing: -0.02em; line-height: 1.3; color: var(--ink); }
 .h7-plus { flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%; border: 1px solid rgba(9,9,11,0.2); display: flex; align-items: center; justify-content: center; font-size: 1.125rem; font-weight: 400; color: var(--ink); transition: transform 0.25s ease; }
 .h7-faq-item.is-open .h7-plus { transform: rotate(45deg); }
 .h7-faq-a { margin: 0; padding: 0 0 1.75rem; max-width: 50rem; font-size: 1.125rem; line-height: 1.6; color: var(--ink2); }
@@ -905,30 +912,28 @@ body:has(.p5) { background: #EEF1F7; }
   .h7-arena { min-height: 0; }
   .h7-arena-in { padding: 4.5rem 1.5rem 3rem; }
   .h7-arena-shade { background: linear-gradient(to right, rgba(5,5,5,0.9) 0%, rgba(5,5,5,0.55) 100%); }
-  .h7-data { padding-top: 3.5rem; }
-  .h7-row { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.75rem 0; }
+  .h7-data { padding: 1.25rem 0 3.5rem; }
+  .h7-faq { padding-bottom: 0; }
+  .h7-features { padding-bottom: 1rem; }
+  .h7-dataline { font-size: 1rem; }
+  .h7-grid-4 { grid-template-columns: 1fr 1fr; }
+  .h7-grid-4 .h7-cell, .h7-grid-4 .h7-cell:nth-child(3n+1) { border-left: 0; padding: 1.25rem 1rem 0.75rem 0; }
+  .h7-grid-4 .h7-cell:nth-child(even) { border-left: 1px solid rgba(9,9,11,0.12); padding-left: 1rem; }
+  .h7-mid-row { padding: 1.5rem 0; }
   .h7-faq-head { grid-template-columns: 1fr; }
   .h7-faq-q { font-size: 1.1875rem; padding: 1.25rem 0; }
   .h7-faq-a { font-size: 1.0625rem; }
   .h7-btn { padding: 13px 20px; font-size: 0.9375rem; }
 }
-@media (prefers-reduced-motion: reduce) { .h7-head > *, .h7-cell, .h7-row > * { opacity: 1 !important; transform: none !important; transition: none !important; } }
+@media (prefers-reduced-motion: reduce) { .h7-head > *, .h7-cell, .h7-mid-row { opacity: 1 !important; transform: none !important; transition: none !important; } }
 
-/* Passe 7 : la bande « Prêt à entrer dans l'arène ? » devient une carte photo arrondie comme le hero (texte à gauche, sur
-   la grille), et le pied de page se pose sur le fond de l'app (encre, filets fins). Accueil seulement (:has). */
+/* Passe 7 : pied de page de l'accueil posé sur le fond de l'app (encre, filets fins). Accueil seulement (:has). */
 body:has(.h7-page) { --h7-edge: calc(max(clamp(1.25rem, 5vw, 4rem), (100% + 24px - 1120px) / 2) - 12px); }
 body:has(.h7-page) footer { background: #EEF1F7; font-family: var(--font-manrope), sans-serif; }
-body:has(.h7-page) .footer-cta-wrap { display: grid; overflow: visible !important; padding: clamp(4.5rem, 8vw, 7rem) 12px 0 !important; }
-body:has(.h7-page) .footer-photo { position: relative !important; inset: auto !important; grid-area: 1 / 1; border-radius: 24px; overflow: hidden; background: #050505; }
-body:has(.h7-page) .footer-photo-shade { background: linear-gradient(to right, rgba(7,7,7,0.9) 0%, rgba(7,7,7,0.62) 45%, rgba(7,7,7,0.2) 100%) !important; }
-body:has(.h7-page) .footer-cta-section { grid-area: 1 / 1; text-align: left !important; padding: clamp(4.5rem, 8vw, 6.5rem) var(--h7-edge) !important; }
-body:has(.h7-page) .footer-cta-label { font-family: var(--font-mono), ui-monospace, monospace !important; font-size: 0.9375rem !important; font-weight: 500 !important; letter-spacing: 0.08em !important; text-transform: none !important; font-variant-caps: all-small-caps; color: #8FA8FF !important; margin: 0 0 1.5rem !important; }
-body:has(.h7-page) .footer-cta-section .p-h2 { font-weight: 500; font-size: clamp(2.75rem, 5.2vw, 4.5rem); line-height: 0.98; letter-spacing: -0.03em; margin: 0 !important; }
-body:has(.h7-page) .footer-cta-sub { margin: 1.5rem 0 0 !important; max-width: 34rem !important; font-size: clamp(1.1875rem, 1.4vw, 1.25rem) !important; line-height: 1.5 !important; color: rgba(255,255,255,0.78) !important; white-space: pre-line; }
-body:has(.h7-page) .footer-cta-btns { justify-content: flex-start !important; margin-top: clamp(1.75rem, 3vw, 2.5rem); }
-body:has(.h7-page) .footer-cta-btn { font-family: var(--font-manrope), sans-serif; font-size: 1rem !important; padding: 15px 26px !important; }
-body:has(.h7-page) .footer-cta-android { background: rgba(255,255,255,0.06) !important; color: rgba(255,255,255,0.8) !important; border-color: rgba(201,213,240,0.18) !important; }
-body:has(.h7-page) .footer-panel { grid-area: 2 / 1; background: transparent !important; border-radius: 0 !important; padding: 0 var(--h7-edge); }
+/* La bande Télécharger est réunie avec l'arène dans la carte finale de la page : masquée dans le pied de l'accueil. */
+body:has(.h7-page) .footer-cta-wrap { padding: 0 12px !important; overflow: visible !important; }
+body:has(.h7-page) .footer-photo, body:has(.h7-page) .footer-cta-section { display: none !important; }
+body:has(.h7-page) .footer-panel { background: transparent !important; border-radius: 0 !important; padding: 0 var(--h7-edge); }
 body:has(.h7-page) .footer-panel.p-lines::before { display: none; }
 body:has(.h7-page) .footer-panel .footer-mail { padding: clamp(4rem, 7vw, 6rem) 0 2.5rem !important; border-bottom: 1px solid rgba(9,9,11,0.12) !important; }
 body:has(.h7-page) .footer-panel .footer-mail .p-mono { font-size: 0.9375rem; font-weight: 500; letter-spacing: 0.08em; text-transform: none; font-variant-caps: all-small-caps; color: var(--blue, #0443FD); }
@@ -949,12 +954,6 @@ body:has(.h7-page) .footer-panel .footer-btm-bar .footer-copy { color: #5A5F67 !
 body:has(.h7-page) .footer-panel .footer-btm-bar .footer-tag { color: #5A5F67 !important; }
 body:has(.h7-page) .footer-panel .footer-attax { color: rgba(9,9,11,0.03) !important; font-family: var(--font-manrope), sans-serif !important; font-weight: 600 !important; }
 @media (max-width: 900px) {
-  body:has(.h7-page) .footer-cta-wrap { padding-top: 3.5rem !important; }
-  body:has(.h7-page) .footer-cta-section { padding: 3.5rem max(var(--h7-edge), 1.5rem) 3rem !important; }
-  body:has(.h7-page) .footer-cta-section .p-h2 { font-size: clamp(2.5rem, 11vw, 2.9rem); }
-  body:has(.h7-page) .footer-cta-sub { font-size: 1.125rem !important; }
-  body:has(.h7-page) .footer-cta-btn { padding: 13px 20px !important; font-size: 0.9375rem !important; }
-  body:has(.h7-page) .footer-photo-shade { background: linear-gradient(to right, rgba(7,7,7,0.88) 0%, rgba(7,7,7,0.55) 100%) !important; }
   body:has(.h7-page) .footer-panel .footer-mail { padding: 3rem 0 2rem !important; }
   body:has(.h7-page) .footer-panel .footer-top-bar { align-items: flex-start !important; }
   body:has(.h7-page) .footer-panel .footer-top-bar > div { flex-wrap: wrap; }

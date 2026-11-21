@@ -1,5 +1,6 @@
-// Textes des sections reprises telles quelles du site en ligne (branche master, 21/11) : L'idée, Fonctionnalités,
-// Tes données, FAQ. Seules les erreurs de règles ont été corrigées (voir le commit), le reste est le texte en ligne.
+// Textes des sections reprises du site en ligne (branche master, 21/11) : L'idée, Fonctionnalités, Tes données, FAQ.
+// Passe 7 (21/11, accord du propriétaire) : L'idée réduite à 3 mots-clés courts, Fonctionnalités à 4 points courts
+// (sans doublon avec L'idée), Tes données en une ligne (line + link). Les questions de la FAQ sont inchangées.
 export const LIVE = {
   en: {
     info: {
@@ -7,21 +8,19 @@ export const LIVE = {
       h2: "Your fitness is the game engine.",
       sub: "Most fitness apps stop at tracking.\nAttax turns every session into a fight you can win tonight.",
       steps: [
-        { title: "Real effort", body: "Every minute your heart works hard earns points, and the harder you push, the more you score. Running, cycling, gym, football, dance: if your watch sees your heart working, it counts. Your steps count too." },
-        { title: "Strategy", body: "Every morning, 3 cards are drawn. Pick yours before 1 PM: boost your session, sabotage your opponent, hide your score. One choice can flip a close duel." },
-        { title: "Competition", body: "Every day, a new opponent from your league. The verdict lands at 9:30 PM, and the table moves with it." },
+        { title: "Real effort", body: "Every minute your heart works hard earns points. Your steps count too." },
+        { title: "Strategy", body: "3 cards every morning. One choice can flip a close duel." },
+        { title: "Competition", body: "A new opponent every day. The verdict lands at 9:30 PM." },
       ],
     },
     features: {
       label: "FEATURES",
       h2: ["Built for athletes.", "Designed for gamers."],
       items: [
-        { title: "Real Activity", desc: "Your heart rate and your steps power your fighter. No manual input, no way to fake it: what your watch records is what you score." },
-        { title: "Daily Duels", desc: "A new opponent every morning. Rounds revealed through the day. A verdict every evening at 9:30 PM. The competition never sleeps." },
-        { title: "Card Strategy", desc: "12 cards in 4 families: Attack, Defense, Sabotage, Trick. 3 drawn each day, one to play. The right card can steal a duel." },
-        { title: "Leagues", desc: "8 players at your level, 7 duels in 7 days, one podium. Then run it back with the same group, or jump into a new league." },
-        { title: "Friends Leagues", desc: "Create a private league, share the code, and settle it once and for all. Your crew, your scoreboard." },
-        { title: "Progression", desc: "A global rank that follows you from league to league: 5 divisions, 15 tiers, from Rookie to Legend. Win to climb." },
+        { title: "Leagues", desc: "8 players at your level, 7 duels in 7 days, one podium." },
+        { title: "Friends Leagues", desc: "Create a private league, share the code." },
+        { title: "Progression", desc: "5 divisions, 15 tiers, from Rookie to Legend." },
+        { title: "Real Activity", desc: "No manual input, no way to fake it." },
       ],
     },
     privacy: {
@@ -29,6 +28,8 @@ export const LIVE = {
       title: "Your health data stays yours.",
       body: "Attax only reads your steps and heart rate; it never writes anything to Apple Health or Health Connect. Your data powers your game and nothing else, and you can delete your account in the app at any time.",
       points: ["Read-only access", "Never sold, no ads", "Delete anytime, in the app"],
+      line: "Your health data stays yours: read-only, never sold, no ads.",
+      link: "Learn more",
     },
     faq: {
       label: "FAQ",
@@ -53,21 +54,19 @@ export const LIVE = {
       h2: "Ton activité est le moteur du jeu.",
       sub: "La plupart des applis fitness s'arrêtent au suivi.\nAttax transforme chaque séance en combat à gagner le soir même.",
       steps: [
-        { title: "Ton vrai effort", body: "Chaque minute où ton cœur travaille rapporte des points, et plus tu pousses, plus tu marques. Course, vélo, muscu, foot, danse : si ta montre voit ton cœur travailler, ça compte. Et tes pas comptent aussi." },
-        { title: "Stratégie", body: "Chaque matin, 3 cartes sont tirées. Choisis la tienne avant 13h : booste ta séance, sabote ton adversaire, cache ton score. Un seul choix peut renverser un duel serré." },
-        { title: "Compétition", body: "Chaque jour, un nouvel adversaire de ta ligue. Le verdict tombe à 21h30, et le classement bouge avec." },
+        { title: "Ton vrai effort", body: "Chaque minute où ton cœur travaille rapporte des points. Tes pas aussi." },
+        { title: "Stratégie", body: "3 cartes chaque matin. Un seul choix peut renverser un duel serré." },
+        { title: "Compétition", body: "Un nouvel adversaire chaque jour. Le verdict tombe à 21h30." },
       ],
     },
     features: {
       label: "FONCTIONNALITÉS",
       h2: ["Pensé pour les sportifs.", "Conçu pour les joueurs."],
       items: [
-        { title: "Activité réelle", desc: "Ta fréquence cardiaque et tes pas alimentent ton combattant. Aucune saisie manuelle, rien à truquer : ce que ta montre enregistre, c'est ce que tu marques." },
-        { title: "Duels quotidiens", desc: "Un nouvel adversaire chaque matin. Des rounds dévoilés au fil de la journée. Un verdict chaque soir à 21h30. La compétition ne dort jamais." },
-        { title: "Stratégie de cartes", desc: "12 cartes en 4 familles : Attaque, Défense, Sabotage, Ruse. 3 tirées chaque jour, une à jouer. La bonne carte peut voler un duel." },
-        { title: "Ligues", desc: "8 joueurs de ton niveau, 7 duels en 7 jours, un podium. Ensuite, revanche avec le même groupe ou nouvelle ligue." },
-        { title: "Ligues entre amis", desc: "Crée une ligue privée, partage le code, et réglez ça une bonne fois pour toutes. Ta bande, ton classement." },
-        { title: "Progression", desc: "Un rang global qui te suit de ligue en ligue : 5 divisions, 15 paliers, de Rookie à Legend. Gagne pour grimper." },
+        { title: "Ligues", desc: "8 joueurs de ton niveau, 7 duels en 7 jours, un podium." },
+        { title: "Ligues entre amis", desc: "Crée une ligue privée, partage le code." },
+        { title: "Progression", desc: "5 divisions, 15 paliers, de Rookie à Legend." },
+        { title: "Activité réelle", desc: "Aucune saisie manuelle, rien à truquer." },
       ],
     },
     privacy: {
@@ -75,6 +74,8 @@ export const LIVE = {
       title: "Tes données de santé restent les tiennes.",
       body: "Attax lit uniquement tes pas et ta fréquence cardiaque, il n'écrit jamais rien dans Apple Santé ou Health Connect. Tes données servent à ton jeu, et à rien d'autre. Et tu peux supprimer ton compte depuis l'app, à tout moment.",
       points: ["Accès en lecture seule", "Jamais vendues, zéro pub", "Suppression à tout moment, dans l'app"],
+      line: "Tes données de santé restent les tiennes : lecture seule, jamais vendues, zéro pub.",
+      link: "En savoir plus",
     },
     faq: {
       label: "FAQ",
