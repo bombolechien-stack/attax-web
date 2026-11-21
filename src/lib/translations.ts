@@ -51,7 +51,7 @@ export const T = {
     },
     dailyMatch: {
       label: "THE MATCH",
-      h2: ["7 days.", "7 rounds."],
+      h2: ["7 rounds.", "The strongest holds."],
       subtitle: "Each day of your week is a round. You both start with 7 HP: a lost round costs 1 HP, the final round 2.\nKeep the most HP to win. Never a draw.",
       live: "LIVE",
       match: "MATCH 6",
@@ -446,7 +446,7 @@ export const T = {
     },
     dailyMatch: {
       label: "LE MATCH",
-      h2: ["7 jours.", "7 rounds."],
+      h2: ["7 rounds.", "Le plus fort tient."],
       subtitle: "Chaque jour de ta semaine est un round. Vous partez tous les deux avec 7 PV : un round perdu coûte 1 PV, le round final 2.\nGarde le plus de PV pour gagner. Jamais de match nul.",
       live: "EN DIRECT",
       match: "MATCH 6",

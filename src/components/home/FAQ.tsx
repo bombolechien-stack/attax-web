@@ -24,7 +24,7 @@ export default function FAQ() {
             </a>
           </div>
           <div>
-            {f.items.map((faq, i) => (
+            {f.items.slice(0, 5).map((faq, i) => (
               <div key={i} style={{ borderBottom: "1px solid rgba(11,11,12,0.1)" }}>
                 <button onClick={() => setOpen(open === i ? null : i)} style={{ width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center", padding: "1.15rem 0", background: "none", border: "none", cursor: "pointer", textAlign: "left" }}>
                   <span style={{ fontSize: "1.1875rem", fontWeight: 500, color: "#0B0B0C", lineHeight: 1.4, paddingRight: "1rem" }}>{faq.q}</span>

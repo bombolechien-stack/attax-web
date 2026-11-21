@@ -1,15 +1,13 @@
 import type { Metadata } from "next";
 import ComingSoonGate from "@/components/ComingSoonGate";
 import Hero from "@/components/home/Hero";
-import Idea from "@/components/home/Idea";
-import SportsMarquee from "@/components/home/SportsMarquee";
+import Opponent6 from "@/components/home/Opponent6";
+import Workout6 from "@/components/home/Workout6";
 import DailyMatch from "@/components/home/DailyMatch";
-import CardsShowcase from "@/components/home/CardsShowcase";
-import FightNight from "@/components/home/FightNight";
+import CardTwist6 from "@/components/home/CardTwist6";
 import LeagueTable from "@/components/home/LeagueTable";
-import Beyond from "@/components/home/Beyond";
-import FAQ from "@/components/home/FAQ";
 import Download6 from "@/components/home/Download6";
+import FAQ from "@/components/home/FAQ";
 import { T } from "@/lib/translations";
 import "./home-p5.css";
 
@@ -37,7 +35,7 @@ const softwareAppSchema = {
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: T.en.faq.items.map((it) => ({
+  mainEntity: T.en.faq.items.slice(0, 5).map((it) => ({
     "@type": "Question",
     name: it.q,
     acceptedAnswer: { "@type": "Answer", text: it.a },
@@ -55,21 +53,18 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      {/* Passe 5 (20/11) : une page deux fois plus courte et vivante. Hero (vidéo des sportifs, le haut du téléphone) →
-          le match du jour (boxeurs face à face, adversaire, compte à rebours, faits du jeu) → tous les sports comptent →
-          une journée (frise de 5 captures) → 7 jours. 7 rounds. → les cartes → Soir de combat (les coups, le K.O.) →
-          la ligue (classement vivant, rangs) → au-delà → FAQ → appel final. */}
+      {/* Structure validée le 21/11 : l'histoire d'une journée de match de Johnny contre Sophie, en 7 écrans. Hero ->
+          l'adversaire du jour -> la séance devient des pts -> 7 rounds -> une carte peut tout renverser (et le vainqueur) ->
+          grimpe dans ta ligue -> télécharger ; puis une FAQ courte. Les règles détaillées vivent dans la FAQ et Comment ça marche. */}
       <div className="pm p5">
       <Hero />
-      <Idea />
-      <SportsMarquee />
+      <Opponent6 />
+      <Workout6 />
       <DailyMatch />
-      <CardsShowcase />
-      <FightNight />
+      <CardTwist6 />
       <LeagueTable />
-      <Beyond />
-      <FAQ />
       <Download6 />
+      <FAQ />
       </div>
     </ComingSoonGate>
   );

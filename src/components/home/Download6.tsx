@@ -8,8 +8,8 @@ import AppPhone from "./AppPhone";
 // → #B9CBFF comme SheenTitle de WinnerWave), scanlines fines, le titre du hero, les deux boutons, et le haut du téléphone
 // (page Match pendant les rounds, vraie capture story/<langue>/rounds.webp) qui sort du bord bas de la carte.
 const COPY = {
-  en: { label: "Download", h2: ["Sport is now", "a game."], lead: "Free on iPhone and Android. A new opponent every day.", ios: "App Store", android: "Google Play", alt: "The Match screen of Attax during the rounds" },
-  fr: { label: "Télécharger", h2: ["Le sport devient", "un jeu."], lead: "Gratuit sur iPhone et Android. Un nouvel adversaire chaque jour.", ios: "App Store", android: "Google Play", alt: "La page Match d'Attax pendant les rounds" },
+  en: { label: "Download", h2: ["Sport is now", "a game."], lead: "Your first opponent is waiting for you tomorrow morning.", ios: "App Store", android: "Google Play", alt: "The Match screen of Attax during the rounds" },
+  fr: { label: "Télécharger", h2: ["Le sport devient", "un jeu."], lead: "Ton premier adversaire t'attend demain matin.", ios: "App Store", android: "Google Play", alt: "La page Match d'Attax pendant les rounds" },
 };
 
 export default function Download6() {

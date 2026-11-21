@@ -9,14 +9,14 @@ import { useInView, scaleIn } from "@/hooks/useInView";
 // (budyfit app/(tabs)/match.tsx → CardPortraitV3, gabarit 270 × 378) : « Attax » + n°, famille, nom,
 // scène de la planche, effet sur bandeau noir, accroche, grand numéro.
 const SHOWN = ["ghost", "spike", "freeze"] as const;   // ordre voulu par gui : Ghost, Quitte ou double (au centre), Freeze
-const ACC: Record<string, string> = { spike: "#1D4ED8", freeze: "#0891B2", ghost: "#7C3AED" };
+const ACC: Record<string, string> = { spike: "#1D4ED8", freeze: "#0891B2", ghost: "#7C3AED", overdrive: "#C2410C" };
 // Accroches de la planche (v3Tagline de l'app)
-const TAGLINE: Record<"en" | "fr", Record<string, string>> = {
-  en: { spike: "All or nothing, tonight.", freeze: "Freeze their best day.", ghost: "Vanish until 9:30 PM." },
-  fr: { spike: "Tout ou rien, ce soir.", freeze: "Gèle son meilleur jour.", ghost: "Disparais jusqu'à 21h30." },
+export const TAGLINE: Record<"en" | "fr", Record<string, string>> = {
+  en: { spike: "All or nothing, tonight.", freeze: "Freeze their best day.", ghost: "Vanish until 9:30 PM.", overdrive: "Give it everything tonight." },
+  fr: { spike: "Tout ou rien, ce soir.", freeze: "Gèle son meilleur jour.", ghost: "Disparais jusqu'à 21h30.", overdrive: "Tout donner ce soir." },
 };
 
-type Card = { id: string; n: string; fam: string; name: string; punchy: string; sub: string };
+export type Card = { id: string; n: string; fam: string; name: string; punchy: string; sub: string };
 
 const INK = "#0E141A";
 // Ombre des cartes de l'éventail du tirage (page Match de l'app) : douce, neutre, sur le fond clair
@@ -24,7 +24,7 @@ const SHADOW = "0 18px 40px rgba(14,20,26,0.16), 0 2px 6px rgba(14,20,26,0.08)";
 const SHADOW_UP = "0 28px 56px rgba(14,20,26,0.2), 0 2px 6px rgba(14,20,26,0.08)";
 
 /** Carte portrait, en unités du gabarit de l'app (k = largeur / 270) via container queries. */
-function PortraitCard({ card, family, tagline }: { card: Card; family: string; tagline: string }) {
+export function PortraitCard({ card, family, tagline }: { card: Card; family: string; tagline: string }) {
   const u = (v: number) => `${(v / 270) * 100}cqw`;
   return (
     <div style={{ containerType: "inline-size", width: "100%" }}>
