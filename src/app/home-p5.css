@@ -1036,3 +1036,27 @@ body:has(.h7-page) .footer-panel .footer-attax { color: rgba(9,9,11,0.03) !impor
 .hero-it6 { font-family: var(--font-serif), Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em; color: #C9D5F0; font-size: 1.08em; }
 @media (min-width: 861px) { .p5 .home-hero-copy { max-width: calc(clamp(2rem, 9vw, 9rem) + 660px); } }
 @media (max-width: 860px) { .pm .hero-h1-6 { font-size: 11vw; } .hero-kick6 { font-size: 0.8125rem; margin-bottom: 1rem; } }
+
+/* Chapitre 04 en 3 étapes (21/11) : texte + 3 étapes numérotées à gauche (éventail sous l'étape 1), deux téléphones à droite */
+.cw7 .st6-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); align-items: center; }
+.cw7-steps { list-style: none; margin: 2rem 0 0; padding: 0; border-top: 1px solid rgba(9,9,11,0.12); }
+.cw7-steps li { padding: 1.1rem 0 1.2rem; border-bottom: 1px solid rgba(9,9,11,0.12); }
+.cw7-n { display: block; margin-bottom: 0.35rem; font-family: var(--font-mono), ui-monospace, monospace; font-size: 0.9375rem; font-weight: 500; font-variant-caps: all-small-caps; letter-spacing: 0.08em; color: var(--blue); }
+.cw7-steps p { margin: 0; font-size: clamp(1.125rem, 1.35vw, 1.25rem); line-height: 1.45; color: var(--ink); }
+.cw7-fan { display: flex; align-items: flex-end; margin: 1.1rem 0 0.25rem 4px; }
+.cw7-card { width: 104px; flex-shrink: 0; margin-right: -10px; border-radius: 10px; opacity: 0.45; box-shadow: 0 12px 26px -16px rgba(14,20,26,0.35); }
+.cw7-card:nth-child(1) { transform: rotate(-5deg) translateY(6px); }
+.cw7-card:nth-child(3) { transform: rotate(5deg) translateY(6px); }
+.cw7-card.is-pick { opacity: 1; position: relative; z-index: 2; transform: translateY(-10px) scale(1.06); }
+.cw7-phones { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1rem, 2.5vw, 2rem); align-items: start; }
+.cw7-ph { margin: 0; opacity: 0; transform: translateY(20px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+.cw7-ph:nth-child(2) { transition-delay: 0.15s; margin-top: 3rem; }
+.cw7-phones.is-in .cw7-ph { opacity: 1; transform: none; }
+.cw7-ph figcaption { margin-top: 1rem; font-family: var(--font-mono), ui-monospace, monospace; font-size: 0.9375rem; font-weight: 500; font-variant-caps: all-small-caps; letter-spacing: 0.08em; color: var(--blue); }
+@media (max-width: 900px) {
+  .cw7 .st6-grid { grid-template-columns: 1fr; }
+  .cw7-card { width: 92px; }
+  .cw7-phones { gap: 0.9rem; }
+  .cw7-ph:nth-child(2) { margin-top: 2rem; }
+}
+@media (prefers-reduced-motion: reduce) { .cw7-ph { opacity: 1 !important; transform: none !important; } }

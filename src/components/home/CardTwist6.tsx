@@ -1,20 +1,29 @@
 "use client";
 
 import { useLang, useT } from "@/lib/i18n";
-import Story6 from "./Story6";
+import { useInView } from "@/hooks/useInView";
 import AppPhone from "./AppPhone";
 import { PortraitCard, TAGLINE, type Card } from "./CardsShowcase";
 
-// Chapitre 04 : « Une carte peut tout renverser. » Les 3 cartes du jour, comme l'éventail du tirage de la page Match
-// (cartes portrait de l'app, CardPortraitV3 : Ghost, Overdrive, Freeze), sous le texte ; puis la carte jouée (Overdrive)
-// ressort et les deux autres s'effacent ; puis, dans le téléphone, la page Match avec ta carte (vraie capture
-// story/<langue>/card.webp) laisse place à l'écran bleu du vainqueur (story/<langue>/winner.webp).
-// Rien derrière le téléphone. Ordinateur : la section est épinglée et le défilement joue la suite ; téléphone ou
-// animations réduites : la suite se joue à l'arrivée à l'écran.
+// Chapitre 04 « Une carte peut tout renverser. » (21/11, refait à la demande de gui) : 3 étapes claires, VRAIES captures.
+// 1. Le matin : les 3 cartes du jour en éventail (cartes portrait de l'app : Ghost, Overdrive, Freeze), Overdrive choisie.
+// 2. 21h30 : la révélation de la carte dans la page Match (Overdrive ×1,5) : store-assets/shots-2026-11-17 fn-18 (FR),
+//    en/fn-13 (EN) → story/<langue>/card-reveal.webp.
+// 3. Le round final après les cartes : fn-30 (FR, « 82 pts de retard ») / en/fn-29 (EN, « 121 pts ahead », le round bascule)
+//    → story/<langue>/card-result.webp. Il n'existe pas encore de capture FR où le score passe devant.
+// Plus d'écran bleu du vainqueur ici, plus d'épinglage au défilement ; rien derrière les téléphones.
 const SHOWN = ["ghost", "overdrive", "freeze"] as const;
 const COPY = {
-  en: { kick: "04 · 9:30 PM", big: "9:30", title: ["One card can", "turn it all around."] as [string, string], line: "3 cards every morning. Play one before 1 PM. At 9:30 PM, the verdict.", alt: ["Your card revealed in the Match screen", "The verdict: Johnny wins on HP"] },
-  fr: { kick: "04 · 21h30", big: "21h30", title: ["Une carte peut", "tout renverser."] as [string, string], line: "3 cartes chaque matin. Joues-en une avant 13h. À 21h30, le verdict.", alt: ["Ta carte dévoilée sur la page Match", "Le verdict : Johnny gagne aux PV"] },
+  en: {
+    kick: "04 · 9:30 PM", title: ["One card can", "turn it all around."],
+    steps: [["Morning", "In the morning, 3 cards. Pick one before 1 PM."], ["9:30 PM", "Your cards are revealed and apply to the final round."], ["The final round", "One card can turn it all around."]],
+    alt: ["Your card revealed at 9:30 PM: Overdrive ×1.5 on today's activities", "The final round after the cards: Johnny 121 pts ahead"],
+  },
+  fr: {
+    kick: "04 · 21h30", title: ["Une carte peut", "tout renverser."],
+    steps: [["Le matin", "Le matin, 3 cartes. Choisis-en une avant 13h."], ["21h30", "Vos cartes se révèlent et s'appliquent au round final."], ["Le round final", "Une carte peut tout renverser."]],
+    alt: ["Ta carte dévoilée à 21h30 : Overdrive ×1,5 sur tes activités du jour", "Le round final après les cartes : Johnny revient à 82 pts"],
+  },
 };
 
 export default function CardTwist6() {
@@ -24,19 +33,41 @@ export default function CardTwist6() {
   const cs = t.cardsShowcase;
   const fams = cs.families as Record<string, string>;
   const cards = SHOWN.map((id) => (cs.cards as readonly Card[]).find((x) => x.id === id)!);
-  // Statique (21/11) : l'éventail des 3 cartes du jour sous le texte, le téléphone avec l'écran du vainqueur ; simple fondu.
-  const fan = (
-    <div className="tw7-fan" aria-hidden="true">
-      {cards.map((cd) => (
-        <div key={cd.id} className="tw7-card">
-          <PortraitCard card={cd} family={fams[cd.fam]} tagline={TAGLINE[lang][cd.id]} />
-        </div>
-      ))}
-    </div>
-  );
+  const { ref, visible } = useInView<HTMLDivElement>(0.2, { oneShot: true });
+  const { ref: visRef, visible: visIn } = useInView<HTMLDivElement>(0.2, { oneShot: true });
   return (
-    <Story6 id="cards" kicker={c.kick} title={c.title} line={c.line} extra={fan}>
-      <div className="st6-phone"><AppPhone src={`/screens/story/${lang}/winner.webp`} alt={c.alt[1]} dark /></div>
-    </Story6>
+    <section id="cards" className="st6 cw7">
+      <div className="p5-wrap st6-grid">
+        <div ref={ref} className={`st6-txt${visible ? " is-in" : ""}`}>
+          <p className="st6-kick">{c.kick}</p>
+          <h2 className="st6-h2"><span>{c.title[0]}</span> <span>{c.title[1]}</span></h2>
+          <ol className="cw7-steps">
+            {c.steps.map(([k, l], i) => (
+              <li key={k}>
+                <span className="cw7-n">{i + 1} · {k}</span>
+                <p>{l}</p>
+                {i === 0 && (
+                  <div className="cw7-fan" aria-hidden="true">
+                    {cards.map((cd) => (
+                      <div key={cd.id} className={`cw7-card${cd.id === "overdrive" ? " is-pick" : ""}`}>
+                        <PortraitCard card={cd} family={fams[cd.fam]} tagline={TAGLINE[lang][cd.id]} />
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </li>
+            ))}
+          </ol>
+        </div>
+        <div ref={visRef} className={`cw7-phones${visIn ? " is-in" : ""}`}>
+          {(["card-reveal", "card-result"] as const).map((src, i) => (
+            <figure key={src} className="cw7-ph">
+              <AppPhone src={`/screens/story/${lang}/${src}.webp`} alt={c.alt[i]} />
+              <figcaption>{i + 2} · {c.steps[i + 1][0]}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
