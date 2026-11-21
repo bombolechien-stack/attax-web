@@ -866,6 +866,7 @@ body:has(.p5) { background: #EEF1F7; }
 .h7-arena-in { width: 100%; padding-top: clamp(4rem, 8vw, 6rem); padding-bottom: clamp(4rem, 8vw, 6rem); }
 .h7-arena .h7-h2 { color: #fff; }
 .h7-arena .h7-line { color: rgba(255,255,255,0.78); }
+.h7-arena .st6-kick { color: #8FA8FF; }
 
 /* Tes données : une seule ligne sous la FAQ (bouclier + phrase + lien) */
 .h7-data { padding: 1.5rem 0 clamp(4.5rem, 8vw, 7rem); }
