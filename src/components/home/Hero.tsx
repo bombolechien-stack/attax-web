@@ -10,7 +10,7 @@ export default function Hero() {
   const h = t.hero;
 
   return (
-    <div style={{ backgroundColor: "#ffffff", padding: "0 12px 12px" }}>
+    <div style={{ backgroundColor: "#EEF1F7", padding: "0 12px 12px" }}>
       <div style={{
         position: "relative",
         borderRadius: "24px",

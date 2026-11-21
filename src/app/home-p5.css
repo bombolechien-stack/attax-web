@@ -291,3 +291,57 @@
 body:has(.p5) .footer-cta-section, body:has(.p5) footer > div > div:first-child { display: none; }
 body:has(.p5) footer > div { padding-top: 12px !important; }
 .p5 .p5-head-stack .p5-h2 { font-size: clamp(2.25rem, 4vw, 3.75rem); }
+
+/* ════ PASSE 6 (21/11) : fond de l'app partout (palette.bg #EEF1F7, lib/design.ts), surfaces blanches, aucune section
+   sombre hors la carte du hero ════ */
+body:has(.p5) { background: #EEF1F7; }
+.p5 { background: #EEF1F7; --ink: #09090B; --ink2: #2B2F36; }
+.p5 > section, .p5 .p5-sec, .p5 .spt-section, .p5 .mr-section, .p5 .faq-section { background: transparent !important; }
+
+/* L'idée + les faits */
+.p5 .idea6 { padding-top: clamp(4rem, 6vw, 5rem) !important; }
+.facts6 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid rgba(9,9,11,0.12); }
+.fact6 { display: flex; flex-direction: column; gap: 0.5rem; padding: 1.75rem 1.5rem 0; border-left: 1px solid rgba(9,9,11,0.12); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+.fact6:first-child { border-left: 0; padding-left: 0; }
+.fact6-n { font-weight: 500; font-size: clamp(3rem, 6vw, 5.25rem); letter-spacing: -0.05em; line-height: 1; color: var(--ink); font-variant-numeric: tabular-nums lining-nums; }
+.fact6-n small { font-size: 0.3em; letter-spacing: -0.01em; margin-left: 0.35em; color: var(--ink2); }
+.fact6-c { font-size: 1.125rem; color: var(--ink2); }
+.works6 { margin: clamp(2.5rem, 4vw, 3.5rem) 0 0; font-size: 1.125rem; line-height: 1.6; color: var(--ink2); max-width: 56rem; }
+.works6 span { color: var(--ink); font-weight: 600; }
+.works6-meta { margin: 0.4rem 0 0; font-size: 1rem; color: #5A5F67; }
+@media (max-width: 760px) {
+  .facts6 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fact6 { padding: 1.25rem 1rem 1.25rem; }
+  .fact6:nth-child(3) { border-left: 0; padding-left: 0; }
+  .fact6:nth-child(n+3) { border-top: 1px solid rgba(9,9,11,0.12); }
+  .fact6-c { font-size: 1rem; }
+  .works6 { font-size: 1.0625rem; }
+}
+
+/* Tous les sports : le détail d'une séance de l'écran Activités (activity.tsx), ×1,4 */
+.p5 .spt-v2a { background: #FFFFFF !important; }
+.act6 { font-family: var(--font-manrope), sans-serif; }
+.act6-title { font-weight: 700; font-size: 18px; letter-spacing: -0.02em; color: #09090B; margin-bottom: 11px; }
+.act6-sess { display: flex; align-items: center; gap: 17px; padding: 14px 0; border-bottom: 1px solid #D7DEE8; }
+.act6-sport { font-weight: 500; font-size: 18px; color: #111827; letter-spacing: -0.01em; }
+.act6-time { margin-top: 1px; font-weight: 500; font-size: 17px; color: #9CA3AF; }
+.act6-dur { font-weight: 800; font-size: 18px; color: #09090B; font-variant-numeric: tabular-nums; }
+.act6-zone { display: flex; align-items: center; gap: 14px; padding: 17px 6px; }
+.act6-zone:first-of-type { margin-top: 8px; }
+.act6-zhead { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.act6-zhead i { width: 10px; height: 10px; border-radius: 50%; }
+.act6-zhead b { font-weight: 700; font-size: 18px; color: #111827; letter-spacing: -0.01em; }
+.act6-zhead span { margin-left: 6px; font-weight: 500; font-size: 14px; color: #9CA3AF; }
+.act6-bar { height: 8px; border-radius: 4px; background: #D7DEE8; overflow: hidden; }
+.act6-bar span { display: block; height: 100%; border-radius: 4px; transition: width 1.1s cubic-bezier(0.16,1,0.3,1); }
+.act6-min { min-width: 67px; text-align: right; font-weight: 800; font-size: 21px; color: #09090B; font-variant-numeric: tabular-nums; }
+.act6-min small { font-weight: 500; font-size: 15px; color: #9CA3AF; }
+.act6-pill { min-width: 62px; padding: 4px 11px; border-radius: 99px; text-align: center; font-weight: 700; font-size: 17px; letter-spacing: -0.01em; box-sizing: border-box; }
+.act6-note { margin: 0; font-size: 1.0625rem; line-height: 1.55; color: var(--ink2); }
+@media (max-width: 760px) {
+  .act6-zone { gap: 10px; padding: 14px 2px; }
+  .act6-zhead b, .act6-sport, .act6-title { font-size: 16px; }
+  .act6-zhead span { font-size: 12.5px; }
+  .act6-min { min-width: 54px; font-size: 18px; }
+  .act6-pill { min-width: 52px; font-size: 15px; padding: 3px 8px; }
+}

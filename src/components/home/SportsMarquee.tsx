@@ -39,11 +39,12 @@ const MORE = {
   fr: ["Yoga", "Curling", "Danse", "Escalade", "Padel", "Ski", "Randonnée", "Arts martiaux", "Pilates", "Corde à sauter", "Natation", "Boxe", "Aviron", "Surf"],
 };
 
+// Zones de l'app (HR_ZONE_BASE de app/(tabs)/activity.tsx) et séance de la capture 09_seance_minutes_par_zone.png
 const ZONES = [
-  { en: "Endurance", fr: "Endurance", pts: 3 },
-  { en: "Tempo", fr: "Tempo", pts: 8 },
-  { en: "Threshold", fr: "Seuil", pts: 14 },
-  { en: "Sprint", fr: "Sprint", pts: 20 },
+  { key: "80_120", en: "Endurance", fr: "Endurance", color: "#3B82F6", range: "90–119 bpm", min: 6, pts: 18, bar: 50 },
+  { key: "120_135", en: "Tempo", fr: "Tempo", color: "#F97316", range: "119–134 bpm", min: 12, pts: 96, bar: 100 },
+  { key: "135_150", en: "Threshold", fr: "Seuil", color: "#EF4444", range: "134–149 bpm", min: 12, pts: 168, bar: 100 },
+  { key: "150_plus", en: "Sprint", fr: "Sprint", color: "#7C3AED", range: "149+ bpm", min: 4, pts: 80, bar: 33 },
 ];
 
 const COPY = {
@@ -51,12 +52,7 @@ const COPY = {
     label: "Every sport counts",
     h2: ["Every sport.", "Every effort."],
     body: "If your heart rate goes up, it counts.\nYoga, curling or a marathon.",
-    panelKick: "YOUR EFFORT → PTS",
-    panelTitle: "Your heart sets the score.",
-    zone: "Zone",
-    perMin: "pts / min",
-    steps: "1,000 steps",
-    stepsPts: "10 pts",
+    sessions: "Today's sessions", sport: "Running", time: "6:50 AM → 7:28 AM",
     note: "Only your heart rate and your steps set the score. Zones adapt to your age.",
     index: "SPORT",
     any: "And any sport or any intense activity",
@@ -69,12 +65,7 @@ const COPY = {
     label: "Tous les sports comptent",
     h2: ["Tous les sports.", "Tous les efforts."],
     body: "Si ton cœur accélère, ça compte.\nYoga, curling ou marathon.",
-    panelKick: "TON EFFORT → PTS",
-    panelTitle: "C'est ton cœur qui marque.",
-    zone: "Zone",
-    perMin: "pts / min",
-    steps: "1 000 pas",
-    stepsPts: "10 pts",
+    sessions: "Séances de la journée", sport: "Course", time: "06:50 → 07:28",
     note: "Seuls ton cœur et tes pas font le score. Les zones s'adaptent à ton âge.",
     index: "SPORT",
     any: "Et tout sport ou toute activité intense",
@@ -190,46 +181,29 @@ export default function SportsMarquee() {
           </div>
         </div>
 
-        {/* Ce qui compte : le barème, comme l'écran Activités */}
+        {/* Ce qui compte : le détail d'une séance de l'écran Activités de l'app, à l'identique (app/(tabs)/activity.tsx :
+            « Séances de la journée », la séance, puis les 4 zones cardio : pastille, nom, plage de bpm, barre, minutes, pts).
+            Valeurs = la capture réelle _captures_app/09_seance_minutes_par_zone.png. Agrandi ×1,4, même fond que l'app. */}
         <div ref={panelRef} className="spt-side">
-          <div className="spt-panel" style={{ ...fadeUp(panelVisible, 0) }}>
-            <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: "0.65625rem", letterSpacing: "0.25em", color: SUB }}>{c.panelKick}</div>
-            <div style={{ fontFamily: FONT, fontWeight: 800, fontSize: "clamp(1.375rem, 2.2vw, 1.75rem)", letterSpacing: "-0.035em", color: INK, marginTop: 8, lineHeight: 1.1 }}>{c.panelTitle}</div>
-
-            <div style={{ marginTop: "1.75rem", display: "flex", flexDirection: "column", gap: "1.1rem" }}>
-              {ZONES.map((z, i) => (
-                <div key={z.en}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", fontFamily: FONT }}>
-                    <span style={{ fontWeight: 700, fontSize: "0.875rem", color: INK }}>
-                      <span style={{ fontWeight: 800, fontSize: "0.625rem", letterSpacing: "0.16em", color: MUTED, marginRight: 8 }}>{c.zone.toUpperCase()} {i + 1}</span>
-                      {z[lang]}
-                    </span>
-                    <span style={{ fontWeight: 800, fontSize: "0.9375rem", color: INK, fontVariantNumeric: "tabular-nums" }}>
-                      {z.pts} <span style={{ fontWeight: 600, fontSize: "0.75rem", color: SUB }}>{c.perMin}</span>
-                    </span>
-                  </div>
-                  <div style={{ marginTop: 8, height: 6, borderRadius: 3, backgroundColor: "#E6EAF0", overflow: "hidden" }}>
-                    <div style={{
-                      height: "100%", borderRadius: 3, backgroundColor: BLUE, opacity: 0.4 + i * 0.2,
-                      width: panelVisible ? `${(z.pts / 20) * 100}%` : "0%",
-                      transition: `width 1.1s cubic-bezier(0.16,1,0.3,1) ${250 + i * 120}ms`,
-                    }} />
-                  </div>
+          <div className="act6" style={{ ...fadeUp(panelVisible, 0) }}>
+            <div className="act6-title">{c.sessions}</div>
+            <div className="act6-sess">
+              <svg width="25" height="25" viewBox="0 0 24 24" aria-hidden="true"><path fill="#0F172A" d="M13.5,5.5C14.59,5.5 15.5,4.58 15.5,3.5C15.5,2.38 14.59,1.5 13.5,1.5C12.39,1.5 11.5,2.38 11.5,3.5C11.5,4.58 12.39,5.5 13.5,5.5M9.89,19.38L10.89,15L13,17V23H15V15.5L12.89,13.5L13.5,10.5C14.79,12 16.79,13 19,13V11C17.09,11 15.5,10 14.69,8.58L13.69,7C13.29,6.38 12.69,6 12,6C11.69,6 11.5,6.08 11.19,6.08L6,8.28V13H8V9.58L9.79,8.88L8.19,17L3.29,16L2.89,18L9.89,19.38Z"/></svg>
+              <div style={{ flex: 1 }}><div className="act6-sport">{c.sport}</div><div className="act6-time">{c.time}</div></div>
+              <div className="act6-dur">38 min</div>
+            </div>
+            {ZONES.map((z, i) => (
+              <div key={z.key} className="act6-zone">
+                <div style={{ flex: 1 }}>
+                  <div className="act6-zhead"><i style={{ background: z.color }} /><b>{z[lang]}</b><span>{z.range}</span></div>
+                  <div className="act6-bar"><span style={{ background: z.color, width: panelVisible ? `${z.bar}%` : "0%", transitionDelay: `${250 + i * 120}ms` }} /></div>
                 </div>
-              ))}
-            </div>
-
-            <div style={{ marginTop: "1.5rem", paddingTop: "1.25rem", borderTop: "1px solid #E5E7EB", display: "flex", justifyContent: "space-between", alignItems: "center", fontFamily: FONT }}>
-              <span style={{ display: "inline-flex", alignItems: "center", gap: 10, fontWeight: 700, fontSize: "0.875rem", color: INK }}>
-                <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill={INK} d="M13.5 5.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM9.8 8.9 7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3A7.3 7.3 0 0 0 19 13v-2a5.1 5.1 0 0 1-4.4-2.5l-1-1.6A2 2 0 0 0 11.9 6c-.3 0-.5 0-.8.1L6 8.3V13h2V9.6l1.8-.7"/></svg>
-                {c.steps}
-              </span>
-              <span style={{ fontWeight: 800, fontSize: "0.9375rem", color: INK }}>{c.stepsPts}</span>
-            </div>
+                <div className="act6-min">{z.min}<small> min</small></div>
+                <div className="act6-pill" style={{ background: z.color + "1F", color: z.color }}>+{z.pts}</div>
+              </div>
+            ))}
           </div>
-
-          <p style={{ ...fadeUp(panelVisible, 350), fontSize: "0.875rem", color: "rgba(11,17,22,0.55)", lineHeight: 1.65, margin: 0 }}>{c.note}</p>
-
+          <p className="act6-note" style={{ ...fadeUp(panelVisible, 350) }}>{c.note}</p>
         </div>
       </div>
     </section>

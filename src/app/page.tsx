@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import ComingSoonGate from "@/components/ComingSoonGate";
 import Hero from "@/components/home/Hero";
-import TrustStrip from "@/components/home/TrustStrip";
+import Idea from "@/components/home/Idea";
 import SportsMarquee from "@/components/home/SportsMarquee";
 import DailyMatch from "@/components/home/DailyMatch";
 import CardsShowcase from "@/components/home/CardsShowcase";
@@ -60,7 +60,7 @@ export default function HomePage() {
           la ligue (classement vivant, rangs) → au-delà → FAQ → appel final. */}
       <div className="pm p5">
       <Hero />
-      <TrustStrip />
+      <Idea />
       <SportsMarquee />
       <DailyMatch />
       <CardsShowcase />
