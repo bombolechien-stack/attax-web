@@ -10,7 +10,7 @@ import { PortraitCard, TAGLINE, type Card } from "./CardsShowcase";
 // 2. 21h30 : la révélation de la carte dans la page Match (Overdrive ×1,5) : store-assets/shots-2026-11-17 fn-18 (FR),
 //    en/fn-13 (EN) → story/<langue>/card-reveal.webp.
 // 3. Le round final après les cartes : fn-30 (FR, « 82 pts de retard ») / en/fn-29 (EN, « 121 pts ahead », le round bascule)
-//    → story/<langue>/card-result.webp. Il n'existe pas encore de capture FR où le score passe devant.
+//    → story/<langue>/card-final.webp. Il n'existe pas encore de capture FR où le score passe devant.
 // Plus d'écran bleu du vainqueur ici, plus d'épinglage au défilement ; rien derrière les téléphones.
 const SHOWN = ["ghost", "overdrive", "freeze"] as const;
 const COPY = {
@@ -60,7 +60,7 @@ export default function CardTwist6() {
           </ol>
         </div>
         <div ref={visRef} className={`cw7-phones${visIn ? " is-in" : ""}`}>
-          {(["card-reveal", "card-result"] as const).map((src, i) => (
+          {(["card-reveal", "card-final"] as const).map((src, i) => (
             <figure key={src} className="cw7-ph">
               <AppPhone src={`/screens/story/${lang}/${src}.webp`} alt={c.alt[i]} />
               <figcaption>{i + 2} · {c.steps[i + 1][0]}</figcaption>
