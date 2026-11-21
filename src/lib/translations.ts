@@ -141,15 +141,14 @@ export const T = {
     fightNight: {
       label: "FIGHT NIGHT",
       h2: ["Every night,", "the final round."],
-      body: "At 9:30 PM your match comes alive. The result comes last.",
+      body: "At 9:30 PM your match comes alive in the app. The cards flip, the boxers fight, the verdict comes last.",
       steps: [
-        { n: "01", t: "The fighters walk in" },
-        { n: "02", t: "The rounds replay" },
-        { n: "03", t: "The cards flip" },
-        { n: "04", t: "The verdict comes last" },
+        { n: "01", t: "The cards flip" },
+        { n: "02", t: "The final round, live" },
+        { n: "03", t: "The verdict" },
       ],
       note: "Message your opponent before. Share your win after.",
-      alt: "The two Attax boxers, drawn in blue and red scanlines, trade punches in the final round",
+      alt: ["Your card revealed: Overdrive, workout ×1.5", "The final round: the two boxers fight", "The verdict: Johnny wins on HP"],
     },
     beyond: {
       label: "BEYOND THE LEAGUE",
@@ -537,15 +536,14 @@ export const T = {
     fightNight: {
       label: "SOIR DE COMBAT",
       h2: ["Chaque soir,", "le round final."],
-      body: "À 21h30, ton match s'anime. Le résultat tombe à la fin.",
+      body: "À 21h30, ton match s'anime dans l'app. Les cartes se retournent, les boxeurs combattent, le verdict tombe à la fin.",
       steps: [
-        { n: "01", t: "Entrée des boxeurs" },
-        { n: "02", t: "Les rounds rejoués" },
-        { n: "03", t: "Les cartes retournées" },
-        { n: "04", t: "Le résultat, à la fin" },
+        { n: "01", t: "Les cartes se retournent" },
+        { n: "02", t: "Le round final, en direct" },
+        { n: "03", t: "Le verdict" },
       ],
       note: "Un message avant le combat. Ta victoire à partager après.",
-      alt: "Les deux boxeurs d’Attax, en scanlines bleues et rouges, échangent des coups au round final",
+      alt: ["Ta carte dévoilée : Overdrive, séance ×1,5", "Le round final : les deux boxeurs combattent", "Le verdict : Johnny gagne aux PV"],
     },
     beyond: {
       label: "AU-DELÀ DE LA LIGUE",

@@ -1,50 +1,36 @@
 "use client";
 
-import Image from "next/image";
-import { useT } from "@/lib/i18n";
-import { useInView, fadeUp, clipReveal, scaleIn } from "@/hooks/useInView";
+import { useLang, useT } from "@/lib/i18n";
+import { useInView } from "@/hooks/useInView";
+import SectionHead from "./SectionHead";
+import AppPhone from "./AppPhone";
 
-/** Soir de combat (révélation de 21h30) : le combat du round final de l'app, dans un téléphone (comme la version en ligne). */
+// Soir de combat (passe 6) : trois VRAIS écrans de la révélation de 21h30 (components/reveal/FightNight.tsx), dans le
+// même téléphone, sur le fond clair de l'app :
+// 1. la carte dévoilée (capture story/<langue>/card.webp : Overdrive ×1,5 sur la page Match) ;
+// 2. le round final en direct (story/<langue>/final-round.webp : les boxeurs en scanlines, barres de PV) ;
+// 3. le verdict, l'écran bleu du vainqueur (story/<langue>/winner.webp, tiré de la capture fn-34, scripts/winner-screen.py).
+const SHOTS = ["card", "final-round", "winner"] as const;
+
 export default function FightNight() {
   const t = useT();
+  const { lang } = useLang();
   const f = t.fightNight;
-  const { ref, visible } = useInView<HTMLDivElement>(0.12, { oneShot: true });
+  const { ref, visible } = useInView<HTMLDivElement>(0.15, { oneShot: true });
 
   return (
-    <section id="fight-night" className="fn-section p-section p-dark p-dark-cont p-lines" style={{ position: "relative", overflow: "hidden" }}>
-
-      <div ref={ref} className="fn-inner" style={{ position: "relative", maxWidth: "72rem", margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "center", gap: "clamp(3.5rem, 7vw, 6.5rem)" }}>
-        {/* Comme sur la version en ligne : le combat DANS l'écran d'un téléphone (même cadre que master).
-            Écran vidé sauf la barre d'état (scripts/fight-night-video/phone.py) ; la vidéo match-live.mp4 =
-            la zone de combat du round final de l'app actuelle (barres de PV, boxeurs en scanlines). */}
-        <div className="fn-phone" style={{ ...scaleIn(visible, 100, 0.94), flex: "0 0 auto", width: "min(300px, 70vw)", position: "relative", filter: "drop-shadow(0 30px 60px rgba(11,17,22,0.20))" }}>
-          <Image src="/screens/phone-fight.png" alt={f.alt} width={1440} height={2960} sizes="300px" style={{ display: "block", width: "100%", height: "auto" }} />
-          {/* Écran plein : en-tête réel du Match + combat du round final + barre d'onglets (scripts/fight-night-video/screen.py) */}
-          <video
-            autoPlay muted loop playsInline preload="metadata" aria-hidden="true" poster="/videos/match-screen-poster.jpg"
-            style={{ position: "absolute", left: "11.806%", top: "9.966%", width: "76.389%", height: "83.446%", objectFit: "fill", borderRadius: "13.6% / 6.1%", pointerEvents: "none" }}
-          >
-            <source src="/videos/match-screen.mp4" type="video/mp4" />
-          </video>
+    <section id="fight-night" className="p5-sec fn6">
+      <div className="p5-wrap">
+        <SectionHead label={f.label} title={[f.h2[0], f.h2[1]]} lead={f.body} />
+        <div ref={ref} className="fn6-row">
+          {SHOTS.map((s, i) => (
+            <figure key={s} className="fn6-item" style={{ opacity: visible ? 1 : 0, transform: visible ? "none" : "translateY(24px)", transitionDelay: `${i * 140}ms` }}>
+              <AppPhone src={`/screens/story/${lang}/${s}.webp`} alt={f.alt[i]} dark={s === "winner"} />
+              <figcaption><span>{f.steps[i].n}</span>{f.steps[i].t}</figcaption>
+            </figure>
+          ))}
         </div>
-        {/* Colonne de texte à largeur fixe : le bloc (téléphone + texte) est centré dans la grille du site, quelle que soit la largeur. */}
-        <div className="fn-text" style={{ flex: "0 1 34rem", minWidth: 0 }}>
-          <span style={{ ...fadeUp(visible, 0), marginBottom: "1.5rem" }} className="section-label">{f.label}</span>
-          <h2 className="p-h2">
-            <div style={{ overflow: "hidden", paddingBottom: "0.08em" }}><span style={clipReveal(visible, 80)}>{f.h2[0]}</span></div>
-            <div style={{ overflow: "hidden", paddingBottom: "0.12em" }}><span style={{ ...clipReveal(visible, 200) }}>{f.h2[1]}</span></div>
-          </h2>
-          <p style={{ ...fadeUp(visible, 280), fontSize: "1.125rem", color: "#4a5560", lineHeight: 1.75, margin: "0 0 2.5rem", maxWidth: 480 }}>{f.body}</p>
-          <ol style={{ listStyle: "none", padding: 0, margin: "0 0 2.5rem", borderTop: "1px solid rgba(11,17,22,0.1)" }}>
-            {f.steps.map((s, i) => (
-              <li key={s.n} style={{ ...fadeUp(visible, 340 + i * 80), display: "flex", alignItems: "baseline", gap: "1.5rem", padding: "1.05rem 0", borderBottom: "1px solid rgba(11,17,22,0.1)" }}>
-                <span className="pin-mono" style={{ fontSize: "0.6875rem", color: i === 3 ? "#0443FD" : "rgba(11,17,22,0.35)" }}>{s.n}</span>
-                <span style={{ fontSize: "1.0625rem", fontWeight: 700, color: "#0B1116", letterSpacing: "-0.02em" }}>{s.t}</span>
-              </li>
-            ))}
-          </ol>
-          <p style={{ ...fadeUp(visible, 700), fontSize: "0.9375rem", color: "#6b7680", lineHeight: 1.7, margin: 0, maxWidth: 460 }}>{f.note}</p>
-        </div>
+        <p className="fn6-note">{f.note}</p>
       </div>
     </section>
   );
