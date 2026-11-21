@@ -288,8 +288,6 @@
 }
 
 /* Accueil : l'appel final (FinalCTA) remplace la bande photo « Prêt à entrer dans l'arène ? » du pied de page */
-body:has(.p5) .footer-cta-section, body:has(.p5) footer > div > div:first-child { display: none; }
-body:has(.p5) footer > div { padding-top: 12px !important; }
 .p5 .p5-head-stack .p5-h2 { font-size: clamp(2.25rem, 4vw, 3.75rem); }
 
 /* ════ PASSE 6 (21/11) : fond de l'app partout (palette.bg #EEF1F7, lib/design.ts), surfaces blanches, aucune section
@@ -432,20 +430,6 @@ body:has(.p5) { background: #EEF1F7; }
 }
 
 /* Pied de page de l'accueil : surface blanche de l'app sur le fond clair (plus de panneau noir), contact@ en grand */
-body:has(.p5) .footer-panel { background: #FFFFFF !important; }
-body:has(.p5) .footer-panel.p-lines::before { background: repeating-linear-gradient(to bottom, rgba(11,17,22,0.04) 0 1px, transparent 1px 4px) !important; }
-body:has(.p5) .footer-panel .footer-mail { border-bottom-color: rgba(9,9,11,0.08) !important; }
-body:has(.p5) .footer-panel .footer-mail a { color: #09090B !important; }
-body:has(.p5) .footer-panel .footer-mail a:hover { color: #0443FD !important; }
-body:has(.p5) .footer-panel .footer-top-bar, body:has(.p5) .footer-panel .footer-btm-bar { border-color: rgba(9,9,11,0.08) !important; }
-body:has(.p5) .footer-panel .footer-link-grid a { color: #2B2F36 !important; }
-body:has(.p5) .footer-panel .footer-link-grid span { color: #6B7280 !important; }
-body:has(.p5) .footer-panel .footer-attax { color: rgba(9,9,11,0.035) !important; }
-body:has(.p5) .footer-panel .footer-top-bar a[aria-label] { background: #EEF1F7 !important; color: #2B2F36 !important; }
-body:has(.p5) .footer-panel .footer-top-bar a[href^="/download/ios"] { background: #09090B !important; color: #FFFFFF !important; }
-body:has(.p5) .footer-panel .footer-top-bar a[href^="/download/android"] { background: #EEF1F7 !important; color: #2B2F36 !important; border-color: rgba(9,9,11,0.08) !important; }
-body:has(.p5) .footer-panel .footer-btm-bar span { color: #6B7280 !important; }
-body:has(.p5) .footer-panel .footer-top-bar img[alt="Attax"] { filter: brightness(0) !important; }
 
 /* Appel final (Download6) : surface blanche, haut du téléphone coupé par le bas, comme le hero */
 .p5 .dl6 { padding-top: 0 !important; padding-bottom: clamp(2rem, 4vw, 3rem) !important; }
@@ -465,7 +449,6 @@ body:has(.p5) .footer-panel .footer-top-bar img[alt="Attax"] { filter: brightnes
 .p5 .cards-section { padding-left: 0 !important; padding-right: 0 !important; }
 @media (max-width: 760px) {
   .p5 .mr-round { min-height: 400px; }
-  body:has(.p5) .footer-link-grid { grid-template-columns: 1fr 1fr !important; }
 }
 .p5 .cards-showcase-text { max-width: 36rem; flex: 1 1 auto; }
 .p5 .cards-showcase-inner { gap: 2.5rem !important; }
@@ -519,10 +502,6 @@ body:has(.p5) .footer-panel .footer-top-bar img[alt="Attax"] { filter: brightnes
 @media (max-width: 860px) {
   .dl6b .dl6-card { height: auto; grid-template-columns: 1fr; padding: 2.25rem 1.5rem 0; }
   .dl6b .dl6-phone { width: 250px; height: 260px; overflow: hidden; margin: 2rem 0 0; }
-}
-/* Pied de page de l'accueil sur la même grille que la page (1120 px, bords de la barre de navigation) */
-@media (min-width: 1200px) {
-  body:has(.p5) .footer-panel .footer-mail, body:has(.p5) .footer-panel .footer-top-bar, body:has(.p5) .footer-panel .footer-link-grid, body:has(.p5) .footer-panel .footer-btm-bar { max-width: 1120px; margin-left: auto; margin-right: auto; padding-left: 0 !important; padding-right: 0 !important; box-sizing: border-box; }
 }
 @media (max-width: 760px) {
   .p5-head { grid-template-columns: 1fr; gap: 1rem; }
@@ -821,3 +800,14 @@ body:has(.p5) .footer-panel .footer-top-bar img[alt="Attax"] { filter: brightnes
   .hero-stats6 > div { padding: 0 0.6rem; }
   .hero-stats6 b { white-space: normal; font-size: 0.75rem; }
 }
+
+/* Tous les sports comptent (simple) */
+.sr6 { padding: clamp(4rem, 7vw, 6rem) 0 clamp(2rem, 3vw, 3rem); }
+.sr6-h2 { margin: 0; font-weight: 500; font-size: clamp(2.25rem, 4.2vw, 3.75rem); line-height: 1.02; letter-spacing: -0.03em; color: var(--ink); }
+.sr6-line { margin: 1rem 0 0; font-size: clamp(1.125rem, 1.4vw, 1.25rem); line-height: 1.5; color: var(--ink); max-width: 40rem; }
+.sr6-grid { list-style: none; margin: 2.5rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); border-top: 1px solid rgba(9,9,11,0.1); }
+.sr6-grid li { display: flex; flex-direction: column; align-items: flex-start; gap: 0.7rem; padding: 1.4rem 0.75rem 1.4rem 0; border-bottom: 1px solid rgba(9,9,11,0.1); opacity: 0; transform: translateY(8px); transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+.sr6-in.is-in .sr6-grid li { opacity: 1; transform: none; }
+.sr6-grid span { font-size: 1rem; font-weight: 500; color: var(--ink); }
+@media (max-width: 900px) { .sr6-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } .sr6-grid span { font-size: 0.875rem; } .sr6-grid svg { width: 26px; height: 26px; } }
+@media (prefers-reduced-motion: reduce) { .sr6-grid li { opacity: 1; transform: none; transition: none; } }
