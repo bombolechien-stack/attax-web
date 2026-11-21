@@ -1,24 +1,29 @@
-// Le badge de rang de l'app, à l'identique : copie de budyfit/components/RankBadgeIcon.tsx (flagSvg), seuls les
-// identifiants SVG sont rendus déterministes (préfixés par le rang) pour le rendu serveur du site.
-// Drapeau Attax en 3 blocs de scanlines qui montent d'un cran ; sous-palier I = bloc 1 vif, II = 1+2, III = les 3.
-// 5 divisions : Rookie · Challenger · Pro · Elite · Legend.
-
+// Badge de rang de l'app, copié tel quel de budyfit components/RankBadgeIcon.tsx (flagSvg) : drapeau Attax en 3 blocs de
+// scanlines, couleur de la division (Rookie, Challenger, Pro, Elite, Legend), sous-palier I à III. Ne pas retoucher ici :
+// recopier depuis l'app si le badge change.
+// 3 blocs du drapeau (rankflag.svg, viewBox 606.88 × 579.47).
 const FB_RIGHT = ["M506.13,0,491.68,57Q482,95.21,472.29,133.45L606.88,305.6,413,306.2q-51.29-139-103.22-277.69C307.53,22.57,301.3,5.93,299.07,0Z"];
 const FB_LEFT = ["M114,420.11,0,114H170.89q57,153.09,113.92,306.17Z", "M172.86,579.47q-25.62-68.7-51.24-137.41l61,31.47,38.1,103.24Z"];
 const FB_MIDDLE = ["M434.34,363.16H263.45Q206.48,210.07,149.53,57H320.41Z"];
 const VB = 606.88, VH = 579.47, CY = 290, SP = 40, STEP = 32, T_ON = 0.34, T_OFF = 0.085;
-const BLK_C: [number, number][] = [[140, 360], [292, 210], [458, 150]];
+const BLK_C: [number, number][] = [[140, 360], [292, 210], [458, 150]]; // centroïdes blocs (pour le glow)
 
-const DIVC: Record<number, string> = { 1: "#E0792A", 2: "#AEB9C6", 3: "#FFB300", 4: "#2E6BFF", 5: "#16191F" };
-export const DIV_NAMES: Record<number, string> = { 1: "Rookie", 2: "Challenger", 3: "Pro", 4: "Elite", 5: "Legend" };
+const DIVC: Record<number, string> = {
+  1: "#E0792A", // Rookie      (bronze vif)
+  2: "#AEB9C6", // Challenger  (silver clair)
+  3: "#FFB300", // Pro         (or vif)
+  4: "#2E6BFF", // Elite       (bleu vif)
+  5: "#16191F", // Legend      (quasi-noir graphite)
+};
 const GREY = "#9AA7B5";
 
 const mix = (a: string, b: string, t: number) => { const p = (h: string) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16)); const x = p(a), y = p(b); return "#" + x.map((v, i) => Math.round(v + (y[i] - v) * t).toString(16).padStart(2, "0")).join(""); };
 const li = (c: string, t: number) => mix(c, "#FFFFFF", t), dk = (c: string, t: number) => mix(c, "#000000", t);
 const fPaths = (cl: string[], attr: string) => cl.map((p) => `<path d="${p}" ${attr}/>`).join("");
 
-function flagBand(id: string, fill: string, clipPaths: string[], yOff: number, thickMul: number) {
-  let lines = "";
+let uid = 0;
+function flagBand(fill: string, clipPaths: string[], yOff: number, thickMul: number) {
+  const id = `fb${uid++}`; let lines = "";
   for (let y = -60; y <= VH + 60; y += SP) {
     const ly = y + yOff;
     const vt = 1 - Math.min(1, Math.abs(ly - CY) / 330);
@@ -34,27 +39,36 @@ function flagBand(id: string, fill: string, clipPaths: string[], yOff: number, t
 }
 
 const cache: Record<string, string> = {};
-export function flagSvg(division: number, sub: number) {
-  const key = `${division}-${sub}`;
+export function flagSvg(division: number | null | undefined, sub: number | null | undefined, calibrating: boolean) {
+  const cal = calibrating || division == null;
+  const key = cal ? "cal" : `${division}-${sub}`;
   if (cache[key]) return cache[key];
-  let n = 0;
-  const uid = (p: string) => `rk${division}${sub}${p}${n++}`;
-  const C = DIVC[division] ?? DIVC[1];
-  const s = sub || 1;
-  const inten = s === 1 ? [1.0, 0.34, 0.13] : s === 2 ? [1.0, 1.0, 0.34] : [1.0, 1.0, 1.0];
+
+  const C = cal ? GREY : (DIVC[division as number] ?? DIVC[1]);
+  const s = cal ? 0 : (((sub as number) || 1));
+  const inten = cal ? [0.20, 0.20, 0.20] : (s === 1 ? [1.0, 0.34, 0.13] : s === 2 ? [1.0, 1.0, 0.34] : [1.0, 1.0, 1.0]);
   const blk: [string[], number][] = [[FB_LEFT, 0], [FB_MIDDLE, -STEP], [FB_RIGHT, -2 * STEP]];
-  const active = s - 1;
+  const active = cal ? -1 : s - 1;
+
   let defs = "";
-  let body = fPaths([...FB_LEFT, ...FB_MIDDLE, ...FB_RIGHT], `fill="none" stroke="#B8C0CC" stroke-width="5" stroke-opacity="0.45" stroke-linejoin="round"`);
-  const [gx, gy] = BLK_C[active], rg = uid("g");
-  defs += `<radialGradient id="${rg}" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="${C}" stop-opacity="0.40"/><stop offset="58%" stop-color="${C}" stop-opacity="0.13"/><stop offset="100%" stop-color="${C}" stop-opacity="0"/></radialGradient>`;
-  body += `<ellipse cx="${gx}" cy="${gy}" rx="180" ry="155" fill="url(#${rg})"/>`;
+  let body = fPaths([...FB_LEFT, ...FB_MIDDLE, ...FB_RIGHT], `fill="none" stroke="${cal ? "#C6D0DC" : "#B8C0CC"}" stroke-width="5" stroke-opacity="0.45" stroke-linejoin="round"`); // contour fantôme
+  if (active >= 0) {                                                        // glow bloc actif (dégradé radial, compatible RN)
+    const [gx, gy] = BLK_C[active], rg = `rg${uid++}`;
+    defs += `<radialGradient id="${rg}" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="${C}" stop-opacity="0.40"/><stop offset="58%" stop-color="${C}" stop-opacity="0.13"/><stop offset="100%" stop-color="${C}" stop-opacity="0"/></radialGradient>`;
+    body += `<ellipse cx="${gx}" cy="${gy}" rx="180" ry="155" fill="url(#${rg})"/>`;
+  }
   blk.forEach(([cl, off], i) => {
-    const v = inten[i], base = mix(C, "#FFFFFF", (1 - v) * 0.66), gid = uid("f");
-    defs += `<linearGradient id="${gid}" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="${li(base, 0.14)}"/><stop offset="55%" stop-color="${base}"/><stop offset="100%" stop-color="${dk(base, 0.16)}"/></linearGradient>`;
-    body += flagBand(uid("c"), `url(#${gid})`, cl, off, T_OFF + (T_ON - T_OFF) * v);
+    const v = inten[i], base = mix(C, "#FFFFFF", (1 - v) * 0.66), gid = `fg${uid++}`;
+    defs += `<linearGradient id="${gid}" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="${li(base, .14)}"/><stop offset="55%" stop-color="${base}"/><stop offset="100%" stop-color="${dk(base, .16)}"/></linearGradient>`;
+    body += flagBand(`url(#${gid})`, cl, off, T_OFF + (T_ON - T_OFF) * v);
   });
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${VB} ${VH}" width="100%" height="100%"><defs>${defs}</defs>${body}</svg>`;
+  if (cal) body += `<text x="303" y="330" font-family="Manrope_800ExtraBold, system-ui, sans-serif" font-size="200" font-weight="800" fill="#8A93A0" text-anchor="middle">?</text>`;
+
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${VB} ${VH}"><defs>${defs}</defs>${body}</svg>`;
   cache[key] = svg;
   return svg;
 }
+
+
+/** Le badge en image (data URI), pour une balise <img>. */
+export const flagUri = (division: number, sub: number) => `data:image/svg+xml;utf8,${encodeURIComponent(flagSvg(division, sub, false))}`;
