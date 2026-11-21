@@ -1,6 +1,5 @@
 # Captures FR du combat (store-assets/shots-2026-11-17/fn-30.png) : l'app y affiche encore « ENGAGED » en anglais sous
 # les boxeurs. On repeint « ENGAGÉ » (Manrope ExtraBold, même couleur, même taille, même interlettrage, même centre),
-# puis on regénère les recadrages de l'accueil : story/fr/card-final.webp et story/fr/hero-fighters.webp.
 from PIL import Image, ImageDraw, ImageFont
 SRC = "C:/Users/guill/budyfit/store-assets/shots-2026-11-17/fn-30.png"
 OUT = "C:/Users/guill/attax-web/public/screens/story/fr/"
@@ -32,7 +31,6 @@ for half in ((60, W // 2), (W // 2, 1020)):
     print("repeint", half, (x0, y0, x1, y1), col, bg)
 
 im.crop((0, 95, 1080, 95 + 2104)).resize((522, 1017), Image.LANCZOS).save(OUT + "card-final.webp", quality=88)
-im.crop((0, 1200, 1080, 2270)).resize((522, 517), Image.LANCZOS).save(OUT + "hero-fighters.webp", quality=88)
 im.crop((0, 1850, 1080, 2100)).save("C:/Users/guill/AppData/Local/Temp/claude/1e9961a218a90484/96bd3057-ee50-44f0-a82f-0af5ed07830f/scratchpad/engage.png")
 
 # « STATUS DU ROUND » (anglicisme de l'app) → « STATUT DU ROUND » : on remplace seulement la dernière lettre du 1er mot.
@@ -53,5 +51,4 @@ d.rectangle((s_last[0] - 2, gy0 - 2, s_last[1] + 2, gy1 + 2), fill=px[s_last[0] 
 d.text(((s_last[0] + s_last[1]) / 2, gy1 + 1), "T", font=fb, fill=gcol, anchor="ms")
 print("STATUT", groups[:7], gcol)
 im.crop((0, 95, 1080, 95 + 2104)).resize((522, 1017), Image.LANCZOS).save(OUT + "card-final.webp", quality=88)
-im.crop((0, 1200, 1080, 2270)).resize((522, 517), Image.LANCZOS).save(OUT + "hero-fighters.webp", quality=88)
 im.crop((0, 1850, 1080, 2100)).save("C:/Users/guill/AppData/Local/Temp/claude/1e9961a218a90484/96bd3057-ee50-44f0-a82f-0af5ed07830f/scratchpad/engage.png")

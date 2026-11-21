@@ -1060,3 +1060,7 @@ body:has(.h7-page) .footer-panel .footer-attax { color: rgba(9,9,11,0.03) !impor
   .cw7-ph:nth-child(2) { margin-top: 2rem; }
 }
 @media (prefers-reduced-motion: reduce) { .cw7-ph { opacity: 1 !important; transform: none !important; } }
+
+/* Hero (21/11, capture H choisie par gui) : le haut du téléphone montre l'en-tête, le compte à rebours, les avatars et les barres de PV */
+@media (min-width: 861px) { .hero-peek { height: 300px; } .p5 .home-hero-copy { padding-bottom: 326px; } }
+@media (max-width: 860px) { .hero-peek { height: 222px; } }
