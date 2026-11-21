@@ -623,3 +623,10 @@ body:has(.p5) .footer-panel .footer-top-bar img[alt="Attax"] { filter: brightnes
 .p5 .lg6-ranks-side ol { border: 0; }
 .p5 .lg6-ranks-side li { border: 0; padding: 0; opacity: 1; }
 @media (min-width: 901px) { .p5 #league .lg6-card { max-width: 470px; padding: 26px 26px 22px; } }
+/* 21/11 (soir) : pas de hauteur minimale (elle laissait du vide) ; un seul grand écran par section, ~78 % de la hauteur */
+.st6 { padding: clamp(2.5rem, 4vw, 3.5rem) 0; }
+.st6-grid { min-height: 0; }
+.st6-phone { width: min(calc(78svh * 0.48), 400px, 100%); }
+.tw6-win { width: min(calc(74svh * 0.48), 360px, 54%); }
+.tw6-card { width: min(260px, 40%); }
+@media (max-width: 900px) { .st6-phone { width: min(320px, 84%); } .tw6-win { width: 54%; } }

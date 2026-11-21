@@ -39,7 +39,7 @@ const ROUNDS: Round[] = [
 ];
 // Le déroulé d'un round (secondes depuis son début).
 // Les deux scores comptent ensemble (comme l'app), s'arrêtent ensemble, puis le coup.
-const T_ME0 = 0.5, T_ME1 = 2.1, T_VS = 0.5, T_OPP0 = 0.5, T_OPP1 = 2.1, T_HIT = 2.3, T_FADE = 3.6, ROUND_LEN = 4.3;
+const T_ME0 = 0.5, T_ME1 = 2.1, T_OPP0 = 0.5, T_OPP1 = 2.1, T_HIT = 2.3, T_FADE = 3.6, ROUND_LEN = 4.3;
 const VERDICT_LEN = 3.6, CYCLE = ROUNDS.length * ROUND_LEN + VERDICT_LEN;
 
 const COPY = {
@@ -181,8 +181,8 @@ export default function DailyMatch() {
                 const col = side === "Y" ? BLUE : RED, won = side === r.w, v = side === "Y" ? yPts : oPts;
                 return (
                   <div key={side} style={{ display: "contents" }}>
-                    {side === "O" && <span className="mr-vs" style={{ opacity: lt >= T_VS ? 1 : 0 }}>VS</span>}
-                    <div className="mr-line" style={{ opacity: lt < T_ME0 ? 0 : hit && !won ? 0.26 : 1 }}>
+                    {side === "O" && <span className="mr-vs">VS</span>}
+                    <div className="mr-line" style={{ opacity: hit && !won ? 0.26 : 1 }}>
                       <span className="mr-won" style={{ color: col, opacity: hit && won ? 1 : 0, transform: hit && won ? "none" : "translateY(4px)" }}>{c.wins}</span>
                       <span className="mr-big" style={{ color: col }}>{nf(v)}<small>pts</small></span>
                       <span className="mr-act">{r.a[lang][side === "Y" ? 0 : 1]}</span>
@@ -190,7 +190,7 @@ export default function DailyMatch() {
                   </div>
                 );
               })}
-              <span className="mr-split" style={{ opacity: lt >= T_OPP0 ? 1 : 0, transform: lt >= T_OPP0 ? "scaleX(1)" : "scaleX(0)" }}><i style={{ flex: r.y, background: BLUE }} /><b /><i style={{ flex: r.o, background: RED }} /></span>
+              <span className="mr-split"><i style={{ flex: r.y, background: BLUE }} /><b /><i style={{ flex: r.o, background: RED }} /></span>
             </div>
           ) : (
             <div className="mr-round mr-verdict" key="verdict">
