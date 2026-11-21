@@ -1,27 +1,14 @@
 "use client";
 
-import Image from "next/image";
+// Jeu de fitness Health Connect (21/11) : système de l'accueil (src/components/site/Site.tsx). Textes inchangés (P).
 import Link from "next/link";
-import PageNavbar from "@/components/PageNavbar";
-import ScanAthlete from "@/components/scan/ScanAthlete";
 import { useLang } from "@/lib/i18n";
-import PinTitle from "@/components/PinTitle";
+import "../site-seo-b.css";
+import { SitePage, PageHero, Block, Lines, HairList, FinalCta, PlayIcon } from "@/components/site/Site";
 
-const BODY: React.CSSProperties = { fontSize: "1.0625rem", color: "#444", lineHeight: 1.85, margin: "0 0 1.25rem" };
-const BODY_EM: React.CSSProperties = { ...BODY, color: "#1a1a1a", fontWeight: 500 };
-const RULE: React.CSSProperties = { border: "none", borderTop: "1px solid #ebebeb", margin: "5rem 0" };
-const LABEL_STYLE: React.CSSProperties = { fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#aaa", display: "block", marginBottom: "1.25rem" };
-
-function Section({ label, children }: { label: string; children: React.ReactNode }) {
-  return (
-    <div className="seo-section-grid" style={{ display: "grid", gridTemplateColumns: "200px 1fr", gap: "4rem", alignItems: "start" }}>
-      <div style={{ paddingTop: "0.3rem" }}><span style={LABEL_STYLE}>{label}</span></div>
-      <div>{children}</div>
-    </div>
-  );
-}
-function H2({ children }: { children: React.ReactNode }) {
-  return <h2 style={{ fontSize: "clamp(1.75rem, 3vw, 2.5rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.04em", lineHeight: 1.1, margin: "0 0 2rem" }}>{children}</h2>;
+function heroTitle(s: string) {
+  const l = s.split("\n");
+  return <>{l.map((x, i) => <span key={i}>{i === l.length - 1 && l.length > 1 ? <em>{x}</em> : x}</span>)}</>;
 }
 
 type Lang = "en" | "fr";
@@ -218,172 +205,94 @@ export default function HealthConnectFitnessGame() {
   const p = P[lang];
 
   return (
-    <>
-      <div style={{ backgroundColor: "#ffffff", padding: "0 12px 12px" }}>
-        <div style={{ position: "relative", backgroundColor: "#0d0d0d", borderRadius: "24px", minHeight: "60vh", display: "flex", flexDirection: "column", overflow: "hidden" }}>
-          <div className="scan-hero-lines" />
-          <div className="scan-hero-figure"><ScanAthlete name="swim-start" height="100%" /></div>
-          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(5,5,5,0.9) 0%, rgba(5,5,5,0.6) 55%, rgba(5,5,5,0.25) 100%)" }} />
-          <PageNavbar />
-          <div className="hero-text-box" style={{ position: "relative", zIndex: 3, flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "3rem 4rem 4rem", maxWidth: "720px" }}>
-            <span style={{ fontSize: "0.6875rem", fontWeight: 700, color: "rgba(255,255,255,0.3)", letterSpacing: "0.18em", textTransform: "uppercase", display: "block", marginBottom: "1.5rem" }}>{p.heroLabel}</span>
-            <h1 className="pin-title" style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", color: "#ffffff", lineHeight: 1, margin: "0 0 1.5rem" }}>
-              <PinTitle text={p.heroTitle} />
-            </h1>
-            <p style={{ fontSize: "1.0625rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.8, margin: "0 0 0.75rem", maxWidth: "540px" }}>
-              {p.heroSubtitle1}
+    <SitePage>
+      <PageHero kick={p.heroLabel} title={heroTitle(p.heroTitle)} lead={p.heroSubtitle1} lead2={p.heroSubtitle2}>
+        <a className="h7-btn h7-btn-light" href="/download/android"><PlayIcon />{p.heroCta}</a>
+      </PageHero>
+
+      <section className="sp-sec">
+        <div className="p5-wrap">
+          <div className="sp-blocks">
+            <Block kick={p.secWhatItIs} title={p.whatItIsH2}>
+              <p>{p.whatItIs1}</p>
+              <p>{p.whatItIs2}</p>
+              <p>{p.whatItIs3}</p>
+              <p className="strong">{p.whatItIs4}</p>
+            </Block>
+
+            <Block kick={p.secHowItConnects} title={p.howItConnectsH2}>
+              <p>{p.howItConnects1}</p>
+              <p>{p.howItConnects2}</p>
+              <p className="em"><Lines text={p.howItConnectsEm} /></p>
+            </Block>
+
+            <p className="sp-quote">
+              {lang === "en"
+                ? "“Whatever your sport, if your watch measures it, it counts.”"
+                : "« Quel que soit ton sport, si ta montre le mesure, ça compte. »"}
             </p>
-            <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.32)", lineHeight: 1.75, margin: "0 0 2.5rem", maxWidth: "480px" }}>
-              {p.heroSubtitle2}
-            </p>
-            <a href="/download/android" style={{ display: "inline-flex", alignItems: "center", gap: "8px", backgroundColor: "#ffffff", color: "#0d0d0d", fontWeight: 700, fontSize: "0.9375rem", padding: "13px 26px", borderRadius: "999px", textDecoration: "none", alignSelf: "flex-start" }}>
-              <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 010 2.594zM1.337.924a1.487 1.487 0 00-.112.568v21.018c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l2.892-2.876L3.271.09a1.513 1.513 0 00-.764 0L13.544 10.99zm0 2.032L2.463 23.91c.184.1.392.16.615.16.219 0 .434-.047.633-.136l13.26-7.601-3.427-3.411z"/></svg>
-              {p.heroCta}
-            </a>
-          </div>
-        </div>
-      </div>
 
-      <div style={{ backgroundColor: "#ffffff" }}>
-        <div style={{ maxWidth: "72rem", margin: "0 auto", padding: "7rem 4rem" }}>
+            <Block kick={p.secProgression} title={p.progressionH2}>
+              <p>{p.progression1}</p>
+              <p className="em"><Lines text={p.progressionEm} /></p>
+              <p>{p.progression2}</p>
+            </Block>
 
-          <Section label={p.secWhatItIs}>
-            <H2>{p.whatItIsH2}</H2>
-            <p style={BODY}>{p.whatItIs1}</p>
-            <p style={BODY}>{p.whatItIs2}</p>
-            <p style={BODY}>{p.whatItIs3}</p>
-            <p style={{ ...BODY, fontWeight: 600, color: "#0d0d0d" }}>{p.whatItIs4}</p>
-          </Section>
+            <Block kick={p.secWhyAndroid} title={p.whyAndroidH2}>
+              <p>{p.whyAndroid1}</p>
+              <ul className="sp-dots">{p.androidSources.map((s) => <li key={s}>{s}</li>)}</ul>
+              <p>{p.whyAndroid2}</p>
+              <p className="em"><Lines text={p.whyAndroidEm} /></p>
+            </Block>
 
-          <hr style={RULE} />
+            <Block kick={p.secDaily} title={p.dailyH2}>
+              <p>{p.daily1}</p>
+              <p className="em"><Lines text={p.dailyEm} /></p>
+              <p>{p.daily2}</p>
+              <p className="strong">{p.daily3}</p>
+            </Block>
 
-          <Section label={p.secHowItConnects}>
-            <H2>{p.howItConnectsH2}</H2>
-            <p style={BODY}>{p.howItConnects1}</p>
-            <p style={BODY}>{p.howItConnects2}</p>
-            <p style={BODY_EM}>{p.howItConnectsEm.split("\n").map((line, i, arr) => (
-              <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
-            ))}</p>
-          </Section>
+            <Block kick={p.secLongTerm} title={p.longTermH2}>
+              <p>{p.longTerm1}</p>
+              <p>{p.longTerm2}</p>
+              <p className="em"><Lines text={p.longTermEm} /></p>
+              <p>{p.longTerm3}</p>
+            </Block>
 
-          <hr style={RULE} />
+            <Block kick={p.secWhyItWorks} title={p.whyItWorksH2}>
+              <p>{p.whyItWorks1}</p>
+              <div style={{ margin: "1.75rem 0" }}>
+                <HairList two items={p.gamificationItems.map((g) => ({ title: g.label, body: g.desc }))} />
+              </div>
+              <p>{p.whyItWorks2}</p>
+            </Block>
 
-          <div style={{ position: "relative", height: "clamp(380px, 52vh, 620px)", overflow: "hidden", borderRadius: "20px", margin: "5rem 0" }}>
-            <Image src="/images/sport/096-A.jpg" alt="" fill sizes="(max-width: 1200px) 100vw, 1100px" style={{ objectFit: "cover", objectPosition: "center 45%" }} />
-            <div className="scan-overlay" />
-            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.72) 100%)" }} />
-            <div style={{ position: "absolute", bottom: "2.5rem", left: "2.75rem", right: "2.75rem", zIndex: 1 }}>
-              <p style={{ fontSize: "clamp(1.25rem, 2.2vw, 1.875rem)", fontWeight: 700, color: "#ffffff", letterSpacing: "-0.03em", lineHeight: 1.3, maxWidth: "580px", margin: 0 }}>
-                {lang === "en"
-                  ? "“Whatever your sport, if your watch measures it, it counts.”"
-                  : "« Quel que soit ton sport, si ta montre le mesure, ça compte. »"}
-              </p>
-            </div>
-          </div>
-
-          <Section label={p.secProgression}>
-            <H2>{p.progressionH2}</H2>
-            <p style={BODY}>{p.progression1}</p>
-            <p style={BODY_EM}>{p.progressionEm.split("\n").map((line, i, arr) => (
-              <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
-            ))}</p>
-            <p style={BODY}>{p.progression2}</p>
-          </Section>
-
-          <hr style={RULE} />
-
-          <Section label={p.secWhyAndroid}>
-            <H2>{p.whyAndroidH2}</H2>
-            <p style={BODY}>{p.whyAndroid1}</p>
-            <div style={{ margin: "1.5rem 0 2rem" }}>
-              {p.androidSources.map((s) => (
-                <div key={s} style={{ display: "flex", alignItems: "center", gap: "0.75rem", padding: "0.75rem 0", borderBottom: "1px solid #f0f0f0" }}>
-                  <span style={{ width: "6px", height: "6px", borderRadius: "50%", backgroundColor: "#0d0d0d", flexShrink: 0 }} />
-                  <span style={{ fontSize: "1rem", color: "#1a1a1a", fontWeight: 500 }}>{s}</span>
-                </div>
-              ))}
-            </div>
-            <p style={BODY}>{p.whyAndroid2}</p>
-            <p style={BODY_EM}>{p.whyAndroidEm.split("\n").map((line, i, arr) => (
-              <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
-            ))}</p>
-          </Section>
-
-          <hr style={RULE} />
-
-          <Section label={p.secDaily}>
-            <H2>{p.dailyH2}</H2>
-            <p style={BODY}>{p.daily1}</p>
-            <p style={BODY_EM}>{p.dailyEm.split("\n").map((line, i, arr) => (
-              <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
-            ))}</p>
-            <p style={BODY}>{p.daily2}</p>
-            <p style={{ ...BODY, fontWeight: 600, color: "#0d0d0d" }}>{p.daily3}</p>
-          </Section>
-
-          <hr style={RULE} />
-
-          <Section label={p.secLongTerm}>
-            <H2>{p.longTermH2}</H2>
-            <p style={BODY}>{p.longTerm1}</p>
-            <p style={BODY}>{p.longTerm2}</p>
-            <p style={BODY_EM}>{p.longTermEm.split("\n").map((line, i, arr) => (
-              <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
-            ))}</p>
-            <p style={BODY}>{p.longTerm3}</p>
-          </Section>
-
-          <hr style={RULE} />
-
-          <Section label={p.secWhyItWorks}>
-            <H2>{p.whyItWorksH2}</H2>
-            <p style={BODY}>{p.whyItWorks1}</p>
-            <div style={{ marginTop: "2rem" }}>
-              {p.gamificationItems.map((g, i) => (
-                <div key={g.label} style={{ display: "grid", gridTemplateColumns: "28px 1fr", gap: "1.5rem", padding: "1.5rem 0", borderTop: "1px solid #f0f0f0" }}>
-                  <span style={{ fontSize: "0.75rem", fontWeight: 700, color: "#ccc", paddingTop: "3px" }}>0{i + 1}</span>
-                  <div>
-                    <h3 style={{ fontSize: "1rem", fontWeight: 700, color: "#0d0d0d", margin: "0 0 0.4rem", letterSpacing: "-0.02em" }}>{g.label}</h3>
-                    <p style={{ ...BODY, margin: 0 }}>{g.desc}</p>
+            <Block kick={p.secFaq} title={p.faqH2}>
+              <div className="h7-faq-list sp-faq-static">
+                {p.faq.map((item) => (
+                  <div key={item.q} className="h7-faq-item">
+                    <h3 className="h7-faq-q" style={{ cursor: "default", margin: 0 }}>{item.q}</h3>
+                    <p className="h7-faq-a">{item.a}</p>
                   </div>
-                </div>
-              ))}
-            </div>
-            <p style={{ ...BODY, marginTop: "2rem" }}>{p.whyItWorks2}</p>
-          </Section>
-
-          <hr style={RULE} />
-
-          <Section label={p.secFaq}>
-            <H2>{p.faqH2}</H2>
-            <div>
-              {p.faq.map((item) => (
-                <div key={item.q} style={{ borderBottom: "1px solid #f0f0f0", padding: "1.5rem 0" }}>
-                  <p style={{ fontSize: "1rem", fontWeight: 600, color: "#0d0d0d", margin: "0 0 0.5rem" }}>{item.q}</p>
-                  <p style={{ fontSize: "0.9375rem", color: "#666", lineHeight: 1.75, margin: 0 }}>{item.a}</p>
-                </div>
-              ))}
-            </div>
-          </Section>
-
-          <hr style={RULE} />
-
-          <div style={{ textAlign: "center", padding: "3rem 0 2rem" }}>
-            <h2 style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.045em", lineHeight: 1.05, margin: "0 0 1.25rem" }}>{p.finalH2}</h2>
-            <p style={{ fontSize: "1.0625rem", color: "#666", lineHeight: 1.75, margin: "0 auto 2.5rem", maxWidth: "400px" }}>{p.finalBody}</p>
-            <div style={{ display: "flex", gap: "10px", justifyContent: "center", flexWrap: "wrap" }}>
-              <a href="/download/android" style={{ display: "inline-flex", alignItems: "center", gap: "8px", backgroundColor: "#0d0d0d", color: "#fff", fontWeight: 700, fontSize: "0.9375rem", padding: "14px 28px", borderRadius: "999px", textDecoration: "none" }}>
-                <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 010 2.594zM1.337.924a1.487 1.487 0 00-.112.568v21.018c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l2.892-2.876L3.271.09a1.513 1.513 0 00-.764 0L13.544 10.99zm0 2.032L2.463 23.91c.184.1.392.16.615.16.219 0 .434-.047.633-.136l13.26-7.601-3.427-3.411z"/></svg>
-                {p.finalCta}
-              </a>
-              <Link href="/discover" style={{ display: "inline-flex", alignItems: "center", backgroundColor: "#f4f4f4", color: "#0d0d0d", fontWeight: 600, fontSize: "0.9375rem", padding: "14px 28px", borderRadius: "999px", textDecoration: "none" }}>
-                {p.learnMore}
-              </Link>
-            </div>
+                ))}
+              </div>
+            </Block>
           </div>
 
+          <div className="h7-mid-row is-in sp-seo-end">
+            <div>
+              <p className="h7-mid-t">{p.finalH2}</p>
+              <p className="sp-note" style={{ marginTop: "0.5rem", fontSize: "1.0625rem", maxWidth: "34rem" }}>{p.finalBody}</p>
+            </div>
+            <div className="h7-ctas" style={{ marginTop: 0 }}>
+              <a className="h7-btn h7-btn-ink" href="/download/android"><PlayIcon />{p.finalCta}</a>
+              <Link className="h7-btn h7-btn-line" href="/discover">{p.learnMore}</Link>
+            </div>
+          </div>
         </div>
-      </div>
-    </>
+      </section>
+
+      <FinalCta />
+    </SitePage>
   );
 }

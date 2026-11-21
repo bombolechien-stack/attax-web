@@ -1,0 +1,15 @@
+/* Pages de référence (Apple Santé, Health Connect, application de compétition), 21/11 : ajustements locaux du système
+   des pages (site-pages.css). Listes à filets et FAQ placées dans le texte courant (.sp-prose) d'un bloc. */
+.sp-prose .sp-list { margin: 0; padding: 0; list-style: none; }
+.sp-prose .sp-li { margin: 0; padding-left: 0; }
+.sp-prose .sp-li::marker { content: none; }
+.sp-prose .sp-li-t { margin: 0; font-size: 1.25rem; }
+.sp-prose .sp-list.is-2 .sp-li { grid-template-columns: 3.5rem minmax(0, 1fr); gap: 1rem 1.5rem; padding: 1.35rem 0; }
+.sp-faq-static .h7-faq-q { font-size: 1.1875rem; padding: 1.15rem 0 0.5rem; }
+.sp-prose .sp-faq-static .h7-faq-a { margin: 0; padding: 0 0 1.25rem; font-size: 1.0625rem; }
+.sp-blocks > .sp-quote { padding-left: 0; }
+.sp-seo-end { margin-top: clamp(2.5rem, 5vw, 4rem); }
+@media (max-width: 760px) {
+  .sp-prose .sp-list.is-2 .sp-li { grid-template-columns: 1fr; gap: 0.35rem; }
+  .sp-faq-static .h7-faq-q { font-size: 1.125rem; }
+}

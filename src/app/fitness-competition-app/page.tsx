@@ -1,30 +1,14 @@
 "use client";
 
+// Application de compétition fitness (21/11) : système de l'accueil (src/components/site/Site.tsx). Textes inchangés (P).
 import Link from "next/link";
-import Image from "next/image";
-import PageNavbar from "@/components/PageNavbar";
-import ScanAthlete from "@/components/scan/ScanAthlete";
 import { useLang } from "@/lib/i18n";
-import PinTitle from "@/components/PinTitle";
+import "../site-seo-b.css";
+import { SitePage, PageHero, Block, Lines, HairList, FinalCta, AppleIcon } from "@/components/site/Site";
 
-const BODY: React.CSSProperties = { fontSize: "1.0625rem", color: "#444", lineHeight: 1.85, margin: "0 0 1.25rem" };
-const BODY_EM: React.CSSProperties = { ...BODY, color: "#1a1a1a", fontWeight: 500 };
-const RULE: React.CSSProperties = { border: "none", borderTop: "1px solid #ebebeb", margin: "5rem 0" };
-const LABEL_STYLE: React.CSSProperties = { fontSize: "0.6875rem", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#aaa", display: "block", marginBottom: "1.25rem" };
-
-function Section({ label, children }: { label: string; children: React.ReactNode }) {
-  return (
-    <div className="seo-section-grid" style={{ display: "grid", gridTemplateColumns: "200px 1fr", gap: "4rem", alignItems: "start" }}>
-      <div style={{ paddingTop: "0.3rem" }}><span style={LABEL_STYLE}>{label}</span></div>
-      <div>{children}</div>
-    </div>
-  );
-}
-function H2({ children }: { children: React.ReactNode }) {
-  return <h2 style={{ fontSize: "clamp(1.75rem, 3vw, 2.5rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.04em", lineHeight: 1.1, margin: "0 0 2rem" }}>{children}</h2>;
-}
-function H3({ children }: { children: React.ReactNode }) {
-  return <h3 style={{ fontSize: "1.125rem", fontWeight: 700, color: "#0d0d0d", margin: "2rem 0 0.75rem", letterSpacing: "-0.02em" }}>{children}</h3>;
+function heroTitle(s: string) {
+  const l = s.split("\n");
+  return <>{l.map((x, i) => <span key={i}>{i === l.length - 1 && l.length > 1 ? <em>{x}</em> : x}</span>)}</>;
 }
 
 type Lang = "en" | "fr";
@@ -190,7 +174,7 @@ const P: Record<Lang, {
     faqH2: "Frequently asked questions",
     faq: [
       { q: "What is a fitness competition app?", a: "An app that uses rankings, duels and challenges to motivate physical activity. In Attax, your real workouts decide daily boxing duels within leagues of 8 players." },
-      { q: "How does Attax create competition?", a: "Every day, you face a new player of your league. The match is 7 rounds (your previous 6 days, plus today) each won by the player with the most pts that day. Add the card you chose, and Fight Night decides at 9:30 PM." },
+      { q: "How does Attax create competition?", a: "Every day, you face a new player of your league. The match is 7 rounds (your previous 6 days, plus today), each won by the player with the most pts that day. Add the card you chose, and Fight Night decides at 9:30 PM." },
       { q: "Can beginners compete?", a: "Yes. You join a league at your level, and every effort counts." },
       { q: "Can I compete with my friends?", a: "Yes. Create a ranked league with your friends, or a custom league from 2 to 40 players. Share your code, they join in seconds." },
       { q: "Does walking count?", a: "Yes. Your steps count every day, even with your phone alone. For your workouts, you need a device that measures your heart rate." },
@@ -293,7 +277,7 @@ const P: Record<Lang, {
     faqH2: "Questions fréquentes",
     faq: [
       { q: "Qu'est-ce qu'une application de compétition sportive ?", a: "Une application qui utilise classements, duels et défis pour motiver l'activité physique. Dans Attax, tes vraies séances décident de duels de boxe quotidiens au sein de ligues de 8 joueurs." },
-      { q: "Comment Attax crée-t-il la compétition ?", a: "Chaque jour, tu affrontes un nouveau joueur de ta ligue. Le match se joue en 7 rounds (tes 6 jours d'avant, plus aujourd'hui) chacun gagné par celui qui a le plus de pts ce jour-là. Ajoute la carte que tu as choisie, et le Soir de combat décide à 21h30." },
+      { q: "Comment Attax crée-t-il la compétition ?", a: "Chaque jour, tu affrontes un nouveau joueur de ta ligue. Le match se joue en 7 rounds (tes 6 jours d'avant, plus aujourd'hui), chacun gagné par celui qui a le plus de pts ce jour-là. Ajoute la carte que tu as choisie, et le Soir de combat décide à 21h30." },
       { q: "Les débutants peuvent-ils jouer ?", a: "Oui. Tu rejoins une ligue de ton niveau, et chaque effort compte." },
       { q: "Puis-je affronter mes amis ?", a: "Oui. Crée une ligue classée avec tes amis, ou une ligue personnalisée de 2 à 40 joueurs. Partage ton code, ils te rejoignent en quelques secondes." },
       { q: "La marche compte-t-elle ?", a: "Oui. Tes pas comptent chaque jour, même avec ton téléphone seul. Pour tes séances, il te faut un appareil qui mesure ta fréquence cardiaque." },
@@ -314,221 +298,117 @@ export default function FitnessCompetitionApp() {
   const p = P[lang];
 
   return (
-    <>
-      <div style={{ backgroundColor: "#ffffff", padding: "0 12px 12px" }}>
-        <div style={{ position: "relative", backgroundColor: "#0d0d0d", borderRadius: "24px", minHeight: "60vh", display: "flex", flexDirection: "column", overflow: "hidden" }}>
-          <div className="scan-hero-lines" />
-          <div className="scan-hero-figure"><ScanAthlete name="boxing" height="100%" /></div>
-          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(5,5,5,0.9) 0%, rgba(5,5,5,0.6) 55%, rgba(5,5,5,0.25) 100%)" }} />
-          <PageNavbar />
-          <div className="hero-text-box" style={{ position: "relative", zIndex: 3, flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "3rem 4rem 4rem", maxWidth: "720px" }}>
-            <span style={{ fontSize: "0.6875rem", fontWeight: 700, color: "rgba(255,255,255,0.3)", letterSpacing: "0.18em", textTransform: "uppercase", display: "block", marginBottom: "1.5rem" }}>{p.heroLabel}</span>
-            <h1 className="pin-title" style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", color: "#ffffff", lineHeight: 1, margin: "0 0 1.5rem" }}>
-              <PinTitle text={p.heroTitle} />
-            </h1>
-            <p style={{ fontSize: "1.0625rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.8, margin: "0 0 0.75rem", maxWidth: "540px" }}>
-              {p.heroSubtitle}
+    <SitePage>
+      <PageHero poster kick={p.heroLabel} title={heroTitle(p.heroTitle)} lead={p.heroSubtitle} lead2={p.heroSubtitle2}>
+        <a className="h7-btn h7-btn-light" href="/download/ios"><AppleIcon />{p.heroCta}</a>
+      </PageHero>
+
+      <section className="sp-sec">
+        <div className="p5-wrap">
+          <div className="sp-blocks">
+            <Block kick={p.secWhyFail} title={p.whyFailH2}>
+              <p>{p.whyFail1}</p>
+              <p className="em"><Lines text={p.whyFailEm} /></p>
+              <p>{p.whyFail2}</p>
+              <p>{p.whyFail3}</p>
+              <p>{p.whyFail4}</p>
+              <p className="strong">{p.whyFailConclude}</p>
+            </Block>
+
+            <Block kick={p.secCompetition} title={p.competitionH2}>
+              <p>{p.competition1}</p>
+              <p className="em"><Lines text={p.competitionEm} /></p>
+              <p>{p.competition2}</p>
+              <p className="em"><Lines text={p.competitionEm2} /></p>
+              <p className="strong">{p.competitionConclude}</p>
+            </Block>
+
+            <p className="sp-quote">
+              {lang === "en"
+                ? "“Real competition. Real motivation. Every single day.”"
+                : "« Vraie compétition. Vraie motivation. Chaque jour. »"}
             </p>
-            <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.32)", lineHeight: 1.75, margin: "0 0 2.5rem", maxWidth: "480px" }}>
-              {p.heroSubtitle2}
-            </p>
-            <a href="/download/ios" style={{ display: "inline-flex", alignItems: "center", gap: "8px", backgroundColor: "#ffffff", color: "#0d0d0d", fontWeight: 700, fontSize: "0.9375rem", padding: "13px 26px", borderRadius: "999px", textDecoration: "none", alignSelf: "flex-start" }}>
-              <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-              {p.heroCta}
-            </a>
+
+            <Block kick={p.secDifferent} title={p.differentH2}>
+              <p>{p.different1}</p>
+              <p>{p.different2}</p>
+              <p className="em"><Lines text={p.differentEm} /></p>
+              <p>{p.different3}</p>
+              <ul className="sp-dots">{p.whatMakes.map((m) => <li key={m}>{m}</li>)}</ul>
+              <p>{p.different4}</p>
+            </Block>
+
+            <Block kick={p.secRealActivity} title={p.realActivityH2}>
+              <p>{p.realActivity1}</p>
+              <p className="strong">{p.realActivity2}</p>
+              <p className="em"><Lines text={p.realActivityEm} /></p>
+              <p>{p.realActivity3}</p>
+              <p>{p.realActivity4}</p>
+            </Block>
+
+            <Block kick={p.secDaily} title={p.dailyH2}>
+              <p>{p.daily1}</p>
+              <p className="em"><Lines text={p.dailyEm} /></p>
+              <p>{p.daily2}</p>
+              <p>{p.daily3}</p>
+            </Block>
+
+            <Block kick={p.secRankings} title={p.rankingsH2}>
+              <p>{p.rankings1}</p>
+              <p>{p.rankings2}</p>
+              <p>{p.rankings3}</p>
+              <p className="big"><em>{p.rankingsQuote}</em></p>
+              <p>{p.rankings4}</p>
+            </Block>
+
+            <Block kick={p.secForEveryone} title={p.forEveryoneH2}>
+              <p>{p.forEveryone1}</p>
+              <p>{p.forEveryone2}</p>
+              <p className="em"><Lines text={p.forEveryoneEm} /></p>
+              <p>{p.forEveryone3}</p>
+            </Block>
+
+            <Block kick={p.secRetention} title={p.retentionH2}>
+              <p>{p.retention1}</p>
+              <div style={{ margin: "1.75rem 0" }}>
+                <HairList two items={p.retention.map((r) => ({ title: r.title, body: r.body }))} />
+              </div>
+              <p className="strong">{p.retentionConclusion}</p>
+            </Block>
+
+            <Block kick={p.secWho} title={p.whoH2}>
+              <div style={{ marginBottom: "1.75rem" }}>
+                <HairList two items={p.who.map((w) => ({ title: w.title, body: w.body }))} />
+              </div>
+              <p>{p.whoConclusion}</p>
+            </Block>
+
+            <Block kick={p.secFaq} title={p.faqH2}>
+              <div className="h7-faq-list sp-faq-static">
+                {p.faq.map((item) => (
+                  <div key={item.q} className="h7-faq-item">
+                    <h3 className="h7-faq-q" style={{ cursor: "default", margin: 0 }}>{item.q}</h3>
+                    <p className="h7-faq-a">{item.a}</p>
+                  </div>
+                ))}
+              </div>
+            </Block>
           </div>
-        </div>
-      </div>
 
-      <div style={{ backgroundColor: "#ffffff" }}>
-        <div style={{ maxWidth: "72rem", margin: "0 auto", padding: "7rem 4rem" }}>
-
-          <Section label={p.secWhyFail}>
-            <H2>{p.whyFailH2}</H2>
-            <p style={BODY}>{p.whyFail1}</p>
-            <p style={BODY_EM}>
-              {p.whyFailEm.split("\n").map((line, i, arr) => (
-                <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
-              ))}
-            </p>
-            <p style={BODY}>{p.whyFail2}</p>
-            <p style={BODY}>{p.whyFail3}</p>
-            <p style={BODY}>{p.whyFail4}</p>
-            <p style={{ ...BODY, fontWeight: 600, color: "#0d0d0d" }}>{p.whyFailConclude}</p>
-          </Section>
-
-          <hr style={RULE} />
-
-          <Section label={p.secCompetition}>
-            <H2>{p.competitionH2}</H2>
-            <p style={BODY}>{p.competition1}</p>
-            <p style={BODY_EM}>
-              {p.competitionEm.split("\n").map((line, i, arr) => (
-                <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
-              ))}
-            </p>
-            <p style={BODY}>{p.competition2}</p>
-            <p style={BODY_EM}>
-              {p.competitionEm2.split("\n").map((line, i, arr) => (
-                <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
-              ))}
-            </p>
-            <p style={{ ...BODY, fontWeight: 600, color: "#0d0d0d" }}>{p.competitionConclude}</p>
-          </Section>
-
-          <hr style={RULE} />
-
-          <div style={{ position: "relative", height: "clamp(380px, 52vh, 620px)", overflow: "hidden", borderRadius: "20px", margin: "5rem 0" }}>
-            <Image src="/images/sport/130-A.jpg" alt="" fill sizes="(max-width: 1200px) 100vw, 1100px" style={{ objectFit: "cover", objectPosition: "center 50%" }} />
-            <div className="scan-overlay" />
-            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.72) 100%)" }} />
-            <div style={{ position: "absolute", bottom: "2.5rem", left: "2.75rem", right: "2.75rem", zIndex: 1 }}>
-              <p style={{ fontSize: "clamp(1.25rem, 2.2vw, 1.875rem)", fontWeight: 700, color: "#ffffff", letterSpacing: "-0.03em", lineHeight: 1.3, maxWidth: "580px", margin: 0 }}>
-                {lang === "en"
-                  ? "“Real competition. Real motivation. Every single day.”"
-                  : "« Vraie compétition. Vraie motivation. Chaque jour. »"}
-              </p>
-            </div>
-          </div>
-
-          <Section label={p.secDifferent}>
-            <H2>{p.differentH2}</H2>
-            <p style={BODY}>{p.different1}</p>
-            <p style={BODY}>{p.different2}</p>
-            <p style={BODY_EM}>
-              {p.differentEm.split("\n").map((line, i, arr) => (
-                <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
-              ))}
-            </p>
-            <p style={BODY}>{p.different3}</p>
-            <div style={{ margin: "1.5rem 0 2rem" }}>
-              {p.whatMakes.map((m) => (
-                <div key={m} style={{ display: "flex", alignItems: "center", gap: "0.75rem", padding: "0.75rem 0", borderBottom: "1px solid #f0f0f0" }}>
-                  <span style={{ width: "6px", height: "6px", borderRadius: "50%", backgroundColor: "#0d0d0d", flexShrink: 0 }} />
-                  <span style={{ fontSize: "1rem", color: "#1a1a1a", fontWeight: 500 }}>{m}</span>
-                </div>
-              ))}
-            </div>
-            <p style={BODY}>{p.different4}</p>
-          </Section>
-
-          <hr style={RULE} />
-
-          <Section label={p.secRealActivity}>
-            <H2>{p.realActivityH2}</H2>
-            <p style={BODY}>{p.realActivity1}</p>
-            <p style={{ ...BODY, fontWeight: 600, color: "#0d0d0d" }}>{p.realActivity2}</p>
-            <p style={BODY_EM}>
-              {p.realActivityEm.split("\n").map((line, i, arr) => (
-                <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
-              ))}
-            </p>
-            <p style={BODY}>{p.realActivity3}</p>
-            <p style={BODY}>{p.realActivity4}</p>
-          </Section>
-
-          <hr style={RULE} />
-
-          <Section label={p.secDaily}>
-            <H2>{p.dailyH2}</H2>
-            <p style={BODY}>{p.daily1}</p>
-            <p style={BODY_EM}>
-              {p.dailyEm.split("\n").map((line, i, arr) => (
-                <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
-              ))}
-            </p>
-            <p style={BODY}>{p.daily2}</p>
-            <p style={BODY}>{p.daily3}</p>
-          </Section>
-
-          <hr style={RULE} />
-
-          <Section label={p.secRankings}>
-            <H2>{p.rankingsH2}</H2>
-            <p style={BODY}>{p.rankings1}</p>
-            <p style={BODY}>{p.rankings2}</p>
-            <p style={BODY}>{p.rankings3}</p>
-            <p style={{ ...BODY, fontWeight: 700, color: "#0d0d0d", fontSize: "1.25rem", fontStyle: "italic" }}>{p.rankingsQuote}</p>
-            <p style={BODY}>{p.rankings4}</p>
-          </Section>
-
-          <hr style={RULE} />
-
-          <Section label={p.secForEveryone}>
-            <H2>{p.forEveryoneH2}</H2>
-            <p style={BODY}>{p.forEveryone1}</p>
-            <p style={BODY}>{p.forEveryone2}</p>
-            <p style={BODY_EM}>
-              {p.forEveryoneEm.split("\n").map((line, i, arr) => (
-                <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
-              ))}
-            </p>
-            <p style={BODY}>{p.forEveryone3}</p>
-          </Section>
-
-          <hr style={RULE} />
-
-          <Section label={p.secRetention}>
-            <H2>{p.retentionH2}</H2>
-            <p style={BODY}>{p.retention1}</p>
-            <div style={{ marginTop: "2rem" }}>
-              {p.retention.map((r) => (
-                <div key={r.title} style={{ borderTop: "1px solid #f0f0f0", padding: "1.5rem 0" }}>
-                  <H3>{r.title}</H3>
-                  <p style={{ ...BODY, margin: 0 }}>{r.body}</p>
-                </div>
-              ))}
-            </div>
-            <p style={{ ...BODY, marginTop: "2rem", fontWeight: 600, color: "#0d0d0d" }}>{p.retentionConclusion}</p>
-          </Section>
-
-          <hr style={RULE} />
-
-          <Section label={p.secWho}>
-            <H2>{p.whoH2}</H2>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0", marginBottom: "2rem" }}>
-              {p.who.map((w, i) => (
-                <div key={w.title} style={{ padding: "1.75rem", borderTop: "1px solid #f0f0f0", borderLeft: i % 2 === 1 ? "1px solid #f0f0f0" : "none", paddingLeft: i % 2 === 0 ? 0 : "1.75rem" }}>
-                  <h3 style={{ fontSize: "1rem", fontWeight: 700, color: "#0d0d0d", margin: "0 0 0.5rem" }}>{w.title}</h3>
-                  <p style={{ fontSize: "0.9rem", color: "#666", lineHeight: 1.75, margin: 0 }}>{w.body}</p>
-                </div>
-              ))}
-            </div>
-            <p style={BODY}>{p.whoConclusion}</p>
-          </Section>
-
-          <hr style={RULE} />
-
-          <Section label={p.secFaq}>
-            <H2>{p.faqH2}</H2>
+          <div className="h7-mid-row is-in sp-seo-end">
             <div>
-              {p.faq.map((item) => (
-                <div key={item.q} style={{ borderBottom: "1px solid #f0f0f0", padding: "1.5rem 0" }}>
-                  <p style={{ fontSize: "1rem", fontWeight: 600, color: "#0d0d0d", margin: "0 0 0.5rem" }}>{item.q}</p>
-                  <p style={{ fontSize: "0.9375rem", color: "#666", lineHeight: 1.75, margin: 0 }}>{item.a}</p>
-                </div>
-              ))}
+              <p className="h7-mid-t">{p.ctaTitle}</p>
+              <p className="sp-note" style={{ marginTop: "0.5rem", fontSize: "1.0625rem", maxWidth: "34rem" }}>{p.ctaBody}</p>
             </div>
-          </Section>
-
-          <hr style={RULE} />
-
-          <div style={{ textAlign: "center", padding: "3rem 0 2rem" }}>
-            <h2 style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.045em", lineHeight: 1.05, margin: "0 0 1.25rem" }}>{p.ctaTitle}</h2>
-            <p style={{ fontSize: "1.0625rem", color: "#666", lineHeight: 1.75, margin: "0 auto 2.5rem", maxWidth: "400px" }}>{p.ctaBody}</p>
-            <div style={{ display: "flex", gap: "10px", justifyContent: "center", flexWrap: "wrap" }}>
-              <a href="/download/ios" style={{ display: "inline-flex", alignItems: "center", gap: "8px", backgroundColor: "#0d0d0d", color: "#fff", fontWeight: 700, fontSize: "0.9375rem", padding: "14px 28px", borderRadius: "999px", textDecoration: "none" }}>
-                <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                {p.ctaDownload}
-              </a>
-              <Link href="/discover" style={{ display: "inline-flex", alignItems: "center", backgroundColor: "#f4f4f4", color: "#0d0d0d", fontWeight: 600, fontSize: "0.9375rem", padding: "14px 28px", borderRadius: "999px", textDecoration: "none" }}>
-                {p.ctaLearnMore}
-              </Link>
+            <div className="h7-ctas" style={{ marginTop: 0 }}>
+              <a className="h7-btn h7-btn-ink" href="/download/ios"><AppleIcon />{p.ctaDownload}</a>
+              <Link className="h7-btn h7-btn-line" href="/discover">{p.ctaLearnMore}</Link>
             </div>
           </div>
-
         </div>
-      </div>
-    </>
+      </section>
+
+      <FinalCta />
+    </SitePage>
   );
 }

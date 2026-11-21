@@ -1,0 +1,27 @@
+/* Pages de référence (Qu'est-ce qu'Attax, Comment ça marche, Gamification), 21/11 : compléments au système
+   des pages (site-pages.css). */
+.sp-cells2 { display: grid; grid-template-columns: 1fr 1fr; margin: 2rem 0; border-top: 1px solid rgba(9,9,11,0.12); }
+.sp-cells2 > div { padding: 1.5rem 1.5rem 1.5rem 0; border-bottom: 1px solid rgba(9,9,11,0.12); }
+.sp-cells2 > div:nth-child(even) { padding-left: 1.5rem; padding-right: 0; border-left: 1px solid rgba(9,9,11,0.12); }
+.sp-cells2 .h7-p { margin-top: 0.4rem; }
+.sp-qa { margin: 2.25rem 0 0; padding: 1.5rem 0 0; border-top: 1px solid rgba(9,9,11,0.12); }
+.sp-qa p { margin: 0 0 0.5rem; }
+.sp-qa em { font-style: normal; }
+.sp-endcta { margin-top: 0; border-top: 0 !important; }
+.sp-blocks > .sp-quote { box-sizing: border-box; max-width: none; padding-left: calc(15rem + 4rem); }
+@media (max-width: 900px) { .sp-blocks > .sp-quote { padding-left: 0; } }
+@media (max-width: 600px) {
+  .sp-cells2 { grid-template-columns: 1fr; }
+  .sp-cells2 > div, .sp-cells2 > div:nth-child(even) { padding: 1.25rem 0; border-left: 0; }
+}
+/* Listes et questions posées dans le texte courant : neutraliser les marges du .sp-prose */
+.sp-prose .sp-list { margin: 0; padding: 0; }
+.sp-prose .sp-li { margin: 0; padding: 1.4rem 0; }
+.sp-prose .sp-list.is-2 .sp-li { grid-template-columns: 3.5rem minmax(0, 1fr); gap: 1rem; }
+.sp-prose .sp-li-t { margin: 0; font-size: 1.25rem; font-weight: 500; letter-spacing: -0.02em; }
+.sp-prose .sp-li-b { font-size: 1.0625rem; }
+.sp-prose .h7-faq-q { margin: 0; font-size: 1.25rem; font-weight: 500; letter-spacing: -0.02em; line-height: 1.3; padding: 1.2rem 0 0.6rem; }
+.sp-prose .h7-faq-a { padding-bottom: 1.4rem; font-size: 1.0625rem; }
+.sp-prose .h7-faq-list { border-top: 1px solid rgba(9,9,11,0.12); }
+.sp-prose .sp-cells2 h3.h7-h3 { margin: 0; font-size: 1.25rem; font-weight: 500; letter-spacing: -0.02em; }
+@media (max-width: 760px) { .sp-prose .sp-list.is-2 .sp-li { grid-template-columns: 1fr; gap: 0.3rem; } .sp-prose .h7-faq-q, .sp-prose .sp-li-t { font-size: 1.125rem; } }

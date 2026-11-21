@@ -23,7 +23,7 @@ export function SitePage({ children }: { children: React.ReactNode }) {
  *  poster = l'image scanlines des sportifs du hero (sinon, seulement la trame fine). */
 export function PageHero({ kick, title, lead, lead2, meta, children, poster = false, compact = false, stats, phone }: {
   kick?: React.ReactNode; title: React.ReactNode; lead?: React.ReactNode; lead2?: React.ReactNode; meta?: React.ReactNode;
-  children?: React.ReactNode; poster?: boolean; compact?: boolean; stats?: { title: string; sub?: string }[];
+  children?: React.ReactNode; poster?: boolean; compact?: boolean; stats?: readonly { title: string; sub?: string }[];
   /** phone = capture réelle (public/screens/story/...) dont le haut monte du bord bas de la carte, comme sur l'accueil */
   phone?: { src: string; alt: string; dark?: boolean };
 }) {
