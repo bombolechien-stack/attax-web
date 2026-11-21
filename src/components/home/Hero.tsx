@@ -9,6 +9,12 @@ const STATS = {
   fr: [["Ton vrai effort", "Apple Santé & Health Connect"], ["1 duel par jour", "Verdict à 21h30"], ["Ligues de 8", "7 jours, 1 champion"]],
 };
 
+// Repère et slogan du hero (21/11, demandés par gui), écrits ici : deux lignes exactes par langue.
+const TITLE = {
+  en: { kick: "Every day · a new rival", l1: "Sport is now", l2a: "", l2b: "a game." },
+  fr: { kick: "Chaque jour · un nouvel adversaire", l1: "Le sport", l2a: "devient ", l2b: "un jeu." },
+};
+
 export default function Hero() {
   const { lang } = useLang();
   const t = useT();
@@ -43,10 +49,13 @@ export default function Hero() {
         </div>
 
         <div className="hero-text-box home-hero-copy">
-          {/* 21/11 : plus de repère au-dessus du titre (illisible), le titre seul. */}
+          {/* 21/11 (gui) : repère remis, lisible (petites capitales ~14 px, blanc 70 %). */}
+          <p className="hero-kick6 animate-fade-up">{TITLE[lang].kick}</p>
           {/* Le titre façon affiche des pins : 2e ligne en italique serif, bleu glacier */}
-          <h1 className="p-h1 p-h1-A animate-fade-up">
-            <span className="l1">{h.h1[0]}</span> <span className="l2">{h.h1[1]}</span>
+          {/* Le slogan sur DEUX lignes (21/11, gui) : seul « un jeu. » / « a game. » en italique serif bleu glacier. */}
+          <h1 className="p-h1 p-h1-A hero-h1-6 animate-fade-up">
+            <span className="l1">{TITLE[lang].l1}</span>
+            <span className="l1">{TITLE[lang].l2a}<em className="hero-it6">{TITLE[lang].l2b}</em></span>
           </h1>
           <p className="animate-fade-up delay-100" style={{
             fontSize: "clamp(1.1875rem, 1.5vw, 1.375rem)", color: "rgba(255,255,255,0.85)",

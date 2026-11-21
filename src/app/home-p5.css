@@ -1007,11 +1007,11 @@ body:has(.h7-page) .footer-panel .footer-attax { color: rgba(9,9,11,0.03) !impor
 @media (min-width: 861px) {
   .hero-peek { height: 270px; }
   .p5 .home-hero-copy { padding-bottom: 296px; }
-  .p5 .hero-card { min-height: min(calc(100vh - 24px), 860px) !important; }
+  .p5 .hero-card { min-height: min(calc(100vh - 24px), 800px) !important; }
 }
 @media (max-width: 860px) {
   .hero-peek { height: 170px; }
-  .p5 .home-hero-copy p { font-size: 1.125rem !important; }
+  .p5 .home-hero-copy p:not(.hero-kick6) { font-size: 1.125rem !important; }
   .hero-stats6 b { font-size: 0.75rem; }
 }
 
@@ -1028,3 +1028,11 @@ body:has(.h7-page) .footer-panel .footer-attax { color: rgba(9,9,11,0.03) !impor
   .p5 #league .st6-txt { padding-top: 0; }
   .p5 #league .lg6-ranks-side { margin-top: 2rem; }
 }
+
+/* Hero (21/11, gui) : repère lisible au-dessus du titre ; slogan sur deux lignes qui tiennent chacune sur une ligne */
+.hero-kick6 { margin: 0 0 1.25rem; font-family: var(--font-manrope), sans-serif; font-size: 0.875rem; font-weight: 600; font-variant-caps: all-small-caps; letter-spacing: 0.08em; color: rgba(255,255,255,0.7); }
+.pm .hero-h1-6 { font-size: min(5.6vw, 5.25rem); margin-bottom: 1.25rem; }
+.pm .hero-h1-6 .l1 { white-space: nowrap; }
+.hero-it6 { font-family: var(--font-serif), Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em; color: #C9D5F0; font-size: 1.08em; }
+@media (min-width: 861px) { .p5 .home-hero-copy { max-width: calc(clamp(2rem, 9vw, 9rem) + 660px); } }
+@media (max-width: 860px) { .pm .hero-h1-6 { font-size: 11vw; } .hero-kick6 { font-size: 0.8125rem; margin-bottom: 1rem; } }
