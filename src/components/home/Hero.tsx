@@ -93,13 +93,13 @@ export default function Hero() {
         </div>
 
         {/* Passe 5 : seulement le HAUT du téléphone, qui monte du bord bas de la carte, sous les boutons (jamais devant les
-            sportifs). Cadre dessiné en CSS (bords nets), écran = vraie capture de la page Match PENDANT UN ROUND, recadrée sur les barres de PV
-            et les scores bleu / rouge (store-assets/shots-2026-11-17 fn-09 FR, en/fn-05 EN → story/<langue>/hero-round-v2.webp). */}
+            sportifs). Cadre dessiné en CSS (bords nets), écran = vraie capture de la page Match pendant le round final, recadrée sur les deux
+            boxeurs face à face (store-assets/shots-2026-11-17 fn-30 FR, en/fn-24 EN → story/<langue>/hero-boxers.webp). */}
         <div className="hero-peek" aria-hidden="true">
           <div className="hero-peek-frame">
             <div className="hero-peek-screen">
               <div className="hero-peek-status"><b>9:41</b><i className="hero-peek-island" /><span className="hero-peek-icons"><i /><i /><i /><em /></span></div>
-              <Image src={`/screens/story/${lang}/hero-round-v2.webp`} alt="" width={522} height={590} priority sizes="280px" />
+              <Image src={`/screens/story/${lang}/hero-boxers.webp`} alt="" width={522} height={517} priority sizes="280px" />
             </div>
           </div>
         </div>
