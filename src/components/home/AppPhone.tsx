@@ -2,7 +2,15 @@ import Image from "next/image";
 
 // Téléphone de l'accueil (passe 6) : le même cadre CSS que le haut de téléphone du hero (bords nets, île, barre d'état
 // 9:41), et dedans une VRAIE capture de l'app (public/screens/story/<langue>/*.webp, 522 × 1017). Même taille partout.
-export default function AppPhone({ src, alt, dark = false }: { src: string; alt: string; dark?: boolean }) {
+/** baked = la capture contient déjà sa barre d'état (écrans de public/screens/app recadrés, 524 × 1072). */
+export default function AppPhone({ src, alt, dark = false, baked = false }: { src: string; alt: string; dark?: boolean; baked?: boolean }) {
+  if (baked) return (
+    <div className="ph6">
+      <div className="ph6-screen" style={{ background: dark ? "#0E141A" : "#EEF1F7" }}>
+        <Image className="ph6-baked" src={src} alt={alt} width={524} height={1072} sizes="(max-width: 760px) 66vw, 280px" />
+      </div>
+    </div>
+  );
   return (
     <div className="ph6">
       <div className="ph6-screen" style={{ background: dark ? "#0443FD" : "#EEF1F7" }}>

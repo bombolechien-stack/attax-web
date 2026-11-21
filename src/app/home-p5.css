@@ -502,3 +502,5 @@ body:has(.p5) .footer-panel .footer-top-bar img[alt="Attax"] { filter: brightnes
   .lg6-card .lg6-ranks li span { font-size: 0.8125rem; }
   .lg6-ranks-head span { font-size: 12px; }
 }
+.ph6-screen img.ph6-baked { margin-top: 0; }
+.fn6-item figcaption small { display: block; margin-top: 0.45rem; font-size: 1.0625rem; font-weight: 400; letter-spacing: 0; line-height: 1.5; color: var(--ink2); }

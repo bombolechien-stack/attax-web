@@ -155,7 +155,7 @@ export const T = {
       h2: ["A league a week.", "A story all season."],
       items: [
         { img: 6, k: "SEASON", t: ["One season.", "The whole world."], d: "The world ranking of effort. Your place moves every day." },
-        { img: 7, k: "DUO", t: ["Never alone.", "Your duo partner."], d: "From your 2nd league. You both hit your goal: +1 point each." },
+        { img: 7, k: "DUO", t: ["Never alone.", "Your duo partner."], d: "From your 2nd league. Each day you both hit your daily goal: +1 league point each." },
         { img: 8, k: "PROFILE", t: ["Your trophies.", "Your crown."], d: "Every league you win puts a trophy on your shelf." },
       ],
     },
@@ -550,7 +550,7 @@ export const T = {
       h2: ["Une ligue par semaine.", "Une histoire toute la saison."],
       items: [
         { img: 6, k: "SAISON", t: ["Une saison.", "Le monde entier."], d: "Le classement mondial à l'effort. Ta place bouge chaque jour." },
-        { img: 7, k: "BINÔME", t: ["Jamais seul.", "Ton binôme."], d: "Dès ta 2ème ligue. Objectif atteint à deux : +1 point chacun." },
+        { img: 7, k: "BINÔME", t: ["Jamais seul.", "Ton binôme."], d: "Dès ta 2e ligue. Chaque jour où vous atteignez tous les deux votre objectif : +1 point de ligue chacun." },
         { img: 8, k: "PROFIL", t: ["Ton palmarès.", "Ta couronne."], d: "Chaque ligue gagnée pose un trophée sur ton étagère." },
       ],
     },
