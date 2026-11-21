@@ -254,3 +254,9 @@ body:has(.sp) { background: #EEF1F7 !important; }
 .sp-checks.is-grid li:nth-child(-n+2) { border-top: 1px solid rgba(9,9,11,0.12); }
 @media (max-width: 760px) { .sp-checks.is-grid { grid-template-columns: 1fr; } .sp-checks.is-grid li:nth-child(2) { border-top: 0; } }
 @media (max-width: 760px) { .sp-checks li { font-size: 1.125rem; } }
+
+/* Fond d'origine de chaque page (21/11, retour du propriétaire) : couches posées sous le contenu */
+.sp-hero-bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+.sp-hero.is-full { min-height: calc(100vh - 24px); }
+.sp-hero.has-bg:not(.is-full) { min-height: 60vh; }
+@media (max-width: 860px) { .sp-hero.is-full { min-height: calc(100svh - 24px); } .sp-hero.has-bg:not(.is-full) { min-height: 0; } }

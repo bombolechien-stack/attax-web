@@ -4,7 +4,7 @@
 import Link from "next/link";
 import { useLang } from "@/lib/i18n";
 import "../site-seo-b.css";
-import { SitePage, PageHero, Block, Lines, HairList, FinalCta, AppleIcon } from "@/components/site/Site";
+import { SitePage, PageHero, ScanBg, Block, Lines, HairList, FinalCta, AppleIcon } from "@/components/site/Site";
 
 function heroTitle(s: string) {
   const l = s.split("\n");
@@ -119,7 +119,7 @@ const P: Record<Lang, {
       "Leagues of 8 players at your level",
       "Ranked leagues with friends, and custom leagues from 2 to 40 players",
       "A rank from Rookie to Legend, and a worldwide season",
-      "A duo partner of your rank, from your 2nd league",
+      "From your 2nd league, a duo partner is assigned to you to keep you going",
     ],
     different4: "The result feels less like a fitness tracker and more like a living competition.",
     secRealActivity: "Real Activity",
@@ -222,7 +222,7 @@ const P: Record<Lang, {
       "Des ligues de 8 joueurs de ton niveau",
       "Des ligues classées entre amis, et des ligues personnalisées de 2 à 40 joueurs",
       "Un rang de Rookie à Legend, et une saison mondiale",
-      "Un binôme de ton rang, dès ta 2ème ligue",
+      "Dès ta 2ème ligue, un binôme t'est attribué pour te motiver",
     ],
     different4: "Le résultat ressemble moins à un tracker fitness et plus à une compétition vivante.",
     secRealActivity: "Activité réelle",
@@ -299,7 +299,7 @@ export default function FitnessCompetitionApp() {
 
   return (
     <SitePage>
-      <PageHero poster kick={p.heroLabel} title={heroTitle(p.heroTitle)} lead={p.heroSubtitle} lead2={p.heroSubtitle2}>
+      <PageHero bg={<ScanBg name="boxing" />} kick={p.heroLabel} title={heroTitle(p.heroTitle)} lead={p.heroSubtitle} lead2={p.heroSubtitle2}>
         <a className="h7-btn h7-btn-light" href="/download/ios"><AppleIcon />{p.heroCta}</a>
       </PageHero>
 

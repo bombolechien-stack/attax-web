@@ -19,6 +19,13 @@ export default function DownloadPage() {
   return (
     <SitePage>
       <PageHero
+        full
+        bg={<>
+          <div style={{ position: "absolute", inset: 0, background: "#080808" }} />
+          <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 80% 60% at 70% 50%, rgba(30,30,60,0.9) 0%, rgba(8,8,8,1) 65%)" }} />
+          <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px)", backgroundSize: "80px 80px" }} />
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(8,8,8,0.4) 0%, transparent 30%, transparent 60%, rgba(8,8,8,0.95) 100%)" }} />
+        </>}
         kick={d.hero_label}
         title={<><span>{d.h1[0]}</span> <span><em>{d.h1[1]}</em></span></>}
         lead={d.subtitle}

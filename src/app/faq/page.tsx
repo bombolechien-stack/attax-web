@@ -25,7 +25,7 @@ export default function FaqPage() {
 
   return (
     <SitePage>
-      <PageHero kick={c.heroLabel} title={<Lines text={c.heroTitle} />} lead={c.heroSub}>
+      <PageHero bg={<></>} kick={c.heroLabel} title={<Lines text={c.heroTitle} />} lead={c.heroSub}>
         {c.categories.map((cat) => (
           <a key={cat.id} className="h7-btn h7-btn-ghost sp-chip" href={`#${cat.id}`}>{cat.label}</a>
         ))}

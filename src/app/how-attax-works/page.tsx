@@ -4,7 +4,7 @@
 import Link from "next/link";
 import { useLang } from "@/lib/i18n";
 import "../site-seo-a.css";
-import { SitePage, PageHero, Block, HairList, Lines, Reveal, FinalCta, AppleIcon } from "@/components/site/Site";
+import { SitePage, PageHero, ScanBg, Block, HairList, Lines, Reveal, FinalCta, AppleIcon } from "@/components/site/Site";
 
 /** Titre du héros : lignes séparées par \n, la dernière en italique serif (comme PinTitle). */
 function Title({ text }: { text: string }) {
@@ -197,7 +197,7 @@ const P: Record<Lang, {
     progressionH2: "Leagues and progression",
     progressionP1: "Competition becomes meaningful when progress is visible.",
     progressionP2: "A league is 8 players at your level, 7 days, a new opponent every day. The standings move every evening, and the league crowns 1 champion, then run it back with the same group, or start a new league. You can also play ranked leagues with your friends, or custom leagues from 2 to 40 players.",
-    progressionP3: "A rank follows you from league to league.\nFrom Rookie to Legend.\nA worldwide season ranking, where every pt counts.\nFrom your 2nd league, a duo partner of your rank.",
+    progressionP3: "A rank follows you from league to league.\nFrom Rookie to Legend.\nA worldwide season ranking, where every pt counts.\nFrom your 2nd league, a duo partner is assigned to you to keep you going.",
     progressionP4: "The ranking system creates long-term objectives beyond individual workouts.",
     progressionP5: "Instead of focusing exclusively on today's activity, players are encouraged to think about their progression across weeks and months.",
     progressionP6: "This transforms fitness from a short-term task into a long-term journey.",
@@ -301,7 +301,7 @@ const P: Record<Lang, {
     progressionH2: "Ligues et progression",
     progressionP1: "La compétition prend du sens quand les progrès sont visibles.",
     progressionP2: "Une ligue, c'est 8 joueurs de ton niveau, 7 jours, un nouvel adversaire chaque jour. Le classement bouge chaque soir, et la ligue couronne 1 champion, puis tu rejoues avec le même groupe, ou tu lances une nouvelle ligue. Tu peux aussi jouer des ligues classées avec tes amis, ou des ligues personnalisées de 2 à 40 joueurs.",
-    progressionP3: "Un rang te suit de ligue en ligue.\nDe Rookie à Legend.\nUn classement mondial de saison, où chaque pt compte.\nDès ta 2ème ligue, un binôme de ton rang.",
+    progressionP3: "Un rang te suit de ligue en ligue.\nDe Rookie à Legend.\nUn classement mondial de saison, où chaque pt compte.\nDès ta 2ème ligue, un binôme t'est attribué pour te motiver.",
     progressionP4: "Le système de classement crée des objectifs à long terme qui dépassent les séances individuelles.",
     progressionP5: "Au lieu de se concentrer exclusivement sur l'activité du jour, les joueurs sont encouragés à penser à leur progression sur des semaines et des mois.",
     progressionP6: "Cela transforme le fitness d'une tâche à court terme en un parcours à long terme.",
@@ -351,7 +351,7 @@ export default function HowAttaxWorks() {
 
   return (
     <SitePage>
-      <PageHero poster kick={p.heroLabel} title={<Title text={p.heroTitle} />} lead={p.heroSubtitle1} lead2={p.heroSubtitle2}>
+      <PageHero bg={<ScanBg name="sprint" />} kick={p.heroLabel} title={<Title text={p.heroTitle} />} lead={p.heroSubtitle1} lead2={p.heroSubtitle2}>
         <a className="h7-btn h7-btn-light" href="/download/ios"><AppleIcon />{p.heroCta}</a>
       </PageHero>
 

@@ -4,7 +4,7 @@
 import Link from "next/link";
 import { useLang } from "@/lib/i18n";
 import "../site-seo-b.css";
-import { SitePage, PageHero, Block, Lines, HairList, FinalCta, AppleIcon } from "@/components/site/Site";
+import { SitePage, PageHero, ScanBg, Block, Lines, HairList, FinalCta, AppleIcon } from "@/components/site/Site";
 
 function heroTitle(s: string) {
   const l = s.split("\n");
@@ -226,7 +226,7 @@ export default function AppleHealthFitnessGame() {
 
   return (
     <SitePage>
-      <PageHero kick={p.heroLabel} title={heroTitle(p.heroTitle)} lead={p.heroSubtitle1} lead2={p.heroSubtitle2}>
+      <PageHero bg={<ScanBg name="spin" />} kick={p.heroLabel} title={heroTitle(p.heroTitle)} lead={p.heroSubtitle1} lead2={p.heroSubtitle2}>
         <a className="h7-btn h7-btn-light" href="/download/ios"><AppleIcon />{p.heroCta}</a>
       </PageHero>
 

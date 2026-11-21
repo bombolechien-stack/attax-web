@@ -117,6 +117,8 @@ export default function StorePlatformPage({ platform }: { platform: Platform }) 
   return (
     <SitePage>
       <PageHero
+        full
+        bg={<div style={{ position: "absolute", inset: 0, background: "#05070B" }} />}
         kick={c.label}
         title={<><span>{c.h1[0]}</span> <span><em>{c.h1[1]}</em></span></>}
         lead={c.sub}

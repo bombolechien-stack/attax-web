@@ -67,7 +67,7 @@ export const FAQ_CONTENT: Record<"en" | "fr", FaqContent> = {
           { q: "Will I face players at my level?", a: "Yes. A few questions when you sign up set your starting level, and you join a league at your level. Then your results do the talking." },
           { q: "What's on my profile?", a: "Your streak, your unlocked moves, your badges, your trophies and your crowns." },
           { q: "What is the Season?", a: "A worldwide season ranking, based on effort: every pt counts. You can filter it by country." },
-          { q: "What is a duo partner?", a: "From your 2nd league, you get a duo partner of your rank, from another league. You both hit your daily goal: +1 point each. You can cheer each other on with quick messages." },
+          { q: "What is a duo partner?", a: "From your 2nd league, a duo partner is assigned to you to keep you going: a player of your rank, from another league. You both hit your daily goal: +1 point each. You can cheer each other on with quick messages." },
         ],
       },
       {
@@ -145,7 +145,7 @@ export const FAQ_CONTENT: Record<"en" | "fr", FaqContent> = {
           { q: "Vais-je affronter des joueurs de mon niveau ?", a: "Oui. Quelques questions à l'inscription fixent ton niveau de départ, et tu rejoins une ligue de ton niveau. Ensuite, ce sont tes résultats qui parlent." },
           { q: "Qu'y a-t-il sur mon profil ?", a: "Ta série, tes coups débloqués, tes badges, tes trophées et tes couronnes." },
           { q: "C'est quoi, la Saison ?", a: "Un classement mondial de saison, à l'effort : chaque pt compte. Tu peux le filtrer par pays." },
-          { q: "C'est quoi, le binôme ?", a: "Dès ta 2ème ligue, tu as un partenaire de ton rang, venu d'une autre ligue. Objectif du jour atteint à deux : +1 point chacun. Vous pouvez vous encourager avec des messages rapides." },
+          { q: "C'est quoi, le binôme ?", a: "Dès ta 2ème ligue, un binôme t'est attribué pour te motiver : un joueur de ton rang, venu d'une autre ligue. Objectif du jour atteint à deux : +1 point chacun. Vous pouvez vous encourager avec des messages rapides." },
         ],
       },
       {

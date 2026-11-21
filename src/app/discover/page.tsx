@@ -2,7 +2,7 @@
 
 // Découvrir (21/11) : système de l'accueil (src/components/site/Site.tsx). Mêmes textes (translations.ts → discover).
 import { useLang, useT } from "@/lib/i18n";
-import { SitePage, PageHero, Sec, HairList, Phones, Reveal, FinalCta, AppleIcon } from "@/components/site/Site";
+import { SitePage, PageHero, PhotoBg, Sec, HairList, Phones, Reveal, FinalCta, AppleIcon } from "@/components/site/Site";
 
 export default function DiscoverPage() {
   const t = useT();
@@ -12,7 +12,8 @@ export default function DiscoverPage() {
   return (
     <SitePage>
       <PageHero
-        poster
+        full
+        bg={<PhotoBg src="/images/discover-hero.png" alt="Discover Attax" pos="center 30%" />}
         kick={d.hero_label}
         title={<><span>{d.h1[0]}</span> <span><em>{d.h1[1]}</em></span></>}
         lead={d.subtitle}

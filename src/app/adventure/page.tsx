@@ -2,7 +2,7 @@
 
 // L'aventure (21/11) : système de l'accueil (src/components/site/Site.tsx). Mêmes textes (translations.ts → adventure).
 import { useT } from "@/lib/i18n";
-import { SitePage, PageHero, Sec, Head, HairList, Reveal, FinalCta, AppleIcon } from "@/components/site/Site";
+import { SitePage, PageHero, PhotoBg, Sec, Head, HairList, Reveal, FinalCta, AppleIcon } from "@/components/site/Site";
 
 export default function AdventurePage() {
   const t = useT();
@@ -11,7 +11,8 @@ export default function AdventurePage() {
   return (
     <SitePage>
       <PageHero
-        poster
+        full
+        bg={<PhotoBg src="/images/cycling-race.jpg" alt="Cycling is Attax" pos="center 40%" a={[0.96, 0.72, 0.2]} b={0.9} />}
         kick={a.hero_label}
         title={<><span>{a.h1[0]}</span> <span><em>{a.h1[1]}</em></span></>}
         lead={a.subtitle}

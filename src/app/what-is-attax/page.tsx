@@ -4,7 +4,7 @@
 import Link from "next/link";
 import { useLang } from "@/lib/i18n";
 import "../site-seo-a.css";
-import { SitePage, PageHero, Block, HairList, Lines, Reveal, FinalCta, AppleIcon } from "@/components/site/Site";
+import { SitePage, PageHero, ScanBg, Block, HairList, Lines, Reveal, FinalCta, AppleIcon } from "@/components/site/Site";
 
 /** Titre du héros : lignes séparées par \n, la dernière en italique serif (comme PinTitle). */
 function Title({ text }: { text: string }) {
@@ -153,7 +153,7 @@ const P: Record<Lang, {
       { title: "Daily Competition", body: "Every day, a new opponent from your league. A match is 7 rounds: your previous 6 days, plus today. Each day is a round, won by the player with the most pts. A lost round costs 1 HP, the final round 2 HP. The past rounds are revealed from 10 AM to 5:30 PM, the final round is live from 7 PM, and at 9:30 PM, Fight Night decides. Never a draw." },
       { title: "Strategic Decisions", body: "Every morning, 3 cards are drawn (the same for both players) from 12 cards in 4 families: Attack, Defense, Sabotage, Trick. Pick one before 1 PM. Your opponent's card stays secret until 9:30 PM. The right card can flip a close match." },
       { title: "League Progression", body: "A league is 8 players at your level, 7 days, and 1 champion who leaves with the crown. Across leagues, a rank follows you from Rookie to Legend, and a worldwide season ranking rewards every pt of effort." },
-      { title: "Play Together", body: "Play ranked leagues with your friends, or custom leagues from 2 to 40 players: share your code, they join in seconds. From your 2nd league, a duo partner of your rank, from another league, keeps you going. And before each fight, send your opponent a quick message." },
+      { title: "Play Together", body: "Play ranked leagues with your friends, or custom leagues from 2 to 40 players: share your code, they join in seconds. From your 2nd league, a duo partner is assigned to you to keep you going. And before each fight, send your opponent a quick message." },
     ],
 
     whyLabel: "Why It Works",
@@ -250,7 +250,7 @@ const P: Record<Lang, {
       { title: "Compétition quotidienne", body: "Chaque jour, un nouvel adversaire de ta ligue. Un match se joue en 7 rounds : tes 6 jours d'avant, plus aujourd'hui. Chaque jour est un round, gagné par celui qui a le plus de pts. Un round perdu coûte 1 PV, le round final 2 PV. Les rounds passés se dévoilent de 10h à 17h30, le round final se joue en direct dès 19h, et à 21h30, le Soir de combat décide. Jamais de match nul." },
       { title: "Décisions stratégiques", body: "Chaque matin, 3 cartes sont tirées (les mêmes pour les deux joueurs) parmi 12 cartes en 4 familles : Attaque, Défense, Sabotage, Ruse. Choisis-en une avant 13h. Celle de ton adversaire reste secrète jusqu'à 21h30. La bonne carte peut renverser un match serré." },
       { title: "Progression en ligue", body: "Une ligue, c'est 8 joueurs de ton niveau, 7 jours, et 1 champion qui repart avec la couronne. De ligue en ligue, un rang te suit de Rookie à Legend, et un classement mondial de saison récompense chaque pt d'effort." },
-      { title: "Jouer ensemble", body: "Joue des ligues classées avec tes amis, ou des ligues personnalisées de 2 à 40 joueurs : partage ton code, ils te rejoignent en quelques secondes. Dès ta 2ème ligue, un binôme de ton rang, venu d'une autre ligue, te pousse à bouger. Et avant chaque combat, envoie un message rapide à ton adversaire." },
+      { title: "Jouer ensemble", body: "Joue des ligues classées avec tes amis, ou des ligues personnalisées de 2 à 40 joueurs : partage ton code, ils te rejoignent en quelques secondes. Dès ta 2ème ligue, un binôme t'est attribué pour te motiver. Et avant chaque combat, envoie un message rapide à ton adversaire." },
     ],
 
     whyLabel: "Pourquoi Ça Marche",
@@ -317,7 +317,7 @@ export default function WhatIsAttax() {
 
   return (
     <SitePage>
-      <PageHero poster kick={p.heroLabel} title={<Title text={p.heroTitle} />} lead={p.heroSubtitle1} lead2={p.heroSubtitle2}>
+      <PageHero bg={<ScanBg name="run-woman" />} kick={p.heroLabel} title={<Title text={p.heroTitle} />} lead={p.heroSubtitle1} lead2={p.heroSubtitle2}>
         <a className="h7-btn h7-btn-light" href="/download/ios"><AppleIcon />{p.heroCta}</a>
       </PageHero>
 

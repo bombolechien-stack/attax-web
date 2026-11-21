@@ -11,6 +11,8 @@ import ArenaSection from "@/components/live/ArenaSection";
 import AppPhone from "@/components/home/AppPhone";
 import { AppleIcon, PlayIcon } from "@/components/live/StoreIcons";
 import { useInView } from "@/hooks/useInView";
+import ScanAthlete from "@/components/scan/ScanAthlete";
+import type { AthleteName } from "@/components/scan/athletes";
 
 export { AppleIcon, PlayIcon, AppPhone };
 
@@ -21,22 +23,25 @@ export function SitePage({ children }: { children: React.ReactNode }) {
 
 /** En-tête de page : la carte sombre arrondie du hero de l'accueil (12 px de marge, rayon 24 px), sans vidéo.
  *  poster = l'image scanlines des sportifs du hero (sinon, seulement la trame fine). */
-export function PageHero({ kick, title, lead, lead2, meta, children, poster = false, compact = false, stats, phone }: {
+export function PageHero({ kick, title, lead, lead2, meta, children, poster = false, compact = false, stats, phone, bg, full = false }: {
   kick?: React.ReactNode; title: React.ReactNode; lead?: React.ReactNode; lead2?: React.ReactNode; meta?: React.ReactNode;
   children?: React.ReactNode; poster?: boolean; compact?: boolean; stats?: readonly { title: string; sub?: string }[];
   /** phone = capture réelle (public/screens/story/...) dont le haut monte du bord bas de la carte, comme sur l'accueil */
   phone?: { src: string; alt: string; dark?: boolean };
+  /** fond d'origine de l'en-tête de la page (photo, athlète en scanlines, dégradé) : gardé tel quel (accord du 21/11) */
+  bg?: React.ReactNode; full?: boolean;
 }) {
   return (
     <div className="sp-hero-wrap">
-      <div className={`sp-hero${compact ? " is-compact" : ""}${phone ? " has-phone" : ""}`}>
-        {poster && (
+      <div className={`sp-hero${compact ? " is-compact" : ""}${phone ? " has-phone" : ""}${full ? " is-full" : ""}${bg ? " has-bg" : ""}`}>
+        {bg && <div className="sp-hero-bg" aria-hidden="true">{bg}</div>}
+        {!bg && poster && (
           <div className="sp-hero-poster" aria-hidden="true">
             <Image src="/videos/hero-scan-poster.jpg" alt="" fill priority sizes="(max-width: 860px) 100vw, 72vw" />
           </div>
         )}
-        <div className="sp-hero-scan" aria-hidden="true" />
-        <div className="sp-hero-shade" aria-hidden="true" />
+        {!bg && <div className="sp-hero-scan" aria-hidden="true" />}
+        {!bg && <div className="sp-hero-shade" aria-hidden="true" />}
         <div className="sp-hero-nav"><PageNavbar pill /></div>
         <div className="sp-hero-in">
           {kick && <p className="hero-kick6 sp-anim">{kick}</p>}
@@ -54,6 +59,29 @@ export function PageHero({ kick, title, lead, lead2, meta, children, poster = fa
         {phone && <div className="sp-hero-phone"><AppPhone src={phone.src} alt={phone.alt} dark={phone.dark} /></div>}
       </div>
     </div>
+  );
+}
+
+/** Fond photo d'origine des en-têtes (photo + trame scan-overlay + deux dégradés), valeurs reprises de chaque page. */
+export function PhotoBg({ src, alt, pos, c = "10,10,10", a = [0.96, 0.75, 0.25], b = 0.92, priority = true }: { src: string; alt: string; pos: string; c?: string; a?: [number, number, number]; b?: number; priority?: boolean }) {
+  return (
+    <>
+      <Image src={src} alt={alt} fill sizes="100vw" style={{ objectFit: "cover", objectPosition: pos }} priority={priority} />
+      <div className="scan-overlay" />
+      <div style={{ position: "absolute", inset: 0, background: `linear-gradient(to right, rgba(${c},${a[0]}) 0%, rgba(${c},${a[1]}) 55%, rgba(${c},${a[2]}) 100%)` }} />
+      <div style={{ position: "absolute", inset: 0, background: `linear-gradient(to top, rgba(${c},${b}) 0%, transparent 50%)` }} />
+    </>
+  );
+}
+
+/** Fond d'origine des pages de référence : athlète en scanlines à droite, lignes fines, dégradé. */
+export function ScanBg({ name }: { name: AthleteName }) {
+  return (
+    <>
+      <div className="scan-hero-lines" />
+      <div className="scan-hero-figure"><ScanAthlete name={name} height="100%" /></div>
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(5,5,5,0.9) 0%, rgba(5,5,5,0.6) 55%, rgba(5,5,5,0.25) 100%)" }} />
+    </>
   );
 }
 

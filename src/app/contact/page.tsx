@@ -4,7 +4,7 @@
 // formulaire inchangé (POST /api/contact).
 import { useState } from "react";
 import { useT } from "@/lib/i18n";
-import { SitePage, PageHero, Sec, Reveal, FinalCta } from "@/components/site/Site";
+import { SitePage, PageHero, PhotoBg, Sec, Reveal, FinalCta } from "@/components/site/Site";
 
 export default function ContactPage() {
   const t = useT();
@@ -39,7 +39,7 @@ export default function ContactPage() {
 
   return (
     <SitePage>
-      <PageHero kick={c.hero_label} title={c.h1} lead={c.subtitle} stats={c.hero_stats} />
+      <PageHero full bg={<PhotoBg src="/images/strength.jpg" alt="Contact Attax" pos="center 30%" c="13,13,13" a={[0.95, 0.75, 0.3]} b={0.8} />} kick={c.hero_label} title={c.h1} lead={c.subtitle} stats={c.hero_stats} />
 
       <section className="sp-sec">
         <div className="p5-wrap sp-contact">
