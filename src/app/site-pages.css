@@ -260,3 +260,7 @@ body:has(.sp) { background: #EEF1F7 !important; }
 .sp-hero.is-full { min-height: calc(100vh - 24px); }
 .sp-hero.has-bg:not(.is-full) { min-height: 60vh; }
 @media (max-width: 860px) { .sp-hero.is-full { min-height: calc(100svh - 24px); } .sp-hero.has-bg:not(.is-full) { min-height: 0; } }
+.sp-hero.is-compact { min-height: 0 !important; }
+.sp-hero.is-compact .sp-hero-in { padding-top: clamp(3rem, 7vh, 4.5rem); padding-bottom: clamp(3rem, 6vh, 4rem); }
+.sp-prose ul { list-style: disc; } .sp-prose ol { list-style: decimal; }
+.sp-prose ul.sp-dots, .sp-prose .sp-list, .sp-prose .sp-toc ol { list-style: none; }

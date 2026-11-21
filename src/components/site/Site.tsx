@@ -5,6 +5,7 @@
 import "@/app/home-p5.css";
 import "@/app/site-pages.css";
 import type React from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import PageNavbar from "@/components/PageNavbar";
 import ArenaSection from "@/components/live/ArenaSection";
@@ -165,19 +166,38 @@ export function Lines({ text }: { text: string }) {
   return <>{parts.map((l, i) => <span key={i}>{l}{i < parts.length - 1 && <br />}</span>)}</>;
 }
 
-/** Article (pages juridiques) : sommaire optionnel + colonne de lecture de 720 px. */
-export function Article({ toc, tocLabel, children }: { toc?: { id: string; label: string }[]; tocLabel?: string; children: React.ReactNode }) {
+/** Article (pages juridiques) : sommaire (donné, ou construit depuis les h2 du texte avec autoToc) + colonne de 720 px. */
+export function Article({ toc, tocLabel, autoToc = false, tocKey, children, foot }: { toc?: { id: string; label: string }[]; tocLabel?: string; autoToc?: boolean; tocKey?: string; children: React.ReactNode; foot?: React.ReactNode }) {
+  const proseRef = useRef<HTMLDivElement>(null);
+  const [auto, setAuto] = useState<{ id: string; label: string }[]>([]);
+  useEffect(() => {
+    if (!autoToc || !proseRef.current) return;
+    const used = new Set<string>();
+    const items = [...proseRef.current.querySelectorAll("h2")].map((h) => {
+      const label = (h.textContent ?? "").trim();
+      let id = label.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "s";
+      while (used.has(id)) id += "-2";
+      used.add(id); h.id = id;
+      return { id, label };
+    });
+    setAuto(items);
+  }, [autoToc, tocKey]);
+  const list = autoToc ? auto : toc;
+  const hasToc = autoToc || (toc && toc.length > 0);
   return (
     <section className="sp-article">
-      <div className={`p5-wrap`}>
-        <div className={`sp-article-grid${toc && toc.length ? "" : " no-toc"}`}>
-          {toc && toc.length > 0 && (
+      <div className="p5-wrap">
+        <div className={`sp-article-grid${hasToc ? "" : " no-toc"}`}>
+          {hasToc && (
             <nav className="sp-toc" aria-label={tocLabel}>
               <p>{tocLabel}</p>
-              <ol>{toc.map((t) => <li key={t.id}><a href={`#${t.id}`}>{t.label}</a></li>)}</ol>
+              <ol>{(list ?? []).map((t) => <li key={t.id}><a href={`#${t.id}`}>{t.label}</a></li>)}</ol>
             </nav>
           )}
-          <div className="sp-prose">{children}</div>
+          <div>
+            <div ref={proseRef} className="sp-prose">{children}</div>
+            {foot && <div className="sp-article-foot">{foot}</div>}
+          </div>
         </div>
       </div>
     </section>
