@@ -12,15 +12,17 @@ import AppPhone from "./AppPhone";
 // _kit/build/img/app/v3/opponent-sophie.png (unité u = 1 px de la capture affichée à 899 px de large).
 const COPY = {
   en: {
+    kick: "01 · 8 AM", big: "8 AM",
     title: ["Every day,", "a new opponent."] as [string, string],
     line: "8 AM. Sophie, Pro II. The match begins.",
-    kick: "MATCH 6 · YOUR OPPONENT",
+    sheet: "MATCH 6 · YOUR OPPONENT",
     stats: [["FAVORITE SPORT", "Swimming", ""], ["AVERAGE WORKOUT", "56 min", ""], ["PER DAY", "506 pts", "on average"], ["HEAD TO HEAD", "1st duel", "between you"]],
   },
   fr: {
+    kick: "01 · 8h", big: "8h",
     title: ["Chaque jour,", "un nouvel adversaire."] as [string, string],
     line: "8h. Sophie, Pro II. Le match commence.",
-    kick: "MATCH 6 · TON ADVERSAIRE",
+    sheet: "MATCH 6 · TON ADVERSAIRE",
     stats: [["SPORT FAVORI", "Natation", ""], ["SÉANCE MOYENNE", "56 min", ""], ["PAR JOUR", "506 pts", "en moyenne"], ["FACE À FACE", "1er duel", "entre vous"]],
   },
 };
@@ -30,11 +32,11 @@ export default function Opponent6() {
   const c = COPY[lang];
   const { ref, visible } = useInView<HTMLDivElement>(0.3, { oneShot: true });
   return (
-    <Story6 id="opponent" title={c.title} line={c.line}>
+    <Story6 id="opponent" kicker={c.kick} big={c.big} title={c.title} line={c.line} photo={{ src: "/images/story/morning.webp", pos: "50% 55%" }}>
       <div className="st6-phone">
         <AppPhone>
           <div ref={ref} className={`opp6${visible ? " is-in" : ""}`}>
-            <p className="opp6-kick">{c.kick}</p>
+            <p className="opp6-kick">{c.sheet}</p>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img className="opp6-av" src="/league/av-1.webp" alt="" />
             <p className="opp6-name">Sophie</p>

@@ -39,7 +39,7 @@ const ROUNDS: Round[] = [
 ];
 // Le déroulé d'un round (secondes depuis son début).
 // Les deux scores comptent ensemble (comme l'app), s'arrêtent ensemble, puis le coup.
-const T_ME0 = 0.5, T_ME1 = 2.1, T_OPP0 = 0.5, T_OPP1 = 2.1, T_HIT = 2.3, T_FADE = 3.6, ROUND_LEN = 4.3;
+const T_ME0 = 0, T_ME1 = 2.0, T_OPP0 = 0, T_OPP1 = 2.0, T_HIT = 2.3, T_FADE = 3.6, ROUND_LEN = 4.3;
 const VERDICT_LEN = 3.6, CYCLE = ROUNDS.length * ROUND_LEN + VERDICT_LEN;
 
 const COPY = {
@@ -136,7 +136,7 @@ export default function DailyMatch() {
   return (
     <section id="daily-match" className="mr-section p5-sec p-lines p-lines-light">
       <div className="p5-wrap">
-        <SectionHead label={m.label} title={[m.h2[0], m.h2[1]]} lead={m.subtitle} />
+        <SectionHead label={lang === "fr" ? "03 · 10h → 17h30" : "03 · 10 AM → 5:30 PM"} title={[m.h2[0], m.h2[1]]} lead={m.subtitle} big={lang === "fr" ? "7 PV" : "7 HP"} />
       </div>
 
       {/* L'écran Match de l'app, agrandi */}

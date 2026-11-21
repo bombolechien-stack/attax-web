@@ -630,3 +630,95 @@ body:has(.p5) .footer-panel .footer-top-bar img[alt="Attax"] { filter: brightnes
 .tw6-win { width: min(calc(74svh * 0.48), 360px, 54%); }
 .tw6-card { width: min(260px, 40%); }
 @media (max-width: 900px) { .st6-phone { width: min(320px, 84%); } .tw6-win { width: 54%; } }
+
+/* ════ PASSE PREMIUM (21/11) : vrai appareil, scènes, typographie éditoriale, photos de campagne, chorégraphie ════ */
+
+/* 1. L'appareil : cadre titane noir, reflet de bord, île, reflet de verre, ombres profondes et superposées */
+.ph6 { position: relative; padding: 3%; border-radius: 15.5% / 7.4%;
+  background: linear-gradient(140deg, #4A4D53 0%, #1C1D20 18%, #0E0F11 50%, #1F2024 82%, #45484E 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.28), inset 0 0 0 2px rgba(0,0,0,0.9), inset 0 0 0 3.5px #2A2C30, inset 0 0 0 5px #08090A,
+    0 1px 2px rgba(9,12,18,0.25), 0 12px 24px -8px rgba(9,12,18,0.28), 0 40px 70px -24px rgba(9,12,18,0.42), 0 90px 140px -50px rgba(9,12,18,0.38); }
+.ph6::before { content: ""; position: absolute; right: -1.4%; top: 21%; width: 1.6%; height: 10%; border-radius: 0 3px 3px 0; background: linear-gradient(90deg, #2A2C30, #55585E); }
+.ph6::after { content: ""; position: absolute; inset: 3%; border-radius: 12.8% / 6.1%; pointer-events: none; z-index: 3;
+  background: linear-gradient(118deg, rgba(255,255,255,0.20) 0%, rgba(255,255,255,0.07) 22%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 72%, rgba(255,255,255,0.05) 100%); }
+.ph6-screen { border-radius: 12.8% / 6.1%; }
+.ph6-island { background: #000; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06); }
+
+/* 2. Les chapitres : scène arrondie, téléphone qui déborde, photo noir et blanc */
+.st6 { position: relative; padding: clamp(3.5rem, 6vw, 5.5rem) 0; }
+.st6-grid { grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr); gap: clamp(2.5rem, 6vw, 6rem); }
+.st6-txt { position: relative; }
+.st6-vis { position: relative; display: flex; justify-content: center; align-items: center; padding: 0 0; min-height: calc(min(78svh, 820px) * 0.92); }
+.st6-stage { position: absolute; left: 0; right: 0; top: 9%; bottom: 9%; border-radius: 32px; overflow: hidden;
+  background: repeating-linear-gradient(to bottom, rgba(11,17,22,0.035) 0 1px, transparent 1px 4px), linear-gradient(180deg, #FFFFFF 0%, #F6F8FB 45%, #E9EDF4 100%);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.9) inset, 0 30px 60px -40px rgba(14,20,26,0.25); }
+.st6-photo { position: absolute; top: 0; bottom: 0; width: 58%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.06); }
+.st6-vis .st6-photo { right: 0; }
+.st6.is-rev .st6-vis .st6-photo { right: auto; left: 0; }
+.st6-vis.has-photo .st6-dev { margin-right: 30%; }
+.st6.is-rev .st6-vis.has-photo .st6-dev { margin-right: 0; margin-left: 30%; }
+.st6-dev { position: relative; z-index: 2; display: flex; justify-content: center; transform: perspective(1800px) rotateY(-11deg) rotateX(5deg) translateY(28px); transition: transform 1.4s cubic-bezier(0.16,1,0.3,1); }
+.st6.is-rev .st6-dev { transform: perspective(1800px) rotateY(11deg) rotateX(5deg) translateY(28px); }
+.st6-vis.is-in .st6-dev, .st6.is-rev .st6-vis.is-in .st6-dev { transform: none; }
+.st6-phone { width: min(calc(min(78svh, 820px) * 0.475), 400px, 100%); }
+
+/* 3. Typographie éditoriale */
+.st6-big, .p5-head-l .st6-big { position: absolute; z-index: -1; left: -0.04em; top: -0.62em; font-weight: 700; font-size: clamp(8rem, 17vw, 15rem); line-height: 1; letter-spacing: -0.06em; color: rgba(9,9,11,0.045); white-space: nowrap; pointer-events: none; user-select: none; }
+.p5-head-l { position: relative; isolation: isolate; }
+.st6-txt { isolation: isolate; }
+.st6-kick, .p5 .p5-head .st6-kick { margin: 0 0 1.25rem; font-family: var(--font-mono), ui-monospace, monospace; font-size: 0.9375rem; font-weight: 500; font-variant-caps: all-small-caps; letter-spacing: 0.08em; color: var(--blue); }
+.st6-h2, .p5 #daily-match .p5-h2 { font-weight: 500; font-size: clamp(2.75rem, 5.6vw, 5rem); line-height: 0.98; letter-spacing: -0.03em; color: var(--ink); }
+.st6-line, .p5 #daily-match .p5-lead { margin-top: 1.5rem; font-size: clamp(1.1875rem, 1.4vw, 1.25rem); line-height: 1.5; color: var(--ink); max-width: 31rem; }
+.re6 b { font-size: 1.1875rem; }
+.re6 span { font-size: 1.0625rem; color: #3A3F46; }
+
+/* 4. Chapitre 04 épinglé : la section fait 260 % de l'écran, son contenu reste à l'écran */
+.st6.is-pin { height: 260vh; padding: 0; }
+.st6.is-pin .st6-sticky { position: sticky; top: 0; height: 100vh; display: flex; align-items: center; }
+.st6.is-pin .st6-sticky > .st6-grid { width: 100%; }
+.tw6 { position: relative; display: flex; justify-content: center; width: 100%; }
+.tw6-phone { position: relative; z-index: 1; }
+.tw6-screens { position: relative; }
+.tw6-screens img { display: block; width: 100%; height: auto; margin-top: -2.2cqw; transition: opacity 0.7s cubic-bezier(0.65,0,0.35,1); }
+.tw6-screens img + img { position: absolute; left: 0; top: 0; }
+.ph6-html { transition: background-color 0.7s ease; }
+.tw6 .tw6-card { position: absolute; z-index: 2; left: -4%; top: 30%; width: min(200px, 38%); transition: opacity 0.6s ease, transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+
+/* 5. La ligue : la carte blanche déborde de la scène */
+.p5 #league .st6-vis .lg6-card { position: relative; z-index: 2; box-shadow: 0 2px 4px rgba(9,12,18,0.06), 0 40px 80px -30px rgba(9,12,18,0.35); }
+.p5 #league .st6-vis.has-photo .st6-dev { margin-left: 22%; }
+
+/* 6. Appel final plus riche : bleu en profondeur, scanlines, boutons en pilule avec ombre */
+.dl6b .dl6-card { background: radial-gradient(120% 90% at 0% 0%, #2D63FF 0%, #0443FD 42%, #0233C4 100%); box-shadow: 0 50px 100px -50px rgba(2,40,160,0.6); }
+.dl6b .dl6-card::before { background: repeating-linear-gradient(to bottom, rgba(255,255,255,0.07) 0 1px, transparent 1px 4px); -webkit-mask-image: linear-gradient(90deg, #000 0%, rgba(0,0,0,0.35) 60%, #000 100%); mask-image: linear-gradient(90deg, #000 0%, rgba(0,0,0,0.35) 60%, #000 100%); }
+.dl6b .dl6-main { box-shadow: 0 10px 24px -10px rgba(0,10,60,0.55); }
+.dl6b .dl6-phone { width: 330px; margin-top: 1rem; transform: rotate(-4deg); transform-origin: 50% 100%; }
+
+@media (max-width: 900px) {
+  .st6-grid { grid-template-columns: 1fr; }
+  .st6-vis { min-height: 0; padding: 2.5rem 0; }
+  .st6-stage { top: 0; bottom: 0; border-radius: 26px; }
+  .st6-photo { width: 64%; }
+  .st6-vis.has-photo .st6-dev { margin-right: 22%; }
+  .st6.is-rev .st6-vis.has-photo .st6-dev { margin-left: 22%; }
+  .st6-phone { width: min(270px, 72%); }
+  .st6-vis.has-photo .st6-phone { width: min(250px, 88%); }
+  .st6-big, .p5-head-l .st6-big { font-size: 7.5rem; top: -0.5em; }
+  .st6-h2, .p5 #daily-match .p5-h2 { font-size: clamp(2.5rem, 11vw, 2.9rem); }
+  .tw6 .tw6-card { width: 40%; left: -2%; }
+  .p5 #league .st6-vis.has-photo .st6-dev { margin-left: 0; width: 100%; }
+  .p5 #league .st6-vis { padding: 2rem 0; }
+  .dl6b .dl6-phone { width: 250px; }
+}
+@media (prefers-reduced-motion: reduce) { .st6-dev { transform: none !important; transition: none; } }
+.st6-dev { width: 100%; box-sizing: border-box; }
+.st6-vis.has-photo .st6-dev { margin: 0 !important; padding-right: 36%; }
+.st6.is-rev .st6-vis.has-photo .st6-dev { padding-right: 0; padding-left: 36%; }
+.p5 #league .st6-vis.has-photo .st6-dev { padding-left: 24%; }
+.st6-h2, .p5 #daily-match .p5-h2 { font-size: clamp(2.75rem, 5.2vw, 4.5rem); }
+@media (max-width: 900px) {
+  .st6-vis.has-photo .st6-dev { padding-right: 26%; }
+  .st6.is-rev .st6-vis.has-photo .st6-dev { padding-left: 26%; }
+  .p5 #league .st6-vis.has-photo .st6-dev { padding: 0 !important; }
+}

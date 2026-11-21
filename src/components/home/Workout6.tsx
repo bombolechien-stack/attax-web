@@ -9,6 +9,7 @@ import ICONS from "./sportIcons.json";
 // l'anneau « pts aujourd'hui ») + trois réassurances, une ligne chacune, avec les icônes de l'app (MaterialCommunityIcons).
 const COPY = {
   en: {
+    kick: "02 · All day", big: "864",
     title: ["Your workout", "becomes points."] as [string, string],
     line: "Your watch measures your effort. Your heart rate and your steps set the score.",
     alt: "The Activity screen of Attax: today's pts",
@@ -19,6 +20,7 @@ const COPY = {
     ],
   },
   fr: {
+    kick: "02 · Toute la journée", big: "864",
     title: ["Ta séance devient", "des points."] as [string, string],
     line: "Ta montre mesure ton effort. Ton cœur et tes pas font le score.",
     alt: "L'écran Activités d'Attax : les pts du jour",
@@ -34,7 +36,7 @@ export default function Workout6() {
   const { lang } = useLang();
   const c = COPY[lang];
   return (
-    <Story6 id="workout" title={c.title} line={c.line} reverse extra={
+    <Story6 id="workout" kicker={c.kick} big={c.big} title={c.title} line={c.line} reverse photo={{ src: "/images/story/training.webp", pos: "40% 50%" }} extra={
       <ul className="re6">
         {c.items.map((it) => (
           <li key={it.icon}>
