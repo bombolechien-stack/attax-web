@@ -104,8 +104,12 @@ export default function ScrollNav() {
           {/* Desktop: right CTAs */}
           <div className="scroll-nav-ctas" style={{ display: "flex", alignItems: "center", gap: "12px", flex: 1, justifyContent: "flex-end" }}>
             <div data-fade="1" style={{ opacity: 0 }}><LangSwitcher light /></div>
-            <a href="/download" data-fade="1" className="nav-pill-cta" style={{ display: "inline-flex", alignItems: "center", background: "#0B0B0C", color: "#fff", fontWeight: 500, fontSize: "0.875rem", padding: "9px 18px", borderRadius: "999px", textDecoration: "none", opacity: 0, whiteSpace: "nowrap" }}>
-              {lang === "fr" ? "Télécharger" : "Download"}
+            {/* Les deux boutons des stores (comme avant), à la place du seul « Télécharger » */}
+            <a href="/download/ios" data-fade="1" style={{ display: "inline-flex", alignItems: "center", gap: "6px", background: "#0B0B0C", color: "#fff", fontWeight: 700, fontSize: "0.8125rem", padding: "8px 15px", borderRadius: "999px", textDecoration: "none", opacity: 0, whiteSpace: "nowrap", boxShadow: "0 4px 12px -6px rgba(0,0,0,0.4)" }}>
+              <AppleIcon /> iOS
+            </a>
+            <a href="/download/android" data-fade="1" style={{ display: "inline-flex", alignItems: "center", gap: "6px", background: "#FFFFFF", color: "#0B0B0C", fontWeight: 700, fontSize: "0.8125rem", padding: "8px 15px", borderRadius: "999px", textDecoration: "none", opacity: 0, whiteSpace: "nowrap", border: "1px solid rgba(11,17,22,0.12)" }}>
+              <GooglePlayIcon /> Android
             </a>
           </div>
 

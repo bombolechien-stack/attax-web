@@ -798,3 +798,26 @@ body:has(.p5) .footer-panel .footer-top-bar img[alt="Attax"] { filter: brightnes
   .p5 .hero-ctas { flex-direction: column; align-items: stretch; bottom: 70px; }
   .p5 .hero-ctas a { white-space: nowrap; justify-content: center; }
 }
+
+/* Hero (21/11, suite) : bloc de gauche décalé vers la droite (moins de vide avant les sportifs) ; chiffres en bas à droite */
+@media (min-width: 861px) {
+  .p5 .home-hero-copy { padding-left: clamp(2rem, 9vw, 9rem); max-width: calc(clamp(2rem, 9vw, 9rem) + 520px); }
+  .p5 .hero-peek { left: clamp(2rem, 9vw, 9rem); }
+  .p5 .hero-ctas { left: calc(clamp(2rem, 9vw, 9rem) + 272px + 28px); }
+}
+.hero-stats6 { position: absolute; z-index: 5; right: clamp(2rem, 4vw, 4rem); bottom: clamp(1.75rem, 3vw, 2.5rem); display: flex; padding-top: 1.1rem; border-top: 1px solid rgba(255,255,255,0.12); font-family: var(--font-manrope), sans-serif; }
+.hero-stats6 > div { padding: 0 1.6rem; border-left: 1px solid rgba(255,255,255,0.1); }
+.hero-stats6 > div:first-child { padding-left: 0; border-left: 0; }
+.hero-stats6 > div:last-child { padding-right: 0; }
+.hero-stats6 b { display: block; font-size: 0.9375rem; font-weight: 500; color: #FFFFFF; margin-bottom: 4px; white-space: nowrap; }
+.hero-stats6 span { display: block; font-size: 0.8125rem; color: rgba(255,255,255,0.55); white-space: nowrap; }
+@media (max-width: 860px) {
+  .hero-stats6 { position: relative; right: auto; bottom: auto; margin: 0 1.5rem 1.5rem; flex-wrap: wrap; gap: 0.9rem 0; }
+  .hero-stats6 > div { padding: 0 0.9rem; }
+  .hero-stats6 b { font-size: 0.8125rem; } .hero-stats6 span { font-size: 0.6875rem; white-space: normal; }
+}
+@media (max-width: 860px) {
+  .hero-stats6 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; }
+  .hero-stats6 > div { padding: 0 0.6rem; }
+  .hero-stats6 b { white-space: normal; font-size: 0.75rem; }
+}

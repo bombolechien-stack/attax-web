@@ -82,9 +82,6 @@ export default function PageNavbar({ light: light0 = false, rightDark = false, p
         <div style={{ flex: 1, display: "flex", justifyContent: "flex-end", alignItems: "center", gap: "0.75rem" }}>
           <div className="nav-page-right" style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
             <LangSwitcher light={rl} />
-            {pill ? (
-              <a href="/download" className="nav-pill-cta">{lang === "fr" ? "Télécharger" : "Download"}</a>
-            ) : (
             <div className="nav-page-ctas" style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
               <a href="/download/ios" style={{ display: "inline-flex", alignItems: "center", gap: "6px", backgroundColor: rl ? "#0B1116" : "#ffffff", color: rl ? "#ffffff" : "#0d0d0d", fontWeight: 700, fontSize: "0.75rem", padding: "7px 14px", borderRadius: "999px", textDecoration: "none", whiteSpace: "nowrap" }}>
                 <AppleIcon /> iOS
@@ -93,7 +90,6 @@ export default function PageNavbar({ light: light0 = false, rightDark = false, p
                 <GooglePlayIcon /> Android
               </a>
             </div>
-            )}
           </div>
           <button
             className="nav-burger"
