@@ -769,3 +769,4 @@ body:has(.p5) .footer-panel .footer-top-bar img[alt="Attax"] { filter: brightnes
 .st6-kick { position: relative; }
 @media (max-width: 900px) { .st6-big, .p5-head-l .st6-big { top: -0.8em; } }
 .st6-art { opacity: 0.13; }
+@media (max-width: 900px) { .st6-grid { grid-template-columns: 1fr; gap: 2.5rem; } .st6.is-rev .st6-txt { order: 0; } }
