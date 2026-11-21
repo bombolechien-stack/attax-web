@@ -39,7 +39,7 @@ function TrophyShelf({ lang }: { lang: "en" | "fr" }) {
         {SHELF.map((t) => (
           <div key={t.img} className={`tr7-cell${t.n ? "" : " is-off"}`}>
             <div className={`tr7-img${t.medal ? " is-medal" : ""}`}>
-              <Image src={`/trophies/${t.img}.webp`} alt="" width={t.medal ? 200 : 360} height={t.medal ? 207 : 612} sizes="80px" />
+              <Image src={`/trophies/${t.img}.webp`} alt="" width={t.medal ? 200 : 360} height={t.medal ? 207 : 612} sizes="80px" loading="eager" />
             </div>
             <span>{t[lang]}</span>
             <b>{`×${t.n}`}</b>
