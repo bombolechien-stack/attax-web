@@ -979,3 +979,23 @@ body:has(.h7-page) .footer-panel .footer-attax { color: rgba(9,9,11,0.03) !impor
   .by7-phone, .by7-item figcaption { width: 100%; }
 }
 @media (prefers-reduced-motion: reduce) { .by7-item { opacity: 1 !important; transform: none !important; transition: none !important; } }
+/* 06 : l'étagère des trophées (bas du profil), en unités du téléphone (cqw) ; même hauteur que les captures (524 × 1072) */
+.tr7 { height: 190cqw; box-sizing: border-box; padding: 2cqw 5.5cqw 0; font-family: var(--font-manrope), sans-serif; color: #09090B; background: #F4F5F8; }
+.tr7-tabs { display: flex; gap: 1.5cqw; font-size: 3.6cqw; font-weight: 700; color: #6B7280; }
+.tr7-tabs span { padding: 2cqw 3.2cqw; border-radius: 5cqw; }
+.tr7-tabs span.is-on { background: #09090B; color: #fff; }
+.tr7-head { display: flex; justify-content: space-between; align-items: baseline; margin-top: 4cqw; padding-top: 4cqw; border-top: 1px solid #DDE2EA; }
+.tr7-head b { font-size: 3.6cqw; font-weight: 800; letter-spacing: 0.6cqw; }
+.tr7-head span { font-size: 3cqw; font-weight: 800; letter-spacing: 0.4cqw; color: #9CA3AF; }
+.tr7-goal { display: flex; justify-content: space-between; align-items: center; gap: 3cqw; margin-top: 3cqw; padding: 3cqw 0; border-top: 0.5px solid #E5E7EB; border-bottom: 0.5px solid #E5E7EB; }
+.tr7-goal span { font-size: 2.9cqw; font-weight: 800; letter-spacing: 0.4cqw; color: #9CA3AF; }
+.tr7-goal b { font-size: 4cqw; font-weight: 700; }
+.tr7-shelf { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 5cqw 2cqw; margin-top: 6cqw; }
+.tr7-cell { display: flex; flex-direction: column; align-items: center; min-width: 0; }
+.tr7-img { width: 100%; height: 30cqw; display: flex; align-items: flex-end; justify-content: center; }
+.tr7-img img { height: 100%; width: auto; object-fit: contain; }
+.tr7-img.is-medal img { height: 17cqw; margin-bottom: 2cqw; }
+.tr7-cell.is-off .tr7-img { opacity: 0.2; }
+.tr7-cell span { margin-top: 2cqw; font-size: 3.5cqw; font-weight: 700; white-space: nowrap; }
+.tr7-cell b { font-size: 3.9cqw; font-weight: 800; color: #0443FD; font-variant-numeric: tabular-nums; }
+.tr7-cell.is-off span, .tr7-cell.is-off b { color: #9CA3AF; }
