@@ -43,16 +43,14 @@ export default function Hero() {
         </div>
 
         <div className="hero-text-box home-hero-copy">
-          <p className="p-label animate-fade-up" style={{ color: "rgba(255,255,255,0.55)", margin: "0 0 1.25rem" }}>
-            {h.kicker[0]} · {h.kicker[1]}
-          </p>
+          {/* 21/11 : plus de repère au-dessus du titre (illisible), le titre seul. */}
           {/* Le titre façon affiche des pins : 2e ligne en italique serif, bleu glacier */}
           <h1 className="p-h1 p-h1-A animate-fade-up">
             <span className="l1">{h.h1[0]}</span> <span className="l2">{h.h1[1]}</span>
           </h1>
           <p className="animate-fade-up delay-100" style={{
-            fontSize: "clamp(1.0625rem, 1.4vw, 1.25rem)", color: "rgba(255,255,255,0.8)",
-            lineHeight: 1.65, margin: "0 0 clamp(1.75rem, 3vw, 2.5rem)", maxWidth: "470px", whiteSpace: "pre-line",
+            fontSize: "clamp(1.1875rem, 1.5vw, 1.375rem)", color: "rgba(255,255,255,0.85)",
+            lineHeight: 1.55, margin: "0 0 clamp(1.75rem, 3vw, 2.5rem)", maxWidth: "470px", whiteSpace: "pre-line",
           }}>
             {h.subtitle}
           </p>
@@ -81,17 +79,18 @@ export default function Hero() {
         {/* Les chiffres du hero (comme avant), en bas à droite sous les sportifs */}
         <div className="hero-stats6 animate-fade-up delay-300">
           {(lang === "fr" ? STATS.fr : STATS.en).map((st) => (
-            <div key={st[0]}><b>{st[0]}</b><span>{st[1]}</span></div>
+            <div key={st[0]}><b>{st[0]}</b></div>
           ))}
         </div>
 
         {/* Passe 5 : seulement le HAUT du téléphone, qui monte du bord bas de la carte, sous les boutons (jamais devant les
-            sportifs). Cadre dessiné en CSS (bords nets), écran = vraie capture de la page Match (round final), EN / FR. */}
+            sportifs). Cadre dessiné en CSS (bords nets), écran = vraie capture de la page Match PENDANT UN ROUND, recadrée sur les barres de PV
+            et les scores bleu / rouge (store-assets/shots-2026-11-17 fn-09 FR, en/fn-05 EN → story/<langue>/hero-round-v2.webp). */}
         <div className="hero-peek" aria-hidden="true">
           <div className="hero-peek-frame">
             <div className="hero-peek-screen">
               <div className="hero-peek-status"><b>9:41</b><i className="hero-peek-island" /><span className="hero-peek-icons"><i /><i /><i /><em /></span></div>
-              <Image src={`/screens/story/${lang}/final-round.webp`} alt="" width={522} height={1017} priority sizes="280px" />
+              <Image src={`/screens/story/${lang}/hero-round-v2.webp`} alt="" width={522} height={590} priority sizes="280px" />
             </div>
           </div>
         </div>
