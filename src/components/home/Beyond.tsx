@@ -3,9 +3,8 @@
 import Image from "next/image";
 import { useLang, useT } from "@/lib/i18n";
 import { useInView, fadeUp } from "@/hooks/useInView";
-import TrophyScreen from "./TrophyScreen";
 
-/** Saison, binôme, palmarès : deux captures de l'app montrées en entier, et la vitrine des trophées du profil (TrophyScreen). */
+/** Saison, binôme, palmarès : trois vraies captures de l'app (public/screens/app/<langue>/6, 7, 8.webp). */
 export default function Beyond() {
   const t = useT();
   const { lang } = useLang();
@@ -20,9 +19,7 @@ export default function Beyond() {
           {b.items.map((it, i) => (
             <article key={it.k} className="by5-item" style={{ ...fadeUp(visible, i * 120) }}>
               <div className="by5-shot">
-                {it.img === 8 ? <TrophyScreen /> : (
-                  <Image src={`/screens/app/${lang}/${it.img}.webp`} alt={`${it.t[0]} ${it.t[1]}`} width={560} height={1107} quality={90} sizes="(max-width: 860px) 60vw, 240px" />
-                )}
+                <Image src={`/screens/app/${lang}/${it.img}.webp`} alt={`${it.t[0]} ${it.t[1]}`} width={560} height={1107} quality={90} sizes="(max-width: 860px) 60vw, 240px" />
               </div>
               <div className="by5-txt">
                 <span className="p5-label">{it.k}</span>

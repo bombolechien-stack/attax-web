@@ -295,7 +295,7 @@ body:has(.p5) footer > div { padding-top: 12px !important; }
 /* ════ PASSE 6 (21/11) : fond de l'app partout (palette.bg #EEF1F7, lib/design.ts), surfaces blanches, aucune section
    sombre hors la carte du hero ════ */
 body:has(.p5) { background: #EEF1F7; }
-.p5 { background: #EEF1F7; --ink: #09090B; --ink2: #2B2F36; }
+.p5 { background: #EEF1F7; --ink: #09090B; --ink2: #2B2F36; --sec: clamp(3.5rem, 5.5vw, 4.5rem); }
 .p5 > section, .p5 .p5-sec, .p5 .spt-section, .p5 .mr-section, .p5 .faq-section { background: transparent !important; }
 
 /* L'idée + les faits */
