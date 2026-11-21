@@ -524,3 +524,8 @@ body:has(.p5) .footer-panel .footer-top-bar img[alt="Attax"] { filter: brightnes
 @media (min-width: 1200px) {
   body:has(.p5) .footer-panel .footer-mail, body:has(.p5) .footer-panel .footer-top-bar, body:has(.p5) .footer-panel .footer-link-grid, body:has(.p5) .footer-panel .footer-btm-bar { max-width: 1120px; margin-left: auto; margin-right: auto; padding-left: 0 !important; padding-right: 0 !important; box-sizing: border-box; }
 }
+/* Hero : le texte et le haut du téléphone sur le bord gauche de la grille (celui de la barre de navigation) */
+@media (min-width: 1200px) {
+  .p5 .home-hero-copy { padding-left: calc((100vw - 1120px) / 2 - 12px); max-width: calc((100vw - 1120px) / 2 + 560px); box-sizing: border-box; }
+  .p5 .hero-peek { left: calc((100vw - 1120px) / 2 - 12px); }
+}
