@@ -825,3 +825,139 @@ body:has(.p5) { background: #EEF1F7; }
 @media (min-width: 901px) { .p5 #league .lg6-card { max-width: 340px !important; padding: 0 !important; } }
 /* la taille du tableau suit sa largeur (unités du conteneur) : le réduire = réduire la largeur */
 @media (max-width: 900px) { .p5 #league .lg6-card { margin: 0; padding: 0; } }
+
+/* ════ PASSE 7 (21/11) : HARMONISATION. Les blocs repris du site en ligne (L'idée, Fonctionnalités, L'arène, Tes données,
+   FAQ, Télécharger, pied de page) passent dans le système des chapitres : fond de l'app, grille de 1 120 px (bords de la
+   nav et des chapitres), repère mono bleu, titres Manrope 500 serrés, texte 18 à 20 px à l'encre, filets fins, mêmes
+   boutons en pilule que le hero ; cartes sombres arrondies et posées dans la page comme le hero (12 px, rayon 24 px). ════ */
+.h7-page { background: #EEF1F7; }
+.h7 { position: relative; padding: clamp(4.5rem, 8vw, 7rem) 0; }
+.h7-head > * { opacity: 0; transform: translateY(18px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+.h7-head.is-in > * { opacity: 1; transform: none; }
+.h7-head.is-in > *:nth-child(2) { transition-delay: 0.08s; } .h7-head.is-in > *:nth-child(3) { transition-delay: 0.16s; } .h7-head.is-in > *:nth-child(4) { transition-delay: 0.24s; }
+.h7 .st6-kick { margin: 0 0 1.5rem; }
+.h7-h2 { margin: 0; font-family: var(--font-manrope), sans-serif; font-weight: 500; font-size: clamp(2.75rem, 5.2vw, 4.5rem); line-height: 0.98; letter-spacing: -0.03em; color: var(--ink); }
+.h7-h2 > span { display: block; }
+.h7-line { margin: 1.5rem 0 0; font-size: clamp(1.1875rem, 1.4vw, 1.25rem); line-height: 1.5; color: var(--ink); max-width: 34rem; white-space: pre-line; }
+.h7-head + .h7-grid, .h7-head + .h7-faq-list { margin-top: clamp(2.75rem, 4.5vw, 4rem); }
+
+/* Grille à filets (L'idée, Fonctionnalités) : même filet que les faits des chapitres */
+.h7-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.h7-cell { padding: 1.75rem 1.75rem 2.25rem; border-top: 1px solid rgba(9,9,11,0.12); border-left: 1px solid rgba(9,9,11,0.12); opacity: 0; transform: translateY(14px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+.h7-cell:nth-child(3n+1) { border-left: 0; padding-left: 0; }
+.h7-grid.is-in .h7-cell { opacity: 1; transform: none; }
+.h7-grid.is-in .h7-cell:nth-child(3n+2) { transition-delay: 0.08s; } .h7-grid.is-in .h7-cell:nth-child(3n) { transition-delay: 0.16s; }
+.h7-n { display: block; margin: 0 0 1.1rem; font-family: var(--font-mono), ui-monospace, monospace; font-size: 0.9375rem; font-weight: 500; letter-spacing: 0.08em; color: var(--blue); }
+.h7-h3 { margin: 0; font-family: var(--font-manrope), sans-serif; font-size: 1.375rem; font-weight: 500; letter-spacing: -0.02em; line-height: 1.2; color: var(--ink); }
+.h7-p { margin: 0.6rem 0 0; font-size: 1.0625rem; line-height: 1.55; color: var(--ink2); }
+
+/* Boutons : les pilules du hero */
+.h7-ctas { display: flex; gap: 10px; flex-wrap: wrap; margin-top: clamp(1.75rem, 3vw, 2.5rem); }
+.h7-btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-manrope), sans-serif; font-size: 1rem; font-weight: 700; line-height: 1.2; padding: 15px 26px; border-radius: 999px; text-decoration: none; white-space: nowrap; }
+.h7-btn-light { background: #fff; color: #0d0d0d; }
+.h7-btn-ghost { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.8); font-weight: 600; border: 1px solid rgba(201,213,240,0.18); }
+.h7-btn-ink { background: var(--ink); color: #fff; }
+
+/* L'arène : carte photo arrondie, posée dans la page comme le hero */
+.h7-card-wrap { padding: 0 12px; }
+.h7-arena { position: relative; isolation: isolate; overflow: hidden; border-radius: 24px; background: #050505; min-height: min(calc(100vh - 24px), 720px); display: flex; align-items: center; }
+.h7-arena-bg { position: absolute; inset: -10%; z-index: -2; }
+.h7-arena-shade { position: absolute; inset: 0; z-index: -1; background: linear-gradient(to right, rgba(5,5,5,0.94) 0%, rgba(5,5,5,0.7) 45%, rgba(5,5,5,0.15) 100%), linear-gradient(to bottom, rgba(5,5,5,0.25) 0%, rgba(5,5,5,0) 30%, rgba(5,5,5,0) 70%, rgba(5,5,5,0.55) 100%); }
+.h7-arena-in { width: 100%; padding-top: clamp(4rem, 8vw, 6rem); padding-bottom: clamp(4rem, 8vw, 6rem); }
+.h7-arena .h7-h2 { color: #fff; }
+.h7-arena .h7-line { color: rgba(255,255,255,0.78); }
+
+/* Tes données : une simple rangée entre deux filets */
+.h7-data { padding-top: clamp(4rem, 7vw, 6rem); padding-bottom: 0; }
+.h7-row { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1.25fr) minmax(0, 0.9fr); gap: 2.5rem clamp(2rem, 4vw, 3.5rem); align-items: start; padding: 2.25rem 0; border-top: 1px solid rgba(9,9,11,0.12); border-bottom: 1px solid rgba(9,9,11,0.12); }
+.h7-row > * { opacity: 0; transform: translateY(14px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+.h7-row.is-in > * { opacity: 1; transform: none; }
+.h7-row.is-in > *:nth-child(2) { transition-delay: 0.08s; } .h7-row.is-in > *:nth-child(3) { transition-delay: 0.16s; }
+.h7-row-a .st6-kick { display: flex; align-items: center; gap: 0.5rem; margin: 0 0 0.75rem; }
+.h7-row-a svg { flex-shrink: 0; width: 18px; height: 18px; color: var(--blue); }
+.h7-row-t { margin: 0; font-family: var(--font-manrope), sans-serif; font-size: clamp(1.5rem, 2.2vw, 1.875rem); font-weight: 500; letter-spacing: -0.025em; line-height: 1.12; color: var(--ink); }
+.h7-row .h7-p { margin: 0; font-size: 1.125rem; }
+.h7-checks { list-style: none; margin: 0; padding: 0; }
+.h7-checks li { display: flex; align-items: center; gap: 0.65rem; padding: 0.55rem 0; font-size: 1.0625rem; color: var(--ink); }
+.h7-checks li:first-child { padding-top: 0.2rem; }
+.h7-checks i { width: 6px; height: 6px; border-radius: 50%; background: var(--ink); flex-shrink: 0; }
+
+/* FAQ : en-tête du système, liste à filets */
+.h7-faq-head { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 1.5rem 4rem; align-items: end; }
+.h7-faq-side { display: flex; flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+.h7-faq-side p { margin: 0; font-size: 1.125rem; line-height: 1.5; color: var(--ink2); }
+.h7-faq-side p a { color: var(--ink); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.h7-faq-side .h7-ctas { margin-top: 0; }
+.h7-faq-list { border-top: 1px solid rgba(9,9,11,0.12); }
+.h7-faq-item { border-bottom: 1px solid rgba(9,9,11,0.12); }
+.h7-faq-q { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; padding: 1.5rem 0; background: none; border: 0; cursor: pointer; text-align: left; font-family: var(--font-manrope), sans-serif; font-size: 1.375rem; font-weight: 500; letter-spacing: -0.02em; line-height: 1.3; color: var(--ink); }
+.h7-plus { flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%; border: 1px solid rgba(9,9,11,0.2); display: flex; align-items: center; justify-content: center; font-size: 1.125rem; font-weight: 400; color: var(--ink); transition: transform 0.25s ease; }
+.h7-faq-item.is-open .h7-plus { transform: rotate(45deg); }
+.h7-faq-a { margin: 0; padding: 0 0 1.75rem; max-width: 50rem; font-size: 1.125rem; line-height: 1.6; color: var(--ink2); }
+
+@media (max-width: 900px) {
+  .h7 { padding: 3.5rem 0; }
+  .h7-h2 { font-size: clamp(2.5rem, 11vw, 2.9rem); }
+  .h7-line { font-size: 1.125rem; }
+  .h7-grid { grid-template-columns: 1fr; }
+  .h7-cell, .h7-cell:nth-child(3n+1) { border-left: 0; padding: 1.5rem 0 1.75rem; }
+  .h7-grid.is-in .h7-cell { transition-delay: 0s !important; }
+  .h7-arena { min-height: 0; }
+  .h7-arena-in { padding: 4.5rem 1.5rem 3rem; }
+  .h7-arena-shade { background: linear-gradient(to right, rgba(5,5,5,0.9) 0%, rgba(5,5,5,0.55) 100%); }
+  .h7-data { padding-top: 3.5rem; }
+  .h7-row { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.75rem 0; }
+  .h7-faq-head { grid-template-columns: 1fr; }
+  .h7-faq-q { font-size: 1.1875rem; padding: 1.25rem 0; }
+  .h7-faq-a { font-size: 1.0625rem; }
+  .h7-btn { padding: 13px 20px; font-size: 0.9375rem; }
+}
+@media (prefers-reduced-motion: reduce) { .h7-head > *, .h7-cell, .h7-row > * { opacity: 1 !important; transform: none !important; transition: none !important; } }
+
+/* Passe 7 : la bande « Prêt à entrer dans l'arène ? » devient une carte photo arrondie comme le hero (texte à gauche, sur
+   la grille), et le pied de page se pose sur le fond de l'app (encre, filets fins). Accueil seulement (:has). */
+body:has(.h7-page) { --h7-edge: calc(max(clamp(1.25rem, 5vw, 4rem), (100% + 24px - 1120px) / 2) - 12px); }
+body:has(.h7-page) footer { background: #EEF1F7; font-family: var(--font-manrope), sans-serif; }
+body:has(.h7-page) .footer-cta-wrap { display: grid; overflow: visible !important; padding: clamp(4.5rem, 8vw, 7rem) 12px 0 !important; }
+body:has(.h7-page) .footer-photo { position: relative !important; inset: auto !important; grid-area: 1 / 1; border-radius: 24px; overflow: hidden; background: #050505; }
+body:has(.h7-page) .footer-photo-shade { background: linear-gradient(to right, rgba(7,7,7,0.9) 0%, rgba(7,7,7,0.62) 45%, rgba(7,7,7,0.2) 100%) !important; }
+body:has(.h7-page) .footer-cta-section { grid-area: 1 / 1; text-align: left !important; padding: clamp(4.5rem, 8vw, 6.5rem) var(--h7-edge) !important; }
+body:has(.h7-page) .footer-cta-label { font-family: var(--font-mono), ui-monospace, monospace !important; font-size: 0.9375rem !important; font-weight: 500 !important; letter-spacing: 0.08em !important; text-transform: none !important; font-variant-caps: all-small-caps; color: #8FA8FF !important; margin: 0 0 1.5rem !important; }
+body:has(.h7-page) .footer-cta-section .p-h2 { font-weight: 500; font-size: clamp(2.75rem, 5.2vw, 4.5rem); line-height: 0.98; letter-spacing: -0.03em; margin: 0 !important; }
+body:has(.h7-page) .footer-cta-sub { margin: 1.5rem 0 0 !important; max-width: 34rem !important; font-size: clamp(1.1875rem, 1.4vw, 1.25rem) !important; line-height: 1.5 !important; color: rgba(255,255,255,0.78) !important; white-space: pre-line; }
+body:has(.h7-page) .footer-cta-btns { justify-content: flex-start !important; margin-top: clamp(1.75rem, 3vw, 2.5rem); }
+body:has(.h7-page) .footer-cta-btn { font-family: var(--font-manrope), sans-serif; font-size: 1rem !important; padding: 15px 26px !important; }
+body:has(.h7-page) .footer-cta-android { background: rgba(255,255,255,0.06) !important; color: rgba(255,255,255,0.8) !important; border-color: rgba(201,213,240,0.18) !important; }
+body:has(.h7-page) .footer-panel { grid-area: 2 / 1; background: transparent !important; border-radius: 0 !important; padding: 0 var(--h7-edge); }
+body:has(.h7-page) .footer-panel.p-lines::before { display: none; }
+body:has(.h7-page) .footer-panel .footer-mail { padding: clamp(4rem, 7vw, 6rem) 0 2.5rem !important; border-bottom: 1px solid rgba(9,9,11,0.12) !important; }
+body:has(.h7-page) .footer-panel .footer-mail .p-mono { font-size: 0.9375rem; font-weight: 500; letter-spacing: 0.08em; text-transform: none; font-variant-caps: all-small-caps; color: var(--blue, #0443FD); }
+body:has(.h7-page) .footer-panel .footer-mail a { color: #09090B !important; }
+body:has(.h7-page) .footer-panel .footer-mail a:hover { color: #0443FD !important; }
+body:has(.h7-page) .footer-panel .footer-top-bar { padding: 2rem 0 !important; border-bottom: 1px solid rgba(9,9,11,0.12) !important; }
+body:has(.h7-page) .footer-panel .footer-btm-bar { padding: 1.5rem 0 2rem !important; border-top: 1px solid rgba(9,9,11,0.12) !important; }
+body:has(.h7-page) .footer-panel .footer-link-grid { padding: 2.5rem 0 3rem !important; }
+body:has(.h7-page) .footer-logo { filter: brightness(0); }
+body:has(.h7-page) .footer-panel .footer-top-bar a[aria-label] { background: rgba(9,9,11,0.06) !important; color: #09090B !important; }
+body:has(.h7-page) .footer-handle { color: #5A5F67 !important; }
+body:has(.h7-page) .footer-panel .footer-top-bar a[href^="/download/ios"] { background: #09090B !important; color: #fff !important; }
+body:has(.h7-page) .footer-panel .footer-top-bar a[href^="/download/android"] { background: transparent !important; color: #09090B !important; border: 1px solid rgba(9,9,11,0.2) !important; }
+body:has(.h7-page) .footer-panel .footer-link-grid .footer-col-label { font-family: var(--font-mono), ui-monospace, monospace; font-size: 0.9375rem !important; font-weight: 500 !important; letter-spacing: 0.08em !important; text-transform: none !important; font-variant-caps: all-small-caps; color: #5A5F67 !important; }
+body:has(.h7-page) .footer-panel .footer-link-grid a { color: #2B2F36 !important; font-size: 1rem !important; line-height: 1.3 !important; }
+body:has(.h7-page) .footer-panel .footer-link-grid a:hover { color: #0443FD !important; }
+body:has(.h7-page) .footer-panel .footer-btm-bar .footer-copy { color: #5A5F67 !important; font-size: 0.875rem !important; }
+body:has(.h7-page) .footer-panel .footer-btm-bar .footer-tag { color: #5A5F67 !important; }
+body:has(.h7-page) .footer-panel .footer-attax { color: rgba(9,9,11,0.03) !important; font-family: var(--font-manrope), sans-serif !important; font-weight: 600 !important; }
+@media (max-width: 900px) {
+  body:has(.h7-page) .footer-cta-wrap { padding-top: 3.5rem !important; }
+  body:has(.h7-page) .footer-cta-section { padding: 3.5rem max(var(--h7-edge), 1.5rem) 3rem !important; }
+  body:has(.h7-page) .footer-cta-section .p-h2 { font-size: clamp(2.5rem, 11vw, 2.9rem); }
+  body:has(.h7-page) .footer-cta-sub { font-size: 1.125rem !important; }
+  body:has(.h7-page) .footer-cta-btn { padding: 13px 20px !important; font-size: 0.9375rem !important; }
+  body:has(.h7-page) .footer-photo-shade { background: linear-gradient(to right, rgba(7,7,7,0.88) 0%, rgba(7,7,7,0.55) 100%) !important; }
+  body:has(.h7-page) .footer-panel .footer-mail { padding: 3rem 0 2rem !important; }
+  body:has(.h7-page) .footer-panel .footer-top-bar { align-items: flex-start !important; }
+  body:has(.h7-page) .footer-panel .footer-top-bar > div { flex-wrap: wrap; }
+  body:has(.h7-page) .footer-panel .footer-link-grid { grid-template-columns: 1fr 1fr !important; gap: 2rem 1.25rem !important; }
+  body:has(.h7-page) .footer-panel .footer-btm-bar { align-items: flex-start !important; padding-bottom: 5rem !important; }
+}

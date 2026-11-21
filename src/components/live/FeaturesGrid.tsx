@@ -1,42 +1,30 @@
-// Repris tel quel du site en ligne (branche master, 21/11), textes de src/lib/liveCopy.ts.
+// Textes repris tels quels du site en ligne (branche master, 21/11), dans src/lib/liveCopy.ts. Mise en forme : passe 7
+// (21/11), système des chapitres (classes .h7-* de src/app/home-p5.css) : même titre, grille calme à filets.
 "use client";
 
 import { useLang, useT } from "@/lib/i18n";
 import { LIVE } from "@/lib/liveCopy";
-import { useInView, fadeUp, slideLeft, slideRight, clipReveal } from "@/hooks/useInView";
-
-function FeatureItem({ item, index }: { item: { title: string; desc: string }; index: number }) {
-  const { ref, visible } = useInView<HTMLDivElement>(0.15);
-  return (
-    <div ref={ref} className="feature-item" style={{ padding: "3.5rem 2.5rem", borderBottom: "1px solid #ebebeb", borderLeft: index % 3 > 0 ? "1px solid #ebebeb" : "none" }}>
-      <div style={{ ...index % 2 === 0 ? slideLeft(visible, 0) : slideRight(visible, 0), fontSize: "1.125rem", fontWeight: 700, color: "#0d0d0d", marginBottom: "1rem", letterSpacing: "-0.025em" }}>
-        {item.title}
-      </div>
-      <p style={{ ...fadeUp(visible, 150), fontSize: "0.9375rem", color: "#999", lineHeight: 1.75, margin: 0 }}>
-        {item.desc}
-      </p>
-    </div>
-  );
-}
+import { useInView } from "@/hooks/useInView";
 
 export default function FeaturesGrid() {
   const t = { ...useT(), ...LIVE[useLang().lang] };
   const f = t.features;
-  const { ref: headerRef, visible: headerVisible } = useInView<HTMLDivElement>(0.1);
+  const { ref: headRef, visible: headIn } = useInView<HTMLDivElement>(0.2, { oneShot: true });
+  const { ref: gridRef, visible: gridIn } = useInView<HTMLDivElement>(0.1, { oneShot: true });
 
   return (
-    <section id="features" className="features-section" style={{ backgroundColor: "#ffffff", padding: "10rem 2rem" }}>
-      <div style={{ maxWidth: "80rem", margin: "0 auto" }}>
-        <div ref={headerRef} style={{ marginBottom: "7rem" }}>
-          <span style={{ ...fadeUp(headerVisible, 0), display: "block", marginBottom: "2rem" }} className="section-label">{f.label}</span>
-          <h2 className="features-h2" style={{ fontSize: "clamp(3.5rem, 7.5vw, 8rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.06em", lineHeight: 0.88, margin: 0 }}>
-            <div><span style={clipReveal(headerVisible, 0)}>{f.h2[0]}</span></div>
-            <div><span style={clipReveal(headerVisible, 150)}>{f.h2[1]}</span></div>
-          </h2>
+    <section id="features" className="h7 h7-features">
+      <div className="p5-wrap">
+        <div ref={headRef} className={`h7-head${headIn ? " is-in" : ""}`}>
+          <p className="st6-kick">{f.label}</p>
+          <h2 className="h7-h2"><span>{f.h2[0]}</span> <span>{f.h2[1]}</span></h2>
         </div>
-        <div className="features-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", borderTop: "1px solid #ebebeb" }}>
+        <div ref={gridRef} className={`h7-grid${gridIn ? " is-in" : ""}`}>
           {f.items.map((item, i) => (
-            <FeatureItem key={i} item={item} index={i} />
+            <div key={i} className="h7-cell">
+              <h3 className="h7-h3">{item.title}</h3>
+              <p className="h7-p">{item.desc}</p>
+            </div>
           ))}
         </div>
       </div>

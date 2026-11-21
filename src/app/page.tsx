@@ -61,19 +61,21 @@ export default function HomePage() {
           grimpe dans ta ligue -> télécharger ; puis une FAQ courte. Les règles détaillées vivent dans la FAQ et Comment ça marche. */}
       {/* Hero, puis « L'idée » telle qu'en ligne (master), puis les 5 chapitres de l'histoire, puis les sections du site en
           ligne (Fonctionnalités, L'arène, Tes données, FAQ) et la bande « Télécharger » du pied de page, comme en ligne. */}
-      <div className="pm p5"><Hero /></div>
+      {/* Passe 7 (21/11) : une seule page harmonisée, fond de l'app partout (#EEF1F7), sections reprises du site en ligne
+          remises dans le système des chapitres (classes .h7-* de home-p5.css). */}
+      <div className="pm p5 h7-page">
+      <Hero />
       <InfoSection />
-      <div className="pm p5">
       <Opponent6 />
       <Workout6 />
       <DailyMatch />
       <CardTwist6 />
       <LeagueTable />
-      </div>
       <FeaturesGrid />
       <ArenaSection />
       <PrivacyStrip />
       <FAQ />
+      </div>
     </ComingSoonGate>
   );
 }
