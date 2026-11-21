@@ -12,6 +12,7 @@ import ArenaSection from "@/components/live/ArenaSection";
 import PrivacyStrip from "@/components/live/PrivacyStrip";
 import FAQ from "@/components/live/FAQ";
 import MidCta from "@/components/live/MidCta";
+import Beyond7 from "@/components/home/Beyond7";
 import { LIVE } from "@/lib/liveCopy";
 import "./home-p5.css";
 
@@ -72,6 +73,7 @@ export default function HomePage() {
       <DailyMatch />
       <CardTwist6 />
       <LeagueTable />
+      <Beyond7 />
       <MidCta />
       <FeaturesGrid />
       <FAQ />
