@@ -1018,3 +1018,13 @@ body:has(.h7-page) .footer-panel .footer-attax { color: rgba(9,9,11,0.03) !impor
 /* L'idée : la grande phrase seule, espacement serré */
 .h7-idea { padding-top: clamp(3.5rem, 6vw, 5rem); padding-bottom: clamp(1rem, 2vw, 1.5rem); }
 @media (max-width: 900px) { .h7-idea { padding: 3rem 0 0.5rem; } }
+
+/* Ligue (21/11, accord du propriétaire) : tableau calé sur le bord gauche de la grille, texte + rangs centrés verticalement
+   contre lui, moins de vide entre les deux et sous les rangs */
+@media (min-width: 901px) {
+  .p5 #league .st6-grid { grid-template-columns: 340px minmax(0, 1fr); gap: clamp(4rem, 9vw, 8.5rem); align-items: center; }
+  .p5 #league .st6-vis { justify-content: flex-start; }
+  .p5 #league .st6-dev .lg6-card { margin: 0 !important; }
+  .p5 #league .st6-txt { padding-top: 0; }
+  .p5 #league .lg6-ranks-side { margin-top: 2rem; }
+}
