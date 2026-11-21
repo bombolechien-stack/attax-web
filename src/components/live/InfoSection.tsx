@@ -31,7 +31,7 @@ export default function InfoSection() {
   const { ref: headerRef, visible: headerVisible } = useInView<HTMLDivElement>(0.1);
 
   return (
-    <section style={{ backgroundColor: "#ffffff", padding: "7rem 2rem" }}>
+    <section style={{ backgroundColor: "#EEF1F7", padding: "7rem 2rem" }}>
       <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
         <div ref={headerRef} className="info-header" style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "4rem", marginBottom: "5rem" }}>
           <div>
