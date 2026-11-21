@@ -11,7 +11,7 @@ export default function Hero() {
 
   return (
     <div style={{ backgroundColor: "#EEF1F7", padding: "0 12px 12px" }}>
-      <div style={{
+      <div className="hero-card" style={{
         position: "relative",
         borderRadius: "24px",
         minHeight: "calc(100vh - 24px)",
@@ -51,7 +51,7 @@ export default function Hero() {
           }}>
             {h.subtitle}
           </p>
-          <div className="animate-fade-up delay-200" style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginBottom: 0 }}>
+          <div className="animate-fade-up delay-200 hero-ctas" style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginBottom: 0 }}>
             <a href="/download" style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
               backgroundColor: "#ffffff", color: "#0d0d0d", fontWeight: 700,

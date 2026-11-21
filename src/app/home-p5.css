@@ -787,3 +787,14 @@ body:has(.p5) .footer-panel .footer-top-bar img[alt="Attax"] { filter: brightnes
 #cards[data-step="1"] .tw7-card.is-pick, #cards[data-step="2"] .tw7-card.is-pick { transform: translateY(-16px) scale(1.07); z-index: 3; }
 @media (max-width: 900px) { .tw7-card { width: 31%; } .tw7-fan { justify-content: center; } }
 #cards .st6-big { display: none; }
+
+/* Hero (21/11) : les boutons à droite du haut du téléphone, sur la même rangée, en bas ; hero moins haut */
+@media (min-width: 861px) {
+  .p5 .hero-card { min-height: min(calc(100vh - 24px), 780px) !important; }
+  .p5 .home-hero-copy { padding-bottom: 250px; justify-content: flex-end; }
+  .p5 .hero-ctas { position: absolute; z-index: 5; left: calc(clamp(2rem, 5vw, 5rem) + 272px + 28px); bottom: 92px; flex-wrap: nowrap !important; }
+}
+@media (min-width: 861px) {
+  .p5 .hero-ctas { flex-direction: column; align-items: stretch; bottom: 70px; }
+  .p5 .hero-ctas a { white-space: nowrap; justify-content: center; }
+}
