@@ -114,7 +114,7 @@ export default function LeagueTable() {
   }, [after]);
 
   return (
-    <Story6 id="league" kicker={c.kick} big={c.big} title={c.title} line={c.lead} reverse extra={
+    <Story6 id="league" kicker={c.kick} title={c.title} line={c.lead} reverse extra={
       <div className="lg6-ranks lg6-ranks-side">
         <ol>
           {[...DIVS].reverse().map((d) => (
