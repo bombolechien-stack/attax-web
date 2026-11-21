@@ -469,3 +469,18 @@ body:has(.p5) .footer-panel .footer-top-bar img[alt="Attax"] { filter: brightnes
 }
 .p5 .cards-showcase-text { max-width: 36rem; flex: 1 1 auto; }
 .p5 .cards-showcase-inner { gap: 2.5rem !important; }
+
+/* ════ PASSE 6b (21/11) : une grille calée sur la barre de navigation (1120 px), compositions équilibrées ════ */
+.p5 .p5-wrap { max-width: 1120px; }
+.p5-head { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); }
+.p5-head-r { justify-self: end; width: 100%; max-width: 30rem; }
+.p5 .p5-lead { max-width: none; }
+.p5 .mr-inner { max-width: 1120px; }
+
+/* Tous les sports : deux cartes blanches, tout visible */
+.spt6-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.5rem; align-items: start; }
+.spt6-card { background: #FFFFFF; border-radius: 24px; padding: 1.75rem 1.75rem 1.5rem; }
+.spt6-card .act6-sess:last-child { border-bottom: 0; }
+.spt6-card .act6-note { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #D7DEE8; font-size: 1rem; }
+@media (max-width: 900px) { .spt6-grid { grid-template-columns: 1fr; } .spt6-card { padding: 1.25rem 1.1rem 1.1rem; border-radius: 20px; } }
+.spt6-grid { align-items: stretch; }
