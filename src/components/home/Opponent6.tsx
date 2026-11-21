@@ -32,7 +32,7 @@ export default function Opponent6() {
   const c = COPY[lang];
   const { ref, visible } = useInView<HTMLDivElement>(0.3, { oneShot: true });
   return (
-    <Story6 id="opponent" kicker={c.kick} big={c.big} title={c.title} line={c.line} photo={{ src: "/images/story/morning.webp", pos: "50% 55%" }}>
+    <Story6 id="opponent" kicker={c.kick} big={c.big} title={c.title} line={c.line} art={{ src: "/scan/run-woman.webp", pos: "50% 30%", size: "auto 130%" }}>
       <div className="st6-phone">
         <AppPhone>
           <div ref={ref} className={`opp6${visible ? " is-in" : ""}`}>

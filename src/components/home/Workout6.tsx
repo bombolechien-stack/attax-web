@@ -14,7 +14,7 @@ const COPY = {
     line: "Your watch measures your effort. Your heart rate and your steps set the score.",
     alt: "The Activity screen of Attax: today's pts",
     items: [
-      { icon: "watch", t: "Your watch is enough. Nothing to type in.", s: "Apple Health or Health Connect: Apple Watch, Garmin, Samsung Galaxy Watch, Fitbit, COROS, Amazfit, Withings, Oura, CMF by Nothing." },
+      { icon: "watch", t: "Your watch is enough. Nothing to type in. Apple Health or Health Connect.", s: "Apple Health or Health Connect: Apple Watch, Garmin, Samsung Galaxy Watch, Fitbit, COROS, Amazfit, Withings, Oura, CMF by Nothing." },
       { icon: "heart-pulse", t: "Every sport counts.", s: "Running, swimming, football or yoga: if your heart rate goes up, it counts." },
       { icon: "clock-outline", t: "You can train until 9:30 PM.", s: "Everything synced before the verdict counts tonight." },
     ],
@@ -25,7 +25,7 @@ const COPY = {
     line: "Ta montre mesure ton effort. Ton cœur et tes pas font le score.",
     alt: "L'écran Activités d'Attax : les pts du jour",
     items: [
-      { icon: "watch", t: "Ta montre suffit. Rien à saisir.", s: "Apple Santé ou Health Connect : Apple Watch, Garmin, Samsung Galaxy Watch, Fitbit, COROS, Amazfit, Withings, Oura, CMF by Nothing." },
+      { icon: "watch", t: "Ta montre suffit. Rien à saisir. Apple Santé ou Health Connect.", s: "Apple Santé ou Health Connect : Apple Watch, Garmin, Samsung Galaxy Watch, Fitbit, COROS, Amazfit, Withings, Oura, CMF by Nothing." },
       { icon: "heart-pulse", t: "Tous les sports comptent.", s: "Course, natation, football ou yoga : si ton cœur accélère, ça compte." },
       { icon: "clock-outline", t: "Tu peux t'entraîner jusqu'à 21h30.", s: "Tout ce qui est synchronisé avant le verdict compte ce soir." },
     ],
@@ -36,12 +36,12 @@ export default function Workout6() {
   const { lang } = useLang();
   const c = COPY[lang];
   return (
-    <Story6 id="workout" kicker={c.kick} big={c.big} title={c.title} line={c.line} reverse photo={{ src: "/images/story/training.webp", pos: "40% 50%" }} extra={
+    <Story6 id="workout" kicker={c.kick} big={c.big} title={c.title} line={c.line} reverse art={{ src: "/scan/deadlift.webp", pos: "50% 40%", size: "auto 125%" }} extra={
       <ul className="re6">
         {c.items.map((it) => (
           <li key={it.icon}>
             <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path fill="#09090B" d={(ICONS as Record<string, string>)[it.icon]} /></svg>
-            <div><b>{it.t}</b><span>{it.s}</span></div>
+            <div><b>{it.t}</b></div>
           </li>
         ))}
       </ul>

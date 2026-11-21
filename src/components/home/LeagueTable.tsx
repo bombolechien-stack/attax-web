@@ -114,7 +114,7 @@ export default function LeagueTable() {
   }, [after]);
 
   return (
-    <Story6 id="league" kicker={c.kick} big={c.big} title={c.title} line={c.lead} reverse photo={{ src: "/images/story/breath.webp", pos: "50% 35%" }} extra={
+    <Story6 id="league" kicker={c.kick} big={c.big} title={c.title} line={c.lead} reverse art={{ src: "/scan/sprint.webp", pos: "50% 40%", size: "auto 115%" }} extra={
       <div className="lg6-ranks lg6-ranks-side">
         <ol>
           {[...DIVS].reverse().map((d) => (
@@ -125,7 +125,6 @@ export default function LeagueTable() {
             </li>
           ))}
         </ol>
-        <p className="lg6-climb">{c.climb}</p>
       </div>
     }>
       {/* Le classement de l'app (rank.tsx), dans la surface blanche de l'app */}
