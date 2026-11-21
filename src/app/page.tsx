@@ -9,6 +9,7 @@ import FightNight from "@/components/home/FightNight";
 import LeagueTable from "@/components/home/LeagueTable";
 import Beyond from "@/components/home/Beyond";
 import FAQ from "@/components/home/FAQ";
+import Download6 from "@/components/home/Download6";
 import { T } from "@/lib/translations";
 import "./home-p5.css";
 
@@ -68,6 +69,7 @@ export default function HomePage() {
       <LeagueTable />
       <Beyond />
       <FAQ />
+      <Download6 />
       </div>
     </ComingSoonGate>
   );
