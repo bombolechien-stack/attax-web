@@ -55,7 +55,7 @@ const COPY = {
     title: ["A league a week.", "A story all season."],
     items: [
       ["The season.", "The global ranking of effort."],
-      ["Your duo.", "Every day you both hit your challenge: +1 point each."],
+      ["Your duo.", "A duo partner is assigned to you to keep you going. Every day you both hit your challenge: +1 point each."],
       ["Your trophies.", "Every league you win leaves a mark: trophy, crown."],
     ],
   },
@@ -64,7 +64,7 @@ const COPY = {
     title: ["Une ligue par semaine.", "Une histoire toute la saison."],
     items: [
       ["La saison.", "Le classement mondial de l'effort."],
-      ["Ton binôme.", "Chaque jour où vous atteignez tous les deux votre challenge : +1 point chacun."],
+      ["Ton binôme.", "Un binôme t'est attribué pour te motiver. Chaque jour où vous atteignez tous les deux votre challenge : +1 point chacun."],
       ["Tes trophées.", "Chaque ligue gagnée laisse une trace : trophée, couronne."],
     ],
   },
