@@ -617,3 +617,9 @@ body:has(.p5) .footer-panel .footer-top-bar img[alt="Attax"] { filter: brightnes
 .ph6-screen .opp6 .opp6-av { width: calc(var(--u) * 260); height: calc(var(--u) * 260); margin: calc(var(--u) * 98) auto 0; }
 .ph6-screen .opp6 .opp6-pill img { width: calc(var(--u) * 52); height: calc(var(--u) * 52); margin: 0; display: inline-block; }
 @media (max-width: 900px) { .st6-phone { width: min(290px, 78%); } .tw6-win { width: 52%; } }
+.p5 #league .st6-vis { display: block; }
+.p5 #league .lg6-card { margin-left: auto; }
+@media (max-width: 900px) { .p5 #league .lg6-card { margin: 0 calc(-1 * var(--gut) + 8px); max-width: none; } }
+.p5 .lg6-ranks-side ol { border: 0; }
+.p5 .lg6-ranks-side li { border: 0; padding: 0; opacity: 1; }
+@media (min-width: 901px) { .p5 #league .lg6-card { max-width: 470px; padding: 26px 26px 22px; } }
