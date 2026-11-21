@@ -4,8 +4,9 @@ import { useLang } from "@/lib/i18n";
 import { useInView } from "@/hooks/useInView";
 import AppPhone from "./AppPhone";
 
-// Appel final (passe 6) : sur le fond clair de l'app, le titre du hero, les deux boutons, et le haut du téléphone avec la
-// page Match pendant les rounds (vraie capture story/<langue>/rounds.webp), coupé par le bas du bloc comme dans le hero.
+// Appel final (passe 6b) : une carte arrondie comme le hero, au bleu de l'écran du vainqueur de l'app (#0443FD, titre blanc
+// → #B9CBFF comme SheenTitle de WinnerWave), scanlines fines, le titre du hero, les deux boutons, et le haut du téléphone
+// (page Match pendant les rounds, vraie capture story/<langue>/rounds.webp) qui sort du bord bas de la carte.
 const COPY = {
   en: { label: "Download", h2: ["Sport is now", "a game."], lead: "Free on iPhone and Android. A new opponent every day.", ios: "App Store", android: "Google Play", alt: "The Match screen of Attax during the rounds" },
   fr: { label: "Télécharger", h2: ["Le sport devient", "un jeu."], lead: "Gratuit sur iPhone et Android. Un nouvel adversaire chaque jour.", ios: "App Store", android: "Google Play", alt: "La page Match d'Attax pendant les rounds" },
@@ -16,7 +17,7 @@ export default function Download6() {
   const c = COPY[lang];
   const { ref, visible } = useInView<HTMLDivElement>(0.2, { oneShot: true });
   return (
-    <section id="download" className="p5-sec dl6">
+    <section id="download" className="p5-sec dl6 dl6b">
       <div className="p5-wrap">
         <div ref={ref} className="dl6-card">
           <div className="dl6-txt" style={{ opacity: visible ? 1 : 0, transform: visible ? "none" : "translateY(16px)" }}>
