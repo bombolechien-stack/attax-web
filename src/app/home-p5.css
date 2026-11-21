@@ -811,3 +811,11 @@ body:has(.p5) { background: #EEF1F7; }
 .sr6-grid span { font-size: 1rem; font-weight: 500; color: var(--ink); }
 @media (max-width: 900px) { .sr6-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } .sr6-grid span { font-size: 0.875rem; } .sr6-grid svg { width: 26px; height: 26px; } }
 @media (prefers-reduced-motion: reduce) { .sr6-grid li { opacity: 1; transform: none; transition: none; } }
+
+/* Hero (21/11) : une seule rangée en bas, boutons côte à côte puis les 3 chiffres, alignés sur la même ligne */
+@media (min-width: 861px) {
+  .p5 .hero-ctas { flex-direction: row !important; align-items: center; bottom: clamp(1.75rem, 3vw, 2.5rem); }
+  .hero-stats6 { bottom: clamp(1.75rem, 3vw, 2.5rem); border-top: 0; padding-top: 0; height: 52px; align-items: center; }
+  .hero-stats6 > div { display: flex; flex-direction: column; justify-content: center; height: 100%; }
+}
+.tw7-card:nth-child(n) { transition: none; }

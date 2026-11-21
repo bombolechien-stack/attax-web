@@ -7,7 +7,6 @@ import DailyMatch from "@/components/home/DailyMatch";
 import CardTwist6 from "@/components/home/CardTwist6";
 import LeagueTable from "@/components/home/LeagueTable";
 import InfoSection from "@/components/live/InfoSection";
-import SportsRow from "@/components/home/SportsRow";
 import FeaturesGrid from "@/components/live/FeaturesGrid";
 import ArenaSection from "@/components/live/ArenaSection";
 import PrivacyStrip from "@/components/live/PrivacyStrip";
@@ -60,12 +59,11 @@ export default function HomePage() {
       {/* Structure validée le 21/11 : l'histoire d'une journée de match de Johnny contre Sophie, en 7 écrans. Hero ->
           l'adversaire du jour -> la séance devient des pts -> 7 rounds -> une carte peut tout renverser (et le vainqueur) ->
           grimpe dans ta ligue -> télécharger ; puis une FAQ courte. Les règles détaillées vivent dans la FAQ et Comment ça marche. */}
-      {/* Hero, puis « L'idée » telle qu'en ligne (master), « Tous les sports comptent » (simple), puis les 5 chapitres de l'histoire, puis les sections du site en
+      {/* Hero, puis « L'idée » telle qu'en ligne (master), puis les 5 chapitres de l'histoire, puis les sections du site en
           ligne (Fonctionnalités, L'arène, Tes données, FAQ) et la bande « Télécharger » du pied de page, comme en ligne. */}
       <div className="pm p5"><Hero /></div>
       <InfoSection />
       <div className="pm p5">
-      <SportsRow />
       <Opponent6 />
       <Workout6 />
       <DailyMatch />
