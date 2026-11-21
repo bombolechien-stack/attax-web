@@ -534,3 +534,4 @@ body:has(.p5) .footer-panel .footer-top-bar img[alt="Attax"] { filter: brightnes
   .p5-head-r { justify-self: start; max-width: none; }
   .act6-zhead span { white-space: nowrap; margin-left: 2px; }
 }
+.p5-head:not(:has(.p5-head-r)) { grid-template-columns: 1fr; }

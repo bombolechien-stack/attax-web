@@ -85,7 +85,7 @@ export default function CardsShowcase() {
                   style={{
                     ...appear,
                     transform: `${appear.transform} ${base}`,
-                    width: 232, flexShrink: 0, margin: "0 -6px", zIndex: i === 1 ? 2 : 1, position: "relative",
+                    width: 212, flexShrink: 0, margin: "0 -6px", zIndex: i === 1 ? 2 : 1, position: "relative",
                     borderRadius: 16, boxShadow: SHADOW,
                     transition: "transform 0.45s cubic-bezier(0.16,1,0.3,1), box-shadow 0.45s cubic-bezier(0.16,1,0.3,1), opacity 1s cubic-bezier(0.16,1,0.3,1)",
                   }}
