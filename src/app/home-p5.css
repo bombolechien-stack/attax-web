@@ -722,3 +722,8 @@ body:has(.p5) .footer-panel .footer-top-bar img[alt="Attax"] { filter: brightnes
   .st6.is-rev .st6-vis.has-photo .st6-dev { padding-left: 26%; }
   .p5 #league .st6-vis.has-photo .st6-dev { padding: 0 !important; }
 }
+@media (min-width: 901px) { .p5 #league .st6-vis.has-photo .st6-dev { padding-left: 16%; } .p5 #league .st6-vis .st6-photo { width: 50%; } }
+/* La ligue : le tableau (en container queries) ne doit jamais rétrécir à son contenu */
+.p5 #league .st6-dev { display: block; }
+.p5 #league .st6-dev .lg6-card { width: 100%; }
+@media (max-width: 900px) { .p5 #league .st6-dev .lg6-card { width: auto; } .p5 #league .st6-photo { width: 100%; opacity: 0.9; } }
