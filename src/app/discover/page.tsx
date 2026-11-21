@@ -1,152 +1,52 @@
 "use client";
 
-import Image from "next/image";
-import PageNavbar from "@/components/PageNavbar";
-import { useT } from "@/lib/i18n";
-import { useInView, fadeUp, clipReveal, slideLeft, slideRight, fadeIn } from "@/hooks/useInView";
-
-function PillarRow({ item }: { item: { n: string; title: string; description: string } }) {
-  const { ref, visible } = useInView<HTMLDivElement>(0.15);
-  return (
-    <div ref={ref} className="d-pillars-row" style={{ display: "grid", gridTemplateColumns: "80px 1fr 2fr", gap: "2rem", alignItems: "start", padding: "2.5rem 0", borderBottom: "1px solid #f0f0f0" }}>
-      <div style={{ ...fadeIn(visible, 0), fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.14em", color: "#ccc", paddingTop: "4px" }}>{item.n}</div>
-      <h3 style={{ ...slideLeft(visible, 60), fontSize: "1.125rem", fontWeight: 700, color: "#0d0d0d", margin: 0, letterSpacing: "-0.025em", lineHeight: 1.3 }}>{item.title}</h3>
-      <p className="d-pillars-desc" style={{ ...fadeUp(visible, 130), fontSize: "0.9375rem", color: "#666", lineHeight: 1.8, margin: 0 }}>{item.description}</p>
-    </div>
-  );
-}
-
-function ScheduleRow({ item }: { item: { n: string; title: string; description: string } }) {
-  const { ref, visible } = useInView<HTMLDivElement>(0.15);
-  return (
-    <div ref={ref} className="d-schedule-row" style={{ display: "grid", gridTemplateColumns: "80px 1fr 2fr", gap: "2rem", alignItems: "start", padding: "2.5rem 0", borderBottom: "1px solid #eaeaea" }}>
-      <div style={{ ...fadeIn(visible, 0), fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.14em", color: "#ccc", paddingTop: "4px" }}>{item.n}</div>
-      <h3 style={{ ...slideLeft(visible, 60), fontSize: "1.0625rem", fontWeight: 700, color: "#0d0d0d", margin: 0, letterSpacing: "-0.02em", lineHeight: 1.3 }}>{item.title}</h3>
-      <p className="d-schedule-desc" style={{ ...fadeUp(visible, 130), fontSize: "0.9375rem", color: "#666", lineHeight: 1.8, margin: 0 }}>{item.description}</p>
-    </div>
-  );
-}
+// Découvrir (21/11) : système de l'accueil (src/components/site/Site.tsx). Mêmes textes (translations.ts → discover).
+import { useLang, useT } from "@/lib/i18n";
+import { SitePage, PageHero, Sec, HairList, Phones, Reveal, FinalCta, AppleIcon } from "@/components/site/Site";
 
 export default function DiscoverPage() {
   const t = useT();
+  const { lang } = useLang();
   const d = t.discover;
 
-  const { ref: pillarsHeaderRef, visible: pillarsHeaderVisible } = useInView<HTMLDivElement>(0.1);
-  const { ref: fencingRef, visible: fencingVisible } = useInView<HTMLDivElement>(0.1);
-  const { ref: philosophyRef, visible: philosophyVisible } = useInView<HTMLDivElement>(0.1, { oneShot: true });
-  const { ref: scheduleHeaderRef, visible: scheduleHeaderVisible } = useInView<HTMLDivElement>(0.1);
-
   return (
-    <>
-      <div style={{ backgroundColor: "#ffffff", padding: "0 12px 12px" }}>
-        <div style={{ position: "relative", backgroundColor: "#0d0d0d", borderRadius: "24px", minHeight: "calc(100vh - 24px)", display: "flex", flexDirection: "column", overflow: "hidden" }}>
-          <Image src="/images/discover-hero.png" alt="Discover Attax" fill style={{ objectFit: "cover", objectPosition: "center 30%" }} priority />
-          <div className="scan-overlay" />
-          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(10,10,10,0.96) 0%, rgba(10,10,10,0.75) 55%, rgba(10,10,10,0.25) 100%)" }} />
-          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(10,10,10,0.92) 0%, transparent 50%)" }} />
-          <PageNavbar />
-          <div className="hero-text-box" style={{ position: "relative", zIndex: 3, flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "2rem 4rem 2rem", maxWidth: "600px" }}>
-            <div style={{ marginBottom: "1.25rem" }}>
-              <span style={{ fontSize: "0.75rem", fontWeight: 600, color: "rgba(255,255,255,0.4)", letterSpacing: "0.14em", textTransform: "uppercase" }}>{d.hero_label}</span>
-            </div>
-            <h1 className="pin-title" style={{ fontSize: "clamp(3rem, 5.5vw, 4.75rem)", color: "#ffffff", lineHeight: 1, margin: "0 0 1.25rem" }}>
-              {d.h1[0]}{" "}<br className="hero-h1-br" /><em>{d.h1[1]}</em>
-            </h1>
-            <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.75, margin: "0 0 2rem", maxWidth: "400px" }}>{d.subtitle}</p>
-            <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
-              <a href="/download/ios" style={{ display: "inline-flex", alignItems: "center", gap: "8px", backgroundColor: "#ffffff", color: "#0d0d0d", fontWeight: 700, fontSize: "0.9375rem", padding: "13px 26px", borderRadius: "999px", textDecoration: "none" }}>
-                <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                {d.cta_ios}
-              </a>
-              <a href="/adventure" style={{ display: "inline-flex", alignItems: "center", backgroundColor: "rgba(255,255,255,0.07)", color: "rgba(255,255,255,0.7)", fontWeight: 600, fontSize: "0.9375rem", padding: "13px 26px", borderRadius: "999px", textDecoration: "none", border: "1px solid rgba(255,255,255,0.1)" }}>{d.cta_story}</a>
-            </div>
-          </div>
-          <div className="hero-stats" style={{ position: "relative", zIndex: 3, display: "flex", padding: "0 4rem clamp(2.5rem, 4vh, 4rem)", gap: 0 }}>
-            {d.stats.map((s, i) => (
-              <div key={i} style={{ paddingLeft: i > 0 ? "2.5rem" : 0, marginLeft: i > 0 ? "2.5rem" : 0, borderLeft: i > 0 ? "1px solid rgba(255,255,255,0.08)" : "none" }}>
-                <div style={{ fontSize: "0.9375rem", fontWeight: 700, color: "#ffffff", marginBottom: "3px" }}>{s.title}</div>
-                <div style={{ fontSize: "0.8125rem", color: "rgba(255,255,255,0.38)" }}>{s.sub}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+    <SitePage>
+      <PageHero
+        poster
+        kick={d.hero_label}
+        title={<><span>{d.h1[0]}</span> <span><em>{d.h1[1]}</em></span></>}
+        lead={d.subtitle}
+        stats={d.stats}
+      >
+        <a className="h7-btn h7-btn-light" href="/download/ios"><AppleIcon />{d.cta_ios}</a>
+        <a className="h7-btn h7-btn-ghost" href="/adventure">{d.cta_story}</a>
+      </PageHero>
 
-      <section className="d-section" style={{ backgroundColor: "#ffffff", padding: "7rem 2rem" }}>
-        <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
-          <div ref={pillarsHeaderRef} className="d-pillars-header" style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "4rem", marginBottom: "4rem" }}>
-            <div>
-              <p className="section-label" style={{ margin: "0 0 1.25rem", ...fadeUp(pillarsHeaderVisible, 0) }}>{d.pillars_label}</p>
-              <h2 style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.045em", lineHeight: 1.02, margin: 0 }}>
-                <div><span style={{ display: "block", ...clipReveal(pillarsHeaderVisible, 80) }}>{d.pillars_h2[0]}</span></div>
-                <div><span style={{ display: "block", ...clipReveal(pillarsHeaderVisible, 200) }}>{d.pillars_h2[1]}</span></div>
-              </h2>
-            </div>
-            <p className="d-pillars-sub" style={{ fontSize: "1rem", color: "#888", lineHeight: 1.75, maxWidth: "300px", margin: 0, flex: "0 0 300px", ...slideRight(pillarsHeaderVisible, 180) }}>{d.pillars_sub}</p>
-          </div>
-          <hr className="rule" style={{ marginBottom: "0" }} />
-          <div>
-            {d.pillars.map((p) => <PillarRow key={p.n} item={p} />)}
-          </div>
-        </div>
-      </section>
+      <Sec kick={d.pillars_label} title={<><span>{d.pillars_h2[0]}</span> <span>{d.pillars_h2[1]}</span></>} lead={d.pillars_sub} split>
+        <HairList items={d.pillars.map((p) => ({ n: p.n, title: p.title, body: p.description }))} />
+      </Sec>
 
-      <section className="d-fencing-section" style={{ backgroundColor: "#f7f7f7", padding: "0 2rem 2rem" }}>
-        <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
-          <div className="d-fencing-img" style={{ position: "relative", borderRadius: "28px", overflow: "hidden", height: "520px" }}>
-            <Image src="/images/fencing.jpg" alt="Fencer in action" fill style={{ objectFit: "cover", objectPosition: "center 30%" }} />
-            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0) 100%)" }} />
-            <div ref={fencingRef} className="d-fencing-text" style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "3.5rem 4rem" }}>
-              <p style={{ fontSize: "0.75rem", fontWeight: 600, color: "rgba(255,255,255,0.4)", letterSpacing: "0.14em", textTransform: "uppercase", margin: "0 0 0.75rem", ...fadeIn(fencingVisible, 0) }}>{d.duel_label}</p>
-              <h2 style={{ fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.04em", lineHeight: 1.05, margin: "0 0 1.25rem" }}>
-                <div><span style={{ display: "block", ...clipReveal(fencingVisible, 80) }}>{d.duel_h2[0]}</span></div>
-                <div><span style={{ display: "block", ...clipReveal(fencingVisible, 200) }}>{d.duel_h2[1]}</span></div>
-              </h2>
-              <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.75, margin: 0, ...fadeUp(fencingVisible, 280) }}>{d.duel_body.join(" ")}</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Sec kick={d.duel_label} title={<><span>{d.duel_h2[0]}</span> <span>{d.duel_h2[1]}</span></>} lead={d.duel_body.join(" ")}>
+        <Phones
+          items={[
+            { src: `/screens/story/${lang}/rounds.webp`, alt: lang === "fr" ? "Les rounds du match" : "The match rounds" },
+            { src: `/screens/story/${lang}/card.webp`, alt: lang === "fr" ? "La carte jouée" : "The card played" },
+            { src: `/screens/story/${lang}/final-round.webp`, alt: lang === "fr" ? "Le round final" : "The final round" },
+          ]}
+        />
+      </Sec>
 
-      <section style={{ backgroundColor: "#ffffff", padding: "8rem 2rem" }}>
-        <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
-          <div ref={philosophyRef} className="d-pillars-header" style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "4rem", marginBottom: "5rem" }}>
-            <div>
-              <p className="section-label" style={{ margin: "0 0 1.25rem", ...fadeUp(philosophyVisible, 0) }}>{d.philosophy_label}</p>
-              <h2 style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.045em", lineHeight: 1.02, margin: 0 }}>
-                <div><span style={{ display: "block", ...clipReveal(philosophyVisible, 80) }}>{d.philosophy_h2[0]}</span></div>
-                <div><span style={{ display: "block", ...clipReveal(philosophyVisible, 200) }}>{d.philosophy_h2[1]}</span></div>
-              </h2>
-            </div>
-          </div>
-          <div className="d-philosophy-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "3rem" }}>
-            {d.philosophy_body.map((text: string, i: number) => (
-              <p key={i} style={{ fontSize: "1.0625rem", color: i === 0 ? "#1a1a1a" : "#666", lineHeight: 1.85, margin: 0, fontWeight: i === 0 ? 500 : 400, borderTop: "1px solid #f0f0f0", paddingTop: "2rem", ...fadeUp(philosophyVisible, i * 80 + 100) }}>
-                {text}
-              </p>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Sec kick={d.philosophy_label} title={<><span>{d.philosophy_h2[0]}</span> <span>{d.philosophy_h2[1]}</span></>}>
+        <Reveal className="sp-cols">
+          {d.philosophy_body.map((text: string, i: number) => <p key={i}>{text}</p>)}
+        </Reveal>
+      </Sec>
 
-      <section className="d-section" style={{ backgroundColor: "#f7f7f7", padding: "7rem 2rem 9rem" }}>
-        <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
-          <div ref={scheduleHeaderRef} className="d-schedule-header" style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "4rem", marginBottom: "4rem" }}>
-            <div>
-              <p className="section-label" style={{ margin: "0 0 1.25rem", ...fadeUp(scheduleHeaderVisible, 0) }}>{d.schedule_label}</p>
-              <h2 style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.045em", lineHeight: 1.02, margin: 0 }}>
-                <div><span style={{ display: "block", ...clipReveal(scheduleHeaderVisible, 80) }}>{d.schedule_h2[0]}</span></div>
-                <div><span style={{ display: "block", ...clipReveal(scheduleHeaderVisible, 200) }}>{d.schedule_h2[1]}</span></div>
-              </h2>
-            </div>
-            <p className="d-schedule-sub" style={{ fontSize: "1rem", color: "#888", lineHeight: 1.75, maxWidth: "300px", margin: 0, flex: "0 0 300px", ...slideRight(scheduleHeaderVisible, 180) }}>{d.schedule_sub}</p>
-          </div>
-          <hr className="rule" style={{ marginBottom: "0" }} />
-          <div>
-            {d.schedule_items.map((f) => <ScheduleRow key={f.n} item={f} />)}
-          </div>
-        </div>
-      </section>
-    </>
+      <Sec kick={d.schedule_label} title={<><span>{d.schedule_h2[0]}</span> <span>{d.schedule_h2[1]}</span></>} lead={d.schedule_sub} split>
+        <HairList items={d.schedule_items.map((s) => ({ n: s.n, title: s.title, body: s.description }))} />
+      </Sec>
+
+      <FinalCta />
+    </SitePage>
   );
 }
