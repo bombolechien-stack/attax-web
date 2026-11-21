@@ -345,3 +345,7 @@ body:has(.p5) { background: #EEF1F7; }
   .act6-min { min-width: 54px; font-size: 18px; }
   .act6-pill { min-width: 52px; font-size: 15px; padding: 3px 8px; }
 }
+
+/* Les cartes : fond clair (passe 6) */
+.p5 .cards6 .cards-cta { color: var(--ink2); }
+.p5 .cards6 .cards-cta b { color: var(--ink); }

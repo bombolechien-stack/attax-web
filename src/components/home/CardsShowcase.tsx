@@ -4,8 +4,8 @@ import Image from "next/image";
 import { useLang, useT } from "@/lib/i18n";
 import { useInView, scaleIn } from "@/hooks/useInView";
 
-// Section « Les cartes » : la mise en page de la version en ligne (fond noir, texte à gauche, éventail de
-// 3 cartes inclinées qui se redressent au survol), avec les cartes au format PORTRAIT de l'app
+// Section « Les cartes » (passe 6 : fond clair de l'app, comme l'éventail du tirage de la page Match) : texte à gauche,
+// éventail de 3 cartes inclinées qui se redressent au survol, avec les cartes au format PORTRAIT de l'app
 // (budyfit app/(tabs)/match.tsx → CardPortraitV3, gabarit 270 × 378) : « Attax » + n°, famille, nom,
 // scène de la planche, effet sur bandeau noir, accroche, grand numéro.
 const SHOWN = ["ghost", "spike", "freeze"] as const;   // ordre voulu par gui : Ghost, Quitte ou double (au centre), Freeze
@@ -19,6 +19,9 @@ const TAGLINE: Record<"en" | "fr", Record<string, string>> = {
 type Card = { id: string; n: string; fam: string; name: string; punchy: string; sub: string };
 
 const INK = "#0E141A";
+// Ombre des cartes de l'éventail du tirage (page Match de l'app) : douce, neutre, sur le fond clair
+const SHADOW = "0 18px 40px rgba(14,20,26,0.16), 0 2px 6px rgba(14,20,26,0.08)";
+const SHADOW_UP = "0 28px 56px rgba(14,20,26,0.2), 0 2px 6px rgba(14,20,26,0.08)";
 
 /** Carte portrait, en unités du gabarit de l'app (k = largeur / 270) via container queries. */
 function PortraitCard({ card, family, tagline }: { card: Card; family: string; tagline: string }) {
@@ -28,8 +31,8 @@ function PortraitCard({ card, family, tagline }: { card: Card; family: string; t
     <div style={{ position: "relative", width: "100%", aspectRatio: "270 / 378", borderRadius: u(14), overflow: "hidden", backgroundColor: "#EEF1F6" }}>
       {/* scanlines de la carte (34 lignes très légères) */}
       <div aria-hidden style={{ position: "absolute", inset: 0, backgroundImage: "repeating-linear-gradient(to bottom, transparent 0, transparent calc(100% / 34 - 1.2px), rgba(15,23,42,0.035) calc(100% / 34 - 1.2px), rgba(15,23,42,0.035) calc(100% / 34))" }} />
-      <div style={{ position: "absolute", top: u(12), left: u(14), right: u(14), display: "flex", alignItems: "center", gap: u(7) }}>
-        <span style={{ fontSize: u(12), fontWeight: 800, fontStyle: "italic", color: INK, letterSpacing: "-0.02em", lineHeight: 1 }}>Attax</span>
+      <div style={{ position: "absolute", top: u(13), left: u(14), right: u(14), display: "flex", alignItems: "center", gap: u(7) }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}<img src="/images/attaxtxt.svg" alt="" style={{ height: u(11), width: "auto", display: "block" }} />
         <span style={{ flex: 1, height: 1, backgroundColor: "rgba(14,20,26,0.25)" }} />
         <span style={{ fontSize: u(9), fontWeight: 800, color: INK }}>n°{card.n}</span>
       </div>
@@ -63,7 +66,7 @@ export default function CardsShowcase() {
   const delays = [180, 60, 300];
 
   return (
-    <section id="cards" className="cards-section p5-sec p5-dark" style={{ position: "relative", overflow: "hidden" }}>
+    <section id="cards" className="cards-section p5-sec cards6" style={{ position: "relative", overflow: "hidden" }}>
       <div className="p5-wrap" style={{ position: "relative" }}>
         <div className="cards-showcase-inner" style={{ display: "flex", alignItems: "center", gap: "4rem", justifyContent: "space-between" }}>
           <div ref={headerRef} className={`cards-showcase-text p5-head-stack${headerVisible ? " is-in" : ""}`}>
@@ -82,18 +85,14 @@ export default function CardsShowcase() {
                   style={{
                     ...appear,
                     transform: `${appear.transform} ${base}`,
-                    width: 230, flexShrink: 0, margin: "0 -6px", zIndex: i === 1 ? 2 : 1, position: "relative",
-                    borderRadius: 16, boxShadow: "0 40px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.08)",
+                    width: 260, flexShrink: 0, margin: "0 -6px", zIndex: i === 1 ? 2 : 1, position: "relative",
+                    borderRadius: 16, boxShadow: SHADOW,
                     transition: "transform 0.45s cubic-bezier(0.16,1,0.3,1), box-shadow 0.45s cubic-bezier(0.16,1,0.3,1), opacity 1s cubic-bezier(0.16,1,0.3,1)",
                   }}
-                  onMouseEnter={(e) => { const el = e.currentTarget; el.style.transform = "rotate(0deg) translateY(-16px) scale(1.05)"; el.style.zIndex = "10"; el.style.boxShadow = "0 50px 90px rgba(0,0,0,0.6), 0 0 60px rgba(10,61,255,0.35), 0 0 0 1px rgba(255,255,255,0.14)"; }}
-                  onMouseLeave={(e) => { const el = e.currentTarget; el.style.transform = base; el.style.zIndex = i === 1 ? "2" : "1"; el.style.boxShadow = "0 40px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.08)"; }}
+                  onMouseEnter={(e) => { const el = e.currentTarget; el.style.transform = "rotate(0deg) translateY(-16px) scale(1.05)"; el.style.zIndex = "10"; el.style.boxShadow = SHADOW_UP; }}
+                  onMouseLeave={(e) => { const el = e.currentTarget; el.style.transform = base; el.style.zIndex = i === 1 ? "2" : "1"; el.style.boxShadow = SHADOW; }}
                 >
-                  {/* Passe 5 : les cartes arrivent face cachée et se retournent l'une après l'autre (le tirage du matin) */}
-                  <div className="card-flip" style={{ transform: cardsVisible ? "rotateY(0deg)" : "rotateY(180deg)", transitionDelay: `${400 + delays[i] * 2}ms` }}>
-                    <div className="card-face"><PortraitCard card={c} family={fam[c.fam]} tagline={TAGLINE[lang][c.id]} /></div>
-                    <div className="card-back" aria-hidden="true"><Image src="/images/flag.svg" alt="" width={44} height={44} /><span>Attax</span></div>
-                  </div>
+                  <PortraitCard card={c} family={fam[c.fam]} tagline={TAGLINE[lang][c.id]} />
                 </div>
               );
             })}
