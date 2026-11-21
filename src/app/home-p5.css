@@ -824,3 +824,4 @@ body:has(.p5) { background: #EEF1F7; }
 .p5 #league .lg6-card, .p5 #league .st6-vis .lg6-card { background: transparent; box-shadow: none; border-radius: 0; }
 @media (min-width: 901px) { .p5 #league .lg6-card { max-width: 400px; padding: 0; } }
 @media (max-width: 900px) { .p5 #league .lg6-card { margin: 0; padding: 0; } }
+@media (min-width: 901px) { .p5 #league .lg6-card .lt6 { zoom: 0.8; } }
