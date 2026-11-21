@@ -1014,3 +1014,7 @@ body:has(.h7-page) .footer-panel .footer-attax { color: rgba(9,9,11,0.03) !impor
   .p5 .home-hero-copy p { font-size: 1.125rem !important; }
   .hero-stats6 b { font-size: 0.75rem; }
 }
+
+/* L'idée : la grande phrase seule, espacement serré */
+.h7-idea { padding-top: clamp(3.5rem, 6vw, 5rem); padding-bottom: clamp(1rem, 2vw, 1.5rem); }
+@media (max-width: 900px) { .h7-idea { padding: 3rem 0 0.5rem; } }
