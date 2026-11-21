@@ -460,3 +460,12 @@ body:has(.p5) .footer-panel .footer-top-bar img[alt="Attax"] { filter: brightnes
   .dl6-card { grid-template-columns: 1fr; height: auto; padding: 2rem 1.5rem 0; }
   .dl6-phone { width: 240px; height: 230px; overflow: hidden; margin-top: 0.5rem; }
 }
+
+/* Téléphone : une seule gouttière (les cartes en avaient deux), rounds plus compacts, liens du pied de page sur 2 colonnes */
+.p5 .cards-section { padding-left: 0 !important; padding-right: 0 !important; }
+@media (max-width: 760px) {
+  .p5 .mr-round { min-height: 400px; }
+  body:has(.p5) .footer-link-grid { grid-template-columns: 1fr 1fr !important; }
+}
+.p5 .cards-showcase-text { max-width: 36rem; flex: 1 1 auto; }
+.p5 .cards-showcase-inner { gap: 2.5rem !important; }
