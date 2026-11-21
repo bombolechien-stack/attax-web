@@ -1064,3 +1064,13 @@ body:has(.h7-page) .footer-panel .footer-attax { color: rgba(9,9,11,0.03) !impor
 /* Hero (21/11, capture H choisie par gui) : le haut du téléphone montre l'en-tête, le compte à rebours, les avatars et les barres de PV */
 @media (min-width: 861px) { .hero-peek { height: 300px; } .p5 .home-hero-copy { padding-bottom: 326px; } }
 @media (max-width: 860px) { .hero-peek { height: 222px; } }
+
+/* Hero (21/11, retour de gui à ~1230 px) : bloc de gauche plus à droite (aligné sur le texte de la nav, au moins ~9,5 % de
+   la largeur), et au moins 56 à 72 px sous la nav, centré verticalement dans la place restante ; même rangée du bas. */
+@media (min-width: 861px) {
+  .p5 .hero-card { --hx: max(9.5vw, calc((100vw - 1120px) / 2 + 12px)); }
+  .p5 .home-hero-copy { padding-left: var(--hx); max-width: calc(var(--hx) + 660px); padding-top: clamp(3.5rem, 8vh, 4.5rem); justify-content: center; }
+  .p5 .hero-peek { left: var(--hx); }
+  .p5 .hero-ctas { left: calc(var(--hx) + 272px + 28px); }
+}
+@media (min-width: 861px) and (max-height: 800px) { .hero-peek { height: 250px; } .p5 .home-hero-copy { padding-bottom: 276px; } }
