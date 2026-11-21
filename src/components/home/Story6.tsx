@@ -17,9 +17,9 @@ function useMedia(q: string) {
   );
 }
 
-export default function Story6({ id, kicker, big, title, line, children, reverse = false, extra, art, pin = false }: {
+export default function Story6({ id, kicker, big, title, line, children, reverse = false, extra, pin = false }: {
   id: string; kicker: string; big?: string; title: [ReactNode, ReactNode]; line: ReactNode; reverse?: boolean; extra?: ReactNode;
-  art?: { src: string; pos?: string; size?: string }; pin?: boolean;
+  pin?: boolean;
   children: ReactNode | ((progress: number, pinned: boolean) => ReactNode);
 }) {
   const { ref, visible } = useInView<HTMLDivElement>(0.2, { oneShot: true });
@@ -60,10 +60,7 @@ export default function Story6({ id, kicker, big, title, line, children, reverse
             {extra}
           </div>
           <div ref={visRef} className={`st6-vis${visIn ? " is-in" : ""}`}>
-            <div className="st6-stage" aria-hidden="true">
-              {/* L'art scanlines d'Attax (sportifs du hero, public/scan), en encre très pâle, rogné par la scène */}
-              {art && <span className="st6-art" style={{ WebkitMaskImage: `url(${art.src})`, maskImage: `url(${art.src})`, WebkitMaskPosition: art.pos ?? "50% 50%", maskPosition: art.pos ?? "50% 50%", WebkitMaskSize: art.size ?? "auto 118%", maskSize: art.size ?? "auto 118%" }} />}
-            </div>
+            {/* Rien derrière le téléphone (règle du 21/11) : ni scène, ni art, ni texture. */}
             <div className="st6-dev">{content}</div>
           </div>
         </div>

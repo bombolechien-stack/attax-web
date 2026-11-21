@@ -36,7 +36,7 @@ export default function Workout6() {
   const { lang } = useLang();
   const c = COPY[lang];
   return (
-    <Story6 id="workout" kicker={c.kick} big={c.big} title={c.title} line={c.line} reverse art={{ src: "/scan/deadlift.webp", pos: "50% 40%", size: "auto 125%" }} extra={
+    <Story6 id="workout" kicker={c.kick} big={c.big} title={c.title} line={c.line} reverse extra={
       <ul className="re6">
         {c.items.map((it) => (
           <li key={it.icon}>

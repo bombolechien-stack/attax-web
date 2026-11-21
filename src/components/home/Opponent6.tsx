@@ -12,16 +12,16 @@ import AppPhone from "./AppPhone";
 // _kit/build/img/app/v3/opponent-sophie.png (unité u = 1 px de la capture affichée à 899 px de large).
 const COPY = {
   en: {
-    kick: "01 · 8 AM", big: "8 AM",
+    kick: "01 · Every day",
     title: ["Every day,", "a new opponent."] as [string, string],
-    line: "8 AM. Sophie, Pro II. The match begins.",
+    line: "A new opponent, every day. Today: Sophie, Pro II.",
     sheet: "MATCH 6 · YOUR OPPONENT",
     stats: [["FAVORITE SPORT", "Swimming", ""], ["AVERAGE WORKOUT", "56 min", ""], ["PER DAY", "506 pts", "on average"], ["HEAD TO HEAD", "1st duel", "between you"]],
   },
   fr: {
-    kick: "01 · 8h", big: "8h",
+    kick: "01 · Chaque jour",
     title: ["Chaque jour,", "un nouvel adversaire."] as [string, string],
-    line: "8h. Sophie, Pro II. Le match commence.",
+    line: "Un nouvel adversaire, tous les jours. Aujourd'hui : Sophie, Pro II.",
     sheet: "MATCH 6 · TON ADVERSAIRE",
     stats: [["SPORT FAVORI", "Natation", ""], ["SÉANCE MOYENNE", "56 min", ""], ["PAR JOUR", "506 pts", "en moyenne"], ["FACE À FACE", "1er duel", "entre vous"]],
   },
@@ -32,7 +32,7 @@ export default function Opponent6() {
   const c = COPY[lang];
   const { ref, visible } = useInView<HTMLDivElement>(0.3, { oneShot: true });
   return (
-    <Story6 id="opponent" kicker={c.kick} big={c.big} title={c.title} line={c.line} art={{ src: "/scan/run-woman.webp", pos: "50% 30%", size: "auto 130%" }}>
+    <Story6 id="opponent" kicker={c.kick} title={c.title} line={c.line}>
       <div className="st6-phone">
         <AppPhone>
           <div ref={ref} className={`opp6${visible ? " is-in" : ""}`}>

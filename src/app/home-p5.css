@@ -524,11 +524,6 @@ body:has(.p5) .footer-panel .footer-top-bar img[alt="Attax"] { filter: brightnes
 @media (min-width: 1200px) {
   body:has(.p5) .footer-panel .footer-mail, body:has(.p5) .footer-panel .footer-top-bar, body:has(.p5) .footer-panel .footer-link-grid, body:has(.p5) .footer-panel .footer-btm-bar { max-width: 1120px; margin-left: auto; margin-right: auto; padding-left: 0 !important; padding-right: 0 !important; box-sizing: border-box; }
 }
-/* Hero : le texte et le haut du téléphone sur le bord gauche de la grille (celui de la barre de navigation) */
-@media (min-width: 1200px) {
-  .p5 .home-hero-copy { padding-left: calc((100vw - 1120px) / 2 - 12px); max-width: calc((100vw - 1120px) / 2 + 560px); box-sizing: border-box; }
-  .p5 .hero-peek { left: calc((100vw - 1120px) / 2 - 12px); }
-}
 @media (max-width: 760px) {
   .p5-head { grid-template-columns: 1fr; gap: 1rem; }
   .p5-head-r { justify-self: start; max-width: none; }
@@ -770,3 +765,25 @@ body:has(.p5) .footer-panel .footer-top-bar img[alt="Attax"] { filter: brightnes
 @media (max-width: 900px) { .st6-big, .p5-head-l .st6-big { top: -0.8em; } }
 .st6-art { opacity: 0.13; }
 @media (max-width: 900px) { .st6-grid { grid-template-columns: 1fr; gap: 2.5rem; } .st6.is-rev .st6-txt { order: 0; } }
+
+/* ════ 21/11 (soir) : RIEN derrière les téléphones. Pas de scène, pas d'art, pas de texture ; chaque téléphone seul sur le
+   fond de l'app avec sa propre ombre douce. Les grands chiffres restent dans la colonne du texte. ════ */
+.st6-stage, .st6-art { display: none !important; }
+.st6-vis { height: auto !important; min-height: 0 !important; padding: 0 !important; }
+.st6-dev, .st6.is-rev .st6-dev { transform: none !important; }
+.p5 #league .st6-vis { padding: 0 !important; }
+.p5 #league .st6-dev { padding: 0 !important; }
+.st6-txt { overflow: visible; }
+.st6-big, .p5-head-l .st6-big { left: 0; max-width: 100%; overflow: hidden; }
+
+/* Chapitre 04 : les 3 cartes du jour (éventail du tirage), puis la carte jouée ressort */
+.tw7 { display: flex; justify-content: center; width: 100%; }
+.tw7-fan { display: flex; align-items: center; margin-top: 2.25rem; padding-left: 6px; }
+.tw7-card { width: 150px; flex-shrink: 0; margin: 0 -8px; border-radius: 12px; box-shadow: 0 14px 30px -16px rgba(14,20,26,0.35); transition: transform 0.7s cubic-bezier(0.16,1,0.3,1), opacity 0.6s ease; position: relative; }
+.tw7-card:nth-child(1) { transform: rotate(-6deg) translateY(12px); }
+.tw7-card:nth-child(2) { transform: none; z-index: 2; }
+.tw7-card:nth-child(3) { transform: rotate(6deg) translateY(12px); }
+#cards[data-step="1"] .tw7-card:not(.is-pick), #cards[data-step="2"] .tw7-card:not(.is-pick) { opacity: 0.28; }
+#cards[data-step="1"] .tw7-card.is-pick, #cards[data-step="2"] .tw7-card.is-pick { transform: translateY(-16px) scale(1.07); z-index: 3; }
+@media (max-width: 900px) { .tw7-card { width: 31%; } .tw7-fan { justify-content: center; } }
+#cards .st6-big { display: none; }
