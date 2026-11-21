@@ -136,7 +136,7 @@ export default function DailyMatch() {
   return (
     <section id="daily-match" className="mr-section p5-sec p-lines p-lines-light">
       <div className="p5-wrap">
-        <SectionHead label={lang === "fr" ? "03 · 10h → 17h30" : "03 · 10 AM → 5:30 PM"} title={[m.h2[0], m.h2[1]]} lead={m.subtitle} big={lang === "fr" ? "7 PV" : "7 HP"} />
+        <SectionHead label={lang === "fr" ? "03 · 10h → 17h30" : "03 · 10 AM → 5:30 PM"} title={[m.h2[0], m.h2[1]]} lead={m.subtitle} />
       </div>
 
       {/* L'écran Match de l'app, agrandi */}
