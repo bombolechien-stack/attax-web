@@ -37,14 +37,14 @@ const COPY = {
     title: ["One week, one league,", "one champion."] as [string, string],
     lead: "A duel a day against your league. The top 2 move up a rank, the bottom 2 move down.",
     league: "LEAGUE 922", table: "LEAGUE STANDINGS", you: " · you", vs: "YOU", up: "▲ PROMOTION", down: "▼ RELEGATION",
-    ranks: "The ranks", climb: "From Rookie to Legend, each in three tiers. Your rank follows you from league to league.",
+    ranks: "RANKS", climb: "From Rookie to Legend, each in three tiers. Your rank follows you from league to league.",
   },
   fr: {
     label: "La ligue",
     title: ["Une semaine, une ligue,", "un champion."] as [string, string],
     lead: "Un duel par jour contre ta ligue. Les 2 premiers montent d'un rang, les 2 derniers descendent.",
     league: "LIGUE 922", table: "CLASSEMENT DE LA LIGUE", you: " · toi", vs: "TOI", up: "▲ MONTÉE", down: "▼ DESCENTE",
-    ranks: "Les rangs", climb: "De Rookie à Legend, chacun en trois paliers. Ton rang te suit de ligue en ligue.",
+    ranks: "RANGS", climb: "De Rookie à Legend, chacun en trois paliers. Ton rang te suit de ligue en ligue.",
   },
 };
 
@@ -85,61 +85,61 @@ export default function LeagueTable() {
     <section id="league" className="p5-sec lg6">
       <div className="p5-wrap">
         <SectionHead label={c.label} title={c.title} lead={c.lead} />
-        <div className="lg6-grid">
-          <div ref={ref} className="lt6" aria-label={c.table}>
-            <p className="lt6-league">{c.league} <span>·</span> <b>PRO</b></p>
-            <div className="lt6-rule" />
-            <div className="lt6-head"><span>{c.table}</span><em>POINTS</em></div>
-            {ROWS.map((r, i) => {
-              const pos = i + 1, podium = pos === 1 ? GOLD : pos === 2 ? SILVER : pos === 3 ? BRONZE : null;
-              return (
-                <div key={r.name} style={{ opacity: visible ? 1 : 0, transform: visible ? "none" : "translateY(10px)", transition: `opacity 0.6s ease ${i * 70}ms, transform 0.6s cubic-bezier(0.16,1,0.3,1) ${i * 70}ms` }}>
-                  {pos === n - 1 && <div className="lt6-zone" style={{ color: RED }}><i /><span>{c.down}</span></div>}
-                  <div className={`lt6-row${r.me ? " is-me" : ""}${pos === n || pos === 2 || pos === n - 2 ? " no-line" : ""}`}>
-                    {r.me && <MeScanlines />}
-                    <div className="lt6-place">
-                      <span style={{ color: r.me ? "#FFFFFF" : podium ?? "#0F172A" }} className={pos <= 3 ? "big" : undefined}>{pos}</span>
-                      {!!r.move && <small style={{ color: r.move > 0 ? BLUE : RED }}>{r.move > 0 ? `↑${r.move}` : `↓${-r.move}`}</small>}
-                    </div>
-                    <div className="lt6-avw">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img className="lt6-av" src={`/league/av-${r.av}.webp`} alt="" style={{ borderColor: podium ?? "#D7DEE8", borderWidth: pos === 1 ? "var(--ring1)" : "var(--ring)" }} />
-                    </div>
-                    <div className="lt6-mid">
-                      <div className="lt6-namerow">
-                        <span className="lt6-name">{r.name}{r.me ? c.you : ""}</span>
+        {/* Une carte blanche centrée (surface de l'app) : le classement, puis les rangs en une rangée de badges */}
+        <div className="lg6-card">
+            <div ref={ref} className="lt6" aria-label={c.table}>
+              <p className="lt6-league">{c.league} <span>·</span> <b>PRO</b></p>
+              <div className="lt6-rule" />
+              <div className="lt6-head"><span>{c.table}</span><em>POINTS</em></div>
+              {ROWS.map((r, i) => {
+                const pos = i + 1, podium = pos === 1 ? GOLD : pos === 2 ? SILVER : pos === 3 ? BRONZE : null;
+                return (
+                  <div key={r.name} style={{ opacity: visible ? 1 : 0, transform: visible ? "none" : "translateY(10px)", transition: `opacity 0.6s ease ${i * 70}ms, transform 0.6s cubic-bezier(0.16,1,0.3,1) ${i * 70}ms` }}>
+                    {pos === n - 1 && <div className="lt6-zone" style={{ color: RED }}><i /><span>{c.down}</span></div>}
+                    <div className={`lt6-row${r.me ? " is-me" : ""}${pos === n || pos === 2 || pos === n - 2 ? " no-line" : ""}`}>
+                      {r.me && <MeScanlines />}
+                      <div className="lt6-place">
+                        <span style={{ color: r.me ? "#FFFFFF" : podium ?? "#0F172A" }} className={pos <= 3 ? "big" : undefined}>{pos}</span>
+                        {!!r.move && <small style={{ color: r.move > 0 ? BLUE : RED }}>{r.move > 0 ? `↑${r.move}` : `↓${-r.move}`}</small>}
+                      </div>
+                      <div className="lt6-avw">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img className="lt6-badge" src={flagUri(3, r.sub)} alt={`Pro ${["I", "II", "III"][r.sub - 1]}`} />
+                        <img className="lt6-av" src={`/league/av-${r.av}.webp`} alt="" style={{ borderColor: podium ?? "#D7DEE8", borderWidth: pos === 1 ? "var(--ring1)" : "var(--ring)" }} />
                       </div>
-                      <div className="lt6-meta">
-                        <span className="lt6-form">{r.form.map((f, k) => <i key={k} style={{ background: f === "V" ? BLUE : RED }} />)}</span>
-                        {r.h2h && (
-                          <span className="lt6-h2h"><b>{c.vs} </b><strong style={{ color: BLUE }}>{r.h2h[0]}</strong><em> – </em><strong style={{ color: RED }}>{r.h2h[1]}</strong></span>
-                        )}
+                      <div className="lt6-mid">
+                        <div className="lt6-namerow">
+                          <span className="lt6-name">{r.name}{r.me ? c.you : ""}</span>
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img className="lt6-badge" src={flagUri(3, r.sub)} alt={`Pro ${["I", "II", "III"][r.sub - 1]}`} />
+                        </div>
+                        <div className="lt6-meta">
+                          <span className="lt6-form">{r.form.map((f, k) => <i key={k} style={{ background: f === "V" ? BLUE : RED }} />)}</span>
+                          {r.h2h && (
+                            <span className="lt6-h2h"><b>{c.vs} </b><strong style={{ color: BLUE }}>{r.h2h[0]}</strong><em> – </em><strong style={{ color: RED }}>{r.h2h[1]}</strong></span>
+                          )}
+                        </div>
                       </div>
+                      <span className="lt6-pts">{r.pts}</span>
                     </div>
-                    <span className="lt6-pts">{r.pts}</span>
+                    {pos === 2 && <div className="lt6-zone" style={{ color: BLUE }}><i /><span>{c.up}</span></div>}
                   </div>
-                  {pos === 2 && <div className="lt6-zone" style={{ color: BLUE }}><i /><span>{c.up}</span></div>}
-                </div>
-              );
-            })}
-          </div>
+                );
+              })}
+            </div>
 
-          <div className="lg6-ranks">
-            <p className="p5-label">{c.ranks}</p>
-            <ol>
-              {DIVS.map((d) => (
-                <li key={d.k} className={d.k === "Pro" ? "is-on" : undefined}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={flagUri(d.d, 3)} alt="" />
-                  <span style={{ color: d.c }}>{d.k}</span>
-                  <small>I · II · III</small>
-                </li>
-              ))}
-            </ol>
-            <p className="lg6-climb">{c.climb}</p>
-          </div>
+            <div className="lg6-ranks">
+              <div className="lt6-head lg6-ranks-head"><span>{c.ranks}</span></div>
+              <ol>
+                {[...DIVS].reverse().map((d) => (
+                  <li key={d.k}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={flagUri(d.d, 3)} alt="" />
+                    <span style={{ color: d.c }}>{d.k}</span>
+                  </li>
+                ))}
+              </ol>
+              <p className="lg6-climb">{c.climb}</p>
+            </div>
         </div>
       </div>
     </section>
