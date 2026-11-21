@@ -647,13 +647,6 @@ html { overflow-x: clip; }
   .cards-fan-item { width: 54vw !important; margin: 0 !important; transform: none !important; scroll-snap-align: center; }
 }
 
-/* ── Pages /download/ios et /download/android ── */
-@media (max-width: 860px) {
-  .sp-hero { flex-direction: column !important; align-items: flex-start !important; gap: 2rem !important; }
-  .sp-hero-text { padding-bottom: 0 !important; }
-  .sp-hero-phone { align-self: center !important; margin-bottom: -3rem !important; width: min(280px, 72vw) !important; }
-  .sp-grid { grid-template-columns: 1fr !important; gap: 3.5rem !important; }
-}
 
 /* ── Tous les sports comptent : une scène, le barème à côté (20/11) ── */
 .spt-section { background: #ffffff; padding: 7rem clamp(1.25rem, 5vw, 4rem) 8rem; overflow: hidden; position: relative; }

@@ -229,3 +229,28 @@ body:has(.sp) { background: #EEF1F7 !important; }
 .h7-faq-a.sp-prose p { margin: 0 0 0.75rem; }
 .sp-faq-contact { margin-top: clamp(2rem, 4vw, 3rem); }
 @media (max-width: 900px) { .sp-faqcat { grid-template-columns: 1fr; gap: 1.25rem; } .sp-chip { padding: 8px 14px !important; font-size: 0.875rem !important; } }
+
+/* Télécharger : liste cochée, deux plateformes à filets */
+.sp-checks { list-style: none; margin: 0; padding: 0; border-top: 1px solid rgba(9,9,11,0.12); }
+.sp-checks li { display: flex; align-items: center; gap: 1rem; padding: 1.1rem 0; line-height: 1.3; border-bottom: 1px solid rgba(9,9,11,0.12); font-family: var(--font-manrope), sans-serif; font-size: clamp(1.1875rem, 1.6vw, 1.5rem); font-weight: 500; letter-spacing: -0.015em; color: var(--ink); }
+.sp-checks li::before { content: ""; flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 8.2l2.3 2.3 4.7-5' fill='none' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 16px no-repeat; }
+.sp-plats { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid rgba(9,9,11,0.12); }
+.sp-plat { padding: 2rem 2rem 2.25rem 0; }
+.sp-plat + .sp-plat { padding-left: 2rem; border-left: 1px solid rgba(9,9,11,0.12); }
+.sp-plat-top { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.sp-plat-top img { border-radius: 12px; }
+.sp-plat .h7-p { margin: 0 0 1.5rem; }
+@media (max-width: 760px) { .sp-plats { grid-template-columns: 1fr; } .sp-plat + .sp-plat { padding-left: 0; border-left: 0; border-top: 1px solid rgba(9,9,11,0.12); } }
+
+/* En-tête avec téléphone (pages Télécharger) : le haut d'une vraie capture monte du bord bas, à droite */
+.sp-hero-phone { position: absolute; z-index: 4; right: max(var(--gut, 1.5rem), calc((100% - 1120px) / 2 + 24px)); bottom: 0; width: 330px; height: calc(100% - 120px); overflow: hidden; pointer-events: none; animation: peekUp 1.1s cubic-bezier(0.16,1,0.3,1) 0.3s both; }
+.sp-hero.has-phone { min-height: min(700px, calc(100svh - 24px)); }
+.sp-hero.has-phone .sp-hero-in > * { max-width: 600px; }
+@media (max-width: 1000px) and (min-width: 861px) { .sp-hero-phone { width: 270px; } }
+@media (max-width: 860px) {
+  .sp-hero-phone { position: relative; right: auto; align-self: flex-start; margin: 0 0 0 1.5rem; width: 230px; height: 230px; }
+}
+.sp-checks.is-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 3rem; border-top: 0; }
+.sp-checks.is-grid li:nth-child(-n+2) { border-top: 1px solid rgba(9,9,11,0.12); }
+@media (max-width: 760px) { .sp-checks.is-grid { grid-template-columns: 1fr; } .sp-checks.is-grid li:nth-child(2) { border-top: 0; } }
+@media (max-width: 760px) { .sp-checks li { font-size: 1.125rem; } }
