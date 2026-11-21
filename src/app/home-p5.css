@@ -529,3 +529,8 @@ body:has(.p5) .footer-panel .footer-top-bar img[alt="Attax"] { filter: brightnes
   .p5 .home-hero-copy { padding-left: calc((100vw - 1120px) / 2 - 12px); max-width: calc((100vw - 1120px) / 2 + 560px); box-sizing: border-box; }
   .p5 .hero-peek { left: calc((100vw - 1120px) / 2 - 12px); }
 }
+@media (max-width: 760px) {
+  .p5-head { grid-template-columns: 1fr; gap: 1rem; }
+  .p5-head-r { justify-self: start; max-width: none; }
+  .act6-zhead span { white-space: nowrap; margin-left: 2px; }
+}
