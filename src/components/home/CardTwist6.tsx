@@ -12,7 +12,7 @@ import { PortraitCard, TAGLINE, type Card } from "./CardsShowcase";
 // tremble de plus en plus puis pivote en 460 ms) : c'est la carte portrait de l'app (CardPortraitV3), Overdrive.
 // Puis la récompense : l'écran bleu du vainqueur (vraie capture, textes FR de l'app : story/<langue>/winner.webp).
 const COPY = {
-  en: { title: ["One card can", "turn it all around."] as [string, string], line: "Overdrive: today's workout counts ×1.5. At 9:3000a0PM, the verdict.", alt: "The verdict: Johnny wins on HP" },
+  en: { title: ["One card can", "turn it all around."] as [string, string], line: "Overdrive: today's workout counts ×1.5. At 9:30 PM, the verdict.", alt: "The verdict: Johnny wins on HP" },
   fr: { title: ["Une carte peut", "tout renverser."] as [string, string], line: "Overdrive : ta séance du jour compte ×1,5. À 21h30, le verdict.", alt: "Le verdict : Johnny gagne aux PV" },
 };
 
