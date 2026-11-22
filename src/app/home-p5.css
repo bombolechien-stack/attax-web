@@ -1069,8 +1069,8 @@ body:has(.h7-page) .footer-panel .footer-attax { color: rgba(9,9,11,0.03) !impor
    la largeur), et au moins 56 à 72 px sous la nav, centré verticalement dans la place restante ; même rangée du bas. */
 @media (min-width: 861px) {
   /* 22/11 (gui) : moins de marge à gauche sur les grands écrans, le bloc s'étend davantage. */
-  .p5 .hero-card { --hx: clamp(72px, 6.5vw, 132px); }
-  .p5 .home-hero-copy { padding-left: var(--hx); max-width: calc(var(--hx) + 760px); padding-top: clamp(3.5rem, 8vh, 4.5rem); justify-content: center; }
+  .p5 .hero-card { --hx: clamp(96px, 9vw, 176px); }
+  .p5 .home-hero-copy { padding-left: var(--hx); max-width: calc(var(--hx) + 940px); padding-top: clamp(3.5rem, 8vh, 4.5rem); justify-content: center; }
   .p5 .hero-peek { left: var(--hx); }
   .p5 .hero-ctas { left: calc(var(--hx) + 272px + 28px); }
 }
@@ -1104,6 +1104,6 @@ body:has(.h7-page) .footer-panel .footer-attax { color: rgba(9,9,11,0.03) !impor
 }
 /* 22/11 (gui) : sur les grands écrans, le bloc du hero s'étend davantage (titre et phrase plus grands). */
 @media (min-width: 1500px) {
-  .p5 .home-hero-copy .hero-h1-6 { font-size: clamp(84px, 5.2vw, 104px); }
+  .p5 .home-hero-copy .hero-h1-6 { font-size: clamp(84px, 6.2vw, 124px); }
   .p5 .home-hero-copy > p.delay-100 { font-size: clamp(1.25rem, 1.2vw, 1.5rem) !important; }
 }
