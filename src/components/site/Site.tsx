@@ -51,7 +51,7 @@ export function PageHero({ kick, title, lead, lead2, meta, children, poster = fa
           {children && <div className="h7-ctas sp-anim">{children}</div>}
           {meta && <p className="sp-hero-meta sp-anim">{meta}</p>}
           {stats && (
-            <div className="sp-hero-stats sp-anim">
+            <div className="sp-hero-stats sp-anim" style={{ "--n": Math.min(stats.length, 4) } as React.CSSProperties}>
               {stats.map((s) => <div key={s.title}><b>{s.title}</b>{s.sub && <span>{s.sub}</span>}</div>)}
             </div>
           )}
@@ -63,11 +63,11 @@ export function PageHero({ kick, title, lead, lead2, meta, children, poster = fa
 }
 
 /** Fond photo d'origine des en-têtes (photo + trame scan-overlay + deux dégradés), valeurs reprises de chaque page.
- *  22/11 : passées en noir et blanc (style campagne commun à tout le site). */
+ *  Couleur d'origine gardée (22/11, gui : pas de noir et blanc sur les en-têtes). */
 export function PhotoBg({ src, alt, pos, c = "10,10,10", a = [0.96, 0.75, 0.25], b = 0.92, priority = true }: { src: string; alt: string; pos: string; c?: string; a?: [number, number, number]; b?: number; priority?: boolean }) {
   return (
     <>
-      <Image src={src} alt={alt} fill sizes="100vw" style={{ objectFit: "cover", objectPosition: pos, filter: "grayscale(100%) contrast(1.06)" }} priority={priority} />
+      <Image src={src} alt={alt} fill sizes="100vw" style={{ objectFit: "cover", objectPosition: pos }} priority={priority} />
       <div className="scan-overlay" />
       <div style={{ position: "absolute", inset: 0, background: `linear-gradient(to right, rgba(${c},${a[0]}) 0%, rgba(${c},${a[1]}) 55%, rgba(${c},${a[2]}) 100%)` }} />
       <div style={{ position: "absolute", inset: 0, background: `linear-gradient(to top, rgba(${c},${b}) 0%, transparent 50%)` }} />
