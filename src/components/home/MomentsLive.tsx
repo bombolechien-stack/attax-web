@@ -26,12 +26,23 @@ const TR = {
   fr: { name: "PRO CHAMPION", sub: "Ligue Pro gagnée", next: "ELITE CHAMPION", nextK: "À CONQUÉRIR", hintT: "BOXE 3 FOIS", hintS: "avec ton téléphone, bien en main, ou touche l'écran", share: "Partager", cont: "Touche pour continuer" },
 };
 
-export function TrophyMomentLive({ lang }: { lang: "en" | "fr" }) {
+/** profile = la vraie capture du profil (« Prochain objectif : Gagner une ligue Pro ») montrée d'abord ; le moment du
+ *  trophée monte ensuite par-dessus comme une feuille (22/11, demande du propriétaire : profil ET trophée). */
+export function TrophyMomentLive({ lang, profile }: { lang: "en" | "fr"; profile?: string }) {
   const t = TR[lang];
   const obj = useRef<HTMLDivElement>(null), sil = useRef<HTMLDivElement>(null), fill = useRef<HTMLDivElement>(null);
   const shine = useRef<HTMLDivElement>(null), hint = useRef<HTMLDivElement>(null), info = useRef<HTMLDivElement>(null), foot = useRef<HTMLDivElement>(null);
   const pips = useRef<(HTMLElement | null)[]>([]);
-  const ref = useScrollProgress<HTMLDivElement>((p) => {
+  const sheet = useRef<HTMLDivElement>(null), prof = useRef<HTMLDivElement>(null);
+  const ref = useScrollProgress<HTMLDivElement>((p0) => {
+    // 0. Le profil d'abord, puis la feuille du moment monte du bas (le profil recule un peu derrière).
+    let p = p0;
+    if (profile) {
+      const up = OUT(seg(p0, 0.5, 0.6));
+      if (sheet.current) sheet.current.style.transform = `translate3d(0, ${((1 - up) * 101).toFixed(2)}%, 0)`;
+      if (prof.current) { prof.current.style.transform = `scale(${(1 - 0.05 * up).toFixed(4)})`; prof.current.style.opacity = (1 - 0.5 * up).toFixed(3); }
+      p = seg(p0, 0.6, 1);
+    }
     // 1. Le sceau arrive (opacité, +40 pt → 0).
     const inV = OUT(seg(p, 0, 0.1));
     // 2. Trois coups : chaque tiers se remplit vite (240 ms, ease-out) ; le 3e remplit tout et ouvre.
@@ -58,10 +69,18 @@ export function TrophyMomentLive({ lang }: { lang: "en" | "fr" }) {
     if (info.current) { info.current.style.opacity = ti.toFixed(3); info.current.style.transform = `translate3d(0, calc(${((1 - ti) * 22).toFixed(2)} * var(--u)), 0)`; }
     if (foot.current) { foot.current.style.opacity = re.toFixed(3); foot.current.style.transform = `translate3d(0, calc(${((1 - re) * 14).toFixed(2)} * var(--u)), 0)`; }
     if (shine.current) shine.current.style.transform = `translate3d(${(-100 + 200 * easeInOut(seg(p, 0.62, 0.9))).toFixed(2)}%, 0, 0)`;
-  }, { start: 0.6, end: 0.1 });           // le téléphone est entier à l'écran (sous la navigation) pendant toute la séquence
+  }, profile ? { start: 1, end: 0.02 } : { start: 0.6, end: 0.1 });   // téléphone entier à l'écran pendant la séquence
   const box = { left: `calc(${LEFT} * var(--u))`, top: `calc(${TOP} * var(--u))`, width: `calc(${W} * var(--u))`, height: `calc(${H} * var(--u))` };
   return (
-    <div ref={ref} className="mo-tr" aria-hidden="true">
+    <div ref={ref} className={`mo-tr${profile ? " has-prof" : ""}`} aria-hidden="true">
+      {profile && (
+        <div ref={prof} className="mo-tr-prof">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={profile} alt="" />
+          <i />
+        </div>
+      )}
+      <div ref={sheet} className="mo-tr-sheet">
       <div ref={obj} className="mo-tr-obj" style={box}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/trophies/champion_hd.webp" alt="" />
@@ -90,6 +109,7 @@ export function TrophyMomentLive({ lang }: { lang: "en" | "fr" }) {
           <div><span>{t.nextK}</span><b>{t.next}</b></div>
         </div>
         <div className="mo-tr-btns"><em className="is-light">{t.share}</em><em>{t.cont}</em></div>
+      </div>
       </div>
     </div>
   );

@@ -1199,6 +1199,12 @@ body:has(.h7-page) .footer-panel .footer-attax { color: rgba(9,9,11,0.03) !impor
 .ph6-status { z-index: 2; }
 .mo-tr, .mo-se { --u: calc(100cqw / 393); position: absolute; inset: 0; overflow: hidden; font-family: var(--font-manrope), sans-serif; }
 .mo-tr { background: #F4F5F8; }
+.mo-tr-sheet { position: absolute; inset: 0; }
+.mo-tr.has-prof { background: #EEF1F7; }
+.mo-tr.has-prof .mo-tr-sheet { background: #F4F5F8; transform: translate3d(0, 101%, 0); will-change: transform; border-radius: calc(28 * var(--u)) calc(28 * var(--u)) 0 0; box-shadow: 0 calc(-8 * var(--u)) calc(30 * var(--u)) rgba(11,17,22,0.12); }
+.mo-tr-prof { position: absolute; inset: 0; transform-origin: 50% 0; will-change: transform, opacity; }
+.mo-tr-prof img { position: absolute; left: 0; top: 1.45%; width: 100%; height: 100%; object-fit: cover; margin: 0 !important; }
+.mo-tr-prof i { position: absolute; left: 0; right: 0; top: 0; height: 6.1%; background: #EEF1F9; }
 .mo-tr-obj { position: absolute; transform-origin: 50% 50%; will-change: transform, opacity; opacity: 0; }
 .mo-tr-obj img, .mo-tr-fill img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; margin: 0 !important; }
 .mo-tr-shine { position: absolute; inset: 0; overflow: hidden; -webkit-mask: url(/trophies/champion_hd.webp) center / contain no-repeat; mask: url(/trophies/champion_hd.webp) center / contain no-repeat; }
@@ -1234,3 +1240,5 @@ body:has(.h7-page) .footer-panel .footer-attax { color: rgba(9,9,11,0.03) !impor
 .mo-se-num b { grid-area: 1 / 1; font-weight: 800; text-align: center; will-change: opacity, transform; }
 .mo-se-sub { margin: calc(10 * var(--u)) 0 0; text-align: center; font-weight: 600; font-size: calc(14.5 * var(--u)); line-height: calc(21 * var(--u)); color: #6B7280; }
 .mo-se-btn { margin: 0; min-height: calc(40 * var(--u)); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: calc(13 * var(--u)); letter-spacing: calc(0.2 * var(--u)); color: #8A93A0; }
+/* Le bas de l'île de la capture du profil dépassait sous l'île du téléphone : on le recouvre (fond de la capture). */
+.mo-tr-prof::after { content: ""; position: absolute; left: 37.5%; width: 27%; top: 0; height: 7.8%; background: #EEF1F9; }

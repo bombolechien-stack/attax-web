@@ -51,7 +51,7 @@ export default function Beyond7() {
               <div className="by7-phone">
                 {/* 22/11 : la saison et le profil montrent les VRAIS moments de l'app (MomentsLive), joués au défilement */}
                 {SHOTS[i] === "profile"
-                  ? <AppPhone><TrophyMomentLive lang={lang} /></AppPhone>
+                  ? <AppPhone><TrophyMomentLive lang={lang} profile={`/screens/story/${lang}/profile.webp`} /></AppPhone>
                   : SHOTS[i] === "season"
                   ? <AppPhone><SeasonMomentLive lang={lang} /></AppPhone>
                   : <AppPhone src={`/screens/story/${lang}/${SHOTS[i]}.webp`} alt={`${t} ${d}`} baked dark={i === 0}
