@@ -73,8 +73,8 @@ export const LIVE = {
       label: "TES DONNÉES",
       title: "Tes données de santé restent les tiennes.",
       body: "Attax lit uniquement tes pas et ta fréquence cardiaque, il n'écrit jamais rien dans Apple Santé ou Health Connect. Tes données servent à ton jeu, et à rien d'autre. Et tu peux supprimer ton compte depuis l'app, à tout moment.",
-      points: ["Accès en lecture seule", "Jamais vendues, zéro pub", "Suppression à tout moment, dans l'app"],
-      line: "Tes données de santé restent les tiennes : lecture seule, jamais vendues, zéro pub.",
+      points: ["Accès en lecture seule", "Jamais vendues, zéro publicité", "Suppression à tout moment, dans l'app"],
+      line: "Tes données de santé restent les tiennes : lecture seule, jamais vendues, zéro publicité.",
       link: "En savoir plus",
     },
     faq: {
