@@ -2,58 +2,16 @@
 
 import { useLang } from "@/lib/i18n";
 import { useInView } from "@/hooks/useInView";
-import Image from "next/image";
 import DuoFistsLive from "./DuoFistsLive";
 import AppPhone from "./AppPhone";
+import { TrophyMomentLive, SeasonMomentLive } from "./MomentsLive";
 
 // Chapitre 06 « Au-delà de la ligue » (passe 7, 21/11, demande du propriétaire) : un bloc compact juste après la ligue,
 // avant l'appel du milieu. Deux VRAIES captures de l'app en entier (public/screens/story/<langue>/season, duo,
-// les mêmes que l'ancienne section Beyond ; pour les trophées, l'étagère du bas du profil, voir TrophyShelf), dans le
+// les mêmes que l'ancienne section Beyond ; depuis le 22/11 la saison et le profil sont les moments de l'app, voir MomentsLive), dans le
 // téléphone des chapitres, rien derrière ; titre court + une ligne.
 const SHOTS = ["season", "duo", "profile"] as const;
 
-// Trophées : la partie BASSE du profil seulement (jamais le haut « ligue actuelle » ni le grand titre du palmarès) :
-// l'étagère de components/profile/ProfilePalmares.tsx refaite en HTML avec les vraies images (public/trophies), les
-// trophées gagnés (×n, bleu) et ceux à décrocher en silhouette (opacité 0,2, « ×0 »). Même exemple que TrophyScreen.tsx.
-const SHELF = [
-  { img: "rookie", en: "Rookie", fr: "Rookie", n: 1 },
-  { img: "challenger", en: "Challenger", fr: "Challenger", n: 1 },
-  { img: "champion", en: "Pro", fr: "Pro", n: 1 },
-  { img: "elite", en: "Elite", fr: "Elite", n: 0 },
-  { img: "legend", en: "Legend", fr: "Legend", n: 0 },
-  { img: "friends", en: "Friends", fr: "Amis", n: 0 },
-  { img: "medal_2", en: "Runner-up", fr: "2e de ligue", n: 2, medal: true },
-  { img: "medal_3", en: "Third", fr: "3e de ligue", n: 0, medal: true },
-];
-const TR = {
-  en: { tabs: ["Profile", "Matches", "Stats", "Badges"], honours: "HONOURS", count: "3 TROPHIES", season: "BETA SEASON", cup: "The season trophy", cupSub: "Finish the season on top to lift it", toWin: "TO WIN" },
-  fr: { tabs: ["Profil", "Matchs", "Stats", "Badges"], honours: "PALMARÈS", count: "3 TROPHÉES", season: "SAISON BETA", cup: "Le trophée de la saison", cupSub: "Termine la saison en tête pour le soulever", toWin: "À DÉCROCHER" },
-};
-function TrophyShelf({ lang }: { lang: "en" | "fr" }) {
-  const c = TR[lang];
-  return (
-    <div className="tr7">
-      <div className="tr7-tabs">{c.tabs.map((t, i) => <span key={t} className={i === 0 ? "is-on" : undefined}>{t}</span>)}</div>
-      <div className="tr7-head"><b>{c.honours}</b><span>{c.count}</span></div>
-      {/* 22/11 (retour du propriétaire) : le grand trophée de la Saison Beta en haut, comme le palmarès du profil */}
-      <div className="tr7-cup">
-        <div className="tr7-cup-img"><Image src="/trophies/beta_cup.webp" alt="" width={471} height={1000} sizes="120px" loading="eager" /></div>
-        <div className="tr7-cup-txt"><span>{c.season}</span><b>{c.cup}</b><em>{c.cupSub}</em><i>{c.toWin}</i></div>
-      </div>
-      <div className="tr7-shelf">
-        {SHELF.map((t) => (
-          <div key={t.img} className={`tr7-cell${t.n ? "" : " is-off"}`}>
-            <div className={`tr7-img${t.medal ? " is-medal" : ""}`}>
-              <Image src={`/trophies/${t.img}.webp`} alt="" width={t.medal ? 200 : 360} height={t.medal ? 207 : 612} sizes="80px" loading="eager" />
-            </div>
-            <span>{t[lang]}</span>
-            <b>{`×${t.n}`}</b>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
 const COPY = {
   en: {
     kick: "06 · Beyond the league",
@@ -91,8 +49,11 @@ export default function Beyond7() {
           {c.items.map(([t, d], i) => (
             <figure key={SHOTS[i]} className="by7-item">
               <div className="by7-phone">
+                {/* 22/11 : la saison et le profil montrent les VRAIS moments de l'app (MomentsLive), joués au défilement */}
                 {SHOTS[i] === "profile"
-                  ? <AppPhone><TrophyShelf lang={lang} /></AppPhone>
+                  ? <AppPhone><TrophyMomentLive lang={lang} /></AppPhone>
+                  : SHOTS[i] === "season"
+                  ? <AppPhone><SeasonMomentLive lang={lang} /></AppPhone>
                   : <AppPhone src={`/screens/story/${lang}/${SHOTS[i]}.webp`} alt={`${t} ${d}`} baked dark={i === 0}
                       overlay={SHOTS[i] === "duo" ? <DuoFistsLive src={`/screens/story/${lang}/duo.webp`} /> : undefined} />}
               </div>

@@ -52,7 +52,7 @@ export function useScrollProgress<T extends HTMLElement>(
       prevT = now;
       const k = 1 - Math.pow(0.85, dt / 16.67);                  // 15 % de l'écart par image à 60 i/s
       let step = (goal - cur) * k;
-      const cap = maxStep * (dt / 16.67);
+      const cap = maxStep * Math.min(1.3, dt / 16.67);            // plafond par image, même si une image a pris du retard
       if (step > cap) step = cap; else if (step < -cap) step = -cap;
       cur += step;
       if (Math.abs(goal - cur) < 0.0004) cur = goal;
