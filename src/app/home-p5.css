@@ -1104,6 +1104,6 @@ body:has(.h7-page) .footer-panel .footer-attax { color: rgba(9,9,11,0.03) !impor
 }
 /* 22/11 (gui) : sur les grands écrans, le bloc du hero s'étend davantage (titre et phrase plus grands). */
 @media (min-width: 1500px) {
-  .p5 .home-hero-copy .hero-h1-6 { font-size: clamp(84px, 6vw, 118px); }
-  .p5 .home-hero-copy p { font-size: clamp(1.375rem, 1.35vw, 1.625rem); }
+  .p5 .home-hero-copy .hero-h1-6 { font-size: clamp(84px, 5.2vw, 104px); }
+  .p5 .home-hero-copy > p.delay-100 { font-size: clamp(1.25rem, 1.2vw, 1.5rem) !important; }
 }
