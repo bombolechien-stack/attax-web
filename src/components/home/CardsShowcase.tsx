@@ -12,8 +12,8 @@ const SHOWN = ["ghost", "spike", "freeze"] as const;   // ordre voulu par gui : 
 const ACC: Record<string, string> = { spike: "#1D4ED8", freeze: "#0891B2", ghost: "#7C3AED", overdrive: "#C2410C" };
 // Accroches de la planche (v3Tagline de l'app)
 export const TAGLINE: Record<"en" | "fr", Record<string, string>> = {
-  en: { spike: "All or nothing, tonight.", freeze: "Freeze their best day.", ghost: "Vanish until 9:30 PM.", overdrive: "Give it everything tonight." },
-  fr: { spike: "Tout ou rien, ce soir.", freeze: "Gèle son meilleur jour.", ghost: "Disparais jusqu'à 21h30.", overdrive: "Tout donner ce soir." },
+  en: { spike: "All or nothing, tonight.", freeze: "Freeze their best win.", ghost: "Vanish until 9:30 PM.", overdrive: "Give it everything tonight." },
+  fr: { spike: "Tout ou rien, ce soir.", freeze: "Gèle sa meilleure victoire.", ghost: "Disparais jusqu'à 21h30.", overdrive: "Tout donner ce soir." },
 };
 
 export type Card = { id: string; n: string; fam: string; name: string; punchy: string; sub: string };

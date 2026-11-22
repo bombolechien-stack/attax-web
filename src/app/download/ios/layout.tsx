@@ -16,7 +16,7 @@ const appSchema = {
   "@type": "MobileApplication",
   name: "Attax",
   operatingSystem: "iOS",
-  applicationCategory: "HealthApplication",
+  applicationCategory: "GameApplication",
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
   downloadUrl: "https://apps.apple.com/app/id6821117530",
   url: "https://attax.app/download/ios",

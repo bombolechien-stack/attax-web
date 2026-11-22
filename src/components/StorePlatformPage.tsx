@@ -26,7 +26,7 @@ const COPY = {
       steps: [
         { t: "Download and sign in", d: "With Apple, Google or your email." },
         { t: "Connect Apple Health", d: "Attax checks that your watch data is coming through before your first league." },
-        { t: "Join a league", d: "8 players at your level, a ranked league with friends, or a custom league from 2 to 40." },
+        { t: "Join a league", d: "8 players at your level, a ranked league with up to 3 friends of a close rank, or a custom league from 2 to 40." },
       ],
       free: "Free, no ads, no in-app purchases.",
       other: "Attax for Android",
@@ -49,7 +49,7 @@ const COPY = {
       steps: [
         { t: "Télécharge et connecte-toi", d: "Avec Apple, Google ou ton e-mail." },
         { t: "Connecte Apple Santé", d: "Attax vérifie que les données de ta montre arrivent bien avant ta première ligue." },
-        { t: "Rejoins une ligue", d: "8 joueurs de ton niveau, une ligue classée entre amis, ou une ligue personnalisée de 2 à 40." },
+        { t: "Rejoins une ligue", d: "8 joueurs de ton niveau, une ligue classée entre amis (jusqu'à 3 amis de rang proche), ou une ligue personnalisée de 2 à 40." },
       ],
       free: "Gratuit, sans publicité, sans achat intégré.",
       other: "Attax sur Android",
@@ -74,7 +74,7 @@ const COPY = {
       steps: [
         { t: "Download and sign in", d: "With Google, Apple or your email." },
         { t: "Connect Health Connect", d: "Attax checks that your watch data is coming through before your first league." },
-        { t: "Join a league", d: "8 players at your level, a ranked league with friends, or a custom league from 2 to 40." },
+        { t: "Join a league", d: "8 players at your level, a ranked league with up to 3 friends of a close rank, or a custom league from 2 to 40." },
       ],
       free: "Free, no ads, no in-app purchases.",
       other: "Attax for iPhone",
@@ -97,7 +97,7 @@ const COPY = {
       steps: [
         { t: "Télécharge et connecte-toi", d: "Avec Google, Apple ou ton e-mail." },
         { t: "Connecte Health Connect", d: "Attax vérifie que les données de ta montre arrivent bien avant ta première ligue." },
-        { t: "Rejoins une ligue", d: "8 joueurs de ton niveau, une ligue classée entre amis, ou une ligue personnalisée de 2 à 40." },
+        { t: "Rejoins une ligue", d: "8 joueurs de ton niveau, une ligue classée entre amis (jusqu'à 3 amis de rang proche), ou une ligue personnalisée de 2 à 40." },
       ],
       free: "Gratuit, sans publicité, sans achat intégré.",
       other: "Attax sur iPhone",

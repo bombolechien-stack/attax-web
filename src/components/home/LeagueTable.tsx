@@ -43,14 +43,14 @@ const COPY = {
   en: {
     kick: "05 · End of the week", big: "1st",
     title: ["Climb", "your league."] as [string, string],
-    lead: "Win tonight and you move up. At the end of the week, the top 2 go up a rank, the bottom 2 go down.",
+    lead: "Win tonight and you move up. At the end of the week, the top 2 move up a tier, the bottom 2 move down a tier.",
     league: "LEAGUE 922", table: "LEAGUE STANDINGS", you: " · you", vs: "YOU", up: "▲ PROMOTION", down: "▼ RELEGATION",
     ranks: "RANKS", climb: "From Rookie to Legend, each in three tiers. Your rank follows you from league to league.",
   },
   fr: {
     kick: "05 · Fin de semaine", big: "1er",
     title: ["Grimpe dans", "ta ligue."] as [string, string],
-    lead: "Gagne ce soir et tu montes. En fin de semaine, les 2 premiers montent d'un rang, les 2 derniers descendent.",
+    lead: "Gagne ce soir et tu montes. En fin de semaine, les 2 premiers montent d'un palier, les 2 derniers descendent d'un palier.",
     league: "LIGUE 922", table: "CLASSEMENT DE LA LIGUE", you: " · toi", vs: "TOI", up: "▲ MONTÉE", down: "▼ DESCENTE",
     ranks: "RANGS", climb: "De Rookie à Legend, chacun en trois paliers. Ton rang te suit de ligue en ligue.",
   },
@@ -160,7 +160,7 @@ export default function LeagueTable() {
                     <div className="lt6-meta">
                       <span className="lt6-form">{r.form.map((f, k) => <i key={k} style={{ background: f === "V" ? BLUE : RED }} />)}</span>
                       {r.h2h && (
-                        <span className="lt6-h2h"><b>{c.vs} </b><strong style={{ color: BLUE }}>{r.h2h[0]}</strong><em> – </em><strong style={{ color: RED }}>{r.h2h[1]}</strong></span>
+                        <span className="lt6-h2h"><b>{c.vs} </b><strong style={{ color: BLUE }}>{r.h2h[0]}</strong><em>-</em><strong style={{ color: RED }}>{r.h2h[1]}</strong></span>
                       )}
                     </div>
                   </div>

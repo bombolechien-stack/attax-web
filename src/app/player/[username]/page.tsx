@@ -7,7 +7,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { username } = await params;
   return {
     title: `${username}, Attax athlete profile`,
-    description: `View ${username}'s public Attax profile: ranking, statistics, and sports activity.`,
+    description: `Public athlete profiles are coming in Attax V2: rankings, statistics, badges and activity history.`,
   };
 }
 

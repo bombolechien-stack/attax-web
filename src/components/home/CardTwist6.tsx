@@ -16,13 +16,13 @@ const SHOWN = ["ghost", "overdrive", "freeze"] as const;
 const COPY = {
   en: {
     kick: "04 · 9:30 PM", title: ["One card can", "turn it all around."],
-    steps: [["Morning", "In the morning, 3 cards. Pick one before 1 PM."], ["9:30 PM", "Your cards are revealed and apply to the final round."], ["The final round", "One card can turn it all around."]],
-    alt: ["Your card revealed at 9:30 PM: Overdrive ×1.5 on today's activities", "The final round after the cards: Johnny 121 pts ahead"],
+    steps: [["Morning", "In the morning, 3 cards. Pick one before 1 PM."], ["9:30 PM", "Your cards are revealed and play out before the final round."], ["The final round", "One card can turn it all around."]],
+    alt: ["Your card revealed at 9:30 PM: Overdrive, today's workout pts ×1.5", "The final round after the cards: Johnny 121 pts ahead"],
   },
   fr: {
     kick: "04 · 21h30", title: ["Une carte peut", "tout renverser."],
-    steps: [["Le matin", "Le matin, 3 cartes. Choisis-en une avant 13h."], ["21h30", "Vos cartes se révèlent et s'appliquent au round final."], ["Le round final", "Une carte peut tout renverser."]],
-    alt: ["Ta carte dévoilée à 21h30 : Overdrive ×1,5 sur tes activités du jour", "Le round final après les cartes : Johnny revient à 82 pts"],
+    steps: [["Le matin", "Le matin, 3 cartes. Choisis-en une avant 13h."], ["21h30", "Vos cartes se révèlent et entrent en jeu avant le round final."], ["Le round final", "Le round final se joue en direct, cartes comprises."]],
+    alt: ["Ta carte dévoilée à 21h30 : Overdrive, les pts de ta séance du jour ×1,5", "Le round final après les cartes : Johnny revient à 82 pts"],
   },
 };
 

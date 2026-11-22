@@ -10,7 +10,7 @@ import ICONS from "./sportIcons.json";
 const COPY = {
   en: {
     kick: "02 · All day", big: "864",
-    title: ["Your workout", "becomes points."] as [string, string],
+    title: ["Your workout", "becomes pts."] as [string, string],
     line: "Your watch measures your effort. Your heart rate and your steps set the score.",
     alt: "The Activity screen of Attax: today's pts",
     items: [
@@ -21,7 +21,7 @@ const COPY = {
   },
   fr: {
     kick: "02 · Toute la journée", big: "864",
-    title: ["Ta séance devient", "des points."] as [string, string],
+    title: ["Ta séance devient", "des pts."] as [string, string],
     line: "Ta montre mesure ton effort. Ton cœur et tes pas font le score.",
     alt: "L'écran Activités d'Attax : les pts du jour",
     items: [

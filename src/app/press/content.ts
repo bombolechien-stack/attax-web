@@ -211,7 +211,7 @@ export const PRESS_CONTENT: Record<"en" | "fr", PressContent> = {
     ideas: [
       { title: "Le Soir de combat, 21h30", body: "Filme ta réaction en direct : entrée des boxeurs, cartes retournées, round final. Victoire ou défaite, c'est un moment." },
       { title: "La carte du jour", body: "Montre tes 3 cartes le matin et explique ton choix. Puis révèle au Soir de combat si ça a payé." },
-      { title: "La ligue entre potes", body: "Crée une ligue avec ta bande, partage le code et raconte la semaine : chambrage, remontadas, couronne." },
+      { title: "La ligue entre amis", body: "Crée une ligue avec ta bande, partage le code et raconte la semaine : chambrage, remontadas, couronne." },
       { title: "De Rookie à Legend", body: "Une série qui suit ta montée, ligue après ligue." },
       { title: "La séance de la remontada", body: "Mené avant le round final ? Montre la séance qui renverse le match avant 21h30." },
       { title: "Tous les sports comptent", body: "Course, vélo, musculation, danse : montre que quel que soit ton sport, si ta montre le mesure, il devient des pts dans Attax." },

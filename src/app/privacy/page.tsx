@@ -66,7 +66,7 @@ function ContentEn() {
           <ul>
             <li><strong>Your profile:</strong> username, profile photo, country, rank, results, streak, badges, trophies, crown and the sports you choose to show.</li>
             <li><strong>In your leagues:</strong> your points, results and ranking.</li>
-            <li><strong>In a match:</strong> your opponent of the day sees your activity points, the heart-rate curve of your workout for that match and your workout type of the day, plus the messages you send them.</li>
+            <li><strong>In a match:</strong> your opponent of the day sees your activity points, the heart-rate curve of your workout for that match and your workout type of the day.</li>
             <li><strong>Duo partner:</strong> your partner sees whether you reached your goal of the day and the messages you send them.</li>
             <li><strong>Season:</strong> if you join the season, all season players can see your username, profile photo, country, total points and position in the world ranking. The ranking can also be filtered by rank, gender and age group, so your gender and age group are used to place you in those filtered views, without being displayed.</li>
           </ul>
@@ -186,7 +186,7 @@ function ContentFr() {
           <ul>
             <li><strong>Ton profil :</strong> pseudo, photo de profil, pays, rang, résultats, série, badges, trophées, couronne et les sports que tu choisis d'afficher.</li>
             <li><strong>Dans tes ligues :</strong> tes points, tes résultats et ton classement.</li>
-            <li><strong>Dans un match :</strong> ton adversaire du jour voit tes points d'activité, la courbe cardiaque de ta séance pour ce match et ton type de séance du jour, ainsi que les messages que tu lui envoies.</li>
+            <li><strong>Dans un match :</strong> ton adversaire du jour voit tes points d'activité, la courbe cardiaque de ta séance pour ce match et ton type de séance du jour.</li>
             <li><strong>Binôme :</strong> ton binôme voit si tu as atteint ton objectif du jour et les messages que tu lui envoies.</li>
             <li><strong>Saison :</strong> si tu participes à la saison, tous les joueurs de la saison peuvent voir ton pseudo, ta photo de profil, ton pays, ton total de points et ta place au classement mondial. Ce classement peut aussi être filtré par rang, par sexe et par tranche d'âge : ton sexe et ta tranche d'âge servent donc à te placer dans ces vues filtrées, sans être affichés.</li>
           </ul>

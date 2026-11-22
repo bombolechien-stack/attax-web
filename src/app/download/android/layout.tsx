@@ -16,7 +16,7 @@ const appSchema = {
   "@type": "MobileApplication",
   name: "Attax",
   operatingSystem: "Android",
-  applicationCategory: "HealthApplication",
+  applicationCategory: "GameApplication",
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
   downloadUrl: "https://play.google.com/store/apps/details?id=app.attax",
   url: "https://attax.app/download/android",

@@ -27,7 +27,7 @@ const softwareAppSchema = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   name: "Attax",
-  applicationCategory: "HealthApplication",
+  applicationCategory: "GameApplication",
   operatingSystem: "iOS, Android",
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
   description:
