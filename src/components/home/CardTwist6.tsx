@@ -6,15 +6,14 @@ import { useScrollProgress, seg, easeInOut } from "@/hooks/useScrollProgress";
 import { useEffect, useRef } from "react";
 import type React from "react";
 import AppPhone from "./AppPhone";
-import LoopVideo from "./LoopVideo";
 import { PortraitCard, TAGLINE, type Card } from "./CardsShowcase";
 import { RevealLive, StealLive } from "./ParasiteLive";
 
 // Chapitre 04 « Une carte peut tout renverser. » (22/11, refait avec la carte PARASITE à la demande du coordinateur) :
 // 1. Le matin : les 3 cartes du jour en éventail (cartes portrait de l'app : Ghost, Parasite, Freeze), Parasite choisie.
 // 2. 21h30 : la carte de Johnny se révèle dans la page Match (4 PV contre 4 PV), comme dans l'app (ParasiteLive).
-// 3. Le round final : Parasite se joue en plein combat, 120 pts passent de Sophie à Johnny, l'écart bascule ; les PV ne
-//    bougent pas pendant le round. Les boxeurs (FighterScene du pack de motion) continuent d'échanger.
+// 3. Le round final : Parasite se joue en plein combat, des scanlines de Sophie se posent sur Johnny (120 pts), l'écart
+//    bascule ; les PV ne bougent pas pendant le round. Boxeurs = scanlines du moteur de l'app (StealLive).
 // Bases : les vraies captures (store-assets/shots-2026-11-17 fn-18 / fn-30, en/fn-13 / en/fn-29), zones qui changent
 // effacées au fond de l'app (story/<langue>/parasite-reveal.webp, parasite-final.webp) et redessinées en HTML.
 // Le bloc s'épingle pendant ~1 700 px (ordinateur) / 1 300 px (téléphone) : les deux téléphones restent entiers à
@@ -102,10 +101,9 @@ export default function CardTwist6() {
               <figcaption>2 · {c.steps[1][0]}</figcaption>
             </figure>
             <figure className="cw7-ph">
-              {/* Le round final : 4 PV contre 4 PV pendant tout le round (les PV ne bougent qu'à la fin) ; la zone des boxeurs
-                  joue l'échange du moteur de combat (MotionDesign/05_MotionPack_Remotion/FighterScene.mp4). */}
+              {/* Le round final : 4 PV contre 4 PV pendant tout le round (les PV ne bougent qu'à la fin) ; les boxeurs sont les
+                  scanlines du moteur de l'app, dessinées dans StealLive (le vol de Parasite s'y joue ligne par ligne). */}
               <AppPhone src={`/screens/story/${lang}/parasite-final.webp`} alt={c.alt[1]} overlay={<>
-                <div className="ph6-fight"><LoopVideo mp4="/videos/fighters-loop.mp4" poster="/videos/fighters-loop-poster.jpg" label={lang === "fr" ? "Les deux boxeurs échangent des coups pendant le round final" : "Both fighters trade blows during the final round"} ratio="540 / 460" /></div>
                 <StealLive lang={lang} card={par} family={fams[par.fam]} tagline={TAGLINE[lang].parasite} drive={fin} />
               </>} />
               <figcaption>3 · {c.steps[2][0]}</figcaption>

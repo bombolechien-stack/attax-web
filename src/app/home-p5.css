@@ -1319,8 +1319,7 @@ body:has(.h7-page) .footer-panel .footer-attax { color: rgba(9,9,11,0.03) !impor
 .pzf-kick { font-weight: 800; font-size: calc(9 * var(--d)); letter-spacing: calc(1.6 * var(--d)); color: #0443FD; line-height: 1.35; white-space: nowrap; }
 .pzf-big { margin-top: calc(4 * var(--d)) !important; font-weight: 800; font-size: calc(20 * var(--d)); line-height: calc(24 * var(--d)); letter-spacing: calc(-0.5 * var(--d)); color: #0B1116; }
 .pzf-line { margin-top: calc(5 * var(--d)) !important; font-weight: 500; font-size: calc(13 * var(--d)); line-height: calc(18 * var(--d)); color: #5B6470; }
-.pzf-fly { position: absolute; inset: 0; }
-.pzf-fly i { position: absolute; left: 0; top: 0; height: calc(3.2 * var(--c)); border-radius: calc(1.6 * var(--c)); background: #EC0420; opacity: 0; will-change: transform, width, opacity; }
+.pzf-fight { position: absolute; display: block; }
 .pzf-pop { position: absolute; font-weight: 800; font-size: calc(18 * var(--d)); letter-spacing: calc(-0.4 * var(--d)); line-height: 1.35; white-space: nowrap; opacity: 0; will-change: transform, opacity; }
 .pzf-pop.is-me { left: calc(84 * var(--d)); color: #0443FD; }
 .pzf-pop.is-opp { right: calc(84 * var(--d)); color: #EC0420; text-align: right; }
