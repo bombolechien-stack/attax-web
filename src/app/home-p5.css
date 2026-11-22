@@ -1267,3 +1267,67 @@ body:has(.h7-page) .footer-panel .footer-attax { color: rgba(9,9,11,0.03) !impor
   .h7-arena-in .h7-ctas { justify-content: center; }
 }
 @media (max-width: 335px) { .p5 .hero-ctas { flex-wrap: wrap !important; } }
+/* ══ 04 · Parasite (22/11) : la carte jouée dans les deux téléphones, liée au défilement (ParasiteLive.tsx) ═════════════
+   Le bloc s'épingle : .cw7-run porte la course (une cale après les téléphones : le padding ne compte pas pour sticky), .cw7-phones y est collé (centré sous la barre de 68 px) ;
+   sur ordinateur le texte de gauche est collé lui aussi. c = 1 px de la capture 522 × 1017, 1 pt de l'app = 1,458 c. */
+.cw7-run { position: relative; }
+.cw7-runway { height: 1700px; }
+.cw7-run > .cw7-phones { position: sticky; top: var(--cw7-top-ph, 84px); }
+@media (min-width: 901px) {
+  .cw7 .st6-grid { align-items: start; }
+  .cw7 .st6-txt { position: sticky; top: var(--cw7-top-tx, 84px); }
+}
+@media (max-width: 900px) { .cw7-runway { height: 1300px; } }
+@media (prefers-reduced-motion: reduce) { .cw7-runway { height: 0; } .cw7-run > .cw7-phones, .cw7 .st6-txt { position: static; } }
+.pz { --c: calc(100cqw / 522); --d: calc(1.458 * 100cqw / 522); position: absolute; inset: 0; overflow: hidden; container-type: inline-size; font-family: var(--font-manrope), sans-serif; font-variant-numeric: proportional-nums; pointer-events: none; }
+.pzr-face, .pzf-thumb, .pzf-card { font-variant-numeric: normal; }
+.pz p { margin: 0; }
+.pz-say { position: absolute; left: calc(30 * var(--c)); right: calc(30 * var(--c)); transform: translateY(-50%); text-align: center; white-space: nowrap; font-weight: 600; font-size: calc(13 * var(--d)); line-height: 1.3; letter-spacing: calc(0.2 * var(--d)); color: #3A424C; }
+/* 2 · la révélation */
+.pzr-rows { position: absolute; left: 0; width: 100%; overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 calc(52.5 * var(--c)), #000 calc(100% - 52.5 * var(--c)), transparent 100%), linear-gradient(to bottom, rgba(0,0,0,0.3) calc(40 * var(--c)), rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.3) calc(100% - 40 * var(--c)));
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent 0, #000 calc(52.5 * var(--c)), #000 calc(100% - 52.5 * var(--c)), transparent 100%), linear-gradient(to bottom, rgba(0,0,0,0.3) calc(40 * var(--c)), rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.3) calc(100% - 40 * var(--c)));
+  mask-composite: intersect; }
+.pzr-tilt { position: absolute; inset: 0; transform: rotate(-0.16rad); }
+.pzr-row { position: absolute; left: 0; white-space: nowrap; font-weight: 800; font-size: calc(84 * var(--d)); line-height: 1; transform-origin: 0 0.8825em; will-change: transform, opacity; opacity: 0; }
+.pzr-row span { display: inline-block; margin-right: 0.08em; }
+.pzr-row .is-fill { color: #09090B; }
+.pzr-row .is-line { color: transparent; -webkit-text-stroke: calc(1.6 * var(--d)) #A9B0BA; }
+.pzr-card { position: absolute; }
+.pzr-move, .pzr-inner { position: absolute; inset: 0; will-change: transform; }
+.pzr-inner { perspective: calc(900 * var(--d)); opacity: 0; }
+.pzr-back, .pzr-face { position: absolute; inset: 0; will-change: transform, opacity; }
+.pzr-back { border-radius: calc(14 * var(--d)); overflow: hidden; background: linear-gradient(135deg, #1C2129 0%, #07090D 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.pzr-back i { position: absolute; left: 0; right: 0; height: max(1px, var(--d)); background: rgba(255,255,255,0.05); }
+.pzr-back b { font-weight: 800; font-size: calc(28 * var(--d)); letter-spacing: calc(-0.8 * var(--d)); color: #fff; transform: skewX(-9deg); line-height: 1.2; }
+.pzr-back em { display: block; margin-top: calc(10 * var(--d)); margin-bottom: calc(8 * var(--d)); width: calc(18 * var(--d)); height: calc(1.5 * var(--d)); border-radius: 1px; background: rgba(255,255,255,0.5); }
+.pzr-back small { font-weight: 700; font-size: calc(10 * var(--d)); letter-spacing: calc(1.6 * var(--d)); color: #fff; line-height: 1.3; }
+.pzr-mark { position: absolute; top: calc(10.2 * var(--d)); right: calc(10.2 * var(--d)); width: calc(13 * var(--d)) !important; height: calc(13 * var(--d)) !important; max-width: none !important; filter: brightness(0) invert(1); margin: 0 !important; }
+.pzr-face { border-radius: calc(14 * var(--d)); overflow: hidden; opacity: 0; }
+.pzr-shine { position: absolute; inset: 0; overflow: hidden; }
+.pzr-shine > div { position: absolute; inset: -20% 0; background: linear-gradient(105deg, rgba(255,255,255,0) 35%, rgba(255,255,255,0.55) 50%, rgba(255,255,255,0) 65%); opacity: 0; will-change: transform; }
+.pzr-panel { position: absolute; left: calc(164.7 * var(--d)); right: calc(24 * var(--d)); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.pzr-panel > p { opacity: 0; will-change: transform, opacity; }
+.pzr-kick { font-weight: 800; font-size: calc(10 * var(--d)); letter-spacing: calc(1.6 * var(--d)); color: #0443FD; white-space: nowrap; line-height: 1.35; }
+.pzr-hero { margin-top: calc(4 * var(--d)) !important; height: calc(54 * var(--d)); font-weight: 800; font-size: calc(46 * var(--d)); line-height: calc(54 * var(--d)); letter-spacing: calc(-2 * var(--d)); color: #0F172A; white-space: nowrap; font-variant-numeric: proportional-nums; }
+.pzr-label { margin-top: calc(2.5 * var(--c)) !important; font-weight: 600; font-size: calc(15 * var(--d)); line-height: calc(20 * var(--d)); letter-spacing: calc(-0.3 * var(--d)); color: #0F172A; }
+.pzr-detail { margin-top: calc(8 * var(--d)) !important; font-weight: 500; font-size: calc(12.5 * var(--d)); line-height: calc(17 * var(--d)); color: #64748B; }
+/* 3 · le round final */
+.pzf-veil { position: absolute; left: calc(12 * var(--c)); right: calc(12 * var(--c)); background: linear-gradient(to bottom, #EEF1F7 0%, #EEF1F7 82%, rgba(238,241,247,0) 100%); opacity: 0; will-change: opacity; }
+.pzf-panel { position: absolute; right: calc(20 * var(--d)); display: flex; flex-direction: column; justify-content: center; opacity: 0; will-change: transform, opacity; }
+.pzf-kick { font-weight: 800; font-size: calc(9 * var(--d)); letter-spacing: calc(1.6 * var(--d)); color: #0443FD; line-height: 1.35; white-space: nowrap; }
+.pzf-big { margin-top: calc(4 * var(--d)) !important; font-weight: 800; font-size: calc(20 * var(--d)); line-height: calc(24 * var(--d)); letter-spacing: calc(-0.5 * var(--d)); color: #0B1116; }
+.pzf-line { margin-top: calc(5 * var(--d)) !important; font-weight: 500; font-size: calc(13 * var(--d)); line-height: calc(18 * var(--d)); color: #5B6470; }
+.pzf-fly { position: absolute; inset: 0; }
+.pzf-fly i { position: absolute; left: 0; top: 0; height: calc(3.2 * var(--c)); border-radius: calc(1.6 * var(--c)); background: #EC0420; opacity: 0; will-change: transform, width, opacity; }
+.pzf-pop { position: absolute; font-weight: 800; font-size: calc(18 * var(--d)); letter-spacing: calc(-0.4 * var(--d)); line-height: 1.35; white-space: nowrap; opacity: 0; will-change: transform, opacity; }
+.pzf-pop.is-me { left: calc(84 * var(--d)); color: #0443FD; }
+.pzf-pop.is-opp { right: calc(84 * var(--d)); color: #EC0420; text-align: right; }
+.pzf-slot { position: absolute; inset: 0; }
+.pzf-thumb { position: absolute; transform: rotate(-14deg); will-change: opacity; }
+.pzf-card { position: absolute; opacity: 0; transform-origin: 50% 50%; will-change: transform, opacity; border-radius: calc(16 * var(--d)); box-shadow: 0 calc(12 * var(--d)) calc(22 * var(--d)) rgba(11,17,22,0.18); }
+.pzf-chip { position: absolute; left: calc(16.5 * var(--c)); width: calc(240 * var(--c)); top: calc(347.3 * var(--c)); height: calc(20 * var(--c)); text-align: center; white-space: nowrap; font-weight: 700; font-size: calc(10 * var(--d)); line-height: calc(20 * var(--c)); letter-spacing: calc(0.6 * var(--d)); color: #0443FD; opacity: 0; will-change: transform, opacity; }
+.pzf-gap { position: absolute; left: 0; right: 0; top: calc(498.8 * var(--c)); transform: translateY(-50%); text-align: center; white-space: nowrap; font-weight: 800; font-size: calc(17 * var(--d)); line-height: 1.3; letter-spacing: calc(-0.3 * var(--d)); }
+.pzf-split { position: absolute; left: calc(118 * var(--c)); width: calc(196 * var(--d)); top: calc(527.6 * var(--c)); height: calc(4.4 * var(--d)); border-radius: calc(2 * var(--d)); overflow: hidden; background: #EC0420; }
+.pzf-split > div { height: 100%; background: #0443FD; border-right: calc(2 * var(--d)) solid #EEF1F7; box-sizing: border-box; }

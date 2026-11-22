@@ -9,11 +9,11 @@ import { useInView, scaleIn } from "@/hooks/useInView";
 // (budyfit app/(tabs)/match.tsx → CardPortraitV3, gabarit 270 × 378) : « Attax » + n°, famille, nom,
 // scène de la planche, effet sur bandeau noir, accroche, grand numéro.
 const SHOWN = ["ghost", "spike", "freeze"] as const;   // ordre voulu par gui : Ghost, Quitte ou double (au centre), Freeze
-const ACC: Record<string, string> = { spike: "#1D4ED8", freeze: "#0891B2", ghost: "#7C3AED", overdrive: "#C2410C" };
+const ACC: Record<string, string> = { spike: "#1D4ED8", freeze: "#0891B2", ghost: "#7C3AED", overdrive: "#C2410C", parasite: "#3F8F14" };
 // Accroches de la planche (v3Tagline de l'app)
 export const TAGLINE: Record<"en" | "fr", Record<string, string>> = {
-  en: { spike: "All or nothing, tonight.", freeze: "Freeze their best win.", ghost: "Vanish until 9:30 PM.", overdrive: "Give it everything tonight." },
-  fr: { spike: "Tout ou rien, ce soir.", freeze: "Gèle sa meilleure victoire.", ghost: "Disparais jusqu'à 21h30.", overdrive: "Tout donner ce soir." },
+  en: { spike: "All or nothing, tonight.", freeze: "Freeze their best win.", ghost: "Vanish until 9:30 PM.", overdrive: "Give it everything tonight.", parasite: "Steal their pressure." },
+  fr: { spike: "Tout ou rien, ce soir.", freeze: "Gèle sa meilleure victoire.", ghost: "Disparais jusqu'à 21h30.", overdrive: "Tout donner ce soir.", parasite: "Vole sa pression." },
 };
 
 export type Card = { id: string; n: string; fam: string; name: string; punchy: string; sub: string };

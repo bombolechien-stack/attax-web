@@ -7,7 +7,9 @@ import { useEffect, useRef } from "react";
  * puis à 100 % », trop saccadé). p est CONTINU :
  * - mode « enter » : p = 0 quand le haut de l'élément arrive à `start` × hauteur de l'écran (par défaut 85 %), p = 1
  *   quand il atteint `end` × hauteur (par défaut 35 %) ;
- * - mode « pin » (bloc sticky) : p = 0 quand le haut du conteneur touche le haut de l'écran, 1 quand son bas atteint le bas.
+ * - mode « pin » (bloc sticky) : p = 0 quand le haut du conteneur touche le haut de l'écran, 1 quand son bas atteint le bas ;
+ * - mode « stick » (22/11) : le PREMIER ENFANT du conteneur est sticky (top CSS quelconque) ; p = 0 quand il se colle,
+ *   1 quand il se décolle (course = hauteur du conteneur − hauteur de l'enfant) : aucun vide sous le bloc épinglé.
  * La position mesurée est une CIBLE : la valeur affichée la rejoint en douceur à chaque image (lissage exponentiel
  * indépendant de la cadence, ≈ 15 % de l'écart par image à 60 i/s, vitesse plafonnée), donc un cran de molette ne fait
  * jamais sauter l'animation ; elle s'arrête quand l'écart devient invisible. L'IntersectionObserver ne sert QU'À
@@ -17,7 +19,7 @@ import { useEffect, useRef } from "react";
  */
 export function useScrollProgress<T extends HTMLElement>(
   onProgress?: (p: number) => void,
-  opts: { start?: number; end?: number; mode?: "enter" | "pin"; maxStep?: number } = {},
+  opts: { start?: number; end?: number; mode?: "enter" | "pin" | "stick"; maxStep?: number } = {},
 ) {
   const ref = useRef<T>(null);
   const cb = useRef(onProgress);
@@ -37,7 +39,12 @@ export function useScrollProgress<T extends HTMLElement>(
     const target = () => {
       const r = el.getBoundingClientRect(), vh = window.innerHeight || 1;
       let p: number;
-      if (mode === "pin") {
+      if (mode === "stick") {
+        const kid = el.firstElementChild as HTMLElement | null;
+        const run = kid ? r.height - kid.offsetHeight : 0;
+        const top = kid ? parseFloat(getComputedStyle(kid).top) || 0 : 0;
+        p = run > 1 ? (top - r.top) / run : (r.top <= top ? 1 : 0);
+      } else if (mode === "pin") {
         const span = r.height - vh;
         p = span > 0 ? -r.top / span : (r.top <= 0 ? 1 : 0);
       } else {
