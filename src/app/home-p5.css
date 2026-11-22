@@ -1252,3 +1252,18 @@ body:has(.h7-page) .footer-panel .footer-attax { color: rgba(9,9,11,0.03) !impor
   .by7-item figcaption { font-size: 0.9375rem; }
   .by7-item figcaption b { font-size: 1.125rem; }
 }
+/* Mobile (22/11, retour de gui sur son téléphone) : hero plus aéré (de l'air sous la barre, texte un peu plus petit,
+   boutons côte à côte), téléphone du hero centré ; carte finale « L'arène ne s'arrête jamais » centrée. */
+@media (max-width: 560px) {
+  .p5 .hero-text-box { padding-top: 3rem !important; }
+  .hero-kick6 { margin-bottom: 1.25rem; }
+  .pm .hero-h1-6 { margin-bottom: 1.5rem; }
+  .p5 .home-hero-copy p:not(.hero-kick6) { font-size: 1.0625rem !important; margin-bottom: 2rem !important; }
+  .p5 .hero-ctas { flex-wrap: nowrap !important; gap: 8px !important; }
+  .p5 .hero-ctas a { padding: 12px 15px !important; font-size: 0.84375rem !important; white-space: nowrap; }
+  .hero-stats6 { margin-top: 0.75rem; }
+  .hero-peek { align-self: center; margin: 0 auto; }
+  .h7-arena-in .h7-head { text-align: center; display: flex; flex-direction: column; align-items: center; }
+  .h7-arena-in .h7-ctas { justify-content: center; }
+}
+@media (max-width: 335px) { .p5 .hero-ctas { flex-wrap: wrap !important; } }
