@@ -1330,3 +1330,10 @@ body:has(.h7-page) .footer-panel .footer-attax { color: rgba(9,9,11,0.03) !impor
 .pzf-gap { position: absolute; left: 0; right: 0; top: calc(498.8 * var(--c)); transform: translateY(-50%); text-align: center; white-space: nowrap; font-weight: 800; font-size: calc(17 * var(--d)); line-height: 1.3; letter-spacing: calc(-0.3 * var(--d)); }
 .pzf-split { position: absolute; left: calc(118 * var(--c)); width: calc(196 * var(--d)); top: calc(527.6 * var(--c)); height: calc(4.4 * var(--d)); border-radius: calc(2 * var(--d)); overflow: hidden; background: #EC0420; }
 .pzf-split > div { height: 100%; background: #0443FD; border-right: calc(2 * var(--d)) solid #EEF1F7; box-sizing: border-box; }
+/* 01 et 02 sur grand écran (22/11, gui : « trop d'espace entre les deux éléments ») : le téléphone vient se placer près
+   du texte au lieu d'être centré dans une demi-grille ; le texte garde son alignement sur la grille. */
+@media (min-width: 1100px) {
+  .p5 #opponent .st6-grid { grid-template-columns: minmax(0, 540px) 420px; justify-content: start; gap: clamp(4rem, 7vw, 7.5rem); }
+  .p5 #workout .st6-grid { grid-template-columns: 420px minmax(0, 540px); justify-content: end; gap: clamp(4rem, 7vw, 7.5rem); }
+  .p5 #opponent .st6-vis, .p5 #workout .st6-vis { justify-content: center; }
+}
