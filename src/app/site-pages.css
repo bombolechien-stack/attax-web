@@ -310,6 +310,16 @@ body:has(.sp) { background: #EEF1F7 !important; }
 .sp-media figure { margin: 0; }
 .sp-media-shot { position: relative; aspect-ratio: 560 / 1107; border-radius: 11.5% / 5.8%; overflow: hidden; background: transparent; }
 .sp-media figure:first-child .sp-media-shot { background: #fff; border-radius: 22px; }
+/* Le téléphone de la vidéo : mêmes mesures que les captures cadrées (560 × 1107, bord 19 px, écran 522 × 1069). */
+.sp-media figure:first-child .sp-media-phone { container-type: inline-size; background: #0B0C13; border-radius: 13% / 6.6%; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08); }
+.sp-media-scr { position: absolute; left: 3.39%; right: 3.39%; top: 1.72%; bottom: 1.72%; border-radius: 10.5% / 5.3%; overflow: hidden; background: #EEF1F9; display: flex; flex-direction: column; justify-content: flex-end; }
+.sp-media-shot .sp-media-scr video { position: static; inset: auto; width: 100%; height: auto; aspect-ratio: 1080 / 2128; object-fit: cover; flex: none; }
+.sp-media-status { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 7.5cqw 0 10cqw; color: #0B1116; position: relative; }
+.sp-media-status b { font: 700 4.2cqw/1 var(--font-manrope), system-ui, sans-serif; }
+.sp-media-status i { position: absolute; left: 50%; top: 50%; width: 24cqw; height: 6.6cqw; transform: translate(-50%, -50%); background: #0B0C13; border-radius: 99px; }
+.sp-media-status span { display: flex; align-items: center; gap: 1.4cqw; }
+.sp-media-status svg { width: 3.6cqw; height: auto; fill: #0B1116; }
+.sp-media-status em { width: 5.2cqw; height: 2.6cqw; border-radius: 0.8cqw; background: #0B1116; }
 .sp-media-shot img, .sp-media-shot video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
 .sp-media figcaption { margin: 1rem 0 0.85rem; padding-top: 0.85rem; border-top: 1px solid rgba(9,9,11,0.12); }
 .sp-media figcaption b { display: block; font-size: 1.0625rem; font-weight: 600; color: var(--ink); }

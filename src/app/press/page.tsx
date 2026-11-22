@@ -169,8 +169,12 @@ export default function PressPage() {
       <Sec kick={p.media_label} title={p.media_title} lead={p.media_sub} split>
         <Reveal className="sp-media">
           <figure>
-            <div className="sp-media-shot">
-              <video key={lang} src={VIDEO(lang)} poster={`/press/attax-fight-night-${lang}-poster.jpg`} autoPlay muted loop playsInline preload="metadata" />
+            {/* 22/11 : la vidéo dans le même téléphone que les captures (cadre, île, barre d'état 9:41) */}
+            <div className="sp-media-shot sp-media-phone">
+              <div className="sp-media-scr">
+                <div className="sp-media-status" aria-hidden="true"><b>9:41</b><i /><span><svg viewBox="0 0 18 12" width="18" height="12"><rect x="0" y="7" width="3" height="5" rx="1" /><rect x="5" y="4.5" width="3" height="7.5" rx="1" /><rect x="10" y="2" width="3" height="10" rx="1" /><rect x="15" y="0" width="3" height="12" rx="1" opacity=".3" /></svg><em /></span></div>
+                <video key={lang} src={VIDEO(lang)} poster={`/press/attax-fight-night-${lang}-poster.jpg`} autoPlay muted loop playsInline preload="metadata" />
+              </div>
             </div>
             <figcaption><b>{p.video_title}</b><span>{p.video_caption}</span></figcaption>
             <a className="sp-dl" href={VIDEO(lang)} download><DownloadIcon />{p.download}</a>
