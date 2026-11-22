@@ -3,6 +3,7 @@
 import { useLang, useT } from "@/lib/i18n";
 import { useInView } from "@/hooks/useInView";
 import AppPhone from "./AppPhone";
+import LoopVideo from "./LoopVideo";
 import { PortraitCard, TAGLINE, type Card } from "./CardsShowcase";
 
 // Chapitre 04 « Une carte peut tout renverser. » (21/11, refait à la demande de gui) : 3 étapes claires, VRAIES captures.
@@ -62,7 +63,15 @@ export default function CardTwist6() {
         <div ref={visRef} className={`cw7-phones${visIn ? " is-in" : ""}`}>
           {(["card-reveal", "card-final"] as const).map((src, i) => (
             <figure key={src} className="cw7-ph">
-              <AppPhone src={`/screens/story/${lang}/${src}.webp`} alt={c.alt[i]} />
+              {src === "card-final" && lang === "en" ? (
+                // 22/11 : en anglais, le round final s'anime (motion design de l'app, MotionDesign/04_Site/attax-match-video.mp4,
+                // écran recadré) ; textes en anglais dans la vidéo, donc le français garde sa capture fixe.
+                <div className="ph6"><div className="ph6-screen" style={{ background: "#EEF1F7" }}>
+                  <LoopVideo mp4="/videos/match-final-live-en.mp4" webm="/videos/match-final-live-en.webm" poster="/videos/match-final-live-en-poster.jpg" label="The final round, live: Johnny and Sophie trade blows" ratio="540 / 1120" />
+                </div></div>
+              ) : (
+                <AppPhone src={`/screens/story/${lang}/${src}.webp`} alt={c.alt[i]} />
+              )}
               <figcaption>{i + 2} · {c.steps[i + 1][0]}</figcaption>
             </figure>
           ))}
