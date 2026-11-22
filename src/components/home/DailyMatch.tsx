@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useSyncExternalStore } from "react";
-import type React from "react";
+import { useEffect, useRef, useSyncExternalStore } from "react";
 import { useLang, useT } from "@/lib/i18n";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 import SectionHead from "./SectionHead";
@@ -40,8 +39,10 @@ const ROUNDS: Round[] = [
 ];
 // Le déroulé d'un round (secondes depuis son début).
 // Les deux scores comptent ensemble (comme l'app), s'arrêtent ensemble, puis le coup.
-const T_ME0 = 0, T_ME1 = 2.0, T_OPP0 = 0, T_OPP1 = 2.0, T_HIT = 2.3, T_FADE = 3.6, ROUND_LEN = 4.3;
-const VERDICT_LEN = 3.6, CYCLE = ROUNDS.length * ROUND_LEN + VERDICT_LEN;
+// 22/11 (retour du propriétaire : on ne doit jamais s'arrêter ENTRE deux rounds) : chaque cran de défilement fait jouer
+// UN round entier, en 1,15 s : les deux scores comptent ensemble, le coup (boxeurs en fond), le morceau jaune tombe, le
+// perdant passe en gris ; puis le round reste affiché au repos (REST) jusqu'au cran suivant.
+const T_ME0 = 0.05, T_ME1 = 0.55, T_OPP0 = 0.05, T_OPP1 = 0.55, T_HIT = 0.6, FRAG = 0.42, REST = 1.02, T_FADE = 1.04, ROUND_LEN = 1.15;
 
 const COPY = {
   en: {
@@ -67,7 +68,7 @@ function useMedia(q: string) {
   );
 }
 
-/** Vie d'un joueur après les rounds dont le coup est déjà tombé (à l'instant t du cycle). */
+/** Vie d'un joueur après les rounds dont le coup est déjà tombé (à l'instant t du match). */
 function lifeAt(side: "Y" | "O", t: number) {
   let life = HP0;
   ROUNDS.forEach((r, i) => { if (r.w !== side && t >= i * ROUND_LEN + T_HIT) life -= r.final ? 2 : 1; });
@@ -76,60 +77,171 @@ function lifeAt(side: "Y" | "O", t: number) {
 
 /** Le morceau jaune à l'instant k (0 → 1) : les mêmes étapes que l'animation mrFrag (un léger saut, puis il tombe en
  *  tournant et s'efface), mais pilotées par le défilement. */
-function fragAt(k: number): React.CSSProperties {
+function fragAt(k: number) {
   let y: number, rot: number, o = 1;
   if (k < 0.12) { const u = k / 0.12; y = -3 * u; rot = -2 * u; }
   else { const e = Math.pow((k - 0.12) / 0.88, 2); y = -3 + 73 * e; rot = -2 + 11 * e; o = 1 - e; }
-  return { animation: "none", transform: `translateY(${y.toFixed(1)}px) rotate(${rot.toFixed(2)}deg)`, opacity: o };
+  return { t: `translate3d(0, ${y.toFixed(2)}px, 0) rotate(${rot.toFixed(2)}deg)`, o };
 }
 
-/** La barre de vie de l'app ; « drop » = le morceau jaune qui vient de se détacher (il tombe, en CSS). */
-export function HpBar({ side, life, drop }: { side: "me" | "opp"; life: number; drop: { key: string; from: number; k?: number } | null }) {
-  const me = side === "me", f = life / HP0;
-  const pos = me ? "left" : "right";
+/** La barre de vie de l'app (pleine, rendue une fois) ; tout ce qui bouge est piloté en direct par DailyMatch. */
+function HpBar({ side }: { side: "me" | "opp" }) {
+  const me = side === "me", pos = me ? "left" : "right";
   return (
-    <div className="mr-bar-wrap">
+    <div className="mr-bar-wrap" data-bar={side}>
       <div className="mr-bar">
-        <span className="mr-bar-fill" style={{ background: me ? G_ME : G_OPP, [pos]: 0, width: `${f * 100}%` }} />
+        <span className="mr-bar-fill" style={{ background: me ? G_ME : G_OPP, [pos]: 0, width: "100%" }} />
         <span className="mr-bar-sheen" />
       </div>
-      {drop && <span key={drop.key} className="mr-frag" style={{ [pos]: `${f * 100}%`, width: `${((drop.from - life) / HP0) * 100}%`, ...(drop.k != null ? fragAt(drop.k) : {}) }} />}
-      {f < 0.999 && <span className="mr-notch" style={{ [pos]: `${f * 100}%` }} />}
+      <span className="mr-frag" style={{ [pos]: "100%", width: "0%", opacity: 0 }} />
+      <span className="mr-notch" style={{ [pos]: "100%", opacity: 0 }} />
       <div className="mr-ticks">{Array.from({ length: HP0 - 1 }, (_, k) => <i key={k} style={{ left: `${((k + 1) / HP0) * 100}%` }} />)}</div>
     </div>
   );
 }
+
+const sg = (v: number, a: number, b: number) => clamp((v - a) / (b - a));
+const io3 = (u: number) => (u < 0.5 ? 4 * u * u * u : 1 - Math.pow(-2 * u + 2, 3) / 2);
+// Fondus enchaînés entre deux rounds (secondes de match autour de la fin du round) : le round sortant s'efface en
+// montant, le suivant arrive par en dessous ; les deux se chevauchent.
+const OUT0 = -0.1, OUT1 = 0.08, IN0 = -0.04, IN1 = 0.16;
+const VERDICT_T = ROUNDS.length * ROUND_LEN + 0.3;
+const REDUCED_T = 5 * ROUND_LEN + REST;
+/** Le cran de défilement → l'instant de repos à atteindre : avant le 1er cran, rien n'est joué ; puis round 1 … 7 au
+ *  repos ; puis le verdict. 8 crans égaux sur la course épinglée. */
+const restFor = (p: number) => {
+  if (p <= 0.002) return 0;
+  const st = Math.min(ROUNDS.length, Math.floor(p * (ROUNDS.length + 1)));
+  return st >= ROUNDS.length ? VERDICT_T : st * ROUND_LEN + REST;
+};
 
 export default function DailyMatch() {
   const t = useT();
   const { lang } = useLang();
   const m = t.dailyMatch;
   const c = COPY[lang];
-  const reduce = useMedia("(prefers-reduced-motion: reduce)");
   const tall = useMedia("(max-width: 760px)");
-  const pin = useMedia("(min-width: 861px)");
-  const [clock, setClock] = useState(0);
+  const reduceM = useMedia("(prefers-reduced-motion: reduce)");
+  const stage = useRef<HTMLDivElement | null>(null);
+  const cache = useRef<Record<string, string>>({});
+  const langRef = useRef(lang);
 
-  // 22/11 (accord du propriétaire) : le match avance avec le défilement, plus avec une horloge. Rounds 1 → 7 (scores qui
-  // montent, coup du gagnant, morceau jaune qui tombe), puis le verdict ; tout revient en arrière quand on remonte.
-  // Ordinateur : le bloc est épinglé (sticky) pendant ~1,75 écran pour laisser la place aux 7 rounds ; téléphone : pas
-  // d'épinglage, le match avance pendant que le bloc traverse l'écran. Mouvements réduits : le coup du round 6, fixe.
-  const SPAN = ROUNDS.length * ROUND_LEN;
+  // 22/11 (accord du propriétaire, revu le même jour) : le match avance avec le défilement, PAR CRANS. La course épinglée
+  // est découpée en 8 crans (7 rounds + verdict) ; à chaque cran franchi, le round suivant se JOUE en entier (1,15 s :
+  // scores qui comptent ensemble, coup du gagnant avec les boxeurs en fond, morceau jaune qui tombe, perdant en gris), puis
+  // reste au repos : on ne s'arrête jamais entre deux rounds. En remontant, retour rapide au round précédent. Les rounds
+  // s'enchaînent en fondus croisés. Les 7 rounds et le verdict sont rendus UNE fois, empilés ; chaque image ne fait que des
+  // écritures directes de ce qui change (opacité, transform, textes) : aucun rendu React. Épinglé (sticky) sur ordinateur
+  // ET sur téléphone : barres de vie, frise et round restent ensemble à l'écran, sous la barre de navigation.
+  // Mouvements réduits : le coup du round 6, fixe.
+  const put = (el: HTMLElement | null | undefined, key: string, v: string, write: (e: HTMLElement, v: string) => void) => {
+    if (!el || cache.current[key] === v) return;
+    cache.current[key] = v;
+    write(el, v);
+  };
+  const op = (e: HTMLElement, v: string) => { e.style.opacity = v; };
+  const tf = (e: HTMLElement, v: string) => { e.style.transform = v; };
+  const tx = (e: HTMLElement, v: string) => { e.textContent = v; };
+  const draw = (time: number) => {
+    const root = stage.current; if (!root) return;
+    const c2 = COPY[langRef.current];
+    const nf = (n: number) => n.toLocaleString(langRef.current === "fr" ? "fr-FR" : "en-US");
+    const ri = Math.max(0, Math.min(ROUNDS.length - 1, Math.floor(time / ROUND_LEN)));
+    // Boxeurs : fondu à l'instant du coup, fondu de sortie avant le round suivant.
+    let boxW: "Y" | "O" = ROUNDS[ri].w, boxO = 0;
+    ROUNDS.forEach((r, i) => {
+      const lt = time - i * ROUND_LEN;
+      const o = io3(sg(lt, T_HIT - 0.06, T_HIT + 0.08)) * (1 - io3(sg(lt, T_FADE, ROUND_LEN + 0.05)));
+      if (o > boxO) { boxO = o; boxW = r.w; }
+    });
+    root.querySelectorAll<HTMLElement>(".mr-boxers img").forEach((img, k) => {
+      const isBlue = img.dataset.w === "blue";
+      put(img, `bo${k}`, ((boxW === "Y") === isBlue ? boxO * 0.85 : 0).toFixed(3), op);
+      put(img, `bs${k}`, `scale(${(1.035 - 0.035 * boxO).toFixed(4)})`, tf);
+    });
+    // Barres de vie, PV, morceau jaune.
+    (["Y", "O"] as const).forEach((side) => {
+      const life = lifeAt(side, time), f = (life / HP0) * 100, pos = side === "Y" ? "left" : "right";
+      const wrap = root.querySelector<HTMLElement>(`[data-bar="${side === "Y" ? "me" : "opp"}"]`); if (!wrap) return;
+      put(wrap.querySelector<HTMLElement>(".mr-bar-fill"), `fill${side}`, `${f.toFixed(3)}%`, (e, v) => { e.style.width = v; });
+      const notch = wrap.querySelector<HTMLElement>(".mr-notch");
+      put(notch, `np${side}`, `${f.toFixed(3)}%`, (e, v) => { e.style.setProperty(pos, v); });
+      put(notch, `no${side}`, f < 99.9 ? "1" : "0", op);
+      put(root.querySelector<HTMLElement>(`[data-hp="${side}"]`), `hp${side}`, `${life} ${c2.hp}`, tx);
+      const frag = wrap.querySelector<HTMLElement>(".mr-frag");
+      let k = -1, loss = 1;
+      ROUNDS.forEach((r, i) => { const lt = time - i * ROUND_LEN - T_HIT; if (r.w !== side && lt >= 0 && lt < FRAG) { k = lt / FRAG; loss = r.final ? 2 : 1; } });
+      if (k >= 0) {
+        put(frag, `fp${side}`, `${f.toFixed(3)}%`, (e, v) => { e.style.setProperty(pos, v); });
+        put(frag, `fw${side}`, `${((loss / HP0) * 100).toFixed(3)}%`, (e, v) => { e.style.width = v; });
+        const fr = fragAt(k);
+        put(frag, `ft${side}`, fr.t, tf);
+        put(frag, `fo${side}`, fr.o.toFixed(3), op);
+      } else put(frag, `fo${side}`, "0", op);
+    });
+    // Frise des rounds.
+    root.querySelectorAll<HTMLElement>(".mr-dashes i").forEach((d, i) => {
+      const done = time >= i * ROUND_LEN + T_HIT, x = ROUNDS[i];
+      put(d, `d${i}`, done ? (x.w === "Y" ? BLUE : RED) : i === ri && time < ROUNDS.length * ROUND_LEN ? INK : "#D5DBE4", (e, v) => { e.style.background = v; });
+    });
+    // Cartes des rounds (fondus croisés) puis verdict.
+    root.querySelectorAll<HTMLElement>(".mr-rounds > .mr-round").forEach((card, i) => {
+      const b0 = i * ROUND_LEN, b1 = (i + 1) * ROUND_LEN;
+      const inK = i === 0 ? 1 : io3(sg(time - b0, IN0, IN1));
+      const outK = i >= ROUNDS.length ? 0 : io3(sg(time - b1, OUT0, OUT1));
+      const o = inK * (1 - outK);
+      put(card, `co${i}`, o.toFixed(3), op);
+      put(card, `ct${i}`, `translate3d(0, ${((1 - inK) * 22 - outK * 22).toFixed(2)}px, 0)`, tf);
+      put(card, `cv${i}`, o > 0.005 ? "visible" : "hidden", (e, v) => { e.style.visibility = v; });
+      if (i >= ROUNDS.length || o <= 0.005) return;
+      const r = ROUNDS[i], lt = time - b0;
+      const cnt = eo(clamp((lt - T_ME0) / (T_ME1 - T_ME0)));
+      const cntO = eo(clamp((lt - T_OPP0) / (T_OPP1 - T_OPP0)));
+      const hitK = io3(sg(lt, T_HIT - 0.03, T_HIT + 0.15));
+      (["Y", "O"] as const).forEach((side) => {
+        const line = card.querySelector<HTMLElement>(`[data-line="${side}"]`); if (!line) return;
+        const won = r.w === side;
+        put(line.querySelector<HTMLElement>(".mr-num"), `n${i}${side}`, nf(Math.round(side === "Y" ? r.y * cnt : r.o * cntO)), tx);
+        put(line, `lo${i}${side}`, won ? "1" : (1 - 0.74 * hitK).toFixed(3), op);
+        const w = line.querySelector<HTMLElement>(".mr-won");
+        put(w, `wo${i}${side}`, won ? hitK.toFixed(3) : "0", op);
+        put(w, `wt${i}${side}`, `translate3d(0, ${won ? ((1 - hitK) * 4).toFixed(2) : "4"}px, 0)`, tf);
+      });
+    });
+  };
+  // La tête de lecture : elle rejoint l'instant de repos du cran courant en temps réel (1 round = 1,15 s) ; plusieurs
+  // crans d'un coup → accélère (fini en ~0,8 s) ; en remontant → retour rapide (≤ 0,4 s). Jamais d'arrêt entre deux rounds.
+  const play = useRef({ t: 0, goal: 0, raf: 0, prev: 0 });
+  const kickPlay = () => {
+    const P = play.current;
+    if (P.raf) return;
+    P.prev = 0;
+    const step = (now: number) => {
+      const dt = P.prev ? Math.min(0.05, (now - P.prev) / 1000) : 1 / 60;
+      P.prev = now;
+      const gap = P.goal - P.t;
+      const speed = gap > 0 ? (gap > ROUND_LEN * 1.1 ? gap / 0.8 : 1) : Math.max(3, -gap / 0.4);
+      const mv = speed * dt;
+      P.t = Math.abs(gap) <= mv ? P.goal : P.t + Math.sign(gap) * mv;
+      draw(P.t);
+      P.raf = P.t !== P.goal ? requestAnimationFrame(step) : 0;
+    };
+    P.raf = requestAnimationFrame(step);
+  };
+  const reduced = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const pinRef = useScrollProgress<HTMLDivElement>((p) => {
-    setClock(Math.min(SPAN + 0.9, (p / 0.9) * SPAN));
-  }, pin ? { mode: "pin" } : { start: 0.75, end: -0.55 });
-  const time = reduce ? 5 * ROUND_LEN + T_HIT + 0.6 : Math.min(clock, SPAN + 0.9);
-  const ri = Math.max(0, Math.min(ROUNDS.length - 1, Math.floor(Math.max(0, time) / ROUND_LEN) || 0));
-  const verdict = time >= ROUNDS.length * ROUND_LEN;
-  const r = ROUNDS[ri], lt = verdict ? ROUND_LEN : time - ri * ROUND_LEN;
-  const yPts = Math.round(r.y * eo(clamp((lt - T_ME0) / (T_ME1 - T_ME0))));
-  const oPts = Math.round(r.o * eo(clamp((lt - T_OPP0) / (T_OPP1 - T_OPP0))));
-  const hit = lt >= T_HIT;
-  const boxers = hit && lt < T_FADE && !verdict;
-  const lifeMe = lifeAt("Y", time), lifeOpp = lifeAt("O", time);
-  // Le morceau jaune : seulement pendant la seconde qui suit le coup.
-  const dropFor = (side: "Y" | "O") => (hit && lt < T_HIT + 1.05 && r.w !== side && !verdict ? { key: `${ri}`, from: (side === "Y" ? lifeMe : lifeOpp) + (r.final ? 2 : 1), k: (lt - T_HIT) / 1.05 } : null);
-  const nf = (n: number) => n.toLocaleString(lang === "fr" ? "fr-FR" : "en-US");
+    if (reduced()) { draw(REDUCED_T); return; }
+    const g = restFor(p);
+    if (g !== play.current.goal) { play.current.goal = g; kickPlay(); }
+  }, { mode: "pin" });
+  // Changement de langue ou de format (nouveaux nœuds) : cache vidé, on redessine à la même position.
+  useEffect(() => {
+    cache.current = {};
+    langRef.current = lang;
+    draw(reduced() ? REDUCED_T : play.current.t);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lang, tall]);
+  useEffect(() => () => { if (play.current.raf) cancelAnimationFrame(play.current.raf); }, []);
 
   const fmt = tall ? "tall" : "wide";
 
@@ -140,14 +252,13 @@ export default function DailyMatch() {
       </div>
 
       {/* L'écran Match de l'app, agrandi ; épinglé pendant le défilement sur ordinateur */}
-      <div ref={pinRef} className={`mr-pin${pin && !reduce ? " is-pinned" : ""}`}>
-      <div className="mr-stage" style={{ fontFamily: FONT }}>
+      <div ref={pinRef} className={`mr-pin is-scrub${!reduceM ? " is-pinned" : ""}`}>
+      <div ref={stage} className="mr-stage" style={{ fontFamily: FONT }}>
         {/* 4. Les boxeurs, en fond, figés sur le coup du gagnant */}
         <div className="mr-boxers" aria-hidden="true">
           {(["blue", "red"] as const).map((w) => (
             // eslint-disable-next-line @next/next/no-img-element
-            <img key={`${w}-${fmt}`} src={`/match/punch-${w}-${fmt}.webp`} alt="" loading="lazy"
-              style={{ opacity: boxers && (r.w === "Y") === (w === "blue") ? 0.85 : 0 }} />
+            <img key={`${w}-${fmt}`} data-w={w} src={`/match/punch-${w}-${fmt}.webp`} alt="" loading="lazy" style={{ opacity: 0 }} />
           ))}
         </div>
 
@@ -155,51 +266,49 @@ export default function DailyMatch() {
           {/* 1. Les barres de vie */}
           <div className="mr-bars">
             <div>
-              <HpBar side="me" life={lifeMe} drop={dropFor("Y")} />
-              <div className="mr-hp" style={{ color: BLUE }}><b>{c.me}</b> <span key={lifeMe}>{lifeMe} {c.hp}</span></div>
+              <HpBar side="me" />
+              <div className="mr-hp" style={{ color: BLUE }}><b>{c.me}</b> <span data-hp="Y">{HP0} {c.hp}</span></div>
             </div>
             <div>
-              <HpBar side="opp" life={lifeOpp} drop={dropFor("O")} />
-              <div className="mr-hp" style={{ color: RED, textAlign: "right" }}><span key={lifeOpp}>{lifeOpp} {c.hp}</span> <b>{c.opp}</b></div>
+              <HpBar side="opp" />
+              <div className="mr-hp" style={{ color: RED, textAlign: "right" }}><span data-hp="O">{HP0} {c.hp}</span> <b>{c.opp}</b></div>
             </div>
           </div>
 
           {/* 2. La frise des rounds */}
           <div className="mr-dashes" aria-hidden="true">
-            {ROUNDS.map((x, i) => {
-              const done = time >= i * ROUND_LEN + T_HIT;
-              return <i key={i} className={x.final ? "is-final" : undefined} style={{ background: done ? (x.w === "Y" ? BLUE : RED) : i === ri && !verdict ? INK : "#D5DBE4" }} />;
-            })}
+            {ROUNDS.map((x, i) => <i key={i} className={x.final ? "is-final" : undefined} style={{ background: i === 0 ? INK : "#D5DBE4" }} />)}
           </div>
 
-          {/* 3. Le round : le jour, mon score, vs, son score */}
-          {!verdict ? (
-            <div className="mr-round" key={`r${ri}`}>
-              <span className="mr-kick">{r.final ? c.finalRound : c.round(ri + 1)}</span>
-              <span className="mr-day">{c.days[ri]}</span>
-              {r.final && <span className="mr-kick" style={{ color: RED, marginTop: 4 }}>{c.stake}</span>}
-              {(["Y", "O"] as const).map((side) => {
-                const col = side === "Y" ? BLUE : RED, won = side === r.w, v = side === "Y" ? yPts : oPts;
-                return (
-                  <div key={side} style={{ display: "contents" }}>
-                    {side === "O" && <span className="mr-vs">VS</span>}
-                    <div className="mr-line" style={{ opacity: hit && !won ? 0.26 : 1 }}>
-                      <span className="mr-won" style={{ color: col, opacity: hit && won ? 1 : 0, transform: hit && won ? "none" : "translateY(4px)" }}>{c.wins}</span>
-                      <span className="mr-big" style={{ color: col }}>{nf(v)}<small>pts</small></span>
-                      <span className="mr-act">{r.a[lang][side === "Y" ? 0 : 1]}</span>
+          {/* 3. Les rounds, empilés (fondus croisés), puis le verdict */}
+          <div className="mr-rounds">
+            {ROUNDS.map((r, ri) => (
+              <div className="mr-round" key={`r${ri}`} style={{ opacity: ri === 0 ? 1 : 0, visibility: ri === 0 ? "visible" : "hidden" }}>
+                <span className="mr-kick">{r.final ? c.finalRound : c.round(ri + 1)}</span>
+                <span className="mr-day">{c.days[ri]}</span>
+                {r.final && <span className="mr-kick" style={{ color: RED, marginTop: 4 }}>{c.stake}</span>}
+                {(["Y", "O"] as const).map((side) => {
+                  const col = side === "Y" ? BLUE : RED;
+                  return (
+                    <div key={side} style={{ display: "contents" }}>
+                      {side === "O" && <span className="mr-vs">VS</span>}
+                      <div className="mr-line" data-line={side}>
+                        <span className="mr-won" style={{ color: col, opacity: 0, transform: "translateY(4px)" }}>{c.wins}</span>
+                        <span className="mr-big" style={{ color: col }}><span className="mr-num">0</span><small>pts</small></span>
+                        <span className="mr-act">{r.a[lang][side === "Y" ? 0 : 1]}</span>
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
-              <span className="mr-split"><i style={{ flex: r.y, background: BLUE }} /><b /><i style={{ flex: r.o, background: RED }} /></span>
-            </div>
-          ) : (
-            <div className="mr-round mr-verdict" key="verdict">
+                  );
+                })}
+                <span className="mr-split"><i style={{ flex: r.y, background: BLUE }} /><b /><i style={{ flex: r.o, background: RED }} /></span>
+              </div>
+            ))}
+            <div className="mr-round mr-verdict" style={{ opacity: 0, visibility: "hidden" }}>
               <span className="mr-kick" style={{ letterSpacing: "0.4em" }}>{c.winner}</span>
               <span className="mr-verdict-name">{c.me}</span>
               <span className="mr-verdict-sub">{c.verdict}</span>
             </div>
-          )}
+          </div>
         </div>
       </div>
       </div>

@@ -1169,3 +1169,29 @@ body:has(.h7-page) .footer-panel .footer-attax { color: rgba(9,9,11,0.03) !impor
 .mr-section:has(.mr-pin.is-pinned) { overflow: visible !important; }
 /* 22/11 · scrub fluide : crans de l'anneau (calque allumé au-dessus de la piste), mis à l'échelle autour de leur centre */
 .arl-lit { transform-box: fill-box; transform-origin: 50% 50%; will-change: opacity, transform; }
+.opp6.is-scrub > :not(.opp6-grid), .opp6.is-scrub .opp6-stat { transform: translateY(calc((1 - var(--k)) * 16px)); will-change: opacity, transform; }
+.opp6.is-scrub > .opp6-av { transform: translateY(calc((1 - var(--k)) * 16px)) scale(calc(0.86 + 0.14 * var(--k))); }
+.dfl { --hit: 1; }
+.dfl-half.is-l { transform-origin: 100% 50%; transform: translate3d(calc(var(--gap) * var(--d) * -1), 0, 0) scale(var(--hit)); }
+.dfl-half.is-r { transform-origin: 0% 50%; transform: translate3d(calc(var(--gap) * var(--d)), 0, 0) scale(var(--hit)); }
+.lt6-place small { will-change: opacity, transform; }
+/* 22/11 · match scrubbé : rounds empilés (fondus croisés), aucune animation CSS, tout suit le défilement */
+.mr-rounds { display: grid; }
+.mr-rounds > .mr-round { grid-area: 1 / 1; will-change: opacity, transform; }
+.mr-pin.is-scrub .mr-day, .mr-pin.is-scrub .mr-verdict-name, .mr-pin.is-scrub .mr-hp span, .mr-pin.is-scrub .mr-frag { animation: none !important; }
+.mr-pin.is-scrub .mr-line, .mr-pin.is-scrub .mr-won, .mr-pin.is-scrub .mr-boxers img { transition: none !important; will-change: opacity, transform; }
+.mr-pin.is-scrub .mr-frag { will-change: opacity, transform; }
+.arl-duo { position: absolute; overflow: visible; }
+.arl-duo path { will-change: opacity; }
+.arl-duo-txt { position: absolute; background: #EEF1F9; }
+.arl-duo-txt p { position: absolute; margin: 0; line-height: 1; white-space: nowrap; font-family: var(--font-manrope), sans-serif; }
+/* 22/11 · le match reste entier à l'écran (barres de vie + frise + round) sous la barre de navigation fixe (68 px) +
+   16 px, centré dans l'espace restant ; épinglé aussi sur téléphone (le bloc tient sur un écran) ; 8 crans (7 rounds +
+   verdict) d'environ 290 px (ordinateur) / 220 px (téléphone). */
+.mr-pin.is-pinned { height: calc(100svh + 2320px); }
+.mr-pin.is-pinned > .mr-stage { position: sticky; top: max(84px, calc(34px + 50svh - 300px)); }
+@media (max-height: 820px) { .p5 .mr-pin .mr-round { min-height: 430px; } }
+@media (max-width: 860px) {
+  .mr-pin.is-pinned { height: calc(100svh + 1760px); }
+  .mr-pin.is-pinned > .mr-stage { top: max(84px, calc(34px + 50svh - 250px)); }
+}

@@ -2,7 +2,7 @@
 
 import { useLang, useT } from "@/lib/i18n";
 import { useInView } from "@/hooks/useInView";
-import { useScrollProgress, seg, easeOut } from "@/hooks/useScrollProgress";
+import { useScrollProgress, seg, easeInOut } from "@/hooks/useScrollProgress";
 import { useRef } from "react";
 import type React from "react";
 import AppPhone from "./AppPhone";
@@ -91,28 +91,36 @@ export default function CardTwist6() {
   );
 }
 
-// 22/11 (accord du propriétaire) : les 3 cartes du matin sont distribuées une à une dans l'éventail au fil du défilement
-// (glissent du bas en tournant jusqu'à leur place, comme l'éventail de la page Match de l'app), puis Overdrive se soulève
-// et les deux autres s'effacent (l'état final = l'éventail d'avant) ; en remontant, les cartes se rassemblent. Pas de
-// retournement. Mouvements réduits : éventail final directement.
+// 22/11 (accord du propriétaire, revu le même jour : plus fluide) : les 3 cartes du matin sont distribuées une à une
+// dans l'éventail au fil du défilement. Chaque carte part de la pioche (sous le milieu de l'éventail, inclinée), suit un ARC
+// (courbe de Bézier quadratique qui passe au-dessus de sa place) en tournant jusqu'à son angle dans l'éventail ; départs
+// décalés qui se chevauchent. Puis Overdrive se soulève et les deux autres s'estompent (l'état final = l'éventail d'avant).
+// En remontant, tout repart en arrière. Mouvements réduits : éventail final directement.
 const FAN_END = [{ r: -5, y: 6, s: 1, o: 0.45 }, { r: 0, y: -10, s: 1.06, o: 1 }, { r: 5, y: 6, s: 1, o: 0.45 }];
+const SLOT_X = [0, 94, 188];                                    // place de chaque carte (104 px − 10 px de recouvrement)
 function CardFan({ children }: { children: React.ReactNode }) {
   const box = useRef<HTMLDivElement | null>(null);
   const ref = useScrollProgress<HTMLDivElement>((p) => {
     const els = box.current?.children; if (!els) return;
-    const lift = easeOut(seg(p, 0.72, 1));
+    const lift = easeInOut(seg(p, 0.74, 1));
     for (let i = 0; i < 3; i++) {
       const el = els[i] as HTMLElement | undefined; if (!el) continue;
-      const d = easeOut(seg(p, i * 0.2, i * 0.2 + 0.36));
+      const d = easeInOut(seg(p, i * 0.17, i * 0.17 + 0.42));
       const f = FAN_END[i];
-      const x = (1 - d) * (1 - i) * 112;                       // part du centre de la pile
-      const y = (1 - d) * 70 + d * (i === 1 ? f.y * lift : f.y);
-      const r = d * f.r;
-      const sc = i === 1 ? 1 + (f.s - 1) * lift : 1;
-      const o = d * (i === 1 ? 1 : 1 - (1 - f.o) * lift);
-      el.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px) rotate(${r.toFixed(2)}deg) scale(${sc.toFixed(3)})`;
+      // Pioche : sous la carte du milieu, 120 px plus bas ; point de contrôle au-dessus de la place (l'arc). Rien ne
+      // sort de la largeur de l'éventail (pas de débordement horizontal sur téléphone).
+      const sx = SLOT_X[1] - SLOT_X[i], sy = 120, cx = sx * 0.15, cy = -40;
+      const u = 1 - d;
+      const x = u * u * sx + 2 * u * d * cx;
+      const yArc = u * u * sy + 2 * u * d * cy;
+      const yEnd = i === 1 ? f.y * lift : f.y;
+      const y = yArc + d * d * yEnd;
+      const r = u * (-20 + 8 * (i - 1)) + d * f.r + Math.sin(Math.PI * d) * (i - 1) * 4;
+      const sc = (0.9 + 0.1 * d) * (i === 1 ? 1 + (f.s - 1) * lift : 1);
+      const o = Math.min(1, d * 4) * (i === 1 ? 1 : 1 - (1 - f.o) * lift);
+      el.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0) rotate(${r.toFixed(2)}deg) scale(${sc.toFixed(4)})`;
       el.style.opacity = o.toFixed(3);
     }
-  }, { start: 0.92, end: 0.45 });
+  }, { start: 0.95, end: 0.35 });
   return <div ref={(el) => { (ref as React.MutableRefObject<HTMLDivElement | null>).current = el; box.current = el; }} className="cw7-fan is-scrub" aria-hidden="true">{children}</div>;
 }

@@ -1,8 +1,8 @@
 "use client";
 
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useLang } from "@/lib/i18n";
-import { useScrollProgress, seg } from "@/hooks/useScrollProgress";
+import { useScrollProgress, seg, easeInOut, easeOut } from "@/hooks/useScrollProgress";
 import { flagUri } from "@/lib/rankFlag";
 import Story6 from "./Story6";
 
@@ -28,13 +28,9 @@ const ROWS: Row[] = [
   { name: "Morgan", av: 7, pts: 27, sub: 1, form: ["D", "D", "V", "D", "V"], h2h: [1, 0], move: 1 },
   { name: "Quinn", av: 6, pts: 25, sub: 1, form: ["D", "V", "D", "D", "D"], h2h: [1, 0], move: -1 },
 ];
-// Avant le verdict de 21h30 : Sophie mène, Johnny est 2e avec 40 points ; le verdict (rounds gagnés + victoire) le
+// Avant le verdict de 21h30 : Sophie mène (41), Johnny est 2e avec 40 points ; le verdict (rounds gagnés + victoire) le
 // fait passer 1er avec 48. Les autres lignes ne bougent pas.
-const BEFORE: Row[] = [
-  { ...ROWS[1], form: ["V", "D", "V", "D", "V"], h2h: undefined, move: 0 },
-  { ...ROWS[0], pts: 40, form: ["V", "D", "V", "V", "D"].slice(0, 5) as R[], move: 0 },
-  ...ROWS.slice(2),
-];
+const PTS0 = 40;
 const DIVS = [
   { d: 5, k: "Legend", c: "#16191F" }, { d: 4, k: "Elite", c: "#4D7CFF" }, { d: 3, k: "Pro", c: "#C79A3F" },
   { d: 2, k: "Challenger", c: "#8A93A0" }, { d: 1, k: "Rookie", c: "#B87333" },
@@ -86,33 +82,64 @@ function MeScanlines() {
 export default function LeagueTable() {
   const { lang } = useLang();
   const c = COPY[lang];
-  const [after, setAfter] = useState(false);
-  const rows = after ? ROWS : BEFORE;
+  const rows = ROWS;
   const n = rows.length;
   const els = useRef<Record<string, HTMLDivElement | null>>({});
-  const afterRef = useRef(false);
-  const mRef = useRef(0);
-  // 22/11 (accord du propriétaire) : la remontée de Johnny de la 2e à la 1re place suit le défilement (et redescend quand
-  // on remonte). Les deux lignes glissent l'une vers l'autre ; à mi-chemin le classement bascule (points, flèches ↑1/↓1).
-  // Seules les lignes bougent : les filets PROMOTION / RELÉGATION restent en place. Mouvements réduits : état final.
-  const place = () => {
-    const m = mRef.current, a = afterRef.current;
+  const geo = useRef<{ dJ: number; dS: number } | null>(null);
+  const lastP = useRef(1);
+  // 22/11 (retour du propriétaire : « la montée est mal faite ») : comme la mise à jour du classement dans l'app. Le DOM
+  // est TOUJOURS dans l'ordre final ; au départ, la ligne de Johnny (noire) et celle de Sophie sont décalées pour
+  // occuper la place de l'autre, puis glissent l'une vers l'autre (FLIP interpolé par le défilement, ligne de Johnny
+  // au-dessus et très légèrement soulevée pendant le croisement). Ses points montent de 40 à 48 ; au croisement, les
+  // places (1 / 2), la couleur des places et l'anneau des photos s'échangent, puis « ↑1 » / « ↓1 » apparaissent et le
+  // face-à-face « TOI 1-0 » de Sophie aussi. Le filet MONTÉE reste entre le 2e et le 3e ; les autres lignes ne bougent
+  // pas. Aucun rendu React pendant le défilement. Mouvements réduits : état final.
+  const q = (name: string, sel: string) => els.current[name]?.querySelector<HTMLElement>(sel) ?? null;
+  const measure = () => {
     const j = els.current["Johnny"], so = els.current["Sophie"];
-    const rj = j?.querySelector<HTMLElement>(".lt6-row"), rs = so?.querySelector<HTMLElement>(".lt6-row");
+    const rj = q("Johnny", ".lt6-row"), rs = q("Sophie", ".lt6-row");
     if (!j || !so || !rj || !rs) return;
-    const d = Math.abs((j.offsetTop + rj.offsetTop) - (so.offsetTop + rs.offsetTop));
-    const k = a ? 1 - m : m;                      // part du trajet restant / parcouru depuis l'ordre affiché
-    rj.style.transform = `translateY(${(a ? d * k : -d * k).toFixed(1)}px)`;
-    rs.style.transform = `translateY(${(a ? -d * k : d * k).toFixed(1)}px)`;
+    const yJ = j.offsetTop + rj.offsetTop, yS = so.offsetTop + rs.offsetTop;
+    geo.current = { dJ: yS + rs.offsetHeight - rj.offsetHeight - yJ, dS: yJ - yS };
   };
-  const ref = useScrollProgress<HTMLDivElement>((p) => {
-    const t = seg(p, 0.3, 0.85), m = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-    mRef.current = m;
-    const a = m >= 0.5;
-    if (a !== afterRef.current) { afterRef.current = a; setAfter(a); }
-    place();
-  }, { start: 0.85, end: 0.2 });
-  useLayoutEffect(() => { place(); }, [after]);
+  const swapped = useRef<boolean | null>(null), lastPts = useRef(-1);
+  const draw = (p: number) => {
+    lastP.current = p;
+    if (!geo.current) measure();
+    const g = geo.current; if (!g) return;
+    const m = easeInOut(seg(p, 0.18, 0.86));
+    const rj = q("Johnny", ".lt6-row"), rs = q("Sophie", ".lt6-row");
+    if (!rj || !rs) return;
+    const bump = Math.sin(Math.PI * m);
+    rj.style.transform = `translate3d(0, ${(g.dJ * (1 - m)).toFixed(2)}px, 0) scale(${(1 + 0.025 * bump).toFixed(4)})`;
+    rs.style.transform = `translate3d(0, ${(g.dS * (1 - m)).toFixed(2)}px, 0) scale(${(1 - 0.012 * bump).toFixed(4)})`;
+    const pts = Math.round(PTS0 + (48 - PTS0) * seg(m, 0.08, 0.92));
+    if (pts !== lastPts.current) { lastPts.current = pts; const e = q("Johnny", ".lt6-pts"); if (e) e.textContent = String(pts); }
+    const sw = m >= 0.5;
+    if (sw !== swapped.current) {
+      swapped.current = sw;
+      const pj = q("Johnny", ".lt6-place span"), ps = q("Sophie", ".lt6-place span");
+      if (pj) pj.textContent = sw ? "1" : "2";
+      if (ps) { ps.textContent = sw ? "2" : "1"; ps.style.color = sw ? SILVER : GOLD; }
+      const aj = q("Johnny", ".lt6-av"), as = q("Sophie", ".lt6-av");
+      if (aj) { aj.style.borderColor = sw ? GOLD : SILVER; aj.style.borderWidth = sw ? "var(--ring1)" : "var(--ring)"; }
+      if (as) { as.style.borderColor = sw ? SILVER : GOLD; as.style.borderWidth = sw ? "var(--ring)" : "var(--ring1)"; }
+    }
+    const k = easeOut(seg(m, 0.55, 1));
+    for (const name of ["Johnny", "Sophie"]) {
+      const mv = q(name, ".lt6-place small");
+      if (mv) { mv.style.opacity = k.toFixed(3); mv.style.transform = `translate3d(0, ${((1 - k) * 6).toFixed(2)}px, 0)`; }
+    }
+    const h = q("Sophie", ".lt6-h2h"); if (h) h.style.opacity = easeOut(seg(m, 0.5, 1)).toFixed(3);
+  };
+  const ref = useScrollProgress<HTMLDivElement>(draw, { start: 0.9, end: 0.15 });
+  useEffect(() => {
+    const el = ref.current; if (!el || typeof ResizeObserver === "undefined") return;
+    const ro = new ResizeObserver(() => { measure(); draw(lastP.current); });
+    ro.observe(el);
+    return () => ro.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Story6 id="league" kicker={c.kick} title={c.title} line={c.lead} reverse extra={

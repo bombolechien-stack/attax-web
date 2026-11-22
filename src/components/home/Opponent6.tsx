@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef } from "react";
 import { useLang } from "@/lib/i18n";
 import { useScrollProgress, seg, easeOut } from "@/hooks/useScrollProgress";
 import { flagUri } from "@/lib/rankFlag";
@@ -32,11 +33,14 @@ export default function Opponent6() {
   const c = COPY[lang];
   // 22/11 : la fiche apparaît élément par élément au fil du défilement (repère, photo, pseudo, rang, puis les 4 stats),
   // et repart en remontant. Mouvements réduits : fiche complète.
+  // Revu le 22/11 : les éléments arrivent l'un après l'autre avec des fondus qui se chevauchent (chacun sur 34 % de la
+  // course, décalés de 8 %), glissent de 16 px et la photo grossit légèrement ; tout est continu et réversible.
+  const els = useRef<HTMLElement[] | null>(null);
   const ref = useScrollProgress<HTMLDivElement>((p) => {
     const root = ref.current; if (!root) return;
-    const els = [...Array.from(root.children).filter((e) => !e.classList.contains("opp6-grid")), ...Array.from(root.querySelectorAll(".opp6-stat"))] as HTMLElement[];
-    els.forEach((el, i) => el.style.setProperty("--k", easeOut(seg(p, i * 0.085, i * 0.085 + 0.3)).toFixed(3)));
-  }, { start: 0.8, end: 0.2 });
+    if (!els.current) els.current = [...Array.from(root.children).filter((e) => !e.classList.contains("opp6-grid")), ...Array.from(root.querySelectorAll(".opp6-stat"))] as HTMLElement[];
+    els.current.forEach((el, i) => el.style.setProperty("--k", easeOut(seg(p, i * 0.08, i * 0.08 + 0.34)).toFixed(4)));
+  }, { start: 0.85, end: 0.2 });
   return (
     <Story6 id="opponent" kicker={c.kick} title={c.title} line={c.line}>
       <div className="st6-phone">
