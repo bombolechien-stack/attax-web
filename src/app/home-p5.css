@@ -1099,7 +1099,7 @@ body:has(.h7-page) .footer-panel .footer-attax { color: rgba(9,9,11,0.03) !impor
 @media (max-width: 860px) { .h7-arena-shade { background: linear-gradient(to bottom, rgba(5,5,5,0.25) 0%, rgba(5,5,5,0.6) 55%, rgba(5,5,5,0.85) 100%) !important; } }
 @media (min-width: 861px) {
   .h7-arena-bg { left: 38% !important; right: -4% !important; top: -6% !important; bottom: -6% !important; }
-  .h7-arena-bg img { object-position: center 42% !important; }
+  .h7-arena-bg img { object-position: center 40% !important; }
   .h7-arena-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to right, #050505 0%, rgba(5,5,5,0) 30%); }
 }
 /* 22/11 (gui) : sur les grands écrans, le bloc du hero s'étend davantage (titre et phrase plus grands). */
@@ -1167,3 +1167,5 @@ body:has(.h7-page) .footer-panel .footer-attax { color: rgba(9,9,11,0.03) !impor
 .mr-pin.is-pinned { height: calc(100svh * 1.75 + 640px); }
 .mr-pin.is-pinned > .mr-stage { position: sticky; top: max(24px, calc(50svh - 330px)); }
 .mr-section:has(.mr-pin.is-pinned) { overflow: visible !important; }
+/* 22/11 · scrub fluide : crans de l'anneau (calque allumé au-dessus de la piste), mis à l'échelle autour de leur centre */
+.arl-lit { transform-box: fill-box; transform-origin: 50% 50%; will-change: opacity, transform; }

@@ -21,7 +21,7 @@ export default function ArenaSection() {
     <section className="h7-card-wrap h7-arena-sec">
       <div className="h7-arena">
         <div ref={bgRef} className="h7-arena-bg">
-          <Image src="/images/sport/033-A.jpg" alt="Runner training at night" fill sizes="100vw" style={{ objectFit: "cover", objectPosition: "center 45%", filter: "grayscale(60%) contrast(1.08) brightness(1)" }} />
+          <Image src="/images/sport-running-group.png" alt="Runners training together" fill sizes="100vw" style={{ objectFit: "cover", objectPosition: "center 40%", filter: "grayscale(25%) contrast(1.1) brightness(0.85)" }} />
           <div className="scan-overlay" />
         </div>
         <div className="h7-arena-shade" />
