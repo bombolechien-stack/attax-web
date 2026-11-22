@@ -373,3 +373,37 @@ body:has(.sp) { background: #EEF1F7 !important; }
 .sp-watches ul { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
 .sp-watches li { flex-wrap: wrap; }
 .sp-watches li.is-more { grid-column: 1 / -1; justify-content: flex-start; gap: 0.5rem 1rem; }
+
+/* ══ Passe responsive (22/11) ══════════════════════════════════════════════════════════════════════════════════════
+   Titres d'en-tête en clamp() sur toute la plage : plus grands sur tablette (768–860 : ~58 px au lieu de 46) et sur les
+   grands écrans (jusqu'à 88 px), jamais minuscules ; bloc de texte un peu plus large au-delà de 1600 px. */
+@media (max-width: 860px) {
+  .sp-h1 { font-size: clamp(2.5rem, 7.4vw, 3.75rem); }
+  .sp-hero-lead { font-size: clamp(1.0625rem, 2.2vw, 1.25rem); }
+}
+@media (min-width: 861px) { .sp-h1 { font-size: clamp(3.25rem, 5.6vw, 5.5rem); } }
+@media (min-width: 1600px) {
+  .sp-hero-in > * { max-width: 860px; }
+  .sp-hero-lead { font-size: 1.375rem; max-width: 640px !important; }
+}
+/* Athlète en scanlines des en-têtes : jamais sous le texte. 861–1365 px : athlète plus petit et poussé à droite, colonne
+   de texte limitée à la moitié de l'écran ; téléphone : athlète très estompé derrière le texte. */
+@media (min-width: 861px) and (max-width: 1365px) {
+  .scan-hero-figure { height: 72% !important; right: 1.5rem !important; }
+  .sp-hero:has(.scan-hero-figure) .sp-hero-in > * { max-width: min(720px, 52vw); }
+}
+@media (max-width: 600px) { .scan-hero-figure { opacity: 0.16; } }
+/* Kit presse, captures : 3 colonnes sur tablette (601–900 px) au lieu de 2 téléphones géants. */
+@media (min-width: 601px) and (max-width: 900px) { .sp-media { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+/* Rangées de téléphones en défilement (≤ 900 px) : 280 px max par téléphone, plus de téléphone géant sur tablette. */
+@media (max-width: 900px) { .sp-phones figure { flex: 0 0 min(68%, 280px); } }
+/* Téléphones des pages : jamais plus hauts que l'écran moins la nav. */
+@media (min-width: 901px) { .sp .ph6 { max-width: max(220px, calc((100svh - 150px) * 0.5)); } }
+/* En-tête avec téléphone (Télécharger, iOS, Android) : titre un peu plus petit et colonne plus large au-delà de 1200 px
+   (« Télécharge Attax. » sur une ligne), toujours à l'écart du téléphone. */
+@media (min-width: 861px) { .sp-hero.has-phone .sp-h1 { font-size: clamp(3rem, 4.9vw, 4.75rem); } }
+@media (min-width: 1200px) { .sp-hero.has-phone .sp-hero-in > * { max-width: min(680px, calc(100% - 400px)); } }
+@media (min-width: 861px) and (max-width: 1180px) {
+  .scan-hero-figure { height: 62% !important; right: 1rem !important; }
+  .sp-hero:has(.scan-hero-figure) .sp-hero-lead { max-width: min(560px, 50vw) !important; }
+}
