@@ -337,3 +337,4 @@ body:has(.sp) { background: #EEF1F7 !important; }
 .sp-code b { display: block; font-size: 1.875rem; font-weight: 700; letter-spacing: 0.2em; color: #09090B; }
 .sp-code span { display: block; margin-top: 4px; font-size: 0.875rem; font-weight: 600; color: var(--blue, #0443FD); }
 .sp-fn .sp-label { display: block; }
+.sp-h1:has(.sp-avatar) { font-size: clamp(2.25rem, 4.6vw, 3.75rem); }

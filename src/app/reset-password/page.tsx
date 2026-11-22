@@ -1,11 +1,12 @@
 "use client";
-// Réinitialisation du mot de passe — lien de l'e-mail « Mot de passe oublié ».
+// Réinitialisation du mot de passe : lien de l'e-mail « Mot de passe oublié ».
 // Fonctionne sur ORDINATEUR comme sur téléphone (avant : lien attax:// qui ne s'ouvrait
 // que dans l'app, et l'app connectait l'utilisateur sans lui laisser changer son mot
 // de passe). Le modèle d'e-mail Supabase envoie ?token_hash=…&type=recovery.
 import { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import { useLang } from "@/lib/i18n";
+import { SitePage } from "@/components/site/Site";
 
 const supabase = createClient(
   "https://huxwznrgxnarxmuaugse.supabase.co",
@@ -72,33 +73,42 @@ export default function ResetPasswordPage() {
     setState("done");
   };
 
-  const input: React.CSSProperties = { width: "100%", padding: "14px 16px", borderRadius: 12, border: "1px solid #E2E5EC", fontSize: 16, marginBottom: 12, boxSizing: "border-box" };
   return (
-    <div style={{ minHeight: "100vh", background: "#EEF1F7", display: "flex", alignItems: "center", justifyContent: "center", padding: 16 }}>
-      <div style={{ width: "100%", maxWidth: 420, background: "#fff", borderRadius: 20, padding: "32px 24px", boxShadow: "0 10px 40px rgba(11,17,22,0.08)" }}>
-        <p style={{ fontSize: 12, fontWeight: 800, letterSpacing: "0.18em", color: "#0443FD", margin: "0 0 10px" }}>ATTAX</p>
-        {state === "done" ? (
-          <>
-            <h1 style={{ fontSize: 26, fontWeight: 800, color: "#0B1116", margin: "0 0 10px" }}>{t.done}</h1>
-            <p style={{ fontSize: 15, color: "#5B6472", lineHeight: 1.6, margin: 0 }}>{t.doneSub}</p>
-          </>
-        ) : state === "checking" ? (
-          <p style={{ fontSize: 15, color: "#5B6472" }}>{t.checking}</p>
-        ) : state === "invalid" ? (
-          <p style={{ fontSize: 15, color: "#5B6472", lineHeight: 1.6 }}>{t.invalid}</p>
-        ) : (
-          <form onSubmit={submit}>
-            <h1 style={{ fontSize: 26, fontWeight: 800, color: "#0B1116", margin: "0 0 8px" }}>{t.title}</h1>
-            <p style={{ fontSize: 15, color: "#5B6472", lineHeight: 1.6, margin: "0 0 20px" }}>{t.sub}</p>
-            <input type="password" autoComplete="new-password" placeholder={t.pw} value={pw} onChange={(e) => setPw(e.target.value)} style={input} />
-            <input type="password" autoComplete="new-password" placeholder={t.pw2} value={pw2} onChange={(e) => setPw2(e.target.value)} style={input} />
-            {err && <p style={{ color: "#EC0420", fontSize: 14, margin: "0 0 12px" }}>{err}</p>}
-            <button type="submit" disabled={state === "saving"} style={{ width: "100%", padding: "14px", borderRadius: 12, border: "none", background: "#0B1116", color: "#fff", fontSize: 15, fontWeight: 700, cursor: "pointer", opacity: state === "saving" ? 0.6 : 1 }}>
-              {state === "saving" ? t.saving : t.cta}
-            </button>
-          </form>
-        )}
+    <SitePage>
+      <div className="sp-fn">
+        <div className="sp-fn-card">
+          <p className="st6-kick">ATTAX</p>
+          {state === "done" ? (
+            <>
+              <h1 className="sp-fn-h">{t.done}</h1>
+              <p className="sp-fn-p" style={{ margin: 0 }}>{t.doneSub}</p>
+            </>
+          ) : state === "checking" ? (
+            <p className="sp-fn-p" style={{ margin: 0 }}>{t.checking}</p>
+          ) : state === "invalid" ? (
+            <p className="sp-fn-p" style={{ margin: 0 }}>{t.invalid}</p>
+          ) : (
+            <form onSubmit={submit} className="sp-form">
+              <div>
+                <h1 className="sp-fn-h">{t.title}</h1>
+                <p className="sp-fn-p" style={{ margin: 0 }}>{t.sub}</p>
+              </div>
+              <label className="sp-field">
+                <span>{t.pw}</span>
+                <input className="sp-input" type="password" autoComplete="new-password" placeholder={t.pw} value={pw} onChange={(e) => setPw(e.target.value)} />
+              </label>
+              <label className="sp-field">
+                <span>{t.pw2}</span>
+                <input className="sp-input" type="password" autoComplete="new-password" placeholder={t.pw2} value={pw2} onChange={(e) => setPw2(e.target.value)} />
+              </label>
+              {err && <p className="sp-err">{err}</p>}
+              <button type="submit" className="h7-btn h7-btn-ink sp-btn-full" disabled={state === "saving"}>
+                {state === "saving" ? t.saving : t.cta}
+              </button>
+            </form>
+          )}
+        </div>
       </div>
-    </div>
+    </SitePage>
   );
 }
