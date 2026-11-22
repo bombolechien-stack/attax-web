@@ -418,3 +418,12 @@ body:has(.sp) { background: #EEF1F7 !important; }
   .sp-hero:has(.scan-hero-figure) .sp-hero-lead { max-width: min(560px, 50vw) !important; }
 }
 @media (min-width: 861px) and (max-width: 1199px) { .sp-hero.has-phone .sp-hero-in > * { max-width: min(600px, calc(100% - 380px)); } }
+/* Rangées de téléphones entre 640 et 900 px (tablette, ou ordinateur en mise à l'échelle 125 %) : côte à côte, en entier,
+   plus de carrousel coupé que la souris ne fait pas défiler. Carrousel gardé sur téléphone (< 640 px). */
+@media (min-width: 640px) and (max-width: 900px) {
+  .sp-phones { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; overflow: visible; scroll-snap-type: none; margin: 0; padding: 0; }
+  .sp-phones.is-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 260px)); gap: 1.5rem; overflow: visible; margin: 0; padding: 0; }
+  .sp-phones figure { flex: none; }
+  .sp-phones figcaption { font-size: 0.9375rem; }
+  .sp-phones figcaption b { font-size: 1.125rem; }
+}

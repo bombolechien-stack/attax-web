@@ -1242,3 +1242,13 @@ body:has(.h7-page) .footer-panel .footer-attax { color: rgba(9,9,11,0.03) !impor
 .mo-se-btn { margin: 0; min-height: calc(40 * var(--u)); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: calc(13 * var(--u)); letter-spacing: calc(0.2 * var(--u)); color: #8A93A0; }
 /* Le bas de l'île de la capture du profil dépassait sous l'île du téléphone : on le recouvre (fond de la capture). */
 .mo-tr-prof::after { content: ""; position: absolute; left: 37.5%; width: 27%; top: 0; height: 7.8%; background: #EEF1F9; }
+/* 06 entre 640 et 900 px (tablette, ou ordinateur avec mise à l'échelle Windows 125 % : un écran de ~1090 px fait ~870 px
+   CSS) : plus de carrousel horizontal (le 3e téléphone paraissait coupé et la souris ne le fait pas défiler) ; les trois
+   téléphones côte à côte, en entier. Le carrousel reste sur téléphone (< 640 px). */
+@media (min-width: 640px) and (max-width: 900px) {
+  .by7-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; overflow: visible; scroll-snap-type: none; margin-left: 0; margin-right: 0; padding: 0; }
+  .by7-item { flex: none; }
+  .by7-phone, .by7-item figcaption { width: 100%; }
+  .by7-item figcaption { font-size: 0.9375rem; }
+  .by7-item figcaption b { font-size: 1.125rem; }
+}
