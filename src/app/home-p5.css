@@ -1107,3 +1107,9 @@ body:has(.h7-page) .footer-panel .footer-attax { color: rgba(9,9,11,0.03) !impor
   .p5 .home-hero-copy .hero-h1-6 { font-size: clamp(84px, 6.2vw, 124px); }
   .p5 .home-hero-copy > p.delay-100 { font-size: clamp(1.25rem, 1.2vw, 1.5rem) !important; }
 }
+
+/* 22/11 : calque sur une capture du téléphone (même boîte que l'image 522 × 1017, calée en bas de l'écran comme elle).
+   .ph6-fight = zone des boxeurs de l'écran Match (round final) : fond de l'app, la vidéo des boxeurs à l'échelle de la capture. */
+.ph6-overlay { position: absolute; left: 0; bottom: 0; width: 100%; aspect-ratio: 522 / 1017; pointer-events: none; }
+.ph6-fight { position: absolute; left: 3.07%; width: 93.87%; top: 53.1%; height: 30.68%; overflow: hidden; background: #EEF1F7; }
+.ph6-fight > * { position: absolute !important; left: 15.3%; width: 81.2% !important; top: -1.3%; }

@@ -69,6 +69,13 @@ export default function CardTwist6() {
                 <div className="ph6"><div className="ph6-screen" style={{ background: "#EEF1F7" }}>
                   <LoopVideo mp4="/videos/match-final-live-en.mp4" webm="/videos/match-final-live-en.webm" poster="/videos/match-final-live-en-poster.jpg" label="The final round, live: Johnny and Sophie trade blows" ratio="540 / 1120" />
                 </div></div>
+              ) : src === "card-final" ? (
+                // 22/11 : en français aussi, le round final bouge : la capture française garde ses textes et seule la zone
+                // des boxeurs joue l'échange du moteur de combat (MotionDesign/05_MotionPack_Remotion/FighterScene.mp4,
+                // sans texte, fond de l'app, boucle fondue de 3,7 s, 540 × 460, 330 ko).
+                <AppPhone src={`/screens/story/${lang}/${src}.webp`} alt={c.alt[i]} overlay={
+                  <div className="ph6-fight"><LoopVideo mp4="/videos/fighters-loop.mp4" poster="/videos/fighters-loop-poster.jpg" label="Les deux boxeurs échangent des coups pendant le round final" ratio="540 / 460" /></div>
+                } />
               ) : (
                 <AppPhone src={`/screens/story/${lang}/${src}.webp`} alt={c.alt[i]} />
               )}
