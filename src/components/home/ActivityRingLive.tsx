@@ -9,9 +9,9 @@ import { useScrollProgress } from "@/hooks/useScrollProgress";
 // piste #DDE1E7, chiffre Manrope 800 68 pt, « pts aujourd'hui » Manrope 600 13 pt #6B7280) et app/(tabs)/activity.tsx
 // (ligne du challenge 13,5 pt, « Challenge réussi » en bleu, sous-ligne 12,5 pt « Soit environ … de course à pied »).
 // Posé en calque sur la vraie capture (story/<langue>/activity.webp, 522 × 1016) : on couvre l'anneau et ses deux lignes
-// avec le fond de l'app et on redessine aux mêmes coordonnées. Le score monte jusqu'à 864 pts ; le challenge (490 pts,
+// avec le fond de l'app et on redessine aux mêmes coordonnées. Le score monte jusqu'à 864 pts ; le challenge (820 pts,
 // celui de la capture) est réussi en cours de route : l'anneau se ferme, la ligne passe à « Challenge réussi ».
-const N = 48, SIZE = 236, TARGET = 490, SCORE = 864;
+const N = 48, SIZE = 236, TARGET = 820, SCORE = 864;
 const cq = (px: number) => `${((px * 100) / 522).toFixed(3)}cqw`;   // px de la capture → unités du conteneur (écran)
 const T = {
   fr: { of: "pts aujourd'hui", ch: "Challenge : ", before: " avant 21h30 · ", done: "Challenge réussi", plus: " · +1 point au classement", about: "Soit environ ", run: " de course à pied.", loc: "fr-FR", d1: "Léa a validé.", d2: "À toi.", e1: "Validé à deux.", e2: "+1 ce soir.", x0: 102, tx: 190, cx: 436 },
@@ -21,7 +21,7 @@ const T = {
 // 22/11 (demande du coordinateur) : la ligne du binôme sous l'anneau suit la même progression, comme les états de
 // BinomeCard (components/league/BinomeCard.tsx, version « bare » des Activités) : tant que le score est sous l'objectif,
 // Léa a déjà validé → « Léa a validé. » + « À toi. » (orange #E0922A), mon anneau partiel (min(0,97, score / objectif)),
-// le sien plein ; dès que le score passe 490 → « Validé à deux. » + « +1 ce soir. », les deux anneaux pleins.
+// le sien plein ; dès que le score passe 820 → « Validé à deux. » + « +1 ce soir. », les deux anneaux pleins.
 // MiniRing de l'app : 40 pt, crans de 3 pt (TickRing, largeur × 40/236), le 2e décalé de 32 pt ; 1 pt = 1,3 px de la
 // capture. Seul MON anneau change : on recouvre sa couronne du fond de l'app et on la redessine ; les crans de Léa
 // recouverts au passage sont redessinés pleins par-dessus (Léa est au-dessus, comme dans l'app).
@@ -65,7 +65,7 @@ export default function ActivityRingLive({ lang }: { lang: "fr" | "en" }) {
   // 22/11 (retour du propriétaire : « l'anneau se remplit à 50 % puis à 100 % ») : les 48 crans s'allument UN PAR UN,
   // dans l'ordre horaire, au fil de p (le cran i s'allume quand p × 48 dépasse i ; le cran de tête fond et grossit
   // légèrement en arrivant) ; le score monte de 0 à 864 avec p ; la ligne passe à « Challenge réussi » au moment exact où
-  // le score dépasse 490. Tout repart en arrière en remontant. Aucun rendu React : DOM direct, seulement ce qui change.
+  // le score dépasse 820. Tout repart en arrière en remontant. Aucun rendu React : DOM direct, seulement ce qui change.
   const ref = useScrollProgress<HTMLDivElement>((p) => {
     const L = p * N;
     for (let i = 0; i < N; i++) {
@@ -102,7 +102,7 @@ export default function ActivityRingLive({ lang }: { lang: "fr" | "en" }) {
       if (duo1.current) duo1.current.textContent = done ? t.e1 : t.d1;
       if (duo2.current) duo2.current.textContent = done ? t.e2 : t.d2;
     }
-  }, { start: 0.6, end: 0.02 });   // l'anneau et la ligne du binôme sont à l'écran pendant tout le remplissage
+  }, { start: 0.85, end: 0.3 });   // 22/11 : plein (et « Validé à deux ») quand le téléphone est encore bien à l'écran   // l'anneau et la ligne du binôme sont à l'écran pendant tout le remplissage
   return (
     <div ref={ref} className="arl" aria-hidden="true">
       <div className="arl-panel" style={{ left: cq(8), width: cq(506), top: cq(160), height: cq(458) }} />

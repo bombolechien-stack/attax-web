@@ -8,9 +8,9 @@ import { useScrollProgress, seg, easeOut, easeInOut } from "@/hooks/useScrollPro
 // hauteur 807 pt (cadre 522 × 1072), encoche haute 59 pt, basse 34 pt.
 
 const OUT = (t: number) => 1 - Math.pow(1 - t, 4);              // ≈ Easing.bezier(0.16, 1, 0.3, 1)
-const SIN_IO = (t: number) => -(Math.cos(Math.PI * t) - 1) / 2;  // Easing.inOut(Easing.sin)
+
 /** Le ressort du recul (withSpring damping 16, stiffness 120, mass 0.9) : léger dépassement puis repos. */
-const SPRING = (t: number) => 1 - Math.exp(-6 * t) * Math.cos(5.2 * t);
+
 
 /* ───────────── Le trophée gagné : components/motion/moments/TrophyReveal.tsx (champion_3, « PRO CHAMPION ») ─────────────
  * Fond papier #F4F5F8, un seul objet. LE SCEAU : sa silhouette grise (#D9DEE5) que le vrai trophée remplit par le bas, un
@@ -20,7 +20,7 @@ const SPRING = (t: number) => 1 - Math.exp(-6 * t) * Math.cos(5.2 * t);
  * H = 53 % de l'écran, W = 0,62 H, haut = encoche + 7,5 %, CENTER = 46 %, focus socle 0,875 → couronne 0,2. */
 const SH = 807, SW = 393, TOP_IN = 59, BOT_IN = 34;
 const H = Math.round(SH * 0.53), W = Math.round(H * 0.62), TOP = TOP_IN + Math.round(SH * 0.075), LEFT = (SW - W) / 2;
-const MACRO = 1.75, F_BASE = 0.875, F_CROWN = 0.2, CENTER = SH * 0.46;
+
 const TR = {
   en: { name: "PRO CHAMPION", sub: "Pro league won", next: "ELITE CHAMPION", nextK: "NEXT TO WIN", hintT: "PUNCH 3 TIMES", hintS: "with your phone, held firmly, or tap the screen", share: "Share", cont: "Tap to continue" },
   fr: { name: "PRO CHAMPION", sub: "Ligue Pro gagnée", next: "ELITE CHAMPION", nextK: "À CONQUÉRIR", hintT: "BOXE 3 FOIS", hintS: "avec ton téléphone, bien en main, ou touche l'écran", share: "Partager", cont: "Touche pour continuer" },
@@ -39,13 +39,12 @@ export function TrophyMomentLive({ lang }: { lang: "en" | "fr" }) {
     let f = 0, n = 0;
     hits.forEach((h, i) => { const k = easeOut(seg(p, h, h + 0.04)); if (k > 0) { f = Math.max(f, (i + k) / 3); if (k > 0.5) n = i + 1; } });
     const pop = 1 - 0.04 * hits.reduce((a, h) => a + Math.sin(Math.PI * seg(p, h, h + 0.03)), 0);
-    // 3. Le plan : la silhouette s'efface, plongée sur le socle, remontée jusqu'à la couronne, recul.
-    const silO = 1 - seg(p, 0.38, 0.39);
-    const dive = OUT(seg(p, 0.39, 0.47)), climb = SIN_IO(seg(p, 0.53, 0.72)), back = seg(p, 0.76, 0.88);
-    const z = back > 0 ? MACRO + (1 - MACRO) * SPRING(back * 2.2) : 1 + (MACRO - 1) * dive;
-    const focus = F_BASE + (F_CROWN - F_BASE) * climb;
-    const u = (z - 1) / (MACRO - 1);
-    const ty = u * (CENTER - (TOP + H / 2) - (focus - 0.5) * H * z);
+    // 3. (22/11, retour du propriétaire : la plongée caméra socle → couronne au défilement faisait bizarre) : plus de
+    // gros plan. La silhouette s'efface, le trophée fait un seul petit rebond sur place (1,06 → 1), en entier à l'écran.
+    const silO = 1 - seg(p, 0.42, 0.48);
+    const b = seg(p, 0.44, 0.62);
+    const z = b > 0 ? 1 + 0.06 * Math.sin(Math.PI * Math.min(1, b * 1.4)) * (1 - b) : 1;
+    const ty = 0;
     if (obj.current) {
       obj.current.style.opacity = inV.toFixed(3);
       obj.current.style.transform = `translate3d(0, calc(${(ty + (1 - inV) * 40).toFixed(2)} * var(--u)), 0) scale(${(z * pop).toFixed(4)})`;
@@ -53,12 +52,12 @@ export function TrophyMomentLive({ lang }: { lang: "en" | "fr" }) {
     if (sil.current) sil.current.style.opacity = silO.toFixed(3);
     if (fill.current) fill.current.style.clipPath = `inset(${((1 - f) * 100).toFixed(3)}% 0 0 0)`;
     pips.current.forEach((el, i) => el?.classList.toggle("is-on", i < n));
-    if (hint.current) hint.current.style.opacity = (Math.min(OUT(seg(p, 0.04, 0.12)), 1 - seg(p, 0.35, 0.38))).toFixed(3);
+    if (hint.current) hint.current.style.opacity = (Math.min(OUT(seg(p, 0.04, 0.12)), 1 - seg(p, 0.38, 0.44))).toFixed(3);
     // 4. Le titre (après 480 ms du recul, 520 ms), puis la suite (après 800 ms, 480 ms) ; le reflet traverse.
-    const ti = OUT(seg(p, 0.84, 0.93)), re = OUT(seg(p, 0.89, 0.97));
+    const ti = OUT(seg(p, 0.58, 0.72)), re = OUT(seg(p, 0.7, 0.84));
     if (info.current) { info.current.style.opacity = ti.toFixed(3); info.current.style.transform = `translate3d(0, calc(${((1 - ti) * 22).toFixed(2)} * var(--u)), 0)`; }
     if (foot.current) { foot.current.style.opacity = re.toFixed(3); foot.current.style.transform = `translate3d(0, calc(${((1 - re) * 14).toFixed(2)} * var(--u)), 0)`; }
-    if (shine.current) shine.current.style.transform = `translate3d(${(-100 + 200 * easeInOut(seg(p, 0.9, 1))).toFixed(2)}%, 0, 0)`;
+    if (shine.current) shine.current.style.transform = `translate3d(${(-100 + 200 * easeInOut(seg(p, 0.62, 0.9))).toFixed(2)}%, 0, 0)`;
   }, { start: 0.6, end: 0.1 });           // le téléphone est entier à l'écran (sous la navigation) pendant toute la séquence
   const box = { left: `calc(${LEFT} * var(--u))`, top: `calc(${TOP} * var(--u))`, width: `calc(${W} * var(--u))`, height: `calc(${H} * var(--u))` };
   return (
