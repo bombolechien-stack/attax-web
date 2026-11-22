@@ -52,7 +52,7 @@ export const T = {
     dailyMatch: {
       label: "THE MATCH",
       h2: ["7 rounds.", "The strongest holds."],
-      subtitle: "Each day of your week is a round. You both start with 7 HP: a lost round costs 1 HP, the final round 2.\nKeep the most HP to win. Never a draw.",
+      subtitle: "Each day of your week is a round: the 6 past rounds play from 10 AM to 7 PM, then the final round until 9:30 PM. You both start with 7 HP: a lost round costs 1 HP, the final round 2.\nKeep the most HP to win. Never a draw.",
       live: "LIVE",
       match: "MATCH 6",
       resolves: "FINAL ROUND · 9:30 PM",
@@ -66,7 +66,7 @@ export const T = {
       card_you: "OVERDRIVE · WORKOUT ×1.5",
       card_opp: "THEIR CARD · SECRET UNTIL 9:30 PM",
       stats: [
-        { n: "10 AM → 5:30 PM", label: "The 6 past rounds play out, one by one." },
+        { n: "10 AM → 7 PM", label: "The 6 past rounds play out, one by one." },
         { n: "7 PM", label: "The final round goes live." },
         { n: "9:30 PM", label: "Fight Night. The verdict." },
       ],
@@ -98,7 +98,7 @@ export const T = {
       items: [
         { q: "Do I need a smartwatch?", a: "Yes. You need a device that measures your heart rate (smartwatch, fitness band or chest strap) synced with Apple Health (iPhone) or Health Connect (Android): Apple Watch, Garmin, Samsung Galaxy Watch, Fitbit, COROS, Amazfit, Withings, Oura, CMF by Nothing and more. Your phone alone counts your steps, but your workouts are measured by your watch. Attax checks your connection before your first league." },
         { q: "How do I earn pts?", a: "Your workouts and your steps, measured by your watch, become pts. The more you move, the more you score, and intensity pays, not just volume. No manual entry: everything comes from Apple Health or Health Connect." },
-        { q: "How is a match decided?", a: "A match has 7 rounds: the 6 previous days and today (in your first league, matches build up: match 1 is the final round alone, match 2 has 2 rounds, and so on). Each day is won by whoever scored the most pts that day, with at least 5 minutes of effort or 2,000 steps. Everyone starts with 7 HP and a lost round costs 1 HP. The past rounds play out from 10 AM to 5:30 PM, the final round (2 HP) is live from 7 PM. At 9:30 PM the cards are revealed and whoever keeps the most HP wins, by K.O. if the other falls to 0 HP. Level on HP? The week's pts (without cards) decide, then the steps, then the judges. Never a draw." },
+        { q: "How is a match decided?", a: "A match has 7 rounds: the 6 previous days and today (in your first league, matches build up: match 1 is the final round alone, match 2 has 2 rounds, and so on). Each day is won by whoever scored the most pts that day, with at least 5 minutes of effort or 2,000 steps. Everyone starts with 7 HP and a lost round costs 1 HP. The past rounds play out from 10 AM to 7 PM, the final round (2 HP) is live from 7 PM. At 9:30 PM the cards are revealed and whoever keeps the most HP wins, by K.O. if the other falls to 0 HP. Level on HP? The week's pts (without cards) decide, then the steps, then the judges. Never a draw." },
         { q: "Will I face players at my level?", a: "Yes. A few questions when you sign up set your starting level, and you join a league of players at your level. Then your results do the talking: your rank follows you from league to league." },
         { q: "Can I play with friends?", a: "Yes. Create a ranked league with up to 3 friends of a close rank, or a custom league from 2 to 40 players. Share the code, they join in seconds." },
         { q: "Is Attax free?", a: "Yes. Attax is free to download and free to play, with no ads." },
@@ -111,7 +111,7 @@ export const T = {
       sub: "Four moments. One duel a day.",
       steps: [
         { n: "01", time: "Before 1 PM", title: "Pick your card.", body: "A new opponent every day. 3 cards are drawn, the same for both of you: choose yours before 1 PM, or one is played for you. Theirs stays secret.", icon: "card" },
-        { n: "02", time: "10 AM → 5:30 PM", title: "Move.", body: "Run, ride, lift, walk: your workouts and steps become pts. Meanwhile, the rounds of your 6 past days are revealed one by one.", icon: "run" },
+        { n: "02", time: "10 AM → 7 PM", title: "Move.", body: "Run, ride, lift, walk: your workouts and steps become pts. Meanwhile, the rounds of your 6 past days are revealed one by one.", icon: "run" },
         { n: "03", time: "Automatic", title: "Sync.", body: "Attax reads Apple Health or Health Connect when you open the app, and in the background if you allow it. No manual input, ever.", icon: "sync" },
         { n: "04", time: "7 PM → 9:30 PM", title: "Fight.", body: "The final round goes live at 7 PM, and everything synced before 9:30 PM counts. At 9:30 PM it's Fight Night: the fighters walk in, the cards flip, the verdict comes last.", icon: "battle" },
       ],
@@ -280,7 +280,7 @@ export const T = {
       schedule_h2: ["Consistency creates", "momentum."],
       schedule_sub: "A duel every day turns your activity into a habit, and your habit into wins.",
       schedule_items: [
-        { n: "10:00 AM", title: "Match opens", description: "Meet today's opponent. The 6 past rounds play out one by one until 5:30 PM. Pick your card from the 3 drawn before 1 PM." },
+        { n: "10:00 AM", title: "Match opens", description: "Meet today's opponent. The 6 past rounds play out one by one until 7 PM. Pick your card from the 3 drawn before 1 PM." },
         { n: "7:00 PM", title: "Final round", description: "Today's round goes live. It takes 2 HP. Everything synced before 9:30 PM counts." },
         { n: "9:30 PM", title: "Fight Night", description: "The boxers walk out, the rounds replay, the cards flip, and the final round decides. The result lands at the end, and the standings update." },
       ],
@@ -449,7 +449,7 @@ export const T = {
     dailyMatch: {
       label: "LE MATCH",
       h2: ["7 rounds.", "Le plus fort tient."],
-      subtitle: "Chaque jour de ta semaine est un round. Vous partez tous les deux avec 7 PV : un round perdu coûte 1 PV, le round final 2.\nGarde le plus de PV pour gagner. Jamais de match nul.",
+      subtitle: "Chaque jour de ta semaine est un round : les 6 rounds passés se jouent de 10h à 19h, puis le round final jusqu'à 21h30. Vous partez tous les deux avec 7 PV : un round perdu coûte 1 PV, le round final 2.\nGarde le plus de PV pour gagner. Jamais de match nul.",
       live: "EN DIRECT",
       match: "MATCH 6",
       resolves: "ROUND FINAL · 21h30",
@@ -463,7 +463,7 @@ export const T = {
       card_you: "OVERDRIVE · SÉANCE ×1,5",
       card_opp: "SA CARTE · SECRÈTE JUSQU'À 21h30",
       stats: [
-        { n: "10h → 17h30", label: "Les 6 rounds passés se jouent, un par un." },
+        { n: "10h → 19h", label: "Les 6 rounds passés se jouent, un par un." },
         { n: "19h", label: "Le round final passe en direct." },
         { n: "21h30", label: "Soir de combat. Le verdict." },
       ],
@@ -495,7 +495,7 @@ export const T = {
       items: [
         { q: "Ai-je besoin d'une montre connectée ?", a: "Oui. Il te faut un appareil qui mesure ta fréquence cardiaque (montre, bracelet ou ceinture thoracique) synchronisé avec Apple Santé (iPhone) ou Health Connect (Android) : Apple Watch, Garmin, Samsung Galaxy Watch, Fitbit, COROS, Amazfit, Withings, Oura, CMF by Nothing et d'autres. Ton téléphone seul compte tes pas, mais tes séances sont mesurées par ta montre. Attax vérifie ta connexion avant ta première ligue." },
         { q: "Comment je gagne des pts ?", a: "Tes séances et tes pas, mesurés par ta montre, deviennent des pts. Plus tu bouges, plus tu marques, et c'est l'intensité qui paie, pas seulement le volume. Aucune saisie manuelle : tout vient d'Apple Santé ou de Health Connect." },
-        { q: "Comment un match est-il tranché ?", a: "Un match compte 7 rounds : les 6 jours d'avant et aujourd'hui (dans ta première ligue, les matchs montent en puissance : le match 1 se résume au round final, le match 2 compte 2 rounds, et ainsi de suite). Chaque jour est gagné par celui qui a marqué le plus de pts ce jour-là, avec au moins 5 minutes d'effort ou 2 000 pas. Chacun part de 7 PV et un round perdu coûte 1 PV (le round final, 2 PV). Les rounds passés se jouent de 10h à 17h30, le round final (2 PV) est en direct dès 19h. À 21h30, les cartes se révèlent et celui qui garde le plus de PV gagne, par K.O. si l'autre tombe à 0 PV. Égalité de PV ? Les pts de la semaine (sans les cartes) décident, puis les pas, puis les juges. Jamais de match nul." },
+        { q: "Comment un match est-il tranché ?", a: "Un match compte 7 rounds : les 6 jours d'avant et aujourd'hui (dans ta première ligue, les matchs montent en puissance : le match 1 se résume au round final, le match 2 compte 2 rounds, et ainsi de suite). Chaque jour est gagné par celui qui a marqué le plus de pts ce jour-là, avec au moins 5 minutes d'effort ou 2 000 pas. Chacun part de 7 PV et un round perdu coûte 1 PV (le round final, 2 PV). Les rounds passés se jouent de 10h à 19h, le round final (2 PV) est en direct dès 19h. À 21h30, les cartes se révèlent et celui qui garde le plus de PV gagne, par K.O. si l'autre tombe à 0 PV. Égalité de PV ? Les pts de la semaine (sans les cartes) décident, puis les pas, puis les juges. Jamais de match nul." },
         { q: "Vais-je affronter des joueurs de mon niveau ?", a: "Oui. Quelques questions à l'inscription fixent ton niveau de départ, et tu rejoins une ligue de joueurs de ton niveau. Ensuite, ce sont tes résultats qui parlent : ton rang te suit de ligue en ligue." },
         { q: "Puis-je jouer avec mes amis ?", a: "Oui. Crée une ligue classée entre amis (jusqu'à 3 amis de rang proche), ou une ligue personnalisée de 2 à 40 joueurs. Partage le code, ils te rejoignent en quelques secondes." },
         { q: "Attax est-il gratuit ?", a: "Oui. Attax est gratuit à télécharger et à jouer, sans publicité." },
@@ -508,7 +508,7 @@ export const T = {
       sub: "Quatre moments. Un duel par jour.",
       steps: [
         { n: "01", time: "Avant 13h", title: "Choisis ta carte.", body: "Un nouvel adversaire chaque jour. 3 cartes sont tirées, les mêmes pour vous deux : choisis la tienne avant 13h, sinon une carte est jouée pour toi. La sienne reste secrète.", icon: "card" },
-        { n: "02", time: "10h → 17h30", title: "Bouge.", body: "Cours, roule, soulève, marche : tes séances et tes pas deviennent des pts. Pendant ce temps, les rounds de tes 6 derniers jours se dévoilent un par un.", icon: "run" },
+        { n: "02", time: "10h → 19h", title: "Bouge.", body: "Cours, roule, soulève, marche : tes séances et tes pas deviennent des pts. Pendant ce temps, les rounds de tes 6 derniers jours se dévoilent un par un.", icon: "run" },
         { n: "03", time: "Automatique", title: "Synchronise.", body: "Attax lit Apple Santé ou Health Connect à l'ouverture de l'app, et en arrière-plan si tu l'autorises. Aucune saisie manuelle, jamais.", icon: "sync" },
         { n: "04", time: "19h → 21h30", title: "Combats.", body: "Le round final passe en direct à 19h, et tout ce qui est synchronisé avant 21h30 compte. À 21h30, c'est le Soir de combat : entrée des boxeurs, cartes retournées, le résultat tombe à la fin.", icon: "battle" },
       ],
@@ -677,7 +677,7 @@ export const T = {
       schedule_h2: ["La régularité crée", "l'élan."],
       schedule_sub: "Un duel par jour transforme ton activité en habitude, et ton habitude en victoires.",
       schedule_items: [
-        { n: "10h00", title: "Ouverture du match", description: "Découvre ton adversaire du jour. Les 6 rounds passés se jouent un par un jusqu'à 17h30. Choisis ta carte parmi les 3 tirées avant 13h." },
+        { n: "10h00", title: "Ouverture du match", description: "Découvre ton adversaire du jour. Les 6 rounds passés se jouent un par un jusqu'à 19h. Choisis ta carte parmi les 3 tirées avant 13h." },
         { n: "19h00", title: "Round final", description: "Le round du jour passe en direct. Il retire 2 PV. Tout ce qui est synchronisé avant 21h30 compte." },
         { n: "21h30", title: "Soir de combat", description: "Entrée des boxeurs, rounds rejoués, cartes retournées, puis le round final décide. Le résultat tombe à la fin, et le classement se met à jour." },
       ],
