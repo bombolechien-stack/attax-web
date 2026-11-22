@@ -1100,3 +1100,43 @@ footer .p-h2 { font-family: var(--font-manrope), sans-serif; font-weight: 500; f
 .pm .nav-pill img { filter: none !important; }
 .pm .nav-pill .nav-pill-cta { background: #fff !important; color: #0B0B0C !important; }
 .pm .nav-pill span[style*="0B1116"] { background-color: #fff !important; }
+
+/* ══ Finitions du site (22/11, passe premium) ══════════════════════════════════════════════════════════════════
+   Boutons qui se soulèvent de 1 px avec une ombre douce, lignes et cartes qui se teintent au survol, anneau de focus
+   unique (bleu Attax, clair sur fond sombre), images qui apparaissent en fondu sans décaler la page, cibles tactiles
+   d'au moins 44 px sur téléphone, mouvements coupés si l'utilisateur les réduit. */
+.h7-btn, .sp-dl, .sp-logo-dl a, .sp-swatch button, .sp-code { transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), box-shadow 0.25s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease; }
+@media (hover: hover) {
+  .h7-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 22px -10px rgba(9,9,11,0.45); }
+  .h7-btn-light:hover { box-shadow: 0 10px 26px -10px rgba(201,213,240,0.55); }
+  .h7-btn-ghost:hover { background: rgba(255,255,255,0.12); color: #fff; }
+  .h7-btn-line:hover { background: rgba(9,9,11,0.04); }
+  .sp-dl:hover, .sp-logo-dl a:hover { transform: translateY(-1px); }
+  .sp-swatch button:hover { transform: translateY(-1px); box-shadow: 0 10px 22px -14px rgba(9,9,11,0.5); }
+  .sp-li, .sp-dos-l li, .sp-watches li, .sp-cats li, .sp-facts > div { transition: background-color 0.2s ease; }
+  .sp-li:hover, .sp-cats li:hover { background: linear-gradient(to right, rgba(4,67,253,0.035), rgba(4,67,253,0)); }
+  .h7-cell { transition: background-color 0.2s ease, opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+  .h7-cell:hover { background: rgba(4,67,253,0.03); }
+  .sp-logo, .sp-media figure .sp-media-shot { transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s ease; }
+  .sp-logo:hover { transform: translateY(-2px); box-shadow: 0 16px 34px -22px rgba(9,9,11,0.45); }
+}
+.h7-btn:active { transform: translateY(0); box-shadow: none; }
+a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible, [tabindex]:focus-visible { outline: 2px solid #0443FD; outline-offset: 3px; }
+.h7-btn:focus-visible { outline-offset: 3px; border-radius: 999px; }
+.sp-hero a:focus-visible, .sp-hero button:focus-visible, .h7-arena a:focus-visible, .hero-card a:focus-visible, .hero-card button:focus-visible { outline-color: #C9D5F0; }
+.sp-input:focus-visible { outline: 0; }
+/* images : fondu à l'arrivée (la place est déjà réservée par le ratio ou fill) */
+@keyframes imgIn { from { opacity: 0; } to { opacity: 1; } }
+.sp-media-shot img, .sp-logo-art img, .ph6-screen img, .sp-plat-top img, .tr7 img { animation: imgIn 0.6s ease both; }
+@media (max-width: 760px) {
+  .h7-btn { min-height: 48px; }
+  .sp-dl, .sp-logo-dl a, .sp-chip { min-height: 44px; box-sizing: border-box; }
+  .sp-toc a, .sp-article-foot a { min-height: 44px; display: flex; align-items: center; }
+  footer a[aria-label] { min-width: 44px; min-height: 44px; width: 44px !important; height: 44px !important; }
+  html, body { overflow-x: clip; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .h7-btn, .sp-dl, .sp-logo-dl a, .sp-swatch button, .sp-logo { transition: none !important; }
+  .h7-btn:hover, .sp-dl:hover, .sp-logo:hover, .sp-swatch button:hover { transform: none !important; }
+  .sp-media-shot img, .sp-logo-art img, .ph6-screen img, .sp-plat-top img, .tr7 img { animation: none !important; }
+}
