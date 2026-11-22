@@ -25,8 +25,8 @@ const SHELF = [
   { img: "medal_3", en: "Third", fr: "3e de ligue", n: 0, medal: true },
 ];
 const TR = {
-  en: { tabs: ["Profile", "Matches", "Stats", "Badges"], honours: "HONOURS", count: "3 TROPHIES", goal: "NEXT GOAL", goalTxt: "Win an Elite league" },
-  fr: { tabs: ["Profil", "Matchs", "Stats", "Badges"], honours: "PALMARÈS", count: "3 TROPHÉES", goal: "PROCHAIN OBJECTIF", goalTxt: "Gagner une ligue Elite" },
+  en: { tabs: ["Profile", "Matches", "Stats", "Badges"], honours: "HONOURS", count: "3 TROPHIES", season: "BETA SEASON", cup: "The season trophy", cupSub: "Finish the season on top to lift it", toWin: "TO WIN" },
+  fr: { tabs: ["Profil", "Matchs", "Stats", "Badges"], honours: "PALMARÈS", count: "3 TROPHÉES", season: "SAISON BETA", cup: "Le trophée de la saison", cupSub: "Termine la saison en tête pour le soulever", toWin: "À DÉCROCHER" },
 };
 function TrophyShelf({ lang }: { lang: "en" | "fr" }) {
   const c = TR[lang];
@@ -34,7 +34,11 @@ function TrophyShelf({ lang }: { lang: "en" | "fr" }) {
     <div className="tr7">
       <div className="tr7-tabs">{c.tabs.map((t, i) => <span key={t} className={i === 0 ? "is-on" : undefined}>{t}</span>)}</div>
       <div className="tr7-head"><b>{c.honours}</b><span>{c.count}</span></div>
-      <div className="tr7-goal"><span>{c.goal}</span><b>{c.goalTxt}</b></div>
+      {/* 22/11 (retour du propriétaire) : le grand trophée de la Saison Beta en haut, comme le palmarès du profil */}
+      <div className="tr7-cup">
+        <div className="tr7-cup-img"><Image src="/trophies/beta_cup.webp" alt="" width={471} height={1000} sizes="120px" loading="eager" /></div>
+        <div className="tr7-cup-txt"><span>{c.season}</span><b>{c.cup}</b><em>{c.cupSub}</em><i>{c.toWin}</i></div>
+      </div>
       <div className="tr7-shelf">
         {SHELF.map((t) => (
           <div key={t.img} className={`tr7-cell${t.n ? "" : " is-off"}`}>
@@ -54,18 +58,18 @@ const COPY = {
     kick: "06 · Beyond the league",
     title: ["A league a week.", "A story all season."],
     items: [
-      ["The season.", "The global ranking of effort."],
-      ["Your duo.", "A duo partner is assigned to you to keep you going. Every day you both hit your challenge: +1 point each."],
-      ["Your trophies.", "Every league you win leaves a mark: trophy, crown."],
+      ["The season.", "Join the season in one tap, then race all season for the world ranking and the Beta Season trophy."],
+      ["Your duo.", "From your 2nd league, a duo partner is assigned to keep you going. Every day you both hit your daily goal: +1 point each."],
+      ["Your profile.", "Your trophies, your crown, your record, your streak: everything you win stays on your profile."],
     ],
   },
   fr: {
     kick: "06 · Au-delà de la ligue",
     title: ["Une ligue par semaine.", "Une histoire toute la saison."],
     items: [
-      ["La saison.", "Le classement mondial de l'effort."],
-      ["Ton binôme.", "Un binôme t'est attribué pour te motiver. Chaque jour où vous atteignez tous les deux votre challenge : +1 point chacun."],
-      ["Tes trophées.", "Chaque ligue gagnée laisse une trace : trophée, couronne."],
+      ["La saison.", "Rejoins la saison en un geste, puis cours toute la saison pour le classement mondial et le trophée de la Saison Beta."],
+      ["Ton binôme.", "Dès ta 2e ligue, un binôme t'est attribué pour te motiver. Chaque jour où vous atteignez tous les deux votre objectif du jour : +1 point chacun."],
+      ["Ton profil.", "Tes trophées, ta couronne, ton palmarès, ta série : tout ce que tu gagnes reste sur ton profil."],
     ],
   },
 };

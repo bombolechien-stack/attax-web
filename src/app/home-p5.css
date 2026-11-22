@@ -1074,3 +1074,30 @@ body:has(.h7-page) .footer-panel .footer-attax { color: rgba(9,9,11,0.03) !impor
   .p5 .hero-ctas { left: calc(var(--hx) + 272px + 28px); }
 }
 @media (min-width: 861px) and (max-height: 800px) { .hero-peek { height: 250px; } .p5 .home-hero-copy { padding-bottom: 276px; } }
+
+/* 06 · Au-delà de la ligue (22/11, retour du propriétaire) : la saison en plus grand, le trophée de la Saison Beta en
+   haut du palmarès (comme le profil de l'app), les trophées à gagner dessous ; carte finale plus lumineuse. */
+@media (min-width: 901px) {
+  .by7-row { grid-template-columns: 340px 280px 280px; align-items: start; }
+  .by7-item:first-child .by7-phone, .by7-item:first-child figcaption { width: 340px; }
+}
+.tr7-cup { display: flex; align-items: center; gap: 5cqw; margin-top: 4cqw; padding: 4cqw; border-radius: 5cqw; background: linear-gradient(160deg, #FFFFFF 0%, #E9EDF7 100%); box-shadow: 0 1px 0 rgba(9,9,11,0.06); }
+.tr7-cup-img { flex: 0 0 26cqw; height: 50cqw; display: flex; align-items: flex-end; justify-content: center; }
+.tr7-cup-img img { height: 100%; width: auto; object-fit: contain; filter: drop-shadow(0 3cqw 4cqw rgba(9,9,11,0.18)); }
+.tr7-cup-txt { display: flex; flex-direction: column; gap: 1.2cqw; min-width: 0; }
+.tr7-cup-txt span { font-size: 2.9cqw; font-weight: 800; letter-spacing: 0.5cqw; color: #0443FD; }
+.tr7-cup-txt b { font-size: 5.2cqw; line-height: 1.12; font-weight: 800; letter-spacing: -0.1cqw; }
+.tr7-cup-txt em { font-style: normal; font-size: 3.3cqw; line-height: 1.35; color: #6B7280; }
+.tr7-cup-txt i { align-self: flex-start; margin-top: 1.5cqw; padding: 1.2cqw 2.6cqw; border-radius: 4cqw; background: #09090B; color: #fff; font-style: normal; font-size: 2.6cqw; font-weight: 800; letter-spacing: 0.4cqw; }
+.tr7 .tr7-shelf { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4cqw 1.5cqw; margin-top: 5cqw; }
+.tr7 .tr7-img { height: 22cqw; }
+.tr7 .tr7-img.is-medal img { height: 13cqw; margin-bottom: 1.5cqw; }
+.tr7 .tr7-cell span { font-size: 2.9cqw; }
+.tr7 .tr7-cell b { font-size: 3.3cqw; }
+.h7-arena-shade { background: linear-gradient(to right, rgba(5,5,5,0.86) 0%, rgba(5,5,5,0.5) 38%, rgba(5,5,5,0) 62%), linear-gradient(to bottom, rgba(5,5,5,0.2) 0%, rgba(5,5,5,0) 30%, rgba(5,5,5,0) 75%, rgba(5,5,5,0.35) 100%) !important; }
+@media (max-width: 860px) { .h7-arena-shade { background: linear-gradient(to bottom, rgba(5,5,5,0.25) 0%, rgba(5,5,5,0.6) 55%, rgba(5,5,5,0.85) 100%) !important; } }
+@media (min-width: 861px) {
+  .h7-arena-bg { left: 38% !important; right: -4% !important; top: -6% !important; bottom: -6% !important; }
+  .h7-arena-bg img { object-position: center 42% !important; }
+  .h7-arena-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to right, #050505 0%, rgba(5,5,5,0) 30%); }
+}
