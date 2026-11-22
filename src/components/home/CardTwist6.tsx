@@ -64,20 +64,17 @@ export default function CardTwist6() {
           </ol>
         </div>
         <div ref={visRef} className={`cw7-phones${visIn ? " is-in" : ""}`}>
-          {(["card-reveal", "card-final"] as const).map((src, i) => (
+          {(["card-reveal", "card-final-hp44"] as const).map((src, i) => (
             <figure key={src} className="cw7-ph">
-              {src === "card-final" && lang === "en" ? (
-                // 22/11 : en anglais, le round final s'anime (motion design de l'app, MotionDesign/04_Site/attax-match-video.mp4,
-                // écran recadré) ; textes en anglais dans la vidéo, donc le français garde sa capture fixe.
-                <div className="ph6"><div className="ph6-screen" style={{ background: "#EEF1F7" }}>
-                  <LoopVideo mp4="/videos/match-final-live-en.mp4" webm="/videos/match-final-live-en.webm" poster="/videos/match-final-live-en-poster.jpg" label="The final round, live: Johnny and Sophie trade blows" ratio="540 / 1120" />
-                </div></div>
-              ) : src === "card-final" ? (
+              {/* 22/11 (gui) : la vidéo anglaise du round final montrait 4 PV contre 2 PV pendant le round (et la capture 3 PV),
+                  alors que la révélation juste avant est à 4 contre 4 : les PV ne bougent qu'à la fin du round. Les deux
+                  langues prennent donc la capture (barres de PV remises à 4 contre 4 en anglais) + l'échange des boxeurs. */}
+              {src === "card-final-hp44" ? (
                 // 22/11 : en français aussi, le round final bouge : la capture française garde ses textes et seule la zone
                 // des boxeurs joue l'échange du moteur de combat (MotionDesign/05_MotionPack_Remotion/FighterScene.mp4,
                 // sans texte, fond de l'app, boucle fondue de 3,7 s, 540 × 460, 330 ko).
                 <AppPhone src={`/screens/story/${lang}/${src}.webp`} alt={c.alt[i]} overlay={
-                  <div className="ph6-fight"><LoopVideo mp4="/videos/fighters-loop.mp4" poster="/videos/fighters-loop-poster.jpg" label="Les deux boxeurs échangent des coups pendant le round final" ratio="540 / 460" /></div>
+                  <div className="ph6-fight"><LoopVideo mp4="/videos/fighters-loop.mp4" poster="/videos/fighters-loop-poster.jpg" label={lang === "fr" ? "Les deux boxeurs échangent des coups pendant le round final" : "Both fighters trade blows during the final round"} ratio="540 / 460" /></div>
                 } />
               ) : (
                 <AppPhone src={`/screens/story/${lang}/${src}.webp`} alt={c.alt[i]} />
