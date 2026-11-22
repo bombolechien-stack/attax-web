@@ -1113,3 +1113,33 @@ body:has(.h7-page) .footer-panel .footer-attax { color: rgba(9,9,11,0.03) !impor
 .ph6-overlay { position: absolute; left: 0; bottom: 0; width: 100%; aspect-ratio: 522 / 1017; pointer-events: none; }
 .ph6-fight { position: absolute; left: 3.07%; width: 93.87%; top: 53.1%; height: 30.68%; overflow: hidden; background: #EEF1F7; }
 .ph6-fight > * { position: absolute !important; left: 15.3%; width: 81.2% !important; top: -1.3%; }
+
+/* ══ Passe responsive (22/11) ══════════════════════════════════════════════════════════════════════════════════════
+   Points de rupture : ≤ 860 téléphone/tablette portrait (une colonne) · 861–1023 petite tablette paysage · 1024–1365
+   portable · ≥ 1366 ordinateur. Hero : la rangée du bas (haut du téléphone + boutons + chiffres) ne tient sur une ligne
+   qu'à partir de 1366 px ; en dessous, les boutons remontent sous la phrase (dans le bloc de texte) et, sous 1024 px,
+   les chiffres aussi : plus rien ne se chevauche. Titre en clamp() : jamais minuscule. */
+@media (min-width: 861px) and (max-width: 1365px) {
+  .pm .hero-h1-6 { font-size: clamp(4rem, 6.6vw, 5.25rem); }
+  .p5 .hero-ctas { position: static !important; flex-direction: row !important; flex-wrap: wrap !important; align-items: center; margin-top: 1.75rem !important; left: auto !important; bottom: auto !important; }
+}
+@media (min-width: 861px) and (max-width: 1023px) {
+  .hero-stats6 { flex-direction: column; height: auto !important; border-top: 0; padding-top: 0; min-width: 200px; align-items: stretch; }
+  .hero-stats6 > div, .hero-stats6 > div:first-child { padding: 0.55rem 0 !important; border-left: 0; border-top: 1px solid rgba(255,255,255,0.12); height: auto !important; }
+}
+/* 06 : colonnes fluides (plus de 340 + 280 + 280 px fixes qui débordaient sous ~1000 px). */
+@media (min-width: 901px) {
+  .by7-row { grid-template-columns: minmax(0, 340px) minmax(0, 280px) minmax(0, 280px); }
+  .by7-item:first-child .by7-phone, .by7-item:first-child figcaption, .by7-phone, .by7-item figcaption { width: 100%; }
+}
+/* Téléphones : jamais plus hauts que l'écran moins la barre de navigation (portables 1366 × 768, etc.). */
+@media (min-width: 861px) {
+  .p5 .ph6 { max-width: max(220px, calc((100svh - 150px) * 0.5)); }
+}
+/* Hero téléphone / tablette portrait : les sportifs s'effacent vers le bas pour que le titre et la phrase ne passent
+   jamais sur une zone chargée. */
+@media (max-width: 860px) {
+  .p5 .home-hero-video { opacity: 0.6; -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 30%, rgba(0,0,0,0.25) 70%, transparent 100%); mask-image: linear-gradient(to bottom, #000 0%, #000 30%, rgba(0,0,0,0.25) 70%, transparent 100%); }
+}
+/* 06 sur téléphone / tablette : défilement horizontal aimanté, chaque téléphone au plus 300 px (plus de téléphone géant à 768). */
+@media (max-width: 900px) { .by7-item { flex: 0 0 min(72%, 300px); } }
