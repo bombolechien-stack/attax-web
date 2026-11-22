@@ -3,6 +3,7 @@
 import { useLang } from "@/lib/i18n";
 import { useInView } from "@/hooks/useInView";
 import Image from "next/image";
+import DuoFistsLive from "./DuoFistsLive";
 import AppPhone from "./AppPhone";
 
 // Chapitre 06 « Au-delà de la ligue » (passe 7, 21/11, demande du propriétaire) : un bloc compact juste après la ligue,
@@ -92,7 +93,8 @@ export default function Beyond7() {
               <div className="by7-phone">
                 {SHOTS[i] === "profile"
                   ? <AppPhone><TrophyShelf lang={lang} /></AppPhone>
-                  : <AppPhone src={`/screens/story/${lang}/${SHOTS[i]}.webp`} alt={`${t} ${d}`} baked dark={i === 0} />}
+                  : <AppPhone src={`/screens/story/${lang}/${SHOTS[i]}.webp`} alt={`${t} ${d}`} baked dark={i === 0}
+                      overlay={SHOTS[i] === "duo" ? <DuoFistsLive src={`/screens/story/${lang}/duo.webp`} /> : undefined} />}
               </div>
               <figcaption><b>{t}</b> {d}</figcaption>
             </figure>

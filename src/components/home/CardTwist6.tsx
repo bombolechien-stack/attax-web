@@ -2,6 +2,9 @@
 
 import { useLang, useT } from "@/lib/i18n";
 import { useInView } from "@/hooks/useInView";
+import { useScrollProgress, seg, easeOut } from "@/hooks/useScrollProgress";
+import { useRef } from "react";
+import type React from "react";
 import AppPhone from "./AppPhone";
 import LoopVideo from "./LoopVideo";
 import { PortraitCard, TAGLINE, type Card } from "./CardsShowcase";
@@ -48,13 +51,13 @@ export default function CardTwist6() {
                 <span className="cw7-n">{i + 1} · {k}</span>
                 <p>{l}</p>
                 {i === 0 && (
-                  <div className="cw7-fan" aria-hidden="true">
+                  <CardFan>
                     {cards.map((cd) => (
                       <div key={cd.id} className={`cw7-card${cd.id === "overdrive" ? " is-pick" : ""}`}>
                         <PortraitCard card={cd} family={fams[cd.fam]} tagline={TAGLINE[lang][cd.id]} />
                       </div>
                     ))}
-                  </div>
+                  </CardFan>
                 )}
               </li>
             ))}
@@ -86,4 +89,30 @@ export default function CardTwist6() {
       </div>
     </section>
   );
+}
+
+// 22/11 (accord du propriétaire) : les 3 cartes du matin sont distribuées une à une dans l'éventail au fil du défilement
+// (glissent du bas en tournant jusqu'à leur place, comme l'éventail de la page Match de l'app), puis Overdrive se soulève
+// et les deux autres s'effacent (l'état final = l'éventail d'avant) ; en remontant, les cartes se rassemblent. Pas de
+// retournement. Mouvements réduits : éventail final directement.
+const FAN_END = [{ r: -5, y: 6, s: 1, o: 0.45 }, { r: 0, y: -10, s: 1.06, o: 1 }, { r: 5, y: 6, s: 1, o: 0.45 }];
+function CardFan({ children }: { children: React.ReactNode }) {
+  const box = useRef<HTMLDivElement | null>(null);
+  const ref = useScrollProgress<HTMLDivElement>((p) => {
+    const els = box.current?.children; if (!els) return;
+    const lift = easeOut(seg(p, 0.72, 1));
+    for (let i = 0; i < 3; i++) {
+      const el = els[i] as HTMLElement | undefined; if (!el) continue;
+      const d = easeOut(seg(p, i * 0.2, i * 0.2 + 0.36));
+      const f = FAN_END[i];
+      const x = (1 - d) * (1 - i) * 112;                       // part du centre de la pile
+      const y = (1 - d) * 70 + d * (i === 1 ? f.y * lift : f.y);
+      const r = d * f.r;
+      const sc = i === 1 ? 1 + (f.s - 1) * lift : 1;
+      const o = d * (i === 1 ? 1 : 1 - (1 - f.o) * lift);
+      el.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px) rotate(${r.toFixed(2)}deg) scale(${sc.toFixed(3)})`;
+      el.style.opacity = o.toFixed(3);
+    }
+  }, { start: 0.92, end: 0.45 });
+  return <div ref={(el) => { (ref as React.MutableRefObject<HTMLDivElement | null>).current = el; box.current = el; }} className="cw7-fan is-scrub" aria-hidden="true">{children}</div>;
 }

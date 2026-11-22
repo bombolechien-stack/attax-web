@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { useLang } from "@/lib/i18n";
-import { useInView } from "@/hooks/useInView";
+import { useScrollProgress, seg } from "@/hooks/useScrollProgress";
 import { flagUri } from "@/lib/rankFlag";
 import Story6 from "./Story6";
 
@@ -86,32 +86,33 @@ function MeScanlines() {
 export default function LeagueTable() {
   const { lang } = useLang();
   const c = COPY[lang];
-  const { ref, visible } = useInView<HTMLDivElement>(0.3, { oneShot: true });
   const [after, setAfter] = useState(false);
   const rows = after ? ROWS : BEFORE;
   const n = rows.length;
-
-  // Le verdict tombe 1,2 s après l'arrivée à l'écran : Johnny passe devant Sophie (animation FLIP des lignes).
-  useEffect(() => {
-    if (!visible) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { setAfter(true); return; }
-    const t = setTimeout(() => setAfter(true), 1200);
-    return () => clearTimeout(t);
-  }, [visible]);
   const els = useRef<Record<string, HTMLDivElement | null>>({});
-  const tops = useRef<Record<string, number>>({});
-  useLayoutEffect(() => {
-    Object.entries(els.current).forEach(([k, el]) => {
-      if (!el) return;
-      const top = el.offsetTop, prev = tops.current[k];
-      if (prev != null && prev !== top) {
-        el.style.transition = "none";
-        el.style.transform = `translateY(${prev - top}px)`;
-        requestAnimationFrame(() => requestAnimationFrame(() => { el.style.transition = "transform 0.9s cubic-bezier(0.65,0,0.35,1)"; el.style.transform = ""; }));
-      }
-      tops.current[k] = top;
-    });
-  }, [after]);
+  const afterRef = useRef(false);
+  const mRef = useRef(0);
+  // 22/11 (accord du propriétaire) : la remontée de Johnny de la 2e à la 1re place suit le défilement (et redescend quand
+  // on remonte). Les deux lignes glissent l'une vers l'autre ; à mi-chemin le classement bascule (points, flèches ↑1/↓1).
+  // Seules les lignes bougent : les filets PROMOTION / RELÉGATION restent en place. Mouvements réduits : état final.
+  const place = () => {
+    const m = mRef.current, a = afterRef.current;
+    const j = els.current["Johnny"], so = els.current["Sophie"];
+    const rj = j?.querySelector<HTMLElement>(".lt6-row"), rs = so?.querySelector<HTMLElement>(".lt6-row");
+    if (!j || !so || !rj || !rs) return;
+    const d = Math.abs((j.offsetTop + rj.offsetTop) - (so.offsetTop + rs.offsetTop));
+    const k = a ? 1 - m : m;                      // part du trajet restant / parcouru depuis l'ordre affiché
+    rj.style.transform = `translateY(${(a ? d * k : -d * k).toFixed(1)}px)`;
+    rs.style.transform = `translateY(${(a ? -d * k : d * k).toFixed(1)}px)`;
+  };
+  const ref = useScrollProgress<HTMLDivElement>((p) => {
+    const t = seg(p, 0.3, 0.85), m = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    mRef.current = m;
+    const a = m >= 0.5;
+    if (a !== afterRef.current) { afterRef.current = a; setAfter(a); }
+    place();
+  }, { start: 0.85, end: 0.2 });
+  useLayoutEffect(() => { place(); }, [after]);
 
   return (
     <Story6 id="league" kicker={c.kick} title={c.title} line={c.lead} reverse extra={

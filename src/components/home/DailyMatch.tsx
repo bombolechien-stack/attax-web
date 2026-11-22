@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useState, useSyncExternalStore } from "react";
+import type React from "react";
 import { useLang, useT } from "@/lib/i18n";
-import { useInView } from "@/hooks/useInView";
+import { useScrollProgress } from "@/hooks/useScrollProgress";
 import SectionHead from "./SectionHead";
 
 // « 7 jours. 7 rounds. » = l'écran Match de l'app pendant les rounds, agrandi à la largeur du bloc (pas de téléphone) :
@@ -73,8 +74,17 @@ function lifeAt(side: "Y" | "O", t: number) {
   return life;
 }
 
+/** Le morceau jaune à l'instant k (0 → 1) : les mêmes étapes que l'animation mrFrag (un léger saut, puis il tombe en
+ *  tournant et s'efface), mais pilotées par le défilement. */
+function fragAt(k: number): React.CSSProperties {
+  let y: number, rot: number, o = 1;
+  if (k < 0.12) { const u = k / 0.12; y = -3 * u; rot = -2 * u; }
+  else { const e = Math.pow((k - 0.12) / 0.88, 2); y = -3 + 73 * e; rot = -2 + 11 * e; o = 1 - e; }
+  return { animation: "none", transform: `translateY(${y.toFixed(1)}px) rotate(${rot.toFixed(2)}deg)`, opacity: o };
+}
+
 /** La barre de vie de l'app ; « drop » = le morceau jaune qui vient de se détacher (il tombe, en CSS). */
-export function HpBar({ side, life, drop }: { side: "me" | "opp"; life: number; drop: { key: string; from: number } | null }) {
+export function HpBar({ side, life, drop }: { side: "me" | "opp"; life: number; drop: { key: string; from: number; k?: number } | null }) {
   const me = side === "me", f = life / HP0;
   const pos = me ? "left" : "right";
   return (
@@ -83,7 +93,7 @@ export function HpBar({ side, life, drop }: { side: "me" | "opp"; life: number; 
         <span className="mr-bar-fill" style={{ background: me ? G_ME : G_OPP, [pos]: 0, width: `${f * 100}%` }} />
         <span className="mr-bar-sheen" />
       </div>
-      {drop && <span key={drop.key} className="mr-frag" style={{ [pos]: `${f * 100}%`, width: `${((drop.from - life) / HP0) * 100}%` }} />}
+      {drop && <span key={drop.key} className="mr-frag" style={{ [pos]: `${f * 100}%`, width: `${((drop.from - life) / HP0) * 100}%`, ...(drop.k != null ? fragAt(drop.k) : {}) }} />}
       {f < 0.999 && <span className="mr-notch" style={{ [pos]: `${f * 100}%` }} />}
       <div className="mr-ticks">{Array.from({ length: HP0 - 1 }, (_, k) => <i key={k} style={{ left: `${((k + 1) / HP0) * 100}%` }} />)}</div>
     </div>
@@ -97,28 +107,18 @@ export default function DailyMatch() {
   const c = COPY[lang];
   const reduce = useMedia("(prefers-reduced-motion: reduce)");
   const tall = useMedia("(max-width: 760px)");
-  const { ref: stageRef, visible: onScreen } = useInView<HTMLDivElement>(0.25);
+  const pin = useMedia("(min-width: 861px)");
   const [clock, setClock] = useState(0);
 
-  // L'horloge du match (≈ 30 images/s), seulement quand le bloc est à l'écran. Animations réduites : l'image du coup
-  // du round 6, sans mouvement.
-  useEffect(() => {
-    if (reduce || !onScreen) return;
-    let raf = 0, last = 0;
-    const t0 = performance.now() - clock * 1000;
-    const loop = (now: number) => {
-      raf = requestAnimationFrame(loop);
-      if (now - last < 33) return;
-      last = now;
-      // rAF donne l'heure du DÉBUT de l'image : elle peut précéder t0 de quelques ms → temps négatif (ROUNDS[-1] plantait).
-      setClock(Math.max(0, ((now - t0) / 1000) % CYCLE));
-    };
-    raf = requestAnimationFrame(loop);
-    return () => cancelAnimationFrame(raf);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [reduce, onScreen]);
-
-  const time = reduce ? 5 * ROUND_LEN + T_HIT + 0.6 : clock;
+  // 22/11 (accord du propriétaire) : le match avance avec le défilement, plus avec une horloge. Rounds 1 → 7 (scores qui
+  // montent, coup du gagnant, morceau jaune qui tombe), puis le verdict ; tout revient en arrière quand on remonte.
+  // Ordinateur : le bloc est épinglé (sticky) pendant ~1,75 écran pour laisser la place aux 7 rounds ; téléphone : pas
+  // d'épinglage, le match avance pendant que le bloc traverse l'écran. Mouvements réduits : le coup du round 6, fixe.
+  const SPAN = ROUNDS.length * ROUND_LEN;
+  const pinRef = useScrollProgress<HTMLDivElement>((p) => {
+    setClock(Math.min(SPAN + 0.9, (p / 0.9) * SPAN));
+  }, pin ? { mode: "pin" } : { start: 0.75, end: -0.55 });
+  const time = reduce ? 5 * ROUND_LEN + T_HIT + 0.6 : Math.min(clock, SPAN + 0.9);
   const ri = Math.max(0, Math.min(ROUNDS.length - 1, Math.floor(Math.max(0, time) / ROUND_LEN) || 0));
   const verdict = time >= ROUNDS.length * ROUND_LEN;
   const r = ROUNDS[ri], lt = verdict ? ROUND_LEN : time - ri * ROUND_LEN;
@@ -128,7 +128,7 @@ export default function DailyMatch() {
   const boxers = hit && lt < T_FADE && !verdict;
   const lifeMe = lifeAt("Y", time), lifeOpp = lifeAt("O", time);
   // Le morceau jaune : seulement pendant la seconde qui suit le coup.
-  const dropFor = (side: "Y" | "O") => (hit && lt < T_HIT + 1.1 && r.w !== side && !verdict ? { key: `${ri}`, from: (side === "Y" ? lifeMe : lifeOpp) + (r.final ? 2 : 1) } : null);
+  const dropFor = (side: "Y" | "O") => (hit && lt < T_HIT + 1.05 && r.w !== side && !verdict ? { key: `${ri}`, from: (side === "Y" ? lifeMe : lifeOpp) + (r.final ? 2 : 1), k: (lt - T_HIT) / 1.05 } : null);
   const nf = (n: number) => n.toLocaleString(lang === "fr" ? "fr-FR" : "en-US");
 
   const fmt = tall ? "tall" : "wide";
@@ -139,8 +139,9 @@ export default function DailyMatch() {
         <SectionHead label={lang === "fr" ? "03 · 10h → 21h30" : "03 · 10 AM → 9:30 PM"} title={[m.h2[0], m.h2[1]]} lead={m.subtitle} />
       </div>
 
-      {/* L'écran Match de l'app, agrandi */}
-      <div ref={stageRef} className="mr-stage" style={{ fontFamily: FONT }}>
+      {/* L'écran Match de l'app, agrandi ; épinglé pendant le défilement sur ordinateur */}
+      <div ref={pinRef} className={`mr-pin${pin && !reduce ? " is-pinned" : ""}`}>
+      <div className="mr-stage" style={{ fontFamily: FONT }}>
         {/* 4. Les boxeurs, en fond, figés sur le coup du gagnant */}
         <div className="mr-boxers" aria-hidden="true">
           {(["blue", "red"] as const).map((w) => (
@@ -200,6 +201,7 @@ export default function DailyMatch() {
             </div>
           )}
         </div>
+      </div>
       </div>
 
     </section>

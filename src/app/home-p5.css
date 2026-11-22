@@ -1143,3 +1143,27 @@ body:has(.h7-page) .footer-panel .footer-attax { color: rgba(9,9,11,0.03) !impor
 }
 /* 06 sur téléphone / tablette : défilement horizontal aimanté, chaque téléphone au plus 300 px (plus de téléphone géant à 768). */
 @media (max-width: 900px) { .by7-item { flex: 0 0 min(72%, 300px); } }
+/* 02 : anneau des Activités lié au défilement (ActivityRingLive), en calque sur la capture. */
+.arl { position: absolute; inset: 0; pointer-events: none; font-family: var(--font-manrope), sans-serif; }
+.arl-panel { position: absolute; background: #EEF1F9; }
+.arl-ring { position: absolute; overflow: visible; }
+.arl-center { position: absolute; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.arl-num { font-weight: 800; color: #0B1116; font-variant-numeric: tabular-nums; }
+.arl-of { font-weight: 600; color: #6B7280; }
+.arl-line, .arl-sub { position: absolute; left: 0; right: 0; margin: 0; text-align: center; font-weight: 600; color: #6B7280; white-space: nowrap; }
+.arl-line b, .arl-sub b { font-weight: 800; color: #0B1116; }
+.cw7-fan.is-scrub .cw7-card { transition: none !important; will-change: transform, opacity; }
+/* 06 : poings du binôme liés au défilement (DuoFistsLive), en calque sur la capture. */
+.ph6-overlay.is-baked { aspect-ratio: 524 / 1072; bottom: auto; top: 0; }
+.dfl { position: absolute; left: 0; right: 0; overflow: hidden; background: #F4F6FA; --gap: 0; }
+.dfl-half { position: absolute; top: 0; bottom: 0; overflow: hidden; will-change: transform; }
+.dfl-half.is-l { transform: translateX(calc(var(--gap) * var(--d) * -1)); }
+.dfl-half.is-r { transform: translateX(calc(var(--gap) * var(--d))); }
+.dfl-half img { position: absolute; height: auto; max-width: none; display: block; margin: 0 !important; }
+/* 01 : fiche de l'adversaire liée au défilement (--k par élément, posé par Opponent6). */
+.opp6.is-scrub > :not(.opp6-grid), .opp6.is-scrub .opp6-stat { --k: 0; opacity: var(--k); transform: translateY(calc((1 - var(--k)) * 12px)); transition: none !important; }
+.lt6-row { will-change: transform; }
+/* 03 : le match lié au défilement ; sur ordinateur, la scène reste épinglée pendant ~1,75 écran. */
+.mr-pin.is-pinned { height: calc(100svh * 1.75 + 640px); }
+.mr-pin.is-pinned > .mr-stage { position: sticky; top: max(24px, calc(50svh - 330px)); }
+.mr-section:has(.mr-pin.is-pinned) { overflow: visible !important; }

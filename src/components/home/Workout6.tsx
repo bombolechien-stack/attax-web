@@ -3,6 +3,7 @@
 import { useLang } from "@/lib/i18n";
 import Story6 from "./Story6";
 import AppPhone from "./AppPhone";
+import ActivityRingLive from "./ActivityRingLive";
 import ICONS from "./sportIcons.json";
 
 // Écran 3 : « Ta séance devient des points. » L'écran Activités de l'app (vraie capture story/<langue>/activity.webp :
@@ -46,7 +47,7 @@ export default function Workout6() {
         ))}
       </ul>
     }>
-      <div className="st6-phone"><AppPhone src={`/screens/story/${lang}/activity.webp`} alt={c.alt} /></div>
+      <div className="st6-phone"><AppPhone src={`/screens/story/${lang}/activity.webp`} alt={c.alt} overlay={<ActivityRingLive lang={lang} />} /></div>
     </Story6>
   );
 }

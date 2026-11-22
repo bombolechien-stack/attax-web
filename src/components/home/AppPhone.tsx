@@ -21,6 +21,7 @@ export default function AppPhone({ src, alt, dark = false, baked = false, childr
     <div className="ph6">
       <div className="ph6-screen" style={{ background: dark ? "#0E141A" : "#EEF1F7" }}>
         <Image className="ph6-baked" src={src!} alt={alt ?? ""} width={524} height={1072} sizes="(max-width: 760px) 66vw, 280px" />
+        {overlay && <div className="ph6-overlay is-baked">{overlay}</div>}
       </div>
     </div>
   );
