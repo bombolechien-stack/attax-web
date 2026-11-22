@@ -1,6 +1,6 @@
 "use client";
 // Lien d'invitation à une ligue entre amis (partagé depuis l'app) : attax.app/join?code=XXXX
-// → ouvre l'app si elle est installée (attax://join?code=…), sinon propose le téléchargement.
+// → ouvre l'app si elle est installée (attax://join?code=…), sinon propose le téléchargement.
 import { useEffect, useState } from "react";
 import { useLang } from "@/lib/i18n";
 import { SitePage, AppleIcon, PlayIcon } from "@/components/site/Site";
@@ -11,16 +11,16 @@ const APPSTORE_URL = "https://apps.apple.com/app/id6821117530";
 const TXT = {
   fr: {
     kicker: "INVITATION", title: "Un ami t'invite dans sa ligue Attax",
-    sub: "Attax transforme ton sport en duels quotidiens. Rejoins la ligue de ton ami avec ce code :",
-    open: "Ouvrir dans l'app", get: "Pas encore l'app ? Télécharge-la",
-    then: "Puis, dans l'app : Rejoindre une ligue → J'ai un code, et entre le code ci-dessus.",
+    sub: "Attax transforme ton sport en duels quotidiens. Rejoins la ligue de ton ami avec ce code :",
+    open: "Ouvrir dans l'app", get: "Pas encore l'app ? Télécharge-la",
+    then: "Puis, dans l'app : Rejoindre une ligue → J'ai un code, et entre le code ci-dessus.",
     copy: "Copier le code", copied: "Code copié ✅",
   },
   en: {
     kicker: "INVITATION", title: "A friend invited you to their Attax league",
     sub: "Attax turns your workouts into daily duels. Join your friend's league with this code:",
     open: "Open in the app", get: "Don't have the app yet? Download it",
-    then: "Then, in the app: Join a league → I have a code, and enter the code above.",
+    then: "Then, in the app: Join a league → I have a code, and enter the code above.",
     copy: "Copy code", copied: "Code copied ✅",
   },
 };

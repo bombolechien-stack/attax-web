@@ -55,7 +55,7 @@ export default function CookieConsent() {
         lineHeight: 1.6,
         minWidth: "200px",
       }}>
-        {lang === "fr" ? "Zéro publicité, zéro pistage : ce site ne retient que ta langue et tes préférences." : "No ads, no tracking: this site only stores your language and preferences."}{" "}
+        {lang === "fr" ? "Zéro publicité, zéro pistage : ce site ne retient que ta langue et tes préférences." : "No ads, no tracking: this site only stores your language and preferences."}{" "}
         <a href="/cookie-policy" style={{ color: "#0d0d0d", fontWeight: 600, textDecoration: "underline", textUnderlineOffset: "2px" }}>
           {lang === "fr" ? "En savoir plus" : "Learn more"}
         </a>

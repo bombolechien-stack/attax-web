@@ -12,16 +12,16 @@ import { useScrollProgress } from "@/hooks/useScrollProgress";
 // avec le fond de l'app et on redessine aux mêmes coordonnées. Le score monte jusqu'à 864 pts ; le challenge (820 pts,
 // celui de la capture) est réussi en cours de route : l'anneau se ferme, la ligne passe à « Challenge réussi ».
 const N = 48, SIZE = 236, TARGET = 820, SCORE = 864;
-const cq = (px: number) => `${((px * 100) / 522).toFixed(3)}cqw`;   // px de la capture → unités du conteneur (écran)
+const cq = (px: number) => `${((px * 100) / 522).toFixed(3)}cqw`;   // px de la capture → unités du conteneur (écran)
 const T = {
-  fr: { of: "pts aujourd'hui", ch: "Challenge : ", before: " avant 21h30 · ", done: "Challenge réussi", plus: " · +1 point au classement", about: "Soit environ ", run: " de course à pied.", loc: "fr-FR", d1: "Léa a validé.", d2: "À toi.", e1: "Validé à deux.", e2: "+1 ce soir.", x0: 102, tx: 190, cx: 436 },
+  fr: { of: "pts aujourd'hui", ch: "Challenge : ", before: " avant 21h30 · ", done: "Challenge réussi", plus: " · +1 point au classement", about: "Soit environ ", run: " de course à pied.", loc: "fr-FR", d1: "Léa a validé.", d2: "À toi.", e1: "Validé à deux.", e2: "+1 ce soir.", x0: 102, tx: 190, cx: 436 },
   en: { of: "pts today", ch: "Challenge: ", before: " before 9:30 PM · ", done: "Challenge done", plus: " · +1 leaderboard point", about: "About ", run: " of running.", loc: "en-US", d1: "Léa is done.", d2: "Your turn.", e1: "Done together.", e2: "+1 tonight.", x0: 118, tx: 205, cx: 420 },
 };
 
 // 22/11 (demande du coordinateur) : la ligne du binôme sous l'anneau suit la même progression, comme les états de
 // BinomeCard (components/league/BinomeCard.tsx, version « bare » des Activités) : tant que le score est sous l'objectif,
-// Léa a déjà validé → « Léa a validé. » + « À toi. » (orange #E0922A), mon anneau partiel (min(0,97, score / objectif)),
-// le sien plein ; dès que le score passe 820 → « Validé à deux. » + « +1 ce soir. », les deux anneaux pleins.
+// Léa a déjà validé → « Léa a validé. » + « À toi. » (orange #E0922A), mon anneau partiel (min(0,97, score / objectif)),
+// le sien plein ; dès que le score passe 820 → « Validé à deux. » + « +1 ce soir. », les deux anneaux pleins.
 // MiniRing de l'app : 40 pt, crans de 3 pt (TickRing, largeur × 40/236), le 2e décalé de 32 pt ; 1 pt = 1,3 px de la
 // capture. Seul MON anneau change : on recouvre sa couronne du fond de l'app et on la redessine ; les crans de Léa
 // recouverts au passage sont redessinés pleins par-dessus (Léa est au-dessus, comme dans l'app).

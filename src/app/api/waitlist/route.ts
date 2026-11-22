@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 // Liste d'attente : ENREGISTRÉE en base (table waitlist, Supabase) puis notification
-// e-mail à l'équipe. Avant : e-mail seul → une inscription était perdue si l'envoi
+// e-mail à l'équipe. Avant : e-mail seul → une inscription était perdue si l'envoi
 // échouait. La clé ci-dessous est la clé PUBLIQUE (anon) de Supabase : elle ne permet
 // que d'ajouter une adresse à la liste (aucune lecture possible, cf. RLS).
 const SUPABASE_URL = "https://huxwznrgxnarxmuaugse.supabase.co";
@@ -13,14 +13,14 @@ export async function POST(req: NextRequest) {
   try { body = await req.json(); } catch { /* ignoré */ }
   const email = String(body?.email ?? "").trim().toLowerCase();
   const lang = String(body?.lang ?? "").slice(0, 10) || null;
-  // Champ piège invisible : rempli = robot → on fait semblant d'accepter.
+  // Champ piège invisible : rempli = robot → on fait semblant d'accepter.
   if (body?.website) return NextResponse.json({ ok: true });
   if (!EMAIL_RE.test(email) || email.length > 254) {
     return NextResponse.json({ error: "invalid_email" }, { status: 400 });
   }
   const source = (req.headers.get("host") ?? "").toLowerCase().replace(/^www\./, "").slice(0, 100);
 
-  // 1) Enregistrement (409 = déjà inscrit → succès pour l'utilisateur)
+  // 1) Enregistrement (409 = déjà inscrit → succès pour l'utilisateur)
   const ins = await fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {
     method: "POST",
     headers: {

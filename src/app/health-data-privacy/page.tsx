@@ -86,7 +86,7 @@ function ContentFr() {
         <ul>
           <li>Fréquence cardiaque, y compris les valeurs minute par minute enregistrées pendant tes séances.</li>
           <li>Nombre de pas.</li>
-          <li>Séances : heures de début et de fin, et type de séance (par exemple course ou natation).</li>
+          <li>Séances : heures de début et de fin, et type de séance (par exemple course ou natation).</li>
           <li>Les minutes d'effort et les points d'activité que nous calculons à partir de ces données.</li>
           <li>Des informations techniques sur la façon dont ta montre enregistre ces données (par exemple la fréquence d'arrivée des mesures et l'application qui a fourni tes pas), utilisées uniquement pour diagnostiquer les problèmes de synchronisation.</li>
         </ul>
@@ -94,12 +94,12 @@ function ContentFr() {
 
       <section>
         <h2>2. Provenance</h2>
-        <p>Ces données viennent de toi, via Apple Santé (HealthKit) sur iPhone ou Health Connect sur Android, uniquement après ton consentement dans l'app et ton autorisation dans les réglages santé de ton téléphone. Si tu l'autorises, Attax peut aussi lire ces données en arrière-plan (sur Android, quelques fois par jour ; sur iPhone, quand Apple Santé signale de nouvelles données), pour que ta journée compte même si tu n'ouvres pas l'app. Attax n'écrit jamais rien dans Apple Santé ou Health Connect.</p>
+        <p>Ces données viennent de toi, via Apple Santé (HealthKit) sur iPhone ou Health Connect sur Android, uniquement après ton consentement dans l'app et ton autorisation dans les réglages santé de ton téléphone. Si tu l'autorises, Attax peut aussi lire ces données en arrière-plan (sur Android, quelques fois par jour ; sur iPhone, quand Apple Santé signale de nouvelles données), pour que ta journée compte même si tu n'ouvres pas l'app. Attax n'écrit jamais rien dans Apple Santé ou Health Connect.</p>
       </section>
 
       <section>
         <h2>3. Utilisation</h2>
-        <p>Nous utilisons ces données <strong>uniquement</strong> pour faire fonctionner le jeu Attax : calcul de tes points d'activité, résolution de tes matchs quotidiens, classements, binôme, saison et historique d'activité. Jamais pour de la publicité, du marketing, du profilage, ni pour évaluer une solvabilité, une assurance, un logement ou un emploi.</p>
+        <p>Nous utilisons ces données <strong>uniquement</strong> pour faire fonctionner le jeu Attax : calcul de tes points d'activité, résolution de tes matchs quotidiens, classements, binôme, saison et historique d'activité. Jamais pour de la publicité, du marketing, du profilage, ni pour évaluer une solvabilité, une assurance, un logement ou un emploi.</p>
       </section>
 
       <section>
@@ -110,8 +110,8 @@ function ContentFr() {
       <section>
         <h2>5. Partage</h2>
         <ul>
-          <li><strong>Autres joueurs :</strong> dans un match, ton adversaire du jour voit tes points d'activité, la courbe cardiaque de ta séance pour ce match et ton type de séance du jour. Les joueurs de tes ligues voient tes points ; ton binôme voit si tu as atteint ton objectif du jour ; si tu participes à la saison, tous les joueurs de la saison voient ton total de points. Personne ne voit tes autres données de santé.</li>
-          <li><strong>Prestataires (sous-traitants) :</strong> notre hébergeur et fournisseur de base de données (Supabase, serveurs dans l'Union européenne) stocke ces données pour notre compte, sous contrat, uniquement pour faire fonctionner Attax. Elles ne sont jamais envoyées à notre outil de statistiques.</li>
+          <li><strong>Autres joueurs :</strong> dans un match, ton adversaire du jour voit tes points d'activité, la courbe cardiaque de ta séance pour ce match et ton type de séance du jour. Les joueurs de tes ligues voient tes points ; ton binôme voit si tu as atteint ton objectif du jour ; si tu participes à la saison, tous les joueurs de la saison voient ton total de points. Personne ne voit tes autres données de santé.</li>
+          <li><strong>Prestataires (sous-traitants) :</strong> notre hébergeur et fournisseur de base de données (Supabase, serveurs dans l'Union européenne) stocke ces données pour notre compte, sous contrat, uniquement pour faire fonctionner Attax. Elles ne sont jamais envoyées à notre outil de statistiques.</li>
           <li>Nous ne <strong>vendons jamais</strong> ces données et ne les partageons jamais avec des annonceurs, des courtiers en données ou d'autres tiers.</li>
         </ul>
       </section>
@@ -125,15 +125,15 @@ function ContentFr() {
         <h2>7. Tes droits</h2>
         <p>Tu as le droit de savoir si nous collectons tes données de santé, d'y accéder, d'obtenir la liste des tiers et sous-traitants qui les reçoivent, de retirer ton consentement et de les faire supprimer.</p>
         <ul>
-          <li><strong>Supprimer tes données :</strong> dans l'app, touche ta photo de profil en haut de l'Accueil &gt; Mon compte &gt; Éditer le profil (Mon profil dans les versions précédentes) &gt; Supprimer mon compte. Toutes tes données de santé sont supprimées. Tu peux aussi nous écrire (voir ci-dessous et notre <Link href="/privacy#delete-account">politique de confidentialité</Link>).</li>
-          <li><strong>Toute autre demande :</strong> écris à <a href="mailto:contact@attax.app?subject=Demande%20donn%C3%A9es%20de%20sant%C3%A9">contact@attax.app</a> depuis l'adresse e-mail de ton compte. Nous répondons sous 45 jours.</li>
-          <li><strong>Recours :</strong> si nous refusons ta demande, tu peux faire appel en répondant à notre réponse, puis saisir l'autorité compétente de ton pays ou de ton État (en France, la CNIL).</li>
+          <li><strong>Supprimer tes données :</strong> dans l'app, touche ta photo de profil en haut de l'Accueil &gt; Mon compte &gt; Éditer le profil (Mon profil dans les versions précédentes) &gt; Supprimer mon compte. Toutes tes données de santé sont supprimées. Tu peux aussi nous écrire (voir ci-dessous et notre <Link href="/privacy#delete-account">politique de confidentialité</Link>).</li>
+          <li><strong>Toute autre demande :</strong> écris à <a href="mailto:contact@attax.app?subject=Demande%20donn%C3%A9es%20de%20sant%C3%A9">contact@attax.app</a> depuis l'adresse e-mail de ton compte. Nous répondons sous 45 jours.</li>
+          <li><strong>Recours :</strong> si nous refusons ta demande, tu peux faire appel en répondant à notre réponse, puis saisir l'autorité compétente de ton pays ou de ton État (en France, la CNIL).</li>
         </ul>
       </section>
 
       <section>
         <h2>8. Contact</h2>
-        <p>Attax : <a href="mailto:contact@attax.app">contact@attax.app</a></p>
+        <p>Attax : <a href="mailto:contact@attax.app">contact@attax.app</a></p>
       </section>
     </>
   );
@@ -149,7 +149,7 @@ export default function HealthDataPrivacyPage() {
         compact
         kick={fr ? <>Légal</> : <>Legal</>}
         title={fr ? <>Politique relative aux données de santé</> : <>Consumer Health Data Privacy Policy</>}
-        meta={fr ? <>Dernière mise à jour : 18 novembre 2026</> : <>Last updated: November 18, 2026</>}
+        meta={fr ? <>Dernière mise à jour : 18 novembre 2026</> : <>Last updated: November 18, 2026</>}
       />
       <Article autoToc tocKey={lang} tocLabel={fr ? "Sommaire" : "Contents"}
         foot={<>

@@ -1,6 +1,6 @@
 "use client";
 
-// Découvrir (21/11) : système de l'accueil (src/components/site/Site.tsx). Mêmes textes (translations.ts → discover).
+// Découvrir (21/11) : système de l'accueil (src/components/site/Site.tsx). Mêmes textes (translations.ts → discover).
 import { useLang, useT } from "@/lib/i18n";
 import { SitePage, PageHero, PhotoBg, Sec, HairList, Phones, Reveal, FinalCta, AppleIcon } from "@/components/site/Site";
 

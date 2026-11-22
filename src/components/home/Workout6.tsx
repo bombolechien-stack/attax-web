@@ -24,10 +24,10 @@ const COPY = {
     kick: "02 · Toute la journée", big: "864",
     title: ["Ta séance devient", "des pts."] as [string, string],
     line: "Ta montre mesure ton effort. Ton cœur et tes pas font le score.",
-    alt: "L'écran Activités d'Attax : les pts du jour",
+    alt: "L'écran Activités d'Attax : les pts du jour",
     items: [
-      { icon: "watch", t: "Ta montre suffit. Rien à saisir. Apple Santé ou Health Connect.", s: "Apple Santé ou Health Connect : Apple Watch, Garmin, Samsung Galaxy Watch, Fitbit, COROS, Amazfit, Withings, Oura, CMF by Nothing." },
-      { icon: "heart-pulse", t: "Tous les sports comptent.", s: "Course, natation, football ou yoga : si ton cœur accélère, ça compte." },
+      { icon: "watch", t: "Ta montre suffit. Rien à saisir. Apple Santé ou Health Connect.", s: "Apple Santé ou Health Connect : Apple Watch, Garmin, Samsung Galaxy Watch, Fitbit, COROS, Amazfit, Withings, Oura, CMF by Nothing." },
+      { icon: "heart-pulse", t: "Tous les sports comptent.", s: "Course, natation, football ou yoga : si ton cœur accélère, ça compte." },
       { icon: "clock-outline", t: "Tu peux t'entraîner jusqu'à 21h30.", s: "Tout ce qui est synchronisé avant le verdict compte ce soir." },
     ],
   },

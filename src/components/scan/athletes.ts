@@ -24,7 +24,7 @@ export const ATHLETES = {
 export type AthleteName = keyof typeof ATHLETES;
 
 // Ton des athlètes des en-têtes (22/11, scripts/hero-lines/athlete_tone.py) : alpha = noirceur de la photo, sans lignes ;
-// les lignes fines du hero de l'accueil sont posées en CSS (Site.tsx → ScanBg, classe .scan-tone).
+// les lignes fines du hero de l'accueil sont posées en CSS (Site.tsx → ScanBg, classe .scan-tone).
 export const TONES = {
   "spin": { w: 743, h: 1210 },
   "basketball": { w: 312, h: 1203 },

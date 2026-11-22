@@ -608,7 +608,7 @@ html { overflow-x: clip; }
 
 /* Héros de l'accueil : vidéo en scanlines (identique à la version en ligne, master). Mesuré sur 30 images de chaque
    vidéo : les sportifs de la nouvelle occupent la même zone que ceux de master (x 46-91 %, y 37-90 % du cadre),
-   à peine plus petits → ×1,05 depuis le bas des silhouettes. Fond noir posé en « screen ». */
+   à peine plus petits → ×1,05 depuis le bas des silhouettes. Fond noir posé en « screen ». */
 .home-hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 62% 70%; z-index: 0; }
 .home-hero-copy { position: relative; z-index: 5; flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0 clamp(2rem, 5vw, 5rem); max-width: 50%; }
 .home-hero-foot { position: relative; z-index: 5; display: flex; justify-content: space-between; gap: 1rem; padding: 0 clamp(2rem, 5vw, 5rem) 2rem; color: rgba(255,255,255,0.32); }

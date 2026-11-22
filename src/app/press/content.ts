@@ -10,8 +10,8 @@ const LOGOS = [
 ] as const;
 export { LOGOS };
 
-// Captures de l'app (stores, novembre 2026). Aperçu = /screens/app/{lang}/N.webp (n = 2 : match-final-{lang}.webp, 2.webp n'existe plus) ;
-// fichier = le téléphone recadré en pleine résolution (scripts/build-press-kit.py → public/press/screens/{lang}/).
+// Captures de l'app (stores, novembre 2026). Aperçu = /screens/app/{lang}/N.webp (n = 2 : match-final-{lang}.webp, 2.webp n'existe plus) ;
+// fichier = le téléphone recadré en pleine résolution (scripts/build-press-kit.py → public/press/screens/{lang}/).
 export const SCREENS = [
   { n: 2, file: "attax-01-fight-night.jpg" },
   { n: 3, file: "attax-02-cards.jpg" },
@@ -157,16 +157,16 @@ export const PRESS_CONTENT: Record<"en" | "fr", PressContent> = {
     meta_desc: "Logos, captures, vidéo, textes prêts à l'emploi et chiffres clés pour parler d'Attax, le jeu de fitness où tes vraies séances deviennent des duels de boxe quotidiens.",
     hero_label: "PRESSE & CRÉATEURS",
     hero_title: "Tout ce qu'il faut\npour parler d'Attax.",
-    hero_sub: "Journalistes, blogueurs, créateurs : logos, captures, vidéo de jeu, textes prêts à l'emploi et chiffres clés. Télécharge le kit et raconte l'histoire à ta façon.",
+    hero_sub: "Journalistes, blogueurs, créateurs : logos, captures, vidéo de jeu, textes prêts à l'emploi et chiffres clés. Télécharge le kit et raconte l'histoire à ta façon.",
     hero_cta: "Télécharger le kit presse",
     hero_cta2: "Nous contacter",
     kit_note: "ZIP · logos, captures, vidéo, textes",
     kit_label: "LE KIT",
     kit_title: "Ce qu'il contient.",
     kit_items: [
-      { title: "Logos", desc: "Logo complet, icône et logotype : noir et blanc, en SVG et PNG." },
+      { title: "Logos", desc: "Logo complet, icône et logotype : noir et blanc, en SVG et PNG." },
       { title: "Captures de l'app", desc: "Soir de combat, cartes, activités, ligue, saison, binôme et profil, en haute résolution, en français et en anglais." },
-      { title: "Vidéo du Soir de combat", desc: "La révélation de 21h30, enregistrée dans l'app : rounds rejoués, cartes retournées, round final, vainqueur. En français et en anglais." },
+      { title: "Vidéo du Soir de combat", desc: "La révélation de 21h30, enregistrée dans l'app : rounds rejoués, cartes retournées, round final, vainqueur. En français et en anglais." },
       { title: "Textes prêts à l'emploi", desc: "Attax en une phrase, en un paragraphe et en version longue, en français et en anglais." },
     ],
     facts_label: "CHIFFRES CLÉS",
@@ -179,7 +179,7 @@ export const PRESS_CONTENT: Record<"en" | "fr", PressContent> = {
       { label: "Source d'activité", value: "Apple Santé (iPhone) · Health Connect (Android)" },
       { label: "Prérequis", value: "Une montre, un bracelet ou une ceinture qui mesure la fréquence cardiaque" },
       { label: "Format", value: "Ligues de 8 joueurs, 7 jours, un nouvel adversaire chaque jour, matchs en 7 rounds" },
-      { label: "Cartes", value: "12 cartes en 4 familles : 3 tirées chaque matin, 1 à jouer" },
+      { label: "Cartes", value: "12 cartes en 4 familles : 3 tirées chaque matin, 1 à jouer" },
       { label: "Soir de combat", value: "Chaque soir à 21h30, heure locale de la ligue" },
       { label: "Progression", value: "Un rang de Rookie à Legend, une saison mondiale" },
       { label: "Langues", value: "Français, anglais" },
@@ -191,9 +191,9 @@ export const PRESS_CONTENT: Record<"en" | "fr", PressContent> = {
     texts_title: "Copie, colle, publie.",
     texts_sub: "Utilise-les tels quels ou adapte-les à ton format.",
     texts: [
-      { label: "En une phrase", body: "Attax est le jeu de fitness gratuit qui transforme tes vraies séances en duels de boxe quotidiens : ta montre mesure ton effort, ton boxeur frappe." },
-      { label: "En un paragraphe", body: "Le sport devient un jeu. Attax transforme tes vraies séances en duels de boxe quotidiens. Ta montre mesure ton effort via Apple Santé ou Health Connect, et tes séances et tes pas deviennent des pts. Chaque jour, tu affrontes un nouveau joueur de ta ligue dans un match en 7 rounds : tes 6 jours d'avant, plus aujourd'hui. À 21h30, le Soir de combat : entrée des boxeurs, cartes retournées, et le round final décide. Joue une carte chaque matin, gagne ta ligue et passe de Rookie à Legend. Gratuit sur iPhone et Android, sans publicité." },
-      { label: "Version longue", body: "La plupart des applications fitness s'arrêtent au suivi : des chiffres que personne d'autre ne voit, aucun enjeu. Attax donne une raison d'être à chaque séance. Les joueurs connectent une montre, un bracelet ou une ceinture thoracique via Apple Santé (iPhone) ou Health Connect (Android), et leurs vraies séances et leurs pas deviennent des pts. C'est l'intensité qui paie, pas seulement le volume.\n\nLes joueurs rejoignent une ligue de 8 de leur niveau : 7 jours, un nouvel adversaire chaque jour, 1 champion qui repart avec la couronne. Un match se joue en 7 rounds : les 6 jours d'avant, plus aujourd'hui. Chaque jour est un round, gagné par celui qui a le plus de pts ; un round perdu coûte 1 PV (le round final, 2 PV), et celui qui garde le plus de PV gagne. Jamais de match nul. Les rounds passés se dévoilent un par un de 10h à 19h, le round final se joue en direct dès 19h, et à 21h30 vient le Soir de combat : entrée des boxeurs, rounds rejoués, cartes retournées, puis le round final décide. Chaque matin, 3 cartes sont tirées, les mêmes pour les deux joueurs (Attaque, Défense, Sabotage ou Ruse) et le choix de l'adversaire reste secret jusqu'à 21h30.\n\nLes joueurs peuvent rejoindre des ligues au hasard à leur niveau, des ligues classées entre amis ou des ligues personnalisées de 2 à 40. Un rang les suit de Rookie à Legend, une saison mondiale récompense chaque pt d'effort, et leur profil réunit série, coups débloqués, badges et trophées. Attax fonctionne avec tous les sports mesurés par la montre, et chaque ligue se joue à son heure locale. L'app est gratuite, sans publicité." },
+      { label: "En une phrase", body: "Attax est le jeu de fitness gratuit qui transforme tes vraies séances en duels de boxe quotidiens : ta montre mesure ton effort, ton boxeur frappe." },
+      { label: "En un paragraphe", body: "Le sport devient un jeu. Attax transforme tes vraies séances en duels de boxe quotidiens. Ta montre mesure ton effort via Apple Santé ou Health Connect, et tes séances et tes pas deviennent des pts. Chaque jour, tu affrontes un nouveau joueur de ta ligue dans un match en 7 rounds : tes 6 jours d'avant, plus aujourd'hui. À 21h30, le Soir de combat : entrée des boxeurs, cartes retournées, et le round final décide. Joue une carte chaque matin, gagne ta ligue et passe de Rookie à Legend. Gratuit sur iPhone et Android, sans publicité." },
+      { label: "Version longue", body: "La plupart des applications fitness s'arrêtent au suivi : des chiffres que personne d'autre ne voit, aucun enjeu. Attax donne une raison d'être à chaque séance. Les joueurs connectent une montre, un bracelet ou une ceinture thoracique via Apple Santé (iPhone) ou Health Connect (Android), et leurs vraies séances et leurs pas deviennent des pts. C'est l'intensité qui paie, pas seulement le volume.\n\nLes joueurs rejoignent une ligue de 8 de leur niveau : 7 jours, un nouvel adversaire chaque jour, 1 champion qui repart avec la couronne. Un match se joue en 7 rounds : les 6 jours d'avant, plus aujourd'hui. Chaque jour est un round, gagné par celui qui a le plus de pts ; un round perdu coûte 1 PV (le round final, 2 PV), et celui qui garde le plus de PV gagne. Jamais de match nul. Les rounds passés se dévoilent un par un de 10h à 19h, le round final se joue en direct dès 19h, et à 21h30 vient le Soir de combat : entrée des boxeurs, rounds rejoués, cartes retournées, puis le round final décide. Chaque matin, 3 cartes sont tirées, les mêmes pour les deux joueurs (Attaque, Défense, Sabotage ou Ruse) et le choix de l'adversaire reste secret jusqu'à 21h30.\n\nLes joueurs peuvent rejoindre des ligues au hasard à leur niveau, des ligues classées entre amis ou des ligues personnalisées de 2 à 40. Un rang les suit de Rookie à Legend, une saison mondiale récompense chaque pt d'effort, et leur profil réunit série, coups débloqués, badges et trophées. Attax fonctionne avec tous les sports mesurés par la montre, et chaque ligue se joue à son heure locale. L'app est gratuite, sans publicité." },
     ],
     copy_btn: "Copier",
     copied_btn: "Copié",
@@ -202,19 +202,19 @@ export const PRESS_CONTENT: Record<"en" | "fr", PressContent> = {
     how: [
       { title: "Ton vrai effort", body: "Ta montre mesure ton effort via Apple Santé ou Health Connect. Tes séances et tes pas deviennent des pts. Les saisies à la main ne comptent pas." },
       { title: "Un duel par jour", body: "Un nouvel adversaire de ta ligue chaque jour, un match en 7 rounds. Rounds passés joués de 10h à 19h, round final en direct dès 19h, Soir de combat à 21h30." },
-      { title: "Les cartes", body: "3 cartes tirées chaque matin, les mêmes pour les deux joueurs, une à jouer avant 13h : Quitte ou double, Garde, Freeze, Ghost… La bonne carte peut renverser un match serré." },
+      { title: "Les cartes", body: "3 cartes tirées chaque matin, les mêmes pour les deux joueurs, une à jouer avant 13h : Quitte ou double, Garde, Freeze, Ghost… La bonne carte peut renverser un match serré." },
       { title: "Ligues et rangs", body: "Des ligues de 8 joueurs sur 7 jours, 1 champion couronné, puis on rejoue ou on change de ligue. Un rang de Rookie à Legend." },
     ],
     creators_label: "CRÉATEURS & INFLUENCEURS",
     creators_title: "Des idées de contenu qui marchent.",
-    creators_sub: "Attax est fait pour raconter des histoires au quotidien. Quelques formats qui fonctionnent :",
+    creators_sub: "Attax est fait pour raconter des histoires au quotidien. Quelques formats qui fonctionnent :",
     ideas: [
-      { title: "Le Soir de combat, 21h30", body: "Filme ta réaction en direct : entrée des boxeurs, cartes retournées, round final. Victoire ou défaite, c'est un moment." },
+      { title: "Le Soir de combat, 21h30", body: "Filme ta réaction en direct : entrée des boxeurs, cartes retournées, round final. Victoire ou défaite, c'est un moment." },
       { title: "La carte du jour", body: "Montre tes 3 cartes le matin et explique ton choix. Puis révèle au Soir de combat si ça a payé." },
-      { title: "La ligue entre amis", body: "Crée une ligue avec ta bande, partage le code et raconte la semaine : chambrage, remontadas, couronne." },
+      { title: "La ligue entre amis", body: "Crée une ligue avec ta bande, partage le code et raconte la semaine : chambrage, remontadas, couronne." },
       { title: "De Rookie à Legend", body: "Une série qui suit ta montée, ligue après ligue." },
-      { title: "La séance de la remontada", body: "Mené avant le round final ? Montre la séance qui renverse le match avant 21h30." },
-      { title: "Tous les sports comptent", body: "Course, vélo, musculation, danse : montre que quel que soit ton sport, si ta montre le mesure, il devient des pts dans Attax." },
+      { title: "La séance de la remontada", body: "Mené avant le round final ? Montre la séance qui renverse le match avant 21h30." },
+      { title: "Tous les sports comptent", body: "Course, vélo, musculation, danse : montre que quel que soit ton sport, si ta montre le mesure, il devient des pts dans Attax." },
     ],
     tags_label: "Identifie-nous",
     tags: ["#playattax", "@playattax"],
@@ -251,12 +251,12 @@ export const PRESS_CONTENT: Record<"en" | "fr", PressContent> = {
     rules_label: "BONNES PRATIQUES",
     rules_title: "Quelques règles simples.",
     rules_do_title: "À faire",
-    rules_do: ["Écrire « Attax » avec un A majuscule uniquement.", "Utiliser les logos et captures tels que fournis.", "Mettre un lien vers attax.app et identifier @playattax.", "Présenter Attax comme un jeu de fitness gratuit sur iPhone et Android."],
+    rules_do: ["Écrire « Attax » avec un A majuscule uniquement.", "Utiliser les logos et captures tels que fournis.", "Mettre un lien vers attax.app et identifier @playattax.", "Présenter Attax comme un jeu de fitness gratuit sur iPhone et Android."],
     rules_dont_title: "À éviter",
     rules_dont: ["Déformer, recolorer ou recadrer le logo.", "Présenter Attax comme une app médicale ou de diagnostic santé.", "Promettre des résultats, des prix ou des récompenses que l'app ne propose pas.", "Retoucher les captures de façon à changer ce que montre l'app."],
     contact_label: "CONTACT PRESSE",
     contact_title: "Parlons-en.",
-    contact_body: "Interviews, démos, partenariats ou collaborations créateurs : écris-nous.",
+    contact_body: "Interviews, démos, partenariats ou collaborations créateurs : écris-nous.",
     contact_email: "contact@attax.app",
     contact_response: "Nous répondons au plus vite, en français ou en anglais.",
   },

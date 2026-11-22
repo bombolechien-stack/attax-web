@@ -27,7 +27,7 @@ export default function FAQ() {
               <a href="/contact">{f.contact_link}</a>.
             </p>
             <div className="h7-ctas">
-              <a className="h7-btn h7-btn-ink" href="/faq">{f.all_link} →</a>
+              <a className="h7-btn h7-btn-ink" href="/faq">{f.all_link} →</a>
             </div>
           </div>
         </div>

@@ -25,7 +25,7 @@ function WaitlistForm() {
       if (!res.ok) throw new Error(String(res.status));
       setSent(true);
     } catch {
-      setError(true); // l'adresse n'a PAS été enregistrée → on le dit
+      setError(true); // l'adresse n'a PAS été enregistrée → on le dit
     }
     setLoading(false);
   }
@@ -128,7 +128,7 @@ export default function ComingSoonGate({ children }: { children: React.ReactNode
   }
 
   /* Waiting for hydration */
-  // Tant que l'état n'est pas lu : un écran vide de la hauteur de la fenêtre (avant : rien → le pied de page et la
+  // Tant que l'état n'est pas lu : un écran vide de la hauteur de la fenêtre (avant : rien → le pied de page et la
   // bannière s'affichaient en haut puis sautaient sous le contenu, gros décalage au chargement).
   if (unlocked === null) return <div style={{ minHeight: "100vh" }} />;
 

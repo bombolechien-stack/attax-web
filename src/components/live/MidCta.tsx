@@ -1,5 +1,5 @@
 // Appel au milieu de la page (passe 7, 21/11, accord du propriétaire), juste après le chapitre 05 (la ligue) : une ligne
-// (le titre de la bande Télécharger, src/lib/translations.ts → footer.cta_h2) et les pilules App Store / Google Play.
+// (le titre de la bande Télécharger, src/lib/translations.ts → footer.cta_h2) et les pilules App Store / Google Play.
 "use client";
 
 import { useT } from "@/lib/i18n";

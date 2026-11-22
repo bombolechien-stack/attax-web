@@ -160,8 +160,8 @@ const P: Record<Lang, {
     secHowItConnects: "La connexion",
     howItConnectsH2: "Comment Apple Santé fonctionne avec Attax",
     howItConnects1: "Apple Santé sert de base à la synchronisation de l'activité.",
-    howItConnects2: "Une fois connecté, Attax lit dans Apple Santé tes séances, ta fréquence cardiaque et tes pas. En lecture seule : il n'y écrit jamais rien, et tes données ne sont jamais vendues ni utilisées pour de la publicité.",
-    howItConnects3: "Ta montre enregistre l'effort, quel que soit le sport :",
+    howItConnects2: "Une fois connecté, Attax lit dans Apple Santé tes séances, ta fréquence cardiaque et tes pas. En lecture seule : il n'y écrit jamais rien, et tes données ne sont jamais vendues ni utilisées pour de la publicité.",
+    howItConnects3: "Ta montre enregistre l'effort, quel que soit le sport :",
     activities: [
       "Course",
       "Vélo",
@@ -183,7 +183,7 @@ const P: Record<Lang, {
     secActivityToComp: "Activité et compétition",
     activityToCompH2: "Transforme l'activité en compétition",
     activityToComp1: "Chaque jour offre une nouvelle opportunité de progresser.",
-    activityToCompEm: "Tes séances et tes pas deviennent des pts.\nChaque jour est un round : 7 rounds, un match.\nLes victoires te font monter au classement.\nTon rang grimpe de Rookie à Legend.",
+    activityToCompEm: "Tes séances et tes pas deviennent des pts.\nChaque jour est un round : 7 rounds, un match.\nLes victoires te font monter au classement.\nTon rang grimpe de Rookie à Legend.",
     activityToComp2: "Le résultat est une expérience fitness qui reste engageante bien après que les applications de suivi traditionnelles perdent leur attrait.",
     secLongTerm: "Long terme",
     longTermH2: "Conçu pour une motivation durable",
@@ -206,12 +206,12 @@ const P: Record<Lang, {
     secFaq: "FAQ",
     faqH2: "Questions fréquentes",
     faq: [
-      { q: "Attax fonctionne-t-il avec Apple Santé ?", a: "Oui. Attax lit tes séances, ta fréquence cardiaque et tes pas dans Apple Santé, en lecture seule." },
-      { q: "Quelles activités comptent ?", a: "Toute séance mesurée par ta montre : course, vélo, musculation, natation, sports collectifs, danse… plus tes pas, chaque jour. Les saisies à la main ne comptent pas." },
-      { q: "Ai-je besoin d'une Apple Watch ?", a: "Il te faut un appareil qui mesure ta fréquence cardiaque et l'envoie à Apple Santé : une Apple Watch, ou une montre Garmin, Amazfit, COROS, Withings ou CMF by Nothing, entre autres. Fitbit ne se synchronise pas avec Apple Santé. Sur les Apple Watch antérieures à la Series 12, lance un exercice dans l'app Exercice pour que tes séances comptent entièrement." },
-      { q: "Attax est-il gratuit ?", a: "Oui. Attax est gratuit à télécharger et à jouer, sans publicité ni achat intégré." },
-      { q: "Attax est-il disponible sur iPhone ?", a: "Oui, sur iPhone. Il n'y a pas de version iPad ni d'app à installer sur l'Apple Watch : ta montre doit simplement se synchroniser avec Apple Santé." },
-      { q: "La synchronisation est-elle automatique ?", a: "Oui. Attax lit Apple Santé à l'ouverture de l'app, et en arrière-plan si tu l'autorises. Aucune saisie manuelle. Le jour du match, tout ce qui est synchronisé avant 21h30 compte." },
+      { q: "Attax fonctionne-t-il avec Apple Santé ?", a: "Oui. Attax lit tes séances, ta fréquence cardiaque et tes pas dans Apple Santé, en lecture seule." },
+      { q: "Quelles activités comptent ?", a: "Toute séance mesurée par ta montre : course, vélo, musculation, natation, sports collectifs, danse… plus tes pas, chaque jour. Les saisies à la main ne comptent pas." },
+      { q: "Ai-je besoin d'une Apple Watch ?", a: "Il te faut un appareil qui mesure ta fréquence cardiaque et l'envoie à Apple Santé : une Apple Watch, ou une montre Garmin, Amazfit, COROS, Withings ou CMF by Nothing, entre autres. Fitbit ne se synchronise pas avec Apple Santé. Sur les Apple Watch antérieures à la Series 12, lance un exercice dans l'app Exercice pour que tes séances comptent entièrement." },
+      { q: "Attax est-il gratuit ?", a: "Oui. Attax est gratuit à télécharger et à jouer, sans publicité ni achat intégré." },
+      { q: "Attax est-il disponible sur iPhone ?", a: "Oui, sur iPhone. Il n'y a pas de version iPad ni d'app à installer sur l'Apple Watch : ta montre doit simplement se synchroniser avec Apple Santé." },
+      { q: "La synchronisation est-elle automatique ?", a: "Oui. Attax lit Apple Santé à l'ouverture de l'app, et en arrière-plan si tu l'autorises. Aucune saisie manuelle. Le jour du match, tout ce qui est synchronisé avant 21h30 compte." },
     ],
     finalH2: "Transforme Apple Santé en jeu.",
     finalBody: "Transforme ton activité Apple Santé en duels de boxe quotidiens. Télécharge Attax et lance ta première ligue.",
@@ -253,15 +253,15 @@ export default function AppleHealthFitnessGame() {
             <p className="sp-quote">
               {lang === "en"
                 ? "“Every run, every ride, every walk: now part of your game.”"
-                : "« Chaque course, chaque sortie vélo, chaque marche : fait maintenant partie de ton jeu. »"}
+                : "« Chaque course, chaque sortie vélo, chaque marche : fait maintenant partie de ton jeu. »"}
             </p>
 
             <Block kick={p.secWhyUsers} title={p.whyUsersH2}>
               <p>{p.whyUsers1}</p>
               <p>{p.whyUsers2}</p>
               <p className="strong">{p.whyUsers3}</p>
-              <p>{lang === "en" ? "Instead of asking:" : "Au lieu de se demander :"} <em>{p.whyUsersQ}</em></p>
-              <p className="big">{lang === "en" ? "Players begin asking:" : "Les joueurs se demandent :"} <em>{p.whyUsersA}</em></p>
+              <p>{lang === "en" ? "Instead of asking:" : "Au lieu de se demander :"} <em>{p.whyUsersQ}</em></p>
+              <p className="big">{lang === "en" ? "Players begin asking:" : "Les joueurs se demandent :"} <em>{p.whyUsersA}</em></p>
               <p>{p.whyUsers4}</p>
             </Block>
 

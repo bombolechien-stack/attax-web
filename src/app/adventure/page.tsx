@@ -1,6 +1,6 @@
 "use client";
 
-// L'aventure (21/11) : système de l'accueil (src/components/site/Site.tsx). Mêmes textes (translations.ts → adventure).
+// L'aventure (21/11) : système de l'accueil (src/components/site/Site.tsx). Mêmes textes (translations.ts → adventure).
 import { useT } from "@/lib/i18n";
 import { SitePage, PageHero, PhotoBg, Sec, Head, HairList, Reveal, FinalCta, AppleIcon } from "@/components/site/Site";
 

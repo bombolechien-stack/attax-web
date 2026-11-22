@@ -2,7 +2,7 @@
 
 // Télécharger (21/11) : système de l'accueil (src/components/site/Site.tsx). L'en-tête reprend la carte sombre de
 // l'accueil avec les boutons des stores (liens directs App Store / Google Play, lib/stores) ; mêmes textes
-// (translations.ts → download). Écrans : vraies captures de l'app dans le cadre du téléphone (les anciennes captures
+// (translations.ts → download). Écrans : vraies captures de l'app dans le cadre du téléphone (les anciennes captures
 // /screens/app/<langue>/2.webp n'existaient plus).
 import Image from "next/image";
 import { useLang, useT } from "@/lib/i18n";

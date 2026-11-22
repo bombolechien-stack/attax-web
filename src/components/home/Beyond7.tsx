@@ -27,8 +27,8 @@ const COPY = {
     title: ["Une ligue par semaine.", "Une histoire toute la saison."],
     items: [
       ["La saison.", "Rejoins la saison en un geste, puis cours toute la saison pour le classement mondial et le trophée de la Saison Beta."],
-      ["Ton binôme.", "Dès ta 2e ligue, un binôme t'est attribué pour te motiver. Chaque jour où vous atteignez tous les deux votre objectif du jour : +1 point chacun."],
-      ["Ton profil.", "Tes trophées, ta couronne, ton palmarès, ta série : tout ce que tu gagnes reste sur ton profil."],
+      ["Ton binôme.", "Dès ta 2e ligue, un binôme t'est attribué pour te motiver. Chaque jour où vous atteignez tous les deux votre objectif du jour : +1 point chacun."],
+      ["Ton profil.", "Tes trophées, ta couronne, ton palmarès, ta série : tout ce que tu gagnes reste sur ton profil."],
     ],
   },
 };

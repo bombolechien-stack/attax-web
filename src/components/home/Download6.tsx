@@ -5,7 +5,7 @@ import { useInView } from "@/hooks/useInView";
 import AppPhone from "./AppPhone";
 
 // Appel final (passe 6b) : une carte arrondie comme le hero, au bleu de l'écran du vainqueur de l'app (#0443FD, titre blanc
-// → #B9CBFF comme SheenTitle de WinnerWave), scanlines fines, le titre du hero, les deux boutons, et le haut du téléphone
+// → #B9CBFF comme SheenTitle de WinnerWave), scanlines fines, le titre du hero, les deux boutons, et le haut du téléphone
 // (page Match pendant les rounds, vraie capture story/<langue>/rounds.webp) qui sort du bord bas de la carte.
 const COPY = {
   en: { label: "Download", h2: ["Sport is now", "a game."], lead: "Your first opponent is waiting for you tomorrow morning.", ios: "App Store", android: "Google Play", alt: "The Match screen of Attax during the rounds" },

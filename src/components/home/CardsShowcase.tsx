@@ -6,7 +6,7 @@ import { useInView, scaleIn } from "@/hooks/useInView";
 
 // Section « Les cartes » (passe 6 : fond clair de l'app, comme l'éventail du tirage de la page Match) : texte à gauche,
 // éventail de 3 cartes inclinées qui se redressent au survol, avec les cartes au format PORTRAIT de l'app
-// (budyfit app/(tabs)/match.tsx → CardPortraitV3, gabarit 270 × 378) : « Attax » + n°, famille, nom,
+// (budyfit app/(tabs)/match.tsx → CardPortraitV3, gabarit 270 × 378) : « Attax » + n°, famille, nom,
 // scène de la planche, effet sur bandeau noir, accroche, grand numéro.
 const SHOWN = ["ghost", "spike", "freeze"] as const;   // ordre voulu par gui : Ghost, Quitte ou double (au centre), Freeze
 const ACC: Record<string, string> = { spike: "#1D4ED8", freeze: "#0891B2", ghost: "#7C3AED", overdrive: "#C2410C" };

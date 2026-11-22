@@ -20,7 +20,7 @@ const COPY = {
     h2: ["Ta séance.", "Le combat du soir."] as [string, string],
     lead: "Ta montre mesure ton effort. Chaque jour, elle se bat pour toi contre un nouvel adversaire.",
     facts: [{ n: "7", u: "rounds", c: "un par jour de la semaine" }, { n: "7", u: "PV", c: "ta vie au départ" }, { n: "12", u: "cartes", c: "une à jouer chaque jour" }, { n: "21h30", u: "", c: "le verdict, chaque soir" }],
-    works: "Fonctionne avec Apple Santé et Health Connect :",
+    works: "Fonctionne avec Apple Santé et Health Connect :",
     meta: "Gratuit. iPhone et Android. Données santé en lecture seule, jamais vendues.",
   },
 };

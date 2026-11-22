@@ -248,10 +248,10 @@ const P: Record<Lang, {
     heroCta: "Télécharger Attax",
 
     foundationLabel: "Le Fondement",
-    foundationH2: "Le fondement : l'activité dans la vie réelle",
+    foundationH2: "Le fondement : l'activité dans la vie réelle",
     foundationP1: "Tout dans Attax commence par une seule chose.",
     foundationP2: "Le mouvement.",
-    foundationP3: "Contrairement à beaucoup de jeux, la progression ne s'achète pas : il n'y a rien à acheter dans Attax. Tes pts viennent uniquement de ce que ta montre enregistre.",
+    foundationP3: "Contrairement à beaucoup de jeux, la progression ne s'achète pas : il n'y a rien à acheter dans Attax. Tes pts viennent uniquement de ce que ta montre enregistre.",
     foundationP4: "Tes performances viennent de ce que tu accomplis dans la vie réelle.",
     foundationP5: "Course.\nVélo.\nMusculation.\nSports collectifs.\nMarche.\nTout ce qui fait travailler ton cœur.",
     foundationP6: "Le système récompense l'activité pratiquée en dehors de l'application et la transforme en progression concrète à l'intérieur de l'expérience.",
@@ -263,9 +263,9 @@ const P: Record<Lang, {
     connectP1: "Attax s'intègre aux systèmes de santé déjà disponibles sur ton appareil.",
     connectP2: "Pour les utilisateurs d'iPhone, l'activité est synchronisée via Apple Santé.",
     connectP3: "Pour les utilisateurs Android, l'activité est synchronisée via Health Connect.",
-    connectP4: "Attax lit tes séances, ta fréquence cardiaque et tes pas : en lecture seule, rien d'autre. Tes données ne sont jamais vendues ni utilisées pour de la publicité.",
+    connectP4: "Attax lit tes séances, ta fréquence cardiaque et tes pas : en lecture seule, rien d'autre. Tes données ne sont jamais vendues ni utilisées pour de la publicité.",
     connectP5: "Pas de tableurs.\nPas de saisie manuelle.\nPas de configuration compliquée.",
-    connectP6: "L'objectif est simple : passer moins de temps à enregistrer l'activité et plus de temps à la pratiquer.",
+    connectP6: "L'objectif est simple : passer moins de temps à enregistrer l'activité et plus de temps à la pratiquer.",
     connectP7: "Avant ta première ligue, Attax vérifie que tes données de fréquence cardiaque arrivent bien. Ensuite, la synchronisation se fait à l'ouverture de l'app, et en arrière-plan si tu l'autorises. Le jour du match, tout ce qui est synchronisé avant 21h30 compte.",
 
     activityLabel: "Activité",
@@ -280,8 +280,8 @@ const P: Record<Lang, {
     competitionLabel: "Compétition",
     competitionH2: "Compétition quotidienne",
     competitionP1: "Au cœur d'Attax, il y a le duel de boxe quotidien. Chaque jour, tu affrontes un nouveau joueur de ta ligue.",
-    competitionP2: "Un match se joue en 7 rounds : tes 6 jours d'avant, plus aujourd'hui. Chaque jour est un round, gagné par celui qui a le plus de pts ce jour-là, et un round perdu coûte 1 PV (le round final, 2 PV). Les 6 rounds passés se jouent un par un de 10h à 19h. Le round final se joue en direct dès 19h et retire 2 PV. À 21h30, le Soir de combat : entrée des boxeurs, rounds rejoués, cartes retournées, puis le round final décide. Celui qui garde le plus de PV gagne. Jamais de match nul.",
-    competitionP3: "L'objectif est simple : bouger, s'entraîner, rester régulier, performer mieux.",
+    competitionP2: "Un match se joue en 7 rounds : tes 6 jours d'avant, plus aujourd'hui. Chaque jour est un round, gagné par celui qui a le plus de pts ce jour-là, et un round perdu coûte 1 PV (le round final, 2 PV). Les 6 rounds passés se jouent un par un de 10h à 19h. Le round final se joue en direct dès 19h et retire 2 PV. À 21h30, le Soir de combat : entrée des boxeurs, rounds rejoués, cartes retournées, puis le round final décide. Celui qui garde le plus de PV gagne. Jamais de match nul.",
+    competitionP3: "L'objectif est simple : bouger, s'entraîner, rester régulier, performer mieux.",
     competitionP4: "La compétition transforme une activité ordinaire en défi.",
     competitionP5: "Une marche n'est plus juste une marche.\nUne séance n'est plus juste une séance.",
     competitionP6: "Chaque action contribue à un concours en cours.",
@@ -291,7 +291,7 @@ const P: Record<Lang, {
     strategyH2: "La stratégie compte",
     strategyP1: "Attax ne se résume pas au volume d'activité.",
     strategyP2: "La prise de décision compte aussi.",
-    strategyP3: "Chaque matin, 3 cartes sont tirées (les mêmes pour les deux joueurs) parmi 12 cartes en 4 familles : Attaque, Défense, Sabotage et Ruse. Tu en choisis une avant 13h, sinon une carte est jouée pour toi. Celle de ton adversaire reste secrète jusqu'à 21h30.",
+    strategyP3: "Chaque matin, 3 cartes sont tirées (les mêmes pour les deux joueurs) parmi 12 cartes en 4 familles : Attaque, Défense, Sabotage et Ruse. Tu en choisis une avant 13h, sinon une carte est jouée pour toi. Celle de ton adversaire reste secrète jusqu'à 21h30.",
     strategyP4: "Overdrive fait compter ta séance du jour ×1,5. Avec Garde, son round final ne te retire qu'1 PV. Freeze annule son meilleur round passé gagné. Ghost cache ton entraînement jusqu'à 21h30. Deux joueurs à activité égale peuvent connaître des issues très différentes.",
     strategyP5: "Le résultat est un système qui récompense à la fois la régularité et les choix intelligents.",
     strategyP6: "La progression est influencée par l'effort.\nLe succès est influencé par la stratégie.",
@@ -310,7 +310,7 @@ const P: Record<Lang, {
     whyH2: "Pourquoi le système fonctionne",
     whyP1: "Beaucoup de produits fitness peinent à fidéliser. Les gens commencent motivés. Puis l'engagement s'efface.",
     whyP2: "Attax a été conçu pour répondre à ce défi.",
-    whyP3: "Le système combine plusieurs principes de motivation :",
+    whyP3: "Le système combine plusieurs principes de motivation :",
     whyMotivation: ["Progression visible", "Objectifs quotidiens", "Responsabilité compétitive", "Prise de décision stratégique", "Classements à long terme"],
     whyP4: "Ensemble, ces systèmes créent une raison de revenir. Pas parce que l'application l'exige. Parce que l'expérience reste engageante.",
     whyP5: "L'objectif n'est pas de forcer l'activité. L'objectif est de rendre l'activité plus gratifiante.",
@@ -326,15 +326,15 @@ const P: Record<Lang, {
     faqLabel: "FAQ",
     faqH2: "Questions fréquemment posées",
     faq: [
-      { q: "Comment Attax suit-il l'activité ?", a: "Via Apple Santé (iPhone) ou Health Connect (Android) : Attax lit tes séances, ta fréquence cardiaque et tes pas, en lecture seule." },
-      { q: "Dois-je saisir mes séances à la main ?", a: "Non. Tout vient de ta montre, via Apple Santé ou Health Connect. Il n'y a aucune saisie manuelle." },
-      { q: "Quelles activités comptent ?", a: "Toute séance mesurée par ta montre : course, vélo, musculation, natation, sports collectifs, danse… plus tes pas, chaque jour." },
-      { q: "La régularité compte-t-elle ?", a: "Oui. Un match se joue en 7 rounds, un par jour : être là chaque jour, c'est le moyen le plus sûr de gagner." },
-      { q: "Ai-je besoin d'une montre connectée ?", a: "Oui. Il te faut un appareil qui mesure ta fréquence cardiaque (montre, bracelet ou ceinture thoracique) synchronisé avec Apple Santé (iPhone) ou Health Connect (Android) : Apple Watch, Garmin, Amazfit, COROS, CMF by Nothing et d'autres sur les deux ; Samsung Galaxy Watch et Fitbit sur Android uniquement. Ton téléphone seul compte tes pas. Attax vérifie ta connexion avant ta première ligue." },
-      { q: "Attax convient-il aux débutants ?", a: "Absolument. Tu rejoins une ligue de ton niveau, et chaque effort compte." },
-      { q: "Puis-je jouer avec mes amis ?", a: "Oui. Crée une ligue classée avec jusqu'à 2 amis (3 avec toi), de rang proche, ou une ligue personnalisée de 2 à 40 joueurs. Partage ton code, ils te rejoignent en quelques secondes." },
-      { q: "Puis-je progresser sans être un athlète d'élite ?", a: "Oui. Tu affrontes des joueurs de ton niveau, et ton rang dépend de tes résultats, pas d'une performance absolue." },
-      { q: "Ça marche dans mon fuseau horaire ?", a: "Oui. Chaque ligue se joue à son heure locale : rounds dès 10h, Soir de combat à 21h30, où que tu sois." },
+      { q: "Comment Attax suit-il l'activité ?", a: "Via Apple Santé (iPhone) ou Health Connect (Android) : Attax lit tes séances, ta fréquence cardiaque et tes pas, en lecture seule." },
+      { q: "Dois-je saisir mes séances à la main ?", a: "Non. Tout vient de ta montre, via Apple Santé ou Health Connect. Il n'y a aucune saisie manuelle." },
+      { q: "Quelles activités comptent ?", a: "Toute séance mesurée par ta montre : course, vélo, musculation, natation, sports collectifs, danse… plus tes pas, chaque jour." },
+      { q: "La régularité compte-t-elle ?", a: "Oui. Un match se joue en 7 rounds, un par jour : être là chaque jour, c'est le moyen le plus sûr de gagner." },
+      { q: "Ai-je besoin d'une montre connectée ?", a: "Oui. Il te faut un appareil qui mesure ta fréquence cardiaque (montre, bracelet ou ceinture thoracique) synchronisé avec Apple Santé (iPhone) ou Health Connect (Android) : Apple Watch, Garmin, Amazfit, COROS, CMF by Nothing et d'autres sur les deux ; Samsung Galaxy Watch et Fitbit sur Android uniquement. Ton téléphone seul compte tes pas. Attax vérifie ta connexion avant ta première ligue." },
+      { q: "Attax convient-il aux débutants ?", a: "Absolument. Tu rejoins une ligue de ton niveau, et chaque effort compte." },
+      { q: "Puis-je jouer avec mes amis ?", a: "Oui. Crée une ligue classée avec jusqu'à 2 amis (3 avec toi), de rang proche, ou une ligue personnalisée de 2 à 40 joueurs. Partage ton code, ils te rejoignent en quelques secondes." },
+      { q: "Puis-je progresser sans être un athlète d'élite ?", a: "Oui. Tu affrontes des joueurs de ton niveau, et ton rang dépend de tes résultats, pas d'une performance absolue." },
+      { q: "Ça marche dans mon fuseau horaire ?", a: "Oui. Chaque ligue se joue à son heure locale : rounds dès 10h, Soir de combat à 21h30, où que tu sois." },
     ],
 
     ctaH2: "Commence à concourir par l'activité.",
@@ -382,7 +382,7 @@ export default function HowAttaxWorks() {
             <Reveal as="p" className="sp-quote">
               {lang === "en"
                 ? "“Connect your health app. Every workout becomes a fight.”"
-                : "« Connecte ton application santé. Chaque séance devient un combat. »"}
+                : "« Connecte ton application santé. Chaque séance devient un combat. »"}
             </Reveal>
 
             <Block kick={p.activityLabel} title={p.activityH2}>

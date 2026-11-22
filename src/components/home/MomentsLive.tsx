@@ -17,7 +17,7 @@ const OUT = (t: number) => 1 - Math.pow(1 - t, 4);              // ≈ Easing.be
  * tiers par coup (les 3 tirets de « BOXE 3 FOIS ») ; LE PLAN : la caméra plonge sur le socle (zoom 1,75, son nom gravé),
  * remonte la colonne jusqu'à la couronne ; LE RECUL : l'objet entier (ressort), le titre claque, puis « À CONQUÉRIR » et
  * les boutons ; un reflet le traverse. Ici le défilement joue les trois coups et la suite. Mêmes mesures que l'app :
- * H = 53 % de l'écran, W = 0,62 H, haut = encoche + 7,5 %, CENTER = 46 %, focus socle 0,875 → couronne 0,2. */
+ * H = 53 % de l'écran, W = 0,62 H, haut = encoche + 7,5 %, CENTER = 46 %, focus socle 0,875 → couronne 0,2. */
 const SH = 807, SW = 393, TOP_IN = 59, BOT_IN = 34;
 const H = Math.round(SH * 0.53), W = Math.round(H * 0.62), TOP = TOP_IN + Math.round(SH * 0.075), LEFT = (SW - W) / 2;
 
@@ -43,15 +43,15 @@ export function TrophyMomentLive({ lang, profile }: { lang: "en" | "fr"; profile
       if (prof.current) { prof.current.style.transform = `scale(${(1 - 0.05 * up).toFixed(4)})`; prof.current.style.opacity = (1 - 0.5 * up).toFixed(3); }
       p = seg(p0, 0.6, 1);
     }
-    // 1. Le sceau arrive (opacité, +40 pt → 0).
+    // 1. Le sceau arrive (opacité, +40 pt → 0).
     const inV = OUT(seg(p, 0, 0.1));
     // 2. Trois coups : chaque tiers se remplit vite (240 ms, ease-out) ; le 3e remplit tout et ouvre.
     const hits = [0.14, 0.24, 0.34];
     let f = 0, n = 0;
     hits.forEach((h, i) => { const k = easeOut(seg(p, h, h + 0.04)); if (k > 0) { f = Math.max(f, (i + k) / 3); if (k > 0.5) n = i + 1; } });
     const pop = 1 - 0.04 * hits.reduce((a, h) => a + Math.sin(Math.PI * seg(p, h, h + 0.03)), 0);
-    // 3. (22/11, retour du propriétaire : la plongée caméra socle → couronne au défilement faisait bizarre) : plus de
-    // gros plan. La silhouette s'efface, le trophée fait un seul petit rebond sur place (1,06 → 1), en entier à l'écran.
+    // 3. (22/11, retour du propriétaire : la plongée caméra socle → couronne au défilement faisait bizarre) : plus de
+    // gros plan. La silhouette s'efface, le trophée fait un seul petit rebond sur place (1,06 → 1), en entier à l'écran.
     const silO = 1 - seg(p, 0.42, 0.48);
     const b = seg(p, 0.44, 0.62);
     const z = b > 0 ? 1 + 0.06 * Math.sin(Math.PI * Math.min(1, b * 1.4)) * (1 - b) : 1;
@@ -119,10 +119,10 @@ export function TrophyMomentLive({ lang, profile }: { lang: "en" | "fr"; profile
  * Plein écran, fond #EEF1F7 (palette.bg) : le signe de la saison (seasonArt(...).mark, Saison Beta) qui remplit la place
  * libre, le titre (Manrope 800, 26/35, −0,6, #09090B), la ligne (Manrope 600, 14,5/21, #6B7280), « Touche pour
  * continuer » (13, #8A93A0). Dans l'app, l'écran entre en fondu (320 ms). Ici : fondu au défilement, puis le palier
- * franchi défile comme les paliers de l'app (TIERS 50 → 25 → 10 %), le dernier reste. */
+ * franchi défile comme les paliers de l'app (TIERS 50 → 25 → 10 %), le dernier reste. */
 const SE = {
   en: { pre: "You're in the Top ", post: " %", sub: "Keep the pace: places are won every day.", cont: "Tap to continue" },
-  fr: { pre: "Tu entres dans le Top ", post: " %", sub: "Reste dans le rythme : les places se jouent chaque jour.", cont: "Touche pour continuer" },
+  fr: { pre: "Tu entres dans le Top ", post: " %", sub: "Reste dans le rythme : les places se jouent chaque jour.", cont: "Touche pour continuer" },
 };
 const TIERS = [50, 25, 10];
 export function SeasonMomentLive({ lang }: { lang: "en" | "fr" }) {
@@ -132,7 +132,7 @@ export function SeasonMomentLive({ lang }: { lang: "en" | "fr" }) {
     const fi = seg(p, 0, 0.22);
     if (body.current) body.current.style.opacity = fi.toFixed(3);
     if (mark.current) mark.current.style.transform = `scale(${(0.94 + 0.06 * OUT(seg(p, 0, 0.4))).toFixed(4)})`;
-    // Le palier : 50 → 25 (à 45 %) → 10 (à 70 %) ; l'ancien monte et s'efface, le nouveau arrive par en dessous.
+    // Le palier : 50 → 25 (à 45 %) → 10 (à 70 %) ; l'ancien monte et s'efface, le nouveau arrive par en dessous.
     const steps = [0.45, 0.7];
     nums.current.forEach((el, i) => {
       if (!el) return;

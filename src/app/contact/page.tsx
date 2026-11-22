@@ -1,6 +1,6 @@
 "use client";
 
-// Contact (21/11) : système de l'accueil (src/components/site/Site.tsx). Mêmes textes (translations.ts → contact) ;
+// Contact (21/11) : système de l'accueil (src/components/site/Site.tsx). Mêmes textes (translations.ts → contact) ;
 // formulaire inchangé (POST /api/contact).
 import { useState } from "react";
 import { useT } from "@/lib/i18n";

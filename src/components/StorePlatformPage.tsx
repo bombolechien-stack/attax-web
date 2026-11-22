@@ -41,10 +41,10 @@ const COPY = {
       need_h: "Ce qu'il te faut",
       need: [
         "Un iPhone sous iOS 15.1 ou plus récent.",
-        "Une Apple Watch, ou une montre, un bracelet ou une ceinture thoracique qui partage la fréquence cardiaque avec Apple Santé : Garmin, Amazfit, COROS, Withings, Oura, CMF by Nothing et d'autres.",
-        "L'accès en lecture à Apple Santé : séances, pas et fréquence cardiaque. Attax n'écrit jamais rien dans Apple Santé.",
+        "Une Apple Watch, ou une montre, un bracelet ou une ceinture thoracique qui partage la fréquence cardiaque avec Apple Santé : Garmin, Amazfit, COROS, Withings, Oura, CMF by Nothing et d'autres.",
+        "L'accès en lecture à Apple Santé : séances, pas et fréquence cardiaque. Attax n'écrit jamais rien dans Apple Santé.",
       ],
-      note: "iPhone uniquement : pas de version iPad, et rien à installer sur ton Apple Watch, elle se synchronise simplement avec Apple Santé.",
+      note: "iPhone uniquement : pas de version iPad, et rien à installer sur ton Apple Watch, elle se synchronise simplement avec Apple Santé.",
       steps_h: "Prêt en trois étapes",
       steps: [
         { t: "Télécharge et connecte-toi", d: "Avec Apple, Google ou ton e-mail." },
@@ -89,10 +89,10 @@ const COPY = {
       need_h: "Ce qu'il te faut",
       need: [
         "Un téléphone Android 9 ou plus récent, avec Health Connect.",
-        "Une montre, un bracelet ou une ceinture thoracique qui partage la fréquence cardiaque avec Health Connect : Garmin, Samsung Galaxy Watch, Fitbit, Pixel Watch, Wear OS, Amazfit, COROS, Withings, Oura, CMF by Nothing et d'autres.",
-        "L'accès en lecture à Health Connect : séances, pas et fréquence cardiaque. Attax n'écrit jamais rien dans Health Connect.",
+        "Une montre, un bracelet ou une ceinture thoracique qui partage la fréquence cardiaque avec Health Connect : Garmin, Samsung Galaxy Watch, Fitbit, Pixel Watch, Wear OS, Amazfit, COROS, Withings, Oura, CMF by Nothing et d'autres.",
+        "L'accès en lecture à Health Connect : séances, pas et fréquence cardiaque. Attax n'écrit jamais rien dans Health Connect.",
       ],
-      note: "Ton téléphone seul compte tes pas ; tes séances sont mesurées par ta montre.",
+      note: "Ton téléphone seul compte tes pas ; tes séances sont mesurées par ta montre.",
       steps_h: "Prêt en trois étapes",
       steps: [
         { t: "Télécharge et connecte-toi", d: "Avec Google, Apple ou ton e-mail." },

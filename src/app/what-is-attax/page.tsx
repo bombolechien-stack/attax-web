@@ -216,7 +216,7 @@ const P: Record<Lang, {
   fr: {
     heroLabel: "QU’EST-CE QU’ATTAX",
     heroTitle: "Le jeu de fitness\npropulsé par une activité réelle.",
-    heroSubtitle1: "Ton sport devient un combat. Attax transforme tes vraies séances en duels de boxe quotidiens contre un joueur de ta ligue : ta montre mesure ton effort, ton boxeur frappe. Le Soir de combat, c'est à 21h30.",
+    heroSubtitle1: "Ton sport devient un combat. Attax transforme tes vraies séances en duels de boxe quotidiens contre un joueur de ta ligue : ta montre mesure ton effort, ton boxeur frappe. Le Soir de combat, c'est à 21h30.",
     heroSubtitle2: "Entraîne-toi dans la vraie vie. Gagne tes matchs. Grimpe de Rookie à Legend.",
     heroCta: "Télécharger Attax",
 
@@ -246,11 +246,11 @@ const P: Record<Lang, {
     howH2: "Comment fonctionne Attax",
     howIntro: "Attax combine cinq systèmes qui fonctionnent ensemble.",
     howSystems: [
-      { title: "Activité réelle", body: "Attax lit tes séances et tes pas dans Apple Santé ou Health Connect, en lecture seule, et les transforme en pts. C'est l'intensité qui paie, pas seulement le volume. Course, vélo, musculation, sports collectifs, danse : si ta montre le mesure, ça compte. Les saisies à la main, non." },
-      { title: "Compétition quotidienne", body: "Chaque jour, un nouvel adversaire de ta ligue. Un match se joue en 7 rounds : tes 6 jours d'avant, plus aujourd'hui. Chaque jour est un round, gagné par celui qui a le plus de pts. Un round perdu coûte 1 PV, le round final 2 PV. Les rounds passés se dévoilent de 10h à 19h, le round final se joue en direct dès 19h, et à 21h30, le Soir de combat décide. Jamais de match nul." },
-      { title: "Décisions stratégiques", body: "Chaque matin, 3 cartes sont tirées (les mêmes pour les deux joueurs) parmi 12 cartes en 4 familles : Attaque, Défense, Sabotage, Ruse. Choisis-en une avant 13h. Celle de ton adversaire reste secrète jusqu'à 21h30. La bonne carte peut renverser un match serré." },
+      { title: "Activité réelle", body: "Attax lit tes séances et tes pas dans Apple Santé ou Health Connect, en lecture seule, et les transforme en pts. C'est l'intensité qui paie, pas seulement le volume. Course, vélo, musculation, sports collectifs, danse : si ta montre le mesure, ça compte. Les saisies à la main, non." },
+      { title: "Compétition quotidienne", body: "Chaque jour, un nouvel adversaire de ta ligue. Un match se joue en 7 rounds : tes 6 jours d'avant, plus aujourd'hui. Chaque jour est un round, gagné par celui qui a le plus de pts. Un round perdu coûte 1 PV, le round final 2 PV. Les rounds passés se dévoilent de 10h à 19h, le round final se joue en direct dès 19h, et à 21h30, le Soir de combat décide. Jamais de match nul." },
+      { title: "Décisions stratégiques", body: "Chaque matin, 3 cartes sont tirées (les mêmes pour les deux joueurs) parmi 12 cartes en 4 familles : Attaque, Défense, Sabotage, Ruse. Choisis-en une avant 13h. Celle de ton adversaire reste secrète jusqu'à 21h30. La bonne carte peut renverser un match serré." },
       { title: "Progression en ligue", body: "Une ligue, c'est 8 joueurs de ton niveau, 7 jours, et 1 champion qui repart avec la couronne. De ligue en ligue, un rang te suit de Rookie à Legend, et un classement mondial de saison récompense chaque pt d'effort." },
-      { title: "Jouer ensemble", body: "Joue une ligue classée avec jusqu'à 2 amis (3 avec toi), de rang proche, ou une ligue personnalisée de 2 à 40 joueurs : partage ton code, ils te rejoignent en quelques secondes. Dès ta 2e ligue, un binôme t'est attribué pour te motiver." },
+      { title: "Jouer ensemble", body: "Joue une ligue classée avec jusqu'à 2 amis (3 avec toi), de rang proche, ou une ligue personnalisée de 2 à 40 joueurs : partage ton code, ils te rejoignent en quelques secondes. Dès ta 2e ligue, un binôme t'est attribué pour te motiver." },
     ],
 
     whyLabel: "Pourquoi Ça Marche",
@@ -285,7 +285,7 @@ const P: Record<Lang, {
     consLabel: "Régularité",
     consH2: "Pourquoi la régularité compte plus que l’intensité",
     consP1: "L’une des plus grandes erreurs de perception dans le fitness, c’est de croire que le succès appartient à ceux qui font des séances extraordinaires. En réalité, le succès appartient souvent à ceux qui restent réguliers.",
-    consP2: "Une séance modérée répétée trois fois par semaine donne souvent de meilleurs résultats qu'une séance parfaite une fois par mois. Attax a été conçu autour de ce principe : un match se joue en 7 rounds, un par jour, donc chaque jour où tu bouges est un round à gagner, et une seule grosse journée ne peut pas tout décider.",
+    consP2: "Une séance modérée répétée trois fois par semaine donne souvent de meilleurs résultats qu'une séance parfaite une fois par mois. Attax a été conçu autour de ce principe : un match se joue en 7 rounds, un par jour, donc chaque jour où tu bouges est un round à gagner, et une seule grosse journée ne peut pas tout décider.",
     consP3: "La régularité s’accumule.\nLes petites actions s’additionnent.\nLes micro-progrès deviennent significatifs avec le temps.",
     consP4: "Les joueurs les plus performants sont rarement ceux qui produisent une seule performance exceptionnelle. Ce sont généralement ceux qui continuent à se montrer.",
     consP5: "Encore.\nEt encore.\nEt encore.",
@@ -293,15 +293,15 @@ const P: Record<Lang, {
     faqLabel: "FAQ",
     faqH2: "Questions fréquemment posées",
     faq: [
-      { q: "Qu'est-ce qu'Attax ?", a: "Un jeu de fitness compétitif : tes vraies séances, mesurées par ta montre, deviennent des duels de boxe quotidiens contre un joueur de ta ligue." },
-      { q: "Attax est-il une application fitness ou un jeu ?", a: "Les deux. Attax lit ton activité comme une application fitness, et la transforme en matchs, cartes, ligues et rangs comme un jeu." },
-      { q: "La marche compte-t-elle ?", a: "Oui. Tes pas comptent chaque jour, même avec ton téléphone seul. Pour tes séances, il te faut un appareil qui mesure ta fréquence cardiaque." },
-      { q: "Les débutants peuvent-ils jouer ?", a: "Absolument. Tu affrontes des joueurs de ton niveau, et chaque effort compte : de la marche rapide à la séance à fond." },
-      { q: "Ai-je besoin d'une montre connectée ?", a: "Oui. Il te faut un appareil qui mesure ta fréquence cardiaque (montre, bracelet ou ceinture thoracique) synchronisé avec Apple Santé (iPhone) ou Health Connect (Android) : Apple Watch, Garmin, Amazfit, COROS, CMF by Nothing et d'autres sur les deux ; Samsung Galaxy Watch et Fitbit sur Android uniquement. Ton téléphone seul compte tes pas. Attax vérifie ta connexion avant ta première ligue." },
-      { q: "Attax est-il disponible sur iPhone et Android ?", a: "Oui : sur iPhone via Apple Santé, sur Android via Health Connect. Il n'y a pas de version iPad." },
-      { q: "Puis-je jouer avec mes amis ?", a: "Oui. Crée une ligue classée avec jusqu'à 2 amis (3 avec toi), de rang proche, ou une ligue personnalisée de 2 à 40 joueurs. Partage ton code, ils te rejoignent en quelques secondes." },
-      { q: "Attax est-il gratuit ?", a: "Oui. Attax est gratuit à télécharger et à jouer, sans publicité ni achat intégré." },
-      { q: "À quelle fréquence ont lieu les duels ?", a: "Tous les jours. Un match par jour contre un nouvel adversaire, décidé au Soir de combat, à 21h30, dans des ligues qui durent 7 jours." },
+      { q: "Qu'est-ce qu'Attax ?", a: "Un jeu de fitness compétitif : tes vraies séances, mesurées par ta montre, deviennent des duels de boxe quotidiens contre un joueur de ta ligue." },
+      { q: "Attax est-il une application fitness ou un jeu ?", a: "Les deux. Attax lit ton activité comme une application fitness, et la transforme en matchs, cartes, ligues et rangs comme un jeu." },
+      { q: "La marche compte-t-elle ?", a: "Oui. Tes pas comptent chaque jour, même avec ton téléphone seul. Pour tes séances, il te faut un appareil qui mesure ta fréquence cardiaque." },
+      { q: "Les débutants peuvent-ils jouer ?", a: "Absolument. Tu affrontes des joueurs de ton niveau, et chaque effort compte : de la marche rapide à la séance à fond." },
+      { q: "Ai-je besoin d'une montre connectée ?", a: "Oui. Il te faut un appareil qui mesure ta fréquence cardiaque (montre, bracelet ou ceinture thoracique) synchronisé avec Apple Santé (iPhone) ou Health Connect (Android) : Apple Watch, Garmin, Amazfit, COROS, CMF by Nothing et d'autres sur les deux ; Samsung Galaxy Watch et Fitbit sur Android uniquement. Ton téléphone seul compte tes pas. Attax vérifie ta connexion avant ta première ligue." },
+      { q: "Attax est-il disponible sur iPhone et Android ?", a: "Oui : sur iPhone via Apple Santé, sur Android via Health Connect. Il n'y a pas de version iPad." },
+      { q: "Puis-je jouer avec mes amis ?", a: "Oui. Crée une ligue classée avec jusqu'à 2 amis (3 avec toi), de rang proche, ou une ligue personnalisée de 2 à 40 joueurs. Partage ton code, ils te rejoignent en quelques secondes." },
+      { q: "Attax est-il gratuit ?", a: "Oui. Attax est gratuit à télécharger et à jouer, sans publicité ni achat intégré." },
+      { q: "À quelle fréquence ont lieu les duels ?", a: "Tous les jours. Un match par jour contre un nouvel adversaire, décidé au Soir de combat, à 21h30, dans des ligues qui durent 7 jours." },
     ],
 
     ctaH2: "Prêt à donner du sens à ton activité ?",
@@ -351,7 +351,7 @@ export default function WhatIsAttax() {
             <Reveal as="p" className="sp-quote">
               {lang === "en"
                 ? "“Every effort counts. Every day you move, you compete.”"
-                : "« Chaque effort compte. Chaque jour où tu bouges, tu combats. »"}
+                : "« Chaque effort compte. Chaque jour où tu bouges, tu combats. »"}
             </Reveal>
 
             <Block kick={p.howLabel} title={p.howH2}>

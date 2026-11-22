@@ -12,9 +12,9 @@ import { PortraitCard, TAGLINE, type Card } from "./CardsShowcase";
 // Chapitre 04 « Une carte peut tout renverser. » (21/11, refait à la demande de gui) : 3 étapes claires, VRAIES captures.
 // 1. Le matin : les 3 cartes du jour en éventail (cartes portrait de l'app : Ghost, Overdrive, Freeze), Overdrive choisie.
 // 2. 21h30 : la révélation de la carte dans la page Match (Overdrive ×1,5) : store-assets/shots-2026-11-17 fn-18 (FR),
-//    en/fn-13 (EN) → story/<langue>/card-reveal.webp.
+//    en/fn-13 (EN) → story/<langue>/card-reveal.webp.
 // 3. Le round final après les cartes : fn-30 (FR, « 82 pts de retard ») / en/fn-29 (EN, « 121 pts ahead », le round bascule)
-//    → story/<langue>/card-final.webp. Il n'existe pas encore de capture FR où le score passe devant.
+//    → story/<langue>/card-final.webp. Il n'existe pas encore de capture FR où le score passe devant.
 // Plus d'écran bleu du vainqueur ici, plus d'épinglage au défilement ; rien derrière les téléphones.
 const SHOWN = ["ghost", "overdrive", "freeze"] as const;
 const COPY = {
@@ -26,7 +26,7 @@ const COPY = {
   fr: {
     kick: "04 · 21h30", title: ["Une carte peut", "tout renverser."],
     steps: [["Le matin", "Le matin, 3 cartes. Choisis-en une avant 13h."], ["21h30", "Vos cartes se révèlent et entrent en jeu avant le round final."], ["Le round final", "Le round final se joue en direct, cartes comprises."]],
-    alt: ["Ta carte dévoilée à 21h30 : Overdrive, les pts de ta séance du jour ×1,5", "Le round final après les cartes : Johnny revient à 82 pts"],
+    alt: ["Ta carte dévoilée à 21h30 : Overdrive, les pts de ta séance du jour ×1,5", "Le round final après les cartes : Johnny revient à 82 pts"],
   },
 };
 

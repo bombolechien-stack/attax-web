@@ -5,10 +5,10 @@ import { useInView } from "@/hooks/useInView";
 
 // Un chapitre de l'histoire (accueil, passe premium du 21/11) : à gauche (ou à droite) un petit repère numéroté en
 // capitales mono (« 01 · 8h »), un grand titre serré, une ligne à l'encre, et un grand chiffre très clair en fond ;
-// de l'autre côté, une « scène » arrondie (dégradé blanc → fond de l'app, scanlines fines) avec, si besoin, un grand
+// de l'autre côté, une « scène » arrondie (dégradé blanc → fond de l'app, scanlines fines) avec, si besoin, un grand
 // sportif en scanlines (art du hero) en encre très pâle, et le téléphone qui déborde de la scène et se redresse à l'arrivée.
 // pin : la section est plus haute que l'écran et son contenu reste épinglé ; `children` reçoit alors la progression
-// du défilement (0 → 1) pour changer l'écran du téléphone (ordinateur seulement, jamais si les animations sont réduites).
+// du défilement (0 → 1) pour changer l'écran du téléphone (ordinateur seulement, jamais si les animations sont réduites).
 function useMedia(q: string) {
   return useSyncExternalStore(
     (cb) => { const m = window.matchMedia(q); m.addEventListener("change", cb); return () => m.removeEventListener("change", cb); },

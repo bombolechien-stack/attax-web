@@ -12,7 +12,7 @@ export function middleware(request: NextRequest) {
   }
 
   const { pathname } = request.nextUrl;
-  // playattax.com : domaine de pré-lancement → UNIQUEMENT la page liste d'attente (« / »),
+  // playattax.com : domaine de pré-lancement → UNIQUEMENT la page liste d'attente (« / »),
   // jamais le site complet (même avec le cookie de prévisualisation), et non indexé.
   const waitlistOnly = host.includes("playattax");
   const unlocked = !waitlistOnly && request.cookies.get("attax_preview_unlocked")?.value === "1";

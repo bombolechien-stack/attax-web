@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useLang } from "@/lib/i18n";
 
 // L'écran Profil de l'app, partie BASSE : la vitrine des trophées (components/profile/ProfilePalmares.tsx), refaite en
-// HTML avec les vraies images de l'app (assets/trophies → public/trophies). Le plus beau titre en grand, le prochain
+// HTML avec les vraies images de l'app (assets/trophies → public/trophies). Le plus beau titre en grand, le prochain
 // objectif, puis l'étagère : les trophées gagnés (×n, bleu) et ceux à décrocher en silhouette (opacité 0,2, « ×0 »),
 // comme dans l'app (cellules 74 × 122, nom en Manrope 700, compteur en Manrope 800).
 // Exemple : Rookie, Challenger et Pro gagnés une fois ; prochain objectif = Elite (règle « mieux que son meilleur »).
@@ -28,7 +28,7 @@ const COPY = {
   en: { tabs: ["Profile", "Matches", "Stats", "Badges"], honours: "HONOURS", count: "3 TROPHIES", top: "YOUR TOP HONOUR", name: "PRO", won: "Won once",
     goal: "NEXT GOAL", goalTxt: "Win an Elite league", alt: "The Honours section of the Attax profile: trophies won and trophies still to unlock" },
   fr: { tabs: ["Profil", "Matchs", "Stats", "Badges"], honours: "PALMARÈS", count: "3 TROPHÉES", top: "TON PLUS BEAU TITRE", name: "PRO", won: "Remporté 1 fois",
-    goal: "PROCHAIN OBJECTIF", goalTxt: "Gagner une ligue Elite", alt: "Le palmarès du profil Attax : trophées gagnés et trophées à décrocher" },
+    goal: "PROCHAIN OBJECTIF", goalTxt: "Gagner une ligue Elite", alt: "Le palmarès du profil Attax : trophées gagnés et trophées à décrocher" },
 };
 
 export default function TrophyScreen() {

@@ -28,7 +28,7 @@ function ContentEn() {
         <section>
           <h2>4. User Accounts</h2>
           <p>You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account. You can sign up with an email address and password, or with Apple or Google. You agree to provide accurate information (including your year of birth, which is used to adapt the game to you and keep it fair) and to keep it up to date.</p>
-          <p>You can delete your account at any time from the App (profile photo on the Home screen → My account → Edit profile → Delete my account) or by emailing contact@attax.app (see our <Link href="/privacy#delete-account">Privacy Policy</Link>). Deletion is permanent.</p>
+          <p>You can delete your account at any time from the App (profile photo on the Home screen → My account → Edit profile → Delete my account) or by emailing contact@attax.app (see our <Link href="/privacy#delete-account">Privacy Policy</Link>). Deletion is permanent.</p>
         </section>
 
         <section>
@@ -77,7 +77,7 @@ function ContentFr() {
 
         <section>
           <h2>1. Acceptation des conditions</h2>
-          <p>En téléchargeant, en installant ou en utilisant l'application Attax (« l'App »), tu acceptes d'être lié par ces conditions d'utilisation. Si tu ne les acceptes pas, n'utilise pas l'App.</p>
+          <p>En téléchargeant, en installant ou en utilisant l'application Attax (« l'App »), tu acceptes d'être lié par ces conditions d'utilisation. Si tu ne les acceptes pas, n'utilise pas l'App.</p>
           <p>L'App est éditée par <strong>ATTAX</strong>, SAS au capital de 1 000 €, 61 rue de Lyon, 75012 Paris, France, RCS Paris 107 084 337 (voir nos <a href="/legal">mentions légales</a>).</p>
         </section>
 
@@ -95,12 +95,12 @@ function ContentFr() {
         <section>
           <h2>4. Comptes</h2>
           <p>Tu es responsable de la confidentialité de tes identifiants et de toute activité réalisée avec ton compte. Tu peux t'inscrire avec une adresse e-mail et un mot de passe, ou avec Apple ou Google. Tu t'engages à fournir des informations exactes (y compris ton année de naissance, qui sert à adapter le jeu à toi et à le garder équitable) et à les tenir à jour.</p>
-          <p>Tu peux supprimer ton compte à tout moment depuis l'App (photo de profil sur l'Accueil → Mon compte → Éditer le profil → Supprimer mon compte) ou en écrivant à contact@attax.app (voir notre <Link href="/privacy#delete-account">politique de confidentialité</Link>). La suppression est définitive.</p>
+          <p>Tu peux supprimer ton compte à tout moment depuis l'App (photo de profil sur l'Accueil → Mon compte → Éditer le profil → Supprimer mon compte) ou en écrivant à contact@attax.app (voir notre <Link href="/privacy#delete-account">politique de confidentialité</Link>). La suppression est définitive.</p>
         </section>
 
         <section>
           <h2>5. Fair-play et usage acceptable</h2>
-          <p>Attax n'est amusant que si tout le monde joue le jeu. Tu t'engages à ne pas : utiliser l'App à des fins illégales ; manipuler ou falsifier des données d'activité (par exemple en fournissant de fausses informations, en partageant un appareil, ou en générant des données de fréquence cardiaque ou de pas sans faire l'activité toi-même) ; créer plusieurs comptes pour obtenir un avantage ; désassembler, décompiler ou altérer l'App ou ses serveurs ; harceler d'autres utilisateurs.</p>
+          <p>Attax n'est amusant que si tout le monde joue le jeu. Tu t'engages à ne pas : utiliser l'App à des fins illégales ; manipuler ou falsifier des données d'activité (par exemple en fournissant de fausses informations, en partageant un appareil, ou en générant des données de fréquence cardiaque ou de pas sans faire l'activité toi-même) ; créer plusieurs comptes pour obtenir un avantage ; désassembler, décompiler ou altérer l'App ou ses serveurs ; harceler d'autres utilisateurs.</p>
           <p>Nous pouvons corriger des scores, annuler des résultats ou suspendre des comptes qui enfreignent ces règles.</p>
         </section>
 
@@ -147,7 +147,7 @@ export default function TermsPage() {
         compact
         kick={fr ? <>Légal</> : <>Legal</>}
         title={fr ? <>Conditions d'utilisation</> : <>Terms of Service</>}
-        meta={fr ? <>Dernière mise à jour : 18 novembre 2026</> : <>Last updated: November 18, 2026</>}
+        meta={fr ? <>Dernière mise à jour : 18 novembre 2026</> : <>Last updated: November 18, 2026</>}
       />
       <Article autoToc tocKey={lang} tocLabel={fr ? "Sommaire" : "Contents"}
         foot={<>

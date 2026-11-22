@@ -215,7 +215,7 @@ const P: Record<Lang, {
     heroLabel: "GAMIFICATION DU FITNESS",
     heroTitle: "Pourquoi les jeux réussissent\nlà où la motivation échoue.",
     heroSubtitle: "La gamification du fitness change la façon dont les gens font de l'exercice. En combinant compétition, progression, récompenses et formation d'habitudes, les expériences de fitness gamifiées peuvent aider les gens à rester actifs plus longtemps et à apprécier davantage le processus.",
-    heroSubtitle2: "Attax a été conçu autour de cette idée : ton sport devient un combat.",
+    heroSubtitle2: "Attax a été conçu autour de cette idée : ton sport devient un combat.",
     heroCta: "Télécharger Attax",
     secWhatIsIt: "C'est quoi",
     whatIsItH2: "Qu'est-ce que la gamification du fitness ?",
@@ -268,8 +268,8 @@ const P: Record<Lang, {
     howAttaxConclusion: "Ces systèmes fonctionnent ensemble pour créer une expérience fitness qui reste engageante bien après que la motivation traditionnelle commence à s'estomper.",
     gamificationSystems: [
       { title: "Activité réelle", body: "Tes séances et tes pas, lus dans Apple Santé ou Health Connect, sont la seule source de pts. C'est l'intensité qui paie, pas seulement le volume." },
-      { title: "Compétition quotidienne", body: "Un duel de boxe par jour contre un nouveau joueur de ta ligue : 7 rounds, des PV à protéger, et le Soir de combat à 21h30." },
-      { title: "Décisions stratégiques", body: "3 cartes tirées chaque matin, les mêmes pour les deux joueurs, parmi 12 cartes en 4 familles. Une à jouer avant 13h ; la sienne reste secrète jusqu'à 21h30." },
+      { title: "Compétition quotidienne", body: "Un duel de boxe par jour contre un nouveau joueur de ta ligue : 7 rounds, des PV à protéger, et le Soir de combat à 21h30." },
+      { title: "Décisions stratégiques", body: "3 cartes tirées chaque matin, les mêmes pour les deux joueurs, parmi 12 cartes en 4 familles. Une à jouer avant 13h ; la sienne reste secrète jusqu'à 21h30." },
       { title: "Progression en ligue", body: "Des ligues de 8 joueurs de ton niveau, 7 jours, 1 champion qui repart avec la couronne." },
       { title: "Objectifs à long terme", body: "Un rang de Rookie à Legend qui te suit de ligue en ligue, une saison mondiale, et un profil avec ta série, tes coups, tes badges et tes trophées." },
       { title: "Jeu social", body: "Une ligue classée avec jusqu'à 2 amis (3 avec toi), de rang proche, une ligue personnalisée de 2 à 40 joueurs, et un binôme qui t'est attribué dès ta 2e ligue pour te motiver." },
@@ -301,10 +301,10 @@ const P: Record<Lang, {
       { q: "Attax est-il un jeu fitness ?", a: "Oui. Attax transforme tes vraies séances en duels de boxe quotidiens, avec des cartes, des ligues, des rangs et une saison inspirés des jeux." },
       { q: "La gamification remplace-t-elle la discipline ?", a: "Non. Elle soutient la discipline en rendant les habitudes saines plus engageantes." },
       { q: "Qui bénéficie de la gamification du fitness ?", a: "Les débutants, les athlètes expérimentés et toute personne cherchant une motivation supplémentaire." },
-      { q: "Ai-je besoin d'une montre connectée pour utiliser Attax ?", a: "Oui. Il te faut un appareil qui mesure ta fréquence cardiaque (montre, bracelet ou ceinture thoracique) synchronisé avec Apple Santé (iPhone) ou Health Connect (Android) : Apple Watch, Garmin, Amazfit, COROS, CMF by Nothing et d'autres sur les deux ; Samsung Galaxy Watch et Fitbit sur Android uniquement. Ton téléphone seul compte tes pas. Attax vérifie ta connexion avant ta première ligue." },
+      { q: "Ai-je besoin d'une montre connectée pour utiliser Attax ?", a: "Oui. Il te faut un appareil qui mesure ta fréquence cardiaque (montre, bracelet ou ceinture thoracique) synchronisé avec Apple Santé (iPhone) ou Health Connect (Android) : Apple Watch, Garmin, Amazfit, COROS, CMF by Nothing et d'autres sur les deux ; Samsung Galaxy Watch et Fitbit sur Android uniquement. Ton téléphone seul compte tes pas. Attax vérifie ta connexion avant ta première ligue." },
     ],
     ctaTitle: "Transforme l'activité en progression.",
-    ctaBody: "Duels de boxe, cartes, ligues et rangs : le tout alimenté par tes vraies séances. Télécharge Attax et lance ta première ligue.",
+    ctaBody: "Duels de boxe, cartes, ligues et rangs : le tout alimenté par tes vraies séances. Télécharge Attax et lance ta première ligue.",
     ctaDownload: "Télécharger Attax",
     ctaLearnMore: "En savoir plus",
   },
@@ -351,7 +351,7 @@ export default function FitnessGamification() {
             <Reveal as="p" className="sp-quote">
               {lang === "en"
                 ? "“Gamification turns effort into progression. Every session moves you forward.”"
-                : "« La gamification transforme l'effort en progression. Chaque séance te fait avancer. »"}
+                : "« La gamification transforme l'effort en progression. Chaque séance te fait avancer. »"}
             </Reveal>
 
             <Block kick={p.secPsychology} title={p.psychologyH2}>

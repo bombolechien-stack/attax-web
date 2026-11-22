@@ -19,7 +19,7 @@ export default function LoopVideo({ mp4, webm, poster, label, ratio }: { mp4: st
     io.observe(v);
     return () => io.disconnect();
   }, []);
-  // 22/11 : les <source> n'arrivent qu'à l'approche ; ajouter des <source> ne recharge pas la vidéo → load() puis play()
+  // 22/11 : les <source> n'arrivent qu'à l'approche ; ajouter des <source> ne recharge pas la vidéo → load() puis play()
   // (sans ça, la vidéo restait figée sur son image d'attente : « je ne vois pas le motion design »).
   useEffect(() => {
     const v = ref.current;

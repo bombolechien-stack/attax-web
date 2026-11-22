@@ -20,7 +20,7 @@ export default function PrivacyStrip() {
       <div className="p5-wrap">
         <p className="h7-dataline">
           <ShieldIcon />
-          <span>{p.line} <a href="/health-data-privacy">{p.link} →</a></span>
+          <span>{p.line} <a href="/health-data-privacy">{p.link} →</a></span>
         </p>
       </div>
     </section>

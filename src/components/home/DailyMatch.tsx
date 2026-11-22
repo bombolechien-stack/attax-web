@@ -75,7 +75,7 @@ function lifeAt(side: "Y" | "O", t: number) {
   return life;
 }
 
-/** Le morceau jaune à l'instant k (0 → 1) : les mêmes étapes que l'animation mrFrag (un léger saut, puis il tombe en
+/** Le morceau jaune à l'instant k (0 → 1) : les mêmes étapes que l'animation mrFrag (un léger saut, puis il tombe en
  *  tournant et s'efface), mais pilotées par le défilement. */
 function fragAt(k: number) {
   let y: number, rot: number, o = 1;
@@ -107,7 +107,7 @@ const io3 = (u: number) => (u < 0.5 ? 4 * u * u * u : 1 - Math.pow(-2 * u + 2, 3
 const OUT0 = -0.1, OUT1 = 0.08, IN0 = -0.04, IN1 = 0.16;
 const VERDICT_T = ROUNDS.length * ROUND_LEN + 0.3;
 const REDUCED_T = 5 * ROUND_LEN + REST;
-/** Le cran de défilement → l'instant de repos à atteindre : avant le 1er cran, rien n'est joué ; puis round 1 … 7 au
+/** Le cran de défilement → l'instant de repos à atteindre : avant le 1er cran, rien n'est joué ; puis round 1 … 7 au
  *  repos ; puis le verdict. 8 crans égaux sur la course épinglée. */
 const restFor = (p: number) => {
   if (p <= 0.002) return 0;
@@ -210,7 +210,7 @@ export default function DailyMatch() {
     });
   };
   // La tête de lecture : elle rejoint l'instant de repos du cran courant en temps réel (1 round = 1,15 s) ; plusieurs
-  // crans d'un coup → accélère (fini en ~0,8 s) ; en remontant → retour rapide (≤ 0,4 s). Jamais d'arrêt entre deux rounds.
+  // crans d'un coup → accélère (fini en ~0,8 s) ; en remontant → retour rapide (≤ 0,4 s). Jamais d'arrêt entre deux rounds.
   const play = useRef({ t: 0, goal: 0, raf: 0, prev: 0 });
   const kickPlay = () => {
     const P = play.current;
@@ -248,7 +248,7 @@ export default function DailyMatch() {
   return (
     <section id="daily-match" className="mr-section p5-sec p-lines p-lines-light">
       <div className="p5-wrap">
-        <SectionHead label={lang === "fr" ? "03 · 10h → 21h30" : "03 · 10 AM → 9:30 PM"} title={[m.h2[0], m.h2[1]]} lead={m.subtitle} />
+        <SectionHead label={lang === "fr" ? "03 · 10h → 21h30" : "03 · 10 AM → 9:30 PM"} title={[m.h2[0], m.h2[1]]} lead={m.subtitle} />
       </div>
 
       {/* L'écran Match de l'app, agrandi ; épinglé pendant le défilement sur ordinateur */}

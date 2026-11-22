@@ -32,7 +32,7 @@ export default function Hero() {
         backgroundColor: "#0d0d0d",
       }}>
         {/* Vidéo du héros : 3 athlètes × 3 sports, rendus en scanlines (même DA que les héros des autres pages) ; vidéo,
-            cadrage et transitions = ceux de la version en ligne (master). Seuls le titre et le bouton → /download changent. */}
+            cadrage et transitions = ceux de la version en ligne (master). Seuls le titre et le bouton → /download changent. */}
         <video
           className="home-hero-video"
           autoPlay muted loop playsInline preload="auto"
@@ -95,7 +95,7 @@ export default function Hero() {
         {/* Passe 5 : seulement le HAUT du téléphone, qui monte du bord bas de la carte, sous les boutons (jamais devant les
             sportifs). Cadre dessiné en CSS (bords nets), écran = vraie capture de la page Match le soir (compte à rebours avant le verdict, avatars,
             barres de PV), choisie par gui : EN _captures_app/16_match_round_final_soir, FR store-assets/shots-2026-11-17/match-1b
-            (même écran en français), sans la barre d'état Android → story/<langue>/hero-match.webp. */}
+            (même écran en français), sans la barre d'état Android → story/<langue>/hero-match.webp. */}
         <div className="hero-peek" aria-hidden="true">
           <div className="hero-peek-frame">
             <div className="hero-peek-screen">

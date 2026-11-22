@@ -22,7 +22,7 @@ const COPY = {
   fr: {
     kick: "01 · Chaque jour",
     title: ["Chaque jour,", "un nouvel adversaire."] as [string, string],
-    line: "Un nouvel adversaire, tous les jours. Aujourd'hui : Sophie, Pro II.",
+    line: "Un nouvel adversaire, tous les jours. Aujourd'hui : Sophie, Pro II.",
     sheet: "MATCH 6 · TON ADVERSAIRE",
     stats: [["SPORT FAVORI", "Natation", ""], ["SÉANCE MOYENNE", "56 min", ""], ["PAR JOUR", "506 pts", "en moyenne"], ["FACE À FACE", "1er duel", "entre vous"]],
   },

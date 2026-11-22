@@ -18,7 +18,7 @@
   padding: clamp(3.5rem, 8vh, 5rem) max(var(--gut, 1.5rem), calc((100% - 1120px) / 2 + 24px)) clamp(3rem, 7vh, 4.5rem); }
 .sp-hero-in > * { max-width: 720px; }
 .sp-hero .hero-kick6 { margin: 0 0 1.25rem; }
-.sp-h1 { margin: 0; font-family: var(--font-manrope), sans-serif; font-weight: 500; font-size: clamp(2.75rem, 5.6vw, 4.5rem); line-height: 1; letter-spacing: -0.04em; color: #fff; text-wrap: balance; }
+.sp-h1 { margin: 0; font-family: var(--font-manrope), sans-serif; font-weight: 500; font-size: clamp(2.75rem, 5.6vw, 4.5rem); line-height: 1.07; letter-spacing: -0.04em; color: #fff; text-wrap: balance; }
 .sp-h1 > span { display: block; }
 .sp-h1 em, .sp-h1 .hero-it6 { font-family: var(--font-serif), Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em; color: #C9D5F0; font-size: 1.06em; }
 .sp-hero-lead { margin: 1.5rem 0 0; font-size: clamp(1.125rem, 1.4vw, 1.3125rem); line-height: 1.55; color: rgba(255,255,255,0.82); max-width: 560px !important; white-space: pre-line; }
@@ -417,3 +417,4 @@ body:has(.sp) { background: #EEF1F7 !important; }
   .scan-hero-figure { height: 62% !important; right: 1rem !important; }
   .sp-hero:has(.scan-hero-figure) .sp-hero-lead { max-width: min(560px, 50vw) !important; }
 }
+@media (min-width: 861px) and (max-width: 1199px) { .sp-hero.has-phone .sp-hero-in > * { max-width: min(600px, calc(100% - 380px)); } }

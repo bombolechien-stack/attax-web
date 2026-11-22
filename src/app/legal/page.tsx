@@ -12,9 +12,9 @@ function ContentFr() {
       <section>
         <h2>Éditeur</h2>
         <p>Le site attax.app et l'application mobile Attax (iOS et Android) sont édités par <strong>ATTAX</strong>, société par actions simplifiée (SAS) au capital de 1 000 €, dont le siège social est situé 61 rue de Lyon, 75012 Paris, France.</p>
-        <p>Immatriculée au Registre du commerce et des sociétés de Paris sous le numéro 107 084 337 (RCS Paris 107 084 337). SIRET du siège : 107 084 337 00016. N° de TVA intracommunautaire : FR81107084337.</p>
-        <p>Contact : <a href="mailto:contact@attax.app">contact@attax.app</a></p>
-        <p>Directeur de la publication : Guillaume Ruiz, Président.</p>
+        <p>Immatriculée au Registre du commerce et des sociétés de Paris sous le numéro 107 084 337 (RCS Paris 107 084 337). SIRET du siège : 107 084 337 00016. N° de TVA intracommunautaire : FR81107084337.</p>
+        <p>Contact : <a href="mailto:contact@attax.app">contact@attax.app</a></p>
+        <p>Directeur de la publication : Guillaume Ruiz, Président.</p>
       </section>
 
       <section>
@@ -77,7 +77,7 @@ export default function LegalPage() {
         compact
         kick={fr ? <>Légal</> : <>Legal</>}
         title={fr ? <>Mentions légales</> : <>Legal Notice</>}
-        meta={fr ? <>Dernière mise à jour : 20 octobre 2026</> : <>Last updated: October 20, 2026</>}
+        meta={fr ? <>Dernière mise à jour : 20 octobre 2026</> : <>Last updated: October 20, 2026</>}
       />
       <Article
         foot={<>

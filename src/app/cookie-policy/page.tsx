@@ -46,15 +46,15 @@ function ContentFr() {
 
         <section>
           <h2>1. En bref</h2>
-          <p>Le site attax.app n'utilise aucun cookie publicitaire, aucun outil de statistiques et aucun pistage tiers. Il ne retient que ce dont il a besoin pour fonctionner : ta langue, ton choix concernant ce message et, pendant la phase de prévisualisation, ton accès au site complet. Ces éléments étant strictement nécessaires, ils ne demandent pas de consentement.</p>
+          <p>Le site attax.app n'utilise aucun cookie publicitaire, aucun outil de statistiques et aucun pistage tiers. Il ne retient que ce dont il a besoin pour fonctionner : ta langue, ton choix concernant ce message et, pendant la phase de prévisualisation, ton accès au site complet. Ces éléments étant strictement nécessaires, ils ne demandent pas de consentement.</p>
         </section>
 
         <section>
           <h2>2. Ce que nous enregistrons sur ton appareil</h2>
-          <p><strong>attax-lang</strong> (stockage local) : ta langue (français ou anglais). Indispensable.</p>
-          <p><strong>attax_cookie_consent</strong> (stockage local) : retient que tu as vu ce message. Indispensable.</p>
-          <p><strong>attax_preview_unlocked</strong> (cookie, 1 an, et stockage local) : retient l'accès au site complet pendant sa phase de prévisualisation. Indispensable.</p>
-          <p>Aucune de ces données ne contient d'informations personnelles, et aucune n'est partagée. Comme pour tout site, notre hébergeur (Vercel) traite des données techniques de connexion, comme ton adresse IP, pour afficher et sécuriser le site ; cela ne passe pas par des cookies.</p>
+          <p><strong>attax-lang</strong> (stockage local) : ta langue (français ou anglais). Indispensable.</p>
+          <p><strong>attax_cookie_consent</strong> (stockage local) : retient que tu as vu ce message. Indispensable.</p>
+          <p><strong>attax_preview_unlocked</strong> (cookie, 1 an, et stockage local) : retient l'accès au site complet pendant sa phase de prévisualisation. Indispensable.</p>
+          <p>Aucune de ces données ne contient d'informations personnelles, et aucune n'est partagée. Comme pour tout site, notre hébergeur (Vercel) traite des données techniques de connexion, comme ton adresse IP, pour afficher et sécuriser le site ; cela ne passe pas par des cookies.</p>
         </section>
 
         <section>
@@ -85,7 +85,7 @@ export default function CookiePolicyPage() {
         compact
         kick={fr ? <>Légal</> : <>Legal</>}
         title={fr ? <>Politique cookies</> : <>Cookie Policy</>}
-        meta={fr ? <>Dernière mise à jour : 18 novembre 2026</> : <>Last updated: November 18, 2026</>}
+        meta={fr ? <>Dernière mise à jour : 18 novembre 2026</> : <>Last updated: November 18, 2026</>}
       />
       <Article
         foot={<>
