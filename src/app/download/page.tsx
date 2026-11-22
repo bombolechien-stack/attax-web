@@ -7,7 +7,13 @@
 import Image from "next/image";
 import { useLang, useT } from "@/lib/i18n";
 import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/stores";
-import { SitePage, PageHero, Sec, Phones, Reveal, AppleIcon, PlayIcon } from "@/components/site/Site";
+import { SitePage, PageHero, Sec, Head, Phones, Reveal, AppleIcon, PlayIcon } from "@/components/site/Site";
+
+// Montres compatibles (retour du 22/11 : bloc équilibré, liste à droite). Galaxy Watch et Fitbit : Android seulement.
+const WATCHES: { name: string; android?: boolean }[] = [
+  { name: "Apple Watch" }, { name: "Garmin" }, { name: "Samsung Galaxy Watch", android: true }, { name: "Fitbit", android: true },
+  { name: "COROS" }, { name: "Amazfit" }, { name: "Withings" }, { name: "Oura" }, { name: "CMF by Nothing" },
+];
 
 const SHOTS = ["activity", "final-round", "card"] as const;
 
@@ -15,6 +21,7 @@ export default function DownloadPage() {
   const t = useT();
   const { lang } = useLang();
   const d = t.download;
+  const fr = lang === "fr";
 
   return (
     <SitePage>
@@ -45,8 +52,26 @@ export default function DownloadPage() {
         </div>
       </section>
 
-      <Sec kick={d.platforms_label} title={d.platforms_h2} lead={d.platforms_sub}>
-        <Reveal className="sp-plats">
+      <section className="sp-sec">
+        <div className="p5-wrap">
+          <div className="sp-compat">
+            <Head kick={d.platforms_label} title={d.platforms_h2} lead={d.platforms_sub} />
+            <Reveal className="sp-watches">
+              <p className="sp-label">{fr ? "Montres et capteurs compatibles" : "Compatible watches and sensors"}</p>
+              <ul>
+                {WATCHES.map((w) => (
+                  <li key={w.name}><b>{w.name}</b>{w.android && <span>{fr ? "sur Android" : "on Android"}</span>}</li>
+                ))}
+                <li className="is-more"><b>{fr ? "et d'autres" : "and more"}</b><span>{fr ? "ceintures cardio, bracelets" : "chest straps, bands"}</span></li>
+              </ul>
+              <div className="sp-sync">
+                <span className="sp-label">{fr ? "Synchronisé avec" : "Synced with"}</span>
+                <span className="sp-tag"><AppleIcon />{fr ? "Apple Santé" : "Apple Health"}</span>
+                <span className="sp-tag"><PlayIcon />Health Connect</span>
+              </div>
+            </Reveal>
+          </div>
+        <Reveal className="sp-plats" >
           {([
             { os: "iOS", title: d.ios_title, req: d.ios_req, sub: d.ios_sub, href: "/download/ios", more: d.ios_more, icon: <AppleIcon /> },
             { os: "Android", title: d.android_title, req: d.android_req, sub: d.android_sub, href: "/download/android", more: d.android_more, icon: <PlayIcon /> },
@@ -61,7 +86,8 @@ export default function DownloadPage() {
             </div>
           ))}
         </Reveal>
-      </Sec>
+        </div>
+      </section>
 
       <Sec kick={d.screens_label} title={d.screens_h2}>
         <Phones items={SHOTS.map((s, i) => ({ src: `/screens/story/${lang}/${s}.webp`, alt: d.screens[i].label, title: d.screens[i].label, body: d.screens[i].caption }))} />

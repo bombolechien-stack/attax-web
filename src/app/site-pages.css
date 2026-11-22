@@ -338,3 +338,28 @@ body:has(.sp) { background: #EEF1F7 !important; }
 .sp-code span { display: block; margin-top: 4px; font-size: 0.875rem; font-weight: 600; color: var(--blue, #0443FD); }
 .sp-fn .sp-label { display: block; }
 .sp-h1:has(.sp-avatar) { font-size: clamp(2.25rem, 4.6vw, 3.75rem); }
+
+/* Télécharger, compatibilité (22/11) : titre et texte à gauche, liste des montres à droite, plateformes dessous */
+.sp-compat { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2.5rem clamp(3rem, 6vw, 6rem); align-items: start; margin-bottom: clamp(3rem, 5vw, 4.5rem); }
+.sp-compat .h7-line { max-width: 30rem; }
+.sp-watches > .sp-label { display: block; margin: 0 0 1rem; }
+.sp-watches ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; column-gap: 2rem; }
+.sp-watches li { display: flex; align-items: baseline; justify-content: space-between; gap: 0.75rem; padding: 0.95rem 0; border-bottom: 1px solid rgba(9,9,11,0.12); }
+.sp-watches li:nth-child(-n+2) { border-top: 1px solid rgba(9,9,11,0.12); }
+.sp-watches li b { font-family: var(--font-manrope), sans-serif; font-size: 1.1875rem; font-weight: 500; letter-spacing: -0.015em; color: var(--ink); }
+.sp-watches li span { font-family: var(--font-mono), ui-monospace, monospace; font-size: 0.875rem; font-variant-caps: all-small-caps; letter-spacing: 0.08em; color: #5A5F67; white-space: nowrap; }
+.sp-watches li.is-more b { color: #5A5F67; }
+.sp-sync { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 1.5rem; }
+.sp-sync .sp-label { margin-right: 0.35rem; }
+.sp-sync .sp-tag { gap: 8px; align-items: center; background: #fff; border-color: rgba(9,9,11,0.1); }
+.sp-sync .sp-tag svg { width: 16px; height: 16px; }
+@media (max-width: 900px) { .sp-compat { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .sp-watches ul { grid-template-columns: 1fr; } .sp-watches li:nth-child(2) { border-top: 0; } }
+
+/* Athlète des en-têtes au rendu de la vidéo du hero (22/11) : ton de la photo × lignes fines régulières (pas 5 px) */
+.scan-tone { height: 100%; background: #C9D5F0; -webkit-mask-size: 100% 100%, 100% 5px; mask-size: 100% 100%, 100% 5px; -webkit-mask-repeat: no-repeat, repeat; mask-repeat: no-repeat, repeat; -webkit-mask-composite: source-in; mask-composite: intersect; animation: scanWipe 1.5s cubic-bezier(0.16,1,0.3,1) 0.2s both; }
+@keyframes scanWipe { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@media (prefers-reduced-motion: reduce) { .scan-tone { animation: none; } }
+.sp-watches ul { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.sp-watches li { flex-wrap: wrap; }
+.sp-watches li.is-more { grid-column: 1 / -1; justify-content: flex-start; gap: 0.5rem 1rem; }

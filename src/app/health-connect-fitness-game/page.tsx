@@ -206,7 +206,7 @@ export default function HealthConnectFitnessGame() {
 
   return (
     <SitePage>
-      <PageHero bg={<ScanBg name="swim-start" />} kick={p.heroLabel} title={heroTitle(p.heroTitle)} lead={p.heroSubtitle1} lead2={p.heroSubtitle2}>
+      <PageHero bg={<ScanBg name="cycling" />} kick={p.heroLabel} title={heroTitle(p.heroTitle)} lead={p.heroSubtitle1} lead2={p.heroSubtitle2}>
         <a className="h7-btn h7-btn-light" href="/download/android"><PlayIcon />{p.heroCta}</a>
       </PageHero>
 

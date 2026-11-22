@@ -12,8 +12,7 @@ import ArenaSection from "@/components/live/ArenaSection";
 import AppPhone from "@/components/home/AppPhone";
 import { AppleIcon, PlayIcon } from "@/components/live/StoreIcons";
 import { useInView } from "@/hooks/useInView";
-import ScanAthlete from "@/components/scan/ScanAthlete";
-import type { AthleteName } from "@/components/scan/athletes";
+import { TONES, type ToneName } from "@/components/scan/athletes";
 
 export { AppleIcon, PlayIcon, AppPhone };
 
@@ -75,12 +74,17 @@ export function PhotoBg({ src, alt, pos, c = "10,10,10", a = [0.96, 0.75, 0.25],
   );
 }
 
-/** Fond d'origine des pages de référence : athlète en scanlines à droite, lignes fines, dégradé. */
-export function ScanBg({ name }: { name: AthleteName }) {
+/** Fond d'origine des pages de référence : athlète en scanlines à droite, lignes fines, dégradé.
+ *  22/11 (retour du propriétaire) : l'athlète a le rendu de la vidéo du hero de l'accueil (lignes fines et régulières,
+ *  pas de 5 px, la luminosité suit le ton de la photo) au lieu des grosses lignes effilées. */
+export function ScanBg({ name }: { name: ToneName }) {
+  const a = TONES[name];
   return (
     <>
       <div className="scan-hero-lines" />
-      <div className="scan-hero-figure"><ScanAthlete name={name} height="100%" /></div>
+      <div className="scan-hero-figure">
+        <div className="scan-tone" style={{ aspectRatio: `${a.w} / ${a.h}`, WebkitMaskImage: `url(/scan/tone/${name}.webp), linear-gradient(#000 0 2.4px, transparent 2.4px)`, maskImage: `url(/scan/tone/${name}.webp), linear-gradient(#000 0 2.4px, transparent 2.4px)` }} />
+      </div>
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(5,5,5,0.9) 0%, rgba(5,5,5,0.6) 55%, rgba(5,5,5,0.25) 100%)" }} />
     </>
   );

@@ -299,7 +299,7 @@ export default function FitnessCompetitionApp() {
 
   return (
     <SitePage>
-      <PageHero bg={<ScanBg name="boxing" />} kick={p.heroLabel} title={heroTitle(p.heroTitle)} lead={p.heroSubtitle} lead2={p.heroSubtitle2}>
+      <PageHero bg={<ScanBg name="basketball" />} kick={p.heroLabel} title={heroTitle(p.heroTitle)} lead={p.heroSubtitle} lead2={p.heroSubtitle2}>
         <a className="h7-btn h7-btn-light" href="/download/ios"><AppleIcon />{p.heroCta}</a>
       </PageHero>
 
