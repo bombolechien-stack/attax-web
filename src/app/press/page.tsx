@@ -1,50 +1,44 @@
 "use client";
 
+// Kit presse (22/11) : système de l'accueil (src/components/site/Site.tsx). Même contenu (./content.ts), mêmes fichiers
+// à télécharger, mêmes boutons Copier. Fond d'origine de l'en-tête gardé (dégradé radial + colonnes fines).
 import Image from "next/image";
 import { useState } from "react";
-import PageNavbar from "@/components/PageNavbar";
 import { useLang } from "@/lib/i18n";
-import { PRESS_CONTENT, KIT_URL, LOGOS, SCREENS, VIDEO } from "./content";
-import PinTitle from "@/components/PinTitle";
-
-const LABEL: React.CSSProperties = {
-  fontSize: "0.6875rem", fontWeight: 700, color: "#aaa",
-  letterSpacing: "0.18em", textTransform: "uppercase", display: "block", marginBottom: "1.25rem",
-};
-const H2: React.CSSProperties = { fontSize: "clamp(1.75rem, 3vw, 2.5rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.04em", lineHeight: 1.1, margin: "0 0 0.75rem" };
-const SUB: React.CSSProperties = { fontSize: "1rem", color: "#888", lineHeight: 1.7, margin: "0 0 2.5rem" };
-const RULE: React.CSSProperties = { border: "none", borderTop: "1px solid #ebebeb", margin: "5rem 0" };
-const PILL: React.CSSProperties = { display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "0.75rem", fontWeight: 700, color: "#0d0d0d", padding: "6px 12px", borderRadius: "999px", border: "1px solid #e2e2e2", textDecoration: "none", backgroundColor: "#fff" };
-
-function Section({ label, children }: { label: string; children: React.ReactNode }) {
-  return (
-    <div className="seo-section-grid" style={{ display: "grid", gridTemplateColumns: "200px 1fr", gap: "4rem", alignItems: "start" }}>
-      <span style={LABEL}>{label}</span>
-      <div>{children}</div>
-    </div>
-  );
-}
+import { useInView } from "@/hooks/useInView";
+import { SitePage, PageHero, Sec, HairList, Reveal } from "@/components/site/Site";
+import { PRESS_CONTENT, KIT_URL, LOGOS, SCREENS, VIDEO, SCREEN_PREVIEW } from "./content";
 
 function DownloadIcon() {
-  return <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14" /></svg>;
+  return <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14" /></svg>;
+}
+
+/** Fond d'origine de l'en-tête du kit presse : dégradé radial bleu nuit et six colonnes fines. */
+function PressBg() {
+  return (
+    <>
+      <div style={{ position: "absolute", inset: 0, background: "#080808" }} />
+      <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 70% 60% at 30% 60%, rgba(20,20,40,0.9) 0%, rgba(8,8,8,1) 70%)" }} />
+      <div style={{ position: "absolute", inset: 0, backgroundImage: "repeating-linear-gradient(90deg, transparent, transparent calc(16.666% - 0.5px), rgba(255,255,255,0.025) calc(16.666% - 0.5px), rgba(255,255,255,0.025) 16.666%)" }} />
+    </>
+  );
 }
 
 function CopyBlock({ label, body, copy, copied }: { label: string; body: string; copy: string; copied: string }) {
   const [done, setDone] = useState(false);
   return (
-    <div style={{ border: "1px solid #ebebeb", borderRadius: "16px", padding: "1.5rem 1.75rem", marginBottom: "1rem" }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "1rem", marginBottom: "0.875rem" }}>
-        <span style={{ fontSize: "0.75rem", fontWeight: 700, color: "#aaa", textTransform: "uppercase", letterSpacing: "0.1em" }}>{label}</span>
+    <div className="sp-copy">
+      <div className="sp-copy-top">
+        <span className="sp-label">{label}</span>
         <button
+          type="button"
+          className="h7-btn h7-btn-line sp-chip"
           onClick={() => { navigator.clipboard.writeText(body); setDone(true); setTimeout(() => setDone(false), 1500); }}
-          style={{ ...PILL, cursor: "pointer", fontFamily: "inherit" }}
         >
           {done ? `✓ ${copied}` : copy}
         </button>
       </div>
-      {body.split("\n\n").map((para, i) => (
-        <p key={i} style={{ fontSize: "1rem", color: "#333", lineHeight: 1.8, margin: i ? "0.875rem 0 0" : 0 }}>{para}</p>
-      ))}
+      <div className="sp-prose">{body.split("\n\n").map((para, i) => <p key={i}>{para}</p>)}</div>
     </div>
   );
 }
@@ -53,17 +47,31 @@ function ColorSwatch({ color }: { color: { name: string; hex: string; usage: str
   const [copied, setCopied] = useState(false);
   const light = color.hex === "#FFFFFF";
   return (
-    <div style={{ borderRadius: "16px", overflow: "hidden", border: "1px solid #ebebeb" }}>
+    <div className="sp-swatch">
       <button
+        type="button"
         onClick={() => { navigator.clipboard.writeText(color.hex); setCopied(true); setTimeout(() => setCopied(false), 1500); }}
-        style={{ width: "100%", height: "80px", backgroundColor: color.hex, border: "none", borderBottom: light ? "1px solid #ebebeb" : "none", cursor: "pointer", fontSize: "0.75rem", fontWeight: 600, letterSpacing: "0.05em", color: light ? "#999" : "rgba(255,255,255,0.7)", fontFamily: "inherit" }}
+        style={{ backgroundColor: color.hex, color: light ? "#5A5F67" : "rgba(255,255,255,0.8)", boxShadow: light ? "inset 0 0 0 1px rgba(9,9,11,0.12)" : "none" }}
       >
         {copied ? "✓" : color.hex}
       </button>
-      <div style={{ padding: "1rem 1.25rem" }}>
-        <div style={{ fontSize: "0.9375rem", fontWeight: 700, color: "#0d0d0d", marginBottom: "0.25rem" }}>{color.name}</div>
-        <div style={{ fontSize: "0.8125rem", color: "#999" }}>{color.usage}</div>
-      </div>
+      <b>{color.name}</b>
+      <span>{color.usage}</span>
+    </div>
+  );
+}
+
+/** Grille à filets de l'accueil (h7-grid), apparition à l'entrée dans l'écran. */
+function Grid({ items, four = false }: { items: { title: string; body: string }[]; four?: boolean }) {
+  const { ref, visible } = useInView<HTMLDivElement>(0.12, { oneShot: true });
+  return (
+    <div ref={ref} className={`h7-grid sp-grid${four ? " h7-grid-4" : ""}${visible ? " is-in" : ""}`}>
+      {items.map((it) => (
+        <div key={it.title} className="h7-cell">
+          <h3 className="h7-h3">{it.title}</h3>
+          <p className="h7-p">{it.body}</p>
+        </div>
+      ))}
     </div>
   );
 }
@@ -71,217 +79,135 @@ function ColorSwatch({ color }: { color: { name: string; hex: string; usage: str
 export default function PressPage() {
   const { lang } = useLang();
   const p = PRESS_CONTENT[lang];
+  const [l1, ...rest] = p.hero_title.split("\n");
 
   return (
-    <>
-      {/* Hero */}
-      <div style={{ backgroundColor: "#ffffff", padding: "0 12px 12px" }}>
-        <div style={{ position: "relative", backgroundColor: "#080808", borderRadius: "24px", minHeight: "56vh", display: "flex", flexDirection: "column", overflow: "hidden" }}>
-          <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 70% 60% at 30% 60%, rgba(20,20,40,0.9) 0%, rgba(8,8,8,1) 70%)" }} />
-          <div aria-hidden="true" style={{ position: "absolute", inset: 0, backgroundImage: "repeating-linear-gradient(90deg, transparent, transparent calc(16.666% - 0.5px), rgba(255,255,255,0.025) calc(16.666% - 0.5px), rgba(255,255,255,0.025) 16.666%)" }} />
-          <div style={{ position: "relative", zIndex: 10, flexShrink: 0 }}>
-            <PageNavbar />
-          </div>
-          <div style={{ position: "relative", zIndex: 5, flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "3rem clamp(2rem, 5vw, 5rem) 4rem" }}>
-            <span style={{ ...LABEL, color: "rgba(255,255,255,0.28)" }}>{p.hero_label}</span>
-            <h1 className="pin-title" style={{ fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#ffffff", lineHeight: 1, margin: "0 0 1.5rem", maxWidth: "760px", whiteSpace: "pre-line" }}>
-              <PinTitle text={p.hero_title} />
-            </h1>
-            <p style={{ fontSize: "1.0625rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.7, margin: "0 0 2.5rem", maxWidth: "560px" }}>{p.hero_sub}</p>
-            <div style={{ display: "flex", gap: "10px", flexWrap: "wrap", alignItems: "center" }}>
-              <a href={KIT_URL} download style={{ display: "inline-flex", alignItems: "center", gap: "8px", backgroundColor: "#ffffff", color: "#0d0d0d", fontWeight: 700, fontSize: "0.9375rem", padding: "13px 26px", borderRadius: "999px", textDecoration: "none" }}>
-                <DownloadIcon /> {p.hero_cta}
-              </a>
-              <a href={`mailto:${p.contact_email}`} style={{ display: "inline-flex", alignItems: "center", backgroundColor: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.8)", fontWeight: 600, fontSize: "0.9375rem", padding: "13px 24px", borderRadius: "999px", textDecoration: "none", border: "1px solid rgba(255,255,255,0.12)" }}>
-                {p.hero_cta2}
-              </a>
-            </div>
-            <p style={{ fontSize: "0.8125rem", color: "rgba(255,255,255,0.3)", margin: "1rem 0 0" }}>{p.kit_note}</p>
-          </div>
+    <SitePage>
+      <PageHero
+        bg={<PressBg />}
+        kick={p.hero_label}
+        title={<><span>{l1}</span> {rest.length > 0 && <span><em>{rest.join(" ")}</em></span>}</>}
+        lead={p.hero_sub}
+        meta={p.kit_note}
+      >
+        <a className="h7-btn h7-btn-light" href={KIT_URL} download><DownloadIcon />{p.hero_cta}</a>
+        <a className="h7-btn h7-btn-ghost" href={`mailto:${p.contact_email}`}>{p.hero_cta2}</a>
+      </PageHero>
+
+      {/* Le kit */}
+      <Sec kick={p.kit_label} title={p.kit_title}>
+        <HairList items={p.kit_items.map((k) => ({ title: k.title, body: k.desc }))} />
+        <div className="sp-btns" style={{ marginTop: "2rem" }}>
+          <a className="h7-btn h7-btn-ink" href={KIT_URL} download><DownloadIcon />{p.hero_cta}</a>
         </div>
-      </div>
+      </Sec>
 
-      <div style={{ backgroundColor: "#ffffff" }}>
-        <div style={{ maxWidth: "72rem", margin: "0 auto", padding: "7rem 4rem" }} className="press-wrap">
+      {/* Chiffres clés */}
+      <Sec kick={p.facts_label} title={p.facts_title}>
+        <Reveal as="dl" className="sp-facts">
+          {p.facts.map((f) => (
+            <div key={f.label}><dt>{f.label}</dt><dd>{f.value}</dd></div>
+          ))}
+        </Reveal>
+      </Sec>
 
-          {/* Le kit */}
-          <Section label={p.kit_label}>
-            <h2 style={{ ...H2, margin: "0 0 2rem" }}>{p.kit_title}</h2>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: "1rem", marginBottom: "2rem" }}>
-              {p.kit_items.map((k) => (
-                <div key={k.title} style={{ backgroundColor: "#f7f7f7", borderRadius: "16px", padding: "1.5rem" }}>
-                  <div style={{ fontSize: "1rem", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.02em", marginBottom: "0.4rem" }}>{k.title}</div>
-                  <div style={{ fontSize: "0.875rem", color: "#777", lineHeight: 1.6 }}>{k.desc}</div>
+      {/* Textes prêts à l'emploi */}
+      <Sec kick={p.texts_label} title={p.texts_title} lead={p.texts_sub} split>
+        <Reveal className="sp-copies">
+          {p.texts.map((t) => <CopyBlock key={t.label} label={t.label} body={t.body} copy={p.copy_btn} copied={p.copied_btn} />)}
+        </Reveal>
+      </Sec>
+
+      {/* Comment ça marche */}
+      <Sec kick={p.how_label} title={p.how_title}>
+        <HairList items={p.how.map((h) => ({ title: h.title, body: h.body }))} />
+      </Sec>
+
+      {/* Créateurs */}
+      <Sec kick={p.creators_label} title={p.creators_title} lead={p.creators_sub} split>
+        <Grid items={p.ideas} />
+        <div className="sp-tags">
+          <span className="sp-label">{p.tags_label}</span>
+          {p.tags.map((tag) => <span key={tag} className="sp-tag">{tag}</span>)}
+        </div>
+      </Sec>
+
+      {/* Logos */}
+      <Sec kick={p.logos_label} title={p.logos_title} lead={p.logos_sub} split>
+        <Reveal className="sp-logos">
+          {LOGOS.flatMap((l) => l.files.map((f) => {
+            const dark = f.endsWith("white");
+            return (
+              <div key={f} className="sp-logo">
+                <div className={`sp-logo-art${dark ? " is-dark" : ""}`}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={`/press/${f}.svg`} alt={`Attax: ${p.logo_names[l.key]}`} style={{ maxHeight: l.key === "icon" ? "72px" : "48px" }} />
                 </div>
-              ))}
-            </div>
-            <a href={KIT_URL} download style={{ display: "inline-flex", alignItems: "center", gap: "8px", backgroundColor: "#0d0d0d", color: "#fff", fontWeight: 700, fontSize: "0.9375rem", padding: "13px 26px", borderRadius: "999px", textDecoration: "none" }}>
-              <DownloadIcon /> {p.hero_cta}
-            </a>
-          </Section>
-
-          <hr style={RULE} />
-
-          {/* Chiffres clés */}
-          <Section label={p.facts_label}>
-            <h2 style={{ ...H2, margin: "0 0 2.5rem" }}>{p.facts_title}</h2>
-            <div style={{ border: "1px solid #ebebeb", borderRadius: "16px", overflow: "hidden" }}>
-              {p.facts.map((fact, i) => (
-                <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 1.6fr", gap: "2rem", padding: "1.1rem 1.75rem", borderBottom: i < p.facts.length - 1 ? "1px solid #f0f0f0" : "none", alignItems: "center" }}>
-                  <span style={{ fontSize: "0.8125rem", fontWeight: 700, color: "#aaa", textTransform: "uppercase", letterSpacing: "0.08em" }}>{fact.label}</span>
-                  <span style={{ fontSize: "0.9375rem", fontWeight: 600, color: "#0d0d0d" }}>{fact.value}</span>
-                </div>
-              ))}
-            </div>
-          </Section>
-
-          <hr style={RULE} />
-
-          {/* Textes prêts à l'emploi */}
-          <Section label={p.texts_label}>
-            <h2 style={H2}>{p.texts_title}</h2>
-            <p style={SUB}>{p.texts_sub}</p>
-            {p.texts.map((t) => <CopyBlock key={t.label} label={t.label} body={t.body} copy={p.copy_btn} copied={p.copied_btn} />)}
-          </Section>
-
-          <hr style={RULE} />
-
-          {/* Comment ça marche */}
-          <Section label={p.how_label}>
-            <h2 style={{ ...H2, margin: "0 0 2rem" }}>{p.how_title}</h2>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: "1rem" }}>
-              {p.how.map((h, i) => (
-                <div key={h.title} style={{ border: "1px solid #ebebeb", borderRadius: "16px", padding: "1.5rem" }}>
-                  <div style={{ fontSize: "0.75rem", fontWeight: 800, color: "#c0c0c0", letterSpacing: "0.1em", marginBottom: "0.75rem" }}>{String(i + 1).padStart(2, "0")}</div>
-                  <div style={{ fontSize: "1.0625rem", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.02em", marginBottom: "0.5rem" }}>{h.title}</div>
-                  <div style={{ fontSize: "0.9rem", color: "#666", lineHeight: 1.65 }}>{h.body}</div>
-                </div>
-              ))}
-            </div>
-          </Section>
-
-          <hr style={RULE} />
-
-          {/* Créateurs */}
-          <Section label={p.creators_label}>
-            <h2 style={H2}>{p.creators_title}</h2>
-            <p style={SUB}>{p.creators_sub}</p>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: "1rem", marginBottom: "2rem" }}>
-              {p.ideas.map((idea) => (
-                <div key={idea.title} style={{ backgroundColor: "#0d0d0d", borderRadius: "16px", padding: "1.5rem" }}>
-                  <div style={{ fontSize: "1rem", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em", marginBottom: "0.5rem" }}>{idea.title}</div>
-                  <div style={{ fontSize: "0.875rem", color: "rgba(255,255,255,0.55)", lineHeight: 1.65 }}>{idea.body}</div>
-                </div>
-              ))}
-            </div>
-            <div style={{ display: "flex", alignItems: "center", gap: "10px", flexWrap: "wrap" }}>
-              <span style={{ fontSize: "0.8125rem", fontWeight: 700, color: "#aaa", textTransform: "uppercase", letterSpacing: "0.1em", marginRight: "6px" }}>{p.tags_label}</span>
-              {p.tags.map((tag) => <span key={tag} style={{ ...PILL, fontSize: "0.9375rem", padding: "8px 16px" }}>{tag}</span>)}
-            </div>
-          </Section>
-
-          <hr style={RULE} />
-
-          {/* Logos */}
-          <Section label={p.logos_label}>
-            <h2 style={H2}>{p.logos_title}</h2>
-            <p style={SUB}>{p.logos_sub}</p>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: "1rem", marginBottom: "3rem" }}>
-              {LOGOS.flatMap((l) => l.files.map((f) => {
-                const dark = f.endsWith("white");
-                return (
-                  <div key={f} style={{ borderRadius: "16px", overflow: "hidden", border: "1px solid #ebebeb" }}>
-                    <div style={{ backgroundColor: dark ? "#0d0d0d" : "#ffffff", height: "150px", display: "flex", alignItems: "center", justifyContent: "center", padding: "2rem" }}>
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={`/press/${f}.svg`} alt={`Attax: ${p.logo_names[l.key]}`} style={{ maxHeight: l.key === "icon" ? "72px" : "48px", maxWidth: "100%" }} />
-                    </div>
-                    <div style={{ padding: "1rem 1.25rem", backgroundColor: "#fafafa", display: "flex", justifyContent: "space-between", alignItems: "center", gap: "0.5rem", flexWrap: "wrap" }}>
-                      <div>
-                        <div style={{ fontSize: "0.875rem", fontWeight: 700, color: "#0d0d0d" }}>{p.logo_names[l.key]}</div>
-                        <div style={{ fontSize: "0.75rem", color: "#999" }}>{dark ? p.on_dark : p.on_light}</div>
-                      </div>
-                      <div style={{ display: "flex", gap: "6px" }}>
-                        <a href={`/press/${f}.svg`} download style={PILL}>SVG</a>
-                        <a href={`/press/${f}.png`} download style={PILL}>PNG</a>
-                      </div>
-                    </div>
+                <div className="sp-logo-foot">
+                  <div><b>{p.logo_names[l.key]}</b><span>{dark ? p.on_dark : p.on_light}</span></div>
+                  <div className="sp-logo-dl">
+                    <a href={`/press/${f}.svg`} download>SVG</a>
+                    <a href={`/press/${f}.png`} download>PNG</a>
                   </div>
-                );
-              }))}
-            </div>
-
-            <p style={{ ...LABEL, marginBottom: "1rem" }}>{p.colors_label}</p>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))", gap: "1rem", marginBottom: "1.5rem" }}>
-              {p.colors.map((c) => <ColorSwatch key={c.hex} color={c} />)}
-            </div>
-            <div style={{ padding: "1.5rem 2rem", backgroundColor: "#f7f7f7", borderRadius: "14px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "1rem", flexWrap: "wrap" }}>
-              <span style={{ fontSize: "0.8125rem", fontWeight: 700, color: "#aaa", textTransform: "uppercase", letterSpacing: "0.1em" }}>{p.font_label}</span>
-              <span style={{ fontSize: "1.125rem", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.02em" }}>{p.font_value}</span>
-            </div>
-          </Section>
-
-          <hr style={RULE} />
-
-          {/* Captures & vidéo */}
-          <Section label={p.media_label}>
-            <h2 style={H2}>{p.media_title}</h2>
-            <p style={SUB}>{p.media_sub}</p>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: "1.5rem" }}>
-              <div>
-                <div style={{ position: "relative", width: "100%", paddingBottom: "205.6%", backgroundColor: "#ffffff", border: "1px solid #ebebeb", borderRadius: "16px", overflow: "hidden", marginBottom: "1rem" }}>
-                  <video key={lang} src={VIDEO(lang)} poster={`/press/attax-fight-night-${lang}-poster.jpg`} autoPlay muted loop playsInline preload="metadata" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "contain" }} />
                 </div>
-                <p style={{ fontSize: "0.875rem", fontWeight: 700, color: "#0d0d0d", margin: "0 0 0.2rem" }}>{p.video_title}</p>
-                <p style={{ fontSize: "0.8125rem", color: "#aaa", margin: "0 0 0.75rem" }}>{p.video_caption}</p>
-                <a href={VIDEO(lang)} download style={PILL}><DownloadIcon /> {p.download}</a>
               </div>
-              {SCREENS.map((s, i) => (
-                <div key={s.n}>
-                  <div style={{ position: "relative", width: "100%", paddingBottom: "205.6%", backgroundColor: "#ffffff", border: "1px solid #ebebeb", borderRadius: "16px", overflow: "hidden", marginBottom: "1rem" }}>
-                    <Image src={`/screens/app/${lang}/${s.n}.webp`} alt={p.screens[i].label} fill sizes="300px" style={{ objectFit: "contain" }} />
-                  </div>
-                  <p style={{ fontSize: "0.875rem", fontWeight: 700, color: "#0d0d0d", margin: "0 0 0.2rem" }}>{p.screens[i].label}</p>
-                  <p style={{ fontSize: "0.8125rem", color: "#aaa", margin: "0 0 0.75rem" }}>{p.screens[i].caption}</p>
-                  <a href={`/press/screens/${lang}/${s.file}`} download style={PILL}><DownloadIcon /> {p.download}</a>
-                </div>
-              ))}
-            </div>
-          </Section>
+            );
+          }))}
+        </Reveal>
 
-          <hr style={RULE} />
-
-          {/* Bonnes pratiques */}
-          <Section label={p.rules_label}>
-            <h2 style={{ ...H2, margin: "0 0 2rem" }}>{p.rules_title}</h2>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: "1rem" }}>
-              {[[p.rules_do_title, p.rules_do, "#0443FD", "✓"], [p.rules_dont_title, p.rules_dont, "#EC0420", "✕"]].map(([title, items, col, mark]) => (
-                <div key={title as string} style={{ border: "1px solid #ebebeb", borderRadius: "16px", padding: "1.5rem 1.75rem" }}>
-                  <div style={{ fontSize: "1rem", fontWeight: 800, color: col as string, marginBottom: "1rem" }}>{title as string}</div>
-                  {(items as string[]).map((it) => (
-                    <div key={it} style={{ display: "flex", gap: "0.75rem", fontSize: "0.9rem", color: "#444", lineHeight: 1.6, marginBottom: "0.6rem" }}>
-                      <span style={{ color: col as string, fontWeight: 800 }}>{mark as string}</span><span>{it}</span>
-                    </div>
-                  ))}
-                </div>
-              ))}
-            </div>
-          </Section>
-
-          <hr style={RULE} />
-
-          {/* Contact */}
-          <div style={{ textAlign: "center", padding: "2rem 0" }}>
-            <span style={{ ...LABEL, marginBottom: "1rem" }}>{p.contact_label}</span>
-            <h2 style={{ fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)", fontWeight: 800, color: "#0d0d0d", letterSpacing: "-0.04em", margin: "0 0 1.25rem" }}>{p.contact_title}</h2>
-            <p style={{ fontSize: "1.0625rem", color: "#888", margin: "0 auto 2rem", maxWidth: "520px", lineHeight: 1.7 }}>{p.contact_body}</p>
-            <a href={`mailto:${p.contact_email}`} style={{ display: "inline-flex", alignItems: "center", gap: "8px", backgroundColor: "#0d0d0d", color: "#fff", fontWeight: 700, fontSize: "0.9375rem", padding: "14px 30px", borderRadius: "999px", textDecoration: "none" }}>
-              {p.contact_email}
-            </a>
-            <p style={{ fontSize: "0.875rem", color: "#aaa", marginTop: "1rem" }}>{p.contact_response}</p>
-          </div>
-
+        <p className="st6-kick" style={{ margin: "clamp(3rem, 5vw, 4rem) 0 1.25rem" }}>{p.colors_label}</p>
+        <Reveal className="sp-swatches">
+          {p.colors.map((c) => <ColorSwatch key={c.hex} color={c} />)}
+        </Reveal>
+        <div className="sp-fontrow">
+          <span className="sp-label">{p.font_label}</span>
+          <b>{p.font_value}</b>
         </div>
-      </div>
-    </>
+      </Sec>
+
+      {/* Captures et vidéo */}
+      <Sec kick={p.media_label} title={p.media_title} lead={p.media_sub} split>
+        <Reveal className="sp-media">
+          <figure>
+            <div className="sp-media-shot">
+              <video key={lang} src={VIDEO(lang)} poster={`/press/attax-fight-night-${lang}-poster.jpg`} autoPlay muted loop playsInline preload="metadata" />
+            </div>
+            <figcaption><b>{p.video_title}</b><span>{p.video_caption}</span></figcaption>
+            <a className="sp-dl" href={VIDEO(lang)} download><DownloadIcon />{p.download}</a>
+          </figure>
+          {SCREENS.map((s, i) => (
+            <figure key={s.n}>
+              <div className="sp-media-shot">
+                <Image src={SCREEN_PREVIEW(lang, s.n)} alt={p.screens[i].label} fill sizes="(max-width: 760px) 45vw, 260px" />
+              </div>
+              <figcaption><b>{p.screens[i].label}</b><span>{p.screens[i].caption}</span></figcaption>
+              <a className="sp-dl" href={`/press/screens/${lang}/${s.file}`} download><DownloadIcon />{p.download}</a>
+            </figure>
+          ))}
+        </Reveal>
+      </Sec>
+
+      {/* Bonnes pratiques */}
+      <Sec kick={p.rules_label} title={p.rules_title}>
+        <Reveal className="sp-dos">
+          {([[p.rules_do_title, p.rules_do, false], [p.rules_dont_title, p.rules_dont, true]] as const).map(([title, items, no]) => (
+            <div key={title}>
+              <h3 className={`sp-dos-t${no ? " is-no" : ""}`}>{title}</h3>
+              <ul className={`sp-dos-l${no ? " is-no" : ""}`}>
+                {items.map((it) => <li key={it}>{it}</li>)}
+              </ul>
+            </div>
+          ))}
+        </Reveal>
+      </Sec>
+
+      {/* Contact */}
+      <Sec kick={p.contact_label} title={p.contact_title} lead={p.contact_body}>
+        <div className="sp-btns">
+          <a className="h7-btn h7-btn-ink" href={`mailto:${p.contact_email}`}>{p.contact_email}</a>
+        </div>
+        <p className="sp-note" style={{ marginTop: "1rem" }}>{p.contact_response}</p>
+      </Sec>
+    </SitePage>
   );
 }

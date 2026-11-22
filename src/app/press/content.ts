@@ -1,4 +1,4 @@
-// Contenu du kit presse (FR/EN). Règles : ce que l'app montre, rien de plus —
+// Contenu du kit presse (FR/EN). Règles : ce que l'app montre, rien de plus :
 // pas de mécanique interne, pas de chiffres inventés. Contact : contact@attax.app.
 
 export const KIT_URL = "/press/attax-press-kit.zip";
@@ -10,7 +10,7 @@ const LOGOS = [
 ] as const;
 export { LOGOS };
 
-// Captures de l'app (stores, novembre 2026). Aperçu = /screens/app/{lang}/N.webp ;
+// Captures de l'app (stores, novembre 2026). Aperçu = /screens/app/{lang}/N.webp (n = 2 : match-final-{lang}.webp, 2.webp n'existe plus) ;
 // fichier = le téléphone recadré en pleine résolution (scripts/build-press-kit.py → public/press/screens/{lang}/).
 export const SCREENS = [
   { n: 2, file: "attax-01-fight-night.jpg" },
@@ -21,6 +21,7 @@ export const SCREENS = [
   { n: 7, file: "attax-06-duo.jpg" },
   { n: 8, file: "attax-07-profile.jpg" },
 ] as const;
+export const SCREEN_PREVIEW = (lang: "en" | "fr", n: number) => n === 2 ? `/screens/app/${lang}/match-final-${lang}.webp` : `/screens/app/${lang}/${n}.webp`;
 export const VIDEO = (lang: "en" | "fr") => `/press/attax-fight-night-${lang}.mp4`;
 
 type Text = { label: string; body: string };
@@ -135,7 +136,7 @@ export const PRESS_CONTENT: Record<"en" | "fr", PressContent> = {
       { label: "Activity", caption: "Your pts of the day" },
       { label: "League", caption: "8 players, 7 days, 1 champion" },
       { label: "Season", caption: "The world ranking of effort" },
-      { label: "Duo", caption: "Your duo partner" },
+      { label: "Duo", caption: "A duo partner is assigned to motivate you" },
       { label: "Profile", caption: "Trophies, badges, streak" },
     ],
     download: "Download",
@@ -243,7 +244,7 @@ export const PRESS_CONTENT: Record<"en" | "fr", PressContent> = {
       { label: "Activités", caption: "Tes pts du jour" },
       { label: "Ligue", caption: "8 joueurs, 7 jours, 1 champion" },
       { label: "Saison", caption: "Le classement mondial de l'effort" },
-      { label: "Binôme", caption: "Ton binôme" },
+      { label: "Binôme", caption: "Un binôme t'est attribué pour te motiver" },
       { label: "Profil", caption: "Trophées, badges, série" },
     ],
     download: "Télécharger",
