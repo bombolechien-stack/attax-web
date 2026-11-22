@@ -295,7 +295,7 @@ export const T = {
     adventure: {
       hero_label: "THE ADVENTURE",
       h1: ["Why we built", "Attax."],
-      subtitle: "Most fitness apps measure activity.\nWe wanted one that rewarded it.",
+      subtitle: "Most fitness apps measure activity.\nWe wanted to give people a real reason to get out and move.",
       cta_download: "Download Attax",
       cta_contact: "Get in touch",
       widget_quote: "Sport only means something if it makes you want to come back the next day.",
@@ -310,7 +310,7 @@ export const T = {
       story_sub: "A simple idea: make sport more engaging by turning consistency into competition.",
       timeline: [
         { n: "01", year: "The Problem", title: "Fitness apps that track. Nothing more.", description: "Trackers, step counters, calorie logs: we kept seeing the same thing. Numbers nobody else sees, nothing at stake, nothing that makes Monday exciting." },
-        { n: "02", year: "The Insight", title: "Consistency is the real superpower", description: "The people who progress aren't the most talented: they're the ones who keep showing up. We wanted a game that rewards coming back every day, not one heroic session." },
+        { n: "02", year: "The Insight", title: "Consistency is the real superpower", description: "The people who progress aren't the most talented: they're the ones who keep showing up. We wanted a game that gives you a real reason to get out and train every day, not one heroic session." },
         { n: "03", year: "The Vision", title: "What if sport had stakes?", description: "What if your morning run could win you a duel tonight? What if your league standing reflected how hard you actually trained this week? We wanted to give everyday sport a real competitive layer." },
         { n: "04", year: "Today", title: "Attax launches", description: "Attax is now on iPhone and Android, and the first leagues are underway. We're just getting started." },
       ],
@@ -337,7 +337,7 @@ export const T = {
       hero_stats: [
         { title: "contact@attax.app", sub: "One address for everything" },
         { title: "@playattax", sub: "Instagram & TikTok" },
-        { title: "FR · EN", sub: "We reply in both" },
+        { title: "French · English", sub: "We reply in both" },
       ],
       categories_label: "What can we help you with?",
       categories: [
@@ -690,7 +690,7 @@ export const T = {
     adventure: {
       hero_label: "L'AVENTURE",
       h1: ["Pourquoi nous avons", "créé Attax."],
-      subtitle: "La plupart des applications fitness mesurent l'activité.\nNous voulions en créer une qui la récompense.",
+      subtitle: "La plupart des applications fitness mesurent l'activité.\nNous voulions enfin donner une vraie raison d'aller faire du sport.",
       cta_download: "Télécharger Attax",
       cta_contact: "Nous contacter",
       widget_quote: "Le sport n'a de sens que s'il te donne envie de revenir le lendemain.",
@@ -705,7 +705,7 @@ export const T = {
       story_sub: "Une idée simple : rendre le sport plus prenant en transformant la régularité en compétition.",
       timeline: [
         { n: "01", year: "Le problème", title: "Des applications qui mesurent. Rien de plus.", description: "Trackers, podomètres, journaux de calories : on retrouvait toujours la même chose. Des chiffres que personne d'autre ne voit, aucun enjeu, rien qui rende le lundi excitant." },
-        { n: "02", year: "L'intuition", title: "La régularité est le vrai super-pouvoir", description: "Ceux qui progressent ne sont pas les plus doués : ce sont ceux qui reviennent. Nous voulions un jeu qui récompense le fait d'être là chaque jour, pas une séance héroïque." },
+        { n: "02", year: "L'intuition", title: "La régularité est le vrai super-pouvoir", description: "Ceux qui progressent ne sont pas les plus doués : ce sont ceux qui reviennent. Nous voulions un jeu qui donne une vraie raison d'aller faire du sport chaque jour, pas une séance héroïque." },
         { n: "03", year: "La vision", title: "Et si le sport avait des enjeux ?", description: "Et si ton footing du matin pouvait te faire gagner un duel le soir ? Et si ta place au classement reflétait ton entraînement réel de la semaine ? Nous voulions donner au sport du quotidien une vraie dimension compétitive." },
         { n: "04", year: "Aujourd'hui", title: "Attax est lancé", description: "Attax est disponible sur iPhone et Android, et les premières ligues sont lancées. Ce n'est que le début." },
       ],
@@ -732,7 +732,7 @@ export const T = {
       hero_stats: [
         { title: "contact@attax.app", sub: "Une adresse pour tout" },
         { title: "@playattax", sub: "Instagram & TikTok" },
-        { title: "FR · EN", sub: "On répond dans les deux langues" },
+        { title: "Français · anglais", sub: "On répond dans les deux langues" },
       ],
       categories_label: "Comment pouvons-nous t'aider ?",
       categories: [

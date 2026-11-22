@@ -205,7 +205,7 @@ function ContentFr() {
             <li><strong>Apple</strong> et <strong>Google</strong> : connexion, uniquement si tu choisis « Se connecter avec Apple » ou Google, et accès à Apple Santé ou Health Connect sur ton téléphone.</li>
             <li><strong>Vercel</strong> : hébergement du site attax.app ; <strong>Resend</strong> : acheminement vers notre boîte de réception des messages envoyés via les formulaires du site.</li>
           </ul>
-          <p>Nous ne vendons pas tes données personnelles. Certains de ces prestataires sont établis aux États-Unis ou peuvent y traiter des données. Lorsque des données personnelles sont transférées hors de l'Union européenne, le transfert repose sur les garanties prévues par le RGPD, comme les clauses contractuelles types de la Commission européenne ou, pour les prestataires certifiés, le cadre de protection des données UE–États-Unis (Data Privacy Framework). Tu peux nous demander plus d'informations à contact@attax.app.</p>
+          <p>Nous ne vendons pas tes données personnelles. Certains de ces prestataires sont établis aux États-Unis ou peuvent y traiter des données. Lorsque des données personnelles sont transférées hors de l'Union européenne, le transfert repose sur les garanties prévues par le RGPD, comme les clauses contractuelles types de la Commission européenne ou, pour les prestataires certifiés, le cadre de protection des données UE-États-Unis (Data Privacy Framework). Tu peux nous demander plus d'informations à contact@attax.app.</p>
         </section>
 
         <section>
