@@ -29,7 +29,7 @@ export const T = {
     info: {
       label: "THE IDEA",
       h2: "Your activity is the game engine.",
-      sub: "Most fitness apps stop at tracking.\nAttax turns every workout into a fight you can win tonight.",
+      sub: "Most fitness apps stop at tracking.\nAttax turns every workout into daily competition.",
       steps: [
         { title: "Real effort", body: "Your watch turns workouts and steps into points. Intensity pays, not just volume." },
         { title: "Strategy", body: "3 cards every morning, the same for both of you. Theirs stays secret until the fight." },
@@ -425,7 +425,7 @@ export const T = {
     info: {
       label: "L'IDÉE",
       h2: "Ton activité est le moteur du jeu.",
-      sub: "La plupart des applications fitness s'arrêtent au suivi.\nAttax transforme chaque séance en combat à gagner le soir même.",
+      sub: "La plupart des applications fitness s'arrêtent au suivi.\nAttax transforme chaque séance en compétition quotidienne.",
       steps: [
         { title: "Ton vrai effort", body: "Ta montre change tes séances et tes pas en points. L'intensité paie, pas seulement le volume." },
         { title: "Stratégie", body: "3 cartes chaque matin, les mêmes pour vous deux. La sienne reste secrète jusqu'au combat." },

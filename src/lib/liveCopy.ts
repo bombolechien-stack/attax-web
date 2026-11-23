@@ -6,7 +6,7 @@ export const LIVE = {
     info: {
       label: "THE IDEA",
       h2: "Your fitness is the game engine.",
-      sub: "Most fitness apps stop at tracking.\nAttax turns every session into a fight you can win tonight.",
+      sub: "Most fitness apps stop at tracking.\nAttax turns every workout into daily competition.",
       steps: [
         { title: "Real effort", body: "Every minute your heart works hard earns points. Your steps count too." },
         { title: "Strategy", body: "3 cards every morning. One choice can flip a close duel." },
@@ -52,7 +52,7 @@ export const LIVE = {
     info: {
       label: "L'IDÉE",
       h2: "Ton activité est le moteur du jeu.",
-      sub: "La plupart des applications fitness s'arrêtent au suivi.\nAttax transforme chaque séance en combat à gagner le soir même.",
+      sub: "La plupart des applications fitness s'arrêtent au suivi.\nAttax transforme chaque séance en compétition quotidienne.",
       steps: [
         { title: "Ton vrai effort", body: "Chaque minute où ton cœur travaille rapporte des points. Tes pas aussi." },
         { title: "Stratégie", body: "3 cartes chaque matin. Un seul choix peut renverser un duel serré." },
