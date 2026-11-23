@@ -49,7 +49,7 @@ export default function Footer() {
             ATTAX
           </div>
           <div style={{ position: "relative", zIndex: 1 }}>
-            {/* Le contact en grand (une seule adresse : contact@) */}
+            {/* Le contact en grand (adresse générale ; media@ et partners@ : pages Contact et Presse) */}
             <div className="footer-mail">
               <span className="p-mono">Contact</span>
               <a href="mailto:contact@attax.app">contact@attax.app</a>

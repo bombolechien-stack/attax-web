@@ -211,6 +211,7 @@ export default function PressPage() {
           <a className="h7-btn h7-btn-ink" href={`mailto:${p.contact_email}`}>{p.contact_email}</a>
         </div>
         <p className="sp-note" style={{ marginTop: "1rem" }}>{p.contact_response}</p>
+        <p className="sp-note" style={{ marginTop: "0.5rem" }}>{p.partners_label} <a href={`mailto:${p.partners_email}`} style={{ textDecoration: "underline", textUnderlineOffset: "3px" }}>{p.partners_email}</a></p>
       </Sec>
     </SitePage>
   );

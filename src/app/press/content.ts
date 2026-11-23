@@ -1,5 +1,5 @@
 // Contenu du kit presse (FR/EN). Règles : ce que l'app montre, rien de plus :
-// pas de mécanique interne, pas de chiffres inventés. Contact : contact@attax.app.
+// pas de mécanique interne, pas de chiffres inventés. Contacts : media@attax.app (presse), partners@attax.app (partenariats).
 
 export const KIT_URL = "/press/attax-press-kit.zip";
 
@@ -40,7 +40,7 @@ export type PressContent = {
   media_label: string; media_title: string; media_sub: string; video_title: string; video_caption: string;
   screens: { label: string; caption: string }[]; download: string;
   rules_label: string; rules_title: string; rules_do_title: string; rules_do: string[]; rules_dont_title: string; rules_dont: string[];
-  contact_label: string; contact_title: string; contact_body: string; contact_email: string; contact_response: string;
+  contact_label: string; contact_title: string; contact_body: string; contact_email: string; partners_label: string; partners_email: string; contact_response: string;
 };
 
 export const PRESS_CONTENT: Record<"en" | "fr", PressContent> = {
@@ -148,8 +148,9 @@ export const PRESS_CONTENT: Record<"en" | "fr", PressContent> = {
     rules_dont: ["Distort, recolor or crop the logo.", "Present Attax as a medical or health-diagnosis app.", "Promise results, prizes or rewards that the app doesn't offer.", "Edit screenshots in a way that changes what the app shows."],
     contact_label: "PRESS CONTACT",
     contact_title: "Let's talk.",
-    contact_body: "Interviews, demos, partnerships or creator collaborations: write to us.",
-    contact_email: "contact@attax.app",
+    contact_body: "Interviews, demos or coverage of Attax: write to us.",
+    contact_email: "media@attax.app",
+    partners_label: "Partnerships or creator collaborations:", partners_email: "partners@attax.app",
     contact_response: "We reply as quickly as we can, in English or French.",
   },
   fr: {
@@ -256,8 +257,9 @@ export const PRESS_CONTENT: Record<"en" | "fr", PressContent> = {
     rules_dont: ["Déformer, recolorer ou recadrer le logo.", "Présenter Attax comme une app médicale ou de diagnostic santé.", "Promettre des résultats, des prix ou des récompenses que l'app ne propose pas.", "Retoucher les captures de façon à changer ce que montre l'app."],
     contact_label: "CONTACT PRESSE",
     contact_title: "Parlons-en.",
-    contact_body: "Interviews, démos, partenariats ou collaborations créateurs : écris-nous.",
-    contact_email: "contact@attax.app",
+    contact_body: "Interviews, démos ou articles sur Attax : écris-nous.",
+    contact_email: "media@attax.app",
+    partners_label: "Partenariats ou collaborations créateurs :", partners_email: "partners@attax.app",
     contact_response: "Nous répondons au plus vite, en français ou en anglais.",
   },
 };
