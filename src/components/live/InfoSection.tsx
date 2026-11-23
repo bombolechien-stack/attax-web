@@ -14,11 +14,12 @@ export default function InfoSection() {
 
   return (
     <section id="idea" className="h7 h7-idea">
-      {/* Passe 7 : seulement la grande phrase (accord du propriétaire, 21/11) ; les 3 colonnes sont retirées. */}
+      {/* Passe 7 : la grande phrase ; les 3 colonnes sont retirées. 23/11 : deux phrases dessous (demande de gui). */}
       <div className="p5-wrap">
         <div ref={headRef} className={`h7-head${headIn ? " is-in" : ""}`}>
           <p className="st6-kick">{inf.label}</p>
           <h2 className="h7-h2">{inf.h2}</h2>
+          <p className="p5-lead h7-idea-lead">{inf.sub.split("\n").map((l) => <span key={l}>{l}</span>)}</p>
         </div>
       </div>
     </section>

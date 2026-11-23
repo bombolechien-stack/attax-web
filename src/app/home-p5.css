@@ -1018,6 +1018,10 @@ body:has(.h7-page) .footer-panel .footer-attax { color: rgba(9,9,11,0.03) !impor
 /* L'idée : la grande phrase seule, espacement serré */
 .h7-idea { padding-top: clamp(3.5rem, 6vw, 5rem); padding-bottom: clamp(1rem, 2vw, 1.5rem); }
 @media (max-width: 900px) { .h7-idea { padding: 3rem 0 0.5rem; } }
+/* 23/11 : deux phrases sous la grande phrase (une par ligne en large). */
+.p5 .h7-idea-lead { margin-top: clamp(1.25rem, 2vw, 1.75rem); max-width: 42rem; }
+.h7-idea-lead span { display: block; }
+@media (max-width: 900px) { .h7-idea-lead span { display: inline; } .h7-idea-lead span + span::before { content: " "; } }
 
 /* Ligue (21/11, accord du propriétaire) : tableau calé sur le bord gauche de la grille, texte + rangs centrés verticalement
    contre lui, moins de vide entre les deux et sous les rangs */
