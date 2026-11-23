@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://attax.app/apple-health-fitness-game" },
   openGraph: {
     title: "Apple Health Fitness Game | Attax",
-    description: "Turn your Apple Health activity into daily boxing duels, leagues and ranks.",
+    description: "Turn your Apple Health activity into daily duels, leagues and ranks.",
     url: "https://attax.app/apple-health-fitness-game",
   },
 };

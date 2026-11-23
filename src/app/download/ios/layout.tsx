@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 const TITLE = "Download Attax for iPhone: Free on the App Store";
-const DESC = "Attax is free on the App Store: your workouts from Apple Health become a boxing duel every day against a player from your league, with Fight Night at 9:30 PM. iOS 15.1 or later.";
+const DESC = "Attax is free on the App Store: your workouts from Apple Health become a duel every day against a player from your league, with Fight Night at 9:30 PM. iOS 15.1 or later.";
 
 export const metadata: Metadata = {
   title: TITLE,

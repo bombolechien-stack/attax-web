@@ -89,7 +89,7 @@ const P: Record<Lang, {
     heroLabel: "FITNESS COMPETITION APP",
     heroTitle: "A better reason\nto stay active.",
     heroSubtitle: "Attax is a fitness competition app where real-world activity becomes a competitive advantage.",
-    heroSubtitle2: "One boxing duel a day against a player of your league, 3 cards every morning, and Fight Night every evening at 9:30 PM.",
+    heroSubtitle2: "One duel a day against a player of your league, 3 cards every morning, and Fight Night every evening at 9:30 PM.",
     heroCta: "Download Attax",
     secWhyFail: "Why Goals Fail",
     whyFailH2: "Why most fitness goals fail",
@@ -114,7 +114,7 @@ const P: Record<Lang, {
     different3: "Attax combines:",
     whatMakes: [
       "Real workout and step data",
-      "A boxing duel every day, in 7 rounds",
+      "A duel every day, in 7 rounds",
       "3 cards every morning",
       "Leagues of 8 players at your level",
       "Ranked leagues with friends, and custom leagues from 2 to 40 players",
@@ -173,7 +173,7 @@ const P: Record<Lang, {
     secFaq: "FAQ",
     faqH2: "Frequently asked questions",
     faq: [
-      { q: "What is a fitness competition app?", a: "An app that uses rankings, duels and challenges to motivate physical activity. In Attax, your real workouts decide daily boxing duels within leagues of 8 players." },
+      { q: "What is a fitness competition app?", a: "An app that uses rankings, duels and challenges to motivate physical activity. In Attax, your real workouts decide daily duels within leagues of 8 players." },
       { q: "How does Attax create competition?", a: "Every day, you face a new player of your league. The match is 7 rounds (your previous 6 days, plus today), each won by the player with the most points that day. Add the card you chose, and Fight Night decides at 9:30 PM." },
       { q: "Can beginners compete?", a: "Yes. You join a league at your level, and every effort counts." },
       { q: "Can I compete with my friends?", a: "Yes. Create a ranked league with up to 2 friends (3 of you), of a close rank, or a custom league from 2 to 40 players. Share your code, they join in seconds." },
@@ -192,7 +192,7 @@ const P: Record<Lang, {
     heroLabel: "APP DE COMPÉTITION FITNESS",
     heroTitle: "Une meilleure raison\nde rester actif.",
     heroSubtitle: "Attax est une application de compétition fitness où l'activité réelle devient un avantage compétitif.",
-    heroSubtitle2: "Un duel de boxe par jour contre un joueur de ta ligue, 3 cartes chaque matin, et le Soir de combat chaque soir à 21h30.",
+    heroSubtitle2: "Un duel par jour contre un joueur de ta ligue, 3 cartes chaque matin, et le Soir de combat chaque soir à 21h30.",
     heroCta: "Télécharger Attax",
     secWhyFail: "Pourquoi les objectifs échouent",
     whyFailH2: "Pourquoi la plupart des objectifs fitness échouent",
@@ -217,7 +217,7 @@ const P: Record<Lang, {
     different3: "Attax combine :",
     whatMakes: [
       "De vraies données de séances et de pas",
-      "Un duel de boxe chaque jour, en 7 rounds",
+      "Un duel chaque jour, en 7 rounds",
       "3 cartes chaque matin",
       "Des ligues de 8 joueurs de ton niveau",
       "Des ligues classées entre amis, et des ligues personnalisées de 2 à 40 joueurs",
@@ -276,7 +276,7 @@ const P: Record<Lang, {
     secFaq: "FAQ",
     faqH2: "Questions fréquentes",
     faq: [
-      { q: "Qu'est-ce qu'une application de compétition sportive ?", a: "Une application qui utilise classements, duels et défis pour motiver l'activité physique. Dans Attax, tes vraies séances décident de duels de boxe quotidiens au sein de ligues de 8 joueurs." },
+      { q: "Qu'est-ce qu'une application de compétition sportive ?", a: "Une application qui utilise classements, duels et défis pour motiver l'activité physique. Dans Attax, tes vraies séances décident de duels quotidiens au sein de ligues de 8 joueurs." },
       { q: "Comment Attax crée-t-il la compétition ?", a: "Chaque jour, tu affrontes un nouveau joueur de ta ligue. Le match se joue en 7 rounds (tes 6 jours d'avant, plus aujourd'hui), chacun gagné par celui qui a le plus de points ce jour-là. Ajoute la carte que tu as choisie, et le Soir de combat décide à 21h30." },
       { q: "Les débutants peuvent-ils jouer ?", a: "Oui. Tu rejoins une ligue de ton niveau, et chaque effort compte." },
       { q: "Puis-je affronter mes amis ?", a: "Oui. Crée une ligue classée avec jusqu'à 2 amis (3 avec toi), de rang proche, ou une ligue personnalisée de 2 à 40 joueurs. Partage ton code, ils te rejoignent en quelques secondes." },

@@ -13,7 +13,7 @@ const COPY = {
     en: {
       label: "ATTAX FOR IPHONE",
       h1: ["Attax on iPhone.", "Free on the App Store."],
-      sub: "Your workouts, read from Apple Health, become a boxing duel every day against a player from your league. Fight Night every evening at 9:30 PM.",
+      sub: "Your workouts, read from Apple Health, become a duel every day against a player from your league. Fight Night every evening at 9:30 PM.",
       cta: "Download on the App Store",
       need_h: "What you need",
       need: [
@@ -36,7 +36,7 @@ const COPY = {
     fr: {
       label: "ATTAX SUR IPHONE",
       h1: ["Attax sur iPhone.", "Gratuit sur l'App Store."],
-      sub: "Tes séances, lues dans Apple Santé, deviennent un duel de boxe chaque jour contre un joueur de ta ligue. Soir de combat chaque soir à 21h30.",
+      sub: "Tes séances, lues dans Apple Santé, deviennent un duel chaque jour contre un joueur de ta ligue. Soir de combat chaque soir à 21h30.",
       cta: "Télécharger sur l'App Store",
       need_h: "Ce qu'il te faut",
       need: [
@@ -61,7 +61,7 @@ const COPY = {
     en: {
       label: "ATTAX FOR ANDROID",
       h1: ["Attax on Android.", "Free on Google Play."],
-      sub: "Your workouts, read from Health Connect, become a boxing duel every day against a player from your league. Fight Night every evening at 9:30 PM.",
+      sub: "Your workouts, read from Health Connect, become a duel every day against a player from your league. Fight Night every evening at 9:30 PM.",
       cta: "Get it on Google Play",
       need_h: "What you need",
       need: [
@@ -84,7 +84,7 @@ const COPY = {
     fr: {
       label: "ATTAX SUR ANDROID",
       h1: ["Attax sur Android.", "Gratuit sur Google Play."],
-      sub: "Tes séances, lues dans Health Connect, deviennent un duel de boxe chaque jour contre un joueur de ta ligue. Soir de combat chaque soir à 21h30.",
+      sub: "Tes séances, lues dans Health Connect, deviennent un duel chaque jour contre un joueur de ta ligue. Soir de combat chaque soir à 21h30.",
       cta: "Disponible sur Google Play",
       need_h: "Ce qu'il te faut",
       need: [

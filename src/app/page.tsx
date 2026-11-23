@@ -19,7 +19,7 @@ import "./home-p5.css";
 export const metadata: Metadata = {
   title: "Attax: Sport is now a game.",
   description:
-    "Attax turns your real workouts into daily boxing duels: leagues of 8, 7 rounds per match, 12 tactical cards and Fight Night every evening at 9:30 PM. Free on iPhone & Android.",
+    "Attax turns your real workouts into daily duels: leagues of 8, 7 rounds per match, 12 tactical cards and Fight Night every evening at 9:30 PM. Free on iPhone & Android.",
   alternates: { canonical: "https://attax.app" },
 };
 
@@ -32,7 +32,7 @@ const softwareAppSchema = {
   operatingSystem: "iOS, Android",
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
   description:
-    "Attax turns your real workouts into daily boxing duels: leagues of 8, 7 rounds per match, 12 tactical cards and Fight Night every evening at 9:30 PM. Free on iPhone & Android.",
+    "Attax turns your real workouts into daily duels: leagues of 8, 7 rounds per match, 12 tactical cards and Fight Night every evening at 9:30 PM. Free on iPhone & Android.",
   url: "https://attax.app",
   downloadUrl: "https://attax.app/download",
 };

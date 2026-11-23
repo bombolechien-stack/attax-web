@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 const TITLE = "Download Attax for Android: Free on Google Play";
-const DESC = "Attax is free on Google Play: your workouts from Health Connect become a boxing duel every day against a player from your league, with Fight Night at 9:30 PM. Android 9 or later.";
+const DESC = "Attax is free on Google Play: your workouts from Health Connect become a duel every day against a player from your league, with Fight Night at 9:30 PM. Android 9 or later.";
 
 export const metadata: Metadata = {
   title: TITLE,

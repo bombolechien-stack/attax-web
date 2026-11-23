@@ -12,7 +12,7 @@ export const T = {
       h1: ["Sport is now", "a game."],
       kicker: ["Every day", "a new opponent"],
       sports: "Run · Ride · Lift · Swim · Walk",
-      subtitle: "Your watch measures. Your boxer hits.\nEvery night at 9:30 PM, the verdict.",
+      subtitle: "Your watch measures. Face your league.\nEvery night at 9:30 PM, the verdict.",
       cta_ios: "Download Attax",
       cta_secondary: "How It Works",
       stats: [
@@ -167,7 +167,7 @@ export const T = {
     },
     download: {
       hero_label: "FREE TO DOWNLOAD",
-      h1: ["Get Attax.", "Start battling."],
+      h1: ["Get Attax.", "Join the competition."],
       subtitle: "Turn your workouts into daily duels. On iPhone and Android, in 15 languages, for free.",
       cta_ios: "Download on the App Store",
       cta_android: "Get it on Google Play",
@@ -245,8 +245,8 @@ export const T = {
     },
     discover: {
       hero_label: "DISCOVER ATTAX",
-      h1: ["Your workouts.", "A real fight."],
-      subtitle: "Your workouts become a fight.\nYour watch measures your effort, your boxer throws the punches.",
+      h1: ["Your workouts.", "Real competition."],
+      subtitle: "Every day, an opponent from your league.\nEvery evening at 9:30 PM, the verdict.",
       cta_ios: "Download Attax",
       cta_story: "Our Story",
       stats: [
@@ -262,7 +262,7 @@ export const T = {
       ],
       pillars_label: "THE MECHANICS",
       pillars_h2: ["Four systems.", "One game."],
-      pillars_sub: "Real effort. Strategic choices. A boxing duel every day. Every day you move is a round you can win.",
+      pillars_sub: "Real effort. Strategic choices. A duel every day. Every day you move is a round you can win.",
       pillars: [
         { n: "01", title: "Points", description: "Your watch measures your workouts and your steps, through Apple Health or Health Connect. They become points. It's intensity that pays, not just volume. Manual entries don't count." },
         { n: "02", title: "The Daily Duel", description: "A match is 7 rounds: your previous 6 days, plus today. Each day is a round, won by the player with the most points. Everyone starts with 7 HP, a lost round costs 1 HP (the final round, 2 HP); the player with the most HP left wins. Never a draw." },
@@ -408,7 +408,7 @@ export const T = {
       h1: ["Le sport devient", "un jeu."],
       kicker: ["Chaque jour", "un nouvel adversaire"],
       sports: "Course · Vélo · Musculation · Natation · Marche",
-      subtitle: "Ta montre mesure. Ton boxeur frappe.\nChaque soir à 21h30, le verdict.",
+      subtitle: "Ta montre mesure. Tu affrontes ta ligue.\nChaque soir à 21h30, le verdict.",
       cta_ios: "Télécharger Attax",
       cta_secondary: "Comment ça marche",
       stats: [
@@ -563,7 +563,7 @@ export const T = {
     },
     download: {
       hero_label: "GRATUIT",
-      h1: ["Télécharge Attax.", "Commence le combat."],
+      h1: ["Télécharge Attax.", "Entre en compétition."],
       subtitle: "Transforme tes séances en duels quotidiens. Sur iPhone et Android, en 15 langues, gratuitement.",
       cta_ios: "Télécharger sur l'App Store",
       cta_android: "Disponible sur Google Play",
@@ -641,8 +641,8 @@ export const T = {
     },
     discover: {
       hero_label: "DÉCOUVRIR ATTAX",
-      h1: ["Tes séances.", "Un vrai combat."],
-      subtitle: "Ton sport devient un combat.\nTa montre mesure ton effort, ton boxeur frappe.",
+      h1: ["Tes séances.", "Une vraie compétition."],
+      subtitle: "Chaque jour, un adversaire de ta ligue.\nChaque soir à 21h30, le verdict.",
       cta_ios: "Télécharger Attax",
       cta_story: "Notre histoire",
       stats: [
@@ -658,7 +658,7 @@ export const T = {
       ],
       pillars_label: "LES MÉCANIQUES",
       pillars_h2: ["Quatre systèmes.", "Un seul jeu."],
-      pillars_sub: "Un vrai effort. Des choix stratégiques. Un duel de boxe chaque jour. Chaque jour où tu bouges est un round à gagner.",
+      pillars_sub: "Un vrai effort. Des choix stratégiques. Un duel chaque jour. Chaque jour où tu bouges est un round à gagner.",
       pillars: [
         { n: "01", title: "Points", description: "Ta montre mesure tes séances et tes pas, via Apple Santé ou Health Connect. Ils deviennent des points. C'est l'intensité qui paie, pas seulement le volume. Les saisies à la main ne comptent pas." },
         { n: "02", title: "Le duel quotidien", description: "Un match se joue en 7 rounds : tes 6 jours d'avant, plus aujourd'hui. Chaque jour est un round, gagné par celui qui a le plus de points. Chacun part de 7 PV, un round perdu coûte 1 PV (le round final, 2 PV) ; celui qui garde le plus de PV gagne. Jamais de match nul." },

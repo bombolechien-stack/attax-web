@@ -119,7 +119,7 @@ const P: Record<Lang, {
   en: {
     heroLabel: "WHAT IS ATTAX",
     heroTitle: "The fitness game\npowered by real activity.",
-    heroSubtitle1: "Your workouts become a fight. Attax turns your real sessions into daily boxing duels against a player of your league: your watch measures your effort, your boxer throws the punches. Fight Night is at 9:30 PM.",
+    heroSubtitle1: "Your workouts become a competition. Attax turns your real sessions into daily duels against a player of your league: your watch measures your effort, the verdict lands every evening at 9:30 PM.",
     heroSubtitle2: "Train in real life. Win your matches. Climb from Rookie to Legend.",
     heroCta: "Download Attax",
 
@@ -140,7 +140,7 @@ const P: Record<Lang, {
     diffH2: "What makes Attax different",
     diffP1: "Attax is not simply a fitness tracker.\nIt is not a traditional workout application.\nIt is not another step counter.",
     diffP2: "Attax is a competitive fitness game.",
-    diffP3: "Your real-world activity, measured by your watch, decides your boxing duels against the other players of your league.",
+    diffP3: "Your real-world activity, measured by your watch, decides your duels against the other players of your league.",
     diffP4: "Every run contributes.\nEvery walk contributes.\nEvery workout contributes.\nEvery effort becomes part of a larger competitive system.",
     diffP5: "The result is simple. Movement gains purpose. Instead of exercising purely for statistics, players exercise because every action contributes to progression, competition and achievement.",
     diffP6: "The objective is not to create pressure. The objective is to create engagement. When activity influences meaningful outcomes, consistency becomes easier to maintain.",
@@ -196,7 +196,7 @@ const P: Record<Lang, {
     faqLabel: "FAQ",
     faqH2: "Frequently asked questions",
     faq: [
-      { q: "What is Attax?", a: "A competitive fitness game: your real workouts, measured by your watch, become daily boxing duels against a player of your league." },
+      { q: "What is Attax?", a: "A competitive fitness game: your real workouts, measured by your watch, become daily duels against a player of your league." },
       { q: "Is Attax a fitness app or a game?", a: "Both. Attax reads your activity like a fitness app, and turns it into matches, cards, leagues and ranks like a game." },
       { q: "Does walking count?", a: "Yes. Your steps count every day, even with your phone alone. For your workouts, you need a device that measures your heart rate." },
       { q: "Can beginners use Attax?", a: "Absolutely. You play against players at your level, and every effort counts: from a brisk walk to an all-out session." },
@@ -216,7 +216,7 @@ const P: Record<Lang, {
   fr: {
     heroLabel: "QU’EST-CE QU’ATTAX",
     heroTitle: "Le jeu de fitness\npropulsé par une activité réelle.",
-    heroSubtitle1: "Ton sport devient un combat. Attax transforme tes vraies séances en duels de boxe quotidiens contre un joueur de ta ligue : ta montre mesure ton effort, ton boxeur frappe. Le Soir de combat, c'est à 21h30.",
+    heroSubtitle1: "Ton sport devient une compétition. Attax transforme tes vraies séances en duels quotidiens contre un joueur de ta ligue : ta montre mesure ton effort, le verdict tombe chaque soir à 21h30.",
     heroSubtitle2: "Entraîne-toi dans la vraie vie. Gagne tes matchs. Grimpe de Rookie à Legend.",
     heroCta: "Télécharger Attax",
 
@@ -237,7 +237,7 @@ const P: Record<Lang, {
     diffH2: "Ce qui rend Attax différent",
     diffP1: "Attax n’est pas simplement un tracker fitness.\nCe n’est pas une application d’entraînement traditionnelle.\nCe n’est pas un podomètre de plus.",
     diffP2: "Attax est un jeu de fitness compétitif.",
-    diffP3: "Ton activité réelle, mesurée par ta montre, décide de tes duels de boxe contre les autres joueurs de ta ligue.",
+    diffP3: "Ton activité réelle, mesurée par ta montre, décide de tes duels contre les autres joueurs de ta ligue.",
     diffP4: "Chaque course contribue.\nChaque marche contribue.\nChaque séance contribue.\nChaque effort fait partie d’un système compétitif plus large.",
     diffP5: "Le résultat est simple. Le mouvement prend du sens. Au lieu de faire du sport uniquement pour des statistiques, les joueurs s’entraînent parce que chaque action contribue à la progression, la compétition et l’accomplissement.",
     diffP6: "L’objectif n’est pas de créer de la pression. L’objectif est de créer de l’engagement. Quand l’activité influe sur des résultats concrets, la régularité devient plus facile à maintenir.",
@@ -293,7 +293,7 @@ const P: Record<Lang, {
     faqLabel: "FAQ",
     faqH2: "Questions fréquemment posées",
     faq: [
-      { q: "Qu'est-ce qu'Attax ?", a: "Un jeu de fitness compétitif : tes vraies séances, mesurées par ta montre, deviennent des duels de boxe quotidiens contre un joueur de ta ligue." },
+      { q: "Qu'est-ce qu'Attax ?", a: "Un jeu de fitness compétitif : tes vraies séances, mesurées par ta montre, deviennent des duels quotidiens contre un joueur de ta ligue." },
       { q: "Attax est-il une application fitness ou un jeu ?", a: "Les deux. Attax lit ton activité comme une application fitness, et la transforme en matchs, cartes, ligues et rangs comme un jeu." },
       { q: "La marche compte-t-elle ?", a: "Oui. Tes pas comptent chaque jour, même avec ton téléphone seul. Pour tes séances, il te faut un appareil qui mesure ta fréquence cardiaque." },
       { q: "Les débutants peuvent-ils jouer ?", a: "Absolument. Tu affrontes des joueurs de ton niveau, et chaque effort compte : de la marche rapide à la séance à fond." },
@@ -351,7 +351,7 @@ export default function WhatIsAttax() {
             <Reveal as="p" className="sp-quote">
               {lang === "en"
                 ? "“Every effort counts. Every day you move, you compete.”"
-                : "« Chaque effort compte. Chaque jour où tu bouges, tu combats. »"}
+                : "« Chaque effort compte. Chaque jour où tu bouges, tu marques. »"}
             </Reveal>
 
             <Block kick={p.howLabel} title={p.howH2}>

@@ -139,7 +139,7 @@ const P: Record<Lang, {
   en: {
     heroLabel: "HOW ATTAX WORKS",
     heroTitle: "Real activity.\nReal competition.",
-    heroSubtitle1: "Your workouts become a fight. Attax turns your workouts and your steps into points, and your points into a daily boxing duel against a player of your league.",
+    heroSubtitle1: "Your workouts become a competition. Attax turns your workouts and your steps into points, and your points into a daily duel against a player of your league.",
     heroSubtitle2: "No manual tracking. No complicated setup. Just move and compete.",
     heroCta: "Download Attax",
 
@@ -175,7 +175,7 @@ const P: Record<Lang, {
 
     competitionLabel: "Competition",
     competitionH2: "Daily competition",
-    competitionP1: "At the heart of Attax is the daily boxing duel. Every day, you face a new player of your league.",
+    competitionP1: "At the heart of Attax is the daily duel. Every day, you face a new player of your league, in a boxing match.",
     competitionP2: "A match is 7 rounds: your previous 6 days, plus today. Each day is a round, won by the player with the most points that day, and a lost round costs 1 HP (the final round, 2 HP). The 6 past rounds play out one by one from 10 AM to 7 PM. The final round is live from 7 PM and takes 2 HP. At 9:30 PM, Fight Night: the boxers walk out, the rounds replay, the cards flip, and the final round decides. The player with the most HP left wins. Never a draw.",
     competitionP3: "The objective is simple: move, train, stay consistent, perform better.",
     competitionP4: "Competition transforms ordinary activity into a challenge.",
@@ -243,7 +243,7 @@ const P: Record<Lang, {
   fr: {
     heroLabel: "COMMENT FONCTIONNE ATTAX",
     heroTitle: "Activité réelle.\nCompétition réelle.",
-    heroSubtitle1: "Ton sport devient un combat. Attax transforme tes séances et tes pas en points, et tes points en un duel de boxe quotidien contre un joueur de ta ligue.",
+    heroSubtitle1: "Ton sport devient une compétition. Attax transforme tes séances et tes pas en points, et tes points en un duel quotidien contre un joueur de ta ligue.",
     heroSubtitle2: "Pas de saisie manuelle. Pas de configuration complexe. Bouge et concours.",
     heroCta: "Télécharger Attax",
 
@@ -279,7 +279,7 @@ const P: Record<Lang, {
 
     competitionLabel: "Compétition",
     competitionH2: "Compétition quotidienne",
-    competitionP1: "Au cœur d'Attax, il y a le duel de boxe quotidien. Chaque jour, tu affrontes un nouveau joueur de ta ligue.",
+    competitionP1: "Au cœur d'Attax, il y a le duel quotidien. Chaque jour, tu affrontes un nouveau joueur de ta ligue, dans un match de boxe.",
     competitionP2: "Un match se joue en 7 rounds : tes 6 jours d'avant, plus aujourd'hui. Chaque jour est un round, gagné par celui qui a le plus de points ce jour-là, et un round perdu coûte 1 PV (le round final, 2 PV). Les 6 rounds passés se jouent un par un de 10h à 19h. Le round final se joue en direct dès 19h et retire 2 PV. À 21h30, le Soir de combat : entrée des boxeurs, rounds rejoués, cartes retournées, puis le round final décide. Celui qui garde le plus de PV gagne. Jamais de match nul.",
     competitionP3: "L'objectif est simple : bouger, s'entraîner, rester régulier, performer mieux.",
     competitionP4: "La compétition transforme une activité ordinaire en défi.",
@@ -381,8 +381,8 @@ export default function HowAttaxWorks() {
 
             <Reveal as="p" className="sp-quote">
               {lang === "en"
-                ? "“Connect your health app. Every workout becomes a fight.”"
-                : "« Connecte ton application santé. Chaque séance devient un combat. »"}
+                ? "“Connect your health app. Every workout becomes a competition.”"
+                : "« Connecte ton application santé. Chaque séance devient une compétition. »"}
             </Reveal>
 
             <Block kick={p.activityLabel} title={p.activityH2}>
