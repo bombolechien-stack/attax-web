@@ -12,7 +12,7 @@ export const T = {
       h1: ["Sport is now", "a game."],
       kicker: ["Every day", "a new opponent"],
       sports: "Run · Ride · Lift · Swim · Walk",
-      subtitle: "Your watch measures. Face your league.\nEvery night at 9:30 PM, the verdict.",
+      subtitle: "You train. So does your rival.\nEvery night at 9:30 PM, the verdict.",
       cta_ios: "Download Attax",
       cta_secondary: "How It Works",
       stats: [
@@ -52,7 +52,7 @@ export const T = {
     dailyMatch: {
       label: "THE MATCH",
       h2: ["7 rounds.", "The strongest holds."],
-      subtitle: "Each day of your week is a round: the 6 past rounds play from 10 AM to 7 PM, then the final round until 9:30 PM. You both start with 7 HP: a lost round costs 1 HP, the final round 2.\nKeep the most HP to win. Never a draw.",
+      subtitle: "Each day of your week is a round: the 6 past rounds play from 10 AM to 7 PM, then the final round until 9:30 PM. You both start with 7 HP. Win a round and your boxer hits: 1 HP off your opponent, 2 in the final round.\nKeep the most HP to win. Never a draw.",
       live: "LIVE",
       match: "MATCH 6",
       resolves: "FINAL ROUND · 9:30 PM",
@@ -408,7 +408,7 @@ export const T = {
       h1: ["Le sport devient", "un jeu."],
       kicker: ["Chaque jour", "un nouvel adversaire"],
       sports: "Course · Vélo · Musculation · Natation · Marche",
-      subtitle: "Ta montre mesure. Tu affrontes ta ligue.\nChaque soir à 21h30, le verdict.",
+      subtitle: "Tu t'entraînes. Ton adversaire aussi.\nChaque soir à 21h30, le verdict.",
       cta_ios: "Télécharger Attax",
       cta_secondary: "Comment ça marche",
       stats: [
@@ -448,7 +448,7 @@ export const T = {
     dailyMatch: {
       label: "LE MATCH",
       h2: ["7 rounds.", "Le plus fort tient."],
-      subtitle: "Chaque jour de ta semaine est un round : les 6 rounds passés se jouent de 10h à 19h, puis le round final jusqu'à 21h30. Vous partez tous les deux avec 7 PV : un round perdu coûte 1 PV, le round final 2.\nGarde le plus de PV pour gagner. Jamais de match nul.",
+      subtitle: "Chaque jour de ta semaine est un round : les 6 rounds passés se jouent de 10h à 19h, puis le round final jusqu'à 21h30. Vous partez tous les deux avec 7 PV. À chaque round gagné, ton boxeur frappe : 1 PV de moins pour l'autre, 2 au round final.\nGarde le plus de PV pour gagner. Jamais de match nul.",
       live: "EN DIRECT",
       match: "MATCH 6",
       resolves: "ROUND FINAL · 21h30",
