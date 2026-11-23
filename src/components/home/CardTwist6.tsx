@@ -23,12 +23,12 @@ const COPY = {
   en: {
     kick: "04 · 9:30 PM", title: ["One card can", "turn it all around."],
     steps: [["Morning", "In the morning, 3 cards. Pick one before 1 PM."], ["9:30 PM", "Your cards are revealed. Parasite steals 20% of your opponent's points today."], ["The final round", "Mid fight, those points switch sides. You take the lead."]],
-    alt: ["Your card revealed at 9:30 PM: Parasite, 20% of Sophie's points today", "The final round: Parasite takes 120 pts from Sophie, Johnny goes from 140 pts behind to 100 pts ahead, still 4 HP each"],
+    alt: ["Your card revealed at 9:30 PM: Parasite, 20% of Sophie's points today", "The final round: Parasite takes 120 points from Sophie, Johnny goes from 140 points behind to 100 points ahead, still 4 HP each"],
   },
   fr: {
     kick: "04 · 21h30", title: ["Une carte peut", "tout renverser."],
     steps: [["Le matin", "Le matin, 3 cartes. Choisis-en une avant 13h."], ["21h30", "Vos cartes se révèlent. Parasite vole 20 % des points du jour de l'adversaire."], ["Le round final", "En plein combat, ces points changent de camp. Tu passes devant."]],
-    alt: ["Ta carte dévoilée à 21h30 : Parasite, 20 % des points du jour de Sophie", "Le round final : Parasite prend 120 pts à Sophie, Johnny passe de 140 pts de retard à 100 pts d'avance, toujours 4 PV partout"],
+    alt: ["Ta carte dévoilée à 21h30 : Parasite, 20 % des points du jour de Sophie", "Le round final : Parasite prend 120 points à Sophie, Johnny passe de 140 points de retard à 100 points d'avance, toujours 4 PV partout"],
   },
 };
 const NAV = 68;

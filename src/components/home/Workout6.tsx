@@ -11,9 +11,9 @@ import ICONS from "./sportIcons.json";
 const COPY = {
   en: {
     kick: "02 · All day", big: "864",
-    title: ["Your workout", "becomes pts."] as [string, string],
+    title: ["Your workout", "becomes points."] as [string, string],
     line: "Your watch measures your effort. Your heart rate and your steps set the score.",
-    alt: "The Activity screen of Attax: today's pts",
+    alt: "The Activity screen of Attax: today's points",
     items: [
       { icon: "watch", t: "Your watch is enough. Nothing to type in. Apple Health or Health Connect.", s: "Apple Health or Health Connect: Apple Watch, Garmin, Samsung Galaxy Watch, Fitbit, COROS, Amazfit, Withings, Oura, CMF by Nothing." },
       { icon: "heart-pulse", t: "Every sport counts.", s: "Running, swimming, football or yoga: if your heart rate goes up, it counts." },
@@ -22,9 +22,9 @@ const COPY = {
   },
   fr: {
     kick: "02 · Toute la journée", big: "864",
-    title: ["Ta séance devient", "des pts."] as [string, string],
+    title: ["Ta séance devient", "des points."] as [string, string],
     line: "Ta montre mesure ton effort. Ton cœur et tes pas font le score.",
-    alt: "L'écran Activités d'Attax : les pts du jour",
+    alt: "L'écran Activités d'Attax : les points du jour",
     items: [
       { icon: "watch", t: "Ta montre suffit. Rien à saisir. Apple Santé ou Health Connect.", s: "Apple Santé ou Health Connect : Apple Watch, Garmin, Samsung Galaxy Watch, Fitbit, COROS, Amazfit, Withings, Oura, CMF by Nothing." },
       { icon: "heart-pulse", t: "Tous les sports comptent.", s: "Course, natation, football ou yoga : si ton cœur accélère, ça compte." },

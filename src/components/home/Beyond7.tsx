@@ -18,7 +18,7 @@ const COPY = {
     title: ["A league a week.", "A story all season."],
     items: [
       ["The season.", "Join the season in one tap, then race all season for the world ranking and the Beta Season trophy."],
-      ["Your duo.", "From your 2nd league, a duo partner is assigned to keep you going. Every day you both hit your daily goal: +1 point each."],
+      ["Your duo.", "From your 2nd league, a duo partner is assigned to keep you going. Every day you both hit your daily goal: +1 league point each."],
       ["Your profile.", "Your trophies, your crown, your record, your streak: everything you win stays on your profile."],
     ],
   },
@@ -27,7 +27,7 @@ const COPY = {
     title: ["Une ligue par semaine.", "Une histoire toute la saison."],
     items: [
       ["La saison.", "Rejoins la saison en un geste, puis cours toute la saison pour le classement mondial et le trophée de la Saison Beta."],
-      ["Ton binôme.", "Dès ta 2e ligue, un binôme t'est attribué pour te motiver. Chaque jour où vous atteignez tous les deux votre objectif du jour : +1 point chacun."],
+      ["Ton binôme.", "Dès ta 2e ligue, un binôme t'est attribué pour te motiver. Chaque jour où vous atteignez tous les deux votre objectif du jour : +1 point de ligue chacun."],
       ["Ton profil.", "Tes trophées, ta couronne, ton palmarès, ta série : tout ce que tu gagnes reste sur ton profil."],
     ],
   },

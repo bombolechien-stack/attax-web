@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     template: "%s | Attax",
   },
   description:
-    "Attax turns your real workouts into daily duels: heart rate and steps become pts, leagues of 8, strategy cards and a verdict every night at 9:30 PM. Free on iPhone & Android.",
+    "Attax turns your real workouts into daily duels: heart rate and steps become points, leagues of 8, strategy cards and a verdict every night at 9:30 PM. Free on iPhone & Android.",
   keywords: [
     "fitness game",
     "competitive fitness",
@@ -84,7 +84,7 @@ export const metadata: Metadata = {
     siteName: "Attax",
     title: "Attax: Sport is now a game.",
     description:
-      "Attax turns your real workouts into daily duels: heart rate and steps become pts, leagues of 8, strategy cards and a verdict every night at 9:30 PM. Free on iPhone & Android.",
+      "Attax turns your real workouts into daily duels: heart rate and steps become points, leagues of 8, strategy cards and a verdict every night at 9:30 PM. Free on iPhone & Android.",
     url: BASE_URL,
     images: [
       {
@@ -101,7 +101,7 @@ export const metadata: Metadata = {
     creator: "@playattax",
     title: "Attax: Sport is now a game.",
     description:
-      "Attax turns your real workouts into daily duels: heart rate and steps become pts, leagues of 8, strategy cards and a verdict every night at 9:30 PM. Free on iPhone & Android.",
+      "Attax turns your real workouts into daily duels: heart rate and steps become points, leagues of 8, strategy cards and a verdict every night at 9:30 PM. Free on iPhone & Android.",
     images: ["/images/og-image.jpg"],
   },
   icons: {

@@ -31,7 +31,7 @@ export const T = {
       h2: "Your activity is the game engine.",
       sub: "Most fitness apps stop at tracking.\nAttax turns every workout into a fight you can win tonight.",
       steps: [
-        { title: "Real effort", body: "Your watch turns workouts and steps into pts. Intensity pays, not just volume." },
+        { title: "Real effort", body: "Your watch turns workouts and steps into points. Intensity pays, not just volume." },
         { title: "Strategy", body: "3 cards every morning, the same for both of you. Theirs stays secret until the fight." },
         { title: "Competition", body: "A new opponent every day. The final round is fought at 9:30 PM." },
       ],
@@ -44,7 +44,7 @@ export const T = {
         { time: "Once", title: "Connect.", body: "Link Apple Health or Health Connect and a watch that measures your heart rate: Apple Watch, Garmin, CMF by Nothing and more." },
         { time: "10 AM", title: "The match opens.", body: "A new opponent. Your 6 past days play out as rounds, one by one." },
         { time: "Before 1 PM", title: "Play your card.", body: "3 cards drawn, the same for both of you. Theirs stays secret until 9:30 PM." },
-        { time: "All day", title: "Move.", body: "Every workout and every step becomes pts. No manual entry." },
+        { time: "All day", title: "Move.", body: "Every workout and every step becomes points. No manual entry." },
         { time: "7 PM", title: "The final round.", body: "Today is worth 2 HP. Everything synced before 9:30 PM counts." },
         { time: "9:30 PM", title: "Fight Night.", body: "The rounds replay, the cards flip, the verdict lands. The table moves." },
       ],
@@ -97,12 +97,12 @@ export const T = {
       all_link: "See the full FAQ",
       items: [
         { q: "Do I need a smartwatch?", a: "Yes. You need a device that measures your heart rate (smartwatch, fitness band or chest strap) synced with Apple Health (iPhone) or Health Connect (Android): Apple Watch, Garmin, Samsung Galaxy Watch, Fitbit, COROS, Amazfit, Withings, Oura, CMF by Nothing and more. Your phone alone counts your steps, but your workouts are measured by your watch. Attax checks your connection before your first league." },
-        { q: "How do I earn pts?", a: "Your workouts and your steps, measured by your watch, become pts. The more you move, the more you score, and intensity pays, not just volume. No manual entry: everything comes from Apple Health or Health Connect." },
-        { q: "How is a match decided?", a: "A match has 7 rounds: the 6 previous days and today (in your first league, matches build up: match 1 is the final round alone, match 2 has 2 rounds, and so on). Each day is won by whoever scored the most pts that day, with at least 5 minutes of effort or 2,000 steps. Everyone starts with 7 HP and a lost round costs 1 HP. The past rounds play out from 10 AM to 7 PM, the final round (2 HP) is live from 7 PM. At 9:30 PM the cards are revealed and whoever keeps the most HP wins, by K.O. if the other falls to 0 HP. Level on HP? The week's pts (without cards) decide, then the steps, then the judges. Never a draw." },
+        { q: "How do I earn points?", a: "Your workouts and your steps, measured by your watch, become points. The more you move, the more you score, and intensity pays, not just volume. No manual entry: everything comes from Apple Health or Health Connect." },
+        { q: "How is a match decided?", a: "A match has 7 rounds: the 6 previous days and today (in your first league, matches build up: match 1 is the final round alone, match 2 has 2 rounds, and so on). Each day is won by whoever scored the most points that day, with at least 5 minutes of effort or 2,000 steps. Everyone starts with 7 HP and a lost round costs 1 HP. The past rounds play out from 10 AM to 7 PM, the final round (2 HP) is live from 7 PM. At 9:30 PM the cards are revealed and whoever keeps the most HP wins, by K.O. if the other falls to 0 HP. Level on HP? The week's activity points (without cards) decide, then the steps, then the judges. Never a draw." },
         { q: "Will I face players at my level?", a: "Yes. A few questions when you sign up set your starting level, and you join a league of players at your level. Then your results do the talking: your rank follows you from league to league." },
         { q: "Can I play with friends?", a: "Yes. Create a ranked league with up to 2 friends (3 of you), of a close rank, or a custom league from 2 to 40 players. Share the code, they join in seconds." },
         { q: "Is Attax free?", a: "Yes. Attax is free to download and free to play, with no ads." },
-        { q: "Does Attax work on iPhone and Android?", a: "Yes. Attax is available on iPhone (App Store) and Android (Google Play), and every league plays on its own local time." },
+        { q: "Does Attax work on iPhone and Android?", a: "Yes. Attax is available on iPhone (App Store) and Android (Google Play), in 15 languages, and every league plays on its own local time." },
       ],
     },
     dailyLoop: {
@@ -111,7 +111,7 @@ export const T = {
       sub: "Four moments. One duel a day.",
       steps: [
         { n: "01", time: "Before 1 PM", title: "Pick your card.", body: "A new opponent every day. 3 cards are drawn, the same for both of you: choose yours before 1 PM, or one is played for you. Theirs stays secret.", icon: "card" },
-        { n: "02", time: "10 AM → 7 PM", title: "Move.", body: "Run, ride, lift, walk: your workouts and steps become pts. Meanwhile, the rounds of your 6 past days are revealed one by one.", icon: "run" },
+        { n: "02", time: "10 AM → 7 PM", title: "Move.", body: "Run, ride, lift, walk: your workouts and steps become points. Meanwhile, the rounds of your 6 past days are revealed one by one.", icon: "run" },
         { n: "03", time: "Automatic", title: "Sync.", body: "Attax reads Apple Health or Health Connect when you open the app, and in the background if you allow it. No manual input, ever.", icon: "sync" },
         { n: "04", time: "7 PM → 9:30 PM", title: "Fight.", body: "The final round goes live at 7 PM, and everything synced before 9:30 PM counts. At 9:30 PM it's Fight Night: the fighters walk in, the cards flip, the verdict comes last.", icon: "battle" },
       ],
@@ -168,7 +168,7 @@ export const T = {
     download: {
       hero_label: "FREE TO DOWNLOAD",
       h1: ["Get Attax.", "Start battling."],
-      subtitle: "Turn your workouts into daily duels. On iPhone and Android: free to download, free to play.",
+      subtitle: "Turn your workouts into daily duels. On iPhone and Android, in 15 languages, for free.",
       cta_ios: "Download on the App Store",
       cta_android: "Get it on Google Play",
       features: [
@@ -193,7 +193,7 @@ export const T = {
       screens_label: "INSIDE THE APP",
       screens_h2: "Built for competition.",
       screens: [
-        { label: "Activity", caption: "Your workouts and steps, turned into pts." },
+        { label: "Activity", caption: "Your workouts and steps, turned into points." },
         { label: "Fight Night", caption: "A new opponent every day, settled at 9:30 PM." },
         { label: "Cards", caption: "3 cards every morning to flip the match." },
       ],
@@ -264,8 +264,8 @@ export const T = {
       pillars_h2: ["Four systems.", "One game."],
       pillars_sub: "Real effort. Strategic choices. A boxing duel every day. Every day you move is a round you can win.",
       pillars: [
-        { n: "01", title: "Points", description: "Your watch measures your workouts and your steps, through Apple Health or Health Connect. They become pts. It's intensity that pays, not just volume. Manual entries don't count." },
-        { n: "02", title: "The Daily Duel", description: "A match is 7 rounds: your previous 6 days, plus today. Each day is a round, won by the player with the most pts. Everyone starts with 7 HP, a lost round costs 1 HP (the final round, 2 HP); the player with the most HP left wins. Never a draw." },
+        { n: "01", title: "Points", description: "Your watch measures your workouts and your steps, through Apple Health or Health Connect. They become points. It's intensity that pays, not just volume. Manual entries don't count." },
+        { n: "02", title: "The Daily Duel", description: "A match is 7 rounds: your previous 6 days, plus today. Each day is a round, won by the player with the most points. Everyone starts with 7 HP, a lost round costs 1 HP (the final round, 2 HP); the player with the most HP left wins. Never a draw." },
         { n: "03", title: "The Cards", description: "12 cards in 4 families: Attack, Defense, Sabotage, Trick. Every morning, 3 are drawn, the same for both players. Pick one before 1 PM: Double or nothing, Guard, Freeze, Ghost… Your opponent's stays secret until 9:30 PM." },
         { n: "04", title: "Leagues & Rankings", description: "8 players at your level. 7 days. A new opponent every day. 1 champion, who leaves with the crown. Then run it back with the same group, or start a new league. Across leagues, your rank climbs from Rookie to Legend." },
       ],
@@ -318,7 +318,7 @@ export const T = {
       values: [
         { n: "01", title: "Competition", description: "Healthy competition is one of the most powerful forces in sport. It pushes you beyond what self-motivation alone can reach. We use it to make every training day feel like it counts." },
         { n: "02", title: "Consistency", description: "Showing up regularly beats training perfectly once in a while. That's why every day is a round: we reward the people who keep going, even on the hard days." },
-        { n: "03", title: "Fairness", description: "Players at your level, and pts that come only from what your watch records. No manual entries. Everyone gets a real shot." },
+        { n: "03", title: "Fairness", description: "Players at your level, and points that come only from what your watch records. No manual entries. Everyone gets a real shot." },
         { n: "04", title: "Community", description: "Sport is more fun when you share it. Your opponent isn't an enemy: they're the reason your workout mattered today. And with leagues between friends, your crew finally has a scoreboard." },
       ],
       manifesto_label: "OUR BELIEF",
@@ -336,7 +336,7 @@ export const T = {
       hero_stats: [
         { title: "contact@attax.app", sub: "Questions and support" },
         { title: "@playattax", sub: "Instagram, TikTok, X, YouTube" },
-        { title: "French · English", sub: "We reply in both" },
+        { title: "Any language", sub: "We reply in yours" },
       ],
       categories_label: "What can we help you with?",
       categories: [
@@ -359,7 +359,7 @@ export const T = {
       faq_label: "QUICK ANSWERS",
       faq_h2: "Common questions",
       faq: [
-        { q: "My pts stay at 0. What should I do?", a: "Check that your watch app shares your heart rate with Apple Health or Health Connect, and that Attax is allowed to read it. In the app, the watch check tells you exactly what's missing." },
+        { q: "My points stay at 0. What should I do?", a: "Check that your watch app shares your heart rate with Apple Health or Health Connect, and that Attax is allowed to read it. In the app, the watch check tells you exactly what's missing." },
         { q: "Can I report a bug in the app?", a: "Absolutely. Write to contact@attax.app or use My account → Support in the app. Tell us your phone and watch model: screenshots always help." },
         { q: "Where can I follow Attax?", a: "On Instagram, TikTok, X and YouTube: @playattax. Follow us for news, behind the scenes and the best league moments." },
       ],
@@ -427,7 +427,7 @@ export const T = {
       h2: "Ton activité est le moteur du jeu.",
       sub: "La plupart des applications fitness s'arrêtent au suivi.\nAttax transforme chaque séance en combat à gagner le soir même.",
       steps: [
-        { title: "Ton vrai effort", body: "Ta montre change tes séances et tes pas en pts. L'intensité paie, pas seulement le volume." },
+        { title: "Ton vrai effort", body: "Ta montre change tes séances et tes pas en points. L'intensité paie, pas seulement le volume." },
         { title: "Stratégie", body: "3 cartes chaque matin, les mêmes pour vous deux. La sienne reste secrète jusqu'au combat." },
         { title: "Compétition", body: "Un nouvel adversaire chaque jour. Le round final se joue à 21h30." },
       ],
@@ -440,7 +440,7 @@ export const T = {
         { time: "Une fois", title: "Connecte.", body: "Relie Apple Santé ou Health Connect et une montre qui mesure ta fréquence cardiaque : Apple Watch, Garmin, CMF by Nothing et d'autres." },
         { time: "10h", title: "Le match s'ouvre.", body: "Un nouvel adversaire. Tes 6 derniers jours se jouent en rounds, un par un." },
         { time: "Avant 13h", title: "Joue ta carte.", body: "3 cartes tirées, les mêmes pour vous deux. La sienne reste secrète jusqu'à 21h30." },
-        { time: "Toute la journée", title: "Bouge.", body: "Chaque séance et chaque pas deviennent des pts. Aucune saisie à la main." },
+        { time: "Toute la journée", title: "Bouge.", body: "Chaque séance et chaque pas deviennent des points. Aucune saisie à la main." },
         { time: "19h", title: "Le round final.", body: "Aujourd'hui vaut 2 PV. Tout ce qui est synchronisé avant 21h30 compte." },
         { time: "21h30", title: "Soir de combat.", body: "Les rounds rejoués, les cartes retournées, le verdict. Le classement bouge." },
       ],
@@ -493,12 +493,12 @@ export const T = {
       all_link: "Voir toute la FAQ",
       items: [
         { q: "Ai-je besoin d'une montre connectée ?", a: "Oui. Il te faut un appareil qui mesure ta fréquence cardiaque (montre, bracelet ou ceinture thoracique) synchronisé avec Apple Santé (iPhone) ou Health Connect (Android) : Apple Watch, Garmin, Samsung Galaxy Watch, Fitbit, COROS, Amazfit, Withings, Oura, CMF by Nothing et d'autres. Ton téléphone seul compte tes pas, mais tes séances sont mesurées par ta montre. Attax vérifie ta connexion avant ta première ligue." },
-        { q: "Comment je gagne des pts ?", a: "Tes séances et tes pas, mesurés par ta montre, deviennent des pts. Plus tu bouges, plus tu marques, et c'est l'intensité qui paie, pas seulement le volume. Aucune saisie manuelle : tout vient d'Apple Santé ou de Health Connect." },
-        { q: "Comment un match est-il tranché ?", a: "Un match compte 7 rounds : les 6 jours d'avant et aujourd'hui (dans ta première ligue, les matchs montent en puissance : le match 1 se résume au round final, le match 2 compte 2 rounds, et ainsi de suite). Chaque jour est gagné par celui qui a marqué le plus de pts ce jour-là, avec au moins 5 minutes d'effort ou 2 000 pas. Chacun part de 7 PV et un round perdu coûte 1 PV (le round final, 2 PV). Les rounds passés se jouent de 10h à 19h, le round final (2 PV) est en direct dès 19h. À 21h30, les cartes se révèlent et celui qui garde le plus de PV gagne, par K.O. si l'autre tombe à 0 PV. Égalité de PV ? Les pts de la semaine (sans les cartes) décident, puis les pas, puis les juges. Jamais de match nul." },
+        { q: "Comment je gagne des points ?", a: "Tes séances et tes pas, mesurés par ta montre, deviennent des points. Plus tu bouges, plus tu marques, et c'est l'intensité qui paie, pas seulement le volume. Aucune saisie manuelle : tout vient d'Apple Santé ou de Health Connect." },
+        { q: "Comment un match est-il tranché ?", a: "Un match compte 7 rounds : les 6 jours d'avant et aujourd'hui (dans ta première ligue, les matchs montent en puissance : le match 1 se résume au round final, le match 2 compte 2 rounds, et ainsi de suite). Chaque jour est gagné par celui qui a marqué le plus de points ce jour-là, avec au moins 5 minutes d'effort ou 2 000 pas. Chacun part de 7 PV et un round perdu coûte 1 PV (le round final, 2 PV). Les rounds passés se jouent de 10h à 19h, le round final (2 PV) est en direct dès 19h. À 21h30, les cartes se révèlent et celui qui garde le plus de PV gagne, par K.O. si l'autre tombe à 0 PV. Égalité de PV ? Les points d'activité de la semaine (sans les cartes) décident, puis les pas, puis les juges. Jamais de match nul." },
         { q: "Vais-je affronter des joueurs de mon niveau ?", a: "Oui. Quelques questions à l'inscription fixent ton niveau de départ, et tu rejoins une ligue de joueurs de ton niveau. Ensuite, ce sont tes résultats qui parlent : ton rang te suit de ligue en ligue." },
         { q: "Puis-je jouer avec mes amis ?", a: "Oui. Crée une ligue classée avec jusqu'à 2 amis (3 avec toi), de rang proche, ou une ligue personnalisée de 2 à 40 joueurs. Partage le code, ils te rejoignent en quelques secondes." },
         { q: "Attax est-il gratuit ?", a: "Oui. Attax est gratuit à télécharger et à jouer, sans publicité." },
-        { q: "Attax fonctionne-t-il sur iPhone et Android ?", a: "Oui. Attax est disponible sur iPhone (App Store) et Android (Google Play), et chaque ligue se joue à son heure locale." },
+        { q: "Attax fonctionne-t-il sur iPhone et Android ?", a: "Oui. Attax est disponible sur iPhone (App Store) et Android (Google Play), en 15 langues, et chaque ligue se joue à son heure locale." },
       ],
     },
     dailyLoop: {
@@ -507,7 +507,7 @@ export const T = {
       sub: "Quatre moments. Un duel par jour.",
       steps: [
         { n: "01", time: "Avant 13h", title: "Choisis ta carte.", body: "Un nouvel adversaire chaque jour. 3 cartes sont tirées, les mêmes pour vous deux : choisis la tienne avant 13h, sinon une carte est jouée pour toi. La sienne reste secrète.", icon: "card" },
-        { n: "02", time: "10h → 19h", title: "Bouge.", body: "Cours, roule, soulève, marche : tes séances et tes pas deviennent des pts. Pendant ce temps, les rounds de tes 6 derniers jours se dévoilent un par un.", icon: "run" },
+        { n: "02", time: "10h → 19h", title: "Bouge.", body: "Cours, roule, soulève, marche : tes séances et tes pas deviennent des points. Pendant ce temps, les rounds de tes 6 derniers jours se dévoilent un par un.", icon: "run" },
         { n: "03", time: "Automatique", title: "Synchronise.", body: "Attax lit Apple Santé ou Health Connect à l'ouverture de l'app, et en arrière-plan si tu l'autorises. Aucune saisie manuelle, jamais.", icon: "sync" },
         { n: "04", time: "19h → 21h30", title: "Combats.", body: "Le round final passe en direct à 19h, et tout ce qui est synchronisé avant 21h30 compte. À 21h30, c'est le Soir de combat : entrée des boxeurs, cartes retournées, le résultat tombe à la fin.", icon: "battle" },
       ],
@@ -564,7 +564,7 @@ export const T = {
     download: {
       hero_label: "GRATUIT",
       h1: ["Télécharge Attax.", "Commence le combat."],
-      subtitle: "Transforme tes séances en duels quotidiens. Sur iPhone et Android : gratuit à télécharger, gratuit à jouer.",
+      subtitle: "Transforme tes séances en duels quotidiens. Sur iPhone et Android, en 15 langues, gratuitement.",
       cta_ios: "Télécharger sur l'App Store",
       cta_android: "Disponible sur Google Play",
       features: [
@@ -589,7 +589,7 @@ export const T = {
       screens_label: "DANS L'APP",
       screens_h2: "Conçu pour la compétition.",
       screens: [
-        { label: "Activités", caption: "Tes séances et tes pas, transformés en pts." },
+        { label: "Activités", caption: "Tes séances et tes pas, transformés en points." },
         { label: "Soir de combat", caption: "Un nouvel adversaire chaque jour, tranché à 21h30." },
         { label: "Cartes", caption: "3 cartes chaque matin pour renverser le match." },
       ],
@@ -660,8 +660,8 @@ export const T = {
       pillars_h2: ["Quatre systèmes.", "Un seul jeu."],
       pillars_sub: "Un vrai effort. Des choix stratégiques. Un duel de boxe chaque jour. Chaque jour où tu bouges est un round à gagner.",
       pillars: [
-        { n: "01", title: "Points", description: "Ta montre mesure tes séances et tes pas, via Apple Santé ou Health Connect. Ils deviennent des pts. C'est l'intensité qui paie, pas seulement le volume. Les saisies à la main ne comptent pas." },
-        { n: "02", title: "Le duel quotidien", description: "Un match se joue en 7 rounds : tes 6 jours d'avant, plus aujourd'hui. Chaque jour est un round, gagné par celui qui a le plus de pts. Chacun part de 7 PV, un round perdu coûte 1 PV (le round final, 2 PV) ; celui qui garde le plus de PV gagne. Jamais de match nul." },
+        { n: "01", title: "Points", description: "Ta montre mesure tes séances et tes pas, via Apple Santé ou Health Connect. Ils deviennent des points. C'est l'intensité qui paie, pas seulement le volume. Les saisies à la main ne comptent pas." },
+        { n: "02", title: "Le duel quotidien", description: "Un match se joue en 7 rounds : tes 6 jours d'avant, plus aujourd'hui. Chaque jour est un round, gagné par celui qui a le plus de points. Chacun part de 7 PV, un round perdu coûte 1 PV (le round final, 2 PV) ; celui qui garde le plus de PV gagne. Jamais de match nul." },
         { n: "03", title: "Les cartes", description: "12 cartes en 4 familles : Attaque, Défense, Sabotage, Ruse. Chaque matin, 3 sont tirées, les mêmes pour les deux joueurs. Choisis-en une avant 13h : Quitte ou double, Garde, Freeze, Ghost… Celle de ton adversaire reste secrète jusqu'à 21h30." },
         { n: "04", title: "Ligues & classements", description: "8 joueurs de ton niveau. 7 jours. Un nouvel adversaire chaque jour. 1 champion, qui repart avec la couronne. Puis tu rejoues avec le même groupe, ou tu lances une nouvelle ligue. De ligue en ligue, ton rang grimpe de Rookie à Legend." },
       ],
@@ -714,7 +714,7 @@ export const T = {
       values: [
         { n: "01", title: "Compétition", description: "La compétition saine est l'une des forces les plus puissantes du sport. Elle pousse au-delà de ce que la motivation seule permet. Nous l'utilisons pour que chaque jour d'entraînement compte vraiment." },
         { n: "02", title: "Régularité", description: "Être là souvent bat s'entraîner parfaitement de temps en temps. C'est pour ça que chaque jour est un round : on récompense ceux qui continuent, même les jours difficiles." },
-        { n: "03", title: "Équité", description: "Des joueurs de ton niveau, et des pts qui viennent uniquement de ce que ta montre enregistre. Pas de saisie à la main. Tout le monde a sa chance." },
+        { n: "03", title: "Équité", description: "Des joueurs de ton niveau, et des points qui viennent uniquement de ce que ta montre enregistre. Pas de saisie à la main. Tout le monde a sa chance." },
         { n: "04", title: "Communauté", description: "Le sport est plus fun quand on le partage. Ton adversaire n'est pas un ennemi : c'est la raison pour laquelle ta séance a compté aujourd'hui. Et avec les ligues entre amis, ta bande a enfin son tableau des scores." },
       ],
       manifesto_label: "NOTRE CONVICTION",
@@ -732,7 +732,7 @@ export const T = {
       hero_stats: [
         { title: "contact@attax.app", sub: "Questions et support" },
         { title: "@playattax", sub: "Instagram, TikTok, X, YouTube" },
-        { title: "Français · anglais", sub: "On répond dans les deux langues" },
+        { title: "Toutes les langues", sub: "On te répond dans la tienne" },
       ],
       categories_label: "Comment pouvons-nous t'aider ?",
       categories: [
@@ -755,7 +755,7 @@ export const T = {
       faq_label: "RÉPONSES RAPIDES",
       faq_h2: "Questions fréquentes",
       faq: [
-        { q: "Mes pts restent à 0. Que faire ?", a: "Vérifie que l'application de ta montre partage ta fréquence cardiaque avec Apple Santé ou Health Connect, et qu'Attax a le droit de la lire. Dans l'app, la vérification de la montre te dit exactement ce qui manque." },
+        { q: "Mes points restent à 0. Que faire ?", a: "Vérifie que l'application de ta montre partage ta fréquence cardiaque avec Apple Santé ou Health Connect, et qu'Attax a le droit de la lire. Dans l'app, la vérification de la montre te dit exactement ce qui manque." },
         { q: "Puis-je signaler un bug ?", a: "Bien sûr. Écris à contact@attax.app ou passe par Mon compte → Support dans l'app. Indique ton modèle de téléphone et de montre : les captures d'écran aident toujours." },
         { q: "Où suivre Attax ?", a: "Sur Instagram, TikTok, X et YouTube : @playattax. Suis-nous pour les nouveautés, les coulisses et les meilleurs moments des ligues." },
       ],

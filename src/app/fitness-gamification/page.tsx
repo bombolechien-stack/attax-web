@@ -170,7 +170,7 @@ const P: Record<Lang, {
     howAttax1: "Attax combines several gamification systems into a single experience.",
     howAttaxConclusion: "These systems work together to create a fitness experience that feels engaging long after traditional motivation begins to fade.",
     gamificationSystems: [
-      { title: "Real-world activity", body: "Your workouts and steps, read from Apple Health or Health Connect, are the only source of pts. Intensity pays, not just volume." },
+      { title: "Real-world activity", body: "Your workouts and steps, read from Apple Health or Health Connect, are the only source of points. Intensity pays, not just volume." },
       { title: "Daily competition", body: "One boxing duel a day against a new player of your league: 7 rounds, HP to protect, and Fight Night at 9:30 PM." },
       { title: "Strategic decisions", body: "3 cards drawn every morning, the same for both players, from 12 cards in 4 families. One to play before 1 PM; theirs stays secret until 9:30 PM." },
       { title: "League progression", body: "Leagues of 8 players at your level, 7 days, 1 champion who leaves with the crown." },
@@ -267,7 +267,7 @@ const P: Record<Lang, {
     howAttax1: "Attax combine plusieurs systèmes de gamification en une seule expérience.",
     howAttaxConclusion: "Ces systèmes fonctionnent ensemble pour créer une expérience fitness qui reste engageante bien après que la motivation traditionnelle commence à s'estomper.",
     gamificationSystems: [
-      { title: "Activité réelle", body: "Tes séances et tes pas, lus dans Apple Santé ou Health Connect, sont la seule source de pts. C'est l'intensité qui paie, pas seulement le volume." },
+      { title: "Activité réelle", body: "Tes séances et tes pas, lus dans Apple Santé ou Health Connect, sont la seule source de points. C'est l'intensité qui paie, pas seulement le volume." },
       { title: "Compétition quotidienne", body: "Un duel de boxe par jour contre un nouveau joueur de ta ligue : 7 rounds, des PV à protéger, et le Soir de combat à 21h30." },
       { title: "Décisions stratégiques", body: "3 cartes tirées chaque matin, les mêmes pour les deux joueurs, parmi 12 cartes en 4 familles. Une à jouer avant 13h ; la sienne reste secrète jusqu'à 21h30." },
       { title: "Progression en ligue", body: "Des ligues de 8 joueurs de ton niveau, 7 jours, 1 champion qui repart avec la couronne." },

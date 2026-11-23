@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 const appSchema = {
   "@context": "https://schema.org",
   "@type": "MobileApplication",
+  inLanguage: ["en", "fr", "es", "pt-BR", "de", "nl", "it", "sv", "fi", "da", "ru", "hi", "ar", "ja", "zh-Hans"],
   name: "Attax",
   operatingSystem: "Android",
   applicationCategory: "HealthApplication",

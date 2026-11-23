@@ -174,7 +174,7 @@ const P: Record<Lang, {
     faqH2: "Frequently asked questions",
     faq: [
       { q: "What is a fitness competition app?", a: "An app that uses rankings, duels and challenges to motivate physical activity. In Attax, your real workouts decide daily boxing duels within leagues of 8 players." },
-      { q: "How does Attax create competition?", a: "Every day, you face a new player of your league. The match is 7 rounds (your previous 6 days, plus today), each won by the player with the most pts that day. Add the card you chose, and Fight Night decides at 9:30 PM." },
+      { q: "How does Attax create competition?", a: "Every day, you face a new player of your league. The match is 7 rounds (your previous 6 days, plus today), each won by the player with the most points that day. Add the card you chose, and Fight Night decides at 9:30 PM." },
       { q: "Can beginners compete?", a: "Yes. You join a league at your level, and every effort counts." },
       { q: "Can I compete with my friends?", a: "Yes. Create a ranked league with up to 2 friends (3 of you), of a close rank, or a custom league from 2 to 40 players. Share your code, they join in seconds." },
       { q: "Does walking count?", a: "Yes. Your steps count every day, even with your phone alone. For your workouts, you need a device that measures your heart rate." },
@@ -277,7 +277,7 @@ const P: Record<Lang, {
     faqH2: "Questions fréquentes",
     faq: [
       { q: "Qu'est-ce qu'une application de compétition sportive ?", a: "Une application qui utilise classements, duels et défis pour motiver l'activité physique. Dans Attax, tes vraies séances décident de duels de boxe quotidiens au sein de ligues de 8 joueurs." },
-      { q: "Comment Attax crée-t-il la compétition ?", a: "Chaque jour, tu affrontes un nouveau joueur de ta ligue. Le match se joue en 7 rounds (tes 6 jours d'avant, plus aujourd'hui), chacun gagné par celui qui a le plus de pts ce jour-là. Ajoute la carte que tu as choisie, et le Soir de combat décide à 21h30." },
+      { q: "Comment Attax crée-t-il la compétition ?", a: "Chaque jour, tu affrontes un nouveau joueur de ta ligue. Le match se joue en 7 rounds (tes 6 jours d'avant, plus aujourd'hui), chacun gagné par celui qui a le plus de points ce jour-là. Ajoute la carte que tu as choisie, et le Soir de combat décide à 21h30." },
       { q: "Les débutants peuvent-ils jouer ?", a: "Oui. Tu rejoins une ligue de ton niveau, et chaque effort compte." },
       { q: "Puis-je affronter mes amis ?", a: "Oui. Crée une ligue classée avec jusqu'à 2 amis (3 avec toi), de rang proche, ou une ligue personnalisée de 2 à 40 joueurs. Partage ton code, ils te rejoignent en quelques secondes." },
       { q: "La marche compte-t-elle ?", a: "Oui. Tes pas comptent chaque jour, même avec ton téléphone seul. Pour tes séances, il te faut un appareil qui mesure ta fréquence cardiaque." },
