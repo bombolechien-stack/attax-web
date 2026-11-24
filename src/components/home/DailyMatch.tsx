@@ -49,11 +49,13 @@ const COPY = {
     me: "JOHNNY", opp: "SOPHIE", hp: "HP", round: (n: number) => `ROUND ${n} / 7`, finalRound: "FINAL ROUND", stake: "2 HP AT STAKE",
     days: ["Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Monday", "Tuesday"], wins: "WINS THE ROUND", vs: "vs",
     winner: "WINNER", verdict: "Wins the match, 4 HP to 2.",
+    note: "Example workouts. The same workout can score more or fewer pts: the higher your heart rate, the more each minute earns.",
   },
   fr: {
     me: "JOHNNY", opp: "SOPHIE", hp: "PV", round: (n: number) => `ROUND ${n} / 7`, finalRound: "ROUND FINAL", stake: "2 PV EN JEU",
     days: ["Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche", "Lundi", "Mardi"], wins: "REMPORTE LE ROUND", vs: "vs",
     winner: "VAINQUEUR", verdict: "Remporte le match, 4 PV à 2.",
+    note: "Séances données en exemple. Une même séance peut rapporter plus ou moins de pts : plus ton cœur bat vite, plus chaque minute rapporte.",
   },
 };
 
@@ -295,7 +297,7 @@ export default function DailyMatch() {
                       <div className="mr-line" data-line={side}>
                         <span className="mr-won" style={{ color: col, opacity: 0, transform: "translateY(4px)" }}>{c.wins}</span>
                         <span className="mr-big" style={{ color: col }}><span className="mr-num">0</span><small>pts</small></span>
-                        <span className="mr-act">{r.a[lang][side === "Y" ? 0 : 1]}</span>
+                        <span className="mr-act">{r.a[lang][side === "Y" ? 0 : 1]}<sup className="mr-star" aria-hidden="true">*</sup></span>
                       </div>
                     </div>
                   );
@@ -309,6 +311,7 @@ export default function DailyMatch() {
               <span className="mr-verdict-sub">{c.verdict}</span>
             </div>
           </div>
+          <p className="mr-note"><span aria-hidden="true">* </span>{c.note}</p>
         </div>
       </div>
       </div>
