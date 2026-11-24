@@ -15,6 +15,9 @@ const TXT = {
     open: "Ouvrir dans l'app", get: "Pas encore l'app ? Télécharge-la",
     then: "Puis, dans l'app : Rejoindre une ligue → J'ai un code, et entre le code ci-dessus.",
     copy: "Copier le code", copied: "Code copié ✅",
+    duelTitle: "Un ami te défie sur Attax",
+    duelSub: "Vos 7 derniers jours de sport, l'un contre l'autre. Relève son défi avec ce code :",
+    duelThen: "Puis rouvre ce lien depuis ton téléphone : le défi s'ouvre dans l'app.",
   },
   en: {
     kicker: "INVITATION", title: "A friend invited you to their Attax league",
@@ -22,6 +25,9 @@ const TXT = {
     open: "Open in the app", get: "Don't have the app yet? Download it",
     then: "Then, in the app: Join a league → I have a code, and enter the code above.",
     copy: "Copy code", copied: "Code copied ✅",
+    duelTitle: "A friend challenges you on Attax",
+    duelSub: "Your last 7 days of sport, head to head. Take the challenge with this code:",
+    duelThen: "Then open this link again on your phone: the challenge opens in the app.",
   },
 };
 
@@ -29,27 +35,30 @@ export default function JoinPage() {
   const { lang } = useLang();
   const t = TXT[lang === "fr" ? "fr" : "en"];
   const [code, setCode] = useState("");
+  const [duel, setDuel] = useState(false);
   const [copied, setCopied] = useState(false);
   const [os, setOs] = useState<"ios" | "android" | "other">("other");
 
   useEffect(() => {
-    const c = (new URLSearchParams(window.location.search).get("code") || "").toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 12);
+    const q = new URLSearchParams(window.location.search), isDuel = !!q.get("duel");
+    setDuel(isDuel);
+    const c = (q.get("duel") || q.get("code") || "").toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 12);
     setCode(c);
     const ua = navigator.userAgent;
     const o = /iPhone|iPad|iPod/i.test(ua) ? "ios" : /Android/i.test(ua) ? "android" : "other";
     setOs(o);
     // Sur téléphone : tente d'ouvrir l'app directement.
-    if (c && o !== "other") window.location.href = `attax://join?code=${c}`;
+    if (c && o !== "other") window.location.href = `attax://join?${isDuel ? "duel" : "code"}=${c}`;
   }, []);
 
-  const appLink = `attax://join?code=${code}`;
+  const appLink = `attax://join?${duel ? "duel" : "code"}=${code}`;
   return (
     <SitePage>
       <div className="sp-fn">
         <div className="sp-fn-card">
           <p className="st6-kick">{t.kicker}</p>
-          <h1 className="sp-fn-h">{t.title}</h1>
-          <p className="sp-fn-p">{t.sub}</p>
+          <h1 className="sp-fn-h">{duel ? t.duelTitle : t.title}</h1>
+          <p className="sp-fn-p">{duel ? t.duelSub : t.sub}</p>
           {code && (
             <button
               type="button"
@@ -68,7 +77,7 @@ export default function JoinPage() {
             {os !== "android" && <a href={APPSTORE_URL} className="h7-btn h7-btn-line sp-btn-full"><AppleIcon />App Store</a>}
             {os !== "ios" && <a href={PLAY_URL} className="h7-btn h7-btn-line sp-btn-full"><PlayIcon />Google Play</a>}
           </div>
-          <p className="sp-note" style={{ marginTop: "1.25rem" }}>{t.then}</p>
+          <p className="sp-note" style={{ marginTop: "1.25rem" }}>{duel ? t.duelThen : t.then}</p>
         </div>
       </div>
     </SitePage>
