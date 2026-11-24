@@ -1,6 +1,7 @@
 "use client";
 // Lien d'invitation à une ligue entre amis (partagé depuis l'app) : attax.app/join?code=XXXX
 // → ouvre l'app si elle est installée (attax://join?code=…), sinon propose le téléchargement.
+// Trois liens : ?code= (ligue entre amis), ?duel= (défi d'un ami), ?club= (invitation dans un club, lien ou QR code).
 import { useEffect, useState } from "react";
 import { useLang } from "@/lib/i18n";
 import { SitePage, AppleIcon, PlayIcon } from "@/components/site/Site";
@@ -18,6 +19,9 @@ const TXT = {
     duelTitle: "Un ami te défie sur Attax",
     duelSub: "Vos 7 derniers jours de sport, l'un contre l'autre. Relève son défi avec ce code :",
     duelThen: "Puis rouvre ce lien depuis ton téléphone : le défi s'ouvre dans l'app.",
+    clubTitle: "Tu es invité dans un club Attax",
+    clubSub: "Chaque jour, un rival tiré dans le club : le plus actif gagne. Chaque mois, un champion. Rejoins le club avec ce code :",
+    clubThen: "Puis rouvre ce lien depuis ton téléphone : l'invitation s'ouvre dans l'app. Ou, dans l'app : Classement → Clubs → Rejoindre un club, et entre le code ci-dessus.",
   },
   en: {
     kicker: "INVITATION", title: "A friend invited you to their Attax league",
@@ -28,6 +32,9 @@ const TXT = {
     duelTitle: "A friend challenges you on Attax",
     duelSub: "Your last 7 days of sport, head to head. Take the challenge with this code:",
     duelThen: "Then open this link again on your phone: the challenge opens in the app.",
+    clubTitle: "You're invited to an Attax club",
+    clubSub: "Every day, a rival drawn from the club: the most active wins. Every month, a champion. Join the club with this code:",
+    clubThen: "Then open this link again on your phone: the invitation opens in the app. Or, in the app: Ranking → Clubs → Join a club, and enter the code above.",
   },
 };
 
@@ -36,29 +43,31 @@ export default function JoinPage() {
   const t = TXT[lang === "fr" ? "fr" : "en"];
   const [code, setCode] = useState("");
   const [duel, setDuel] = useState(false);
+  const [club, setClub] = useState(false);
   const [copied, setCopied] = useState(false);
   const [os, setOs] = useState<"ios" | "android" | "other">("other");
 
   useEffect(() => {
-    const q = new URLSearchParams(window.location.search), isDuel = !!q.get("duel");
+    const q = new URLSearchParams(window.location.search), isDuel = !!q.get("duel"), isClub = !isDuel && !!q.get("club");
     setDuel(isDuel);
-    const c = (q.get("duel") || q.get("code") || "").toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 12);
+    setClub(isClub);
+    const c = (q.get("duel") || q.get("club") || q.get("code") || "").toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 12);
     setCode(c);
     const ua = navigator.userAgent;
     const o = /iPhone|iPad|iPod/i.test(ua) ? "ios" : /Android/i.test(ua) ? "android" : "other";
     setOs(o);
     // Sur téléphone : tente d'ouvrir l'app directement.
-    if (c && o !== "other") window.location.href = `attax://join?${isDuel ? "duel" : "code"}=${c}`;
+    if (c && o !== "other") window.location.href = `attax://join?${isDuel ? "duel" : isClub ? "club" : "code"}=${c}`;
   }, []);
 
-  const appLink = `attax://join?${duel ? "duel" : "code"}=${code}`;
+  const appLink = `attax://join?${duel ? "duel" : club ? "club" : "code"}=${code}`;
   return (
     <SitePage>
       <div className="sp-fn">
         <div className="sp-fn-card">
           <p className="st6-kick">{t.kicker}</p>
-          <h1 className="sp-fn-h">{duel ? t.duelTitle : t.title}</h1>
-          <p className="sp-fn-p">{duel ? t.duelSub : t.sub}</p>
+          <h1 className="sp-fn-h">{duel ? t.duelTitle : club ? t.clubTitle : t.title}</h1>
+          <p className="sp-fn-p">{duel ? t.duelSub : club ? t.clubSub : t.sub}</p>
           {code && (
             <button
               type="button"
@@ -77,7 +86,7 @@ export default function JoinPage() {
             {os !== "android" && <a href={APPSTORE_URL} className="h7-btn h7-btn-line sp-btn-full"><AppleIcon />App Store</a>}
             {os !== "ios" && <a href={PLAY_URL} className="h7-btn h7-btn-line sp-btn-full"><PlayIcon />Google Play</a>}
           </div>
-          <p className="sp-note" style={{ marginTop: "1.25rem" }}>{duel ? t.duelThen : t.then}</p>
+          <p className="sp-note" style={{ marginTop: "1.25rem" }}>{duel ? t.duelThen : club ? t.clubThen : t.then}</p>
         </div>
       </div>
     </SitePage>
