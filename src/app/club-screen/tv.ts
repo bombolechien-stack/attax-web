@@ -71,6 +71,7 @@ body:not(.ui){cursor:none}
 <div id="stage">
   <div class="glow"></div><canvas id="boxer"></canvas><div class="shade"></div><div class="scan"></div>
   <div class="clock" id="clock"></div>
+  <video id="ns" src="/club-screen/nosleep.mp4" muted loop playsinline autoplay style="position:fixed;width:1px;height:1px;opacity:0.01;pointer-events:none;bottom:0;left:0"></video>
   <button id="fs" type="button" aria-label="Plein écran"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
   <div class="left">
     <div class="brand"><img src="/images/logo-attax-wh.svg" alt="Attax" style="height:4vh"></div>
@@ -96,6 +97,17 @@ let uiT = 0; const ui = () => { document.body.classList.add("ui"); clearTimeout(
 addEventListener("mousemove", ui); addEventListener("touchstart", ui); ui();
 document.getElementById("fs").onclick = () => { const d = document; if (d.fullscreenElement) d.exitFullscreen?.(); else d.documentElement.requestFullscreen?.().catch(() => {}); };
 const FS_I = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>', FS_X = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+// Empêcher la mise en veille de l'écran : verrou d'écran du navigateur (Chrome, Edge, Safari récents), repris dès que la page
+// redevient visible ; sinon (navigateurs de télé plus anciens), une vidéo noire minuscule, muette, en boucle.
+let lock = null;
+async function keepAwake() {
+  try { if ("wakeLock" in navigator && document.visibilityState === "visible" && !lock) { lock = await navigator.wakeLock.request("screen"); lock.addEventListener("release", () => { lock = null; }); return; } } catch (e) {}
+  const v = document.getElementById("ns"); if (v && v.paused) v.play().catch(() => {});
+}
+keepAwake();
+document.addEventListener("visibilitychange", keepAwake);
+addEventListener("click", keepAwake); addEventListener("touchstart", keepAwake);
+setInterval(keepAwake, 60000);
 document.addEventListener("fullscreenchange", () => { document.getElementById("fs").innerHTML = document.fullscreenElement ? FS_X : FS_I; });
 let rzT = 0; addEventListener("resize", () => { clearTimeout(rzT); rzT = setTimeout(() => { if (D) renderList(); }, 300); });
 
