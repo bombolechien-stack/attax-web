@@ -61,6 +61,7 @@ body.ui #fs{opacity:1}
 body:not(.ui){cursor:none}
 /* Écran en hauteur (tablette, fenêtre étroite) : le bloc « rejoins le club » prend sa propre ligne en bas. */
 @media (max-aspect-ratio:4/3){.left{width:auto;right:4.4vw;bottom:23vh}.join{left:4.4vw;right:4.4vw;justify-content:space-between;text-align:left}#boxer{width:90vw;right:-25vw;opacity:.55}}
+.legend{font-size:1.6vh;font-weight:700;color:rgba(255,255,255,.42);margin-top:.7vh}
 .empty{font-size:3vh;font-weight:700;color:rgba(255,255,255,.7);line-height:1.5;margin-top:4vh}
 </style></head><body>
 <div id="stage">
@@ -123,7 +124,7 @@ requestAnimationFrame(draw);
 function renderHead() {
   const month = MONTHS[Number(String(D.season_key ?? "").slice(5, 7)) - 1] ?? "";
   document.getElementById("head").innerHTML = (D.logo_url ? '<img class="logo" src="' + esc(D.logo_url) + '" alt="">' : '<div class="logo t">' + ini(D.name) + '</div>')
-    + '<div><h1>' + esc(D.name) + '</h1><div class="sub">Classement de ' + esc(month) + ' · ' + nf(D.members) + ' membres</div></div>';
+    + '<div><h1>' + esc(D.name) + '</h1><div class="sub">Classement de ' + esc(month) + ' · ' + nf(D.members) + ' membres</div><div class="legend">Points : 1 par duel du jour gagné, 2 en duel à trois</div></div>';
   document.getElementById("code").textContent = D.code ?? CODE;
   const q = document.getElementById("qr");
   if (window.qrcode && !q.dataset.done) {
@@ -153,8 +154,8 @@ function panels() {
     '<div class="duel"><b>' + esc(d.winner) + '</b><span>bat ' + esc(d.losers.join(" et ")) + ' · <em>+' + esc(d.points) + ' point' + (d.points > 1 ? 's' : '') + '</em></span></div>').join("") + '</div>');
   const g = D.goal;
   if (g && Number(g.target) > 0) { const pct = Math.max(0, Math.min(100, Math.round((Number(g.total) / Number(g.target)) * 100)));
-    out.push('<div class="k">Objectif du mois, tous ensemble</div><div class="big">' + nf(g.total) + ' <span style="opacity:.45">/ ' + nf(g.target) + ' pts</span></div><div class="track"><div class="fill" data-w="' + pct + '" style="width:0"></div></div>'); }
-  out.push('<div class="k">Chaque jour</div><div class="big">Un rival du club. Le plus de pts gagne.</div>');
+    out.push('<div class="k">Objectif du mois, tous ensemble</div><div class="big">' + nf(g.total) + ' <span style="opacity:.45">/ ' + nf(g.target) + ' pts d\\'activité</span></div><div class="track"><div class="fill" data-w="' + pct + '" style="width:0"></div></div>'); }
+  out.push('<div class="k">Chaque jour</div><div class="big">Un rival du club. Le plus de pts d\\'activité gagne le duel.</div>');
   return out;
 }
 function rotatePanel() {
