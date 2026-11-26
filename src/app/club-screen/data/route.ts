@@ -19,6 +19,11 @@ function demo() {
       { winner: "Morgan", losers: ["Inès", "Léa"], points: 2 },
       { winner: "Gui", losers: ["Casey"], points: 1 },
       { winner: "Max_B", losers: ["Yanis"], points: 1 },
+      { winner: "Chloé_V", losers: ["Noah"], points: 1 },
+      { winner: "Jade", losers: ["Malik", "Hugo"], points: 2 },
+      { winner: "Sora_K", losers: ["Emma_D"], points: 1 },
+      { winner: "Casey", losers: ["Léa"], points: 1 },
+      { winner: "Tom_R", losers: ["Inès"], points: 1 },
     ],
   };
 }

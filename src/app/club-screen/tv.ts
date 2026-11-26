@@ -36,9 +36,11 @@ h1{font-size:6.6vh;font-weight:800;letter-spacing:-.035em;line-height:1}
 .r .s small{font-size:1.7vh;font-weight:700;color:rgba(255,255,255,.5);margin-left:.4vw}
 .r.first{background:#0443FD;border-bottom:0;border-radius:1.2vh;padding:0 1vw;margin:0 -1vw .4vh}
 .r.first .p{color:#fff}
-.page{position:absolute;right:0;top:-3vh;font-size:1.6vh;font-weight:700;color:rgba(255,255,255,.4);letter-spacing:.14em}
-.bottom{position:relative;flex:none;height:16vh;margin-top:2.4vh}
-.panel{position:absolute;left:0;bottom:0;right:0;opacity:0;transform:translateY(2vh);transition:opacity .7s,transform .7s}
+.page{height:3.4vh;font-size:1.6vh;font-weight:800;color:rgba(255,255,255,.45);letter-spacing:.2em;text-transform:uppercase}
+.r .bat{font-weight:700;color:rgba(255,255,255,.55)}
+.r .s.plus{color:#7EA2FF}
+.bottom{position:relative;flex:none;height:15vh;margin-top:4.5vh}
+.panel{position:absolute;left:0;top:0;right:0;opacity:0;transform:translateY(2vh);transition:opacity .7s,transform .7s}
 .panel.on{opacity:1;transform:none}
 .k{font-size:1.8vh;font-weight:800;letter-spacing:.22em;color:rgba(255,255,255,.55);text-transform:uppercase}
 .duels{display:flex;gap:1.4vw;margin-top:1.6vh;flex-wrap:nowrap;overflow:hidden}
@@ -46,7 +48,7 @@ h1{font-size:6.6vh;font-weight:800;letter-spacing:-.035em;line-height:1}
 .duel b{display:block;font-size:2.6vh;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .duel span{display:block;font-size:1.8vh;font-weight:700;color:rgba(255,255,255,.55);margin-top:.5vh;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .duel em{font-style:normal;color:#7EA2FF}
-.big{font-size:min(6vh,3.4vw);font-weight:800;letter-spacing:-.03em;margin-top:1vh}
+.big{font-size:min(4.6vh,2.6vw);line-height:1.15;font-weight:800;letter-spacing:-.03em;margin-top:1vh}
 .track{height:1.6vh;border-radius:1vh;background:rgba(255,255,255,.12);margin-top:1.6vh;overflow:hidden;width:100%}
 .fill{height:100%;background:#0443FD;border-radius:1vh;transition:width 1.6s cubic-bezier(.2,.8,.2,1)}
 .join{position:absolute;right:4.4vw;bottom:5vh;display:flex;align-items:center;gap:1.4vw;text-align:right}
@@ -56,8 +58,10 @@ h1{font-size:6.6vh;font-weight:800;letter-spacing:-.035em;line-height:1}
 #qr{width:15vh;height:15vh;background:#fff;border-radius:1.4vh;padding:1vh}
 #qr canvas{width:100%;height:100%;display:block}
 .clock{position:absolute;right:4.4vw;top:5.5vh;font-size:2.4vh;font-weight:800;font-variant-numeric:tabular-nums;color:rgba(255,255,255,.75)}
-#fs{position:absolute;right:4.4vw;top:10.5vh;display:flex;align-items:center;gap:.6vw;padding:1vh 1.2vw;border-radius:1vh;border:1px solid rgba(255,255,255,.3);background:rgba(7,9,12,.6);color:#fff;font:700 1.7vh Manrope,system-ui,sans-serif;cursor:pointer;opacity:0;transition:opacity .4s}
-body.ui #fs{opacity:1}
+#fs{position:absolute;right:1.6vw;bottom:1.6vh;width:3.2vh;height:3.2vh;display:grid;place-items:center;border:0;background:none;color:#fff;cursor:pointer;opacity:0;transition:opacity .4s;padding:0}
+#fs svg{width:2vh;height:2vh}
+body.ui #fs{opacity:.35}
+body.ui #fs:hover{opacity:.8}
 body:not(.ui){cursor:none}
 /* Écran en hauteur (tablette, fenêtre étroite) : le bloc « rejoins le club » prend sa propre ligne en bas. */
 @media (max-aspect-ratio:4/3){.left{width:auto;right:4.4vw;bottom:23vh}.join{left:4.4vw;right:4.4vw;justify-content:space-between;text-align:left}#boxer{width:90vw;right:-25vw;opacity:.55}}
@@ -67,7 +71,7 @@ body:not(.ui){cursor:none}
 <div id="stage">
   <div class="glow"></div><canvas id="boxer"></canvas><div class="shade"></div><div class="scan"></div>
   <div class="clock" id="clock"></div>
-  <button id="fs" type="button">⛶ Plein écran</button>
+  <button id="fs" type="button" aria-label="Plein écran"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
   <div class="left">
     <div class="brand"><img src="/images/logo-attax-wh.svg" alt="Attax" style="height:4vh"></div>
     <div class="head" id="head"></div>
@@ -86,12 +90,13 @@ const nf = (n) => Number(n ?? 0).toLocaleString("fr-FR").replace(/[\\u202F\\u00A
 const ini = (s) => esc(String(s ?? "?").trim().charAt(0).toUpperCase());
 let D = null, page = 0, panel = 0;
 // Autant de lignes que l'écran en contient (télé, tablette, fenêtre) : jamais de ligne sous les panneaux.
-const per = () => { const el = document.getElementById("list"), h = el.clientHeight, row = window.innerHeight * 0.056; return Math.max(3, Math.min(10, Math.floor((h - window.innerHeight * 0.01) / row))); };
+const per = () => { const el = document.getElementById("list"), h = el.clientHeight, row = window.innerHeight * 0.056; return Math.max(3, Math.min(10, Math.floor((h - window.innerHeight * 0.045) / row))); };
 // Plein écran (bouton visible quand la souris bouge) ; le curseur disparaît sur la télé.
 let uiT = 0; const ui = () => { document.body.classList.add("ui"); clearTimeout(uiT); uiT = setTimeout(() => document.body.classList.remove("ui"), 3000); };
 addEventListener("mousemove", ui); addEventListener("touchstart", ui); ui();
 document.getElementById("fs").onclick = () => { const d = document; if (d.fullscreenElement) d.exitFullscreen?.(); else d.documentElement.requestFullscreen?.().catch(() => {}); };
-document.addEventListener("fullscreenchange", () => { document.getElementById("fs").textContent = document.fullscreenElement ? "✕ Quitter le plein écran" : "⛶ Plein écran"; });
+const FS_I = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>', FS_X = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+document.addEventListener("fullscreenchange", () => { document.getElementById("fs").innerHTML = document.fullscreenElement ? FS_X : FS_I; });
 let rzT = 0; addEventListener("resize", () => { clearTimeout(rzT); rzT = setTimeout(() => { if (D) renderList(); }, 300); });
 
 // ── Le boxeur : les poses de l'app, redessinées en lignes au canvas ──
@@ -135,23 +140,26 @@ function renderHead() {
   }
 }
 function renderList() {
-  const rows = D.rows ?? [], el = document.getElementById("list");
-  if (!rows.length) { el.innerHTML = '<div class="empty">Le classement se remplit dès les premiers duels.<br>Rejoins le club avec le code <b>' + esc(D.code) + '</b>.</div>'; return; }
-  const pages = Math.ceil(rows.length / per()); page = page % pages;
-  const part = rows.slice(page * per(), page * per() + per());
-  el.innerHTML = (pages > 1 ? '<div class="page">' + (page + 1) + ' / ' + pages + '</div>' : '') + part.map((r) =>
+  // Le grand cadre alterne : les pages du classement, puis les pages de TOUS les duels d'hier.
+  const rows = D.rows ?? [], duels = D.yesterday ?? [], el = document.getElementById("list"), n = per();
+  if (!rows.length && !duels.length) { el.innerHTML = '<div class="empty">Le classement se remplit dès les premiers duels.<br>Rejoins le club avec le code <b>' + esc(D.code) + '</b>.</div>'; return; }
+  const views = [];
+  for (let i = 0; i < rows.length; i += n) views.push({ kind: "rank", part: rows.slice(i, i + n) });
+  for (let i = 0; i < duels.length; i += n) views.push({ kind: "duel", part: duels.slice(i, i + n) });
+  page = page % views.length;
+  const v = views[page], same = views.filter((x) => x.kind === v.kind), at = same.indexOf(v) + 1;
+  const label = (v.kind === "rank" ? "Classement" : "Les duels d\\'hier") + (same.length > 1 ? ' · ' + at + ' / ' + same.length : '');
+  el.innerHTML = '<div class="page">' + label + '</div>' + (v.kind === "rank" ? v.part.map((r) =>
     '<div class="r' + (Number(r.rank) === 1 ? ' first' : '') + '"><span class="p">' + esc(r.rank) + '</span>'
     + (r.avatar_url ? '<img class="a" src="' + esc(r.avatar_url) + '" alt="">' : '<div class="a t">' + ini(r.username) + '</div>')
-    + '<span class="n">' + esc(r.username) + '</span><span class="s">' + nf(r.points) + '<small>' + (Number(r.points) > 1 ? 'points' : 'point') + '</small></span></div>').join("");
+    + '<span class="n">' + esc(r.username) + '</span><span class="s">' + nf(r.points) + '<small>' + (Number(r.points) > 1 ? 'points' : 'point') + '</small></span></div>').join("")
+    : v.part.map((d) => '<div class="r"><span class="n"><b>' + esc(d.winner) + '</b> <span class="bat">bat ' + esc(d.losers.join(" et ")) + '</span></span><span class="s plus">+' + esc(d.points) + '<small>' + (d.points > 1 ? 'points' : 'point') + '</small></span></div>').join(""));
   [...el.querySelectorAll(".r")].forEach((r, i) => setTimeout(() => r.classList.add("on"), 60 + i * 70));
 }
 
 // ── Les panneaux du bas : les duels d'hier, l'objectif du mois ──
 function panels() {
   const out = [];
-  const y = D.yesterday ?? [];
-  if (y.length) out.push('<div class="k">Les duels d\\'hier</div><div class="duels">' + y.slice(0, 3).map((d) =>
-    '<div class="duel"><b>' + esc(d.winner) + '</b><span>bat ' + esc(d.losers.join(" et ")) + ' · <em>+' + esc(d.points) + ' point' + (d.points > 1 ? 's' : '') + '</em></span></div>').join("") + '</div>');
   const g = D.goal;
   if (g && Number(g.target) > 0) { const pct = Math.max(0, Math.min(100, Math.round((Number(g.total) / Number(g.target)) * 100)));
     out.push('<div class="k">Objectif du mois, tous ensemble</div><div class="big">' + nf(g.total) + ' <span style="opacity:.45">/ ' + nf(g.target) + ' pts d\\'activité</span></div><div class="track"><div class="fill" data-w="' + pct + '" style="width:0"></div></div>'); }
@@ -173,7 +181,7 @@ async function load() {
 setInterval(() => { const d = new Date(); document.getElementById("clock").textContent = d.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" }); }, 1000);
 load().then(() => { if (D) rotatePanel(); });
 setInterval(load, 5 * 60 * 1000);
-setInterval(() => { if (D) { page++; renderList(); } }, 15000);
+setInterval(() => { if (D) { page++; renderList(); } }, 12000);
 setInterval(() => { if (D) rotatePanel(); }, 10000);
 </script></body></html>`;
 }
