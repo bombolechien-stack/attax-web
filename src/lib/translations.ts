@@ -243,7 +243,7 @@ export const T = {
         { label: "Health Connect Fitness Game", href: "/health-connect-fitness-game" },
       ],
       col_resources: "Resources",
-      copyright: "© 2026 ATTAX SAS. Sport is now a game.",
+      copyright: "© 2027 ATTAX SAS. Sport is now a game.",
     },
     discover: {
       hero_label: "DISCOVER ATTAX",
@@ -641,7 +641,7 @@ export const T = {
         { label: "Jeu Health Connect", href: "/health-connect-fitness-game" },
       ],
       col_resources: "Ressources",
-      copyright: "© 2026 ATTAX SAS. Le sport devient un jeu.",
+      copyright: "© 2027 ATTAX SAS. Le sport devient un jeu.",
     },
     discover: {
       hero_label: "DÉCOUVRIR ATTAX",
