@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
+import { localMeta } from "@/lib/seo";
 
 const TITLE = "Download Attax for iPhone: Free on the App Store";
 const DESC = "Attax is free on the App Store: your workouts from Apple Health become a duel every day against a player from your league, with Fight Night at 9:30 PM. iOS 15.1 or later.";
 
-export const metadata: Metadata = {
+const EN_META: Metadata = {
   title: TITLE,
   description: DESC,
   alternates: { canonical: "https://attax.app/download/ios" },
   openGraph: { title: TITLE, description: DESC, url: "https://attax.app/download/ios", type: "website", images: [{ url: "/images/og-image.jpg", width: 1200, height: 630, alt: "Attax: Sport is now a game." }] },
   twitter: { card: "summary_large_image", title: TITLE, description: DESC },
 };
+export const generateMetadata = () => localMeta("/download/ios", EN_META);
 
 const appSchema = {
   "@context": "https://schema.org",

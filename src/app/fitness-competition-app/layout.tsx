@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import { localMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+const EN_META: Metadata = {
   title: "Fitness Competition App",
   description:
     "Attax is the fitness competition app where your real workouts become daily duels. Train, compete in leagues of 8 players, and climb from Rookie to Legend.",
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
     url: "https://attax.app/fitness-competition-app",
   },
 };
+export const generateMetadata = () => localMeta("/fitness-competition-app", EN_META);
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;

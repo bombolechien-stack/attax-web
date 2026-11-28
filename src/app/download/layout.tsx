@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import { localMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+const EN_META: Metadata = {
   title: "Download Attax: App Store & Google Play",
   description:
     "Download Attax for free on iPhone and Android. Your real workouts become a duel every day against a player from your league, with Fight Night at 9:30 PM.",
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
     url: "https://attax.app/download",
   },
 };
+export const generateMetadata = () => localMeta("/download", EN_META);
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;

@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
+import { localMeta } from "@/lib/seo";
 
 const TITLE = "Download Attax for Android: Free on Google Play";
 const DESC = "Attax is free on Google Play: your workouts from Health Connect become a duel every day against a player from your league, with Fight Night at 9:30 PM. Android 9 or later.";
 
-export const metadata: Metadata = {
+const EN_META: Metadata = {
   title: TITLE,
   description: DESC,
   alternates: { canonical: "https://attax.app/download/android" },
   openGraph: { title: TITLE, description: DESC, url: "https://attax.app/download/android", type: "website", images: [{ url: "/images/og-image.jpg", width: 1200, height: 630, alt: "Attax: Sport is now a game." }] },
   twitter: { card: "summary_large_image", title: TITLE, description: DESC },
 };
+export const generateMetadata = () => localMeta("/download/android", EN_META);
 
 const appSchema = {
   "@context": "https://schema.org",

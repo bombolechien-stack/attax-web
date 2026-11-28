@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { localMeta, reqLang } from "@/lib/seo";
 import ComingSoonGate from "@/components/ComingSoonGate";
 import Hero from "@/components/home/Hero";
 import Opponent6 from "@/components/home/Opponent6";
@@ -17,12 +18,13 @@ import ClubsBand from "@/components/home/ClubsBand";
 import { LIVE } from "@/lib/liveCopy";
 import "./home-p5.css";
 
-export const metadata: Metadata = {
+const EN_META: Metadata = {
   title: "Attax: Sport is now a game.",
   description:
     "Attax turns your real workouts into daily duels: leagues of 8, 7 rounds per match, 12 tactical cards and Fight Night every evening at 9:30 PM. Free on iPhone & Android.",
   alternates: { canonical: "https://attax.app" },
 };
+export const generateMetadata = () => localMeta("/", EN_META);
 
 const softwareAppSchema = {
   "@context": "https://schema.org",
@@ -39,17 +41,19 @@ const softwareAppSchema = {
 };
 
 // Données structurées = exactement les questions affichées sur l'accueil (FAQ.tsx), en anglais.
-const faqSchema = {
+const faqSchemaFor = (lang: "en" | "fr") => ({
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: LIVE.en.faq.items.map((it) => ({
+  inLanguage: lang,
+  mainEntity: LIVE[lang].faq.items.map((it) => ({
     "@type": "Question",
     name: it.q,
     acceptedAnswer: { "@type": "Answer", text: it.a },
   })),
-};
+});
 
-export default function HomePage() {
+export default async function HomePage() {
+  const faqSchema = faqSchemaFor(await reqLang());
   return (
     <ComingSoonGate>
       <script

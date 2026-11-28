@@ -9,6 +9,7 @@ import ScrollProgress from "@/components/ScrollProgress";
 import CookieConsent from "@/components/CookieConsent";
 import ScrollToTop from "@/components/ScrollToTop";
 import { LangProvider } from "@/lib/i18n";
+import { reqLang } from "@/lib/seo";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -119,9 +120,11 @@ export const metadata: Metadata = {
   alternates: { canonical: BASE_URL },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  // « /fr/… » = français dès le serveur (src/middleware.ts) : le HTML servi est dans la bonne langue.
+  const lang = await reqLang();
   return (
-    <html lang="en" className={`${jakarta.variable} ${interTight.variable} ${instrumentSerif.variable} ${plexMono.variable} ${manrope.variable}`}>
+    <html lang={lang} className={`${jakarta.variable} ${interTight.variable} ${instrumentSerif.variable} ${plexMono.variable} ${manrope.variable}`}>
       <body
         style={{
           fontFamily: "var(--font-jakarta), -apple-system, BlinkMacSystemFont, sans-serif",
@@ -134,7 +137,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           flexDirection: "column",
         }}
       >
-        <LangProvider>
+        <LangProvider initial={lang}>
           <ScrollProgress />
           <div aria-hidden="true" style={{ position: "fixed", inset: 0, zIndex: 9, pointerEvents: "none", backgroundImage: "repeating-linear-gradient(90deg, transparent, transparent calc(16.666% - 0.5px), rgba(255,255,255,0.032) calc(16.666% - 0.5px), rgba(255,255,255,0.032) 16.666%)" }} />
           <ScrollToTop />

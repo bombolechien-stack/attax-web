@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import { localMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+const EN_META: Metadata = {
   title: "Press Kit",
   description:
     "Logos, screenshots, gameplay video, ready-to-use texts and key facts to write about Attax, the fitness game where your real workouts become daily duels.",
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
     url: "https://attax.app/press",
   },
 };
+export const generateMetadata = () => localMeta("/press", EN_META);
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;

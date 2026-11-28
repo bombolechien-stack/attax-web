@@ -4,7 +4,8 @@ const BASE = "https://attax.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-  return [
+  // Chaque page existe en anglais (adresse d'origine) et en français (/fr/…), reliées entre elles (hreflang).
+  const en: MetadataRoute.Sitemap = [
     { url: BASE, lastModified: now, changeFrequency: "weekly", priority: 1 },
     { url: `${BASE}/discover`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/clubs`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
@@ -27,4 +28,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/legal`, lastModified: now, changeFrequency: "yearly", priority: 0.2 },
     { url: `${BASE}/cookie-policy`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
   ];
+  const frOf = (u: string) => (u === BASE ? BASE + "/fr" : u.replace(BASE, BASE + "/fr"));
+  return en.flatMap((e) => {
+    const languages = { en: e.url, fr: frOf(e.url), "x-default": e.url };
+    return [{ ...e, alternates: { languages } }, { ...e, url: frOf(e.url), alternates: { languages } }];
+  });
 }

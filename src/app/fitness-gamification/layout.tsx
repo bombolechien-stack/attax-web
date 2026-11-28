@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import { localMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+const EN_META: Metadata = {
   title: "Fitness Gamification Explained",
   description:
     "Fitness gamification applies game mechanics to exercise. Learn why it works and how Attax uses competition, progression and rewards to keep you active.",
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
     url: "https://attax.app/fitness-gamification",
   },
 };
+export const generateMetadata = () => localMeta("/fitness-gamification", EN_META);
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;

@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import { localMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+const EN_META: Metadata = {
   title: "Discover Attax: The Competitive Fitness Game",
   description:
-    "Discover how Attax turns your daily activity into competition. A duel every day against a player of your league, strategy cards and a verdict at 9:30 PM. Make every workout count.",
+    "A duel every day against a player of your league, strategy cards and a verdict at 9:30 PM. Attax turns your daily activity into competition.",
   alternates: { canonical: "https://attax.app/discover" },
   openGraph: {
     title: "Discover Attax: The Competitive Fitness Game",
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
     url: "https://attax.app/discover",
   },
 };
+export const generateMetadata = () => localMeta("/discover", EN_META);
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
