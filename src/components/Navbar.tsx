@@ -26,6 +26,7 @@ export default function Navbar() {
 
   const NAV_LINKS = [
     { href: "/discover", label: nav.discover },
+    { href: "/clubs", label: nav.clubs },
     { href: "/adventure", label: nav.adventure },
     { href: "/contact", label: nav.contact },
   ];

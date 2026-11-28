@@ -21,7 +21,7 @@ export function middleware(request: NextRequest) {
 
   // Pages légales TOUJOURS publiques sur attax.app (Google Play / App Store exigent une
   // politique de confidentialité et une page de suppression de compte accessibles).
-  const isLegal = /^\/(privacy|health-data-privacy|terms|cookie-policy|legal|contact|reset-password|join|club-screen)(\/|$)/.test(pathname);
+  const isLegal = /^\/(privacy|health-data-privacy|terms|cookie-policy|legal|contact|reset-password|join|club-screen|nothingwatch|cardio)(\/|$)/.test(pathname);
 
   if (!unlocked && pathname !== "/" && !isStaticAsset && !(isLegal && !waitlistOnly)) {
     const url = request.nextUrl.clone();

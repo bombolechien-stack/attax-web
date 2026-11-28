@@ -1,0 +1,30 @@
+/* « Le matériel » (src/components/site/Gear.tsx) : deux façons de jouer, deux produits, les marques déconseillées. */
+.gr-ways { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.gr-way { padding: clamp(1.25rem, 2.5vw, 1.75rem) 0; border-top: 1px solid rgba(9,9,11,0.12); }
+.gr-way .h7-h3 { margin-top: 0.6rem; }
+
+.gr-picks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: clamp(1.5rem, 3vw, 2.5rem); }
+.gr-pick { display: flex; flex-direction: column; overflow: hidden; border-radius: 24px; background: #fff; text-decoration: none; color: inherit; transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), box-shadow 0.25s ease; }
+.gr-pick:hover { transform: translateY(-3px); box-shadow: 0 26px 50px -34px rgba(11,17,22,0.5); }
+.gr-pick:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+.gr-img { position: relative; aspect-ratio: 16 / 10; background: #fff; border-bottom: 1px solid rgba(9,9,11,0.08); display: flex; align-items: center; justify-content: center; }
+.gr-img { overflow: hidden; }
+.gr-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 1.5rem; box-sizing: border-box; }
+.gr-img.is-empty { background: #0d0d0d; background-image: repeating-linear-gradient(to bottom, rgba(201,213,240,0.045) 0 1px, transparent 1px 5px); }
+.gr-img.is-empty span { font-family: var(--font-manrope), sans-serif; font-size: clamp(1.25rem, 2.4vw, 1.75rem); font-weight: 500; letter-spacing: -0.02em; color: rgba(255,255,255,0.9); text-align: center; padding: 0 1.5rem; }
+.gr-img em { position: absolute; top: 1rem; left: 1rem; padding: 6px 12px; border-radius: 999px; background: var(--blue); color: #fff; font-style: normal; font-family: var(--font-mono), ui-monospace, monospace; font-size: 0.8125rem; font-variant-caps: all-small-caps; letter-spacing: 0.08em; }
+.gr-txt { display: flex; flex-direction: column; align-items: flex-start; gap: 0.75rem; flex: 1; padding: clamp(1.25rem, 2.5vw, 1.75rem); }
+.gr-txt .h7-h3 small { font-size: 0.7em; font-weight: 500; color: #5A5F67; margin-left: 0.25rem; }
+.gr-txt .h7-p { margin: 0; flex: 1; }
+.gr-aff { margin-top: 1rem; font-size: 0.9375rem; }
+
+.gr-avoid { margin-top: clamp(2.5rem, 5vw, 4rem); }
+.gr-avoid ul { list-style: none; margin: 1rem 0 1.25rem; padding: 0; border-top: 1px solid rgba(9,9,11,0.12); }
+.gr-avoid li { display: grid; grid-template-columns: minmax(0, 14rem) minmax(0, 1fr); gap: 0.5rem 2rem; padding: 1.1rem 0; border-bottom: 1px solid rgba(9,9,11,0.12); }
+.gr-avoid li b { font-family: var(--font-manrope), sans-serif; font-size: 1.1875rem; font-weight: 500; letter-spacing: -0.015em; color: var(--ink); }
+.gr-avoid li span { font-size: 1.0625rem; line-height: 1.5; color: var(--ink2); }
+
+@media (max-width: 760px) {
+  .gr-ways, .gr-picks { grid-template-columns: 1fr; }
+  .gr-avoid li { grid-template-columns: 1fr; }
+}

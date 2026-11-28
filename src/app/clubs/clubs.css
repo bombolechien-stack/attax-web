@@ -1,0 +1,93 @@
+/* Page de vente /clubs (26/11) : compléments du système des pages (site-pages.css, classes .sp-* et .h7-*).
+   Tout est préfixé .cl- pour ne toucher aucune autre page. */
+
+/* Sélecteur de profil : pastilles (onglets), défilement horizontal sur téléphone */
+.cl-tabs { display: flex; flex-wrap: wrap; gap: 10px; }
+.cl-tab { flex: none; padding: 12px 22px; border-radius: 999px; border: 1px solid rgba(9,9,11,0.2); background: transparent; cursor: pointer; font-family: var(--font-manrope), sans-serif; font-size: 1rem; font-weight: 600; line-height: 1.2; color: var(--ink); white-space: nowrap; transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease; }
+.cl-tab:hover { border-color: var(--ink); }
+.cl-tab.is-on { background: var(--ink); border-color: var(--ink); color: #fff; }
+.cl-tab:focus-visible, .cl-panel:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+.cl-panel { margin-top: clamp(2rem, 4vw, 3rem); padding-top: clamp(2rem, 4vw, 3rem); border-top: 1px solid rgba(9,9,11,0.12); border-radius: 2px; animation: clIn 0.5s cubic-bezier(0.16,1,0.3,1); }
+.cl-panel[hidden] { display: none; }
+@keyframes clIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.cl-panel-head { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 1.25rem 4rem; align-items: end; }
+.cl-panel-t { margin: 0; font-family: var(--font-manrope), sans-serif; font-weight: 500; font-size: clamp(2rem, 3.6vw, 3.25rem); line-height: 1.04; letter-spacing: -0.035em; color: var(--ink); text-wrap: balance; }
+.cl-panel-t > span { display: block; }
+.cl-panel-t em { font-family: var(--font-serif), Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.01em; color: var(--blue); font-size: 1.06em; }
+.cl-panel-lead { margin: 0; font-size: 1.125rem; line-height: 1.55; color: var(--ink2); max-width: 30rem; justify-self: end; }
+.cl-panel-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1rem; align-items: stretch; margin-top: 1rem; }
+/* Les outils du profil : carte blanche, liste à filets */
+.cl-tools { background: #fff; border-radius: 24px; padding: clamp(1.5rem, 3vw, 2.25rem); }
+.cl-tools-k { margin: 0 0 1rem; font-family: var(--font-mono), ui-monospace, monospace; font-size: 0.9375rem; font-weight: 500; font-variant-caps: all-small-caps; letter-spacing: 0.08em; color: var(--blue); }
+.cl-tools ul { list-style: none; margin: 0; padding: 0; }
+.cl-tools li { padding: 0.8rem 0; border-top: 1px solid rgba(9,9,11,0.1); font-size: 1.0625rem; line-height: 1.45; color: var(--ink); }
+.cl-tools li:last-child { padding-bottom: 0; }
+.cl-tv-wrap { margin-top: clamp(2rem, 4vw, 3rem); }
+.cl-args { list-style: none; margin: 0; padding: 0; border-top: 1px solid rgba(9,9,11,0.12); }
+.cl-args li { display: grid; grid-template-columns: 3.5rem minmax(0, 1fr); gap: 0.5rem 1rem; align-items: baseline; padding: 1.5rem 0; border-bottom: 1px solid rgba(9,9,11,0.12); }
+.cl-args .sp-li-b { margin-top: 0.5rem; font-size: 1.0625rem; }
+
+/* « Concrètement » : carte sombre arrondie (la carte du hero), trame fine */
+.cl-use { overflow: hidden; border-radius: 24px; padding: clamp(1.5rem, 3vw, 2.25rem); background: #0d0d0d; background-image: repeating-linear-gradient(to bottom, rgba(201,213,240,0.045) 0 1px, transparent 1px 5px); color: #fff; }
+.cl-use-k { margin: 0 0 1rem; font-family: var(--font-mono), ui-monospace, monospace; font-size: 0.9375rem; font-weight: 500; font-variant-caps: all-small-caps; letter-spacing: 0.08em; color: #8FA8FF; }
+.cl-use-t { margin: 0; font-size: 1.125rem; line-height: 1.6; color: rgba(255,255,255,0.86); }
+
+/* Ce que vivent les membres : 4 cartes blanches (la surface des écrans de l'app) */
+.cl-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: clamp(2rem, 4vw, 3rem); }
+.cl-card .h7-h3 { margin-top: 0.5rem; }
+/* Une carte = le problème d'aujourd'hui (gris), puis ce qu'Attax y change */
+.cl-card { display: flex; flex-direction: column; }
+.cl-pb-k { margin: 0; font-family: var(--font-mono), ui-monospace, monospace; font-size: 0.875rem; font-weight: 500; font-variant-caps: all-small-caps; letter-spacing: 0.08em; color: var(--ink2); opacity: 0.7; }
+.cl-pb-k.is-fix { color: var(--blue); opacity: 1; margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid rgba(9,9,11,0.1); }
+.cl-pb { margin: 0.5rem 0 0; font-size: 1.0625rem; line-height: 1.5; color: var(--ink2); min-height: 4.8em; }
+@media (max-width: 900px) { .cl-pb { min-height: 0; } }
+.cl-card { background: #fff; border-radius: 24px; padding: clamp(1.5rem, 3vw, 2.25rem); }
+.cl-ctas { margin-top: clamp(2rem, 4vw, 3rem); }
+/* L'univers de jeu : captures, grille des 6 raisons de rester, phrase de conclusion */
+.cl-world { margin-top: clamp(2.5rem, 5vw, 4rem); }
+/* Comparaison : une app de défi (grise, barrée d'un tiret) face à Attax (carte sombre) */
+.cl-vs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+/* 1re colonne : ce qu'ils utilisent aujourd'hui (sans fond, grisée) ; 2e : leur club Attax ; 3e : les ligues */
+.cl-vs-col.is-old { background: transparent; border: 1px solid rgba(9,9,11,0.14); }
+.cl-vs-col.is-old li { color: #6B7078; }
+.cl-vs-col:not(.is-old) li::before { content: "+"; color: var(--blue); }
+.cl-vs-col:not(.is-old):not(.is-us) li { color: var(--ink); }
+.cl-vs-col:not(.is-old):not(.is-us) .cl-vs-k { color: var(--blue); }
+.cl-vs-col { border-radius: 24px; padding: clamp(1.5rem, 3vw, 2.25rem); background: #fff; }
+.cl-vs-col.is-us { background: #0d0d0d; background-image: repeating-linear-gradient(to bottom, rgba(201,213,240,0.045) 0 1px, transparent 1px 5px); }
+.cl-vs-k { margin: 0 0 0.75rem; font-family: var(--font-mono), ui-monospace, monospace; font-size: 0.9375rem; font-weight: 500; font-variant-caps: all-small-caps; letter-spacing: 0.08em; color: var(--ink2); }
+.cl-vs-col.is-us .cl-vs-k { color: #8FA8FF; }
+.cl-vs-col ul { list-style: none; margin: 0; padding: 0; }
+.cl-vs-col li { position: relative; padding: 0.8rem 0 0.8rem 1.75rem; border-top: 1px solid rgba(9,9,11,0.1); font-size: 1.125rem; line-height: 1.4; color: var(--ink2); }
+.cl-vs-col li::before { content: "–"; position: absolute; left: 0; color: #9AA0A8; }
+.cl-vs-col.is-us li { border-top-color: rgba(255,255,255,0.12); color: #fff; }
+.cl-vs-col.is-us li::before { content: "+"; color: #8FA8FF; }
+.cl-shots-k { margin: clamp(2.5rem, 5vw, 4rem) 0 1.5rem; }
+.cl-vs-col li { font-size: 1.0625rem; }
+@media (max-width: 900px) { .cl-vs { grid-template-columns: 1fr; } }
+.cl-world-foot { margin-top: clamp(2rem, 4vw, 3rem); }
+.cl-world-foot .h7-mid-t { max-width: 44rem; }
+
+/* Écran télé : aperçu 16/9 de la page fictive /clubs/screen-demo */
+.cl-tv { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 24px; background: #07090C; box-shadow: 0 30px 60px -36px rgba(11,17,22,0.45); }
+.cl-tv iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; pointer-events: none; }
+.cl-tv-foot { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.25rem 2rem; margin-top: 1.5rem; }
+.cl-tv-url { display: inline-block; max-width: 100%; padding: 0.55rem 0.9rem; border-radius: 12px; background: #fff; border: 1px solid rgba(9,9,11,0.1); font-family: var(--font-mono), ui-monospace, monospace; font-size: 1rem; color: var(--ink); overflow-wrap: anywhere; }
+.cl-tv-foot .sp-note { margin-top: 0.6rem; max-width: 34rem; }
+
+@media (max-width: 900px) {
+  .cl-tabs { flex-wrap: nowrap; overflow-x: auto; margin: 0 calc(-1 * var(--gut)); padding: 4px var(--gut); scroll-padding: 0 var(--gut); scrollbar-width: none; }
+  .cl-tabs::-webkit-scrollbar { display: none; }
+  .cl-tab { padding: 11px 18px; font-size: 0.9375rem; }
+  .cl-panel-head, .cl-panel-grid, .cl-cards { grid-template-columns: 1fr; }
+  .cl-panel-lead { justify-self: start; }
+  .cl-panel-t { font-size: clamp(1.875rem, 8.4vw, 2.4rem); }
+  .cl-args li { grid-template-columns: 1fr; padding: 1.25rem 0; }
+  .cl-args .sp-li-b { margin-top: 0.4rem; }
+}
+@media (max-width: 700px) {
+  .cl-cards { grid-template-columns: 1fr; }
+  .cl-tv { border-radius: 16px; }
+  .cl-tv-foot .h7-btn { width: 100%; justify-content: center; box-sizing: border-box; }
+}
+@media (prefers-reduced-motion: reduce) { .cl-panel { animation: none; } }

@@ -4,6 +4,12 @@
 import { useLang, useT } from "@/lib/i18n";
 import { SitePage, PageHero, PhotoBg, Sec, HairList, Phones, Reveal, FinalCta, AppleIcon } from "@/components/site/Site";
 
+// Les clubs (26/11) : une section avant l'appel final, qui renvoie vers la page des organisations (/clubs).
+const CLUBS = {
+  en: { kick: "Clubs", h2: ["Play with", "your own people too."], lead: "A gym, a sports club, a society, a group of friends: your own table, a rival every day, a champion every month.", cta: "Create a club" },
+  fr: { kick: "Clubs", h2: ["Jouez aussi", "avec les vôtres."], lead: "Une salle, un club de sport, une association, une bande d'amis : votre classement, un rival chaque jour, un champion chaque mois.", cta: "Créer un club" },
+};
+
 export default function DiscoverPage() {
   const t = useT();
   const { lang } = useLang();
@@ -45,6 +51,10 @@ export default function DiscoverPage() {
 
       <Sec kick={d.schedule_label} title={<><span>{d.schedule_h2[0]}</span> <span>{d.schedule_h2[1]}</span></>} lead={d.schedule_sub} split>
         <HairList items={d.schedule_items.map((s) => ({ n: s.n, title: s.title, body: s.description }))} />
+      </Sec>
+
+      <Sec id="clubs" kick={CLUBS[lang].kick} title={<><span>{CLUBS[lang].h2[0]}</span> <span>{CLUBS[lang].h2[1]}</span></>} lead={CLUBS[lang].lead} split>
+        <Reveal><a className="h7-btn h7-btn-ink" href="/clubs">{CLUBS[lang].cta}</a></Reveal>
       </Sec>
 
       <FinalCta />

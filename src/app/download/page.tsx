@@ -8,6 +8,7 @@ import Image from "next/image";
 import { useLang, useT } from "@/lib/i18n";
 import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/stores";
 import { SitePage, PageHero, Sec, Head, Phones, Reveal, AppleIcon, PlayIcon } from "@/components/site/Site";
+import Gear from "@/components/site/Gear";
 
 // Montres compatibles (retour du 22/11 : bloc équilibré, liste à droite). Galaxy Watch et Fitbit : Android seulement.
 const WATCHES: { name: string; android?: boolean }[] = [
@@ -62,12 +63,14 @@ export default function DownloadPage() {
                 {WATCHES.map((w) => (
                   <li key={w.name}><b>{w.name}</b>{w.android && <span>{fr ? "sur Android" : "on Android"}</span>}</li>
                 ))}
-                <li className="is-more"><b>{fr ? "et d'autres" : "and more"}</b><span>{fr ? "ceintures cardio, bracelets" : "chest straps, bands"}</span></li>
+                <li className="is-more"><b>{fr ? "et d'autres" : "and more"}</b><span>{fr ? "montres qui partagent leur cardio" : "watches that share heart rate"}</span></li>
+                <li className="is-more"><b style={{ color: "var(--ink)" }}>{fr ? "Capteurs cardio Bluetooth" : "Bluetooth heart-rate sensors"}</b><span>{fr ? "ceintures, brassards · en direct" : "straps, armbands · direct"}</span></li>
               </ul>
               <div className="sp-sync">
                 <span className="sp-label">{fr ? "Synchronisé avec" : "Synced with"}</span>
                 <span className="sp-tag"><AppleIcon />{fr ? "Apple Santé" : "Apple Health"}</span>
                 <span className="sp-tag"><PlayIcon />Health Connect</span>
+                <span className="sp-tag">{fr ? "Bluetooth (capteurs cardio)" : "Bluetooth (heart-rate sensors)"}</span>
               </div>
             </Reveal>
           </div>
@@ -88,6 +91,8 @@ export default function DownloadPage() {
         </Reveal>
         </div>
       </section>
+
+      <Gear />
 
       <Sec kick={d.screens_label} title={d.screens_h2}>
         <Phones items={SHOTS.map((s, i) => ({ src: `/screens/story/${lang}/${s}.webp`, alt: d.screens[i].label, title: d.screens[i].label, body: d.screens[i].caption }))} />

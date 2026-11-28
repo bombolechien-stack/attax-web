@@ -14,7 +14,7 @@ export default function AdventurePage() {
         full
         bg={<PhotoBg src="/images/cycling-race.jpg" alt="Cycling is Attax" pos="center 40%" a={[0.96, 0.72, 0.2]} b={0.9} />}
         kick={a.hero_label}
-        title={<><span>{a.h1[0]}</span> <span><em>{a.h1[1]}</em></span></>}
+        title={<><span className="sp-nw">{a.h1[0]}</span> <span><em>{a.h1[1]}</em></span></>}
         lead={a.subtitle}
         stats={a.stats}
       >

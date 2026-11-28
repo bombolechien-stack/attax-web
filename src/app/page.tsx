@@ -13,6 +13,7 @@ import PrivacyStrip from "@/components/live/PrivacyStrip";
 import FAQ from "@/components/live/FAQ";
 import MidCta from "@/components/live/MidCta";
 import Beyond7 from "@/components/home/Beyond7";
+import ClubsBand from "@/components/home/ClubsBand";
 import { LIVE } from "@/lib/liveCopy";
 import "./home-p5.css";
 
@@ -76,6 +77,7 @@ export default function HomePage() {
       <LeagueTable />
       <Beyond7 />
       <MidCta />
+      <ClubsBand />
       <FeaturesGrid />
       <FAQ />
       <PrivacyStrip />

@@ -20,6 +20,8 @@
 .sp-hero .hero-kick6 { margin: 0 0 1.25rem; }
 .sp-h1 { margin: 0; font-family: var(--font-manrope), sans-serif; font-weight: 500; font-size: clamp(2.75rem, 5.6vw, 4.5rem); line-height: 1.07; letter-spacing: -0.04em; color: #fff; text-wrap: balance; }
 .sp-h1 > span { display: block; }
+/* Titre dont la 1re ligne ne doit pas se couper sur grand écran (L'Aventure) : il sort de la colonne de 720 px */
+@media (min-width: 861px) { .sp-hero-in > .sp-h1:has(.sp-nw) { max-width: none; } .sp-h1 > .sp-nw { white-space: nowrap; } }
 .sp-h1 em, .sp-h1 .hero-it6 { font-family: var(--font-serif), Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: -0.02em; color: #C9D5F0; font-size: 1.06em; }
 .sp-hero-lead { margin: 1.5rem 0 0; font-size: clamp(1.125rem, 1.4vw, 1.3125rem); line-height: 1.55; color: rgba(255,255,255,0.82); max-width: 560px !important; white-space: pre-line; }
 .sp-hero-lead + .sp-hero-lead { margin-top: 0.75rem; color: rgba(255,255,255,0.66); }

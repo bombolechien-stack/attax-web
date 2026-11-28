@@ -5,6 +5,7 @@ export const T = {
     nav: {
       home: "Home",
       discover: "Discover",
+      clubs: "Clubs",
       adventure: "The Adventure",
       contact: "Contact",
     },
@@ -214,6 +215,7 @@ export const T = {
         { label: "Fight Night", href: "/#cards" },
         { label: "FAQ", href: "/faq" },
         { label: "Discover", href: "/discover" },
+        { label: "Clubs", href: "/clubs" },
       ],
       links_community: [
         { label: "The Adventure", href: "/adventure" },
@@ -401,6 +403,7 @@ export const T = {
     nav: {
       home: "Accueil",
       discover: "Découvrir",
+      clubs: "Clubs",
       adventure: "L'Aventure",
       contact: "Contact",
     },
@@ -610,6 +613,7 @@ export const T = {
         { label: "Soir de combat", href: "/#cards" },
         { label: "FAQ", href: "/faq" },
         { label: "Découvrir", href: "/discover" },
+        { label: "Clubs", href: "/clubs" },
       ],
       links_community: [
         { label: "L'Aventure", href: "/adventure" },

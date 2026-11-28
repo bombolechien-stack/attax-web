@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useLang } from "@/lib/i18n";
 import { FAQ_CONTENT, type FaqItem } from "./content";
 import { SitePage, PageHero, Head, Reveal, FinalCta, Lines } from "@/components/site/Site";
+import Gear from "@/components/site/Gear";
 
 function Answer({ item }: { item: FaqItem }) {
   return (
@@ -65,6 +66,8 @@ export default function FaqPage() {
           </Reveal>
         </div>
       </div>
+
+      <Gear />
 
       <FinalCta />
     </SitePage>

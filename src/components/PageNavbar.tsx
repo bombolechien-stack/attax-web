@@ -30,6 +30,7 @@ export default function PageNavbar({ light: light0 = false, rightDark = false, p
   const NAV_LINKS = [
     { href: "/", label: nav.home },
     { href: "/discover", label: nav.discover },
+    { href: "/clubs", label: nav.clubs },
     { href: "/adventure", label: nav.adventure },
     { href: "/contact", label: nav.contact },
   ];
