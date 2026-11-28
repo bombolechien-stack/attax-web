@@ -131,7 +131,7 @@ export default function ClubsPage() {
   const f = (t: string) => fill(t, prof.w, prof.invite);
   const fx = (items: Pair[]) => items.map((it) => ({ title: f(it.title), body: f(it.body) }));
   // Le VRAI écran de salle (src/app/club-screen) avec son club d'exemple : classement, duels d'hier, objectif du mois.
-  const demo = "/club-screen?code=DEMO";
+  const demo = `/club-screen?code=DEMO&lang=${lang}`;
 
   return (
     <SitePage>
@@ -139,7 +139,7 @@ export default function ClubsPage() {
         full
         bg={<PhotoBg src="/images/clubs-team.webp" alt="" pos="center 38%" a={[0.88, 0.5, 0.12]} b={0.9} />}
         kick={c.hero.kick}
-        title={<><span>{c.hero.title[0]}</span> <span><em>{c.hero.title[1]}</em></span></>}
+        title={<><span className="cl-h1a">{c.hero.title[0]}</span> <span><em>{c.hero.title[1]}</em></span></>}
         lead={c.hero.lead}
         stats={c.hero.stats}
       >

@@ -2,6 +2,8 @@
 // Un boxeur en lignes (les poses de l'app) fait du shadow-boxing à droite ; à gauche le classement du mois ; en bas, des
 // panneaux qui tournent : les duels d'hier, l'objectif du mois, « rejoins le club » avec le QR. Les données sont relues
 // toutes les 5 minutes (sans recharger la page). ?code=DEMO : données d'exemple, pour tester. Aucune donnée de santé.
+// LANGUE (28/11) : français ou anglais. ?lang=fr ou ?lang=en l'impose ; sinon, la langue du navigateur (français si
+// elle commence par « fr », anglais pour toutes les autres). Tous les textes sont dans la table T du script.
 export function tvHtml(code: string) {
   return `<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex"><title>Attax · Club</title>
@@ -80,14 +82,33 @@ body:not(.ui){cursor:none}
     <div class="bottom"><div class="panel" id="p0"></div><div class="panel" id="p1"></div></div>
   </div>
   <div>
-    <div class="join"><div><div class="lbl">REJOINS LE CLUB</div><div class="code" id="code"></div><div class="url">attax.app · code du club</div></div><div id="qr"></div></div>
+    <div class="join"><div><div class="lbl" id="joinLbl">REJOINS LE CLUB</div><div class="code" id="code"></div><div class="url" id="joinUrl">attax.app · code du club</div></div><div id="qr"></div></div>
   </div>
 </div>
 <script>
 const CODE = ${JSON.stringify(code)};
-const MONTHS = ["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"];
+const QL = new URLSearchParams(location.search).get("lang");
+const L = (QL === "fr" || QL === "en") ? QL : (String(navigator.language || "fr").toLowerCase().startsWith("fr") ? "fr" : "en");
+document.documentElement.lang = L;
+const T = {
+  fr: { loc: "fr-FR", months: ["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"],
+    sub: (m, n) => "Classement de " + m + " · " + n + " membres", legend: "Points : 1 par duel du jour gagné, 2 en duel à trois",
+    join: "REJOINS LE CLUB", url: "attax.app · code du club", fs: "Plein écran", rank: "Classement", duels: "Les duels d\'hier",
+    pt: "point", pts: "points", beat: "bat", and: " et ", goal: "Objectif du mois, tous ensemble", unit: "pts d\'activité",
+    dayK: "Chaque jour", day: "Un rival du club. Le plus de pts d\'activité gagne le duel.",
+    empty: (c) => "Le classement se remplit dès les premiers duels.<br>Rejoins le club avec le code <b>" + c + "</b>.", none: "Aucun club avec ce code." },
+  en: { loc: "en-GB", months: ["January","February","March","April","May","June","July","August","September","October","November","December"],
+    sub: (m, n) => m + " ranking · " + n + " members", legend: "Points: 1 per daily duel won, 2 in a three-way duel",
+    join: "JOIN THE CLUB", url: "attax.app · club code", fs: "Full screen", rank: "Ranking", duels: "Yesterday\'s duels",
+    pt: "point", pts: "points", beat: "beat", and: " and ", goal: "This month\'s goal, all together", unit: "activity pts",
+    dayK: "Every day", day: "A rival from the club. The most activity pts wins the duel.",
+    empty: (c) => "The ranking fills up with the first duels.<br>Join the club with the code <b>" + c + "</b>.", none: "No club with this code." },
+}[L];
+document.getElementById("joinLbl").textContent = T.join; document.getElementById("joinUrl").textContent = T.url;
+document.getElementById("fs").setAttribute("aria-label", T.fs);
+const MONTHS = T.months;
 const esc = (v) => String(v ?? "").replace(/[&<>"']/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const nf = (n) => Number(n ?? 0).toLocaleString("fr-FR").replace(/[\\u202F\\u00A0]/g, " ");
+const nf = (n) => Number(n ?? 0).toLocaleString(T.loc).replace(/[\\u202F\\u00A0]/g, " ");
 const ini = (s) => esc(String(s ?? "?").trim().charAt(0).toUpperCase());
 let D = null, page = 0, panel = 0;
 // Autant de lignes que l'écran en contient (télé, tablette, fenêtre) : jamais de ligne sous les panneaux.
@@ -124,7 +145,7 @@ function draw(now) {
     const size = H * 0.9, ox = (W - size) / 2 + W * 0.06, oy = H * 0.07;
     const g = cx.createLinearGradient(0, oy, 0, oy + size); g.addColorStop(0, "#FFFFFF"); g.addColorStop(0.55, "#7EA2FF"); g.addColorStop(1, "#0443FD");
     cx.fillStyle = g; cx.beginPath();
-    for (const l of f) {
+    for (const l of (f || [])) { // image absente : on saute ce tour au lieu de couper l'animation
       const y = oy + (l[0] / 1000) * size, x1 = l[1] / 1000, x2 = l[2] / 1000, P = 16;
       const X = (i) => ox + (1 - (x1 + (i / (P - 1)) * (x2 - x1))) * size; // de face au classement (miroir)
       const T = (i) => { const u = (i / (P - 1)) * (n - 1), a = Math.floor(u), b = Math.min(n - 1, a + 1); return ((l[3 + a] + (l[3 + b] - l[3 + a]) * (u - a)) / 1000) * size / 2; };
@@ -141,7 +162,7 @@ requestAnimationFrame(draw);
 function renderHead() {
   const month = MONTHS[Number(String(D.season_key ?? "").slice(5, 7)) - 1] ?? "";
   document.getElementById("head").innerHTML = (D.logo_url ? '<img class="logo" src="' + esc(D.logo_url) + '" alt="">' : '<div class="logo t">' + ini(D.name) + '</div>')
-    + '<div><h1>' + esc(D.name) + '</h1><div class="sub">Classement de ' + esc(month) + ' · ' + nf(D.members) + ' membres</div><div class="legend">Points : 1 par duel du jour gagné, 2 en duel à trois</div></div>';
+    + '<div><h1>' + esc(D.name) + '</h1><div class="sub">' + esc(T.sub(month, nf(D.members))) + '</div><div class="legend">' + esc(T.legend) + '</div></div>';
   document.getElementById("code").textContent = D.code ?? CODE;
   const q = document.getElementById("qr");
   if (window.qrcode && !q.dataset.done) {
@@ -154,18 +175,18 @@ function renderHead() {
 function renderList() {
   // Le grand cadre alterne : les pages du classement, puis les pages de TOUS les duels d'hier.
   const rows = D.rows ?? [], duels = D.yesterday ?? [], el = document.getElementById("list"), n = per();
-  if (!rows.length && !duels.length) { el.innerHTML = '<div class="empty">Le classement se remplit dès les premiers duels.<br>Rejoins le club avec le code <b>' + esc(D.code) + '</b>.</div>'; return; }
+  if (!rows.length && !duels.length) { el.innerHTML = '<div class="empty">' + T.empty(esc(D.code)) + '</div>'; return; }
   const views = [];
   for (let i = 0; i < rows.length; i += n) views.push({ kind: "rank", part: rows.slice(i, i + n) });
   for (let i = 0; i < duels.length; i += n) views.push({ kind: "duel", part: duels.slice(i, i + n) });
   page = page % views.length;
   const v = views[page], same = views.filter((x) => x.kind === v.kind), at = same.indexOf(v) + 1;
-  const label = (v.kind === "rank" ? "Classement" : "Les duels d\\'hier") + (same.length > 1 ? ' · ' + at + ' / ' + same.length : '');
+  const label = esc(v.kind === "rank" ? T.rank : T.duels) + (same.length > 1 ? ' · ' + at + ' / ' + same.length : '');
   el.innerHTML = '<div class="page">' + label + '</div>' + (v.kind === "rank" ? v.part.map((r) =>
     '<div class="r' + (Number(r.rank) === 1 ? ' first' : '') + '"><span class="p">' + esc(r.rank) + '</span>'
     + (r.avatar_url ? '<img class="a" src="' + esc(r.avatar_url) + '" alt="">' : '<div class="a t">' + ini(r.username) + '</div>')
-    + '<span class="n">' + esc(r.username) + '</span><span class="s">' + nf(r.points) + '<small>' + (Number(r.points) > 1 ? 'points' : 'point') + '</small></span></div>').join("")
-    : v.part.map((d) => '<div class="r"><span class="n"><b>' + esc(d.winner) + '</b> <span class="bat">bat ' + esc(d.losers.join(" et ")) + '</span></span><span class="s plus">+' + esc(d.points) + '<small>' + (d.points > 1 ? 'points' : 'point') + '</small></span></div>').join(""));
+    + '<span class="n">' + esc(r.username) + '</span><span class="s">' + nf(r.points) + '<small>' + (Number(r.points) > 1 ? T.pts : T.pt) + '</small></span></div>').join("")
+    : v.part.map((d) => '<div class="r"><span class="n"><b>' + esc(d.winner) + '</b> <span class="bat">' + T.beat + ' ' + esc(d.losers.join(T.and)) + '</span></span><span class="s plus">+' + esc(d.points) + '<small>' + (d.points > 1 ? T.pts : T.pt) + '</small></span></div>').join(""));
   [...el.querySelectorAll(".r")].forEach((r, i) => setTimeout(() => r.classList.add("on"), 60 + i * 70));
 }
 
@@ -174,8 +195,8 @@ function panels() {
   const out = [];
   const g = D.goal;
   if (g && Number(g.target) > 0) { const pct = Math.max(0, Math.min(100, Math.round((Number(g.total) / Number(g.target)) * 100)));
-    out.push('<div class="k">Objectif du mois, tous ensemble</div><div class="big">' + nf(g.total) + ' <span style="opacity:.45">/ ' + nf(g.target) + ' pts d\\'activité</span></div><div class="track"><div class="fill" data-w="' + pct + '" style="width:0"></div></div>'); }
-  out.push('<div class="k">Chaque jour</div><div class="big">Un rival du club. Le plus de pts d\\'activité gagne le duel.</div>');
+    out.push('<div class="k">' + esc(T.goal) + '</div><div class="big">' + nf(g.total) + ' <span style="opacity:.45">/ ' + nf(g.target) + ' ' + esc(T.unit) + '</span></div><div class="track"><div class="fill" data-w="' + pct + '" style="width:0"></div></div>'); }
+  out.push('<div class="k">' + esc(T.dayK) + '</div><div class="big">' + esc(T.day) + '</div>');
   return out;
 }
 function rotatePanel() {
@@ -188,9 +209,9 @@ function rotatePanel() {
 // ── Données ──
 async function load() {
   try { const r = await fetch("/club-screen/data?code=" + encodeURIComponent(CODE), { cache: "no-store" }); const j = await r.json(); if (!j.error) { D = j; renderHead(); renderList(); return; } } catch (e) {}
-  if (!D) document.getElementById("list").innerHTML = '<div class="empty">Aucun club avec ce code.</div>';
+  if (!D) document.getElementById("list").innerHTML = '<div class="empty">' + esc(T.none) + '</div>';
 }
-setInterval(() => { const d = new Date(); document.getElementById("clock").textContent = d.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" }); }, 1000);
+setInterval(() => { const d = new Date(); document.getElementById("clock").textContent = d.toLocaleTimeString(T.loc, { hour: "2-digit", minute: "2-digit" }); }, 1000);
 load().then(() => { if (D) rotatePanel(); });
 setInterval(load, 5 * 60 * 1000);
 setInterval(() => { if (D) { page++; renderList(); } }, 12000);

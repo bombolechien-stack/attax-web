@@ -91,3 +91,8 @@
   .cl-tv-foot .h7-btn { width: 100%; justify-content: center; box-sizing: border-box; }
 }
 @media (prefers-reduced-motion: reduce) { .cl-panel { animation: none; } }
+
+/* Titre du hero : 3 lignes au plus (2 pour la phrase, 1 pour « Tous les jours. »). Sur ordinateur il sort de la
+   colonne de 720 px ; sur téléphone il est un peu plus petit pour que la phrase tienne en 2 lignes. */
+@media (min-width: 861px) { .sp-hero-in > .sp-h1:has(.cl-h1a) { max-width: 62rem; } }
+@media (max-width: 860px) { .sp-h1:has(.cl-h1a) { font-size: clamp(1.9rem, 8.6vw, 2.6rem); } }
