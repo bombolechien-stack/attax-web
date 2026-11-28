@@ -74,7 +74,7 @@ export default function Gear({ id = "gear" }: { id?: string }) {
             ))}
           </Reveal>
 
-          <Reveal className="gr-picks">
+          <Reveal className="gr-picks" id="gear-picks">
             {c.picks.map((p) => (
               <a key={p.key} className="gr-pick" href={p.href} target="_blank" rel="sponsored nofollow noopener">
                 <div className={`gr-img${IMG[p.key] ? "" : " is-empty"}`}>

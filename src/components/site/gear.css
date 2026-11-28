@@ -28,3 +28,7 @@
   .gr-ways, .gr-picks { grid-template-columns: 1fr; }
   .gr-avoid li { grid-template-columns: 1fr; }
 }
+
+/* Lien d'une réponse de la FAQ vers ce bloc ; le bloc s'arrête sous le menu fixe quand on y saute */
+.sp-faq-link { font-weight: 700; color: var(--blue); text-decoration: underline; text-underline-offset: 3px; }
+#gear, #gear-picks { scroll-margin-top: 6rem; }

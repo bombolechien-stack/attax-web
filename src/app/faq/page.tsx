@@ -15,6 +15,7 @@ function Answer({ item }: { item: FaqItem }) {
       <p>{item.a}</p>
       {item.list && <ul>{item.list.map((li, i) => <li key={i}>{li}</li>)}</ul>}
       {item.after && <p>{item.after}</p>}
+      {item.link && <p><a className="sp-faq-link" href={item.link.href}>{item.link.label} →</a></p>}
     </div>
   );
 }
